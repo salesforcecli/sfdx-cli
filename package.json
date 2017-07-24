@@ -1,0 +1,30 @@
+  {
+  "name": "sfdx-cli",
+  "description": "SFDX CLI",
+  "version": "0.0.1",
+  "author": "Salesforce",
+  "bin": {
+    "sfdx": "bin/run"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "cli-engine": {
+    "bin": "sfdx",
+    "namespaces": [
+      "force"
+    ],
+    "_TODO_s3": {
+      "host": "cli-assets.heroku.com",
+      "bucket": "heroku-cli-assets"
+    },
+    "plugins": [
+      "salesforcedx"
+    ]
+  },
+  "dependencies": {
+    "cli-engine": "3.5.43",
+    "salesforcedx": "^40.2.1"
+  },
+  "license": "BSD-3-Clause"
+}

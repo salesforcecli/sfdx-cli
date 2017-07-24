@@ -1,0 +1,30 @@
+# todo: delete after CI is ported to Jenkins
+---
+version: 2
+executorType: docker
+containerInfo:
+  - image: dickeyxxx/cli-engine-docker:v1.0.1
+stages:
+  build:
+    workDir: ~/cli
+    steps:
+      - type: checkout
+      - type: cache-restore
+        key: cli
+      - type: shell
+        command: |
+          set -exu
+          yarn
+          ./bin/run version
+          ./bin/run help
+      - type: cache-save
+        key: cli
+        paths:
+          - /usr/local/share/.cache/yarn
+      - type: deploy
+        shell: /bin/bash
+        command: |
+          set -exu
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            yarn run release beta
+          fi
