@@ -27,6 +27,13 @@ If using `nvm`, be sure that you've selected the v8+ version with `nvm use v8.x.
 1. From within this repository's root directory, run `npm install`.
 1. Run `bin/run` to view the CLI's root help.
 
+#### Developer flags
+
+The following flags are supported by the `bin/run` script, and can be combined as desired.  They are stripped from the args passed to the CLI application itself.
+
+* *--cli-suspend*: Starts the `node` binary with the `--inspect-brk` flag to allow a remote debugger to attach before running.
+* *--cli-debug*: Sets the `SFDX_DEBUG=1` envar for the `node` process, which enables the v6 `cli-engine`'s debug output level.
+
 #### Developer notes
 
 * If you change this project's `package.json` to reference a new core plugin, or change the `package.json` of any referenced plugins, you may need to delete `cli-engine`'s plugin cache to force it to reload.
