@@ -1,6 +1,6 @@
 # CLI for sfdx
 
-This is the `sfdx` CLI application, based on the Heroku's v6
+This is the `sfdx` CLI application, based on Heroku's v6
 [cli-engine](https://github.com/heroku/cli-engine).
 
 ## Installation and Development
