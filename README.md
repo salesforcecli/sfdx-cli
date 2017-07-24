@@ -17,11 +17,11 @@ If using `nvm`, be sure that you've selected the v8+ version with `nvm use v8.x.
 ### Up and running as a developer
 
 1. Make sure you have the following dependencies cloned locally:
-    1. [salesforcedx](https://git.soma.salesforce.com/salesforcedx/salesforcedx)
-    1. [force-com-toolbelt](https://git.soma.salesforce.com/ALMSourceDrivenDev/force-com-toolbelt)
-    1. [cli-engine](https://github.com/heroku/cli-engine) (optional)
-    1. [cli-engine-command](https://github.com/heroku/cli-engine) (optional)
-    1. [cli-engine-config](https://github.com/heroku/cli-engine) (optional)
+    * [salesforcedx](https://git.soma.salesforce.com/salesforcedx/salesforcedx)
+    * [force-com-toolbelt](https://git.soma.salesforce.com/ALMSourceDrivenDev/force-com-toolbelt)
+    * [cli-engine](https://github.com/heroku/cli-engine) (optional)
+    * [cli-engine-command](https://github.com/heroku/cli-engine) (optional)
+    * [cli-engine-config](https://github.com/heroku/cli-engine) (optional)
 1. For each cloned directory above, run `npm link` from within it's directory.
 1. For each cloned directory above, run `npm link <dependency>` from within this repository's root directory.
 1. From within this repository's root directory, run `npm install`.
