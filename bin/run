@@ -9,16 +9,16 @@ key="$1"
 
 case $key in
     --cli-suspend)
-    NODE_FLAGS+=("--inspect-brk")
-    shift
+	NODE_FLAGS+=("--inspect-brk")
+	shift
     ;;
     --cli-debug)
-    export SFDX_DEBUG=1
-    shift
+	export SFDX_DEBUG=1
+	shift
     ;;
     *)
-		CLI_ARGS+=($key)
-		shift
+	CLI_ARGS+=($key)
+	shift
     ;;
 esac
 done
@@ -37,4 +37,4 @@ get_script_dir () {
 }
 DIR=$(get_script_dir)
 
-CLI_BINPATH=$DIR/run node $NODE_FLAGS $DIR/run.js "$CLI_ARGS"
+CLI_BINPATH=$DIR/run node $NODE_FLAGS $DIR/run.js "${CLI_ARGS[@]}"
