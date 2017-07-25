@@ -22,7 +22,7 @@ If using `nvm`, be sure that you've selected the v8+ version with `nvm use v8.x.
     * [cli-engine](https://github.com/heroku/cli-engine) (optional)
     * [cli-engine-command](https://github.com/heroku/cli-engine) (optional)
     * [cli-engine-config](https://github.com/heroku/cli-engine) (optional)
-1. For each cloned directory above, run `npm link` from within it's directory.
+1. For each cloned directory above, run `npm link` from within its directory.
 1. For each cloned directory above, run `npm link <dependency>` from within this repository's root directory.
 1. From within this repository's root directory, run `npm install`.
 1. Run `bin/run` to view the CLI's root help.
