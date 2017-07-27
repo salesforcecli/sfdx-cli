@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+set -e
+
+realpath() {
+    local result=$(python -c "import os,sys; print os.path.abspath(sys.argv[1])" $1)
+    echo $result
+}
+
+bin_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+cli_dir=$(realpath "$bin_dir/..")
+projects_dir=$(realpath "$cli_dir/..")
+
+# make sure npm modules are installed, assuming that if cli-engine is there, everything is
+if [ ! -d "$cli_dir/node_modules/cli-engine" ]; then
+    printf "=== Installing project packages ===\n\n"
+    cd $cli_dir
+    npm install
+fi
+
+link_package() {
+    local dir=$1
+    local repository=$2
+    local package=$3
+
+    if [ -d "$projects_dir/$repository" ]; then
+        if [ -L "$dir/node_modules/$package" ]; then
+            printf "=== Skipping %s as %s is already linked ===\n\n" "$package" "$repository"
+        else
+            printf "=== Linking %s from %s/%s ===\n\n" "$package" "$projects_dir" "$repository"
+            cd "$dir"
+            npm link "$projects_dir/$repository"
+        fi
+    else
+        printf "=== Skipping %s as %s was not found ===\n\n" "$package" "$repository"
+    fi
+}
+
+# link all sfdx plugins
+link_package "$cli_dir" salesforcedx salesforcedx
+link_package "$projects_dir/salesforcedx" force-com-toolbelt salesforce-alm
+link_package "$projects_dir/salesforcedx" force-language-services force-language-services
+
+if [ "$1" == "+cli-engine" ]; then
+    # optionally link all cli-engine packages
+    link_package "$cli_dir" cli-engine cli-engine
+    link_package "$projects_dir/cli-engine" cli-engine-command cli-engine-command
+    link_package "$projects_dir/cli-engine" cli-engine-config cli-engine-config
+elif [ "$1" == "-cli-engine" ]; then
+    # optionally remove the cli-engine link by 
+    if [ -L "$cli_dir/node_modules/cli-engine" ]; then
+        printf "=== Installing cli-engine over previously linked local copy ===\n\n"
+        cd $cli_dir
+        npm install cli-engine
+    else
+        printf "=== Skipping reinstall of cli-engine as it's not a link ===\n\n"
+    fi
+fi

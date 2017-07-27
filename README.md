@@ -14,18 +14,22 @@ If using `nvm`, be sure that you've selected the v8+ version with `nvm use v8.x.
 1. From within this repository's root directory, run `npm install`.
 1. Run `bin/run` to view the CLI's root help.
 
-### Up and running as a developer
+### Up and running as a `force` namespace plugin developer
 
-1. Make sure you have the following dependencies cloned locally:
+1. Make sure you have the following dependencies cloned locally as sibling directories to this repository:
     * [salesforcedx](https://git.soma.salesforce.com/salesforcedx/salesforcedx)
     * [force-com-toolbelt](https://git.soma.salesforce.com/ALMSourceDrivenDev/force-com-toolbelt)
-    * [cli-engine](https://github.com/heroku/cli-engine) (optional)
-    * [cli-engine-command](https://github.com/heroku/cli-engine) (optional)
-    * [cli-engine-config](https://github.com/heroku/cli-engine) (optional)
-1. For each cloned directory above, run `npm link` from within its directory.
-1. For each cloned directory above, run `npm link <dependency>` from within this repository's root directory.
-1. From within this repository's root directory, run `npm install`.
+    * [force-language-services](https://git.soma.salesforce.com/DevTools/force-language-services)
+1. Run `bin/setup-dev` to have all necessary npm links created for you.
 1. Run `bin/run` to view the CLI's root help.
+
+### Up and running as a developer contributing to cli-engine
+
+1. If you need to make modifications to the Heroku `cli-engine` upon which this is based, also clone these repositories as sibling directories of this repository:
+    * [cli-engine](https://github.com/heroku/cli-engine)
+    * [cli-engine-command](https://github.com/heroku/cli-engine)
+    * [cli-engine-config](https://github.com/heroku/cli-engine)
+1. Run `bin/setup-dev +cli-engine` to have all necessary npm links created for you.
 
 #### Developer flags
 
@@ -38,4 +42,4 @@ The following flags are supported by the `bin/run` script, and can be combined a
 
 * If you change this project's `package.json` to reference a new core plugin, or change the `package.json` of any referenced plugins, you may need to delete `cli-engine`'s plugin cache to force it to reload.
     * For macOS: `rm ~/Library/Caches/sfdx-cli/plugins.json`
-* If you are using a locally linked `cli-engine` and making changes, you probably want to set up its compile watch with `npm run watch`.
+* If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `npm run watch`.
