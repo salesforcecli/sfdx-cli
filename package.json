@@ -23,7 +23,7 @@
     }
   },
   "dependencies": {
-    "cli-engine": "3.5.46",
+    "cli-engine": "3.5.49",
     "salesforcedx": "^40.2.1"
   },
   "license": "BSD-3-Clause"
