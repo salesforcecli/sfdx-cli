@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm -rf ~/Library/Caches/sfdx ~/.local/share/sfdx
