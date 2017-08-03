@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+const path = require('path');
+const [major, minor, patch] = require('../package.json').version.split('.');
+const { execSync } = require('child_process');
+
+function run (cmd) {
+  execSync(cmd, { stdio: 'inherit' });
+}
+
+function dockerSetup () {
+  run('docker build -t sfdx-cli .');
+}
+
+function runInDocker (cmd) {
+  run(`docker run -it --rm -v ${path.resolve(__dirname, '..')}:/root/sfdx -w /root/sfdx -e AWS_CONFIG_FILE='/root/sfdx/.aws/credentials' sfdx-cli ${cmd}`);
+}
+
+dockerSetup();
+runInDocker('./scripts/release alpha');

@@ -1,3 +1,7 @@
+# NOTICE
+
+These docs are obsolete; stay tuned for updates!
+
 # CLI for sfdx
 
 This is the `sfdx` CLI application, based on Heroku's v6

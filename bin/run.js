@@ -1,2 +1,2 @@
-require('./versions').checkVersion();
-require('./cli').run();
+require('../lib/versions').checkVersion();
+require('../lib/cli').run();

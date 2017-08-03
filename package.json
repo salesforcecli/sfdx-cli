@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
-  "description": "SFDX CLI",
-  "version": "0.0.1",
+  "description": "SalesforceDX CLI",
+  "version": "6.0.0",
   "author": "Salesforce",
   "bin": {
     "sfdx": "bin/run"
@@ -10,21 +10,26 @@
     "node": ">=8"
   },
   "cli-engine": {
-    "bin": "sfdx",
     "namespaces": [
       "force"
     ],
+    "bin": "sfdx",
+    "dirname": "sfdx",
+    "node": "8.2.1",
     "plugins": [
-      "salesforcedx"
+      "salesforce-alm"
     ],
-    "_TODO_s3": {
-      "host": "cli-assets.heroku.com",
-      "bucket": "heroku-cli-assets"
+    "s3": {
+      "bucket": "dfc-data-production",
+      "host": "developer.salesforce.com/media/salesforce-cli"
     }
   },
   "dependencies": {
-    "cli-engine": "3.5.49",
-    "salesforcedx": "^40.2.1"
+    "cli-engine": "3.5.57",
+    "salesforce-alm": "/root/sfdx/salesforce-alm-40.5.0.tgz"
+  },
+  "scripts": {
+    "nvm": "~/.nvm/nvm-exec which node | xargs -J % ln -sf % ./.nvm-node && chmod +x ./.nvm-node"
   },
   "license": "BSD-3-Clause"
 }
