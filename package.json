@@ -28,8 +28,5 @@
     "cli-engine": "3.5.57",
     "salesforce-alm": "/root/sfdx/salesforce-alm-40.5.0.tgz"
   },
-  "scripts": {
-    "nvm": "~/.nvm/nvm-exec which node | xargs -J % ln -sf % ./.nvm-node && chmod +x ./.nvm-node"
-  },
   "license": "BSD-3-Clause"
 }
