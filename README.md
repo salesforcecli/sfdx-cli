@@ -13,7 +13,7 @@ If using `nvm`, be sure that you've selected the v8+ version with `nvm use v8.x.
 
 You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide to use `nvm`, be sure to follow the `nvm`-specific install instructions.
 
-### Up and running as a user
+### Up and running as a CLI-only developer
 
 1. From within this repository's root directory, run `yarn` (short for `yarn install`).
 1. Run `bin/run` to view the CLI's root help.
@@ -26,7 +26,7 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
     * [force-language-services](https://git.soma.salesforce.com/DevTools/force-language-services)
     * [salesforce-lightning-cli](https://git.soma.salesforce.com/aura/lightning-cli)
 1. Prior to v6 being the official CLI engine, you will also need to checkout the `develop` branch, or a derivative thereof, in each (except `salesforce-lightning-cli`, which can remain on master).
-1. Set up the `salesforcedx` aggregate plugin for development by running `bin/setup`.  Note that this script creates various types of links between the above packages and this one.
+1. Set up the `salesforcedx` aggregate plugin for development by running `scripts/setup`.  Note that this script creates various types of links between the above packages and this one.
     * If you don't like scripts messing with your projects, you can recreate the actions of the script by running something like the following commands, depending on your exact needs:
         1. `yarn install`
         1. `bin/run plugins:link ../salesforcedx`
@@ -40,9 +40,9 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
     * [cli-engine](https://github.com/heroku/cli-engine)
     * [cli-engine-command](https://github.com/heroku/cli-engine-command)
     * [cli-engine-config](https://github.com/heroku/cli-engine-config)
-1. Run `bin/setup +engine` to have all necessary npm links created for you.  You can revert the effects of this command by running `bin/setup -engine`.
+1. Run `scripts/setup +engine` to have all necessary npm links created for you.  You can revert the effects of this command by running `scripts/setup -engine`.
 
-You can now run the CLI using the `bin/run` script to test your changes.
+You can now run the CLI using the `bin/run` script to test your CLI and plugin changes.
 
 #### Developer CLI flags
 

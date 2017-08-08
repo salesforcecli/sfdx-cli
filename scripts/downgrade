@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Removes all caches containing v6 artifacts, reverting to a clean v5 state, if v5 is installed
+
+rm -rf ~/Library/Caches/sfdx ~/.local/share/sfdx
