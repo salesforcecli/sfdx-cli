@@ -34,6 +34,7 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
         1. `npm link ../force-com-toolbelt`
         1. `npm link ../force-language-services`
         1. `npm link ../lightning-cli`
+        1. `cd -`
         1. `bin/run plugins`
 1. If everything worked, you should see something like `salesforcedx 41.1.0 (link)` (the exact version should be anything `41` or later).
 1. (OPTIONAL) If you need to make modifications to the Heroku `cli-engine` upon which this is based, also clone these repositories as sibling directories of this repository:
