@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+realpath() {
+  local result=$(python -c "import os,sys; print os.path.abspath(sys.argv[1])" $1)
+  echo $result
+}
+
+bin_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+cli_dir=$(realpath "$bin_dir/..")
+projects_dir=$(realpath "$cli_dir/..")
+salesforcedx_dir="$projects_dir/salesforcedx"
+cli_engine_dir="$projects_dir/cli-engine"
+
+# make sure npm modules are installed, assuming that if cli-engine is there, everything is
+if [ ! -d "$cli_dir/node_modules/cli-engine" ]; then
+  printf "\n=== Installing project packages ===\n\n"
+  cd "$cli_dir"
+  yarn install
+fi
+
+bin/run plugins | grep salesforcedx > /dev/null 2>&1
+if [ "$?" == "1" ]; then
+  printf "\n=== Linking (plugin) local salesforcedx plugin from $salesforcedx_dir ===\n\n"
+  "$bin_dir/run" plugins:link "$salesforcedx_dir"
+else
+  printf "\n=== Local salesforcedx plugin is already linked ===\n\n"
+fi
+
+yarn_link_package() {
+  _link_package yarn "$1" "$2" "$3"
+}
+
+npm_link_package() {
+  _link_package npm "$1" "$2" "$3"
+}
+
+_link_package() {
+  local cmd=$1
+  local dir="$2"
+  local repository="$3"
+  local package="$4"
+
+  if [ -d "$projects_dir/$repository" ]; then
+    if [ -L "$dir/node_modules/$package" ]; then
+      printf "\n=== Skipping %s since %s is already linked ===\n\n" "$package" "$repository"
+    else
+      printf "\n=== Linking %s (%s) ===\n" "$cmd" "$package"
+      printf "      in: %s\n" "$dir"
+      printf "    from: %s/%s\n\n" "$projects_dir" "$repository"
+      cd "$projects_dir/$repository"
+      $cmd link
+      cd "$dir"
+      $cmd link "$package"
+    fi
+  else
+    printf "\n=== Skipping %s since %s was not found ===\n\n" "$package" "$repository"
+  fi
+}
+
+# link plugins
+npm_link_package "$salesforcedx_dir" force-com-toolbelt salesforce-alm
+npm_link_package "$salesforcedx_dir" force-language-services force-language-services
+npm_link_package "$salesforcedx_dir" lightning-cli salesforce-lightning-cli
+
+if [ "$1" == "+engine" ]; then
+  # optionally link all cli-engine packages
+  yarn_link_package "$cli_dir" cli-engine cli-engine
+  yarn_link_package "$projects_dir/cli-engine" cli-engine-command cli-engine-command
+  yarn_link_package "$projects_dir/cli-engine" cli-engine-config cli-engine-config
+elif [ "$1" == "-engine" ]; then
+  if [ -L "$cli_dir/node_modules/cli-engine" ]; then
+    printf "\n=== Unlinking cli-engine and replacing with remote package ===\n\n"
+    cd $cli_dir
+    yarn unlink cli-engine > /dev/null 2>&1
+    cd "$cli_engine_dir"
+    yarn unlink > /dev/null 2>&1
+    cd $cli_dir
+    yarn add cli-engine > /dev/null 2>&1
+  else
+    printf "\n=== Skipping reinstall of cli-engine since it's not linked ===\n\n"
+  fi
+fi
+
+printf "\n=== Finished ===\n\n"
+
+bin/run plugins

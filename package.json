@@ -17,7 +17,7 @@
     "dirname": "sfdx",
     "node": "8.2.1",
     "plugins": [
-      "salesforce-alm"
+      "salesforcedx"
     ],
     "s3": {
       "bucket": "dfc-data-production",
@@ -25,8 +25,8 @@
     }
   },
   "dependencies": {
-    "cli-engine": "3.5.57",
-    "salesforce-alm": "/root/sfdx/salesforce-alm-40.5.0.tgz"
+    "cli-engine": "3.5.58",
+    "salesforcedx": "40.4.0"
   },
   "license": "BSD-3-Clause"
 }
