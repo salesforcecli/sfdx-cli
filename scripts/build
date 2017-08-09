@@ -109,6 +109,10 @@ case \$key in
     export DEBUG=\\*
     shift
   ;;
+  --dev-config)
+    export CLI_ENGINE_SHOW_CONFIG=1
+    shift
+  ;;
   *)
     CLI_ARGS+=(\$key)
     shift
