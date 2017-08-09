@@ -9,6 +9,9 @@
   "engines": {
     "node": ">=8"
   },
+  "cli": {
+    "channel": "alpha"
+  },
   "cli-engine": {
     "namespaces": [
       "force"
@@ -29,10 +32,12 @@
     "salesforcedx": "40.4.0"
   },
   "scripts": {
+    "build": "scripts/build",
     "clean-all": "scripts/clean-all",
     "clean-cache": "scripts/clean-cache",
     "clean-dev": "scripts/clean-dev",
     "downgrade": "scripts/downgrade",
+    "release-all": "scripts/release-all",
     "setup": "scripts/setup"
   },
   "license": "BSD-3-Clause"

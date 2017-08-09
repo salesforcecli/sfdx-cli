@@ -44,6 +44,7 @@ mkdir -p $WORKSPACE/bin
 if [ -f README.md ]; then cp README.md $WORKSPACE; fi
 if [ -f LICENSE ]; then cp LICENSE $WORKSPACE; fi
 cp package.json $WORKSPACE
+cp -r lib $WORKSPACE
 
 # install packages
 cd $WORKSPACE
@@ -95,6 +96,26 @@ else
   cat << EOF > $WORKSPACE/bin/$BIN
 #!/usr/bin/env bash
 set -e
+NODE_FLAGS=()
+CLI_ARGS=()
+while [[ \$# -gt 0 ]]; do
+key="\$1"
+case \$key in
+  --dev-suspend)
+    NODE_FLAGS+=("--inspect-brk")
+    shift
+  ;;
+  --dev-debug)
+    export SFDX_DEBUG=1
+    export DEBUG=\\*
+    shift
+  ;;
+  *)
+    CLI_ARGS+=(\$key)
+    shift
+  ;;
+esac
+done
 get_script_dir () {
   SOURCE="\${BASH_SOURCE[0]}"
   # While \$SOURCE is a symlink, resolve it
@@ -113,28 +134,26 @@ CLI_HOME=\$(cd && pwd)
 XDG_DATA_HOME=\${XDG_DATA_HOME:="\$CLI_HOME/.local/share"}
 BIN_DIR="\$XDG_DATA_HOME/$BIN/client/bin"
 if [ -x "\$BIN_DIR/$BIN" ] && [ ! "\$BIN_DIR" -ef "\$DIR" ]; then
-  "\$XDG_DATA_HOME/$BIN/client/bin/$BIN" "\$@"
+  "\$XDG_DATA_HOME/$BIN/client/bin/$BIN" "\${CLI_ARGS[@]}"
 else
-  CLI_BINPATH="\$DIR/$BIN" "\$DIR/node" "\$DIR/$BIN.js" "\$@"
+  CLI_BINPATH="\$DIR/$BIN" "\$DIR/node" "\$DIR/$BIN.js" "\${CLI_ARGS[@]}"
 fi
 EOF
 chmod +x $WORKSPACE/bin/$BIN
 fi
 
 cat << EOF > $WORKSPACE/bin/$BIN.js
-const path = require('path')
-const CLI = require('cli-engine').default
-const root = path.join(__dirname, '..')
-const cli = new CLI({
-  argv: process.argv.slice(1),
-  config: {
-    root,
-    pjson: require(path.join(root, 'package.json')),
-    channel: '$CHANNEL',
-    version: '$VERSION'
-  }
-})
-cli.run()
+const path = require('path');
+const root = path.join(__dirname, '..');
+
+// check node version before requiring additional packages
+require(path.join(root, 'lib', 'versions'))
+  .checkNodeVersion();
+
+const pjson = require(path.join(root, 'package.json'));
+require(path.join(root, 'lib', 'cli'))
+  .create('$VERSION', '$CHANNEL')
+  .run();
 EOF
 
 cd $ROOT/tmp/build

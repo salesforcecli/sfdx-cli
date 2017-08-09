@@ -49,20 +49,26 @@ You can now run the CLI using the `bin/run` script to test your CLI and plugin c
 
 The following flags are supported by the `bin/run` script, and can be combined as desired.  They are stripped from the args passed to the CLI application itself.
 
-* *--cli-suspend*: Starts the `node` binary with the `--inspect-brk` flag to allow a remote debugger to attach before running.
-* *--cli-debug*: Sets the `SFDX_DEBUG=1` and `DEBUG=\*` envars for the CLI's `node` process, which enables full debug output from the v6 `cli-engine`.
+* *--dev-suspend*: Starts the `node` binary with the `--inspect-brk` flag to allow a remote debugger to attach before running.
+* *--dev-debug*: Sets the `SFDX_DEBUG=1` and `DEBUG=\*` envars for the CLI's `node` process, which enables full debug output from the v6 `cli-engine`.
 
 ### Scripts
 
 A few additional convenience scripts are available to help with common development tasks:
 
+* `npm run build [PLATFORM] [CHANNEL]` - Builds a release package into the `./tmp` directory.  For example, `npm run build darwin-x64 alpha` will create a macOS build for the `alpha` channel.
 * `npm run clean-dev` - Uninstalls the salesforcedx plugin and then deletes all node_modules directories for the CLI and its linked plugin dependencies.
 * `npm run clean-cache` - Deletes the v6 CLI's plugin cache.
 * `npm run clean-all` - Runs both `clean-dev` and `clean-cache`
 * `npm run downgrade` - For testing the v5->v6 CLI migration, this removes both the v6 caches and the v6 installation and all plugins!  Use with care.
+* `npm run release-all` - Builds and releases all distributions to the channel configured in `package.json`'s `cli.channel` property.
 
 ### Developer notes
 
 * If you change this project's `package.json` to reference a new core plugin, or change the `package.json` of any referenced plugins, you may need to delete `cli-engine`'s plugin cache to force it to reload.
     * Use `npm run clear-cache`
 * If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `npm run watch`.
+
+## Releasing
+
+Building and publishing a release manually currently requires [Docker](https://www.docker.com/get-docker).  You will also need salesforcedx S3 bucket write credentials stored in a standard AWS config file in `./.aws/credentials`.  Then, you should be able to build and release by running `npm run release-all`.

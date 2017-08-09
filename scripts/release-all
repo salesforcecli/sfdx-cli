@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
 const path = require('path');
-const [major, minor, patch] = require('../package.json').version.split('.');
 const { execSync } = require('child_process');
+
+const pjson = require('../package.json');
+const [major, minor, patch] = pjson.version.split('.');
+const channel = pjson.cli.channel;
 
 function run (cmd) {
   execSync(cmd, { stdio: 'inherit' });
@@ -17,4 +20,4 @@ function runInDocker (cmd) {
 }
 
 dockerSetup();
-runInDocker('./scripts/release alpha');
+runInDocker(`./scripts/release ${channel}`);
