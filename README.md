@@ -26,7 +26,7 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
     * [force-language-services](https://git.soma.salesforce.com/DevTools/force-language-services)
     * [salesforce-lightning-cli](https://git.soma.salesforce.com/aura/lightning-cli)
 1. Prior to v6 being the official CLI engine, you will also need to checkout the `develop` branch, or a derivative thereof, in each (except `salesforce-lightning-cli`, which can remain on master).
-1. Set up the `salesforcedx` aggregate plugin for development by running `scripts/setup`.  Note that this script creates various types of links between the above packages and this one.
+1. Set up the `salesforcedx` aggregate plugin for development by running `npm run setup`.  Note that this script creates various types of links between the above packages and this one.
     * If you don't like scripts messing with your projects, you can recreate the actions of the script by running something like the following commands, depending on your exact needs:
         1. `yarn install`
         1. `bin/run plugins:link ../salesforcedx`
@@ -41,19 +41,28 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
     * [cli-engine](https://github.com/heroku/cli-engine)
     * [cli-engine-command](https://github.com/heroku/cli-engine-command)
     * [cli-engine-config](https://github.com/heroku/cli-engine-config)
-1. Run `scripts/setup +engine` to have all necessary npm links created for you.  You can revert the effects of this command by running `scripts/setup -engine`.
+1. Run `npm run setup +engine` to have all necessary npm links created for you.  You can revert the effects of this command by running `npm run setup -engine`.
 
 You can now run the CLI using the `bin/run` script to test your CLI and plugin changes.
 
-#### Developer CLI flags
+### Developer CLI flags
 
 The following flags are supported by the `bin/run` script, and can be combined as desired.  They are stripped from the args passed to the CLI application itself.
 
 * *--cli-suspend*: Starts the `node` binary with the `--inspect-brk` flag to allow a remote debugger to attach before running.
 * *--cli-debug*: Sets the `SFDX_DEBUG=1` and `DEBUG=\*` envars for the CLI's `node` process, which enables full debug output from the v6 `cli-engine`.
 
-#### Developer notes
+### Scripts
+
+A few additional convenience scripts are available to help with common development tasks:
+
+* `npm run clean-dev` - Uninstalls the salesforcedx plugin and then deletes all node_modules directories for the CLI and its linked plugin dependencies.
+* `npm run clean-cache` - Deletes the v6 CLI's plugin cache.
+* `npm run clean-all` - Runs both `clean-dev` and `clean-cache`
+* `npm run downgrade` - For testing the v5->v6 CLI migration, this removes both the v6 caches and the v6 installation and all plugins!  Use with care.
+
+### Developer notes
 
 * If you change this project's `package.json` to reference a new core plugin, or change the `package.json` of any referenced plugins, you may need to delete `cli-engine`'s plugin cache to force it to reload.
-    * For macOS: `rm ~/Library/Caches/sfdx-cli/plugins.json`
+    * Use `npm run clear-cache`
 * If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `npm run watch`.

@@ -28,5 +28,12 @@
     "cli-engine": "3.5.58",
     "salesforcedx": "40.4.0"
   },
+  "scripts": {
+    "clean-all": "scripts/clean-all",
+    "clean-cache": "scripts/clean-cache",
+    "clean-dev": "scripts/clean-dev",
+    "downgrade": "scripts/downgrade",
+    "setup": "scripts/setup"
+  },
   "license": "BSD-3-Clause"
 }

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+realpath() {
+  local result=$(python -c "import os,sys; print os.path.abspath(sys.argv[1])" $1)
+  echo $result
+}
+
+scripts_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+bin_dir="$scripts_dir/../bin"
+cli_dir=$(realpath "$bin_dir/..")
+projects_dir=$(realpath "$cli_dir/..")
+
+"$bin_dir/run" plugins:uninstall salesforcedx
+rm -rf "$cli_dir/node_modules" \
+  "$projects_dir/salesforcedx/node_modules" \
+  "$projects_dir/force-com-toolbelt/node_modules" \
+  "$projects_dir/lightning-cli/node_modules" \
+  "$projects_dir/force-language-services/node_modules"
+

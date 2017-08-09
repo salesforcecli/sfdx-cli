@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -d "~/Library/caches/sfdx" ]; then
+  rm -rf ~/Library/caches/sfdx
+fi
+
+# TODO linux, windows
+

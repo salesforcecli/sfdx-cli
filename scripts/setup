@@ -5,7 +5,8 @@ realpath() {
   echo $result
 }
 
-bin_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+scripts_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+bin_dir="$scripts_dir/../bin"
 cli_dir=$(realpath "$bin_dir/..")
 projects_dir=$(realpath "$cli_dir/..")
 salesforcedx_dir="$projects_dir/salesforcedx"
@@ -83,4 +84,4 @@ fi
 
 printf "\n=== Finished ===\n\n"
 
-bin/run plugins
+"$bin_dir/run" plugins
