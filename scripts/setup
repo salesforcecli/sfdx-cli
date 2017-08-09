@@ -45,7 +45,7 @@ _link_package() {
     if [ -L "$dir/node_modules/$package" ]; then
       printf "\n=== Skipping %s since %s is already linked ===\n\n" "$package" "$repository"
     else
-      printf "\n=== Linking %s (%s) ===\n" "$cmd" "$package"
+      printf "\n=== Linking %s (%s) ===\n" "$package" "$cmd"
       printf "      in: %s\n" "$dir"
       printf "    from: %s/%s\n\n" "$projects_dir" "$repository"
       cd "$projects_dir/$repository"
