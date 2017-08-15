@@ -25,7 +25,8 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
     * [salesforce-alm](https://git.soma.salesforce.com/ALMSourceDrivenDev/force-com-toolbelt)
     * [force-language-services](https://git.soma.salesforce.com/DevTools/force-language-services)
     * [salesforce-lightning-cli](https://git.soma.salesforce.com/aura/lightning-cli)
-1. Prior to v6 being the official CLI engine, you will also need to checkout the `develop` branch, or a derivative thereof, in each (except `salesforce-lightning-cli`, which can remain on master).
+1. Prior to v6 being the official CLI engine, you will also need to checkout the `pre-release` branch, or a derivative thereof, in each (except `salesforce-lightning-cli`, which can remain on master).
+1. Also be sure that each has been built, as necessary (e.g. using the repository-specific build, such as `gulp compile`)
 1. Set up the `salesforcedx` aggregate plugin for development by running `npm run setup`.  Note that this script creates various types of links between the above packages and this one.
     * If you don't like scripts messing with your projects, you can recreate the actions of the script by running something like the following commands, depending on your exact needs:
         1. `yarn install`
@@ -37,7 +38,7 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
         1. `cd -`
         1. `bin/run plugins`
 1. If everything worked, you should see something like `salesforcedx 41.1.0 (link)` (the exact version should be anything `41` or later).
-1. (OPTIONAL) If you need to make modifications to the Heroku `cli-engine` upon which this is based, also clone these repositories as sibling directories of this repository:
+1. (OPTIONAL) If you need to make modifications to the Heroku `cli-engine` upon which this is based, also clone and run `yarn` in each of these repositories as sibling directories of this repository:
     * [cli-engine](https://github.com/heroku/cli-engine)
     * [cli-engine-command](https://github.com/heroku/cli-engine-command)
     * [cli-engine-config](https://github.com/heroku/cli-engine-config)
@@ -58,10 +59,10 @@ The following flags are supported by the `bin/run` script, and can be combined a
 A few additional convenience scripts are available to help with common development tasks:
 
 * `npm run build [PLATFORM] [CHANNEL]` - Builds a release package into the `./tmp` directory.  For example, `npm run build darwin-x64 alpha` will create a macOS build for the `alpha` channel.
-* `npm run clean-dev` - Uninstalls the salesforcedx plugin and then deletes all node_modules directories for the CLI and its linked plugin dependencies.
+* `npm run clean-dev` - Uninstalls the salesforcedx plugin and then deletes all node\_modules directories for the CLI and its linked plugin dependencies.
 * `npm run clean-cache` - Deletes the v6 CLI's plugin cache.
 * `npm run clean-all` - Runs both `clean-dev` and `clean-cache`
-* `npm run downgrade` - For testing the v5->v6 CLI migration, this removes both the v6 caches and the v6 installation and all plugins!  Use with care.
+* `npm run downgrade` - For testing the v5-\>v6 CLI migration, this removes both the v6 caches and the v6 installation and all plugins!  Use with care.
 * `npm run release-all` - Builds and releases all distributions to the channel configured in `package.json`'s `cli.channel` property.
 
 ### Developer notes

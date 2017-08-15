@@ -490,9 +490,9 @@ cli-engine-heroku@^1.1.4:
     heroku-client "3.x"
     netrc-parser "2.0.2"
 
-cli-engine@3.5.58:
-  version "3.5.58"
-  resolved "https://heroku-npm.herokuapp.com/cli-engine/-/cli-engine-3.5.58/5acd2d3a90cc2b73b86fcdeb8feaf5be62d39830.tgz#5acd2d3a90cc2b73b86fcdeb8feaf5be62d39830"
+cli-engine@3.5.59:
+  version "3.5.59"
+  resolved "https://heroku-npm.herokuapp.com/cli-engine/-/cli-engine-3.5.59/47b1c48ff026be2d4ae0e2c4e194898dd37493c0.tgz#47b1c48ff026be2d4ae0e2c4e194898dd37493c0"
   dependencies:
     ansi-escapes "^2.0.0"
     cli-engine-command "^5.1.15"
@@ -588,6 +588,10 @@ color-convert@^1.9.0:
 color-name@^1.1.1:
   version "1.1.3"
   resolved "https://heroku-npm.herokuapp.com/color-name/-/color-name-1.1.3/a7d0558bd89c42f795dd42328f740831ca53bc25.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
+
+colors@0.5.x:
+  version "0.5.1"
+  resolved "https://heroku-npm.herokuapp.com/colors/-/colors-0.5.1/7d0023eaeb154e8ee9fce75dcb923d0ed1667774.tgz#7d0023eaeb154e8ee9fce75dcb923d0ed1667774"
 
 colors@1.0.3:
   version "1.0.3"
@@ -1346,14 +1350,14 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-force-language-services@40.4.0:
-  version "40.4.0"
-  resolved "https://heroku-npm.herokuapp.com/force-language-services/-/force-language-services-40.4.0/9224452f5f0ac4c2991ddfbc8aa6cb3e9da8fc20.tgz#9224452f5f0ac4c2991ddfbc8aa6cb3e9da8fc20"
+force-language-services@41.2.0:
+  version "41.2.0"
+  resolved "https://heroku-npm.herokuapp.com/force-language-services/-/force-language-services-41.2.0/69290d67a221384bc3409f3bfab82f43a9c6d17d.tgz#69290d67a221384bc3409f3bfab82f43a9c6d17d"
   dependencies:
     fs-extra "1.0.0"
     heroku-cli-util "6.0.11"
     mkdirp "0.5.1"
-    salesforce-alm "40.4.0"
+    salesforce-alm "41.2.0"
     yeoman-environment "1.6.3"
     yeoman-generator "0.24.1"
 
@@ -2570,6 +2574,10 @@ lowercase-keys@^1.0.0:
   version "1.0.0"
   resolved "https://heroku-npm.herokuapp.com/lowercase-keys/-/lowercase-keys-1.0.0/4e3366b39e7f5457e35f1324bdf6f88d0bfc7306.tgz#4e3366b39e7f5457e35f1324bdf6f88d0bfc7306"
 
+lru-cache@2:
+  version "2.7.3"
+  resolved "https://heroku-npm.herokuapp.com/lru-cache/-/lru-cache-2.7.3/6d4524e8b955f95d4f5b58851ce21dd72fb4e952.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
+
 lru-cache@^4.0.1:
   version "4.1.1"
   resolved "https://heroku-npm.herokuapp.com/lru-cache/-/lru-cache-4.1.1/622e32e82488b49279114a4f9ecf45e7cd6bba55.tgz#622e32e82488b49279114a4f9ecf45e7cd6bba55"
@@ -2693,6 +2701,13 @@ minimatch@^2.0.1:
   resolved "https://heroku-npm.herokuapp.com/minimatch/-/minimatch-2.0.10/8d087c39c6b38c001b97fca7ce6d0e1e80afbac7.tgz#8d087c39c6b38c001b97fca7ce6d0e1e80afbac7"
   dependencies:
     brace-expansion "^1.0.0"
+
+minimatch@~0.2.9:
+  version "0.2.14"
+  resolved "https://heroku-npm.herokuapp.com/minimatch/-/minimatch-0.2.14/c74e780574f63c6f9a090e90efbe6ef53a6a756a.tgz#c74e780574f63c6f9a090e90efbe6ef53a6a756a"
+  dependencies:
+    lru-cache "2"
+    sigmund "~1.0.0"
 
 minimist@0.0.8:
   version "0.0.8"
@@ -2841,6 +2856,13 @@ node-status-codes@^2.0.0:
 node-uuid@~1.4.0:
   version "1.4.8"
   resolved "https://heroku-npm.herokuapp.com/node-uuid/-/node-uuid-1.4.8/b040eb0923968afabf8d32fb1f17f1167fdab907.tgz#b040eb0923968afabf8d32fb1f17f1167fdab907"
+
+nomnom@1.6.x:
+  version "1.6.2"
+  resolved "https://heroku-npm.herokuapp.com/nomnom/-/nomnom-1.6.2/84a66a260174408fc5b77a18f888eccc44fb6971.tgz#84a66a260174408fc5b77a18f888eccc44fb6971"
+  dependencies:
+    colors "0.5.x"
+    underscore "~1.4.4"
 
 noop2@^2.0.0:
   version "2.0.0"
@@ -3343,6 +3365,14 @@ replace-ext@^1.0.0:
   version "1.0.0"
   resolved "https://heroku-npm.herokuapp.com/replace-ext/-/replace-ext-1.0.0/de63128373fcbf7c3ccfa4de5a480c45a67958eb.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
 
+replace@0.3.0:
+  version "0.3.0"
+  resolved "https://heroku-npm.herokuapp.com/replace/-/replace-0.3.0/60081721188658595ab6a794eb7fedcb4c8d39c7.tgz#60081721188658595ab6a794eb7fedcb4c8d39c7"
+  dependencies:
+    colors "0.5.x"
+    minimatch "~0.2.9"
+    nomnom "1.6.x"
+
 request@2, request@^2.72.0:
   version "2.81.0"
   resolved "https://heroku-npm.herokuapp.com/request/-/request-2.81.0/c6928946a0e06c5f8d6f8a9333469ffda46298a0.tgz#c6928946a0e06c5f8d6f8a9333469ffda46298a0"
@@ -3540,9 +3570,9 @@ safe-json-stringify@~1:
   version "1.0.4"
   resolved "https://heroku-npm.herokuapp.com/safe-json-stringify/-/safe-json-stringify-1.0.4/81a098f447e4bbc3ff3312a243521bc060ef5911.tgz#81a098f447e4bbc3ff3312a243521bc060ef5911"
 
-salesforce-alm@40.4.0:
-  version "40.4.0"
-  resolved "https://heroku-npm.herokuapp.com/salesforce-alm/-/salesforce-alm-40.4.0/f7a3fa606307b8877a3693c1ad695ebf2052c2b7.tgz#f7a3fa606307b8877a3693c1ad695ebf2052c2b7"
+salesforce-alm@41.2.0:
+  version "41.2.0"
+  resolved "https://heroku-npm.herokuapp.com/salesforce-alm/-/salesforce-alm-41.2.0/8019245ad054460c09bc5823f6c9b1f14d4f8670.tgz#8019245ad054460c09bc5823f6c9b1f14d4f8670"
   dependencies:
     adm-zip "0.4.7"
     archiver "1.0.1"
@@ -3569,6 +3599,7 @@ salesforce-alm@40.4.0:
     pluralize "3.0.0"
     process-promises "1.0.0"
     readline-sync "1.4.4"
+    replace "0.3.0"
     request "2.79.0"
     selenium-standalone "5.7.1"
     webdriverio "4.1.0"
@@ -3586,12 +3617,12 @@ salesforce-lightning-cli@1.5.0:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@40.4.0:
-  version "40.4.0"
-  resolved "https://heroku-npm.herokuapp.com/salesforcedx/-/salesforcedx-40.4.0/178ac23957ecf4665da23611a2f4ce025ce900f9.tgz#178ac23957ecf4665da23611a2f4ce025ce900f9"
+salesforcedx@41.2.0:
+  version "41.2.0"
+  resolved "https://heroku-npm.herokuapp.com/salesforcedx/-/salesforcedx-41.2.0/7aa954fdad39b3c0241bee1a955db45740d1593b.tgz#7aa954fdad39b3c0241bee1a955db45740d1593b"
   dependencies:
-    force-language-services "40.4.0"
-    salesforce-alm "40.4.0"
+    force-language-services "41.2.0"
+    salesforce-alm "41.2.0"
     salesforce-lightning-cli "1.5.0"
 
 samsam@1.x, samsam@^1.1.3:
@@ -3701,6 +3732,10 @@ shelljs@^0.7.0:
     glob "^7.0.0"
     interpret "^1.0.0"
     rechoir "^0.6.2"
+
+sigmund@~1.0.0:
+  version "1.0.1"
+  resolved "https://heroku-npm.herokuapp.com/sigmund/-/sigmund-1.0.1/3ff21f198cad2175f9f3b781853fd94d0d19b590.tgz#3ff21f198cad2175f9f3b781853fd94d0d19b590"
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
@@ -4106,6 +4141,10 @@ underscore.string@^3.0.3:
   dependencies:
     sprintf-js "^1.0.3"
     util-deprecate "^1.0.2"
+
+underscore@~1.4.4:
+  version "1.4.4"
+  resolved "https://heroku-npm.herokuapp.com/underscore/-/underscore-1.4.4/61a6a32010622afa07963bf325203cf12239d604.tgz#61a6a32010622afa07963bf325203cf12239d604"
 
 universalify@^0.1.0:
   version "0.1.1"
