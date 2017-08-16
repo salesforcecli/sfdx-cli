@@ -27,7 +27,7 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
     * [salesforce-lightning-cli](https://git.soma.salesforce.com/aura/lightning-cli)
 1. Prior to v6 being the official CLI engine, you will also need to checkout the `pre-release` branch, or a derivative thereof, in each (except `salesforce-lightning-cli`, which can remain on master).
 1. Also be sure that each has been built, as necessary (e.g. using the repository-specific build, such as `gulp compile`)
-1. Set up the `salesforcedx` aggregate plugin for development by running `npm run setup`.  Note that this script creates various types of links between the above packages and this one.
+1. Set up the `salesforcedx` aggregate plugin for development by running `yarn run setup`.  Note that this script creates various types of links between the above packages and this one.
     * If you don't like scripts messing with your projects, you can recreate the actions of the script by running something like the following commands, depending on your exact needs:
         1. `yarn install`
         1. `bin/run plugins:link ../salesforcedx`
@@ -42,7 +42,7 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
     * [cli-engine](https://github.com/heroku/cli-engine)
     * [cli-engine-command](https://github.com/heroku/cli-engine-command)
     * [cli-engine-config](https://github.com/heroku/cli-engine-config)
-1. Run `npm run setup +engine` to have all necessary npm links created for you.  You can revert the effects of this command by running `npm run setup -engine`.
+1. Run `yarn run setup +engine` to have all necessary npm links created for you.  You can revert the effects of this command by running `yarn run setup -engine`.
 
 You can now run the CLI using the `bin/run` script to test your CLI and plugin changes.
 
@@ -58,19 +58,19 @@ The following flags are supported by the `bin/run` script, and can be combined a
 
 A few additional convenience scripts are available to help with common development tasks:
 
-* `npm run build [PLATFORM] [CHANNEL]` - Builds a release package into the `./tmp` directory.  For example, `npm run build darwin-x64 alpha` will create a macOS build for the `alpha` channel.
-* `npm run clean-dev` - Uninstalls the salesforcedx plugin and then deletes all node\_modules directories for the CLI and its linked plugin dependencies.
-* `npm run clean-cache` - Deletes the v6 CLI's plugin cache.
-* `npm run clean-all` - Runs both `clean-dev` and `clean-cache`
-* `npm run downgrade` - For testing the v5-\>v6 CLI migration, this removes both the v6 caches and the v6 installation and all plugins!  Use with care.
-* `npm run release-all` - Builds and releases all distributions to the channel configured in `package.json`'s `cli.channel` property.
+* `yarn run build [PLATFORM] [CHANNEL]` - Builds a release package into the `./tmp` directory.  For example, `yarn run build darwin-x64 alpha` will create a macOS build for the `alpha` channel.
+* `yarn run clean-dev` - Uninstalls the salesforcedx plugin and then deletes all node\_modules directories for the CLI and its linked plugin dependencies.
+* `yarn run clean-cache` - Deletes the v6 CLI's plugin cache.
+* `yarn run clean-all` - Runs both `clean-dev` and `clean-cache`
+* `yarn run downgrade` - For testing the v5-\>v6 CLI migration, this removes both the v6 caches and the v6 installation and all plugins!  Use with care.
+* `yarn run release-all` - Builds and releases all distributions to the channel configured in `package.json`'s `cli.channel` property.
 
 ### Developer notes
 
 * If you change this project's `package.json` to reference a new core plugin, or change the `package.json` of any referenced plugins, you may need to delete `cli-engine`'s plugin cache to force it to reload.
-    * Use `npm run clear-cache`
-* If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `npm run watch`.
+    * Use `yarn run clear-cache`
+* If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `yarn run watch`.
 
 ## Releasing
 
-Building and publishing a release manually currently requires [Docker](https://www.docker.com/get-docker).  You will also need salesforcedx S3 bucket write credentials stored in a standard AWS config file in `./.aws/credentials`.  Then, you should be able to build and release by running `npm run release-all`.
+Building and publishing a release manually currently requires [Docker](https://www.docker.com/get-docker).  You will also need salesforcedx S3 bucket write credentials stored in a standard AWS config file in `./.aws/credentials`.  Then, you should be able to build and release by running `yarn run release-all`.
