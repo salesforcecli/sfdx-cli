@@ -49,7 +49,9 @@ _link_package() {
       printf "      in: %s\n" "$dir"
       printf "    from: %s/%s\n\n" "$projects_dir" "$repository"
       cd "$projects_dir/$repository"
+      $cmd unlink
       $cmd link
+      $cmd install
       cd "$dir"
       $cmd link "$package"
     fi

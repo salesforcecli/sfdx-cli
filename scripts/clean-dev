@@ -15,5 +15,7 @@ rm -rf "$cli_dir/node_modules" \
   "$projects_dir/salesforcedx/node_modules" \
   "$projects_dir/force-com-toolbelt/node_modules" \
   "$projects_dir/lightning-cli/node_modules" \
-  "$projects_dir/force-language-services/node_modules"
-
+  "$projects_dir/force-language-services/node_modules" \
+  "$projects_dir/cli-engine/node_modules" \
+  "$projects_dir/cli-engine-command/node_modules" \
+  "$projects_dir/cli-engine-config/node_modules"

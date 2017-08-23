@@ -28,8 +28,8 @@
     }
   },
   "dependencies": {
-    "cli-engine": "3.5.59",
-    "salesforcedx": "41.2.0"
+    "cli-engine": "3.6.2",
+    "salesforcedx": "41.2.0-v6.0"
   },
   "scripts": {
     "build": "scripts/build",
