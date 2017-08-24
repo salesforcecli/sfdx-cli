@@ -7,5 +7,5 @@ realpath() {
 
 scripts_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
-$scripts_dir/clean-cache
-$scripts_dir/clean-dev
+"$scripts_dir/clean-cache"
+"$scripts_dir/clean-dev"

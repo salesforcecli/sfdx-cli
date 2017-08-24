@@ -9,4 +9,4 @@ scripts_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
 # Removes all caches containing v6 artifacts, reverting to a clean v5 state, if v5 is installed
 "$scripts_dir/clean-cache"
-rm -rf "$HOE/.local/share/sfdx"
+rm -rf "$HOME/.local/share/sfdx"

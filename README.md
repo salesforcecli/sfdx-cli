@@ -26,6 +26,7 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
     * [force-language-services](https://git.soma.salesforce.com/DevTools/force-language-services)
     * [salesforce-lightning-cli](https://git.soma.salesforce.com/aura/lightning-cli)
 1. Prior to v6 being the official CLI engine, you will also need to checkout the `pre-release` branch, or a derivative thereof, in each (except `salesforce-lightning-cli`, which can remain on master).
+    * Until GA, you will also probably want `salesforcedx` to be on the `v6` branch, or a derivative.
 1. Also be sure that each has been built, as necessary (e.g. using the repository-specific build, such as `gulp compile`)
 1. Set up the `salesforcedx` aggregate plugin for development by running `yarn run setup`.  Note that this script creates various types of links between the above packages and this one.
     * If you don't like scripts messing with your projects, you can recreate the actions of the script by running something like the following commands, depending on your exact needs:
