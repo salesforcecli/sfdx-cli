@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+realpath() {
+  local result=$(python -c "import os,sys; print os.path.abspath(sys.argv[1])" $1)
+  echo $result
+}
+
+scripts_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+
+"$scripts_dir/clean-all"
+"$scripts_dir/downgrade"
+yarn cache clean

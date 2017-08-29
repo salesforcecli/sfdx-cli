@@ -38,6 +38,7 @@
     "clean-dev": "scripts/clean-dev",
     "downgrade": "scripts/downgrade",
     "release-all": "scripts/release-all",
+    "scorch-the-earth": "scripts/scorch-the-earth",
     "setup": "scripts/setup"
   },
   "license": "BSD-3-Clause"

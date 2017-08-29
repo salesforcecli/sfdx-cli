@@ -65,12 +65,12 @@ npm_link_package "$salesforcedx_dir" force-com-toolbelt salesforce-alm
 npm_link_package "$salesforcedx_dir" force-language-services force-language-services
 npm_link_package "$salesforcedx_dir" lightning-cli salesforce-lightning-cli
 
-if [ "$1" == "+engine" ]; then
+if [ "$1" == "with-engine" ]; then
   # optionally link all cli-engine packages
   yarn_link_package "$cli_dir" cli-engine cli-engine
   yarn_link_package "$projects_dir/cli-engine" cli-engine-command cli-engine-command
   yarn_link_package "$projects_dir/cli-engine" cli-engine-config cli-engine-config
-elif [ "$1" == "-engine" ]; then
+elif [ "$1" == "without-engine" ]; then
   if [ -L "$cli_dir/node_modules/cli-engine" ]; then
     printf "\n=== Unlinking cli-engine and replacing with remote package ===\n\n"
     cd $cli_dir
@@ -83,6 +83,10 @@ elif [ "$1" == "-engine" ]; then
     printf "\n=== Skipping reinstall of cli-engine since it's not linked ===\n\n"
   fi
 fi
+
+printf "\n=== Cleaning plugin cache ===\n\n"
+
+"$scripts_dir/clean-cache"
 
 printf "\n=== Finished ===\n\n"
 

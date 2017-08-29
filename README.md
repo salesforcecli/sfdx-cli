@@ -43,7 +43,7 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
     * [cli-engine](https://github.com/heroku/cli-engine)
     * [cli-engine-command](https://github.com/heroku/cli-engine-command)
     * [cli-engine-config](https://github.com/heroku/cli-engine-config)
-1. Run `yarn run setup +engine` to have all necessary npm links created for you.  You can revert the effects of this command by running `yarn run setup -engine`.
+1. Run `yarn run setup with-engine` to have all necessary npm links created for you.  You can revert the effects of this command by running `yarn run setup without-engine`.
 
 You can now run the CLI using the `bin/run` script to test your CLI and plugin changes.
 
