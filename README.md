@@ -71,6 +71,8 @@ A few additional convenience scripts are available to help with common developme
 * If you change this project's `package.json` to reference a new core plugin, or change the `package.json` of any referenced plugins, you may need to delete `cli-engine`'s plugin cache to force it to reload.
     * Use `yarn run clear-cache`
 * If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `yarn run watch`.
+* The `build` and `release-all` scripts currently require [Docker](https://www.docker.com/get-docker) to run.
+* The `release-all` script also requires an AWS config file containing the necessary credentials to publish releases to our S3 bucket, located in `./.aws/credentials`.  This file is included in the project `.gitignore` but be sure you don't check it in.
 
 ## Releasing
 
