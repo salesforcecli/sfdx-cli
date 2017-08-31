@@ -72,7 +72,7 @@ A few additional convenience scripts are available to help with common developme
     * Use `yarn run clear-cache`
 * If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `yarn run watch`.
 * The `build` and `release-all` scripts currently require [Docker](https://www.docker.com/get-docker) to run.
-* The `release-all` script also requires an AWS config file containing the necessary credentials to publish releases to our S3 bucket, located in `./.aws/credentials`.  This file is included in the project `.gitignore` but be sure you don't check it in.
+* To manually install a specific version of the `salesforcedx` plugin before v6 builds of it start getting published publicly, you can edit `~/.local/share/sfdx/plugins/.yarnrc` to point to the internal v6 npm registry (i.e. `registry "http://10.252.156.164:4876"`).  You can then install v6 builds of salesforcedx as a user plugin pinned to a specific version like so: `sfdx plugins:install salesforcedx@41.2.0-v6.0`, or from the `alpha` dist tag like this`sfdx plugins:install salesforcedx@alpha`.
 
 ## Releasing
 
