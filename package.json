@@ -7,18 +7,18 @@
     "sfdx": "bin/run"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=8.4.0"
   },
   "cli": {
     "channel": "alpha"
   },
   "cli-engine": {
-    "namespaces": [
-      "force"
-    ],
     "bin": "sfdx",
     "dirname": "sfdx",
-    "node": "8.2.1",
+    "node": "8.4.0",
+    "hooks": {
+      "plugins:preinstall": "./lib/preinstall-hook.js"
+    },
     "plugins": [
       "salesforcedx"
     ],
@@ -28,7 +28,7 @@
     }
   },
   "dependencies": {
-    "cli-engine": "3.6.2",
+    "cli-engine": "4.0.2",
     "salesforcedx": "41.2.0-v6.0"
   },
   "scripts": {
@@ -39,7 +39,12 @@
     "downgrade": "scripts/downgrade",
     "release-all": "scripts/release-all",
     "scorch-the-earth": "scripts/scorch-the-earth",
-    "setup": "scripts/setup"
+    "setup": "scripts/setup",
+    "test": "mocha --recursive lib"
   },
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "chai": "4.1.2",
+    "mocha": "3.5.0"
+  }
 }
