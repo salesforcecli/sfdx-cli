@@ -17,7 +17,9 @@
     "dirname": "sfdx",
     "node": "8.4.0",
     "hooks": {
-      "plugins:preinstall": "./lib/preinstall-hook.js"
+      "plugins:preinstall": "./lib/hooks/preinstall.js",
+      "init": "./lib/hooks/init.js",
+      "prerun": "./lib/hooks/prerun.js"
     },
     "plugins": [
       "salesforcedx"
@@ -28,7 +30,7 @@
     }
   },
   "dependencies": {
-    "cli-engine": "4.0.2",
+    "cli-engine": "4.3.1",
     "salesforcedx": "41.2.0-v6.0"
   },
   "scripts": {
