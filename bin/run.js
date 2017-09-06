@@ -3,9 +3,9 @@ const root = path.join(__dirname, '..');
 
 // check node version before requiring additional packages
 require(path.join(root, 'lib', 'versions'))
-  .checkNodeVersion();
+    .checkNodeVersion();
 
 const pjson = require(path.join(root, 'package.json'));
 require(path.join(root, 'lib', 'cli'))
-  .create(pjson.version, pjson.cli.channel)
-  .run();
+    .create(pjson.version, pjson.cli.channel)
+    .run();
