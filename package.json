@@ -16,6 +16,7 @@
     "bin": "sfdx",
     "dirname": "sfdx",
     "node": "8.4.0",
+    "userPlugins": true,
     "hooks": {
       "plugins:preinstall": "./lib/hooks/preinstall.js",
       "init": "./lib/hooks/init.js",
