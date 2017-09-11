@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "cli-engine": "4.3.1",
-    "salesforcedx": "41.2.0-v6.1"
+    "salesforcedx": "41.2.0-v6.2"
   },
   "scripts": {
     "build": "scripts/build",
