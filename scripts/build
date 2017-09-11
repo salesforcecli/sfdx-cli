@@ -146,17 +146,17 @@ chmod +x $WORKSPACE/bin/$BIN
 fi
 
 cat << EOF > $WORKSPACE/bin/$BIN.js
-const path = require('path');
-const root = path.join(__dirname, '..');
+const path = require("path");
+const root = path.join(__dirname, "..");
 
-// check node version before requiring additional packages
-require(path.join(root, 'lib', 'versions'))
-  .checkNodeVersion();
+// Check node version before requiring additional packages
+require(path.join(root, "lib", "versions"))
+    .checkNodeVersion();
 
-const pjson = require(path.join(root, 'package.json'));
-require(path.join(root, 'lib', 'cli'))
-  .create('$VERSION', '$CHANNEL')
-  .run();
+const pjson = require(path.join(root, "package.json"));
+require(path.join(root, "lib", "cli"))
+    .create("$VERSION", "$CHANNEL")
+    .run();
 EOF
 
 cd $ROOT/tmp/build
