@@ -18,6 +18,8 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
 1. From within this repository's root directory, run `yarn` (short for `yarn install`).
 1. Run `bin/run` to view the CLI's root help.
 
+When you make changes to this project's `.ts`. sources, you will need to recompile.  Use `yarn prepare` or `tsc -p tsconfig.json` to rebuild.
+
 ### Up and running as a `force` namespace plugin developer
 
 1. Make sure you have the any of the following dependencies that you need to work on cloned locally as sibling directories to this repository:
@@ -46,6 +48,8 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
 1. Run `yarn run setup with-engine` to have all necessary npm links created for you.  You can revert the effects of this command by running `yarn run setup without-engine`.
 
 You can now run the CLI using the `bin/run` script to test your CLI and plugin changes.
+
+When you make changes to this project's `.ts`. sources, you will need to recompile.  Use `yarn prepare` or `tsc -p tsconfig.json` to rebuild.
 
 ### Developer CLI flags
 

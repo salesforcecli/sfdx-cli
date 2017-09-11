@@ -1,5 +1,5 @@
-const path = require("path");
-const {compareVersions} = require("../versions");
+import * as path from "path";
+import { compareVersions } from "../versions";
 
 const PLUGIN = "salesforcedx";
 const MIN_VERSION = "41.2.0";
@@ -8,7 +8,7 @@ const MIN_VERSION = "41.2.0";
  * A v6 CLI plugin preinstall hook that checks that the plugin's version is v6-compatible,
  * if it is recognized as a force namespace plugin.
  */
-module.exports = function (config, {plugin, tag}) {
+function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}) {
     if (PLUGIN === plugin) {
         if (compareVersions(tag, MIN_VERSION) < 0) {
             throw new Error(
@@ -18,4 +18,6 @@ module.exports = function (config, {plugin, tag}) {
             );
         }
     }
-};
+}
+
+export = preinstall;
