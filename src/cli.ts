@@ -1,11 +1,12 @@
-const path = require('path');
-const CLI = require('cli-engine').default;
-const root = path.join(__dirname, '..');
-const pjson = require(path.join(root, 'package.json'));
+import * as path from "path";
+import CLI from "cli-engine";
 
-module.exports.create = function (version, channel) {
-    const argv = process.argv.slice(1);
-    const config = {
+const root = path.join(__dirname, "..");
+const pjson = require(path.join(root, "package.json"));
+
+export function create(version: string, channel: string) {
+    const argv: string[] = process.argv.slice(1);
+    const config: any = {
         root,
         pjson,
         version,
@@ -17,4 +18,4 @@ module.exports.create = function (version, channel) {
             "been disabled by setting 'SFDX_AUTOUPDATE_DISABLE=true'";
     }
     return new CLI({argv, config});
-};
+}

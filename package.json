@@ -18,9 +18,9 @@
     "node": "8.4.0",
     "userPlugins": true,
     "hooks": {
-      "plugins:preinstall": "./lib/hooks/preinstall.js",
-      "init": "./lib/hooks/init.js",
-      "prerun": "./lib/hooks/prerun.js"
+      "plugins:preinstall": "./dist/hooks/preinstall.js",
+      "init": "./dist/hooks/init.js",
+      "prerun": "./dist/hooks/prerun.js"
     },
     "plugins": [
       "salesforcedx"
@@ -40,14 +40,19 @@
     "clean-cache": "scripts/clean-cache",
     "clean-dev": "scripts/clean-dev",
     "downgrade": "scripts/downgrade",
+    "prepare": "tsc -p tsconfig.json",
     "release-all": "scripts/release-all",
     "scorch-the-earth": "scripts/scorch-the-earth",
     "setup": "scripts/setup",
-    "test": "mocha --recursive lib"
+    "test": "yarn prepare && mocha --recursive dist"
   },
   "license": "BSD-3-Clause",
   "devDependencies": {
+    "@types/mocha": "2.2.43",
+    "@types/node": "8.0.28",
     "chai": "4.1.2",
-    "mocha": "3.5.0"
+    "mocha": "3.5.0",
+    "tslint": "5.7.0",
+    "typescript": "2.5.2"
   }
 }

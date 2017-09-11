@@ -43,7 +43,7 @@ mkdir -p $WORKSPACE/bin
 if [ -f README.md ]; then cp README.md $WORKSPACE; fi
 if [ -f LICENSE ]; then cp LICENSE $WORKSPACE; fi
 cp package.json $WORKSPACE
-cp -r lib $WORKSPACE
+cp -r dist $WORKSPACE
 
 # install packages
 cd $WORKSPACE
@@ -150,11 +150,11 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 
 // Check node version before requiring additional packages
-require(path.join(root, "lib", "versions"))
+require(path.join(root, "dist", "versions"))
     .checkNodeVersion();
 
 const pjson = require(path.join(root, "package.json"));
-require(path.join(root, "lib", "cli"))
+require(path.join(root, "dist", "cli"))
     .create("$VERSION", "$CHANNEL")
     .run();
 EOF

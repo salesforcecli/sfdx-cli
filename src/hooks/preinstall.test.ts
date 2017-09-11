@@ -1,7 +1,7 @@
-const { expect, assert } = require("chai");
-const hook = require("./preinstall");
+import { expect, assert } from "chai";
+import hook = require("./preinstall");
 
-describe("PreinstallHook", () => {
+describe("plugins:preinstall hook", () => {
     it("should allow the salesforcedx plugin with tag '41.2.0' to be installed", () => {
         testHook("41.2.0");
     });
