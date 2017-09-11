@@ -14,7 +14,7 @@ function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}) {
             throw new Error(
                 `The ${PLUGIN} plugin can only be installed as a user plugin using a specific version, ` +
                 `greater than or equal to '${MIN_VERSION}'. For example try, ` +
-                `'sfdx plugins:install salesforcedx@${MIN_VERSION}' to pin the plugin to the given version.`
+                `'sfdx plugins:install salesforcedx@${MIN_VERSION}' to pin the plugin to the given version.`,
             );
         }
     }

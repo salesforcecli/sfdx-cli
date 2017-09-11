@@ -1,4 +1,4 @@
-import { expect, assert } from "chai";
+import { assert, expect } from "chai";
 import hook = require("./preinstall");
 
 describe("plugins:preinstall hook", () => {
@@ -27,7 +27,7 @@ describe("plugins:preinstall hook", () => {
     function testHook(tag) {
         hook(
             {version: "6.0.0"},
-            {plugin: "salesforcedx", tag: tag}
+            {plugin: "salesforcedx", tag},
         );
     }
 });
