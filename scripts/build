@@ -114,7 +114,7 @@ case \$key in
     shift
   ;;
   *)
-    CLI_ARGS+=(\$key)
+    CLI_ARGS+=("\$key")
     shift
   ;;
 esac
