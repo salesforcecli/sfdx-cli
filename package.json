@@ -45,7 +45,8 @@
     "release-all": "scripts/release-all",
     "scorch-the-earth": "scripts/scorch-the-earth",
     "setup": "scripts/setup",
-    "test": "yarn prepare && yarn lint && mocha --recursive dist"
+    "test": "yarn prepare && yarn lint && mocha --recursive dist",
+    "watch": "tsc -w -p tsconfig.json"
   },
   "license": "BSD-3-Clause",
   "devDependencies": {
