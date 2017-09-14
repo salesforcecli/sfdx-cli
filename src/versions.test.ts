@@ -2,18 +2,6 @@ import { assert, expect } from "chai";
 import { compareVersions } from "./versions";
 
 describe("compareVersions", () => {
-    it("should return 0 when args are undefined", () => {
-        expect(compareVersions(undefined, undefined)).to.equal(0);
-    });
-
-    it("should return > 0 when a is 1.1.1 and b is undefined", () => {
-        expect(compareVersions("1.1.1", undefined)).to.be.greaterThan(0);
-    });
-
-    it("should return < 0 when a is null and b is 1.1.1", () => {
-        expect(compareVersions(null, "1.1.1")).to.be.lessThan(0);
-    });
-
     it("should return 0 when a and b are both 1.1.1", () => {
         expect(compareVersions("1.1.1", "1.1.1")).to.equal(0);
     });
