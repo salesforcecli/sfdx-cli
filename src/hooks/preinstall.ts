@@ -1,6 +1,8 @@
 import * as path from "path";
 import { compareVersions } from "../versions";
 
+import { InstallationVerification } from "../codeSigning/installationVerification";
+
 const PLUGIN = "salesforcedx";
 const MIN_VERSION = "41.2.0";
 
@@ -18,6 +20,10 @@ function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}) {
             );
         }
     }
+    const verification = new InstallationVerification().setPluginName(plugin).setCliEngineConfig(config);
+    return verification.verify().then((value) => {
+        throw new Error(value);
+    });
 }
 
 export = preinstall;
