@@ -5,7 +5,7 @@
   "author": "Salesforce",
   "bin": {
     "sfdx": "bin/run",
-    "sfdx_sign": "dist/codeSigning/packAndSign"
+    "sfdx_sign": "dist/codeSigning/packAndSign.js"
   },
   "engines": {
     "node": ">=8.4.0"

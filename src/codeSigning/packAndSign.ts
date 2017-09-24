@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { exec } from "child_process";
-import { copy as copyFile, createReadStream, createWriteStream, readFile, writeFile } from "fs-extra";
+import { copy as copyFile, createReadStream, createWriteStream, readFile, writeFile, remove } from "fs-extra";
 import { get as httpGet } from "http";
 import { parse as parseUrl } from "url";
 import { Writable, Readable } from "stream";
@@ -19,10 +19,14 @@ import { CodeSignInfo, CodeVerifierInfo, default as sign, verify } from "../code
 
 const readFileAsync = _Promise.promisify(readFile);
 const writeFileAsync = _Promise.promisify(writeFile);
+const removeFileAsync = _Promise.promisify(remove);
+const copyFileAsync = _Promise.promisify(copyFile);
 
 const PACKAGE_DOT_JSON = "package.json";
 const PACKAGE_DOT_JSON_PATH = pathJoin(process.cwd(), PACKAGE_DOT_JSON);
 const PACKAGE_DOT_JSON_PATH_BAK = pathJoin(process.cwd(), `${PACKAGE_DOT_JSON}.bak`);
+
+const BIN_NAME = "sfdx_sign";
 
 export const api = {
     getHelp() {
@@ -33,7 +37,7 @@ Build function that will perform four things:
 3) sign the tar gz file using the private key associated with the cert.
 4) test verify the signature
 
-Requried Parameters:
+Required Parameters:
 --signatureUrl - the url where the signature will be hosted minus the name of the signature file.
 --publicKeyUrl - the url where the public key/certificate will be hosted.
 --privateKeyPath - the local file path for the private key
@@ -91,7 +95,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
                     const data = JSON.parse(stdout).data;
                     const path = _.find(_.split(data, "\""), (word) => _.includes(word, "tgz"));
                     if (!path) {
-                        reject(new NamedError("UnexpectedYarnFormat", `Yarm pack did not retrun an epxected tgz result: [${data}]`));
+                        reject(new NamedError("UnexpectedYarnFormat", `Yarn pack did not return an expected tgz filename result: [${data}]`));
                     } else {
                         resolve(path);
                     }
@@ -111,7 +115,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
                     verifyInfo.publicKeyStream = resp;
                     resolve(verify(verifyInfo));
                 } else {
-                    reject(new NamedError("RetreivePublicKeyFailed", `Couldn't retrieve public key at url: ${publicKeyUrl}`));
+                    reject(new NamedError("RetrievePublicKeyFailed", `Couldn't retrieve public key at url: ${publicKeyUrl}`));
                 }
 
             });
@@ -132,23 +136,23 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
         return sigFilename;
     },
 
-    async retrievePackageJson() {
+    async retrievePackageJson(): _Promise<string> {
         return readFileAsync(PACKAGE_DOT_JSON_PATH, { encoding: "utf8" });
     },
 
-    async retrieveNpmIgnore() {
-        return readFileAsync(pathJoin(process.cwd(), ".npmignore"), { encoding: "utf8" });
+    async retrieveIgnoreFile(filename): _Promise<string> {
+        return readFileAsync(pathJoin(process.cwd(), filename), { encoding: "utf8" });
     },
 
-    validateNpmIgnore(content) {
+    validateNpmIgnorePatterns(content) {
         const validate = (pattern) => {
             if (!content) {
-                throw new NamedError("MissingNpmIgnoreFile",
-                    "Missing npmignore file. The following patterns are required for code signing: *.tgz, *.sig, package.json.bak");
+                throw new NamedError(`MissingNpmIgnoreFile`,
+                    `Missing .npmignore file. The following patterns are required in for code signing: *.tgz, *.sig, package.json.bak.`);
             }
 
             if (!_.includes(content, pattern)) {
-                throw new NamedError("MissingIgnorePatten",
+                throw new NamedError(`MissingNpmIgnorePattern`,
                     `.npmignore is missing ${pattern}. The following patterns are required for code signing: *.tgz, *.sig, package.json.bak`);
             }
         };
@@ -158,29 +162,38 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
     },
 
     async copyPackageDotJson(src, dest) {
-        console.log("copyPackageDotJson");
-        return copyFile(src, dest);
+        return copyFileAsync(src, dest);
     },
 
     async writePackageJson(pJson) {
-        return writeFileAsync(PACKAGE_DOT_JSON_PATH, JSON.stringify(pJson));
+        return writeFileAsync(PACKAGE_DOT_JSON_PATH, JSON.stringify(pJson, null, 4));
     },
 
     async doPackAndSign(processArgv) {
         let packageDotJsonBackedUp = false;
-        const args = parseSimpleArgs(processArgv);
-
-        if (args.help) {
-            console.log(api.getHelp());
-            return;
-        }
 
         try {
+            const args = parseSimpleArgs(processArgv);
+
+            if (args.help) {
+                console.log(api.getHelp());
+                return;
+            }
             api.validate(args);
 
             // validate npm ignore has what we name.
-            const npmIgnoreContent = await api.retrieveNpmIgnore();
-            api.validateNpmIgnore(npmIgnoreContent);
+            let filename = ".npmignore";
+            const npmIgnoreContent = await api.retrieveIgnoreFile(filename);
+            api.validateNpmIgnorePatterns(npmIgnoreContent);
+
+            // Recommend updating git ignore to match npmignore.
+            filename = ".gitignore";
+            const gitIgnoreContent = await api.retrieveIgnoreFile(filename);
+            try {
+                api.validateNpmIgnorePatterns(gitIgnoreContent);
+            } catch (e) {
+                console.warn(`WARNING:  The following patterns are recommended in ${filename} for code signing: *.tgz, *.sig, package.json.bak.`);
+            }
 
             // read package.json info
             const packageJsonContent = await api.retrievePackageJson();
@@ -192,6 +205,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
             // make a backup of the signature file
             await api.copyPackageDotJson(PACKAGE_DOT_JSON_PATH, PACKAGE_DOT_JSON_PATH_BAK);
             packageDotJsonBackedUp = true;
+            console.log(`Backed up ${PACKAGE_DOT_JSON_PATH} to ${PACKAGE_DOT_JSON_PATH_BAK}`);
 
             // update the package.json object with the signature urls and write it to disk.
             const sigUrl = `${args.signatureUrl}${_.endsWith(args.signatureUrl, "/") ? "" : "/"}${sigFilename}`;
@@ -234,13 +248,18 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
                 console.error(e.reason.message);
             }
         } finally {
-            // Restore the package.json file so it doesn"t show a git diff.
+            // Restore the package.json file so it doesn't show a git diff.
             if (packageDotJsonBackedUp) {
+                console.log(`Restoring package.json`);
                 await api.copyPackageDotJson(PACKAGE_DOT_JSON_PATH_BAK, PACKAGE_DOT_JSON_PATH);
+                await removeFileAsync(PACKAGE_DOT_JSON_PATH_BAK);
             }
         }
     }
 
 };
 
-(async () => api.doPackAndSign(process.argv))();
+// We only want to run this code if it's invoked from sfdx_sign
+if (process.argv && process.argv.length > 0 && _.includes(process.argv[1], BIN_NAME)) {
+    (async () => api.doPackAndSign(process.argv))();
+}
