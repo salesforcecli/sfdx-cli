@@ -7,8 +7,33 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${file}"
+            "name": "code",
+            "program": "${workspaceRoot}/dist/codeSigning/installationVerification.js"
+        },
+        {
+            "name": "Debug (Unit) Tests - Legacy Protocol",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}/node_modules/.bin/_mocha",
+            "protocol": "inspector",
+            "args": [
+                "--timeout",
+                "999999",
+                "--colors",
+                "--recursive",
+                "--growl",
+                "dist/codeSigning/packAndSign.test.js",
+                "--grep",
+                "doPackAndSign"
+            ],
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/dist/**/*.js"
+            ]
         }
     ]
 }

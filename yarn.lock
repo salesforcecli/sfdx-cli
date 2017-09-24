@@ -453,6 +453,10 @@ caseless@~0.8.0:
   version "0.8.0"
   resolved "http://10.252.156.164:4876/caseless/-/caseless-0.8.0.tgz#5bca2881d41437f54b2407ebe34888c7b9ad4f7d"
 
+chai-as-promised@5.3.0:
+  version "5.3.0"
+  resolved "http://10.252.156.164:4876/chai-as-promised/-/chai-as-promised-5.3.0.tgz#09d7a402908aa70dfdbead53e5853fc79d3ef21c"
+
 chai@4.1.2:
   version "4.1.2"
   resolved "http://10.252.156.164:4876/chai/-/chai-4.1.2.tgz#0f64584ba642f0f2ace2806279f4f06ca23ad73c"
