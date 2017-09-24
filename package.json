@@ -4,7 +4,8 @@
   "version": "6.0.0",
   "author": "Salesforce",
   "bin": {
-    "sfdx": "bin/run"
+    "sfdx": "bin/run",
+    "sfdx_sign": "dist/codeSigning/packAndSign.js"
   },
   "engines": {
     "node": ">=8.4.0"
@@ -31,10 +32,14 @@
     }
   },
   "dependencies": {
+    "bluebird": "3.4.6",
     "cli-engine": "4.3.1",
+    "fs-extra": "0.30.0",
+    "lodash": "4.11.1",
     "salesforcedx": "41.2.0-v6.3"
   },
   "scripts": {
+    "clean": "bash scripts/clean",
     "build": "scripts/build",
     "clean-all": "scripts/clean-all",
     "clean-cache": "scripts/clean-cache",
@@ -55,6 +60,7 @@
     "chai": "4.1.2",
     "mocha": "3.5.0",
     "tslint": "5.7.0",
+    "sinon": "1.17.4",
     "typescript": "2.5.2"
   }
 }

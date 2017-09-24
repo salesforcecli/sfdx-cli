@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es2016",
         "module": "commonjs",
         "sourceRoot": "src",
         "outDir": "dist",
@@ -8,3 +8,17 @@
         "moduleResolution": "node"
     }
 }
+/* {
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2016",
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "allowJs": true,
+        "alwaysStrict": true,
+        "outDir": "dist"
+      },
+      "include": [
+          "src", "bin"
+      ]
+}*/ 

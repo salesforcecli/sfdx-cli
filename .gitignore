@@ -1,6 +1,7 @@
 node_modules/
 dist/
 *.tgz
+*.sig
 npm-debug.log
 .npm
 .idea
@@ -9,3 +10,6 @@ xunit.xml
 tmp
 .aws/
 .nvm-node
+package.json.bak
+.vscode
+.history
