@@ -11,3 +11,5 @@ tmp
 .aws/
 .nvm-node
 package.json.bak
+.vscode
+.history
