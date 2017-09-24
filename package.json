@@ -4,7 +4,8 @@
   "version": "6.0.0",
   "author": "Salesforce",
   "bin": {
-    "sfdx": "bin/run"
+    "sfdx": "bin/run",
+    "sfdx_sign": "dist/codeSign/packAndSign"
   },
   "engines": {
     "node": ">=8.4.0"
