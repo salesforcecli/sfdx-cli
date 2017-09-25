@@ -87,6 +87,7 @@ export function convertFromV5(c: LegacyCommand) {
                     process.stderr.write(ansi.cursorShow);
                 }
             });
+            Object.keys(ctx.flags).forEach((k) => ctx.flags[k] === undefined && delete ctx.flags[k]);
             return c.run(ctx);
         }
     }
