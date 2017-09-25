@@ -36,11 +36,7 @@ export interface LegacyCommand {
     needsOrg?: boolean | null;
     wantsApp?: boolean | null;
     wantsOrg?: boolean | null;
-    requiresProject?: boolean | null;
-    requiresWorkspace?: boolean | null;
     supportsColor?: boolean | null;
-    supportsTargetDevHubUsername?: boolean | null;
-    supportsTargetUsername?: boolean | null;
 
     run: (ctx: LegacyContext) => Promise<any>;
 }
@@ -81,11 +77,7 @@ export function convertFromV5(c: LegacyCommand) {
                 herokuDir: this.config.cacheDir,
                 httpGitHost: vars.default.httpGitHost,
                 org: flags.org,
-                requiresProject: c.requiresProject,
-                requiresWorkspace: c.requiresWorkspace,
                 supportsColor: (this.out.color as any).enabled,
-                supportsTargetDevHubUsername: c.supportsTargetDevHubUsername,
-                supportsTargetUsername: c.supportsTargetUsername,
                 team: flags.team,
                 version: this.config.userAgent,
             };
@@ -95,9 +87,11 @@ export function convertFromV5(c: LegacyCommand) {
                     process.stderr.write(ansi.cursorShow);
                 }
             });
+            console.log(c);
             return c.run(ctx);
         }
     }
+
     if (c.needsApp || c.wantsApp) {
         V5.flags.app = (Flags as any).app({ required: !!c.needsApp });
         V5.flags.remote = (Flags as any).remote();
