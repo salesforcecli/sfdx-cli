@@ -87,7 +87,6 @@ export function convertFromV5(c: LegacyCommand) {
                     process.stderr.write(ansi.cursorShow);
                 }
             });
-            console.log(c);
             return c.run(ctx);
         }
     }
