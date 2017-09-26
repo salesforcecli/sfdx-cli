@@ -18,9 +18,11 @@ You'll also need [yarn](https://yarnpkg.com/en/docs/install).  If you did decide
 1. From within this repository's root directory, run `yarn` (short for `yarn install`).
 1. Run `bin/run` to view the CLI's root help.
 
-When you make changes to this project's `.ts`. sources, you will need to recompile.  Use `yarn prepare` or `tsc -p tsconfig.json` to rebuild.
+When you make changes to this project's `.ts`. sources, you will need to recompile.  Use `yarn prepare` or `tsc -p tsconfig.json` to rebuild.  Don't forget to test and lint your changes before merging -- `yarn test` will do both.
 
-### Up and running as a `force` namespace plugin developer
+### Up and running as a `force` plugin developer
+
+*Note: this is no longer necessary, but you can still use it to develop with the full suite of force plugins if desired.  Otherwise, you should be able to develop plugins as you did with v5.*
 
 1. Make sure you have the any of the following dependencies that you need to work on cloned locally as sibling directories to this repository:
     * [salesforcedx](https://git.soma.salesforce.com/salesforcedx/salesforcedx)
@@ -71,8 +73,9 @@ A few additional convenience scripts are available to help with common developme
 
 ### Developer notes
 
+* If you change the `bin/run` or `bin/run.js` files and want those changes to be carried forward in the released binary, you will also need to make those changes in the `scripts/build` script.
 * If you change this project's `package.json` to reference a new core plugin, or change the `package.json` of any referenced plugins, you may need to delete `cli-engine`'s plugin cache to force it to reload.
-    * Use `yarn run clear-cache`
+    * Use `yarn run clean-cache`
 * If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `yarn run watch`.
 * The `build` and `release-all` scripts currently require [Docker](https://www.docker.com/get-docker) to run.
 * To manually install a specific version of the `salesforcedx` plugin before v6 builds of it start getting published publicly, you can edit `~/.local/share/sfdx/plugins/.yarnrc` to point to the internal v6 npm registry (i.e. `registry "http://10.252.156.164:4876"`).  You can then install v6 builds of salesforcedx as a user plugin pinned to a specific version like so: `sfdx plugins:install salesforcedx@41.2.0-v6.0`, or from the `alpha` dist tag like this`sfdx plugins:install salesforcedx@alpha`.
