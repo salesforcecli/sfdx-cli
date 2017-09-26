@@ -9,3 +9,4 @@ xunit.xml
 tmp
 .aws/
 .nvm-node
+package-lock.json

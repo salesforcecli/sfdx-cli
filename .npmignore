@@ -1,6 +1,7 @@
 #
 # Source files
 #
+dist/**/*.test.js
 dist/**/*.js.map
 
 #

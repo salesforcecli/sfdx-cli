@@ -1,4 +1,4 @@
-function init(config: any, {argv}: {argv: string[]}) {
+function init(config: any, { argv }: { argv: string[] }) {
 }
 
 export = init;
