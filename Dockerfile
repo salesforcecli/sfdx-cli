@@ -64,6 +64,7 @@ RUN apt-get -y update && \
   osslsigncode \
   nsis \
   python-setuptools \
+  p7zip-full \
   && apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 

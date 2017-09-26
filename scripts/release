@@ -19,9 +19,8 @@ DIR=$(get_script_dir)
 VERSION=$("$DIR/version")
 
 PLATFORMS=(
-# TODO: windows seems to fail due to lack of 7z?
-#  windows-x86
-#  windows-x64
+  windows-x86
+  windows-x64
   darwin-x64
   linux-x86
   linux-x64
