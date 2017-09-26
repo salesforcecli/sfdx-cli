@@ -31,6 +31,11 @@
     "s3": {
       "bucket": "dfc-data-production",
       "host": "developer.salesforce.com/media/salesforce-cli"
+    },
+    "help": {
+      "plugins": {
+        "salesforce-alm": {"version": "41.2.0", "type": "link"}
+      }
     }
   },
   "dependencies": {
