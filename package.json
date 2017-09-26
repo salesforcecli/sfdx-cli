@@ -48,6 +48,7 @@
     "clean-cache": "scripts/clean-cache",
     "clean-dev": "scripts/clean-dev",
     "downgrade": "scripts/downgrade",
+    "kill-updaters": "scripts/kill-updaters",
     "lint": "tslint -p tslint.json",
     "prepare": "tsc -p tsconfig.json",
     "release-all": "scripts/release-all",
