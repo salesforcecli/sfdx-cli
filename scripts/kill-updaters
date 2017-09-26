@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ps aux | grep node | grep -v Visual | grep -v Slack | awk '{ print $2 }' | xargs kill
