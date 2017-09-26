@@ -45,4 +45,8 @@ describe("plugins:parse hook", () => {
         // legacy namespace is removed from the massaged module
         expect(module.namespace).to.be.undefined;
     });
+
+    it("should not die when given a module object lacking commands or topics", () => {
+        hook({}, {module: {namespace: "root"}});
+    });
 });

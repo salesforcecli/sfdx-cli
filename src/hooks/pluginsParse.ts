@@ -13,7 +13,7 @@ function convertFromV5Plugin(module: any) {
     delete module.namespace;
 }
 
-function convertFromV5Commands(commands: any[], ns: string) {
+function convertFromV5Commands(commands: any[] = [], ns: string) {
     return commands
         .map((cmd: any) => {
             if (cmd.namespace === ns) {
@@ -30,7 +30,7 @@ function convertFromV5Commands(commands: any[], ns: string) {
         .filter((cmd: any) => cmd !== null);
 }
 
-function convertFromV5Topics(topics: any[], ns: string, nsDescription: string) {
+function convertFromV5Topics(topics: any[] = [], ns: string, nsDescription: string) {
     return [{
         description: nsDescription,
         hidden: false,
