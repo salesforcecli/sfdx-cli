@@ -1,4 +1,4 @@
-function parse(config: any, {module}: any) {
+function parse(config: any, { module }: any) {
     if (module.namespace) {
         convertFromV5Plugin(module);
     }
@@ -7,7 +7,14 @@ function parse(config: any, {module}: any) {
 function convertFromV5Plugin(module: any) {
     const ns = module.namespace.name;
 
-    module.commands
+    module.commands = convertFromV5Commands(module.commands, ns);
+    module.topics = convertFromV5Topics(module.topics, ns, module.namespace.description);
+
+    delete module.namespace;
+}
+
+function convertFromV5Commands(commands: any[], ns: string) {
+    return commands
         .map((cmd: any) => {
             if (cmd.namespace === ns) {
                 cmd.topic = ns;
@@ -21,17 +28,17 @@ function convertFromV5Plugin(module: any) {
             return cmd;
         })
         .filter((cmd: any) => cmd !== null);
+}
 
-    module.topics = [{
-            description: module.namespace.description,
-            hidden: false,
-            name: ns,
-        }].concat(module.topics.map((topic: any) => {
-            topic.name = applyNamespace(topic.name, ns);
-            return topic;
-        }));
-
-    delete module.namespace;
+function convertFromV5Topics(topics: any[], ns: string, nsDescription: string) {
+    return [{
+        description: nsDescription,
+        hidden: false,
+        name: ns,
+    }].concat(topics.map((topic: any) => {
+        topic.name = applyNamespace(topic.name, ns);
+        return topic;
+    }));
 }
 
 function hasNamespace(name: string, ns: string) {
