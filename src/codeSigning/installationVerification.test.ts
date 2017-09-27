@@ -1,4 +1,4 @@
-import { _ } from "lodash";
+import * as _ from "lodash";
 import * as child_process from "child_process";
 import * as sinon from "sinon";
 import * as events from "events";
@@ -10,7 +10,7 @@ import * as https from "https";
 import { SALESFORCE_CERT_FINGERPRINT } from "./codeSignApi";
 import { expect } from "chai";
 
-let iv;
+let iv: any;
 
 class YarnEmitter extends events.EventEmitter {
     private _stdout: Readable;
@@ -32,7 +32,7 @@ class YarnEmitter extends events.EventEmitter {
     }
 
     public set stdout(value: Readable) {
-        const obj = _.merge(value, { setEncoding(encoding) {} });
+        const obj = _.merge(value, { setEncoding(encoding: string) {} });
         this._stdout = obj;
     }
 
@@ -41,7 +41,7 @@ class YarnEmitter extends events.EventEmitter {
     }
 
     public set stderr(value: Readable) {
-        this._stderr = _.merge(value, { setEncoding(encoding) {} });
+        this._stderr = _.merge(value, { setEncoding(encoding: string) {} });
     }
 }
 
@@ -52,14 +52,14 @@ class SocketEmitter extends events.EventEmitter {
 }
 
 class HttpRequestMock {
-    private _statusCodeCallback;
+    private _statusCodeCallback: any;
 
-    public set statusCodeCallback(cb) {
+    public set statusCodeCallback(cb: any) {
         this._statusCodeCallback = cb;
     }
 
-    public get(url) {
-        let response;
+    public get(url: any) {
+        let response: Readable = new Readable();
         if (_.includes(url.path, "cert")) {
             response = new Readable({
                 read() {
@@ -112,7 +112,7 @@ const YARN_META = {
     }
 };
 
-const getYarnSuccess = (yarnEmitter) => {
+const getYarnSuccess = (yarnEmitter: YarnEmitter) => {
     return new Readable({
         read() {
             this.push(JSON.stringify(YARN_META));
@@ -126,7 +126,7 @@ const getYarnSuccess = (yarnEmitter) => {
 };
 
 describe("InstallationVerification Tests", () => {
-    let sandbox;
+    let sandbox: any;
 
     const config = {};
     _.set(config, "__cache.dir:data", "dataPath");
@@ -143,14 +143,14 @@ describe("InstallationVerification Tests", () => {
            return yarnEmitter;
         });
 
-        sandbox.stub(https, "get", (url) => {
+        sandbox.stub(https, "get", (url: string) => {
             return httpMock.get(url);
         });
 
-        sandbox.stub(fs, "createReadStream", (meta) => {
+        sandbox.stub(fs, "createReadStream", (path: string) => {
             return new Readable({
                 read() {
-                    if (_.includes(meta, "tarball")) {
+                    if (_.includes(path, "tarball")) {
                         this.push(TEST_DATA);
                     }
                     this.push(null);
@@ -184,7 +184,7 @@ describe("InstallationVerification Tests", () => {
             .setPluginName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
-            .then((meta) => {
+            .then((meta: any) => {
                 expect(meta).to.have.property("verified", true);
             });
     });
@@ -208,7 +208,7 @@ describe("InstallationVerification Tests", () => {
             .then(() => {
                 throw new Error("This shouldn't happen. Failure expected");
             })
-            .catch((err) => {
+            .catch((err: Error) => {
                 expect(err).to.have.property("message", ERROR);
             });
     });
@@ -228,7 +228,7 @@ describe("InstallationVerification Tests", () => {
             .then(() => {
                 throw new Error("This shouldn't happen. Failure expected");
             })
-            .catch((err) => {
+            .catch((err: Error) => {
                 expect(err).to.have.property("name", "RetrieveFailed");
                 expect(err.message).to.include("404");
                 expect(err.message).to.include("cert");
@@ -250,7 +250,7 @@ describe("InstallationVerification Tests", () => {
             .then(() => {
                 throw new Error("This shouldn't happen. Failure expected");
             })
-            .catch((err) => {
+            .catch((err: Error) => {
                 expect(err).to.have.property("name", "RetrieveFailed");
                 expect(err.message).to.include("500");
                 expect(err.message).to.include("sig");

@@ -1,9 +1,8 @@
 import * as crypto from "crypto";
 
 import { Writable, Readable } from "stream";
-import _Promise = require("bluebird");
 
-import { _ } from "lodash";
+import * as _ from "lodash";
 import { NamedError } from "../util/NamedError";
 import { parse as parseUrl } from "url";
 const CRYPTO_LEVEL = "RSA-SHA256";
@@ -12,7 +11,7 @@ const SALESFORCE_DOMAINS = ["salesforce.com"];
 
 export const SALESFORCE_CERT_FINGERPRINT = "B8:32:1B:DD:E8:11:1E:81:BC:C8:D3:68:58:34:3E:77:BB:AF:F2:2C";
 
-export function validSalesforceDomain(url: string) {
+export function validSalesforceDomain(url: string | null) {
     if (!url) {
         return false;
     }
@@ -22,7 +21,7 @@ export function validSalesforceDomain(url: string) {
 }
 
 export function validateRequestCert(request: any, url: string) {
-    request.on("socket", (socket) => {
+    request.on("socket", (socket: any) => {
         socket.on("secureConnect", () => {
             const fingerprint = socket.getPeerCertificate().fingerprint;
             // Self signed?
@@ -91,8 +90,8 @@ export class CodeVerifierInfo {
     }
 }
 
-async function retrieveKey(stream: Readable): _Promise <string> {
-    return new _Promise((resolve, reject) => {
+async function retrieveKey(stream: Readable): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
         let key: string = "";
         if (stream) {
             stream.on("data", (chunk) => {
@@ -134,7 +133,7 @@ export async function verify(codeVerifierInfo: CodeVerifierInfo): Promise<boolea
 
     const signApi = crypto.createVerify(CRYPTO_LEVEL);
 
-    return new _Promise<boolean>((resolve, reject) => {
+    return new Promise<boolean>((resolve, reject) => {
         codeVerifierInfo.dataToVerify.pipe(signApi);
 
         codeVerifierInfo.dataToVerify.on("end", () => {

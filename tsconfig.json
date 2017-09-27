@@ -1,12 +1,11 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es2017",
         "module": "commonjs",
         "moduleResolution": "node",
         "lib": [
             "es6"
         ],
-        "noImplicitAny": true,
         "noImplicitThis": true,
         "strictNullChecks": true,
         "sourceRoot": "src",

@@ -1,10 +1,10 @@
-import { _ } from "lodash";
+import * as _ from "lodash";
 
 import { NamedError } from "./NamedError";
 
 const CLI_KEY_MARKER = "--";
 
-export default function parseSimpleArgs(cliArgs: string[]) {
+export default function parseSimpleArgs(cliArgs: string[] | undefined | null) {
     if (cliArgs) {
         return cliArgs.reduce((accum: object, arg: string, currentIndex: number, _array: string[]) => {
 

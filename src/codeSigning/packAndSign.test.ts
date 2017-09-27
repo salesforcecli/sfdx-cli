@@ -3,38 +3,38 @@ import { Readable } from "stream";
 import fs = require("fs-extra");
 import https  = require("https");
 import { CERTIFICATE, PRIVATE_KEY } from "./testCert";
-import { _ } from "lodash";
+import * as _ from "lodash";
 import { expect } from "chai";
 import * as sinon from "sinon";
 import * as _Promise from "bluebird";
 
-let packAndSignApi;
+let packAndSignApi: any;
 
 const REJECT_ERROR = new Error("Should have been rejected");
 
 describe("doPackAndSign", () => {
-    let globalSandbox;
+    let globalSandbox: any;
 
     const logMessages = [];
     before(() => {
         globalSandbox = sinon.sandbox.create();
-        let signature;
+        let signature: string;
 
         globalSandbox.stub(console, "log");
         globalSandbox.stub(console, "info");
 
-        globalSandbox.stub(fs, "copy", (src, dest, cb) => {
+        globalSandbox.stub(fs, "copy", (src: string, dest: string, cb: any) => {
             cb(null, {});
         });
 
-        globalSandbox.stub(fs, "writeFile", (path, content, cb) => {
+        globalSandbox.stub(fs, "writeFile", (path: string, content: string, cb: any) => {
             if (_.includes(path, ".sig")) {
                 signature = content;
             }
             cb(null, {});
         });
 
-        globalSandbox.stub(fs, "createReadStream", (filePath, options) => {
+        globalSandbox.stub(fs, "createReadStream", (filePath: string, options: any) => {
             if (_.includes(filePath, "privateKey")) {
                 return new Readable({
                     read() {
@@ -60,7 +60,7 @@ describe("doPackAndSign", () => {
             }
         });
 
-        globalSandbox.stub(https, "get", (path, cb) => {
+        globalSandbox.stub(https, "get", (path: any, cb: any) => {
             if (_.includes(path.host, "publickeyurlvalue")) {
                 const response = new Readable({
                     read() {
@@ -85,14 +85,14 @@ describe("doPackAndSign", () => {
             "--signatureUrl", "https://signatureUrlValue.salesforce.com",
             "--publicKeyUrl", "https://publicKeyUrlValue.salesforce.com",
             "--privateKeyPath", "privateKeyPathUrl"
-        ]).then((result) => {
+        ]).then((result: boolean) => {
             expect(result).to.be.equal(true);
         });
     });
 });
 
 describe("packAndSign Tests", () => {
-    let sandbox;
+    let sandbox: any;
 
     beforeEach(() => {
         sandbox = sinon.sandbox.create();
@@ -130,29 +130,29 @@ describe("packAndSign Tests", () => {
 
     describe("pack", () => {
         it("Process Failed", () => {
-            sandbox.stub(child_process, "exec", (command, cb) => {
+            sandbox.stub(child_process, "exec", (command: string, cb: any) => {
                 cb({code: -15});
             });
-            return packAndSignApi.pack().then(() => { throw REJECT_ERROR; }).catch((err) => {
+            return packAndSignApi.pack().then(() => { throw REJECT_ERROR; }).catch((err: Error) => {
                 expect(err.message).to.include("code: -15");
                 expect(err).to.have.property("reason");
             });
         });
 
         it("Process Success", () => {
-            sandbox.stub(child_process, "exec", (command, cb) => {
+            sandbox.stub(child_process, "exec", (command: string, cb: any) => {
                 cb(null, JSON.stringify({ data: '"foo.tgz' }));
             });
-            return packAndSignApi.pack().then((path) => {
+            return packAndSignApi.pack().then((path: string ) => {
                 expect(path).to.be.equal("foo.tgz");
             });
         });
 
         it("Process path unexpected format", () => {
-            sandbox.stub(child_process, "exec", (command, cb) => {
+            sandbox.stub(child_process, "exec", (command: string, cb: any) => {
                 cb(null, JSON.stringify({ data: "foo" }));
             });
-            return packAndSignApi.pack().then(() => { throw REJECT_ERROR; }).catch((err) => {
+            return packAndSignApi.pack().then(() => { throw REJECT_ERROR; }).catch((err: Error) => {
                 expect(err.message).to.include("expected tgz");
                 expect(err).to.have.property("name", "UnexpectedYarnFormat");
             });
@@ -161,8 +161,8 @@ describe("packAndSign Tests", () => {
 
     describe("verify", () => {
         it("verify flow - false", () => {
-            let url;
-            sandbox.stub(https, "get", (_url, cb) => {
+            let url: any;
+            sandbox.stub(https, "get", (_url: string, cb: any) => {
                 url = _url;
                 const response = new Readable({
                     read() {
@@ -188,7 +188,7 @@ describe("packAndSign Tests", () => {
                 }
             });
 
-            return packAndSignApi.verify(tarGz, signature, "baz").then((authentic) => {
+            return packAndSignApi.verify(tarGz, signature, "baz").then((authentic: boolean) => {
                 expect(authentic).to.be.equal(false);
                 expect(url.path).to.be.equal("baz");
             });

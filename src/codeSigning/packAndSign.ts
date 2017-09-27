@@ -17,9 +17,7 @@ import { join as pathJoin } from "path";
 import { parse as parsePath } from "path";
 import { sep as pathSep } from "path";
 
-import { _ } from "lodash";
-
-import * as _Promise from "bluebird";
+import * as _ from "lodash";
 
 import {
     ExecProcessFailed,
@@ -39,10 +37,12 @@ import {
     verify
 } from "../codeSigning/codeSignApi";
 
-const readFileAsync = _Promise.promisify(readFile);
-const writeFileAsync = _Promise.promisify(writeFile);
-const removeFileAsync = _Promise.promisify(remove);
-const copyFileAsync = _Promise.promisify(copyFile);
+import { promisify as utilPromisify } from "util";
+
+const readFileAsync: (path: string, options?: any) => Promise<string> = utilPromisify(readFile);
+const writeFileAsync: (file: string, data: string | Buffer | Uint8Array) => Promise<void> = utilPromisify(writeFile);
+const removeFileAsync: (path: string) => Promise<void> = utilPromisify(remove);
+const copyFileAsync: (src: string, dest: string, options?: any) => Promise<void> = utilPromisify(copyFile);
 
 const PACKAGE_DOT_JSON = "package.json";
 const PACKAGE_DOT_JSON_PATH = pathJoin(process.cwd(), PACKAGE_DOT_JSON);
@@ -124,8 +124,8 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
     /**
      * call out to yarn pack;
      */
-    async pack(): _Promise<string> {
-        return new _Promise((resolve, reject) => {
+    async pack(): Promise<string> {
+        return new Promise<string>((resolve, reject) => {
             const command: string = "yarn pack --json";
             exec(command, (error: any, stdout: string, stderr: string) => {
                 if (error && error.code) {
@@ -150,8 +150,8 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * @param sigFilenameStream - Computed signature
      * @param publicKeyUrl - url for the public key
      */
-    async verify(tarGzStream: Readable, sigFilenameStream: Readable, publicKeyUrl: string): _Promise<boolean> {
-        return new _Promise((resolve, reject) => {
+    async verify(tarGzStream: Readable, sigFilenameStream: Readable, publicKeyUrl: string): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
             const verifyInfo = new CodeVerifierInfo();
             verifyInfo.dataToVerify = tarGzStream;
             verifyInfo.signatureStream = sigFilenameStream;
@@ -204,8 +204,14 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * @param signature - the computed signature
      */
     async writeSignatureFile(filePath: string, signature: string) {
+        if (!_.endsWith(filePath, "tgz")) {
+            throw new NamedError("UnexpectedTgzName",
+                `The file path ${filePath} is unexpected. It should be a tgz file.`);
+        }
         console.info(`Signing file at filePath: ${filePath}`);
-        const sigFilename = _.replace(_.last(_.split(filePath, pathSep)), ".tgz", ".sig");
+        const pathComponents: string[] = _.split(filePath, pathSep);
+        const filenamePart: any = _.last(pathComponents);
+        const sigFilename = _.replace(filenamePart, ".tgz", ".sig");
         await writeFileAsync(pathJoin(process.cwd(), sigFilename), signature);
         return sigFilename;
     },
@@ -213,7 +219,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
     /**
      * read the package.json file for the target npm to be signed.
      */
-    async retrievePackageJson(): _Promise<string> {
+    async retrievePackageJson(): Promise<string> {
         return readFileAsync(PACKAGE_DOT_JSON_PATH, { encoding: "utf8" });
     },
 
@@ -221,7 +227,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * read the npm ignore file for the target npm
      * @param filename - local path to the npmignore file
      */
-    async retrieveIgnoreFile(filename: string): _Promise<string> {
+    async retrieveIgnoreFile(filename: string): Promise<string> {
         return readFileAsync(pathJoin(process.cwd(), filename), { encoding: "utf8" });
     },
 
@@ -230,7 +236,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * @param content
      */
     validateNpmIgnorePatterns(content: string) {
-        const validate = (pattern) => {
+        const validate = (pattern: string) => {
             if (!content) {
                 throw new NamedError(`MissingNpmIgnoreFile`,
                     `Missing .npmignore file. The following patterns are required in for code signing: *.tgz, *.sig, package.json.bak.`);
@@ -271,7 +277,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
         let packageDotJsonBackedUp = false;
 
         try {
-            const args = parseSimpleArgs(processArgv);
+            const args: any = parseSimpleArgs(processArgv);
 
             if (args.help) {
                 console.log(api.getHelp());

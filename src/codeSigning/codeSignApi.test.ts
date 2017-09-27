@@ -5,7 +5,7 @@ import {
     validateRequestCert,
     validSalesforceDomain,
     default as sign
-} from "./sign";
+} from "./codeSignApi";
 
 import { Readable, Writable } from "stream";
 import { expect } from "chai";
@@ -121,7 +121,7 @@ describe("Sign Tests", () => {
             .then(() => {
                 throw new Error("This should reject");
             })
-            .catch((err) => {
+            .catch((err: any) => {
                 expect(err).to.have.property("name", "InvalidKeyFormat");
             });
     });

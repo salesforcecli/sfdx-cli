@@ -2,7 +2,7 @@ import * as path from "path";
 import { compareVersions } from "../versions";
 
 import { InstallationVerification, NpmMeta } from "../codeSigning/installationVerification";
-import { _ } from "lodash";
+import * as _ from "lodash";
 import heroku = require("heroku-cli-util");
 import { NamedError } from "../util/NamedError";
 
@@ -29,7 +29,7 @@ async function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}
     try {
         const meta = await verification.verify();
         if (!meta.verified) {
-            const _continue = await heroku.prompt("This plugin is not provided by salesforce and it's authenticity cannot be verified? Continue y/n?");
+            const _continue = await (heroku as any).prompt.prompt("This plugin is not provided by salesforce and it's authenticity cannot be verified? Continue y/n?");
             switch (_.toLower(_continue)) {
                 case "y":
                     return;

@@ -1,5 +1,5 @@
 import parseSimpleArgs from "./simpleArgs";
-import { _ } from "lodash";
+import * as _ from "lodash";
 import { expect } from "chai";
 
 console.log(__dirname);
@@ -18,7 +18,7 @@ describe("Simple Args Tests", () => {
     });
 
     it("empty array", () => {
-        const TEST = [];
+        const TEST: string[] = [];
         const args = parseSimpleArgs(TEST);
         expect(_.isEmpty(args)).to.be.equal(true);
     });

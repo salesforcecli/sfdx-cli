@@ -4,7 +4,6 @@ import { parse as urlParse } from "url";
 import _ = require("lodash");
 import { fork } from "child_process";
 import request = require("request");
-import _Promise = require("bluebird");
 import { Readable, Writable } from "stream";
 
 import {
@@ -69,7 +68,7 @@ export class InstallationVerification {
     /**
      * validates the digital signature.
      */
-    public async verify(): _Promise<NpmMeta> {
+    public async verify(): Promise<NpmMeta> {
         const npmMeta = await this.streamTagGz();
         const info = new CodeVerifierInfo();
         info.dataToVerify = fs.createReadStream(npmMeta.tarballLocalPath, {encoding: "binary"});
@@ -105,9 +104,9 @@ export class InstallationVerification {
      * @param req - the https request object
      * @param _url - url object
      */
-    private retrieveUrlContent(req, _url: string): _Promise<Readable> {
-        return new _Promise((resolve, reject) => {
-            req.on("response", (resp) => {
+    private retrieveUrlContent(req: any, _url: string): Promise<Readable> {
+        return new Promise((resolve, reject) => {
+            req.on("response", (resp: any) => {
                 if (resp && resp.statusCode === 200) {
                     resolve(resp);
                 } else {
@@ -137,8 +136,8 @@ export class InstallationVerification {
     /**
      * Invoke yarn to discover a urls for the certificate and digital signature.
      */
-    private async retrieveNpmMeta(): _Promise<NpmMeta> {
-        return new _Promise<NpmMeta>((resolve, reject) => {
+    private async retrieveNpmMeta(): Promise<NpmMeta> {
+        return new Promise<NpmMeta>((resolve, reject) => {
             // console.log("@TODO - support proxies");
             // console.log("@TODO - https thumbprints");
             const yarnPath = this.getYarnPath();
@@ -213,11 +212,12 @@ export class InstallationVerification {
     /**
      * Downloads the tgz file content and stores it in a yarn cache folder
      */
-    private async streamTagGz(): _Promise<NpmMeta> {
+    private async streamTagGz(): Promise<NpmMeta> {
         const npmMeta = await this.retrieveNpmMeta();
-        const urlPathsAsArray = _.split(urlParse(npmMeta.tarballUrl).pathname, "/");
-        const fileNameStr = _.last(urlPathsAsArray);
-        return new _Promise<Buffer>((resolve, reject) => {
+        const urlObject: any = urlParse(npmMeta.tarballUrl);
+        const urlPathsAsArray = _.split(urlObject.pathname, "/");
+        const fileNameStr: any = _.last(urlPathsAsArray);
+        return new Promise<NpmMeta>((resolve, reject) => {
             const cacheFilePath = path.join(this.getCachePath(), fileNameStr);
             const writeStream = fs.createWriteStream(cacheFilePath, { encoding: "binary" });
             const req = request(npmMeta.tarballUrl)
