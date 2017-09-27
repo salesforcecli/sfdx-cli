@@ -18,14 +18,13 @@ DIR=$(get_script_dir)
 
 VERSION=$("$DIR/version")
 
-# TODO: uncomment other platforms
 PLATFORMS=(
-#  windows-x86
-#  windows-x64
+  windows-x86
+  windows-x64
   darwin-x64
-#  linux-x86
-#  linux-x64
-#  linux-arm
+  linux-x86
+  linux-x64
+  linux-arm
 )
 
 if [ $# -ne 1 ]; then

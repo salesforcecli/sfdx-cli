@@ -10,6 +10,8 @@ xunit.xml
 tmp
 .aws/
 .nvm-node
-package.json.bak
+package-lock.json
+*.tgz
+*.sig
 .vscode
 .history

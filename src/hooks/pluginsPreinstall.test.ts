@@ -1,5 +1,5 @@
 import { assert, expect } from "chai";
-import hook = require("./preinstall");
+import hook = require("./pluginsPreinstall");
 
 describe("plugins:preinstall hook", () => {
     it("should allow the salesforcedx plugin with tag '41.2.0' to be installed", () => {
@@ -24,10 +24,10 @@ describe("plugins:preinstall hook", () => {
         }
     });
 
-    function testHook(tag) {
+    function testHook(tag: string) {
         hook(
-            {version: "6.0.0"},
-            {plugin: "salesforcedx", tag},
+            { version: "6.0.0" },
+            { plugin: "salesforcedx", tag },
         );
     }
 });

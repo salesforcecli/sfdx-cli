@@ -1,24 +1,25 @@
 {
     "compilerOptions": {
-        "target": "es2016",
+        "target": "es5",
         "module": "commonjs",
+        "moduleResolution": "node",
+        "lib": [
+            "es6"
+        ],
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
         "sourceRoot": "src",
         "outDir": "dist",
         "sourceMap": true,
-        "moduleResolution": "node"
-    }
+        "allowJs": true
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.js",
+        "typings/**/*.d.ts"
+    ],
+    "exclude": [
+        "typings/**/*-tests.ts"
+    ]
 }
-/* {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es2016",
-        "sourceMap": true,
-        "moduleResolution": "node",
-        "allowJs": true,
-        "alwaysStrict": true,
-        "outDir": "dist"
-      },
-      "include": [
-          "src", "bin"
-      ]
-}*/ 
