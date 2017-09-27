@@ -1,16 +1,62 @@
-import { CodeSignInfo } from "./sign";
-import { CodeVerifierInfo } from "./sign";
-import { verify } from "./sign";
-import { default as sign } from "./sign";
+import {
+    CodeSignInfo,
+    CodeVerifierInfo,
+    verify,
+    validateRequestCert,
+    validSalesforceDomain,
+    default as sign
+} from "./sign";
+
 import { Readable, Writable } from "stream";
 import { expect } from "chai";
-import { CERTIFICATE, PRIVATE_KEY } from "./testCert";
+import { CERTIFICATE, PRIVATE_KEY, TEST_DATA } from "./testCert";
+import * as events from "events";
 
 describe("Sign Tests", () => {
+
+    describe("validSalesforceDomain", () => {
+        it ("falsy url", () => {
+            expect(validSalesforceDomain(null)).to.be.equal(false);
+        });
+
+        it ("salesforce http url", () => {
+            expect(validSalesforceDomain("http://www.salesforce.com")).to.be.equal(false);
+        });
+
+        it ("salesforce https url", () => {
+            expect(validSalesforceDomain("https://www.salesforce.com")).to.be.equal(true);
+        });
+        it ("jibber", () => {
+            expect(validSalesforceDomain("jj")).to.be.equal(false);
+        });
+    });
+
+    describe("validateRequestCert", () => {
+        it ("invalid finger print", () => {
+            try {
+                class Request extends events.EventEmitter {}
+                const request = new Request();
+
+                class Socket extends events.EventEmitter {
+                    public getPeerCertificate() {
+                        return { fingerprint: "123456" };
+                    }
+                }
+                const socket = new Socket();
+
+                validateRequestCert(request, "https://www.salesforce.com");
+                request.emit("socket", socket);
+                socket.emit("secureConnect");
+                throw new Error("Shouldn't Get Here!");
+            } catch (err) {
+                expect(err).to.have.property("name", "CertificateFingerprintNotMatch");
+            }
+        });
+    });
+
     it ("steel thread",  async () => {
 
         const info = new CodeSignInfo();
-        const TEST_DATA = "12345";
 
         info.dataToSignStream = new Readable({
             read() {
@@ -26,6 +72,8 @@ describe("Sign Tests", () => {
             }
         });
         const signature = await sign(info).then();
+
+        console.log(`signature: ${signature}`);
 
         const verifyInfo = new CodeVerifierInfo();
         verifyInfo.publicKeyStream = new Readable({
@@ -55,7 +103,6 @@ describe("Sign Tests", () => {
 
     it ("invalid private key", async () => {
         const info = new CodeSignInfo();
-        const TEST_DATA = "12345";
 
         info.dataToSignStream = new Readable({
             read() {
@@ -80,7 +127,6 @@ describe("Sign Tests", () => {
     });
 
     it ("invalid signature", async () => {
-        const TEST_DATA = "12345";
 
         const verifyInfo = new CodeVerifierInfo();
         verifyInfo.publicKeyStream = new Readable({

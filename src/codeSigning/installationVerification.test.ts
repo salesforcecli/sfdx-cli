@@ -1,5 +1,259 @@
-describe("InstallationVerification Tests", () => {
-    it("test", () => {
+import { _ } from "lodash";
+import * as child_process from "child_process";
+import * as sinon from "sinon";
+import * as events from "events";
+import { Readable, Writable } from "stream";
+import * as fs from "fs";
+import * as request from "request" ;
+import { TEST_DATA, TEST_DATA_SIGNATURE, CERTIFICATE } from "./testCert";
+import * as https from "https";
+import { SALESFORCE_CERT_FINGERPRINT } from "./codeSignApi";
+import { expect } from "chai";
 
+let iv;
+
+class YarnEmitter extends events.EventEmitter {
+    private _stdout: Readable;
+    private _stderr: Readable;
+
+    constructor() {
+        super();
+        this._stdout = new Readable({
+            read() { this.push(null); }
+        });
+
+        this._stderr = new Readable({
+            read() { this.push(null); }
+        });
+    }
+
+    public get stdout(): Readable {
+        return this._stdout;
+    }
+
+    public set stdout(value: Readable) {
+        const obj = _.merge(value, { setEncoding(encoding) {} });
+        this._stdout = obj;
+    }
+
+    public get stderr(): Readable {
+        return this._stderr;
+    }
+
+    public set stderr(value: Readable) {
+        this._stderr = _.merge(value, { setEncoding(encoding) {} });
+    }
+}
+
+class SocketEmitter extends events.EventEmitter {
+    public getPeerCertificate() {
+        return { fingerprint: SALESFORCE_CERT_FINGERPRINT };
+    }
+}
+
+class HttpRequestMock {
+    private _statusCodeCallback;
+
+    public set statusCodeCallback(cb) {
+        this._statusCodeCallback = cb;
+    }
+
+    public get(url) {
+        let response;
+        if (_.includes(url.path, "cert")) {
+            response = new Readable({
+                read() {
+                    this.push(CERTIFICATE);
+                    this.push(null);
+                }
+            });
+        }
+
+        if (_.includes(url.path, "sig")) {
+            response = new Readable({
+                read() {
+                    this.push(TEST_DATA_SIGNATURE);
+                    this.push(null);
+                }
+            });
+        }
+
+        // Assume successful response
+        _.set(response, "statusCode", 200);
+
+        // unless statusCodeCallback is specified then ask the test to supply for a given url;
+        if (this._statusCodeCallback) {
+            const responseStatusCode = this._statusCodeCallback();
+            if (_.includes(responseStatusCode.url, url.path)) {
+                _.set(response, "statusCode", responseStatusCode.code);
+            }
+        }
+        const _request = new events.EventEmitter();
+        process.nextTick(() => {
+            const _socket = new SocketEmitter();
+            _request.emit("socket", _socket);
+            _socket.emit("secureConnect");
+            _request.emit("response", response);
+        });
+
+        return _request;
+    }
+}
+
+const YARN_META = {
+    data: {
+        dist: {
+            tarball: "https://example.com/tarball"
+        },
+        sfdx: {
+            publicKeyUrl: "https://salesforce.com/cert",
+            signatureUrl: "https://salesforce.com/sig"
+        }
+    }
+};
+
+const getYarnSuccess = (yarnEmitter) => {
+    return new Readable({
+        read() {
+            this.push(JSON.stringify(YARN_META));
+            this.push(null);
+
+            process.nextTick(() => {
+                yarnEmitter.emit("close", 0);
+            });
+        }
+    });
+};
+
+describe("InstallationVerification Tests", () => {
+    let sandbox;
+
+    const config = {};
+    _.set(config, "__cache.dir:data", "dataPath");
+    _.set(config, "__cache.dir:cache", "cachePath");
+
+    const plugin = "foo";
+
+    let yarnEmitter = new YarnEmitter();
+    const httpMock: HttpRequestMock = new HttpRequestMock();
+
+    before(() => {
+        sandbox = sinon.sandbox.create();
+        sandbox.stub(child_process, "fork", () => {
+           return yarnEmitter;
+        });
+
+        sandbox.stub(https, "get", (url) => {
+            return httpMock.get(url);
+        });
+
+        sandbox.stub(fs, "createReadStream", (meta) => {
+            return new Readable({
+                read() {
+                    if (_.includes(meta, "tarball")) {
+                        this.push(TEST_DATA);
+                    }
+                    this.push(null);
+                }
+            });
+        });
+
+        sandbox.stub(fs, "createWriteStream", () => {
+            return new Writable({
+                write() {}
+            });
+        });
+
+        sandbox.stub(fs, "open", () => {
+            return 5;
+        });
+
+        sandbox.stub(request, "get", () => {});
+
+        iv = require("./installationVerification");
+    });
+
+    after(() => {
+        sandbox.restore();
+    });
+
+    it("Steel thread test", async () => {
+        yarnEmitter.stdout = getYarnSuccess(yarnEmitter);
+
+        const verification = new iv.InstallationVerification()
+            .setPluginName(plugin).setCliEngineConfig(config);
+
+        return verification.verify()
+            .then((meta) => {
+                expect(meta).to.have.property("verified", true);
+            });
+    });
+
+    it("Read tarball stream failed", () => {
+        const ERROR = "Ok, who brought the dog? - Louis Tully";
+        yarnEmitter.stderr = new Readable({
+            read() {
+                this.push(ERROR);
+                this.push(null);
+                process.nextTick(() => {
+                    yarnEmitter.emit("close", 1);
+                });
+            }
+        });
+
+        const verification = new iv.InstallationVerification()
+        .setPluginName(plugin).setCliEngineConfig(config);
+
+        return verification.verify()
+            .then(() => {
+                throw new Error("This shouldn't happen. Failure expected");
+            })
+            .catch((err) => {
+                expect(err).to.have.property("message", ERROR);
+            });
+    });
+
+    it ("404 for public key", () => {
+
+        yarnEmitter = new YarnEmitter();
+        yarnEmitter.stdout = getYarnSuccess(yarnEmitter);
+        httpMock.statusCodeCallback = () => ({
+            code: 404,
+            url: YARN_META.data.sfdx.publicKeyUrl
+        });
+        const verification = new iv.InstallationVerification()
+            .setPluginName(plugin).setCliEngineConfig(config);
+
+        return verification.verify()
+            .then(() => {
+                throw new Error("This shouldn't happen. Failure expected");
+            })
+            .catch((err) => {
+                expect(err).to.have.property("name", "RetrieveFailed");
+                expect(err.message).to.include("404");
+                expect(err.message).to.include("cert");
+            });
+    });
+
+    it ("500 for signature", () => {
+
+        yarnEmitter = new YarnEmitter();
+        yarnEmitter.stdout = getYarnSuccess(yarnEmitter);
+        httpMock.statusCodeCallback = () => ({
+            code: 500,
+            url: YARN_META.data.sfdx.signatureUrl
+        });
+        const verification = new iv.InstallationVerification()
+            .setPluginName(plugin).setCliEngineConfig(config);
+
+        return verification.verify()
+            .then(() => {
+                throw new Error("This shouldn't happen. Failure expected");
+            })
+            .catch((err) => {
+                expect(err).to.have.property("name", "RetrieveFailed");
+                expect(err.message).to.include("500");
+                expect(err.message).to.include("sig");
+            });
     });
 });

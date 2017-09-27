@@ -1,31 +1,78 @@
 import child_process  = require("child_process");
-import http = require("http");
-
 import { Readable } from "stream";
 import fs = require("fs-extra");
+import https  = require("https");
 import { CERTIFICATE, PRIVATE_KEY } from "./testCert";
 import { _ } from "lodash";
 import { expect } from "chai";
 import * as sinon from "sinon";
 import * as _Promise from "bluebird";
+
 let packAndSignApi;
 
 const REJECT_ERROR = new Error("Should have been rejected");
 
-describe("packAndSign Tests", () => {
-    let sandbox;
-    const globalSandbox = sinon.sandbox.create();
+describe("doPackAndSign", () => {
+    let globalSandbox;
 
+    const logMessages = [];
     before(() => {
-        // We do want to back and restore package.json for the unit test
-        globalSandbox.stub(fs, "copy", (src, dest) => {
-            return;
-        });
+        globalSandbox = sinon.sandbox.create();
+        let signature;
 
-        // We don't want to update package on disk for the unit test.
-        globalSandbox.stub(fs, "writeFile", (path, content, cb) => {
+        globalSandbox.stub(console, "log");
+        globalSandbox.stub(console, "info");
+
+        globalSandbox.stub(fs, "copy", (src, dest, cb) => {
             cb(null, {});
         });
+
+        globalSandbox.stub(fs, "writeFile", (path, content, cb) => {
+            if (_.includes(path, ".sig")) {
+                signature = content;
+            }
+            cb(null, {});
+        });
+
+        globalSandbox.stub(fs, "createReadStream", (filePath, options) => {
+            if (_.includes(filePath, "privateKey")) {
+                return new Readable({
+                    read() {
+                        this.push(PRIVATE_KEY);
+                        this.push(null);
+                    }
+                });
+
+            } else if (_.includes(filePath, "tgz")) {
+                return new Readable({
+                    read() {
+                        this.push("Test Tar Gz");
+                        this.push(null);
+                    }
+                });
+            } else {
+                return new Readable({
+                    read() {
+                        this.push(signature);
+                        this.push(null);
+                    }
+                });
+            }
+        });
+
+        globalSandbox.stub(https, "get", (path, cb) => {
+            if (_.includes(path.host, "publickeyurlvalue")) {
+                const response = new Readable({
+                    read() {
+                        this.push(CERTIFICATE);
+                        this.push(null);
+                    }
+                });
+                _.set(response, "statusCode", 200);
+                cb(response);
+            }
+        });
+
         packAndSignApi = require("./packAndSign").api;
     });
 
@@ -33,15 +80,30 @@ describe("packAndSign Tests", () => {
         globalSandbox.restore();
     });
 
+    it ("Steel Thread", () => {
+        return packAndSignApi.doPackAndSign([
+            "--signatureUrl", "https://signatureUrlValue.salesforce.com",
+            "--publicKeyUrl", "https://publicKeyUrlValue.salesforce.com",
+            "--privateKeyPath", "privateKeyPathUrl"
+        ]).then((result) => {
+            expect(result).to.be.equal(true);
+        });
+    });
+});
+
+describe("packAndSign Tests", () => {
+    let sandbox;
+
     beforeEach(() => {
         sandbox = sinon.sandbox.create();
     });
     afterEach(() => {
         sandbox.restore();
     });
+
     describe("validate url", () => {
         it ("with host", () => {
-            const TEST = "http://example.com/foo/bar";
+            const TEST = "https://salesforce.com/foo/bar";
             expect(() => packAndSignApi.validateUrl(TEST)).to.not.throw(Error);
         });
 
@@ -57,11 +119,11 @@ describe("packAndSign Tests", () => {
             expect(() => packAndSignApi.validate(args)).to.throw("signatureUrl");
         });
         it ("no public key", () => {
-            const args = { signatureUrl: "http://example.com" };
+            const args = { signatureUrl: "https://salesforce.com" };
             expect(() => packAndSignApi.validate(args)).to.throw("publicKeyUrl");
         });
         it ("no private key path", () => {
-            const args = { signatureUrl: "http://example.com", publicKeyUrl: "http://example.com" };
+            const args = { signatureUrl: "https://salesforce.com", publicKeyUrl: "https://salesforce.com" };
             expect(() => packAndSignApi.validate(args)).to.throw("privateKeyPath");
         });
     });
@@ -100,7 +162,7 @@ describe("packAndSign Tests", () => {
     describe("verify", () => {
         it("verify flow - false", () => {
             let url;
-            sandbox.stub(http, "get", (_url, cb) => {
+            sandbox.stub(https, "get", (_url, cb) => {
                 url = _url;
                 const response = new Readable({
                     read() {
@@ -128,7 +190,7 @@ describe("packAndSign Tests", () => {
 
             return packAndSignApi.verify(tarGz, signature, "baz").then((authentic) => {
                 expect(authentic).to.be.equal(false);
-                expect(url).to.be.equal("baz");
+                expect(url.path).to.be.equal("baz");
             });
         });
     });
@@ -150,30 +212,6 @@ describe("packAndSign Tests", () => {
         });
         it ("has expected patterns", () => {
             expect(packAndSignApi.validateNpmIgnorePatterns("*.tgz*.sigpackage.json.bak")).to.be.equal(undefined);
-        });
-    });
-
-    describe("doPackAndSign", () => {
-        beforeEach(() => {
-            sandbox.stub(console, "log", (message) => {
-                process.stdout.write(message + "\n");
-            });
-
-            sandbox.stub(console, "error", (message) => {
-                process.stderr.write(message + "\n");
-            });
-
-            sandbox.stub(console, "info", (message) => {
-                process.stdout.write(message + "\n");
-            });
-        });
-        it ("Steel Thread", () => {
-            console.log("This test is bogus please fix");
-            return packAndSignApi.doPackAndSign([
-                "--signatureUrl", "http://signatureUrlValue",
-                "--publicKeyUrl", "http://publicKeyUrlValue",
-                "--privateKeyPath", "privateKeyPathUrl"
-            ]);
         });
     });
 });

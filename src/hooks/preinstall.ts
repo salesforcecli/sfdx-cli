@@ -1,7 +1,10 @@
 import * as path from "path";
 import { compareVersions } from "../versions";
 
-import { InstallationVerification } from "../codeSigning/installationVerification";
+import { InstallationVerification, NpmMeta } from "../codeSigning/installationVerification";
+import { _ } from "lodash";
+import heroku = require("heroku-cli-util");
+import { NamedError } from "../util/NamedError";
 
 const PLUGIN = "salesforcedx";
 const MIN_VERSION = "41.2.0";
@@ -10,7 +13,7 @@ const MIN_VERSION = "41.2.0";
  * A v6 CLI plugin preinstall hook that checks that the plugin's version is v6-compatible,
  * if it is recognized as a force namespace plugin.
  */
-function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}) {
+async function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}) {
     if (PLUGIN === plugin) {
         if (compareVersions(tag, MIN_VERSION) < 0) {
             throw new Error(
@@ -20,10 +23,26 @@ function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}) {
             );
         }
     }
+
     const verification = new InstallationVerification().setPluginName(plugin).setCliEngineConfig(config);
-    return verification.verify().then((value) => {
-        throw new Error(value);
-    });
+
+    try {
+        const meta = await verification.verify();
+        if (!meta.verified) {
+            const _continue = await heroku.prompt("This plugin is not provided by salesforce and it's authenticity cannot be verified? Continue y/n?");
+            switch (_.toLower(_continue)) {
+                case "y":
+                    return;
+                default:
+                    throw new NamedError("CanceledByUser", "The plugin installation has been cancel by the user.");
+            }
+        }
+
+        console.log(`Successfully validated signature for ${plugin}`);
+    } catch (err) {
+        console.error(`ERROR: ${err.message}`);
+
+    }
 }
 
 export = preinstall;

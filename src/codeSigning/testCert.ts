@@ -74,3 +74,7 @@ PNy6gQKBgQCtWWQEUoshhq73s9tfXxlYO2fY/vtuA4OIhmOLzfmrw3HjRMwr79Jn
 OGfiL2NY9rmmVr7J0/RYlJj2hpkxh+k1CtEcPrtNv8n6Lm16hb8bYmUb14sk9ufB
 5KBnhMdHVgS9irwhK1zWLs8thNbzH5Sy6fAfoRcJHdMbgZXiYzd9Hw==
 -----END RSA PRIVATE KEY-----`;
+
+export const TEST_DATA = "foo bar baz";
+
+export const TEST_DATA_SIGNATURE = "Kgz0ad2MCtSU/BoRmo32sg5pw23pdMkH2Atxus3a9/eN8pg3CoXk+QaEqnvlEddFb/h06Pgbv3DjLtPilMAePvbjBSX/FiX/lfYMd2BlI1ZQRIo+4+t9IxvBCcu4Uo9zSWFkbRPcF79ckexPCCYBzChl+dxDYGs/TFihwj0Fttx4E0OPFUXElfDfMrUt8s9DtHxK5BDjv1HGMkVXPdFaZldNK+beusJH9yKGn8Bp/gNXlWuSo2P/huyvgLj9IiQ3H3C8bGZPOD8yJwYVTzGLr6mQw+Yt10GCqAeEZyezTFqnIG+IJ/axo4aogfEoh7lU20tiy8VwI7z/CHhpkRuuyQ==";

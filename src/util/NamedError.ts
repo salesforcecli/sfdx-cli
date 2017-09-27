@@ -48,3 +48,9 @@ export class ExecProcessFailed extends NamedError {
         super(`Sub-process failed.`, `Exec"d subprocess ${process} failed with error code: ${errorCode}`);
     }
 }
+
+export class InvalidSalesforceDomain extends NamedError {
+    constructor(url: string) {
+        super("InvalidSalesforceDomain", "The url is not Salesforce domain. Salesforce urls must be https and end in salesforce.com.");
+    }
+}

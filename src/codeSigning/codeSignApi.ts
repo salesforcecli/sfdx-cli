@@ -5,8 +5,39 @@ import _Promise = require("bluebird");
 
 import { _ } from "lodash";
 import { NamedError } from "../util/NamedError";
-
+import { parse as parseUrl } from "url";
 const CRYPTO_LEVEL = "RSA-SHA256";
+
+const SALESFORCE_DOMAINS = ["salesforce.com"];
+
+export const SALESFORCE_CERT_FINGERPRINT = "B8:32:1B:DD:E8:11:1E:81:BC:C8:D3:68:58:34:3E:77:BB:AF:F2:2C";
+
+export function validSalesforceDomain(url: string) {
+    if (!url) {
+        return false;
+    }
+    const parsedUrl = parseUrl(url);
+    const _domain = _.find(SALESFORCE_DOMAINS, (domain) => parsedUrl.protocol === "https:" && _.endsWith(parsedUrl.hostname, domain));
+    return _domain !== undefined;
+}
+
+export function validateRequestCert(request: any, url: string) {
+    request.on("socket", (socket) => {
+        socket.on("secureConnect", () => {
+            const fingerprint = socket.getPeerCertificate().fingerprint;
+            // Self signed?
+            // if (!socket.authorized) {
+                // throw new NamedError("CertificateNotAuthorized",
+                //    `The certificate for ${url} is not valid: ${socket.authorizationError}`);
+            // }
+
+            if (!_.includes(SALESFORCE_CERT_FINGERPRINT, fingerprint)) {
+                throw new NamedError("CertificateFingerprintNotMatch",
+                    `The expected fingerprint and the fingerprint from the certificate found at ${url} do not match.`);
+            }
+        });
+    });
+}
 
 export class CodeSignInfo {
     private _dataToSignStream: Readable;
@@ -99,12 +130,11 @@ export default async function sign(codeSignInfo: CodeSignInfo): Promise<string> 
 }
 
 export async function verify(codeVerifierInfo: CodeVerifierInfo): Promise<boolean> {
-    const publickey = await retrieveKey(codeVerifierInfo.publicKeyStream);
+    const publicKey = await retrieveKey(codeVerifierInfo.publicKeyStream);
 
     const signApi = crypto.createVerify(CRYPTO_LEVEL);
 
-    return new Promise<boolean>((resolve, reject) => {
-
+    return new _Promise<boolean>((resolve, reject) => {
         codeVerifierInfo.dataToVerify.pipe(signApi);
 
         codeVerifierInfo.dataToVerify.on("end", () => {
@@ -119,7 +149,7 @@ export async function verify(codeVerifierInfo: CodeVerifierInfo): Promise<boolea
                 if (signature.byteLength === 0) {
                     reject(new NamedError("InvalidSignature", "The provided signature is invalid or missing."));
                 } else {
-                    const verification = signApi.verify(publickey, signature.toString("utf8"), "base64");
+                    const verification = signApi.verify(publicKey, signature.toString("utf8"), "base64");
                     resolve(verification);
                 }
             });
