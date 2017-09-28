@@ -24,7 +24,7 @@ async function run(config: Config, opts: any) {
             debug("sfdx:analytics")("no plugin found for analytics");
         }
     } catch (err) {
-        // Do nothing?
+        debug("sfdx:analytics")(`error tracking usage: ${err.message}`);
     }
 }
 

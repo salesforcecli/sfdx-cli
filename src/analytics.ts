@@ -35,7 +35,7 @@ export default class AnalyticsCommand {
 
     public async record(plugin: any, commandId: string, runtime: number): Promise<void> {
         if (!plugin) {
-            return Promise.resolve();
+            return;
         }
 
         const analyticsJSON = await this.readJSON();
