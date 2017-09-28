@@ -12,6 +12,10 @@ case $key in
       NODE_FLAGS+=("--inspect-brk")
       shift
     ;;
+    --dev-profile)
+      NODE_FLAGS+=("--prof")
+      shift
+    ;;
     --dev-debug)
       export SFDX_DEBUG=1
       export DEBUG=\*
