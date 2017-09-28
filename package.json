@@ -16,7 +16,7 @@
   "cli-engine": {
     "bin": "sfdx",
     "dirname": "sfdx",
-    "node": "8.4.0",
+    "node": "8.5.0",
     "userPlugins": true,
     "legacyConverter": "./dist/legacy/converter",
     "hooks": {
@@ -52,7 +52,7 @@
     "fs-extra": "0.30.0",
     "heroku-cli-util": "6.0.16",
     "lodash": "4.11.1",
-    "salesforcedx": "41.2.0-v6.4"
+    "salesforcedx": "41.2.0-v6.5"
   },
   "scripts": {
     "clean": "bash scripts/clean",

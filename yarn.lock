@@ -1513,14 +1513,14 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-force-language-services@41.2.0:
-  version "41.2.0"
-  resolved "http://10.252.156.164:4876/force-language-services/-/force-language-services-41.2.0.tgz#69290d67a221384bc3409f3bfab82f43a9c6d17d"
+force-language-services@41.2.1-0:
+  version "41.2.1-0"
+  resolved "http://10.252.156.164:4876/force-language-services/-/force-language-services-41.2.1-0.tgz#b6f73dd3003b6d18b52cfc36168ddb43c1f586be"
   dependencies:
     fs-extra "1.0.0"
     heroku-cli-util "6.0.11"
     mkdirp "0.5.1"
-    salesforce-alm "41.2.0"
+    salesforce-alm "41.2.1-0"
     yeoman-environment "1.6.3"
     yeoman-generator "0.24.1"
 
@@ -3869,9 +3869,9 @@ safe-json-stringify@~1:
   version "1.0.4"
   resolved "http://10.252.156.164:4876/safe-json-stringify/-/safe-json-stringify-1.0.4.tgz#81a098f447e4bbc3ff3312a243521bc060ef5911"
 
-salesforce-alm@41.2.0:
-  version "41.2.0"
-  resolved "http://10.252.156.164:4876/salesforce-alm/-/salesforce-alm-41.2.0.tgz#56b6bfe5b89dea689cf56413959ed12eb9199ae6"
+salesforce-alm@41.2.1-0:
+  version "41.2.1-0"
+  resolved "http://10.252.156.164:4876/salesforce-alm/-/salesforce-alm-41.2.1-0.tgz#80171fe14efd8498eb46b2b94613a6bec01ec0e5"
   dependencies:
     adm-zip "0.4.7"
     archiver "1.0.1"
@@ -3906,9 +3906,9 @@ salesforce-alm@41.2.0:
     xml2js "0.4.17"
     xmldom "0.1.22"
 
-salesforce-lightning-cli@1.5.0:
-  version "1.5.0"
-  resolved "http://10.252.156.164:4876/salesforce-lightning-cli/-/salesforce-lightning-cli-1.5.0.tgz#7cfab4d611d61d3dceb9d9ff221b58b3669d4b14"
+salesforce-lightning-cli@1.5.1:
+  version "1.5.1"
+  resolved "http://10.252.156.164:4876/salesforce-lightning-cli/-/b64bc20f5f781c9fe91ca975aa9d1b24de4cd0cb.tgz#b64bc20f5f781c9fe91ca975aa9d1b24de4cd0cb"
   dependencies:
     eslint "^2.10.2"
     eslint-friendly-formatter "^1.2.2"
@@ -3917,13 +3917,13 @@ salesforce-lightning-cli@1.5.0:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@41.2.0-v6.4:
-  version "41.2.0-v6.4"
-  resolved "http://10.252.156.164:4876/salesforcedx/-/salesforcedx-41.2.0-v6.4.tgz#fd66ac18b9f7b0f523a4693d28f37a39a8ca1f69"
+salesforcedx@41.2.0-v6.5:
+  version "41.2.0-v6.5"
+  resolved "http://10.252.156.164:4876/salesforcedx/-/salesforcedx-41.2.0-v6.5.tgz#ca2aff079848d714ba8c703c092ee934c3e4515f"
   dependencies:
-    force-language-services "41.2.0"
-    salesforce-alm "41.2.0"
-    salesforce-lightning-cli "1.5.0"
+    force-language-services "41.2.1-0"
+    salesforce-alm "41.2.1-0"
+    salesforce-lightning-cli "1.5.1"
 
 samsam@1.1.2:
   version "1.1.2"
