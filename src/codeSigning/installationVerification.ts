@@ -15,10 +15,7 @@ import {
 
 import { NamedError, InvalidSalesforceDomain } from "../util/NamedError";
 import { get as httpsGet } from "https";
-
-function log(message: string) {
-    console.log(message);
-}
+import { EOL } from "os";
 
 /**
  * simple data structure representing the discovered meta information needed for signing,
@@ -73,13 +70,13 @@ export class InstallationVerification {
         const info = new CodeVerifierInfo();
         info.dataToVerify = fs.createReadStream(npmMeta.tarballLocalPath, {encoding: "binary"});
 
-        const publicKeyReq = httpsGet(this.getHttpOptions(npmMeta.publicKeyUrl));
-        validateRequestCert(publicKeyReq, npmMeta.publicKeyUrl);
-        info.publicKeyStream = await this.retrieveUrlContent(publicKeyReq, npmMeta.publicKeyUrl);
-
         const signatureReq = httpsGet(this.getHttpOptions(npmMeta.signatureUrl));
         validateRequestCert(signatureReq, npmMeta.signatureUrl);
         info.signatureStream = await this.retrieveUrlContent(signatureReq, npmMeta.signatureUrl);
+
+        const publicKeyReq = httpsGet(this.getHttpOptions(npmMeta.publicKeyUrl));
+        validateRequestCert(publicKeyReq, npmMeta.publicKeyUrl);
+        info.publicKeyStream = await this.retrieveUrlContent(publicKeyReq, npmMeta.publicKeyUrl);
 
         const valid = await verify(info);
         npmMeta.verified = valid;
@@ -95,7 +92,11 @@ export class InstallationVerification {
         return {
             host: urlParsed.hostname,
             path: urlParsed.path,
-            port: urlParsed.port
+            port: urlParsed.port,
+            // We need to create a new session for each request. The publicKey and Signature could come from the
+            // same server. Setting agent to false forces a SSL handshake for subsequent requests. Bad for a webpagesyarn t
+            // Good for digital signatures and public keys.
+            agent: false
         };
     }
 
@@ -200,7 +201,6 @@ export class InstallationVerification {
 
                         meta.tarballUrl = metadata.data.dist.tarball;
                     }
-
                     resolve(meta);
                 } else {
                     reject(new Error(errorContent));
@@ -230,5 +230,58 @@ export class InstallationVerification {
                 })
                 .pipe(writeStream);
         });
+    }
+}
+
+export class VerificationConfig {
+    private $verifier: InstallationVerification;
+    private $log: any;
+    private $prompt: any;
+
+    public get verifier(): InstallationVerification {
+        return this.$verifier;
+    }
+
+    public set verifier(value: InstallationVerification) {
+        this.$verifier = value;
+    }
+
+    public get log(): any {
+        return this.$log;
+    }
+
+    public set log(value: any) {
+        this.$log = value;
+    }
+
+    public get prompt(): any {
+        return this.$prompt;
+    }
+
+    public set prompt(value: any) {
+        this.$prompt = value;
+    }
+}
+
+export async function doInstallationCodeSigningVerification(config: any, {plugin, tag}: {plugin: any, tag: string}, verificationConfig: VerificationConfig) {
+
+    try {
+        const meta = await verificationConfig.verifier.verify();
+        if (!meta.verified) {
+            throw new NamedError("FailedDigitalSignatureVerification",
+                "A digital signature is specified for this plugin but it didn't verify against the certificate.");
+        }
+        verificationConfig.log(`Successfully validated digital signature for ${plugin}.${EOL}`);
+    } catch (err) {
+        if (err.name === "NotSigned" || err.name === "InvalidSalesforceDomain" ) {
+            const _continue = await verificationConfig.prompt(`This plugin is not provided by salesforce and it's authenticity cannot be verified. Continue y/n?${EOL}`);
+            switch (_.toLower(_continue)) {
+                case "y":
+                    return;
+                default:
+                    throw new NamedError("CanceledByUser", "The plugin installation has been cancel by the user.");
+            }
+        }
+        throw err;
     }
 }

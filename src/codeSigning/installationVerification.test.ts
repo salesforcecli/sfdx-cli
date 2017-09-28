@@ -256,4 +256,82 @@ describe("InstallationVerification Tests", () => {
                 expect(err.message).to.include("sig");
             });
     });
+
+    describe("doInstallationCodeSigningVerification", () => {
+        it ("valid signature", async () => {
+            let message = "";
+            const vConfig = new iv.VerificationConfig();
+            vConfig.verifier = {
+                async verify() {
+                    return {
+                        verified: true
+                    };
+                }
+            };
+
+            vConfig.log = (_message) => {
+                message = _message;
+            };
+
+            await iv.doInstallationCodeSigningVerification({}, {}, vConfig);
+            expect(message).to.include("Successfully");
+            expect(message).to.include("digital signature");
+        });
+
+        it ("FailedDigitalSignatureVerification", () => {
+            const vConfig = new iv.VerificationConfig();
+            vConfig.verifier = {
+                async verify() {
+                    return {
+                        verified: false
+                    };
+                }
+            };
+
+            return iv.doInstallationCodeSigningVerification({}, {}, vConfig).catch((err) => {
+                expect(err).to.have.property("name", "FailedDigitalSignatureVerification");
+            });
+        });
+
+        it ("Canceled by user", () => {
+            const vConfig = new iv.VerificationConfig();
+            vConfig.verifier = {
+                async verify() {
+                    const err = new Error();
+                    err.name = "NotSigned";
+                    throw err;
+                }
+            };
+
+            vConfig.prompt = async () => {
+                return "N";
+            };
+
+            return iv.doInstallationCodeSigningVerification({}, {}, vConfig)
+                .then(() => {
+                    throw new Error("Failure: This should never happen");
+                })
+                .catch((err) => {
+                    expect(err).to.have.property("name", "CanceledByUser");
+                });
+        });
+
+        it ("continue installation", () => {
+            const vConfig = new iv.VerificationConfig();
+            vConfig.verifier = {
+                async verify() {
+                    const err = new Error();
+                    err.name = "InvalidSalesforceDomain";
+                    throw err;
+                }
+            };
+
+            vConfig.prompt = async () => {
+                return "Y";
+            };
+
+            return iv.doInstallationCodeSigningVerification({}, {}, vConfig)
+                .then(() => {});
+        });
+    });
 });

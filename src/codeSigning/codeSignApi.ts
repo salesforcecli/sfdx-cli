@@ -32,7 +32,7 @@ export function validateRequestCert(request: any, url: string) {
 
             if (!_.includes(SALESFORCE_CERT_FINGERPRINT, fingerprint)) {
                 throw new NamedError("CertificateFingerprintNotMatch",
-                    `The expected fingerprint and the fingerprint from the certificate found at ${url} do not match.`);
+                    `The expected fingerprint and the fingerprint [${fingerprint}] from the certificate found at ${url} does not match.`);
             }
         });
     });
@@ -90,7 +90,7 @@ export class CodeVerifierInfo {
     }
 }
 
-async function retrieveKey(stream: Readable): Promise<string> {
+function retrieveKey(stream: Readable): Promise<string> {
     return new Promise<string>((resolve, reject) => {
         let key: string = "";
         if (stream) {
@@ -130,7 +130,6 @@ export default async function sign(codeSignInfo: CodeSignInfo): Promise<string> 
 
 export async function verify(codeVerifierInfo: CodeVerifierInfo): Promise<boolean> {
     const publicKey = await retrieveKey(codeVerifierInfo.publicKeyStream);
-
     const signApi = crypto.createVerify(CRYPTO_LEVEL);
 
     return new Promise<boolean>((resolve, reject) => {
