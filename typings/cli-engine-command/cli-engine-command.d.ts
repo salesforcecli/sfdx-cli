@@ -84,6 +84,7 @@ declare module "cli-engine-command" {
     }
 
     export class Command<Flags extends InputFlags> {
+        id: string;
         config: Config;
         http: HTTP;
         out: Output;
