@@ -124,7 +124,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
     /**
      * call out to yarn pack;
      */
-    async pack(): Promise<string> {
+    pack(): Promise<string> {
         return new Promise<string>((resolve, reject) => {
             const command: string = "yarn pack --json";
             exec(command, (error: any, stdout: string, stderr: string) => {
@@ -150,7 +150,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * @param sigFilenameStream - Computed signature
      * @param publicKeyUrl - url for the public key
      */
-    async verify(tarGzStream: Readable, sigFilenameStream: Readable, publicKeyUrl: string): Promise<boolean> {
+    verify(tarGzStream: Readable, sigFilenameStream: Readable, publicKeyUrl: string): Promise<boolean> {
         return new Promise<boolean>((resolve, reject) => {
             const verifyInfo = new CodeVerifierInfo();
             verifyInfo.dataToVerify = tarGzStream;
@@ -191,7 +191,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * @param fileStream - the tgz file stream to sign
      * @param privateKeyStream - the certificate's private key
      */
-    async retrieveSignature(fileStream: Readable, privateKeyStream: Readable) {
+    retrieveSignature(fileStream: Readable, privateKeyStream: Readable): Promise<string> {
         const info = new CodeSignInfo();
         info.dataToSignStream = fileStream;
         info.privateKeyStream = privateKeyStream;
@@ -219,7 +219,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
     /**
      * read the package.json file for the target npm to be signed.
      */
-    async retrievePackageJson(): Promise<string> {
+    retrievePackageJson(): Promise<string> {
         return readFileAsync(PACKAGE_DOT_JSON_PATH, { encoding: "utf8" });
     },
 
@@ -227,7 +227,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * read the npm ignore file for the target npm
      * @param filename - local path to the npmignore file
      */
-    async retrieveIgnoreFile(filename: string): Promise<string> {
+    retrieveIgnoreFile(filename: string): Promise<string> {
         return readFileAsync(pathJoin(process.cwd(), filename), { encoding: "utf8" });
     },
 
@@ -257,7 +257,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * @param src - the package.json to backup
      * @param dest - package.json.bak
      */
-    async copyPackageDotJson(src: string, dest: string) {
+    copyPackageDotJson(src: string, dest: string): Promise<void> {
         return copyFileAsync(src, dest);
     },
 
@@ -265,7 +265,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * used to update the contents of package.json
      * @param pJson - the updated json content to write to disk
      */
-    async writePackageJson(pJson: any) {
+    writePackageJson(pJson: any): Promise<void> {
         return writeFileAsync(PACKAGE_DOT_JSON_PATH, JSON.stringify(pJson, null, 4));
     },
 

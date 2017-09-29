@@ -13,5 +13,4 @@ tmp
 package-lock.json
 *.tgz
 *.sig
-.vscode
 .history

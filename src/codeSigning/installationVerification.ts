@@ -94,7 +94,7 @@ export class InstallationVerification {
             path: urlParsed.path,
             port: urlParsed.port,
             // We need to create a new session for each request. The publicKey and Signature could come from the
-            // same server. Setting agent to false forces a SSL handshake for subsequent requests. Bad for a webpagesyarn t
+            // same server. Setting agent to false forces a SSL handshake for subsequent requests. Bad for a webpages
             // Good for digital signatures and public keys.
             agent: false
         };
@@ -234,32 +234,32 @@ export class InstallationVerification {
 }
 
 export class VerificationConfig {
-    private $verifier: InstallationVerification;
-    private $log: any;
-    private $prompt: any;
+    private _verifier: InstallationVerification;
+    private _log: any;
+    private _prompt: any;
 
     public get verifier(): InstallationVerification {
-        return this.$verifier;
+        return this._verifier;
     }
 
     public set verifier(value: InstallationVerification) {
-        this.$verifier = value;
+        this._verifier = value;
     }
 
     public get log(): any {
-        return this.$log;
+        return this._log;
     }
 
     public set log(value: any) {
-        this.$log = value;
+        this._log = value;
     }
 
     public get prompt(): any {
-        return this.$prompt;
+        return this._prompt;
     }
 
     public set prompt(value: any) {
-        this.$prompt = value;
+        this._prompt = value;
     }
 }
 

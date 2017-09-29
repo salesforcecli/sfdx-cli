@@ -73,8 +73,6 @@ describe("Sign Tests", () => {
         });
         const signature = await sign(info).then();
 
-        console.log(`signature: ${signature}`);
-
         const verifyInfo = new CodeVerifierInfo();
         verifyInfo.publicKeyStream = new Readable({
             read() {

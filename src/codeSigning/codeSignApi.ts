@@ -24,7 +24,9 @@ export function validateRequestCert(request: any, url: string) {
     request.on("socket", (socket: any) => {
         socket.on("secureConnect", () => {
             const fingerprint = socket.getPeerCertificate().fingerprint;
-            // Self signed?
+            // If NODE_TLS_REJECT_UNAUTHORIZED is disabled this code can still enforce authorization.
+            // If we ever get asked by security to prevent disabling auth (essentially not support self signed certs) - then
+            // this is the code for it. So keep this code around.
             // if (!socket.authorized) {
                 // throw new NamedError("CertificateNotAuthorized",
                 //    `The certificate for ${url} is not valid: ${socket.authorizationError}`);
@@ -129,6 +131,7 @@ export default async function sign(codeSignInfo: CodeSignInfo): Promise<string> 
 }
 
 export async function verify(codeVerifierInfo: CodeVerifierInfo): Promise<boolean> {
+
     const publicKey = await retrieveKey(codeVerifierInfo.publicKeyStream);
     const signApi = crypto.createVerify(CRYPTO_LEVEL);
 
