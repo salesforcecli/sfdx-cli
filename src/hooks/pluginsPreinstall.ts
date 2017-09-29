@@ -33,7 +33,7 @@ async function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}
     vConfig.log = (cliUtil as any).log;
     vConfig.prompt = (cliUtil as any).prompt;
 
-    doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
+    await doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
 
 }
 
