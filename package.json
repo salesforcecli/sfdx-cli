@@ -18,6 +18,7 @@
     "dirname": "sfdx",
     "node": "8.5.0",
     "userPlugins": true,
+    "commands": "./dist/commands",
     "legacyConverter": "./dist/legacy/converter",
     "hooks": {
       "plugins:preinstall": "./dist/hooks/pluginsPreinstall.js",
@@ -73,15 +74,16 @@
   "license": "BSD-3-Clause",
   "devDependencies": {
     "@types/chai": "4.0.4",
+    "@types/debug": "0.0.30",
     "@types/fs-extra": "4.0.2",
     "@types/lodash": "4.14.76",
     "@types/mocha": "2.2.43",
     "@types/node": "8.0.28",
-    "@types/request": "^2.0.3",
+    "@types/request": "2.0.3",
     "@types/sinon": "2.3.5",
     "chai": "4.1.2",
     "mocha": "3.5.0",
-    "sinon": "1.17.4",
+    "sinon": "2.3.5",
     "tslint": "5.7.0",
     "typescript": "2.5.2"
   }

@@ -1,4 +1,7 @@
-function update(config: any) {
+import { Config } from "cli-engine-config";
+
+async function update(config: Config) {
+    // TODO: Add analytics submit when moved from force-com-toolbelt
 }
 
-export = update;
+module.exports = update;
