@@ -23,18 +23,18 @@ describe("doPackAndSign", () => {
         globalSandbox.stub(console, "log");
         globalSandbox.stub(console, "info");
 
-        globalSandbox.stub(fs, "copy", (src: string, dest: string, cb: any) => {
+        globalSandbox.stub(fs, "copy").callsFake((src: string, dest: string, cb: any) => {
             cb(null, {});
         });
 
-        globalSandbox.stub(fs, "writeFile", (path: string, content: string, cb: any) => {
+        globalSandbox.stub(fs, "writeFile").callsFake((path: string, content: string, cb: any) => {
             if (_.includes(path, ".sig")) {
                 signature = content;
             }
             cb(null, {});
         });
 
-        globalSandbox.stub(fs, "createReadStream", (filePath: string, options: any) => {
+        globalSandbox.stub(fs, "createReadStream").callsFake((filePath: string, options: any) => {
             if (_.includes(filePath, "privateKey")) {
                 return new Readable({
                     read() {
@@ -60,7 +60,7 @@ describe("doPackAndSign", () => {
             }
         });
 
-        globalSandbox.stub(https, "get", (path: any, cb: any) => {
+        globalSandbox.stub(https, "get").callsFake((path: any, cb: any) => {
             if (_.includes(path.host, "publickeyurlvalue")) {
                 const response = new Readable({
                     read() {
@@ -130,7 +130,7 @@ describe("packAndSign Tests", () => {
 
     describe("pack", () => {
         it("Process Failed", () => {
-            sandbox.stub(child_process, "exec", (command: string, cb: any) => {
+            sandbox.stub(child_process, "exec").callsFake((command: string, cb: any) => {
                 cb({code: -15});
             });
             return packAndSignApi.pack().then(() => { throw REJECT_ERROR; }).catch((err: Error) => {
@@ -140,7 +140,7 @@ describe("packAndSign Tests", () => {
         });
 
         it("Process Success", () => {
-            sandbox.stub(child_process, "exec", (command: string, cb: any) => {
+            sandbox.stub(child_process, "exec").callsFake((command: string, cb: any) => {
                 cb(null, JSON.stringify({ data: '"foo.tgz' }));
             });
             return packAndSignApi.pack().then((path: string ) => {
@@ -149,7 +149,7 @@ describe("packAndSign Tests", () => {
         });
 
         it("Process path unexpected format", () => {
-            sandbox.stub(child_process, "exec", (command: string, cb: any) => {
+            sandbox.stub(child_process, "exec").callsFake((command: string, cb: any) => {
                 cb(null, JSON.stringify({ data: "foo" }));
             });
             return packAndSignApi.pack().then(() => { throw REJECT_ERROR; }).catch((err: Error) => {
@@ -162,7 +162,7 @@ describe("packAndSign Tests", () => {
     describe("verify", () => {
         it("verify flow - false", () => {
             let url: any;
-            sandbox.stub(https, "get", (_url: string, cb: any) => {
+            sandbox.stub(https, "get").callsFake((_url: string, cb: any) => {
                 url = _url;
                 const response = new Readable({
                     read() {

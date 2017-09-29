@@ -139,15 +139,15 @@ describe("InstallationVerification Tests", () => {
 
     before(() => {
         sandbox = sinon.sandbox.create();
-        sandbox.stub(child_process, "fork", () => {
-           return yarnEmitter;
-        });
+        sandbox.stub(child_process, "fork").callsFake(() => {
+            return yarnEmitter;
+         });
 
-        sandbox.stub(https, "get", (url: string) => {
+        sandbox.stub(https, "get").callsFake((url: string) => {
             return httpMock.get(url);
         });
 
-        sandbox.stub(fs, "createReadStream", (path: string) => {
+        sandbox.stub(fs, "createReadStream").callsFake((path: string) => {
             return new Readable({
                 read() {
                     if (_.includes(path, "tarball")) {
@@ -158,17 +158,17 @@ describe("InstallationVerification Tests", () => {
             });
         });
 
-        sandbox.stub(fs, "createWriteStream", () => {
+        sandbox.stub(fs, "createWriteStream").callsFake(() => {
             return new Writable({
                 write() {}
             });
         });
 
-        sandbox.stub(fs, "open", () => {
+        sandbox.stub(fs, "open").callsFake(() => {
             return 5;
         });
 
-        sandbox.stub(request, "get", () => {});
+        sandbox.stub(request, "get").callsFake(() => {});
 
         iv = require("./installationVerification");
     });
