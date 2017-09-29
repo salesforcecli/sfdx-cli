@@ -1,16 +1,14 @@
-function parse(config: any, { module }: any) {
+import timedHook from "../timedHook";
+
+function run(config: any, { module }: any) {
     if (module.namespace) {
-        convertFromV5Plugin(module);
+        const ns = module.namespace.name;
+
+        module.commands = convertFromV5Commands(module.commands, ns);
+        module.topics = convertFromV5Topics(module.topics, ns, module.namespace.description);
+
+        delete module.namespace;
     }
-}
-
-function convertFromV5Plugin(module: any) {
-    const ns = module.namespace.name;
-
-    module.commands = convertFromV5Commands(module.commands, ns);
-    module.topics = convertFromV5Topics(module.topics, ns, module.namespace.description);
-
-    delete module.namespace;
 }
 
 function convertFromV5Commands(commands: any[] = [], ns: string) {
@@ -49,4 +47,4 @@ function applyNamespace(name: string, ns: string) {
     return !hasNamespace(name, ns) ? `${ns}:${name}` : name;
 }
 
-export = parse;
+export = timedHook("plugins:parse:legacy", run);

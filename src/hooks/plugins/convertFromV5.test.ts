@@ -1,5 +1,5 @@
 import { assert, expect } from "chai";
-import hook = require("./pluginsParse");
+import hook = require("./convertFromV5");
 
 /* tslint:disable:no-unused-expression */
 

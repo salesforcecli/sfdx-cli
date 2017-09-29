@@ -34,11 +34,7 @@
   version "2.2.43"
   resolved "http://10.252.156.164:4876/@types%2fmocha/-/03c54589c43ad048cbcbfd63999b55d0424eec27.tgz#03c54589c43ad048cbcbfd63999b55d0424eec27"
 
-"@types/node@*":
-  version "8.0.31"
-  resolved "http://10.252.156.164:4876/@types%2fnode/-/d9af61093cf4bfc9f066ca34de0175012cfb0ce9.tgz#d9af61093cf4bfc9f066ca34de0175012cfb0ce9"
-
-"@types/node@8.0.28":
+"@types/node@*", "@types/node@8.0.28":
   version "8.0.28"
   resolved "http://10.252.156.164:4876/@types%2fnode/-/86206716f8d9251cf41692e384264cbd7058ad60.tgz#86206716f8d9251cf41692e384264cbd7058ad60"
 
@@ -54,8 +50,8 @@
   resolved "http://10.252.156.164:4876/@types%2fsinon/-/68f1e0ac15f2eb6cc682b7af87cd517acc77b589.tgz#68f1e0ac15f2eb6cc682b7af87cd517acc77b589"
 
 abbrev@1:
-  version "1.1.0"
-  resolved "http://10.252.156.164:4876/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
+  version "1.1.1"
+  resolved "http://10.252.156.164:4876/abbrev/-/f8f2c887ad10bf67f634f005b6987fed3179aac8.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
 
 accepts@~1.2.12:
   version "1.2.13"
@@ -633,9 +629,9 @@ cli-table@^0.3.1:
   dependencies:
     colors "1.0.3"
 
-cli-ux@^1.0.1, cli-ux@^1.1.10:
-  version "1.1.10"
-  resolved "http://10.252.156.164:4876/cli-ux/-/b0b95ba7b488b42e32e6e67b3e6f1e6964e2800d.tgz#b0b95ba7b488b42e32e6e67b3e6f1e6964e2800d"
+cli-ux@^1.0.1, cli-ux@^1.1.10, cli-ux@^1.1.11:
+  version "1.1.13"
+  resolved "http://10.252.156.164:4876/cli-ux/-/886fe08daaee9d246489a74d468e1f7a33ec3878.tgz#886fe08daaee9d246489a74d468e1f7a33ec3878"
   dependencies:
     "@heroku/linewrap" "^1.0.0"
     ansi-escapes "^3.0.0"
@@ -976,7 +972,7 @@ debug@2.6.8:
   dependencies:
     ms "2.0.0"
 
-debug@3.0.1, debug@^3.0.0, debug@^3.0.1:
+debug@3.0.1:
   version "3.0.1"
   resolved "http://10.252.156.164:4876/debug/-/debug-3.0.1.tgz#0564c612b521dc92d9f2988f0549e34f9c98db64"
   dependencies:
@@ -985,6 +981,12 @@ debug@3.0.1, debug@^3.0.0, debug@^3.0.1:
 debug@^2.0.0, debug@^2.1.0, debug@^2.1.1:
   version "2.6.9"
   resolved "http://10.252.156.164:4876/debug/-/5d128515df134ff327e90a4c93f4e077a536341f.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
+  dependencies:
+    ms "2.0.0"
+
+debug@^3.0.0, debug@^3.0.1:
+  version "3.1.0"
+  resolved "http://10.252.156.164:4876/debug/-/5bb5a0672628b64149566ba16819e61518c67261.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
     ms "2.0.0"
 
@@ -1509,8 +1511,8 @@ first-chunk-stream@^2.0.0:
     readable-stream "^2.0.2"
 
 flat-cache@^1.2.1:
-  version "1.2.2"
-  resolved "http://10.252.156.164:4876/flat-cache/-/flat-cache-1.2.2.tgz#fa86714e72c21db88601761ecf2f555d1abc6b96"
+  version "1.3.0"
+  resolved "http://10.252.156.164:4876/flat-cache/-/d3030b32b38154f4e3b7e9c709f490f7ef97c481.tgz#d3030b32b38154f4e3b7e9c709f490f7ef97c481"
   dependencies:
     circular-json "^0.3.1"
     del "^2.0.2"
@@ -3668,8 +3670,8 @@ replace@0.3.0:
     nomnom "1.6.x"
 
 request@2, request@^2.72.0:
-  version "2.82.0"
-  resolved "http://10.252.156.164:4876/request/-/2ba8a92cd7ac45660ea2b10a53ae67cd247516ea.tgz#2ba8a92cd7ac45660ea2b10a53ae67cd247516ea"
+  version "2.83.0"
+  resolved "http://10.252.156.164:4876/request/-/ca0b65da02ed62935887808e6f510381034e3356.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:
     aws-sign2 "~0.7.0"
     aws4 "^1.6.0"
@@ -3690,7 +3692,7 @@ request@2, request@^2.72.0:
     qs "~6.5.1"
     safe-buffer "^5.1.1"
     stringstream "~0.0.5"
-    tough-cookie "~2.3.2"
+    tough-cookie "~2.3.3"
     tunnel-agent "^0.6.0"
     uuid "^3.1.0"
 
@@ -4391,7 +4393,7 @@ topo@1.x.x:
   dependencies:
     hoek "2.x.x"
 
-tough-cookie@, tough-cookie@*, tough-cookie@>=0.12.0, tough-cookie@~2.3.0, tough-cookie@~2.3.2:
+tough-cookie@, tough-cookie@*, tough-cookie@>=0.12.0, tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   version "2.3.3"
   resolved "http://10.252.156.164:4876/tough-cookie/-/0b618a5565b6dea90bf3425d04d55edc475a7561.tgz#0b618a5565b6dea90bf3425d04d55edc475a7561"
   dependencies:
@@ -4435,8 +4437,8 @@ tslint@5.7.0:
     tsutils "^2.8.1"
 
 tsutils@^2.8.1:
-  version "2.8.2"
-  resolved "http://10.252.156.164:4876/tsutils/-/2c1486ba431260845b0ac6f902afd9d708a8ea6a.tgz#2c1486ba431260845b0ac6f902afd9d708a8ea6a"
+  version "2.10.0"
+  resolved "http://10.252.156.164:4876/tsutils/-/ae94511df2656eb06e4424056fba5c388887040c.tgz#ae94511df2656eb06e4424056fba5c388887040c"
   dependencies:
     tslib "^1.7.1"
 

@@ -1,7 +1,8 @@
 import { Config } from "cli-engine-config";
+import timedHook from "./timedHook";
 
-async function update(config: Config) {
+function run(config: Config) {
     // TODO: Add analytics submit when moved from force-com-toolbelt
 }
 
-module.exports = update;
+export = timedHook("update", run);

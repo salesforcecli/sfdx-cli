@@ -3,6 +3,7 @@
   "description": "SalesforceDX CLI",
   "version": "6.0.0",
   "author": "Salesforce",
+  "license": "BSD-3-Clause",
   "bin": {
     "sfdx": "bin/run",
     "sfdx_sign": "dist/codeSigning/packAndSign.js"
@@ -21,11 +22,22 @@
     "commands": "./dist/commands",
     "legacyConverter": "./dist/legacy/converter",
     "hooks": {
-      "plugins:preinstall": "./dist/hooks/pluginsPreinstall.js",
-      "plugins:parse": "./dist/hooks/pluginsParse.js",
-      "init": "./dist/hooks/init.js",
-      "prerun": "./dist/hooks/prerun.js",
-      "update": "./dist/hooks/update.js"
+      "plugins:preinstall": [
+        "./dist/hooks/plugins/verifyInstallVersion.js",
+        "./dist/hooks/plugins/verifyInstallSignature.js"
+      ],
+      "plugins:parse": [
+        "./dist/hooks/plugins/convertFromV5.js"
+      ],
+      "init": [
+        "./dist/hooks/init.js"
+      ],
+      "prerun": [
+        "./dist/hooks/logAnalytics.js"
+      ],
+      "update": [
+        "./dist/hooks/update.js"
+      ]
     },
     "plugins": [
       "salesforcedx"
@@ -55,6 +67,21 @@
     "lodash": "4.11.1",
     "salesforcedx": "41.2.0-v6.5"
   },
+  "devDependencies": {
+    "@types/chai": "4.0.4",
+    "@types/debug": "0.0.30",
+    "@types/fs-extra": "4.0.2",
+    "@types/lodash": "4.14.76",
+    "@types/mocha": "2.2.43",
+    "@types/node": "8.0.28",
+    "@types/request": "2.0.3",
+    "@types/sinon": "2.3.5",
+    "chai": "4.1.2",
+    "mocha": "3.5.0",
+    "sinon": "2.3.5",
+    "tslint": "5.7.0",
+    "typescript": "2.5.2"
+  },
   "scripts": {
     "clean": "bash scripts/clean",
     "build": "scripts/build",
@@ -70,21 +97,5 @@
     "setup": "scripts/setup",
     "test": "yarn prepare && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
     "watch": "tsc -w -p tsconfig.json"
-  },
-  "license": "BSD-3-Clause",
-  "devDependencies": {
-    "@types/chai": "4.0.4",
-    "@types/debug": "0.0.30",
-    "@types/fs-extra": "4.0.2",
-    "@types/lodash": "4.14.76",
-    "@types/mocha": "2.2.43",
-    "@types/node": "8.0.28",
-    "@types/request": "2.0.3",
-    "@types/sinon": "2.3.5",
-    "chai": "4.1.2",
-    "mocha": "3.5.0",
-    "sinon": "2.3.5",
-    "tslint": "5.7.0",
-    "typescript": "2.5.2"
   }
 }
