@@ -54,3 +54,12 @@ export class InvalidSalesforceDomain extends NamedError {
         super("InvalidSalesforceDomain", "The url is not Salesforce domain. Salesforce urls must be https and end in salesforce.com.");
     }
 }
+
+export class UnauthorizedSslConnection extends NamedError {
+    constructor(url: string) {
+        const message = `An attempt is being made to retrieve content from an unauthorized ssl url [${url}].
+This endpoint could be using a self signed certificate.
+To allow this set the following environment variable: NODE_TLS_REJECT_UNAUTHORIZED=0`;
+        super("UnauthorizedSslConnection", message);
+    }
+}

@@ -13,7 +13,7 @@ import {
     verify
 } from "./codeSignApi";
 
-import { NamedError, InvalidSalesforceDomain } from "../util/NamedError";
+import { NamedError, InvalidSalesforceDomain, UnauthorizedSslConnection } from "../util/NamedError";
 import { get as httpsGet } from "https";
 import { EOL } from "os";
 
@@ -113,6 +113,12 @@ export class InstallationVerification {
                 } else {
                     reject(new NamedError("RetrieveFailed", `Failed to retrieve content at ${_url} error code: ${resp.statusCode}.`));
                 }
+            });
+            req.on("error", (err) => {
+                if (err.code === "DEPTH_ZERO_SELF_SIGNED_CERT") {
+                    throw new UnauthorizedSslConnection(_url);
+                }
+                throw err;
             });
         });
     }
