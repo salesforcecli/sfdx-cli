@@ -1,6 +1,16 @@
 import * as path from "path";
 import { compareVersions } from "../versions";
 
+import {
+    doInstallationCodeSigningVerification,
+    InstallationVerification,
+    VerificationConfig
+} from "../codeSigning/installationVerification";
+
+import * as cliUtil from "heroku-cli-util";
+
+import * as _ from "lodash";
+
 const PLUGIN = "salesforcedx";
 const MIN_VERSION = "41.2.0";
 
@@ -8,7 +18,7 @@ const MIN_VERSION = "41.2.0";
  * A v6 CLI plugin preinstall hook that checks that the plugin's version is v6-compatible,
  * if it is recognized as a force namespace plugin.
  */
-function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}) {
+async function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}) {
     if (PLUGIN === plugin) {
         if (compareVersions(tag, MIN_VERSION) < 0) {
             throw new Error(
@@ -18,6 +28,13 @@ function preinstall(config: any, {plugin, tag}: {plugin: any, tag: string}) {
             );
         }
     }
+    const vConfig = new VerificationConfig();
+    vConfig.verifier = new InstallationVerification().setPluginName(plugin).setCliEngineConfig(config);
+    vConfig.log = (cliUtil as any).log;
+    vConfig.prompt = (cliUtil as any).prompt;
+
+    await doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
+
 }
 
 export = preinstall;

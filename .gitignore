@@ -1,6 +1,7 @@
 node_modules/
 dist/
 *.tgz
+*.sig
 npm-debug.log
 .npm
 .idea
@@ -10,3 +11,6 @@ tmp
 .aws/
 .nvm-node
 package-lock.json
+*.tgz
+*.sig
+.history

@@ -102,3 +102,8 @@ Jenkinsfile
 
 # scripts to hide
 release.sh
+
+# code signing
+*.tgz
+*.sig
+package.json.bak
