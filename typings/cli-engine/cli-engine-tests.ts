@@ -1,3 +1,3 @@
-import CLI from "cli-engine";
+import CLI from 'cli-engine';
 
 new CLI({ argv: [], config: {} }).run();

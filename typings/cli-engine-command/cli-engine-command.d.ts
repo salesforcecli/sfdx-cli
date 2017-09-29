@@ -1,11 +1,11 @@
 // Type definitions for cli-engine-command v5.1.19
 // Project: https://github.com/heroku/cli-engine-command
 
-declare module "cli-engine-command" {
-    import { Config, ConfigOptions } from "cli-engine-config"
+declare module 'cli-engine-command' {
+    import { Config, ConfigOptions } from 'cli-engine-config'
 
-    type AlphabetUppercase = | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "X" | "Y" | "Z"
-    type AlphabetLowercase = | "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "x" | "y" | "z"
+    type AlphabetUppercase = | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'X' | 'Y' | 'Z'
+    type AlphabetLowercase = | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'x' | 'y' | 'z'
 
     export type Flag<T> = {
         [key: string]: any,
@@ -234,9 +234,9 @@ declare module "cli-engine-command" {
         displayTimestamps(): boolean;
     }
 
-    type Method = | "GET" | "POST" | "PATCH" | "PUT" | "DELETE"
+    type Method = | 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE'
     type Headers = { [key: string]: string }
-    type Protocol = | "https:" | "http:"
+    type Protocol = | 'https:' | 'http:'
 
     export type HTTPRequestOptions = {
         method?: Method,

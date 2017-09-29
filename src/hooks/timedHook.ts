@@ -1,4 +1,4 @@
-import * as Debug from "debug";
+import * as Debug from 'debug';
 
 /**
  * Adds debug timing around hook executions.
@@ -9,11 +9,11 @@ import * as Debug from "debug";
 export default function timedHook(name: string, hook: (...args: any[]) => any) {
     const debug = Debug(`sfdx:hook:${name}`);
     return async (...args: any[]) => {
-        debug("enter");
+        debug('enter');
         try {
             return await hook(...args);
         } finally {
-            debug("exit");
+            debug('exit');
         }
     };
 }

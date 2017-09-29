@@ -5,56 +5,56 @@ import {
     validateRequestCert,
     validSalesforceDomain,
     default as sign
-} from "./codeSignApi";
+} from './codeSignApi';
 
-import { Readable, Writable } from "stream";
-import { expect } from "chai";
-import { CERTIFICATE, PRIVATE_KEY, TEST_DATA } from "./testCert";
-import * as events from "events";
+import { Readable, Writable } from 'stream';
+import { expect } from 'chai';
+import { CERTIFICATE, PRIVATE_KEY, TEST_DATA } from './testCert';
+import * as events from 'events';
 
-describe("Sign Tests", () => {
+describe('Sign Tests', () => {
 
-    describe("validSalesforceDomain", () => {
-        it ("falsy url", () => {
+    describe('validSalesforceDomain', () => {
+        it ('falsy url', () => {
             expect(validSalesforceDomain(null)).to.be.equal(false);
         });
 
-        it ("salesforce http url", () => {
-            expect(validSalesforceDomain("http://www.salesforce.com")).to.be.equal(false);
+        it ('salesforce http url', () => {
+            expect(validSalesforceDomain('http://www.salesforce.com')).to.be.equal(false);
         });
 
-        it ("salesforce https url", () => {
-            expect(validSalesforceDomain("https://www.salesforce.com")).to.be.equal(true);
+        it ('salesforce https url', () => {
+            expect(validSalesforceDomain('https://www.salesforce.com')).to.be.equal(true);
         });
-        it ("jibber", () => {
-            expect(validSalesforceDomain("jj")).to.be.equal(false);
+        it ('jibber', () => {
+            expect(validSalesforceDomain('jj')).to.be.equal(false);
         });
     });
 
-    describe("validateRequestCert", () => {
-        it ("invalid finger print", () => {
+    describe('validateRequestCert', () => {
+        it ('invalid finger print', () => {
             try {
                 class Request extends events.EventEmitter {}
                 const request = new Request();
 
                 class Socket extends events.EventEmitter {
                     public getPeerCertificate() {
-                        return { fingerprint: "123456" };
+                        return { fingerprint: '123456' };
                     }
                 }
                 const socket = new Socket();
 
-                validateRequestCert(request, "https://www.salesforce.com");
-                request.emit("socket", socket);
-                socket.emit("secureConnect");
-                throw new Error("Shouldn't Get Here!");
+                validateRequestCert(request, 'https://www.salesforce.com');
+                request.emit('socket', socket);
+                socket.emit('secureConnect');
+                throw new Error('Shouldn\'t Get Here!');
             } catch (err) {
-                expect(err).to.have.property("name", "CertificateFingerprintNotMatch");
+                expect(err).to.have.property('name', 'CertificateFingerprintNotMatch');
             }
         });
     });
 
-    it ("steel thread",  async () => {
+    it ('steel thread',  async () => {
 
         const info = new CodeSignInfo();
 
@@ -99,7 +99,7 @@ describe("Sign Tests", () => {
         expect(valid).to.be.equal(true);
     });
 
-    it ("invalid private key", async () => {
+    it ('invalid private key', async () => {
         const info = new CodeSignInfo();
 
         info.dataToSignStream = new Readable({
@@ -111,20 +111,20 @@ describe("Sign Tests", () => {
 
         info.privateKeyStream = new Readable({
             read() {
-                this.push("key");
+                this.push('key');
                 this.push(null);
             }
         });
         return sign(info)
             .then(() => {
-                throw new Error("This should reject");
+                throw new Error('This should reject');
             })
             .catch((err: any) => {
-                expect(err).to.have.property("name", "InvalidKeyFormat");
+                expect(err).to.have.property('name', 'InvalidKeyFormat');
             });
     });
 
-    it ("invalid signature", async () => {
+    it ('invalid signature', async () => {
 
         const verifyInfo = new CodeVerifierInfo();
         verifyInfo.publicKeyStream = new Readable({
@@ -136,7 +136,7 @@ describe("Sign Tests", () => {
 
         verifyInfo.signatureStream = new Readable({
             read() {
-                this.push("");
+                this.push('');
                 this.push(null);
             }
         });
@@ -150,10 +150,10 @@ describe("Sign Tests", () => {
 
         return verify(verifyInfo)
             .then(() => {
-                throw new Error("This should reject");
+                throw new Error('This should reject');
             })
             .catch((err) => {
-                expect(err).to.have.property("name", "InvalidSignature");
+                expect(err).to.have.property('name', 'InvalidSignature');
             });
     });
 });

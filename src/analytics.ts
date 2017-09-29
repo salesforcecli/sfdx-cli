@@ -1,9 +1,9 @@
 
-import { Config } from "cli-engine-config";
-import * as fs from "fs-extra";
-import * as path from "path";
+import { Config } from 'cli-engine-config';
+import * as fs from 'fs-extra';
+import * as path from 'path';
 
-import { Command } from "cli-engine-command";
+import { Command } from 'cli-engine-command';
 
 interface AnalyticsJSONCommand {
     command: string;
@@ -30,7 +30,7 @@ export default class AnalyticsCommand {
     }
 
     get analyticsPath(): string {
-        return path.join(this.config.cacheDir as string, "analytics.json");
+        return path.join(this.config.cacheDir as string, 'analytics.json');
     }
 
     public async record(plugin: any, commandId: string, runtime: number): Promise<void> {
@@ -42,14 +42,14 @@ export default class AnalyticsCommand {
 
         analyticsJSON.commands.push({
             command: commandId,
-            language: "node",
+            language: 'node',
             os: this.config.platform,
             plugin: plugin && plugin.name,
             plugin_version: plugin && plugin.version,
             shell: this.config.shell,
             valid: true,
             version: this.config.version,
-            runtime,
+            runtime
         });
 
         await this.writeJSON(analyticsJSON);
@@ -65,7 +65,7 @@ export default class AnalyticsCommand {
             analytics.commands = analytics.commands || [];
             return analytics;
         } catch (err) {
-            if (err.code !== "ENOENT") {
+            if (err.code !== 'ENOENT') {
                 throw err;
             }
             return this.initialAnalyticsJSON();
@@ -75,7 +75,7 @@ export default class AnalyticsCommand {
     private initialAnalyticsJSON(): AnalyticsJSON {
         return {
             commands: [],
-            schema: 1,
+            schema: 1
         };
     }
 

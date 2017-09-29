@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { exec } from "child_process";
+import { exec } from 'child_process';
 
 import {
     copy as copyFile,
@@ -8,25 +8,25 @@ import {
     readFile,
     remove,
     writeFile
-} from "fs-extra";
+} from 'fs-extra';
 
-import { get as httpsGet } from "https";
-import { parse as parseUrl } from "url";
-import { Writable, Readable } from "stream";
-import { join as pathJoin } from "path";
-import { parse as parsePath } from "path";
-import { sep as pathSep } from "path";
+import { get as httpsGet } from 'https';
+import { parse as parseUrl } from 'url';
+import { Writable, Readable } from 'stream';
+import { join as pathJoin } from 'path';
+import { parse as parsePath } from 'path';
+import { sep as pathSep } from 'path';
 
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 import {
     ExecProcessFailed,
     InvalidUrlError,
     MissingRequiredParameter,
     NamedError
-} from "../util/NamedError";
+} from '../util/NamedError';
 
-import parseSimpleArgs from "../util/simpleArgs";
+import parseSimpleArgs from '../util/simpleArgs';
 
 import {
     CodeSignInfo,
@@ -35,20 +35,20 @@ import {
     validateRequestCert,
     validSalesforceDomain,
     verify
-} from "../codeSigning/codeSignApi";
+} from '../codeSigning/codeSignApi';
 
-import { promisify as utilPromisify } from "util";
+import { promisify as utilPromisify } from 'util';
 
 const readFileAsync: (path: string, options?: any) => Promise<string> = utilPromisify(readFile);
 const writeFileAsync: (file: string, data: string | Buffer | Uint8Array) => Promise<void> = utilPromisify(writeFile);
 const removeFileAsync: (path: string) => Promise<void> = utilPromisify(remove);
 const copyFileAsync: (src: string, dest: string, options?: any) => Promise<void> = utilPromisify(copyFile);
 
-const PACKAGE_DOT_JSON = "package.json";
+const PACKAGE_DOT_JSON = 'package.json';
 const PACKAGE_DOT_JSON_PATH = pathJoin(process.cwd(), PACKAGE_DOT_JSON);
 const PACKAGE_DOT_JSON_PATH_BAK = pathJoin(process.cwd(), `${PACKAGE_DOT_JSON}.bak`);
 
-const BIN_NAME = "sfdx_sign";
+const BIN_NAME = 'sfdx_sign';
 
 export const api = {
 
@@ -69,7 +69,7 @@ Required Parameters:
 --privateKeyPath - the local file path for the private key
 
 Returns:
-A tar.gz and signature file. The signature file will match the name of the tar gz except the extention will be ".sig".
+A tar.gz and signature file. The signature file will match the name of the tar gz except the extension will be ".sig".
 This file must be hosted at the location specified by --signature.
 
 Usage:
@@ -88,7 +88,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
                 throw new InvalidUrlError(url);
             }
             if (!validSalesforceDomain(url)) {
-                throw new NamedError("NotASalesforceDomain", "Signing urls must be salesforce.com domains.");
+                throw new NamedError('NotASalesforceDomain', 'Signing urls must be salesforce.com domains.');
             }
         } catch (e) {
             const err = new InvalidUrlError(url);
@@ -104,20 +104,20 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
     validate(args: any) {
         if (args) {
             if (!args.signatureUrl) {
-                throw new MissingRequiredParameter("--signatureUrl");
+                throw new MissingRequiredParameter('--signatureUrl');
             }
             api.validateUrl(args.signatureUrl);
 
             if (!args.publicKeyUrl) {
-                throw new MissingRequiredParameter("--publicKeyUrl");
+                throw new MissingRequiredParameter('--publicKeyUrl');
             }
             api.validateUrl(args.publicKeyUrl);
 
             if (!args.privateKeyPath) {
-                throw new MissingRequiredParameter("privateKeyPath");
+                throw new MissingRequiredParameter('privateKeyPath');
             }
         } else {
-            throw new NamedError("InvalidArgs", "Invalid args.");
+            throw new NamedError('InvalidArgs', 'Invalid args.');
         }
     },
 
@@ -126,16 +126,16 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      */
     pack(): Promise<string> {
         return new Promise<string>((resolve, reject) => {
-            const command: string = "yarn pack --json";
+            const command: string = 'yarn pack --json';
             exec(command, (error: any, stdout: string, stderr: string) => {
                 if (error && error.code) {
                     const err = new ExecProcessFailed(command, error.code).setReasonByMessage(stderr);
                     reject(err);
                 } else {
                     const data = JSON.parse(stdout).data;
-                    const path = _.find(_.split(data, "\""), (word) => _.includes(word, "tgz"));
+                    const path = _.find(_.split(data, '"'), (word) => _.includes(word, 'tgz'));
                     if (!path) {
-                        reject(new NamedError("UnexpectedYarnFormat", `Yarn pack did not return an expected tgz filename result: [${data}]`));
+                        reject(new NamedError('UnexpectedYarnFormat', `Yarn pack did not return an expected tgz filename result: [${data}]`));
                     } else {
                         resolve(path);
                     }
@@ -170,15 +170,15 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
                     verifyInfo.publicKeyStream = resp;
                     resolve(verify(verifyInfo));
                 } else {
-                    reject(new NamedError("RetrievePublicKeyFailed", `Couldn't retrieve public key at url: ${publicKeyUrl}`));
+                    reject(new NamedError('RetrievePublicKeyFailed', `Couldn't retrieve public key at url: ${publicKeyUrl}`));
                 }
 
             });
             validateRequestCert(req, publicKeyUrl);
 
-            req.on("error", (err: any) => {
-                if (err && err.code === "DEPTH_ZERO_SELF_SIGNED_CERT") {
-                    reject(new NamedError("SelfSignedCert", "Encountered a self signed certificated. To enable 'export NODE_TLS_REJECT_UNAUTHORIZED=0"));
+            req.on('error', (err: any) => {
+                if (err && err.code === 'DEPTH_ZERO_SELF_SIGNED_CERT') {
+                    reject(new NamedError('SelfSignedCert', 'Encountered a self signed certificated. To enable "export NODE_TLS_REJECT_UNAUTHORIZED=0"'));
                 } else {
                     reject(err);
                 }
@@ -199,19 +199,19 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
     },
 
     /**
-     * write the signature to a ".sig" file. this file is to be deployed to signatureUrl
+     * write the signature to a '.sig' file. this file is to be deployed to signatureUrl
      * @param filePath - the file path to the tgz file
      * @param signature - the computed signature
      */
     async writeSignatureFile(filePath: string, signature: string) {
-        if (!_.endsWith(filePath, "tgz")) {
-            throw new NamedError("UnexpectedTgzName",
+        if (!_.endsWith(filePath, 'tgz')) {
+            throw new NamedError('UnexpectedTgzName',
                 `The file path ${filePath} is unexpected. It should be a tgz file.`);
         }
         console.info(`Signing file at filePath: ${filePath}`);
         const pathComponents: string[] = _.split(filePath, pathSep);
         const filenamePart: any = _.last(pathComponents);
-        const sigFilename = _.replace(filenamePart, ".tgz", ".sig");
+        const sigFilename = _.replace(filenamePart, '.tgz', '.sig');
         await writeFileAsync(pathJoin(process.cwd(), sigFilename), signature);
         return sigFilename;
     },
@@ -220,7 +220,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * read the package.json file for the target npm to be signed.
      */
     retrievePackageJson(): Promise<string> {
-        return readFileAsync(PACKAGE_DOT_JSON_PATH, { encoding: "utf8" });
+        return readFileAsync(PACKAGE_DOT_JSON_PATH, { encoding: 'utf8' });
     },
 
     /**
@@ -228,7 +228,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
      * @param filename - local path to the npmignore file
      */
     retrieveIgnoreFile(filename: string): Promise<string> {
-        return readFileAsync(pathJoin(process.cwd(), filename), { encoding: "utf8" });
+        return readFileAsync(pathJoin(process.cwd(), filename), { encoding: 'utf8' });
     },
 
     /**
@@ -238,18 +238,18 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
     validateNpmIgnorePatterns(content: string) {
         const validate = (pattern: string) => {
             if (!content) {
-                throw new NamedError(`MissingNpmIgnoreFile`,
-                    `Missing .npmignore file. The following patterns are required in for code signing: *.tgz, *.sig, package.json.bak.`);
+                throw new NamedError('MissingNpmIgnoreFile',
+                    'Missing .npmignore file. The following patterns are required in for code signing: *.tgz, *.sig, package.json.bak.');
             }
 
             if (!_.includes(content, pattern)) {
-                throw new NamedError(`MissingNpmIgnorePattern`,
+                throw new NamedError('MissingNpmIgnorePattern',
                     `.npmignore is missing ${pattern}. The following patterns are required for code signing: *.tgz, *.sig, package.json.bak`);
             }
         };
-        validate("*.tgz");
-        validate("*.sig");
-        validate("package.json.bak");
+        validate('*.tgz');
+        validate('*.sig');
+        validate('package.json.bak');
     },
 
     /**
@@ -286,12 +286,12 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
             api.validate(args);
 
             // validate npm ignore has what we name.
-            let filename = ".npmignore";
+            let filename = '.npmignore';
             const npmIgnoreContent = await api.retrieveIgnoreFile(filename);
             api.validateNpmIgnorePatterns(npmIgnoreContent);
 
             // Recommend updating git ignore to match npmignore.
-            filename = ".gitignore";
+            filename = '.gitignore';
             const gitIgnoreContent = await api.retrieveIgnoreFile(filename);
             try {
                 api.validateNpmIgnorePatterns(gitIgnoreContent);
@@ -312,18 +312,18 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
             console.log(`Backed up ${PACKAGE_DOT_JSON_PATH} to ${PACKAGE_DOT_JSON_PATH_BAK}`);
 
             // update the package.json object with the signature urls and write it to disk.
-            const sigUrl = `${args.signatureUrl}${_.endsWith(args.signatureUrl, "/") ? "" : "/"}${sigFilename}`;
+            const sigUrl = `${args.signatureUrl}${_.endsWith(args.signatureUrl, '/') ? '' : '/'}${sigFilename}`;
             packageJson = _.merge(packageJson, { sfdx: { publicKeyUrl: args.publicKeyUrl, signatureUrl: `${sigUrl}` } });
             await api.writePackageJson(packageJson);
 
-            console.log("Successfully updated package.json with public key and signature file locations.");
+            console.log('Successfully updated package.json with public key and signature file locations.');
 
             // create the tgz file
             const filepath = await api.pack();
 
             // create the signature file
             const signature = await api.retrieveSignature(
-                createReadStream(filepath, { encoding: "binary" }), createReadStream(args.privateKeyPath));
+                createReadStream(filepath, { encoding: 'binary' }), createReadStream(args.privateKeyPath));
 
             if (signature && signature.length > 0) {
 
@@ -334,7 +334,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
 
                 // verify the signature with the public key url
                 const verified = await api.verify(
-                    createReadStream(filepath, { encoding: "binary" }),
+                    createReadStream(filepath, { encoding: 'binary' }),
                     createReadStream(pathJoin(process.cwd(), sigFilename)),
                     args.publicKeyUrl);
 
@@ -342,10 +342,10 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
                     console.log(`Successfully verified signature with public key at: ${args.publicKeyUrl}`);
                     return verified;
                 } else {
-                    throw new NamedError("FailedToVerifySignature", `Failed to verify signature with tar gz content`);
+                    throw new NamedError('FailedToVerifySignature', 'Failed to verify signature with tar gz content');
                 }
             } else {
-                throw new NamedError("EmptySignature", "The generated signature is empty. Verify the private key and try again");
+                throw new NamedError('EmptySignature', 'The generated signature is empty. Verify the private key and try again');
             }
         } catch (e) {
             console.error(`ERROR: ${e.message}`);
@@ -355,7 +355,7 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
         } finally {
             // Restore the package.json file so it doesn't show a git diff.
             if (packageDotJsonBackedUp) {
-                console.log(`Restoring package.json`);
+                console.log('Restoring package.json');
                 await api.copyPackageDotJson(PACKAGE_DOT_JSON_PATH_BAK, PACKAGE_DOT_JSON_PATH);
                 await removeFileAsync(PACKAGE_DOT_JSON_PATH_BAK);
             }

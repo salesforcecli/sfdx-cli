@@ -1,11 +1,11 @@
-import { Config } from "cli-engine-config";
-import * as Debug from "debug";
-import * as path from "path";
-import timedHook from "./timedHook";
+import { Config } from 'cli-engine-config';
+import * as Debug from 'debug';
+import * as path from 'path';
+import timedHook from './timedHook';
 
-import * as cp from "child_process";
+import * as cp from 'child_process';
 
-const debug = Debug("sfdx:analytics");
+const debug = Debug('sfdx:analytics');
 
 function run(config: Config, opts: any) {
     try {
@@ -14,20 +14,20 @@ function run(config: Config, opts: any) {
 
         // Only log usage for commands with plugins
         if (command && command.plugin) {
-            process.on("exit", () => {
-                cp.fork(path.join(__dirname, "../processes/logUsage"), [], { execArgv: [] }).send({
+            process.on('exit', () => {
+                cp.fork(path.join(__dirname, '../processes/logUsage'), [], { execArgv: [] }).send({
                     config,
                     plugin: command.plugin,
                     commandId: command.id,
-                    time: Date.now() - start,
+                    time: Date.now() - start
                 });
             });
         } else {
-            debug("no plugin found for analytics");
+            debug('no plugin found for analytics');
         }
     } catch (err) {
         debug(`error tracking usage: ${err.message}`);
     }
 }
 
-export = timedHook("analytics", run);
+export = timedHook('analytics', run);
