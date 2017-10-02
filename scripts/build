@@ -95,25 +95,30 @@ else
   cat << EOF > $WORKSPACE/bin/$BIN
 #!/usr/bin/env bash
 set -e
+DEV_FLAGS=()
 NODE_FLAGS=()
 CLI_ARGS=()
 while [[ \$# -gt 0 ]]; do
 key="\$1"
 case \$key in
   --dev-suspend)
+    DEV_FLAGS+=("\$key")
     NODE_FLAGS+=("--inspect-brk")
     shift
   ;;
   --dev-profile)
+    DEV_FLAGS+=("\$key")
     NODE_FLAGS+=("--prof")
     shift
   ;;
   --dev-debug)
+    DEV_FLAGS+=("\$key")
     export SFDX_DEBUG=1
     export DEBUG=\\*
     shift
   ;;
   --dev-config)
+    DEV_FLAGS+=("\$key")
     export CLI_ENGINE_SHOW_CONFIG=1
     shift
   ;;
@@ -141,9 +146,9 @@ CLI_HOME=\$(cd && pwd)
 XDG_DATA_HOME=\${XDG_DATA_HOME:="\$CLI_HOME/.local/share"}
 BIN_DIR="\$XDG_DATA_HOME/$BIN/client/bin"
 if [ -x "\$BIN_DIR/$BIN" ] && [ ! "\$BIN_DIR" -ef "\$DIR" ]; then
-  "\$XDG_DATA_HOME/$BIN/client/bin/$BIN" "\${CLI_ARGS[@]}"
+  "\$XDG_DATA_HOME/$BIN/client/bin/$BIN" "\${DEV_FLAGS[@]}" "\${CLI_ARGS[@]}"
 else
-  CLI_BINPATH="\$DIR/$BIN" "\$DIR/node" "\$DIR/$BIN.js" "\${CLI_ARGS[@]}"
+  CLI_BINPATH="\$DIR/$BIN" "\$DIR/node" "\${NODE_FLAGS[@]}" "\$DIR/$BIN.js" "\${CLI_ARGS[@]}"
 fi
 EOF
 chmod +x $WORKSPACE/bin/$BIN
