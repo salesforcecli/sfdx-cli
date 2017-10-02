@@ -36,9 +36,6 @@ describe('plugins:parse hook', () => {
 
         // root command gets ns mapped as a root topic
         expect((rootCommand as any).topic).to.equal('root');
-        // 'main' topics (e.g. not root and no command name) get removed (as they were used for ad hoc
-        // help gen in v5 that v6 now provides)
-        expect(module.commands.filter((c: any) => !c.command && !c.namespace).length).to.be.equal(0);
         // normal command gets its topic prefixed with the root ns
         expect(normalCommand.topic).to.equal('root:topic');
 
