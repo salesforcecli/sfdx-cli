@@ -629,7 +629,7 @@ cli-table@^0.3.1:
   dependencies:
     colors "1.0.3"
 
-cli-ux@^1.0.1, cli-ux@^1.1.10, cli-ux@^1.1.11:
+cli-ux@^1.0.1, cli-ux@^1.1.10:
   version "1.1.13"
   resolved "http://10.252.156.164:4876/cli-ux/-/886fe08daaee9d246489a74d468e1f7a33ec3878.tgz#886fe08daaee9d246489a74d468e1f7a33ec3878"
   dependencies:
