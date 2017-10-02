@@ -14,12 +14,13 @@ function run(config: Config, opts: any) {
 
         // Only log usage for commands with plugins
         if (command && command.plugin) {
-            process.on('exit', () => {
+            process.on('exit', (status) => {
                 cp.fork(path.join(__dirname, '../processes/logUsage'), [], { execArgv: [] }).send({
                     config,
-                    plugin: command.plugin,
+                    plugin: command.plugin ? { name: command.plugin.name, version: command.plugin.version } : undefined,
                     commandId: command.id,
-                    time: Date.now() - start
+                    time: Date.now() - start,
+                    status
                 });
             });
         } else {

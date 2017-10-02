@@ -15,6 +15,7 @@ interface AnalyticsJSONCommand {
     language: string;
     valid: true;
     runtime: number;
+    status: number;
 }
 
 interface AnalyticsJSON {
@@ -33,7 +34,7 @@ export default class AnalyticsCommand {
         return path.join(this.config.cacheDir as string, 'analytics.json');
     }
 
-    public async record(plugin: any, commandId: string, runtime: number): Promise<void> {
+    public async record(plugin: any, commandId: string, runtime: number, status: number): Promise<void> {
         if (!plugin) {
             return;
         }
@@ -49,7 +50,8 @@ export default class AnalyticsCommand {
             shell: this.config.shell,
             valid: true,
             version: this.config.version,
-            runtime
+            runtime,
+            status
         });
 
         await this.writeJSON(analyticsJSON);
@@ -61,7 +63,7 @@ export default class AnalyticsCommand {
 
     public async readJSON(): Promise<AnalyticsJSON> {
         try {
-            const analytics = await fs.readJson(this.analyticsPath);
+            const analytics = await fs.readJSON(this.analyticsPath);
             analytics.commands = analytics.commands || [];
             return analytics;
         } catch (err) {

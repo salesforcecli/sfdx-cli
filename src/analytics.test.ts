@@ -31,7 +31,8 @@ function analyticsJson() {
                 shell: 'fish',
                 language: 'node',
                 valid: true,
-                runtime: 20
+                runtime: 20,
+                status: 0
             }
         ]
     };
@@ -74,7 +75,7 @@ describe('analytics', () => {
         it('does not record if no plugin', async () => {
             const command = build();
             const stub = sandbox.stub(fs, 'outputJson');
-            await command.record(undefined, '', 0);
+            await command.record(undefined, '', 0, 0);
 
             expect(stub.called).to.equal(false);
         });
@@ -93,14 +94,15 @@ describe('analytics', () => {
                 valid: true,
                 version: '1.2.3',
                 language: 'node',
-                runtime: 13
+                runtime: 13,
+                status: 0
             });
 
             const command = build({}, { json });
             await command.record({
                 name: 'fuzz',
                 version: '9.8.7'
-            }, 'fuzz:fuzz', 13);
+            }, 'fuzz:fuzz', 13, 0);
             expect(stub.getCall(0).args[1]).to.eql(expected);
         });
     });
