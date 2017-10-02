@@ -5,7 +5,8 @@ function run(config: any, { module }: any) {
         const ns = module.namespace.name;
 
         module.commands = convertFromV5Commands(module.commands, ns);
-        module.topics = convertFromV5Topics(module.topics, ns, module.namespace.description);
+        const topics = module.topics || (module.topic && [module.topic]);
+        module.topics = convertFromV5Topics(topics, ns, module.namespace.description);
 
         delete module.namespace;
     }

@@ -42,6 +42,41 @@ describe('plugins:parse hook', () => {
         // normal command gets its topic prefixed with the root ns
         expect(normalCommand.topic).to.equal('root:topic');
 
+        expect(module.topics).to.exist;
+        expect(module.topics.length).to.equal(2);
+        expect(module.topics[0].name).to.equal('root');
+        expect(module.topics[1].name).to.equal('root:topic');
+
+        // legacy namespace is removed from the massaged module
+        expect(module.namespace).to.be.undefined;
+    });
+
+    it('should support a module with only a single topic', () => {
+        const normalCommand = {
+            topic: 'topic',
+            command: 'command'
+        };
+
+        const module: any = {
+            namespace: {
+                name: 'root'
+            },
+            commands: [normalCommand],
+            topic: {
+                name: 'topic'
+            }
+        };
+
+        hook({}, {module});
+
+        // normal command gets its topic prefixed with the root ns
+        expect(normalCommand.topic).to.equal('root:topic');
+
+        expect(module.topics).to.exist;
+        expect(module.topics.length).to.equal(2);
+        expect(module.topics[0].name).to.equal('root');
+        expect(module.topics[1].name).to.equal('root:topic');
+
         // legacy namespace is removed from the massaged module
         expect(module.namespace).to.be.undefined;
     });
