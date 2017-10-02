@@ -557,7 +557,7 @@ cli-cursor@^2.1.0:
   dependencies:
     restore-cursor "^2.0.0"
 
-cli-engine-command@8.0.15, cli-engine-command@^8.0.15:
+cli-engine-command@8.0.15:
   version "8.0.15"
   resolved "http://10.252.156.164:4876/cli-engine-command/-/44a6ae79c740d800f474ab9e0601132b300d1d47.tgz#44a6ae79c740d800f474ab9e0601132b300d1d47"
   dependencies:
@@ -567,6 +567,22 @@ cli-engine-command@8.0.15, cli-engine-command@^8.0.15:
     chalk "^2.1.0"
     cli-ux "^1.0.1"
     fs-extra "^4.0.1"
+    http-call "^3.0.2"
+    lodash.maxby "^4.6.0"
+    moment "^2.18.1"
+    string "3.x"
+    supports-color "^4.4.0"
+
+cli-engine-command@^8.0.18:
+  version "8.0.18"
+  resolved "http://10.252.156.164:4876/cli-engine-command/-/032ca59f4975ff770a018bdbed7d6ed5950a3a83.tgz#032ca59f4975ff770a018bdbed7d6ed5950a3a83"
+  dependencies:
+    "@heroku/linewrap" "^1.0.0"
+    ansi-escapes "^3.0.0"
+    cardinal "1.x"
+    chalk "^2.1.0"
+    cli-ux "^1.1.11"
+    fs-extra "^4.0.2"
     http-call "^3.0.2"
     lodash.maxby "^4.6.0"
     moment "^2.18.1"
@@ -590,16 +606,16 @@ cli-engine-heroku@4.1.0:
     http-call "^3.0.2"
     netrc-parser "^2.0.3"
 
-cli-engine@4.6.6:
-  version "4.6.6"
-  resolved "http://10.252.156.164:4876/cli-engine/-/ff4f61957fc6580488a868f7022ef246c8cdbc05.tgz#ff4f61957fc6580488a868f7022ef246c8cdbc05"
+cli-engine@4.6.11:
+  version "4.6.11"
+  resolved "http://10.252.156.164:4876/cli-engine/-/ca77ccbd8de4db1f6dac8f783c9e18ecd0373507.tgz#ca77ccbd8de4db1f6dac8f783c9e18ecd0373507"
   dependencies:
     "@heroku/linewrap" "^1.0.0"
     ansi-escapes "^3.0.0"
-    cli-engine-command "^8.0.15"
+    cli-engine-command "^8.0.18"
     cli-engine-config "^3.3.1"
-    cli-ux "^1.1.10"
-    debug "^3.0.1"
+    cli-ux "^1.1.13"
+    debug "^3.1.0"
     filesize "^3.5.10"
     find-up "^2.1.0"
     fs-extra "^4.0.2"
@@ -629,7 +645,7 @@ cli-table@^0.3.1:
   dependencies:
     colors "1.0.3"
 
-cli-ux@^1.0.1, cli-ux@^1.1.10:
+cli-ux@^1.0.1, cli-ux@^1.1.11, cli-ux@^1.1.13:
   version "1.1.13"
   resolved "http://10.252.156.164:4876/cli-ux/-/886fe08daaee9d246489a74d468e1f7a33ec3878.tgz#886fe08daaee9d246489a74d468e1f7a33ec3878"
   dependencies:
@@ -984,7 +1000,7 @@ debug@^2.0.0, debug@^2.1.0, debug@^2.1.1:
   dependencies:
     ms "2.0.0"
 
-debug@^3.0.0, debug@^3.0.1:
+debug@^3.0.0, debug@^3.0.1, debug@^3.1.0:
   version "3.1.0"
   resolved "http://10.252.156.164:4876/debug/-/5bb5a0672628b64149566ba16819e61518c67261.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
@@ -1602,7 +1618,7 @@ fs-extra@1.0.0:
     jsonfile "^2.1.0"
     klaw "^1.0.0"
 
-fs-extra@^4.0.1, fs-extra@^4.0.2:
+fs-extra@4.0.2, fs-extra@^4.0.1, fs-extra@^4.0.2:
   version "4.0.2"
   resolved "http://10.252.156.164:4876/fs-extra/-/f91704c53d1b461f893452b0c307d9997647ab6b.tgz#f91704c53d1b461f893452b0c307d9997647ab6b"
   dependencies:
