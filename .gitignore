@@ -3,6 +3,7 @@ dist/
 *.tgz
 *.sig
 npm-debug.log
+yarn-error.log
 .npm
 .idea
 .DS_Store
