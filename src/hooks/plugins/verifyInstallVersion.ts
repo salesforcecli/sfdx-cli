@@ -14,17 +14,11 @@ const MIN_VERSION = '41.2.0';
  * if it is recognized as a force namespace plugin.
  */
 async function run(config: Config, {plugin, tag}: {plugin: string, tag: string}) {
-    if (FORCE_PLUGINS.includes(plugin) && tag) {
-        if (!isVersion(tag)) {
-            // Allow any tag (or the absence of a tag, which defaults to 'latest')
-            return;
-        }
-        if (compareVersions(tag, MIN_VERSION) < 0) {
-            throw new Error(
-                `The ${plugin} plugin can only be installed using a specific version when ` +
-                `the version is greater than or equal to ${MIN_VERSION}.`
-            );
-        }
+    if (FORCE_PLUGINS.includes(plugin) && isVersion(tag) && compareVersions(tag, MIN_VERSION) < 0) {
+        throw new Error(
+            `The ${plugin} plugin can only be installed using a specific version when ` +
+            `the version is greater than or equal to ${MIN_VERSION}.`
+        );
     }
 }
 
