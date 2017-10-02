@@ -1,4 +1,7 @@
-function init(config: any, { argv }: { argv: string[] }) {
+import { Config } from "cli-engine-config";
+import timedHook from "./timedHook";
+
+function init(config: Config, { argv }: { argv: string[] }) {
 }
 
-export = init;
+export = timedHook("init", init);

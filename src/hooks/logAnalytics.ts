@@ -1,11 +1,13 @@
-
 import { Config } from "cli-engine-config";
-import * as debug from "debug";
+import * as Debug from "debug";
 import * as path from "path";
+import timedHook from "./timedHook";
 
 import * as cp from "child_process";
 
-async function run(config: Config, opts: any) {
+const debug = Debug("sfdx:analytics");
+
+function run(config: Config, opts: any) {
     try {
         const start = Date.now();
         const command = opts.Command;
@@ -21,11 +23,11 @@ async function run(config: Config, opts: any) {
                 });
             });
         } else {
-            debug("sfdx:analytics")("no plugin found for analytics");
+            debug("no plugin found for analytics");
         }
     } catch (err) {
-        debug("sfdx:analytics")(`error tracking usage: ${err.message}`);
+        debug(`error tracking usage: ${err.message}`);
     }
 }
 
-module.exports = run;
+export = timedHook("analytics", run);
