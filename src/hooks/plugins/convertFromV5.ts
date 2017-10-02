@@ -18,14 +18,9 @@ function convertFromV5Commands(commands: any[] = [], ns: string) {
                 cmd.topic = ns;
                 return cmd;
             }
-            if (!cmd.command) {
-                // Prune commands mapped to a topic, as v6 handles all help
-                return null;
-            }
             cmd.topic = applyNamespace(cmd.topic, ns);
             return cmd;
-        })
-        .filter((cmd: any) => cmd !== null);
+        });
 }
 
 function convertFromV5Topics(topics: any[] = [], ns: string, nsDescription: string) {
