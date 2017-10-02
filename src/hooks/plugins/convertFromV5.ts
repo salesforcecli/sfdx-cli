@@ -1,4 +1,4 @@
-import timedHook from "../timedHook";
+import timedHook from '../timedHook';
 
 function run(config: any, { module }: any) {
     if (module.namespace) {
@@ -32,7 +32,7 @@ function convertFromV5Topics(topics: any[] = [], ns: string, nsDescription: stri
     return [{
         description: nsDescription,
         hidden: false,
-        name: ns,
+        name: ns
     }].concat(topics.map((topic: any) => {
         topic.name = applyNamespace(topic.name, ns);
         return topic;
@@ -40,11 +40,11 @@ function convertFromV5Topics(topics: any[] = [], ns: string, nsDescription: stri
 }
 
 function hasNamespace(name: string, ns: string) {
-    return name && name.indexOf(ns + ":") === 0;
+    return name && name.indexOf(ns + ':') === 0;
 }
 
 function applyNamespace(name: string, ns: string) {
     return !hasNamespace(name, ns) ? `${ns}:${name}` : name;
 }
 
-export = timedHook("plugins:parse:legacy", run);
+export = timedHook('plugins:parse:legacy', run);

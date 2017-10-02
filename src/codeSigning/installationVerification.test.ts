@@ -1,14 +1,14 @@
-import * as _ from "lodash";
-import * as child_process from "child_process";
-import * as sinon from "sinon";
-import * as events from "events";
-import { Readable, Writable } from "stream";
-import * as fs from "fs";
-import * as request from "request" ;
-import { TEST_DATA, TEST_DATA_SIGNATURE, CERTIFICATE } from "./testCert";
-import * as https from "https";
-import { SALESFORCE_CERT_FINGERPRINT } from "./codeSignApi";
-import { expect } from "chai";
+import * as _ from 'lodash';
+import * as child_process from 'child_process';
+import * as sinon from 'sinon';
+import * as events from 'events';
+import { Readable, Writable } from 'stream';
+import * as fs from 'fs';
+import * as request from 'request' ;
+import { TEST_DATA, TEST_DATA_SIGNATURE, CERTIFICATE } from './testCert';
+import * as https from 'https';
+import { SALESFORCE_CERT_FINGERPRINT } from './codeSignApi';
+import { expect } from 'chai';
 
 let iv: any;
 
@@ -60,7 +60,7 @@ class HttpRequestMock {
 
     public get(url: any) {
         let response: Readable = new Readable();
-        if (_.includes(url.path, "cert")) {
+        if (_.includes(url.path, 'cert')) {
             response = new Readable({
                 read() {
                     this.push(CERTIFICATE);
@@ -69,7 +69,7 @@ class HttpRequestMock {
             });
         }
 
-        if (_.includes(url.path, "sig")) {
+        if (_.includes(url.path, 'sig')) {
             response = new Readable({
                 read() {
                     this.push(TEST_DATA_SIGNATURE);
@@ -79,21 +79,21 @@ class HttpRequestMock {
         }
 
         // Assume successful response
-        _.set(response, "statusCode", 200);
+        _.set(response, 'statusCode', 200);
 
         // unless statusCodeCallback is specified then ask the test to supply for a given url;
         if (this._statusCodeCallback) {
             const responseStatusCode = this._statusCodeCallback();
             if (_.includes(responseStatusCode.url, url.path)) {
-                _.set(response, "statusCode", responseStatusCode.code);
+                _.set(response, 'statusCode', responseStatusCode.code);
             }
         }
         const _request = new events.EventEmitter();
         process.nextTick(() => {
             const _socket = new SocketEmitter();
-            _request.emit("socket", _socket);
-            _socket.emit("secureConnect");
-            _request.emit("response", response);
+            _request.emit('socket', _socket);
+            _socket.emit('secureConnect');
+            _request.emit('response', response);
         });
 
         return _request;
@@ -103,11 +103,11 @@ class HttpRequestMock {
 const YARN_META = {
     data: {
         dist: {
-            tarball: "https://example.com/tarball"
+            tarball: 'https://example.com/tarball'
         },
         sfdx: {
-            publicKeyUrl: "https://salesforce.com/cert",
-            signatureUrl: "https://salesforce.com/sig"
+            publicKeyUrl: 'https://salesforce.com/cert',
+            signatureUrl: 'https://salesforce.com/sig'
         }
     }
 };
@@ -119,38 +119,38 @@ const getYarnSuccess = (yarnEmitter: YarnEmitter) => {
             this.push(null);
 
             process.nextTick(() => {
-                yarnEmitter.emit("close", 0);
+                yarnEmitter.emit('close', 0);
             });
         }
     });
 };
 
-describe("InstallationVerification Tests", () => {
+describe('InstallationVerification Tests', () => {
     let sandbox: any;
 
     const config = {};
-    _.set(config, "__cache.dir:data", "dataPath");
-    _.set(config, "__cache.dir:cache", "cachePath");
+    _.set(config, '__cache.dir:data', 'dataPath');
+    _.set(config, '__cache.dir:cache', 'cachePath');
 
-    const plugin = "foo";
+    const plugin = 'foo';
 
     let yarnEmitter = new YarnEmitter();
     const httpMock: HttpRequestMock = new HttpRequestMock();
 
     before(() => {
         sandbox = sinon.sandbox.create();
-        sandbox.stub(child_process, "fork").callsFake(() => {
+        sandbox.stub(child_process, 'fork').callsFake(() => {
             return yarnEmitter;
          });
 
-        sandbox.stub(https, "get").callsFake((url: string) => {
+        sandbox.stub(https, 'get').callsFake((url: string) => {
             return httpMock.get(url);
         });
 
-        sandbox.stub(fs, "createReadStream").callsFake((path: string) => {
+        sandbox.stub(fs, 'createReadStream').callsFake((path: string) => {
             return new Readable({
                 read() {
-                    if (_.includes(path, "tarball")) {
+                    if (_.includes(path, 'tarball')) {
                         this.push(TEST_DATA);
                     }
                     this.push(null);
@@ -158,26 +158,26 @@ describe("InstallationVerification Tests", () => {
             });
         });
 
-        sandbox.stub(fs, "createWriteStream").callsFake(() => {
+        sandbox.stub(fs, 'createWriteStream').callsFake(() => {
             return new Writable({
                 write() {}
             });
         });
 
-        sandbox.stub(fs, "open").callsFake(() => {
+        sandbox.stub(fs, 'open').callsFake(() => {
             return 5;
         });
 
-        sandbox.stub(request, "get").callsFake(() => {});
+        sandbox.stub(request, 'get').callsFake(() => {});
 
-        iv = require("./installationVerification");
+        iv = require('./installationVerification');
     });
 
     after(() => {
         sandbox.restore();
     });
 
-    it("Steel thread test", async () => {
+    it('Steel thread test', async () => {
         yarnEmitter.stdout = getYarnSuccess(yarnEmitter);
 
         const verification = new iv.InstallationVerification()
@@ -185,18 +185,18 @@ describe("InstallationVerification Tests", () => {
 
         return verification.verify()
             .then((meta: any) => {
-                expect(meta).to.have.property("verified", true);
+                expect(meta).to.have.property('verified', true);
             });
     });
 
-    it("Read tarball stream failed", () => {
-        const ERROR = "Ok, who brought the dog? - Louis Tully";
+    it('Read tarball stream failed', () => {
+        const ERROR = 'Ok, who brought the dog? - Louis Tully';
         yarnEmitter.stderr = new Readable({
             read() {
                 this.push(ERROR);
                 this.push(null);
                 process.nextTick(() => {
-                    yarnEmitter.emit("close", 1);
+                    yarnEmitter.emit('close', 1);
                 });
             }
         });
@@ -206,14 +206,14 @@ describe("InstallationVerification Tests", () => {
 
         return verification.verify()
             .then(() => {
-                throw new Error("This shouldn't happen. Failure expected");
+                throw new Error('This shouldn\'t happen. Failure expected');
             })
             .catch((err: Error) => {
-                expect(err).to.have.property("message", ERROR);
+                expect(err).to.have.property('message', ERROR);
             });
     });
 
-    it ("404 for public key", () => {
+    it ('404 for public key', () => {
 
         yarnEmitter = new YarnEmitter();
         yarnEmitter.stdout = getYarnSuccess(yarnEmitter);
@@ -226,16 +226,16 @@ describe("InstallationVerification Tests", () => {
 
         return verification.verify()
             .then(() => {
-                throw new Error("This shouldn't happen. Failure expected");
+                throw new Error('This shouldn\'t happen. Failure expected');
             })
             .catch((err: Error) => {
-                expect(err).to.have.property("name", "RetrieveFailed");
-                expect(err.message).to.include("404");
-                expect(err.message).to.include("cert");
+                expect(err).to.have.property('name', 'RetrieveFailed');
+                expect(err.message).to.include('404');
+                expect(err.message).to.include('cert');
             });
     });
 
-    it ("500 for signature", () => {
+    it ('500 for signature', () => {
 
         yarnEmitter = new YarnEmitter();
         yarnEmitter.stdout = getYarnSuccess(yarnEmitter);
@@ -248,18 +248,18 @@ describe("InstallationVerification Tests", () => {
 
         return verification.verify()
             .then(() => {
-                throw new Error("This shouldn't happen. Failure expected");
+                throw new Error('This shouldn\'t happen. Failure expected');
             })
             .catch((err: Error) => {
-                expect(err).to.have.property("name", "RetrieveFailed");
-                expect(err.message).to.include("500");
-                expect(err.message).to.include("sig");
+                expect(err).to.have.property('name', 'RetrieveFailed');
+                expect(err.message).to.include('500');
+                expect(err.message).to.include('sig');
             });
     });
 
-    describe("doInstallationCodeSigningVerification", () => {
-        it ("valid signature", async () => {
-            let message = "";
+    describe('doInstallationCodeSigningVerification', () => {
+        it ('valid signature', async () => {
+            let message = '';
             const vConfig = new iv.VerificationConfig();
             vConfig.verifier = {
                 async verify() {
@@ -274,11 +274,11 @@ describe("InstallationVerification Tests", () => {
             };
 
             await iv.doInstallationCodeSigningVerification({}, {}, vConfig);
-            expect(message).to.include("Successfully");
-            expect(message).to.include("digital signature");
+            expect(message).to.include('Successfully');
+            expect(message).to.include('digital signature');
         });
 
-        it ("FailedDigitalSignatureVerification", () => {
+        it ('FailedDigitalSignatureVerification', () => {
             const vConfig = new iv.VerificationConfig();
             vConfig.verifier = {
                 async verify() {
@@ -289,45 +289,45 @@ describe("InstallationVerification Tests", () => {
             };
 
             return iv.doInstallationCodeSigningVerification({}, {}, vConfig).catch((err) => {
-                expect(err).to.have.property("name", "FailedDigitalSignatureVerification");
+                expect(err).to.have.property('name', 'FailedDigitalSignatureVerification');
             });
         });
 
-        it ("Canceled by user", () => {
+        it ('Canceled by user', () => {
             const vConfig = new iv.VerificationConfig();
             vConfig.verifier = {
                 async verify() {
                     const err = new Error();
-                    err.name = "NotSigned";
+                    err.name = 'NotSigned';
                     throw err;
                 }
             };
 
             vConfig.prompt = async () => {
-                return "N";
+                return 'N';
             };
 
             return iv.doInstallationCodeSigningVerification({}, {}, vConfig)
                 .then(() => {
-                    throw new Error("Failure: This should never happen");
+                    throw new Error('Failure: This should never happen');
                 })
                 .catch((err) => {
-                    expect(err).to.have.property("name", "CanceledByUser");
+                    expect(err).to.have.property('name', 'CanceledByUser');
                 });
         });
 
-        it ("continue installation", () => {
+        it ('continue installation', () => {
             const vConfig = new iv.VerificationConfig();
             vConfig.verifier = {
                 async verify() {
                     const err = new Error();
-                    err.name = "InvalidSalesforceDomain";
+                    err.name = 'InvalidSalesforceDomain';
                     throw err;
                 }
             };
 
             vConfig.prompt = async () => {
-                return "Y";
+                return 'Y';
             };
 
             return iv.doInstallationCodeSigningVerification({}, {}, vConfig)

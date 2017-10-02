@@ -1,21 +1,21 @@
-import * as fs from "fs";
-import * as path from "path";
-import { parse as urlParse } from "url";
-import _ = require("lodash");
-import { fork } from "child_process";
-import request = require("request");
-import { Readable, Writable } from "stream";
+import * as fs from 'fs';
+import * as path from 'path';
+import { parse as urlParse } from 'url';
+import _ = require('lodash');
+import { fork } from 'child_process';
+import request = require('request');
+import { Readable, Writable } from 'stream';
 
 import {
     CodeVerifierInfo,
     validateRequestCert,
     validSalesforceDomain,
     verify
-} from "./codeSignApi";
+} from './codeSignApi';
 
-import { NamedError, InvalidSalesforceDomain, UnauthorizedSslConnection } from "../util/NamedError";
-import { get as httpsGet } from "https";
-import { EOL } from "os";
+import { NamedError, InvalidSalesforceDomain, UnauthorizedSslConnection } from '../util/NamedError';
+import { get as httpsGet } from 'https';
+import { EOL } from 'os';
 
 /**
  * simple data structure representing the discovered meta information needed for signing,
@@ -47,7 +47,7 @@ export class InstallationVerification {
             this.config = _config;
             return this;
         }
-        throw new Error("the cli engine config cannot be null");
+        throw new Error('the cli engine config cannot be null');
     }
 
     /**
@@ -59,7 +59,7 @@ export class InstallationVerification {
             this.pluginName = _pluginName;
             return this;
         }
-        throw new Error("pluginName cannot be nll");
+        throw new Error('pluginName cannot be nll');
     }
 
     /**
@@ -68,7 +68,7 @@ export class InstallationVerification {
     public async verify(): Promise<NpmMeta> {
         const npmMeta = await this.streamTagGz();
         const info = new CodeVerifierInfo();
-        info.dataToVerify = fs.createReadStream(npmMeta.tarballLocalPath, {encoding: "binary"});
+        info.dataToVerify = fs.createReadStream(npmMeta.tarballLocalPath, {encoding: 'binary'});
 
         const signatureReq = httpsGet(this.getHttpOptions(npmMeta.signatureUrl));
         validateRequestCert(signatureReq, npmMeta.signatureUrl);
@@ -107,15 +107,15 @@ export class InstallationVerification {
      */
     private retrieveUrlContent(req: any, _url: string): Promise<Readable> {
         return new Promise((resolve, reject) => {
-            req.on("response", (resp: any) => {
+            req.on('response', (resp: any) => {
                 if (resp && resp.statusCode === 200) {
                     resolve(resp);
                 } else {
-                    reject(new NamedError("RetrieveFailed", `Failed to retrieve content at ${_url} error code: ${resp.statusCode}.`));
+                    reject(new NamedError('RetrieveFailed', `Failed to retrieve content at ${_url} error code: ${resp.statusCode}.`));
                 }
             });
-            req.on("error", (err) => {
-                if (err.code === "DEPTH_ZERO_SELF_SIGNED_CERT") {
+            req.on('error', (err) => {
+                if (err.code === 'DEPTH_ZERO_SELF_SIGNED_CERT') {
                     throw new UnauthorizedSslConnection(_url);
                 }
                 throw err;
@@ -124,19 +124,19 @@ export class InstallationVerification {
     }
 
     private getDataPath(): string {
-        return _.get(this.config, "__cache.dir:data");
+        return _.get(this.config, '__cache.dir:data');
     }
 
     private getCachePath(): string {
-        return _.get(this.config, "__cache.dir:cache");
+        return _.get(this.config, '__cache.dir:cache');
     }
 
     private getYarnPath(): string {
         if (this.config) {
             const dataPath = this.getDataPath();
-            return path.join(dataPath, "client", "node_modules", "cli-engine", "yarn", "yarn.js" );
+            return path.join(dataPath, 'client', 'node_modules', 'cli-engine', 'yarn', 'yarn.js' );
         } else {
-            throw new Error("Please specify the cliEngine Config");
+            throw new Error('Please specify the cliEngine Config');
         }
     }
 
@@ -145,40 +145,40 @@ export class InstallationVerification {
      */
     private async retrieveNpmMeta(): Promise<NpmMeta> {
         return new Promise<NpmMeta>((resolve, reject) => {
-            // console.log("@TODO - support proxies");
-            // console.log("@TODO - https thumbprints");
+            // console.log('@TODO - support proxies');
+            // console.log('@TODO - https thumbprints');
             const yarnPath = this.getYarnPath();
 
             const options = {
                 env: process.env,
                 // Silly debug port is required for the node process.
                 execArgv: [],
-                stdio: [null, null, null, "ipc"]
+                stdio: [null, null, null, 'ipc']
             };
-            const yarnFork = fork(yarnPath, ["info", this.pluginName, "--json", "--non-interactive"], options);
+            const yarnFork = fork(yarnPath, ['info', this.pluginName, '--json', '--non-interactive'], options);
 
-            yarnFork.stdout.setEncoding("utf8");
-            yarnFork.stderr.setEncoding("utf8");
+            yarnFork.stdout.setEncoding('utf8');
+            yarnFork.stderr.setEncoding('utf8');
 
-            let jsonContent = "";
-            let errorContent = "";
+            let jsonContent = '';
+            let errorContent = '';
 
-            yarnFork.stdout.on("data", (data) => {
+            yarnFork.stdout.on('data', (data) => {
                 if (data) {
                     jsonContent += data;
                 }
             });
-            yarnFork.stderr.on("data", (data) => {
+            yarnFork.stderr.on('data', (data) => {
                 if (data) {
                     errorContent += data;
                 }
             });
 
-            yarnFork.on("error", (err) => {
+            yarnFork.on('error', (err) => {
                 reject(new Error(`plugins install verification failed with: ${err.name}`));
             });
 
-            yarnFork.on("close", (code) => {
+            yarnFork.on('close', (code) => {
                 if (code === 0) {
 
                     let metadata;
@@ -190,7 +190,7 @@ export class InstallationVerification {
                     const meta = new NpmMeta();
 
                     if (!metadata.data.sfdx) {
-                        reject(new NamedError("NotSigned", "This plugin is not signed by Salesforce.com ,Inc"));
+                        reject(new NamedError('NotSigned', 'This plugin is not signed by Salesforce.com ,Inc'));
                     } else {
 
                         if (!validSalesforceDomain(metadata.data.sfdx.publicKeyUrl)) {
@@ -221,17 +221,17 @@ export class InstallationVerification {
     private async streamTagGz(): Promise<NpmMeta> {
         const npmMeta = await this.retrieveNpmMeta();
         const urlObject: any = urlParse(npmMeta.tarballUrl);
-        const urlPathsAsArray = _.split(urlObject.pathname, "/");
+        const urlPathsAsArray = _.split(urlObject.pathname, '/');
         const fileNameStr: any = _.last(urlPathsAsArray);
         return new Promise<NpmMeta>((resolve, reject) => {
             const cacheFilePath = path.join(this.getCachePath(), fileNameStr);
-            const writeStream = fs.createWriteStream(cacheFilePath, { encoding: "binary" });
+            const writeStream = fs.createWriteStream(cacheFilePath, { encoding: 'binary' });
             const req = request(npmMeta.tarballUrl)
-                .on("end", () => {
+                .on('end', () => {
                     npmMeta.tarballLocalPath = cacheFilePath;
                     resolve(npmMeta);
                 })
-                .on("error", (err) => {
+                .on('error', (err) => {
                     reject(err);
                 })
                 .pipe(writeStream);
@@ -274,18 +274,18 @@ export async function doInstallationCodeSigningVerification(config: any, {plugin
     try {
         const meta = await verificationConfig.verifier.verify();
         if (!meta.verified) {
-            throw new NamedError("FailedDigitalSignatureVerification",
-                "A digital signature is specified for this plugin but it didn't verify against the certificate.");
+            throw new NamedError('FailedDigitalSignatureVerification',
+                'A digital signature is specified for this plugin but it didn\'t verify against the certificate.');
         }
         verificationConfig.log(`Successfully validated digital signature for ${plugin}.${EOL}`);
     } catch (err) {
-        if (err.name === "NotSigned" || err.name === "InvalidSalesforceDomain" ) {
+        if (err.name === 'NotSigned' || err.name === 'InvalidSalesforceDomain' ) {
             const _continue = await verificationConfig.prompt(`This plugin is not provided by salesforce and it's authenticity cannot be verified. Continue y/n?${EOL}`);
             switch (_.toLower(_continue)) {
-                case "y":
+                case 'y':
                     return;
                 default:
-                    throw new NamedError("CanceledByUser", "The plugin installation has been cancel by the user.");
+                    throw new NamedError('CanceledByUser', 'The plugin installation has been cancel by the user.');
             }
         }
         throw err;

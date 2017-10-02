@@ -1,4 +1,4 @@
-declare module "cli-engine-heroku/lib/vars" {
+declare module 'cli-engine-heroku/lib/vars' {
     export class Vars {
         env: typeof process.env
 

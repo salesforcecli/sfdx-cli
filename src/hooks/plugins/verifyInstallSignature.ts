@@ -1,16 +1,16 @@
-import { Config } from "cli-engine-config";
-import * as path from "path";
-import timedHook from "../timedHook";
+import { Config } from 'cli-engine-config';
+import * as path from 'path';
+import timedHook from '../timedHook';
 
 import {
     doInstallationCodeSigningVerification,
     InstallationVerification,
     VerificationConfig
-} from "../../codeSigning/installationVerification";
+} from '../../codeSigning/installationVerification';
 
-import * as cliUtil from "heroku-cli-util";
+import * as cliUtil from 'heroku-cli-util';
 
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 async function run(config: Config, {plugin, tag}: {plugin: string, tag: string}) {
     const vConfig = new VerificationConfig();
@@ -21,4 +21,4 @@ async function run(config: Config, {plugin, tag}: {plugin: string, tag: string})
     await doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
 }
 
-export = timedHook("plugins:preinstall:signing", run);
+export = timedHook('plugins:preinstall:signing', run);
