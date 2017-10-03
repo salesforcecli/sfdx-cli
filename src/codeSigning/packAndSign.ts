@@ -15,7 +15,7 @@ import { parse as parseUrl } from 'url';
 import { Writable, Readable } from 'stream';
 import { join as pathJoin } from 'path';
 import { parse as parsePath } from 'path';
-import { sep as pathSep } from 'path';
+import { sep as pathSep, basename as pathBasename } from 'path';
 
 import * as _ from 'lodash';
 
@@ -73,7 +73,7 @@ A tar.gz and signature file. The signature file will match the name of the tar g
 This file must be hosted at the location specified by --signature.
 
 Usage:
-yarn run packAndSign --signature http://foo.salesforce.internal.com/file/location --publicKeyUrl http://foo.salesforce.internal.com/file/location/sfdx.cert --privateKeyPath $HOME/sfdx.key
+sfdx_sign packAndSign --signature http://foo.salesforce.internal.com/file/location --publicKeyUrl http://foo.salesforce.internal.com/file/location/sfdx.cert --privateKeyPath $HOME/sfdx.key
 `);
     },
 
@@ -365,6 +365,9 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
 };
 
 // We only want to run this code if it's invoked from sfdx_sign
-if (process.argv && process.argv.length > 0 && _.includes(process.argv[1], BIN_NAME)) {
+if (process.argv && process.argv.length > 0 && (_.includes(process.argv[1], BIN_NAME) || _.includes(process.argv[1], pathBasename(process.argv[1])))) {
     (async () => api.doPackAndSign(process.argv))();
+} else {
+    console.log(process.argv);
+    console.log();
 }

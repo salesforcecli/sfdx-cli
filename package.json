@@ -91,6 +91,7 @@
     "downgrade": "scripts/downgrade",
     "kill-updaters": "scripts/kill-updaters",
     "lint": "tslint -p tslint.json",
+    "sfdx_sign": "node dist/codeSigning/packAndSign.js",
     "prepare": "tsc -p tsconfig.json",
     "release-all": "scripts/release-all",
     "scorch-the-earth": "scripts/scorch-the-earth",
