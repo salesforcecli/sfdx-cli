@@ -49,9 +49,9 @@ export class ExecProcessFailed extends NamedError {
     }
 }
 
-export class InvalidSalesforceDomain extends NamedError {
+export class UnexpectedHost extends NamedError {
     constructor(url: string) {
-        super('InvalidSalesforceDomain', 'The url is not Salesforce domain. Salesforce urls must be https and end in salesforce.com.');
+        super('UnexpectedHost', 'The host provided is not allowed to provide signing information.');
     }
 }
 

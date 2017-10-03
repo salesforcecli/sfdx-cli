@@ -3,7 +3,7 @@ import {
     CodeVerifierInfo,
     verify,
     validateRequestCert,
-    validSalesforceDomain,
+    validSalesforceHostname,
     default as sign
 } from './codeSignApi';
 
@@ -14,20 +14,20 @@ import * as events from 'events';
 
 describe('Sign Tests', () => {
 
-    describe('validSalesforceDomain', () => {
+    describe('validSalesforceHostname', () => {
         it ('falsy url', () => {
-            expect(validSalesforceDomain(null)).to.be.equal(false);
+            expect(validSalesforceHostname(null)).to.be.equal(false);
         });
 
         it ('salesforce http url', () => {
-            expect(validSalesforceDomain('http://www.salesforce.com')).to.be.equal(false);
+            expect(validSalesforceHostname('http://developer.salesforce.com')).to.be.equal(false);
         });
 
         it ('salesforce https url', () => {
-            expect(validSalesforceDomain('https://www.salesforce.com')).to.be.equal(true);
+            expect(validSalesforceHostname('https://developer.salesforce.com')).to.be.equal(true);
         });
         it ('jibber', () => {
-            expect(validSalesforceDomain('jj')).to.be.equal(false);
+            expect(validSalesforceHostname('jj')).to.be.equal(false);
         });
     });
 

@@ -33,7 +33,7 @@ import {
     CodeVerifierInfo,
     default as sign,
     validateRequestCert,
-    validSalesforceDomain,
+    validSalesforceHostname,
     verify
 } from '../codeSigning/codeSignApi';
 
@@ -87,8 +87,8 @@ sfdx_sign packAndSign --signature http://foo.salesforce.internal.com/file/locati
             if (!urlObj.host) {
                 throw new InvalidUrlError(url);
             }
-            if (!validSalesforceDomain(url)) {
-                throw new NamedError('NotASalesforceDomain', 'Signing urls must be salesforce.com domains.');
+            if (!validSalesforceHostname(url)) {
+                throw new NamedError('NotASalesforceHost', 'Signing urls must have the hostname developer.salesforce.com.');
             }
         } catch (e) {
             const err = new InvalidUrlError(url);

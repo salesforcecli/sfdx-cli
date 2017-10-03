@@ -9,11 +9,11 @@ import { Readable, Writable } from 'stream';
 import {
     CodeVerifierInfo,
     validateRequestCert,
-    validSalesforceDomain,
+    validSalesforceHostname,
     verify
 } from './codeSignApi';
 
-import { NamedError, InvalidSalesforceDomain, UnauthorizedSslConnection } from '../util/NamedError';
+import { NamedError, UnexpectedHost, UnauthorizedSslConnection } from '../util/NamedError';
 import { get as httpsGet } from 'https';
 import { EOL } from 'os';
 
@@ -193,14 +193,14 @@ export class InstallationVerification {
                         reject(new NamedError('NotSigned', 'This plugin is not signed by Salesforce.com ,Inc'));
                     } else {
 
-                        if (!validSalesforceDomain(metadata.data.sfdx.publicKeyUrl)) {
-                            reject(new InvalidSalesforceDomain(metadata.data.sfdx.publicKeyUrl));
+                        if (!validSalesforceHostname(metadata.data.sfdx.publicKeyUrl)) {
+                            reject(new UnexpectedHost(metadata.data.sfdx.publicKeyUrl));
                         } else {
                             meta.publicKeyUrl = metadata.data.sfdx.publicKeyUrl;
                         }
 
-                        if (!validSalesforceDomain(metadata.data.sfdx.signatureUrl)) {
-                            reject(new InvalidSalesforceDomain(metadata.data.sfdx.signatureUrl));
+                        if (!validSalesforceHostname(metadata.data.sfdx.signatureUrl)) {
+                            reject(new UnexpectedHost(metadata.data.sfdx.signatureUrl));
                         } else {
                             meta.signatureUrl = metadata.data.sfdx.signatureUrl;
                         }
@@ -279,8 +279,8 @@ export async function doInstallationCodeSigningVerification(config: any, {plugin
         }
         verificationConfig.log(`Successfully validated digital signature for ${plugin}.${EOL}`);
     } catch (err) {
-        if (err.name === 'NotSigned' || err.name === 'InvalidSalesforceDomain' ) {
-            const _continue = await verificationConfig.prompt(`This plugin is not provided by salesforce and it's authenticity cannot be verified. Continue y/n?${EOL}`);
+        if (err.name === 'NotSigned' || err.name === 'UnexpectedHost' ) {
+            const _continue = await verificationConfig.prompt(`This plugin is not digitally signed and it's authenticity cannot be verified. Continue Installation y/n?${EOL}`);
             switch (_.toLower(_continue)) {
                 case 'y':
                     return;

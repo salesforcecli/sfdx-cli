@@ -8,15 +8,17 @@ import {
     VerificationConfig
 } from '../../codeSigning/installationVerification';
 
-import * as cliUtil from 'heroku-cli-util';
+import { CLI } from 'cli-ux';
 
 import * as _ from 'lodash';
 
 async function run(config: Config, {plugin, tag}: {plugin: string, tag: string}) {
+    const cliUx = new CLI();
+    cliUx.action.stop();
     const vConfig = new VerificationConfig();
     vConfig.verifier = new InstallationVerification().setPluginName(plugin).setCliEngineConfig(config);
-    vConfig.log = (cliUtil as any).log;
-    vConfig.prompt = (cliUtil as any).prompt;
+    vConfig.log = cliUx.log.bind(cliUx);
+    vConfig.prompt = cliUx.prompt.bind(cliUx);
 
     await doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
 }

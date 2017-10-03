@@ -61,7 +61,7 @@ describe('doPackAndSign', () => {
         });
 
         globalSandbox.stub(https, 'get').callsFake((path: any, cb: any) => {
-            if (_.includes(path.host, 'publickeyurlvalue')) {
+            if (_.includes(_.toLower(path.path), 'publickeyurlvalue')) {
                 const response = new Readable({
                     read() {
                         this.push(CERTIFICATE);
@@ -82,8 +82,8 @@ describe('doPackAndSign', () => {
 
     it ('Steel Thread', () => {
         return packAndSignApi.doPackAndSign([
-            '--signatureUrl', 'https://signatureUrlValue.salesforce.com',
-            '--publicKeyUrl', 'https://publicKeyUrlValue.salesforce.com',
+            '--signatureUrl', 'https://developer.salesforce.com/signatureUrlValue',
+            '--publicKeyUrl', 'https://developer.salesforce.com/publicKeyUrlValue',
             '--privateKeyPath', 'privateKeyPathUrl'
         ]).then((result: boolean) => {
             expect(result).to.be.equal(true);
@@ -103,7 +103,7 @@ describe('packAndSign Tests', () => {
 
     describe('validate url', () => {
         it ('with host', () => {
-            const TEST = 'https://salesforce.com/foo/bar';
+            const TEST = 'https://developer.salesforce.com/foo/bar';
             expect(() => packAndSignApi.validateUrl(TEST)).to.not.throw(Error);
         });
 
@@ -119,11 +119,11 @@ describe('packAndSign Tests', () => {
             expect(() => packAndSignApi.validate(args)).to.throw('signatureUrl');
         });
         it ('no public key', () => {
-            const args = { signatureUrl: 'https://salesforce.com' };
+            const args = { signatureUrl: 'https://developer.salesforce.com' };
             expect(() => packAndSignApi.validate(args)).to.throw('publicKeyUrl');
         });
         it ('no private key path', () => {
-            const args = { signatureUrl: 'https://salesforce.com', publicKeyUrl: 'https://salesforce.com' };
+            const args = { signatureUrl: 'https://developer.salesforce.com', publicKeyUrl: 'https://developer.salesforce.com' };
             expect(() => packAndSignApi.validate(args)).to.throw('privateKeyPath');
         });
     });
