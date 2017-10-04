@@ -54,12 +54,6 @@ export function convertFromV5(c: LegacyCommand) {
         public static usage = c.usage || '';
         public static aliases = c.aliases || [];
 
-        public static buildHelp(config: Config): string {
-            const help = super.buildHelp(config);
-            // Strip the possibly ANSI-colored '[flags]' suffix cli-engine appends to usage strings
-            return help.replace(/(?:\u001b\[[0-9]+m)?\[flags\](?:\u001b\[[0-9]+m)/, '');
-        }
-
         public async run() {
             const flags: any = this.flags;
             const ctx: any = {

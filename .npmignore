@@ -107,3 +107,6 @@ release.sh
 *.tgz
 *.sig
 package.json.bak
+
+# nvm
+.nvmrc

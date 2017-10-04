@@ -1,106 +1,101 @@
 {
-    "name": "sfdx-cli",
-    "description": "SalesforceDX CLI",
-    "version": "6.0.0",
-    "author": "Salesforce",
-    "license": "BSD-3-Clause",
-    "bin": {
-        "sfdx": "bin/run",
-        "sfdx_sign": "dist/codeSigning/packAndSign.js"
+  "name": "sfdx-cli",
+  "description": "SalesforceDX CLI",
+  "version": "6.0.0",
+  "author": "Salesforce",
+  "license": "BSD-3-Clause",
+  "bin": {
+    "sfdx": "bin/run",
+    "sfdx_sign": "dist/codeSigning/packAndSign.js"
+  },
+  "engines": {
+    "node": ">=8.4.0"
+  },
+  "cli": {
+    "channel": "alpha"
+  },
+  "cli-engine": {
+    "bin": "sfdx",
+    "dirname": "sfdx",
+    "node": "8.5.0",
+    "userPlugins": true,
+    "commands": "./dist/commands",
+    "legacyConverter": "./dist/legacy/converter",
+    "hooks": {
+      "plugins:preinstall": [
+        "./dist/hooks/plugins/verifyInstallVersion.js",
+        "./dist/hooks/plugins/verifyInstallSignature.js"
+      ],
+      "plugins:parse": [
+        "./dist/hooks/plugins/convertFromV5.js"
+      ],
+      "init": [
+        "./dist/hooks/init.js"
+      ],
+      "prerun": [
+        "./dist/hooks/logAnalytics.js"
+      ],
+      "update": [
+        "./dist/hooks/update.js"
+      ]
     },
-    "engines": {
-        "node": ">=8.4.0"
+    "plugins": [
+      "salesforcedx"
+    ],
+    "s3": {
+      "bucket": "dfc-data-production",
+      "host": "developer.salesforce.com/media/salesforce-cli"
     },
-    "cli": {
-        "channel": "alpha"
-    },
-    "cli-engine": {
-        "bin": "sfdx",
-        "dirname": "sfdx",
-        "node": "8.5.0",
-        "userPlugins": true,
-        "commands": "./dist/commands",
-        "legacyConverter": "./dist/legacy/converter",
-        "hooks": {
-            "plugins:preinstall": [
-                "./dist/hooks/plugins/verifyInstallVersion.js",
-                "./dist/hooks/plugins/verifyInstallSignature.js"
-            ],
-            "plugins:parse": [
-                "./dist/hooks/plugins/convertFromV5.js"
-            ],
-            "init": [
-                "./dist/hooks/init.js"
-            ],
-            "prerun": [
-                "./dist/hooks/logAnalytics.js"
-            ],
-            "update": [
-                "./dist/hooks/update.js"
-            ]
-        },
-        "plugins": [
-            "salesforcedx"
-        ],
-        "s3": {
-            "bucket": "dfc-data-production",
-            "host": "developer.salesforce.com/media/salesforce-cli"
-        },
-        "help": {
-            "plugins": {
-                "salesforce-alm": {
-                    "version": "41.2.0",
-                    "type": "link"
-                }
-            }
+    "help": {
+      "plugins": {
+        "salesforce-alm": {
+          "version": "41.2.0",
+          "type": "link"
         }
-    },
-    "dependencies": {
-        "ansi-escapes": "3.0.0",
-        "cli-engine": "4.6.12",
-        "cli-engine-command": "9.0.0",
-        "cli-engine-config": "3.3.1",
-        "cli-engine-heroku": "5.0.0",
-        "debug": "3.0.1",
-        "fs-extra": "4.0.2",
-        "cli-ux": "2.0.1",
-        "lodash": "4.11.1",
-        "salesforcedx": "41.2.0-v6.5"
-    },
-    "devDependencies": {
-        "@types/chai": "4.0.4",
-        "@types/debug": "0.0.30",
-        "@types/fs-extra": "4.0.2",
-        "@types/lodash": "4.14.76",
-        "@types/mocha": "2.2.43",
-        "@types/node": "8.0.28",
-        "@types/request": "2.0.3",
-        "@types/sinon": "2.3.5",
-        "chai": "4.1.2",
-        "mocha": "3.5.0",
-        "sinon": "2.3.5",
-        "tslint": "5.7.0",
-        "typescript": "2.5.2"
-    },
-    "scripts": {
-        "clean": "bash scripts/clean",
-        "build": "scripts/build",
-        "clean-all": "scripts/clean-all",
-        "clean-cache": "scripts/clean-cache",
-        "clean-dev": "scripts/clean-dev",
-        "downgrade": "scripts/downgrade",
-        "kill-updaters": "scripts/kill-updaters",
-        "lint": "tslint -p tslint.json",
-        "sfdx_sign": "node dist/codeSigning/packAndSign.js",
-        "prepare": "tsc -p tsconfig.json",
-        "release-all": "scripts/release-all",
-        "scorch-the-earth": "scripts/scorch-the-earth",
-        "setup": "scripts/setup",
-        "test": "yarn prepare && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
-        "watch": "tsc -w -p tsconfig.json"
-    },
-    "sfdx": {
-        "publicKeyUrl": "https://developer.salesforce.com/publicKeyUrlValue",
-        "signatureUrl": "https://developer.salesforce.com/signatureUrlValue/sfdx-cli-v6.0.0.sig"
+      }
     }
+  },
+  "dependencies": {
+    "ansi-escapes": "3.0.0",
+    "cli-engine": "4.6.13",
+    "cli-engine-command": "9.0.0",
+    "cli-engine-config": "3.3.1",
+    "cli-engine-heroku": "5.0.0",
+    "debug": "3.0.1",
+    "fs-extra": "4.0.2",
+    "cli-ux": "2.0.1",
+    "lodash": "4.11.1",
+    "salesforcedx": "41.2.0-v6.5"
+  },
+  "devDependencies": {
+    "@types/chai": "4.0.4",
+    "@types/debug": "0.0.30",
+    "@types/fs-extra": "4.0.2",
+    "@types/lodash": "4.14.76",
+    "@types/mocha": "2.2.43",
+    "@types/node": "8.0.28",
+    "@types/request": "2.0.3",
+    "@types/sinon": "2.3.5",
+    "chai": "4.1.2",
+    "mocha": "3.5.0",
+    "sinon": "2.3.5",
+    "tslint": "5.7.0",
+    "typescript": "2.5.2"
+  },
+  "scripts": {
+    "clean": "bash scripts/clean",
+    "build": "scripts/build",
+    "clean-all": "scripts/clean-all",
+    "clean-cache": "scripts/clean-cache",
+    "clean-dev": "scripts/clean-dev",
+    "downgrade": "scripts/downgrade",
+    "kill-updaters": "scripts/kill-updaters",
+    "lint": "tslint -p tslint.json",
+    "prepare": "tsc -p tsconfig.json",
+    "release-all": "scripts/release-all",
+    "scorch-the-earth": "scripts/scorch-the-earth",
+    "setup": "scripts/setup",
+    "test": "yarn prepare && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
+    "watch": "tsc -w -p tsconfig.json"
+  }
 }
