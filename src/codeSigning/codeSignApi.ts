@@ -10,6 +10,10 @@ const CRYPTO_LEVEL = 'RSA-SHA256';
 
 const SALESFORCE_URL_PATTERNS = ['developer.salesforce.com'];
 
+if (process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING === 'true') {
+    SALESFORCE_URL_PATTERNS.push('salesforce.com');
+}
+
 // This is the fingerprint for https://developer.salesforce.com
 export const SALESFORCE_CERT_FINGERPRINT = '4B:72:59:41:2E:62:1C:C2:B9:D0:7F:A3:85:B4:58:E3:C6:17:E0:8F';
 
@@ -23,23 +27,25 @@ export function validSalesforceHostname(url: string | null) {
 }
 
 export function validateRequestCert(request: any, url: string) {
-    request.on('socket', (socket: any) => {
-        socket.on('secureConnect', () => {
-            const fingerprint = socket.getPeerCertificate().fingerprint;
-            // If NODE_TLS_REJECT_UNAUTHORIZED is disabled this code can still enforce authorization.
-            // If we ever get asked by security to prevent disabling auth (essentially not support self signed certs) - then
-            // this is the code for it. So keep this code around.
-            // if (!socket.authorized) {
-                // throw new NamedError('CertificateNotAuthorized',
-                //    `The certificate for ${url} is not valid: ${socket.authorizationError}`);
-            // }
+    if (!(process.env.SFDX_DISABLE_CERT_PINNING === 'true')) {
+        request.on('socket', (socket: any) => {
+            socket.on('secureConnect', () => {
+                const fingerprint = socket.getPeerCertificate().fingerprint;
+                // If NODE_TLS_REJECT_UNAUTHORIZED is disabled this code can still enforce authorization.
+                // If we ever get asked by security to prevent disabling auth (essentially not support self signed certs) - then
+                // this is the code for it. So keep this code around.
+                // if (!socket.authorized) {
+                    // throw new NamedError('CertificateNotAuthorized',
+                    //    `The certificate for ${url} is not valid: ${socket.authorizationError}`);
+                // }
 
-            if (!_.includes(SALESFORCE_CERT_FINGERPRINT, fingerprint)) {
-                throw new NamedError('CertificateFingerprintNotMatch',
-                    `The expected fingerprint and the fingerprint [${fingerprint}] from the certificate found at ${url} do not match.`);
-            }
+                if (!_.includes(SALESFORCE_CERT_FINGERPRINT, fingerprint)) {
+                    throw new NamedError('CertificateFingerprintNotMatch',
+                        `The expected fingerprint and the fingerprint [${fingerprint}] from the certificate found at ${url} do not match.`);
+                }
+            });
         });
-    });
+    }
 }
 
 export class CodeSignInfo {

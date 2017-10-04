@@ -73,7 +73,7 @@ A tar.gz and signature file. The signature file will match the name of the tar g
 This file must be hosted at the location specified by --signature.
 
 Usage:
-sfdx_sign packAndSign --signature http://foo.salesforce.internal.com/file/location --publicKeyUrl http://foo.salesforce.internal.com/file/location/sfdx.cert --privateKeyPath $HOME/sfdx.key
+sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicKeyUrl http://foo.salesforce.internal.com/file/location/sfdx.cert --privateKeyPath $HOME/sfdx.key
 `);
     },
 

@@ -209,7 +209,16 @@ export class InstallationVerification {
                     }
                     resolve(meta);
                 } else {
-                    reject(new Error(errorContent));
+                    let returnError: any = errorContent;
+                    try {
+                        const _data = JSON.parse(errorContent);
+                        if (_data.data) {
+                            returnError = _data.data;
+                        }
+                    } catch (e) {
+                        // Assume a parse failure is because the error isn't a json string. Just pass it along.
+                    }
+                    reject(new NamedError('InternalYarnError', returnError));
                 }
             });
         });
@@ -277,10 +286,10 @@ export async function doInstallationCodeSigningVerification(config: any, {plugin
             throw new NamedError('FailedDigitalSignatureVerification',
                 'A digital signature is specified for this plugin but it didn\'t verify against the certificate.');
         }
-        verificationConfig.log(`Successfully validated digital signature for ${plugin}.${EOL}`);
+        verificationConfig.log(`Successfully validated digital signature for ${plugin}.`);
     } catch (err) {
         if (err.name === 'NotSigned' || err.name === 'UnexpectedHost' ) {
-            const _continue = await verificationConfig.prompt(`This plugin is not digitally signed and it's authenticity cannot be verified. Continue Installation y/n?${EOL}`);
+            const _continue = await verificationConfig.prompt('This plugin is not digitally signed and its authenticity cannot be verified. Continue Installation y/n?');
             switch (_.toLower(_continue)) {
                 case 'y':
                     return;
