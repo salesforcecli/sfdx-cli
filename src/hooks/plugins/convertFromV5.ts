@@ -1,3 +1,4 @@
+import { Command } from 'cli-engine-command';
 import timedHook from '../timedHook';
 
 function run(config: any, { module }: any) {
@@ -20,6 +21,11 @@ function convertFromV5Commands(commands: any[] = [], ns: string) {
                 return cmd;
             }
             cmd.topic = applyNamespace(cmd.topic, ns);
+            cmd.buildHelp = (config: any) => {
+                const help = Command.buildHelp.call(cmd, config);
+                // Strip the possibly ANSI-colored '[flags]' suffix cli-engine appends to usage strings
+                return help.replace(/(?:\u001b\[[0-9]+m)?\[flags\](?:\u001b\[[0-9]+m)/, '');
+            };
             return cmd;
         });
 }
