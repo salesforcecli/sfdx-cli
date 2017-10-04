@@ -57,10 +57,10 @@
   },
   "dependencies": {
     "ansi-escapes": "3.0.0",
-    "cli-engine": "4.6.11",
-    "cli-engine-command": "8.0.15",
+    "cli-engine": "4.6.13",
+    "cli-engine-command": "9.0.0",
     "cli-engine-config": "3.3.1",
-    "cli-engine-heroku": "4.1.0",
+    "cli-engine-heroku": "5.0.0",
     "debug": "3.0.1",
     "fs-extra": "4.0.2",
     "heroku-cli-util": "6.0.16",
