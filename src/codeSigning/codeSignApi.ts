@@ -8,10 +8,10 @@ import { parse as parseUrl } from 'url';
 
 const CRYPTO_LEVEL = 'RSA-SHA256';
 
-const SALESFORCE_URL_PATTERNS = ['developer.salesforce.com'];
+const SALESFORCE_URL_PATTERNS: RegExp[] = [/developer\.salesforce\.com/];
 
 if (process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING === 'true') {
-    SALESFORCE_URL_PATTERNS.push('salesforce.com');
+    SALESFORCE_URL_PATTERNS.push(/(.salesforce.com)$/);
 }
 
 // This is the fingerprint for https://developer.salesforce.com
@@ -22,8 +22,12 @@ export function validSalesforceHostname(url: string | null) {
         return false;
     }
     const parsedUrl = parseUrl(url);
-    const _domain = _.find(SALESFORCE_URL_PATTERNS, (pattern) => parsedUrl.protocol === 'https:' && _.includes(parsedUrl.hostname, pattern));
-    return _domain !== undefined;
+
+    if (process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING === 'true') {
+        return (parsedUrl as any).protocol === 'https:' && parsedUrl.host && parsedUrl.host.match(/(\.salesforce\.com)$/) !== null;
+    } else {
+        return (parsedUrl as any).protocol === 'https:' && parsedUrl.host && parsedUrl.host === 'developer.salesforce.com';
+    }
 }
 
 export function validateRequestCert(request: any, url: string) {
