@@ -18,7 +18,9 @@ async function run(config: Config, {plugin, tag}: {plugin: string, tag: string})
     vConfig.log = (cliUtil as any).log;
     vConfig.prompt = (cliUtil as any).prompt;
 
-    await doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
+    // TODO: temporarily disable the signing verification while we release a new build,
+    //       since the cli-ux issue still appears to not be resolved?
+    // await doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
 }
 
 export = timedHook('plugins:preinstall:signing', run);
