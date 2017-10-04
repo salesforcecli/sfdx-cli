@@ -106,8 +106,8 @@ const YARN_META = {
             tarball: 'https://example.com/tarball'
         },
         sfdx: {
-            publicKeyUrl: 'https://salesforce.com/cert',
-            signatureUrl: 'https://salesforce.com/sig'
+            publicKeyUrl: 'https://developer.salesforce.com/cert',
+            signatureUrl: 'https://developer.salesforce.com/sig'
         }
     }
 };
@@ -321,7 +321,7 @@ describe('InstallationVerification Tests', () => {
             vConfig.verifier = {
                 async verify() {
                     const err = new Error();
-                    err.name = 'InvalidSalesforceDomain';
+                    err.name = 'UnexpectedHost';
                     throw err;
                 }
             };

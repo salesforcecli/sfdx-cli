@@ -15,7 +15,7 @@ import { parse as parseUrl } from 'url';
 import { Writable, Readable } from 'stream';
 import { join as pathJoin } from 'path';
 import { parse as parsePath } from 'path';
-import { sep as pathSep } from 'path';
+import { sep as pathSep, basename as pathBasename } from 'path';
 
 import * as _ from 'lodash';
 
@@ -33,7 +33,7 @@ import {
     CodeVerifierInfo,
     default as sign,
     validateRequestCert,
-    validSalesforceDomain,
+    validSalesforceHostname,
     verify
 } from '../codeSigning/codeSignApi';
 
@@ -73,7 +73,7 @@ A tar.gz and signature file. The signature file will match the name of the tar g
 This file must be hosted at the location specified by --signature.
 
 Usage:
-yarn run packAndSign --signature http://foo.salesforce.internal.com/file/location --publicKeyUrl http://foo.salesforce.internal.com/file/location/sfdx.cert --privateKeyPath $HOME/sfdx.key
+sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicKeyUrl http://foo.salesforce.internal.com/file/location/sfdx.cert --privateKeyPath $HOME/sfdx.key
 `);
     },
 
@@ -87,8 +87,8 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
             if (!urlObj.host) {
                 throw new InvalidUrlError(url);
             }
-            if (!validSalesforceDomain(url)) {
-                throw new NamedError('NotASalesforceDomain', 'Signing urls must be salesforce.com domains.');
+            if (!validSalesforceHostname(url)) {
+                throw new NamedError('NotASalesforceHost', 'Signing urls must have the hostname developer.salesforce.com.');
             }
         } catch (e) {
             const err = new InvalidUrlError(url);
@@ -365,6 +365,9 @@ yarn run packAndSign --signature http://foo.salesforce.internal.com/file/locatio
 };
 
 // We only want to run this code if it's invoked from sfdx_sign
-if (process.argv && process.argv.length > 0 && _.includes(process.argv[1], BIN_NAME)) {
+if (process.argv && process.argv.length > 0 && (_.includes(process.argv[1], BIN_NAME) || _.includes(process.argv[1], pathBasename(process.argv[1])))) {
     (async () => api.doPackAndSign(process.argv))();
+} else {
+    console.log(process.argv);
+    console.log();
 }

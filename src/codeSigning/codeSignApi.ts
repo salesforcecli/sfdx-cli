@@ -5,39 +5,51 @@ import { Writable, Readable } from 'stream';
 import * as _ from 'lodash';
 import { NamedError } from '../util/NamedError';
 import { parse as parseUrl } from 'url';
+
 const CRYPTO_LEVEL = 'RSA-SHA256';
 
-const SALESFORCE_DOMAINS = ['salesforce.com'];
+const SALESFORCE_URL_PATTERNS: RegExp[] = [/developer\.salesforce\.com/];
 
-export const SALESFORCE_CERT_FINGERPRINT = 'B8:32:1B:DD:E8:11:1E:81:BC:C8:D3:68:58:34:3E:77:BB:AF:F2:2C';
+if (process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING === 'true') {
+    SALESFORCE_URL_PATTERNS.push(/(.salesforce.com)$/);
+}
 
-export function validSalesforceDomain(url: string | null) {
+// This is the fingerprint for https://developer.salesforce.com
+export const SALESFORCE_CERT_FINGERPRINT = '4B:72:59:41:2E:62:1C:C2:B9:D0:7F:A3:85:B4:58:E3:C6:17:E0:8F';
+
+export function validSalesforceHostname(url: string | null) {
     if (!url) {
         return false;
     }
     const parsedUrl = parseUrl(url);
-    const _domain = _.find(SALESFORCE_DOMAINS, (domain) => parsedUrl.protocol === 'https:' && _.endsWith(parsedUrl.hostname, domain));
-    return _domain !== undefined;
+
+    if (process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING === 'true') {
+        return (parsedUrl as any).protocol === 'https:' && parsedUrl.host && parsedUrl.host.match(/(\.salesforce\.com)$/) !== null;
+    } else {
+        return (parsedUrl as any).protocol === 'https:' && parsedUrl.host && parsedUrl.host === 'developer.salesforce.com';
+    }
 }
 
 export function validateRequestCert(request: any, url: string) {
-    request.on('socket', (socket: any) => {
-        socket.on('secureConnect', () => {
-            const fingerprint = socket.getPeerCertificate().fingerprint;
-            // If NODE_TLS_REJECT_UNAUTHORIZED is disabled this code can still enforce authorization.
-            // If we ever get asked by security to prevent disabling auth (essentially not support self signed certs) - then
-            // this is the code for it. So keep this code around.
-            // if (!socket.authorized) {
-                // throw new NamedError('CertificateNotAuthorized',
-                //    `The certificate for ${url} is not valid: ${socket.authorizationError}`);
-            // }
+    if (!(process.env.SFDX_DISABLE_CERT_PINNING === 'true')) {
+        request.on('socket', (socket: any) => {
+            socket.on('secureConnect', () => {
+                const fingerprint = socket.getPeerCertificate().fingerprint;
+                // If NODE_TLS_REJECT_UNAUTHORIZED is disabled this code can still enforce authorization.
+                // If we ever get asked by security to prevent disabling auth (essentially not support self signed certs) - then
+                // this is the code for it. So keep this code around.
+                // if (!socket.authorized) {
+                    // throw new NamedError('CertificateNotAuthorized',
+                    //    `The certificate for ${url} is not valid: ${socket.authorizationError}`);
+                // }
 
-            if (!_.includes(SALESFORCE_CERT_FINGERPRINT, fingerprint)) {
-                throw new NamedError('CertificateFingerprintNotMatch',
-                    `The expected fingerprint and the fingerprint [${fingerprint}] from the certificate found at ${url} does not match.`);
-            }
+                if (!_.includes(SALESFORCE_CERT_FINGERPRINT, fingerprint)) {
+                    throw new NamedError('CertificateFingerprintNotMatch',
+                        `The expected fingerprint and the fingerprint [${fingerprint}] from the certificate found at ${url} do not match.`);
+                }
+            });
         });
-    });
+    }
 }
 
 export class CodeSignInfo {

@@ -9,6 +9,28 @@
             "type": "node",
             "request": "attach",
             "port": 9229
+        },
+        {
+            "name": "mocha tests",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}/node_modules/.bin/_mocha",
+            "protocol": "inspector",
+            "args": [
+                "--timeout",
+                "999999",
+                "--colors",
+                "--recursive",
+                "dist"
+            ],
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/dist/**/*.js"
+            ]
         }
     ]
 }
