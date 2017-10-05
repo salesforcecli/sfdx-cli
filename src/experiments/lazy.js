@@ -17,7 +17,7 @@
 //     > node -e 'new Proxy(function () {}, {}).toString()'
 const proxyToString = 'function LazyProxy() {}';
 
-// Loads a module using the original module loader if it is undefined
+// Loads a module using the original module loader if the module is undefined
 const loadIfNeeded = (mod, load, name, parent, isMain) => {
     return mod === undefined ? load(name, parent, isMain) : mod;
 }
@@ -28,7 +28,7 @@ const makeLazy = (load) => {
     // an require calls made within their require subtrees.
     let disabled = false;
 
-    // The lazy loading module
+    // The lazy loading wrapper
     return (request, parent, isMain) => {
         if (disabled) {
             return load(request, parent, isMain);
@@ -130,9 +130,14 @@ const makeLazy = (load) => {
     };
 };
 
+// Exclude Node SDK builtin modules, which already load hella quick; some of them,
+// like `os`, have intractable incompatibility issues with proxying anyway...
+const builtins = Object.keys(process.binding('natives'))
+    .filter((el) => !/^_|^internal|\//.test(el));
+
 // Some modules are not worth proxying, as they will be used in most runs of the CLI,
-// so proxying them will only slow things down (not by much, but why do the extra work
-// or incur the extra risk?). This list excludes such commonly required modules.
+// so proxying them can only slow things down (not by much, but why incur the extra
+// overhead or risk?). This list excludes such commonly required modules.
 const commons = [
     'cli-engine',
     'cli-engine-command',
@@ -148,14 +153,11 @@ const snowflakes = [
     'user-home'
 ];
 
-// Exclude Node SDK builtin modules, which already load hella quick; some of them,
-// like `os`, have intractable incompatibility issues with proxying anyway...
-const excludes = Array.from(new Set(
-    Object.keys(process.binding('natives'))
-        .filter((el) => !/^_|^internal|\//.test(el))
-        .concat(commons)
-        .concat(snowflakes)
-));
+// The complete set of modules for which lazy loading should be disabled
+const excludes = Array.from(new Set(builtins.concat(commons).concat(snowflakes)));
 
-const Module = require('module');
-Module._load = makeLazy(Module._load);
+// Require a dark feature envar to enable this experiment
+if ((process.env.SFDX_LAZY_LOAD_MODULES || '').toLowerCase() === 'true') {
+    const Module = require('module');
+    Module._load = makeLazy(Module._load);
+}
