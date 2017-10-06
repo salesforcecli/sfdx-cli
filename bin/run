@@ -8,7 +8,7 @@ set -e
 if [ -z ${SFDX_AUTOUPDATE_DISABLE+x} ]; then
     export SFDX_AUTOUPDATE_DISABLE="true"
     # This only applies to npm updates, but shouldn't hurt anything in the local dev case
-    export SFDX_AUTOUPDATE_DISABLE_MESSAGE="update with `npm install --global sfdx-cli`"
+    export SFDX_AUTOUPDATE_DISABLE_MESSAGE="update with 'npm install --global sfdx-cli'"
 fi
 
 NODE_FLAGS=()
