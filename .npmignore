@@ -110,3 +110,7 @@ package.json.bak
 
 # nvm
 .nvmrc
+
+# lock files
+yarn.lock
+package-lock.json
