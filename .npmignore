@@ -108,8 +108,10 @@ release.sh
 *.sig
 package.json.bak
 
-# nvm
+# rc files
 .nvmrc
+.npmrc
+.yarnrc
 
 # lock files
 yarn.lock
