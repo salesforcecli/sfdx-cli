@@ -66,7 +66,8 @@ Build function that will perform four things:
 Required Parameters:
 --signatureUrl - the url where the signature will be hosted minus the name of the signature file.
 --publicKeyUrl - the url where the public key/certificate will be hosted.
---privateKeyPath - the local file path for the private key
+--privateKeyPath - the local file path for the private key.
+--tgzPath - the path to an existing packed tgz file (yarn pack).
 
 Returns:
 A tar.gz and signature file. The signature file will match the name of the tar gz except the extension will be ".sig".
@@ -116,6 +117,11 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
             if (!args.privateKeyPath) {
                 throw new MissingRequiredParameter('privateKeyPath');
             }
+
+            if ((!_.isNil(args.tgzPath) && _.isEmpty(args.tgzPath))) {
+                throw new NamedError('InvalidFilePathFormat', 'The file path specified is invalid.');
+            }
+
         } else {
             throw new NamedError('InvalidArgs', 'Invalid args.');
         }
@@ -318,8 +324,13 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
 
             console.log('Successfully updated package.json with public key and signature file locations.');
 
-            // create the tgz file
-            const filepath = await api.pack();
+            let filepath;
+            // the user specified a file path. No pack. This is needed for CI integration. Our promote jobs already have the TGZ generated.
+            if (args.tgzPath) {
+                filepath = args.tgzPath;
+            } else {
+                filepath = await api.pack();
+            }
 
             // create the signature file
             const signature = await api.retrieveSignature(
@@ -367,7 +378,4 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
 // We only want to run this code if it's invoked from sfdx_sign
 if (process.argv && process.argv.length > 0 && (_.includes(process.argv[1], BIN_NAME) || _.includes(process.argv[1], pathBasename(process.argv[1])))) {
     (async () => api.doPackAndSign(process.argv))();
-} else {
-    console.log(process.argv);
-    console.log();
 }

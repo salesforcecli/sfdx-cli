@@ -51,7 +51,7 @@ export class ExecProcessFailed extends NamedError {
 
 export class UnexpectedHost extends NamedError {
     constructor(url: string) {
-        super('UnexpectedHost', 'The host provided is not allowed to provide signing information.');
+        super('UnexpectedHost', `The host provided ${url} is not allowed to provide signing information.`);
     }
 }
 

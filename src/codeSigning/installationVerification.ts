@@ -1,3 +1,4 @@
+// import { createReadStream, createWriteStream, readFile } from 'fs';
 import * as fs from 'fs';
 import * as path from 'path';
 import { parse as urlParse } from 'url';
@@ -5,6 +6,7 @@ import _ = require('lodash');
 import { fork } from 'child_process';
 import request = require('request');
 import { Readable, Writable } from 'stream';
+import { promisify as utilPromisify } from 'util';
 
 import {
     CodeVerifierInfo,
@@ -16,6 +18,8 @@ import {
 import { NamedError, UnexpectedHost, UnauthorizedSslConnection } from '../util/NamedError';
 import { get as httpsGet } from 'https';
 import { EOL } from 'os';
+
+const readFileAsync: (path: string, options?: any) => Promise<string> = utilPromisify(fs.readFile);
 
 /**
  * simple data structure representing the discovered meta information needed for signing,
@@ -83,6 +87,20 @@ export class InstallationVerification {
         return npmMeta;
     }
 
+    public async isWhiteListed(name: string) {
+        if (name) {
+            const whitelistFilePath = path.join(this.getConfigPath(), 'unsignedPluginWhiteList.json');
+
+            const fileContent = await readFileAsync(whitelistFilePath);
+            const whitelistArray = JSON.parse(fileContent);
+
+            console.log(`whitelistArray: ${whitelistArray}`);
+
+            return whitelistArray.includes(name);
+        }
+        return false;
+    }
+
     /**
      * returns the http request options parse from a url
      * @param _url http url
@@ -123,12 +141,19 @@ export class InstallationVerification {
         });
     }
 
-    private getDataPath(): string {
-        return _.get(this.config, '__cache.dir:data');
+    // this is generally $HOME/.config/sfdx
+    private getConfigPath(): string {
+        return _.get(this.config, 'configDir');
     }
 
+    // this is generally $HOME/.local/share/sfd
+    private getDataPath(): string {
+        return _.get(this.config, 'dataDir');
+    }
+
+    // this is generally $HOME/Library/Caches/sfdx on mac
     private getCachePath(): string {
-        return _.get(this.config, '__cache.dir:cache');
+        return _.get(this.config, 'cacheDir');
     }
 
     private getYarnPath(): string {
@@ -279,7 +304,6 @@ export class VerificationConfig {
 }
 
 export async function doInstallationCodeSigningVerification(config: any, {plugin, tag}: {plugin: any, tag: string}, verificationConfig: VerificationConfig) {
-
     try {
         const meta = await verificationConfig.verifier.verify();
         if (!meta.verified) {
@@ -288,13 +312,19 @@ export async function doInstallationCodeSigningVerification(config: any, {plugin
         }
         verificationConfig.log(`Successfully validated digital signature for ${plugin}.`);
     } catch (err) {
-        if (err.name === 'NotSigned' || err.name === 'UnexpectedHost' ) {
-            const _continue = await verificationConfig.prompt('This plugin is not digitally signed and its authenticity cannot be verified. Continue Installation y/n?');
-            switch (_.toLower(_continue)) {
-                case 'y':
-                    return;
-                default:
-                    throw new NamedError('CanceledByUser', 'The plugin installation has been cancel by the user.');
+        if (err.name === 'NotSigned') {
+
+            if (await verificationConfig.verifier.isWhiteListed(plugin)) {
+                verificationConfig.log(`The plugin [${plugin}] is not digitally signed but it is white-listed.`);
+                return;
+            } else {
+                const _continue = await verificationConfig.prompt('This plugin is not digitally signed and its authenticity cannot be verified. Continue Installation y/n?');
+                switch (_.toLower(_continue)) {
+                    case 'y':
+                        return;
+                    default:
+                        throw new NamedError('CanceledByUser', 'The plugin installation has been cancel by the user.');
+                }
             }
         }
         throw err;

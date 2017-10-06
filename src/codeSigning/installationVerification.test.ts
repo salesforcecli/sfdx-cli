@@ -128,9 +128,14 @@ const getYarnSuccess = (yarnEmitter: YarnEmitter) => {
 describe('InstallationVerification Tests', () => {
     let sandbox: any;
 
-    const config = {};
-    _.set(config, '__cache.dir:data', 'dataPath');
-    _.set(config, '__cache.dir:cache', 'cachePath');
+    const config = {
+        get dataDir() {
+            return 'dataPath';
+        },
+        get cacheDir() {
+            return 'cacheDir';
+        }
+    };
 
     const plugin = 'foo';
 
@@ -186,6 +191,9 @@ describe('InstallationVerification Tests', () => {
         return verification.verify()
             .then((meta: any) => {
                 expect(meta).to.have.property('verified', true);
+            })
+            .catch((e) => {
+                console.log(e);
             });
     });
 
@@ -300,6 +308,9 @@ describe('InstallationVerification Tests', () => {
                     const err = new Error();
                     err.name = 'NotSigned';
                     throw err;
+                },
+                async isWhiteListed() {
+                    return false;
                 }
             };
 
@@ -323,6 +334,9 @@ describe('InstallationVerification Tests', () => {
                     const err = new Error();
                     err.name = 'UnexpectedHost';
                     throw err;
+                },
+                async isWhiteListed() {
+                    return false;
                 }
             };
 
@@ -331,7 +345,12 @@ describe('InstallationVerification Tests', () => {
             };
 
             return iv.doInstallationCodeSigningVerification({}, {}, vConfig)
-                .then(() => {});
+                .then(() => {
+                    throw new Error('Failure: This should never happen');
+                })
+                .catch((err) => {
+                    expect(err).to.have.property('name', 'UnexpectedHost');
+                });
         });
     });
 });

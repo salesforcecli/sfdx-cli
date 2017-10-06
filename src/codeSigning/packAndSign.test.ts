@@ -159,6 +159,18 @@ describe('packAndSign Tests', () => {
         });
     });
 
+    describe('tgz file path param', () => {
+        it ('no value', () => {
+            const args = {
+                signatureUrl: 'https://developer.salesforce.com',
+                publicKeyUrl: 'https://developer.salesforce.com',
+                privateKeyPath: 'foo/bar',
+                tgzPath: ''
+            };
+            expect(() => packAndSignApi.validate(args)).to.throw(Error).and.have.property('name', 'InvalidFilePathFormat');
+        });
+    });
+
     describe('verify', () => {
         it('verify flow - false', () => {
             let url: any;

@@ -38,22 +38,27 @@ describe('Sign Tests', () => {
             expect(validSalesforceHostname('salesforce.com-evildoers-r-us.com')).to.be.equal(false);
         });
 
+        it ('salesforce.com port', () => {
+            expect(validSalesforceHostname('https://developer.salesforce.com:9797')).to.be.equal(true);
+        });
+
         it ('salesforce.com env var true', () => {
             process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING = 'true';
             expect(validSalesforceHostname('https://tnoonan-wsm2.internal.salesforce.com')).to.be.equal(true);
-            process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING = undefined;
+            delete process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING;
         });
 
         it ('salesforce.com env var falsy', () => {
             process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING = 'jj';
             expect(validSalesforceHostname('https://tnoonan-wsm2.internal.salesforce.com')).to.be.equal(false);
-            process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING = undefined;
+            delete process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING;
         });
 
     });
 
     describe('validateRequestCert', () => {
         it ('invalid finger print', () => {
+            delete process.env.SFDX_DISABLE_CERT_PINNING;
             try {
                 class Request extends events.EventEmitter {}
                 const request = new Request();
@@ -65,7 +70,7 @@ describe('Sign Tests', () => {
                 }
                 const socket = new Socket();
 
-                validateRequestCert(request, 'https://www.salesforce.com');
+                validateRequestCert(request, 'https://developer.salesforce.com');
                 request.emit('socket', socket);
                 socket.emit('secureConnect');
                 throw new Error('Shouldn\'t Get Here!');

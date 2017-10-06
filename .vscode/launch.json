@@ -22,14 +22,12 @@
                 "999999",
                 "--colors",
                 "--recursive",
-                "dist"
+                "--grep",
+                "doPackAndSign",
+                "dist/codeSigning"
             ],
             "runtimeArgs": [
                 "--nolazy"
-            ],
-            "sourceMaps": true,
-            "outFiles": [
-                "${workspaceRoot}/dist/**/*.js"
             ]
         }
     ]
