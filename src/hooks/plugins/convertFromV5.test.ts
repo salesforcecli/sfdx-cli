@@ -81,4 +81,53 @@ describe('plugins:parse hook', () => {
     it('should not die when given a module object lacking commands or topics', () => {
         hook({}, {module: {namespace: 'root'}});
     });
+
+    it('should not show flags in help usage', () => {
+        const normalCommand: any = {
+            id: 'topic:command',
+            topic: 'topic',
+            command: 'command',
+            flags: [{
+                name: 'var'
+            }]
+        };
+
+        const module: any = {
+            namespace: {
+                name: 'root'
+            },
+            commands: [normalCommand],
+            topic: {
+                name: 'topic'
+            }
+        };
+
+        hook({}, {module});
+
+        // normal command gets its topic prefixed with the root ns
+        expect(normalCommand.buildHelp({ bin: 'sfdx' })).to.not.contain('[flags]');
+    });
+
+    it('should not show usage in line help', () => {
+        const normalCommand: any = {
+            topic: 'topic',
+            command: 'command',
+            usage: 'my usage'
+        };
+
+        const module: any = {
+            namespace: {
+                name: 'root'
+            },
+            commands: [normalCommand],
+            topic: {
+                name: 'topic'
+            }
+        };
+
+        hook({}, {module});
+
+        // normal command gets its topic prefixed with the root ns
+        expect(normalCommand.buildHelpLine()[0]).to.equal('root:topic:command');
+    });
 });

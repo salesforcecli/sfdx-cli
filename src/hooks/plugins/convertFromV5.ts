@@ -1,5 +1,7 @@
 import { Command } from 'cli-engine-command';
 import timedHook from '../timedHook';
+import { Config } from 'cli-engine-config';
+import { color } from 'cli-engine-command/lib/color';
 
 function run(config: any, { module }: any) {
     if (module.namespace) {
@@ -21,11 +23,17 @@ function convertFromV5Commands(commands: any[] = [], ns: string) {
                 return cmd;
             }
             cmd.topic = applyNamespace(cmd.topic, ns);
-            cmd.buildHelp = (config: any) => {
+            cmd.buildHelp = (config: Config) => {
                 const help = Command.buildHelp.call(cmd, config);
                 // Strip the possibly ANSI-colored '[flags]' suffix cli-engine appends to usage strings
                 return help.replace(/(?:\u001b\[[0-9]+m)?\[flags\](?:\u001b\[[0-9]+m)/, '');
             };
+
+            // Do not use arrow function here because we need access to the command's properties
+            cmd.buildHelpLine = function(config: Config): [string, string] {
+                return [`${this.topic}:${this.command}`, color.dim(this.description)];
+            };
+
             return cmd;
         });
 }
