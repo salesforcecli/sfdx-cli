@@ -18,8 +18,12 @@
 const proxyToString = 'function LazyProxy() {}';
 
 // Loads a module using the original module loader if the module is undefined
-const loadIfNeeded = (mod, load, name, parent, isMain) => {
-    return mod === undefined ? load(name, parent, isMain) : mod;
+const loadIfNeeded = (mod, load, request, parent, isMain) => {
+    if (mod === undefined) {
+        trace('[lazy]', request);
+        return load(request, parent, isMain);
+    }
+    return mod;
 }
 
 // Wraps the original module loading function with the lazy proxy functionality
@@ -31,11 +35,13 @@ const makeLazy = (load) => {
     // The lazy loading wrapper
     return (request, parent, isMain) => {
         if (disabled) {
+            trace('[immediate]', request);
             return load(request, parent, isMain);
         }
         if (excludes.includes(request)) {
             try {
                 disabled = true;
+                trace('[immediate]', request);
                 return load(request, parent, isMain);
             } finally {
                 disabled = false;
@@ -168,8 +174,15 @@ const snowflakes = [
 // The complete set of modules for which lazy loading should be disabled
 const excludes = Array.from(new Set(builtins.concat(commons).concat(snowflakes)));
 
+let trace = () => {};
+
 // Require a dark feature envar to enable this experiment
 if ((process.env.SFDX_LAZY_LOAD_MODULES || '').toLowerCase() === 'true') {
+    const debug = require('debug')('sfdx:lazy-modules');
+    debug('lazy module loading enabled');
+    if ((process.env.SFDX_LAZY_LOAD_MODULES_TRACE || '').toLowerCase() === 'true') {
+        trace = debug;
+    }
     const Module = require('module');
     Module._load = makeLazy(Module._load);
 }
