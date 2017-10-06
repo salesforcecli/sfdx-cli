@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "SalesforceDX CLI",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -48,9 +48,9 @@
     },
     "help": {
       "plugins": {
-        "salesforce-alm": {
+        "salesforcedx": {
           "version": "41.2.0",
-          "type": "link"
+          "type": "core"
         }
       }
     }
@@ -65,7 +65,7 @@
     "debug": "3.0.1",
     "fs-extra": "4.0.2",
     "lodash": "4.11.1",
-    "salesforcedx": "41.2.0-v6.5"
+    "salesforcedx": "41.2.2"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
