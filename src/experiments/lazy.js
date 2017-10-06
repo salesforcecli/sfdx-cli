@@ -130,6 +130,10 @@ const makeLazy = (load) => {
     };
 };
 
+//
+// Module exclusions
+//
+
 // Exclude Node SDK builtin modules, which already load hella quick; some of them,
 // like `os`, have intractable incompatibility issues with proxying anyway...
 const builtins = Object.keys(process.binding('natives'))
@@ -138,6 +142,10 @@ const builtins = Object.keys(process.binding('natives'))
 // Some modules are not worth proxying, as they will be used in most runs of the CLI,
 // so proxying them can only slow things down (not by much, but why incur the extra
 // overhead or risk?). This list excludes such commonly required modules.
+//
+// NOTE: only add items to this list if they are known to work with the proxy first;
+// that is, anything that is known to not work with the proxy should be listed in
+// `snowflakes` to ensure we understand where the proxy still need work.
 const commons = [
     'cli-engine',
     'cli-engine-command',
@@ -150,7 +158,11 @@ const commons = [
 // lazy proxy, so they are captured here for later addition to the excludes list; ideally
 // we will improve the proxy traps to reduce this set to zero.
 const snowflakes = [
-    'user-home'
+    'user-home',
+    // `jsforce` maybe belongs in `commons` but is here for now as a reminder to
+    // get the proxy working with it first -- it currently has at least one issue to
+    // resolve before graduating it
+    'jsforce'
 ];
 
 // The complete set of modules for which lazy loading should be disabled
