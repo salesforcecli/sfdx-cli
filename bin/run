@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
+# If autoupdate is not set, default to false. NOTE -- only use
+# this logic in the dev mode version of this script, not the one
+# we build into the release binary!
+if [ -z ${SFDX_AUTOUPDATE_DISABLE+x} ]; then
+    export SFDX_AUTOUPDATE_DISABLE=true
+fi
+
 NODE_FLAGS=()
 CLI_ARGS=()
 
@@ -9,25 +16,25 @@ key="$1"
 
 case $key in
     --dev-suspend)
-      NODE_FLAGS+=("--inspect-brk")
-      shift
+        NODE_FLAGS+=("--inspect-brk")
+        shift
     ;;
     --dev-profile)
-      NODE_FLAGS+=("--prof")
-      shift
+        NODE_FLAGS+=("--prof")
+        shift
     ;;
     --dev-debug)
-      export SFDX_DEBUG=1
-      export DEBUG=\*
-      shift
+        export SFDX_DEBUG=1
+        export DEBUG=\*
+        shift
     ;;
     --dev-config)
-      export CLI_ENGINE_SHOW_CONFIG=1
-      shift
+        export CLI_ENGINE_SHOW_CONFIG=1
+        shift
     ;;
     *)
-    CLI_ARGS+=("$key")
-    shift
+        CLI_ARGS+=("$key")
+        shift
     ;;
 esac
 done
