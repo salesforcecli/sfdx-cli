@@ -67,7 +67,6 @@ Required Parameters:
 --signatureUrl - the url where the signature will be hosted minus the name of the signature file.
 --publicKeyUrl - the url where the public key/certificate will be hosted.
 --privateKeyPath - the local file path for the private key.
---tgzPath - the path to an existing packed tgz file (yarn pack).
 
 Returns:
 A tar.gz and signature file. The signature file will match the name of the tar gz except the extension will be ".sig".
@@ -116,10 +115,6 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
 
             if (!args.privateKeyPath) {
                 throw new MissingRequiredParameter('privateKeyPath');
-            }
-
-            if ((!_.isNil(args.tgzPath) && _.isEmpty(args.tgzPath))) {
-                throw new NamedError('InvalidFilePathFormat', 'The file path specified is invalid.');
             }
 
         } else {
@@ -324,13 +319,7 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
 
             console.log('Successfully updated package.json with public key and signature file locations.');
 
-            let filepath;
-            // the user specified a file path. No pack. This is needed for CI integration. Our promote jobs already have the TGZ generated.
-            if (args.tgzPath) {
-                filepath = args.tgzPath;
-            } else {
-                filepath = await api.pack();
-            }
+            let filepath = await api.pack();
 
             // create the signature file
             const signature = await api.retrieveSignature(
