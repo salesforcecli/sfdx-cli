@@ -95,11 +95,18 @@ export class InstallationVerification {
 
     public async isWhiteListed() {
         const whitelistFilePath = path.join(this.getConfigPath(), WHITELIST_FILENAME);
+        try {
+            const fileContent = await this.readFileAsync(whitelistFilePath);
 
-        const fileContent = await this.readFileAsync(whitelistFilePath);
-        const whitelistArray = JSON.parse(fileContent);
-
-        return whitelistArray && whitelistArray.includes(this.pluginName);
+            const whitelistArray = JSON.parse(fileContent);
+            return whitelistArray && whitelistArray.includes(this.pluginName);
+        } catch (err) {
+            if (err.code === 'ENOENT') {
+                return false;
+            } else {
+                throw err;
+            }
+        }
     }
 
     /**

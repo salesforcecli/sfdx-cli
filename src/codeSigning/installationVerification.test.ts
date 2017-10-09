@@ -181,7 +181,11 @@ describe('InstallationVerification Tests', () => {
         sandbox.stub(request, 'get').callsFake(() => {});
 
         sandbox.stub(fs, 'readFile').callsFake((path, cb) => {
-            cb(undefined, fsReadFileFunc(path));
+            try {
+                cb(undefined, fsReadFileFunc(path));
+            } catch (err) {
+                cb(fsReadFileFunc(err));
+            }
         });
 
         iv = require('./installationVerification');
@@ -286,6 +290,17 @@ describe('InstallationVerification Tests', () => {
                 .setPluginName(TEST_VALUE).setCliEngineConfig(config);
             expect(await verification.isWhiteListed()).to.be.equal(true);
             expect(expectedPath).to.include(iv.WHITELIST_FILENAME);
+        });
+
+        it('file doesn\'t exist', async () => {
+            fsReadFileFunc = (path) => {
+                const error = new Error();
+                (error as any).code = 'ENOENT';
+                throw error;
+            };
+            const verification = new iv.InstallationVerification()
+                .setPluginName('BAR').setCliEngineConfig(config);
+            expect(await verification.isWhiteListed()).to.be.equal(false);
         });
     });
 
