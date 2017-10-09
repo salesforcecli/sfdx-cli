@@ -42,34 +42,6 @@ def runTheJob(PLATFORM os) {
 
     if (jobMatches(/.*unit.*/)) {
         doUnitTests(os);
-        cleanupTestWorkspace(os)
-    }
-}
-
-def cleanupTestWorkspace(PLATFORM os) {
-    stage('Clean up unit test results') {
-        withEnv([
-            "HOME=${env.WORKSPACE}",
-            "APPDATA=${env.WORKSPACE}",
-            "USERPROFILE=${env.WORKSPACE}"
-        ])
-        {
-            def DIST_FOLDER = 'dist'
-            def TEST_FOLDER = 'test'
-            def RESULT_DIRS = 'testRootDir*'
-            switch(os) {
-                case PLATFORM.MAC:
-                case PLATFORM.LINUX:
-                    sh "rm -rf ${DIST_FOLDER}/${TEST_FOLDER}/${RESULT_DIRS}"
-                    sh "ls -l ${DIST_FOLDER}/${TEST_FOLDER}"
-                    break
-                case PLATFORM.WINDOWS:
-                    bat "powershell -Command \"Remove-Item -Recurse -Force ${DIST_FOLDER}\\${TEST_FOLDER}\\${RESULT_DIRS}\""
-                    bat "dir ${DIST_FOLDER}\\${TEST_FOLDER}"
-                    break
-            }
-            echo 'Finished cleaning test workspaces.'
-        }
     }
 }
 
