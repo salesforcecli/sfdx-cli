@@ -22,9 +22,7 @@
                 "999999",
                 "--colors",
                 "--recursive",
-                "--grep",
-                "doPackAndSign",
-                "dist/codeSigning"
+                "dist"
             ],
             "runtimeArgs": [
                 "--nolazy"
