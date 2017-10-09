@@ -128,14 +128,24 @@ const getYarnSuccess = (yarnEmitter: YarnEmitter) => {
 describe('InstallationVerification Tests', () => {
     let sandbox: any;
 
-    const config = {};
-    _.set(config, '__cache.dir:data', 'dataPath');
-    _.set(config, '__cache.dir:cache', 'cachePath');
+    const config = {
+        get dataDir() {
+            return 'dataPath';
+        },
+        get cacheDir() {
+            return 'cacheDir';
+        },
+        get configDir() {
+            return 'configDir';
+        }
+    };
 
     const plugin = 'foo';
 
     let yarnEmitter = new YarnEmitter();
     const httpMock: HttpRequestMock = new HttpRequestMock();
+
+    let fsReadFileFunc;
 
     before(() => {
         sandbox = sinon.sandbox.create();
@@ -170,6 +180,14 @@ describe('InstallationVerification Tests', () => {
 
         sandbox.stub(request, 'get').callsFake(() => {});
 
+        sandbox.stub(fs, 'readFile').callsFake((path, cb) => {
+            try {
+                cb(undefined, fsReadFileFunc(path));
+            } catch (err) {
+                cb(fsReadFileFunc(err));
+            }
+        });
+
         iv = require('./installationVerification');
     });
 
@@ -186,6 +204,9 @@ describe('InstallationVerification Tests', () => {
         return verification.verify()
             .then((meta: any) => {
                 expect(meta).to.have.property('verified', true);
+            })
+            .catch((e) => {
+                console.log(e);
             });
     });
 
@@ -257,6 +278,32 @@ describe('InstallationVerification Tests', () => {
             });
     });
 
+    describe('isWhiteListed', () => {
+        it('steel thread', async () => {
+            const TEST_VALUE = 'FOO';
+            let expectedPath;
+            fsReadFileFunc = (path) => {
+                expectedPath = path;
+                return `["${TEST_VALUE}"]`;
+            };
+            const verification = new iv.InstallationVerification()
+                .setPluginName(TEST_VALUE).setCliEngineConfig(config);
+            expect(await verification.isWhiteListed()).to.be.equal(true);
+            expect(expectedPath).to.include(iv.WHITELIST_FILENAME);
+        });
+
+        it('file doesn\'t exist', async () => {
+            fsReadFileFunc = (path) => {
+                const error = new Error();
+                (error as any).code = 'ENOENT';
+                throw error;
+            };
+            const verification = new iv.InstallationVerification()
+                .setPluginName('BAR').setCliEngineConfig(config);
+            expect(await verification.isWhiteListed()).to.be.equal(false);
+        });
+    });
+
     describe('doInstallationCodeSigningVerification', () => {
         it ('valid signature', async () => {
             let message = '';
@@ -300,6 +347,9 @@ describe('InstallationVerification Tests', () => {
                     const err = new Error();
                     err.name = 'NotSigned';
                     throw err;
+                },
+                async isWhiteListed() {
+                    return false;
                 }
             };
 
@@ -323,6 +373,9 @@ describe('InstallationVerification Tests', () => {
                     const err = new Error();
                     err.name = 'UnexpectedHost';
                     throw err;
+                },
+                async isWhiteListed() {
+                    return false;
                 }
             };
 
@@ -331,7 +384,12 @@ describe('InstallationVerification Tests', () => {
             };
 
             return iv.doInstallationCodeSigningVerification({}, {}, vConfig)
-                .then(() => {});
+                .then(() => {
+                    throw new Error('Failure: This should never happen');
+                })
+                .catch((err) => {
+                    expect(err).to.have.property('name', 'UnexpectedHost');
+                });
         });
     });
 });

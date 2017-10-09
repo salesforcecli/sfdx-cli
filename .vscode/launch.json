@@ -26,10 +26,6 @@
             ],
             "runtimeArgs": [
                 "--nolazy"
-            ],
-            "sourceMaps": true,
-            "outFiles": [
-                "${workspaceRoot}/dist/**/*.js"
             ]
         }
     ]
