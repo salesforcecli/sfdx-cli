@@ -326,7 +326,7 @@ export async function doInstallationCodeSigningVerification(config: any, {plugin
                 verificationConfig.log(`The plugin [${plugin}] is not digitally signed but it is white-listed.`);
                 return;
             } else {
-                const _continue = await verificationConfig.prompt('This plugin is not digitally signed and its authenticity cannot be verified. Continue Installation y/n?');
+                const _continue = await verificationConfig.prompt('This plugin is not digitally signed and its authenticity cannot be verified. Continue installation y/n?');
                 switch (_.toLower(_continue)) {
                     case 'y':
                         return;
