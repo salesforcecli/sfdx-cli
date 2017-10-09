@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
-# If autoupdate is not set, default to false. NOTE -- only use
-# this logic in the dev mode version of this script, not the one
-# we build into the release binary!
+# If autoupdate is not set, default to false. NOTE -- this is the behavior we
+# want for BOTH local dev AND the npm distribution, but NOT for the release binary.
+# Do NOT include this in the scripts/build script, which is what the release
+# binary includes.
 if [ -z ${SFDX_AUTOUPDATE_DISABLE+x} ]; then
-    export SFDX_AUTOUPDATE_DISABLE=true
+    export SFDX_AUTOUPDATE_DISABLE="true"
+    # This only applies to npm updates, but shouldn't hurt anything in the local dev case
+    export SFDX_AUTOUPDATE_DISABLE_MESSAGE="update with 'npm install --global sfdx-cli'"
 fi
 
 NODE_FLAGS=()

@@ -13,7 +13,7 @@ export function create(version: string, channel: string) {
         version
     };
     if (process.env.SFDX_AUTOUPDATE_DISABLE === 'true') {
-        config.updateDisabled =
+        config.updateDisabled = process.env.SFDX_AUTOUPDATE_DISABLE_MESSAGE ||
             'A newer version is available, but CLI updates have ' +
             'been disabled by setting "SFDX_AUTOUPDATE_DISABLE=true"';
     }
