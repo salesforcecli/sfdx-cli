@@ -319,7 +319,7 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
 
             console.log('Successfully updated package.json with public key and signature file locations.');
 
-            let filepath = await api.pack();
+            const filepath = await api.pack();
 
             // create the signature file
             const signature = await api.retrieveSignature(

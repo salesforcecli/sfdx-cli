@@ -134,6 +134,9 @@ describe('InstallationVerification Tests', () => {
         },
         get cacheDir() {
             return 'cacheDir';
+        },
+        get configDir() {
+            return 'configDir';
         }
     };
 
@@ -141,6 +144,8 @@ describe('InstallationVerification Tests', () => {
 
     let yarnEmitter = new YarnEmitter();
     const httpMock: HttpRequestMock = new HttpRequestMock();
+
+    let fsReadFileFunc;
 
     before(() => {
         sandbox = sinon.sandbox.create();
@@ -174,6 +179,10 @@ describe('InstallationVerification Tests', () => {
         });
 
         sandbox.stub(request, 'get').callsFake(() => {});
+
+        sandbox.stub(fs, 'readFile').callsFake((path, cb) => {
+            cb(undefined, fsReadFileFunc(path));
+        });
 
         iv = require('./installationVerification');
     });
@@ -263,6 +272,21 @@ describe('InstallationVerification Tests', () => {
                 expect(err.message).to.include('500');
                 expect(err.message).to.include('sig');
             });
+    });
+
+    describe('isWhiteListed', () => {
+        it('steel thread', async () => {
+            const TEST_VALUE = 'FOO';
+            let expectedPath;
+            fsReadFileFunc = (path) => {
+                expectedPath = path;
+                return `["${TEST_VALUE}"]`;
+            };
+            const verification = new iv.InstallationVerification()
+                .setPluginName(TEST_VALUE).setCliEngineConfig(config);
+            expect(await verification.isWhiteListed()).to.be.equal(true);
+            expect(expectedPath).to.include(iv.WHITELIST_FILENAME);
+        });
     });
 
     describe('doInstallationCodeSigningVerification', () => {

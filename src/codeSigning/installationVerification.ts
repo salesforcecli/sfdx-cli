@@ -19,7 +19,7 @@ import { NamedError, UnexpectedHost, UnauthorizedSslConnection } from '../util/N
 import { get as httpsGet } from 'https';
 import { EOL } from 'os';
 
-const readFileAsync: (path: string, options?: any) => Promise<string> = utilPromisify(fs.readFile);
+export const WHITELIST_FILENAME = 'unsignedPluginWhiteList.json';
 
 /**
  * simple data structure representing the discovered meta information needed for signing,
@@ -37,10 +37,16 @@ export class NpmMeta {
  */
 export class InstallationVerification {
 
+    private readFileAsync;
+
     // The name of the published plugin
     private pluginName: string;
     // config from cli engine
     private config: any;
+
+    constructor() {
+        this.readFileAsync = utilPromisify(fs.readFile);
+    }
 
     /**
      * setter for the cli engine config
@@ -87,18 +93,13 @@ export class InstallationVerification {
         return npmMeta;
     }
 
-    public async isWhiteListed(name: string) {
-        if (name) {
-            const whitelistFilePath = path.join(this.getConfigPath(), 'unsignedPluginWhiteList.json');
+    public async isWhiteListed() {
+        const whitelistFilePath = path.join(this.getConfigPath(), WHITELIST_FILENAME);
 
-            const fileContent = await readFileAsync(whitelistFilePath);
-            const whitelistArray = JSON.parse(fileContent);
+        const fileContent = await this.readFileAsync(whitelistFilePath);
+        const whitelistArray = JSON.parse(fileContent);
 
-            console.log(`whitelistArray: ${whitelistArray}`);
-
-            return whitelistArray.includes(name);
-        }
-        return false;
+        return whitelistArray && whitelistArray.includes(this.pluginName);
     }
 
     /**
@@ -314,7 +315,7 @@ export async function doInstallationCodeSigningVerification(config: any, {plugin
     } catch (err) {
         if (err.name === 'NotSigned') {
 
-            if (await verificationConfig.verifier.isWhiteListed(plugin)) {
+            if (await verificationConfig.verifier.isWhiteListed()) {
                 verificationConfig.log(`The plugin [${plugin}] is not digitally signed but it is white-listed.`);
                 return;
             } else {
