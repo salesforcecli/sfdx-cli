@@ -65,7 +65,7 @@
     "debug": "3.0.1",
     "fs-extra": "4.0.2",
     "lodash": "4.11.1",
-    "salesforcedx": "41.2.2"
+    "salesforcedx": "41.2.3-0"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
