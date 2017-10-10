@@ -174,21 +174,16 @@ describe('plugin migrator', () => {
         const warn = (cliUx.warn as SinonSpy);
         const warnCalls = warn.getCalls();
         expect((cliUx.warn as SinonSpy).callCount).to.equal(5);
-        expect(warnCalls[0].args.map((arg) => arg.message)).to.deep.equal([
-            'v5 plug-ins found -- Complete your update to v6:'
-        ]);
-        expect(warnCalls[1].args.map((arg) => arg.message)).to.deep.equal([
-            'linked-plugin -- To re-link, run "sfdx plugins:link <path>"'
-        ]);
-        expect(warnCalls[2].args.map((arg) => arg.message)).to.deep.equal([
-            'user-plugin-latest -- To re-install, run \"sfdx plugins:install user-plugin-latest\"'
-        ]);
-        expect(warnCalls[3].args.map((arg) => arg.message)).to.deep.equal([
-            'user-plugin-versioned -- To re-install, run \"sfdx plugins:install user-plugin-versioned@1.0.1\"'
-        ]);
-        expect(warnCalls[4].args.map((arg) => arg.message)).to.deep.equal([
-            'core-plugin is now a core plug-in -- From now on, use \"sfdx plugins --core\" to view its version'
-        ]);
+        const expectedLines = [
+            'v5 plug-ins found -- Complete your update to v6:',
+            '- linked-plugin -- To re-link, run sfdx plugins:link <path>',
+            '- user-plugin-latest -- To re-install, run sfdx plugins:install user-plugin-latest',
+            '- user-plugin-versioned -- To re-install, run sfdx plugins:install user-plugin-versioned@1.0.1',
+            '- core-plugin is now a core plug-in -- Use sfdx plugins --core to view its version'
+        ];
+        for (const [i, line] of expectedLines.entries()) {
+            expect(warnCalls[i].args.map(stripColors)).to.deep.equal([line]);
+        }
     });
 
     function stubExistsSync(paths: any) {
@@ -208,6 +203,14 @@ describe('plugin migrator', () => {
 
     function stubRemoveSync() {
         return sandbox.stub(fs, 'removeSync');
+    }
+
+    function stripColors(s: string) {
+        const pattern = [
+            '[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[a-zA-Z\\d]*)*)?\\u0007)',
+            '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))'
+        ].join('|');
+        return s.replace(new RegExp(pattern, 'g'), '');
     }
 
     function newMigrator() {

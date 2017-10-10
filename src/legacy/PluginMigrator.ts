@@ -4,6 +4,7 @@ import * as path from 'path';
 import Lock from 'cli-engine/lib/lock';
 import { Config } from 'cli-engine-config';
 import { CLI as CliUx } from 'cli-ux';
+import { color } from 'cli-engine-command/lib/color';
 
 const debug = Debug('sfdx:plugins:migrate');
 
@@ -74,7 +75,7 @@ export default class PluginMigrator {
         debug('migrating %s plugin%s', pluginsJson.length, pluginsJson.length === 1 ? '' : 's');
 
         if (pluginsJson.length > 0) {
-            this.cliUx.warn(new Error('v5 plug-ins found -- Complete your update to v6:'));
+            this.cliUx.warn(color.bold.blue('v5 plug-ins found -- Complete your update to v6:'));
             for (const plugin of pluginsJson) {
                 this.migratePlugin(plugin.name, plugin.tag);
             }
@@ -94,13 +95,13 @@ export default class PluginMigrator {
     private migratePlugin(name: string, tag: string) {
         let message;
         if (tag === 'symlink') {
-            message = `${name} -- To re-link, run "sfdx plugins:link <path>"`;
+            message = `- ${color.bold(name)} -- To re-link, run ${color.green('sfdx plugins:link <path>')}`;
         } else if (this.corePlugins.includes(name)) {
-            message = `${name} is now a core plug-in -- From now on, use "sfdx plugins --core" to view its version`;
+            message = `- ${color.bold(name)} is now a core plug-in -- Use ${color.green('sfdx plugins --core')} to view its version`;
         } else {
-            message = `${name} -- To re-install, run "sfdx plugins:install ${name}${tag ? '@' : ''}${tag}"`;
+            message = `- ${color.bold(name)} -- To re-install, run ${color.green(`sfdx plugins:install ${name}${tag ? '@' : ''}${tag}`)}`;
         }
-        this.cliUx.warn(new Error(`${message}`));
+        this.cliUx.warn(`${message}`);
     }
 
     private readPluginsJson() {
