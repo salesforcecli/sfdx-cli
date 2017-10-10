@@ -348,6 +348,7 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
                 throw new NamedError('EmptySignature', 'The generated signature is empty. Verify the private key and try again');
             }
         } catch (e) {
+            process.exitCode = 1;
             console.error(`ERROR: ${e.message}`);
             if (e.reason) {
                 console.error(e.reason.message);
