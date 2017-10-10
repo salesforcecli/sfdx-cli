@@ -17,6 +17,8 @@ import { join as pathJoin } from 'path';
 import { parse as parsePath } from 'path';
 import { sep as pathSep, basename as pathBasename } from 'path';
 
+import { Config } from 'cli-engine-config';
+import { CLI } from 'cli-ux';
 import * as _ from 'lodash';
 
 import {
@@ -50,77 +52,35 @@ const PACKAGE_DOT_JSON_PATH_BAK = pathJoin(process.cwd(), `${PACKAGE_DOT_JSON}.b
 
 const BIN_NAME = 'sfdx_sign';
 
+const cliUx = new CLI();
+
 export const api = {
 
-    /**
-     * Help message for the command
-     */
-    getHelp() {
-        return _.trim(`
-Build function that will perform four things:
-1) update the npm cert and signature home url in package.json
-2) pack the npm into a tar gz file
-3) sign the tar gz file using the private key associated with the cert.
-4) test verify the signature
+/**
+ * Help message for the command.
+ * Help doesn't currently work for builtin commands this is here in case it ever does.
+ */
+//     getHelp() {
+//         return _.trim(`
+// Build function that will perform four things:
+// 1) update the npm cert and signature home url in package.json
+// 2) pack the npm into a tar gz file
+// 3) sign the tar gz file using the private key associated with the cert.
+// 4) test verify the signature
 
-Required Parameters:
---signatureUrl - the url where the signature will be hosted minus the name of the signature file.
---publicKeyUrl - the url where the public key/certificate will be hosted.
---privateKeyPath - the local file path for the private key.
+// Required Parameters:
+// --signatureUrl - the url where the signature will be hosted minus the name of the signature file.
+// --publicKeyUrl - the url where the public key/certificate will be hosted.
+// --privateKeyPath - the local file path for the private key.
 
-Returns:
-A tar.gz and signature file. The signature file will match the name of the tar gz except the extension will be ".sig".
-This file must be hosted at the location specified by --signature.
+// Returns:
+// A tar.gz and signature file. The signature file will match the name of the tar gz except the extension will be ".sig".
+// This file must be hosted at the location specified by --signature.
 
-Usage:
-sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicKeyUrl http://foo.salesforce.internal.com/file/location/sfdx.cert --privateKeyPath $HOME/sfdx.key
-`);
-    },
-
-    /**
-     * Validates that a url is a valid salesforce url.
-     * @param url - The url to validate.
-     */
-    validateUrl(url: string) {
-        try {
-            const urlObj = parseUrl(url);
-            if (!urlObj.host) {
-                throw new InvalidUrlError(url);
-            }
-            if (!validSalesforceHostname(url)) {
-                throw new NamedError('NotASalesforceHost', 'Signing urls must have the hostname developer.salesforce.com.');
-            }
-        } catch (e) {
-            const err = new InvalidUrlError(url);
-            err.reason = e;
-            throw err;
-        }
-    },
-
-    /**
-     * validate program arguments.
-     * @param args - The arg to validate; Generally passed a reference to process.argv
-     */
-    validate(args: any) {
-        if (args) {
-            if (!args.signatureUrl) {
-                throw new MissingRequiredParameter('--signatureUrl');
-            }
-            api.validateUrl(args.signatureUrl);
-
-            if (!args.publicKeyUrl) {
-                throw new MissingRequiredParameter('--publicKeyUrl');
-            }
-            api.validateUrl(args.publicKeyUrl);
-
-            if (!args.privateKeyPath) {
-                throw new MissingRequiredParameter('privateKeyPath');
-            }
-
-        } else {
-            throw new NamedError('InvalidArgs', 'Invalid args.');
-        }
-    },
+// Usage:
+// sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicKeyUrl http://foo.salesforce.internal.com/file/location/sfdx.cert --privateKeyPath $HOME/sfdx.key
+// `);
+// },
 
     /**
      * call out to yarn pack;
@@ -209,7 +169,7 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
             throw new NamedError('UnexpectedTgzName',
                 `The file path ${filePath} is unexpected. It should be a tgz file.`);
         }
-        console.info(`Signing file at filePath: ${filePath}`);
+        cliUx.log(`Signing file at filePath: ${filePath}`);
         const pathComponents: string[] = _.split(filePath, pathSep);
         const filenamePart: any = _.last(pathComponents);
         const sigFilename = _.replace(filenamePart, '.tgz', '.sig');
@@ -274,17 +234,10 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
      * main method to pack and sign an npm.
      * @param processArgv - reference to process.argv
      */
-    async doPackAndSign(processArgv: string[]) {
+    async doPackAndSign(args) {
         let packageDotJsonBackedUp = false;
 
         try {
-            const args: any = parseSimpleArgs(processArgv);
-
-            if (args.help) {
-                console.log(api.getHelp());
-                return;
-            }
-            api.validate(args);
 
             // validate npm ignore has what we name.
             let filename = '.npmignore';
@@ -297,7 +250,7 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
             try {
                 api.validateNpmIgnorePatterns(gitIgnoreContent);
             } catch (e) {
-                console.warn(`WARNING:  The following patterns are recommended in ${filename} for code signing: *.tgz, *.sig, package.json.bak.`);
+                cliUx.warn(`WARNING:  The following patterns are recommended in ${filename} for code signing: *.tgz, *.sig, package.json.bak.`);
             }
 
             // read package.json info
@@ -309,15 +262,16 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
 
             // make a backup of the signature file
             await api.copyPackageDotJson(PACKAGE_DOT_JSON_PATH, PACKAGE_DOT_JSON_PATH_BAK);
+
             packageDotJsonBackedUp = true;
-            console.log(`Backed up ${PACKAGE_DOT_JSON_PATH} to ${PACKAGE_DOT_JSON_PATH_BAK}`);
+            cliUx.log(`Backed up ${PACKAGE_DOT_JSON_PATH} to ${PACKAGE_DOT_JSON_PATH_BAK}`);
 
             // update the package.json object with the signature urls and write it to disk.
             const sigUrl = `${args.signatureUrl}${_.endsWith(args.signatureUrl, '/') ? '' : '/'}${sigFilename}`;
             packageJson = _.merge(packageJson, { sfdx: { publicKeyUrl: args.publicKeyUrl, signatureUrl: `${sigUrl}` } });
             await api.writePackageJson(packageJson);
 
-            console.log('Successfully updated package.json with public key and signature file locations.');
+            cliUx.log('Successfully updated package.json with public key and signature file locations.');
 
             const filepath = await api.pack();
 
@@ -330,7 +284,7 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
                 // write the signature file to disk
                 await api.writeSignatureFile(filepath, signature);
 
-                console.info(`Artifact signed and saved in ${sigFilename}`);
+                cliUx.log(`Artifact signed and saved in ${sigFilename}`);
 
                 // verify the signature with the public key url
                 const verified = await api.verify(
@@ -339,7 +293,7 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
                     args.publicKeyUrl);
 
                 if (verified) {
-                    console.log(`Successfully verified signature with public key at: ${args.publicKeyUrl}`);
+                    cliUx.log(`Successfully verified signature with public key at: ${args.publicKeyUrl}`);
                     return verified;
                 } else {
                     throw new NamedError('FailedToVerifySignature', 'Failed to verify signature with tar gz content');
@@ -349,14 +303,14 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
             }
         } catch (e) {
             process.exitCode = 1;
-            console.error(`ERROR: ${e.message}`);
+            cliUx.error(`ERROR: ${e.message}`);
             if (e.reason) {
-                console.error(e.reason.message);
+                cliUx.error(e.reason.message);
             }
         } finally {
             // Restore the package.json file so it doesn't show a git diff.
             if (packageDotJsonBackedUp) {
-                console.log('Restoring package.json');
+                cliUx.log('Restoring package.json');
                 await api.copyPackageDotJson(PACKAGE_DOT_JSON_PATH_BAK, PACKAGE_DOT_JSON_PATH);
                 await removeFileAsync(PACKAGE_DOT_JSON_PATH_BAK);
             }
@@ -364,8 +318,3 @@ sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicK
     }
 
 };
-
-// We only want to run this code if it's invoked from sfdx_sign
-if (process.argv && process.argv.length > 0 && (_.includes(process.argv[1], BIN_NAME) || _.includes(process.argv[1], pathBasename(process.argv[1])))) {
-    (async () => api.doPackAndSign(process.argv))();
-}
