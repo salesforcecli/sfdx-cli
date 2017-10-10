@@ -75,17 +75,17 @@ def doUnitTests(PLATFORM os) {
             "USERPROFILE=${env.WORKSPACE}"
         ])
         {
-            rc = bat returnStatus: true, script: 'yarn'
-            if (rc != 0)
-            {
-                currentBuild.result = 'Failed'
-                return
-            }
             switch(os) {
                 case PLATFORM.MAC:
                 case PLATFORM.LINUX:
                     sh 'node --version'
                     sh 'echo $PATH'
+                    rc = bat returnStatus: true, script: 'yarn'
+                    if (rc != 0)
+                    {
+                        currentBuild.result = 'Failed'
+                        return
+                    }
                     rc = sh returnStatus: true, script: 'yarn test'
                     if (rc != 0)
                     {
