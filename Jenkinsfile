@@ -46,8 +46,27 @@ def runTheJob(PLATFORM os) {
  * The stages necessary to accomplish unit tests
  */
 def doUnitTests(PLATFORM os) {
-    installYarn();
+    npmInstall(os)
 
+    stage('Run Unit tests')
+    {
+        sh 'npm run prepare'
+        sh 'npm run lint'
+        rc = sh returnStatus: true, script: 'npm run lint'
+        if (rc != 0)
+        {
+            currentBuild.result = 'Failed'
+            return
+        }
+        rc = sh returnStatus: true, script: 'mocha --recursive \"dist/**/*.test.js\"'
+        if (rc != 0)
+        {
+            currentBuild.result = 'Failed'
+            return
+        }
+    }
+    return;
+    
     stage('Run Unit tests/checkstyle/coverage')
     {
         withEnv([
@@ -84,14 +103,6 @@ def doUnitTests(PLATFORM os) {
                     break
             }
         }
-    }
-}
-
-def installYarn() {
-    rc = sh returnStatus: true, script: 'npm run coverage-report'
-    if (rc != 0)
-    {
-        rc = sh returnStatus: true, script: 'npm install --global yarn'
     }
 }
 
@@ -147,15 +158,6 @@ def npmInstallInternal(PLATFORM os, linkHeroku = false) {
                             sh "npm config set proxy ${npmPublicProxy} -g"
                         }
                         sh "npm-cache install ${npmCacheDir} npm"
-                        sh 'npm run compile'
-                        if (linkHeroku) {
-                          withEnv([
-                              "HOME=${home}",
-                              "XDG_DATA_HOME=${home}"
-                          ]) {
-                               sh 'sfdx plugins:link .;sfdx force --help'
-                            }
-                        }
                         break
                     case PLATFORM.WINDOWS:
                         if (npmPublicProxy != null) {
@@ -164,16 +166,6 @@ def npmInstallInternal(PLATFORM os, linkHeroku = false) {
                             bat "npm config set proxy ${npmPublicProxy} -g"
                         }
                         bat "npm-cache install ${npmCacheDir} npm"
-                        bat 'npm run compile'
-                        if (linkHeroku) {
-                            withEnv([
-                                "HOME=${home}",
-                                "XDG_DATA_HOME=${home}"
-                            ]) {
-                                        bat "\"${env.WINDOWS_SFDX_BINARY}\" plugins:link ."
-                                        bat "\"${env.WINDOWS_SFDX_BINARY}\" force --help"
-                            }
-                        }
                         break
                 }
             }
