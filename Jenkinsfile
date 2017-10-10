@@ -80,7 +80,7 @@ def doUnitTests(PLATFORM os) {
                 case PLATFORM.LINUX:
                     sh 'node --version'
                     sh 'echo $PATH'
-                    rc = bat returnStatus: true, script: 'yarn'
+                    rc = sh returnStatus: true, script: 'yarn'
                     if (rc != 0)
                     {
                         currentBuild.result = 'Failed'
@@ -95,11 +95,11 @@ def doUnitTests(PLATFORM os) {
                     //rc = sh returnStatus: true, script: 'mv checkstyle.xml linux-checkstyle.xml; mv xunit.xml linux-unit-xunit.xml; rm -rf linuxunitcoverage; mv coverage linuxunitcoverage'
                     break
                 case PLATFORM.WINDOWS:
-                    rc = bat returnStatus: true, script: 'yarn test'
-                    if (rc != 0)
-                    {
-                        currentBuild.result = 'Unstable'
-                    }
+                    // rc = bat returnStatus: true, script: 'yarn test'
+                    // if (rc != 0)
+                    // {
+                    //     currentBuild.result = 'Unstable'
+                    // }
                     // rc = bat returnStatus: true, script: 'node node_modules\\istanbul\\lib\\cli.js cover --report html node_modules\\mocha\\bin\\_mocha -- -t 240000 --recursive dist\\test\\unit -R xunit-file'
                     // if (rc != 0)
                     // {
