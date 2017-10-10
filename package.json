@@ -5,8 +5,7 @@
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
-    "sfdx": "bin/run",
-    "sfdx_sign": "dist/codeSigning/packAndSign.js"
+    "sfdx": "bin/run"
   },
   "engines": {
     "node": ">=8.4.0"

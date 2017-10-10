@@ -81,11 +81,12 @@ describe('doPackAndSign', () => {
     });
 
     it ('Steel Thread', () => {
-        return packAndSignApi.doPackAndSign([
-            '--signatureUrl', 'https://developer.salesforce.com/signatureUrlValue',
-            '--publicKeyUrl', 'https://developer.salesforce.com/publicKeyUrlValue',
-            '--privateKeyPath', 'privateKeyPathUrl'
-        ]).then((result: boolean) => {
+        const flags = {
+            signatureUrl: 'https://developer.salesforce.com/signatureUrlValue',
+            publicKeyUrl: 'https://developer.salesforce.com/publicKeyUrlValue',
+            privateKeyPath: 'privateKeyPathUrl'
+        };
+        return packAndSignApi.doPackAndSign(flags).then((result: boolean) => {
             expect(result).to.be.equal(true);
         });
     });
@@ -99,33 +100,6 @@ describe('packAndSign Tests', () => {
     });
     afterEach(() => {
         sandbox.restore();
-    });
-
-    describe('validate url', () => {
-        it ('with host', () => {
-            const TEST = 'https://developer.salesforce.com/foo/bar';
-            expect(() => packAndSignApi.validateUrl(TEST)).to.not.throw(Error);
-        });
-
-        it('no host', () => {
-            const TEST = 'foo/bar';
-            expect(() => packAndSignApi.validateUrl(TEST)).to.throw(Error);
-        });
-    });
-
-    describe('validate args', () => {
-        it ('no signature url', () => {
-            const args = {};
-            expect(() => packAndSignApi.validate(args)).to.throw('signatureUrl');
-        });
-        it ('no public key', () => {
-            const args = { signatureUrl: 'https://developer.salesforce.com' };
-            expect(() => packAndSignApi.validate(args)).to.throw('publicKeyUrl');
-        });
-        it ('no private key path', () => {
-            const args = { signatureUrl: 'https://developer.salesforce.com', publicKeyUrl: 'https://developer.salesforce.com' };
-            expect(() => packAndSignApi.validate(args)).to.throw('privateKeyPath');
-        });
     });
 
     describe('pack', () => {
