@@ -26,7 +26,7 @@ export function validSalesforceHostname(url: string | null) {
     if (process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING === 'true') {
         return (parsedUrl as any).protocol === 'https:' && parsedUrl.hostname &&  /(\.salesforce\.com)$/.test(parsedUrl.hostname);
     } else {
-        return (parsedUrl as any).protocol === 'https:' && parsedUrl.host && parsedUrl.host === 'developer.salesforce.com';
+        return (parsedUrl as any).protocol === 'https:' && parsedUrl.hostname && parsedUrl.hostname === 'developer.salesforce.com';
     }
 }
 
