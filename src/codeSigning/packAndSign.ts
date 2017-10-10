@@ -56,32 +56,6 @@ const cliUx = new CLI();
 
 export const api = {
 
-/**
- * Help message for the command.
- * Help doesn't currently work for builtin commands this is here in case it ever does.
- */
-//     getHelp() {
-//         return _.trim(`
-// Build function that will perform four things:
-// 1) update the npm cert and signature home url in package.json
-// 2) pack the npm into a tar gz file
-// 3) sign the tar gz file using the private key associated with the cert.
-// 4) test verify the signature
-
-// Required Parameters:
-// --signatureUrl - the url where the signature will be hosted minus the name of the signature file.
-// --publicKeyUrl - the url where the public key/certificate will be hosted.
-// --privateKeyPath - the local file path for the private key.
-
-// Returns:
-// A tar.gz and signature file. The signature file will match the name of the tar gz except the extension will be ".sig".
-// This file must be hosted at the location specified by --signature.
-
-// Usage:
-// sfdx_sign --signature http://foo.salesforce.internal.com/file/location --publicKeyUrl http://foo.salesforce.internal.com/file/location/sfdx.cert --privateKeyPath $HOME/sfdx.key
-// `);
-// },
-
     /**
      * call out to yarn pack;
      */
@@ -169,7 +143,7 @@ export const api = {
             throw new NamedError('UnexpectedTgzName',
                 `The file path ${filePath} is unexpected. It should be a tgz file.`);
         }
-        cliUx.log(`Signing file at filePath: ${filePath}`);
+        cliUx.log(`Signing file at: ${filePath}`);
         const pathComponents: string[] = _.split(filePath, pathSep);
         const filenamePart: any = _.last(pathComponents);
         const sigFilename = _.replace(filenamePart, '.tgz', '.sig');
