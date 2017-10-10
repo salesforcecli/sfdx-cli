@@ -57,6 +57,10 @@ abbrev@1:
   version "1.1.1"
   resolved "http://10.252.156.164:4880/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
 
+abbrev@1.0.x:
+  version "1.0.9"
+  resolved "http://10.252.156.164:4880/abbrev/-/abbrev-1.0.9.tgz#91b4792588a7738c25f35dd6f63752a2f8776135"
+
 accepts@~1.2.12:
   version "1.2.13"
   resolved "http://10.252.156.164:4880/accepts/-/accepts-1.2.13.tgz#e5f1f3928c6d95fd96558c36ec3d9d0de4a6ecea"
@@ -102,6 +106,14 @@ ajv@^5.1.0:
     json-schema-traverse "^0.3.0"
     json-stable-stringify "^1.0.1"
 
+align-text@^0.1.1, align-text@^0.1.3:
+  version "0.1.4"
+  resolved "http://10.252.156.164:4880/align-text/-/align-text-0.1.4.tgz#0cd90a561093f35d0a99256c22b7069433fad117"
+  dependencies:
+    kind-of "^3.0.2"
+    longest "^1.0.1"
+    repeat-string "^1.5.2"
+
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
@@ -139,6 +151,12 @@ ansi-styles@^3.1.0, ansi-styles@^3.2.0:
 ansicolors@~0.2.1:
   version "0.2.1"
   resolved "http://10.252.156.164:4880/ansicolors/-/ansicolors-0.2.1.tgz#be089599097b74a5c9c4a84a0cdbcdb62bd87aef"
+
+append-transform@^0.4.0:
+  version "0.4.0"
+  resolved "http://10.252.156.164:4880/append-transform/-/append-transform-0.4.0.tgz#d76ebf8ca94d276e247a36bad44a4b74ab611991"
+  dependencies:
+    default-require-extensions "^1.0.0"
 
 aproba@^1.0.3:
   version "1.2.0"
@@ -262,7 +280,11 @@ async@1.2.1:
   version "1.2.1"
   resolved "http://10.252.156.164:4880/async/-/async-1.2.1.tgz#a4816a17cd5ff516dfa2c7698a453369b9790de0"
 
-async@^2.0.0:
+async@1.x, async@^1.4.0:
+  version "1.5.2"
+  resolved "http://10.252.156.164:4880/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
+
+async@^2.0.0, async@^2.1.4:
   version "2.5.0"
   resolved "http://10.252.156.164:4880/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
   dependencies:
@@ -296,7 +318,7 @@ aws4@^1.2.1, aws4@^1.6.0:
   version "1.6.0"
   resolved "http://10.252.156.164:4880/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
-babel-code-frame@^6.22.0:
+babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
   version "6.26.0"
   resolved "http://10.252.156.164:4880/babel-code-frame/-/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
   dependencies:
@@ -304,11 +326,74 @@ babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
+babel-generator@^6.18.0:
+  version "6.26.0"
+  resolved "http://10.252.156.164:4880/babel-generator/-/babel-generator-6.26.0.tgz#ac1ae20070b79f6e3ca1d3269613053774f20dc5"
+  dependencies:
+    babel-messages "^6.23.0"
+    babel-runtime "^6.26.0"
+    babel-types "^6.26.0"
+    detect-indent "^4.0.0"
+    jsesc "^1.3.0"
+    lodash "^4.17.4"
+    source-map "^0.5.6"
+    trim-right "^1.0.1"
+
+babel-messages@^6.23.0:
+  version "6.23.0"
+  resolved "http://10.252.156.164:4880/babel-messages/-/babel-messages-6.23.0.tgz#f3cdf4703858035b2a2951c6ec5edf6c62f2630e"
+  dependencies:
+    babel-runtime "^6.22.0"
+
 babel-runtime@^5.8.25:
   version "5.8.38"
   resolved "http://10.252.156.164:4880/babel-runtime/-/babel-runtime-5.8.38.tgz#1c0b02eb63312f5f087ff20450827b425c9d4c19"
   dependencies:
     core-js "^1.0.0"
+
+babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+  version "6.26.0"
+  resolved "http://10.252.156.164:4880/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
+
+babel-template@^6.16.0:
+  version "6.26.0"
+  resolved "http://10.252.156.164:4880/babel-template/-/babel-template-6.26.0.tgz#de03e2d16396b069f46dd9fff8521fb1a0e35e02"
+  dependencies:
+    babel-runtime "^6.26.0"
+    babel-traverse "^6.26.0"
+    babel-types "^6.26.0"
+    babylon "^6.18.0"
+    lodash "^4.17.4"
+
+babel-traverse@^6.18.0, babel-traverse@^6.26.0:
+  version "6.26.0"
+  resolved "http://10.252.156.164:4880/babel-traverse/-/babel-traverse-6.26.0.tgz#46a9cbd7edcc62c8e5c064e2d2d8d0f4035766ee"
+  dependencies:
+    babel-code-frame "^6.26.0"
+    babel-messages "^6.23.0"
+    babel-runtime "^6.26.0"
+    babel-types "^6.26.0"
+    babylon "^6.18.0"
+    debug "^2.6.8"
+    globals "^9.18.0"
+    invariant "^2.2.2"
+    lodash "^4.17.4"
+
+babel-types@^6.18.0, babel-types@^6.26.0:
+  version "6.26.0"
+  resolved "http://10.252.156.164:4880/babel-types/-/babel-types-6.26.0.tgz#a3b073f94ab49eb6fa55cd65227a334380632497"
+  dependencies:
+    babel-runtime "^6.26.0"
+    esutils "^2.0.2"
+    lodash "^4.17.4"
+    to-fast-properties "^1.0.3"
+
+babylon@^6.18.0:
+  version "6.18.0"
+  resolved "http://10.252.156.164:4880/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -458,6 +543,10 @@ camelcase-keys@^2.0.0:
     camelcase "^2.0.0"
     map-obj "^1.0.0"
 
+camelcase@^1.0.2:
+  version "1.2.1"
+  resolved "http://10.252.156.164:4880/camelcase/-/camelcase-1.2.1.tgz#9bb5304d2e0b56698b2c758b08a3eaa9daa58a39"
+
 camelcase@^2.0.0:
   version "2.1.1"
   resolved "http://10.252.156.164:4880/camelcase/-/camelcase-2.1.1.tgz#7c1d16d679a1bbe59ca02cacecfb011e201f5a1f"
@@ -491,6 +580,13 @@ caseless@~0.12.0:
 caseless@~0.8.0:
   version "0.8.0"
   resolved "http://10.252.156.164:4880/caseless/-/caseless-0.8.0.tgz#5bca2881d41437f54b2407ebe34888c7b9ad4f7d"
+
+center-align@^0.1.1:
+  version "0.1.3"
+  resolved "http://10.252.156.164:4880/center-align/-/center-align-0.1.3.tgz#aa0d32629b6ee972200411cbd4461c907bc2b7ad"
+  dependencies:
+    align-text "^0.1.3"
+    lazy-cache "^1.0.3"
 
 chai@4.1.2:
   version "4.1.2"
@@ -658,6 +754,14 @@ cli-width@^2.0.0:
   version "2.2.0"
   resolved "http://10.252.156.164:4880/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
 
+cliui@^2.1.0:
+  version "2.1.0"
+  resolved "http://10.252.156.164:4880/cliui/-/cliui-2.1.0.tgz#4b475760ff80264c762c3a1719032e91c7fea0d1"
+  dependencies:
+    center-align "^0.1.1"
+    right-align "^0.1.1"
+    wordwrap "0.0.2"
+
 clone-buffer@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/clone-buffer/-/clone-buffer-1.0.0.tgz#e3e25b207ac4e701af721e2cb5a16792cac3dc58"
@@ -814,6 +918,10 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "http://10.252.156.164:4880/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
 
+core-js@^2.4.0:
+  version "2.5.1"
+  resolved "http://10.252.156.164:4880/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
+
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "http://10.252.156.164:4880/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -959,7 +1067,7 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-dateformat@^1.0.11:
+dateformat@^1.0.11, dateformat@^1.0.12:
   version "1.0.12"
   resolved "http://10.252.156.164:4880/dateformat/-/dateformat-1.0.12.tgz#9f124b67594c937ff706932e4a642cca8dbbfee9"
   dependencies:
@@ -982,7 +1090,7 @@ debug@3.0.1:
   dependencies:
     ms "2.0.0"
 
-debug@^2.0.0, debug@^2.1.0, debug@^2.1.1:
+debug@^2.0.0, debug@^2.1.0, debug@^2.1.1, debug@^2.6.3, debug@^2.6.8:
   version "2.6.9"
   resolved "http://10.252.156.164:4880/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -1000,7 +1108,7 @@ debug@~2.2.0:
   dependencies:
     ms "0.7.1"
 
-decamelize@^1.1.2:
+decamelize@^1.0.0, decamelize@^1.1.2:
   version "1.2.0"
   resolved "http://10.252.156.164:4880/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
@@ -1021,6 +1129,12 @@ deep-is@~0.1.3:
 deepmerge@~0.2.7:
   version "0.2.10"
   resolved "http://10.252.156.164:4880/deepmerge/-/deepmerge-0.2.10.tgz#8906bf9e525a4fbf1b203b2afcb4640249821219"
+
+default-require-extensions@^1.0.0:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/default-require-extensions/-/default-require-extensions-1.0.0.tgz#f37ea15d3e13ffd9b437d33e1a75b5fb97874cb8"
+  dependencies:
+    strip-bom "^2.0.0"
 
 del@^2.0.2:
   version "2.2.2"
@@ -1061,6 +1175,12 @@ destroy@~1.0.4:
 detect-conflict@^1.0.0:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/detect-conflict/-/detect-conflict-1.0.1.tgz#088657a66a961c05019db7c4230883b1c6b4176e"
+
+detect-indent@^4.0.0:
+  version "4.0.0"
+  resolved "http://10.252.156.164:4880/detect-indent/-/detect-indent-4.0.0.tgz#f76d064352cdf43a1cb6ce619c4ee3a9475de208"
+  dependencies:
+    repeating "^2.0.0"
 
 detect-newline@^1.0.3:
   version "1.0.3"
@@ -1482,6 +1602,13 @@ file-entry-cache@^1.1.1:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
+fileset@^2.0.2:
+  version "2.0.3"
+  resolved "http://10.252.156.164:4880/fileset/-/fileset-2.0.3.tgz#8e7548a96d3cc2327ee5e674168723a333bba2a0"
+  dependencies:
+    glob "^7.0.3"
+    minimatch "^3.0.3"
+
 filesize@^3.5.10:
   version "3.5.10"
   resolved "http://10.252.156.164:4880/filesize/-/filesize-3.5.10.tgz#fc8fa23ddb4ef9e5e0ab6e1e64f679a24a56761f"
@@ -1765,7 +1892,7 @@ glob@~4.3.0:
     minimatch "^2.0.1"
     once "^1.3.0"
 
-globals@^9.2.0, globals@^9.4.0:
+globals@^9.18.0, globals@^9.2.0, globals@^9.4.0:
   version "9.18.0"
   resolved "http://10.252.156.164:4880/globals/-/globals-9.18.0.tgz#aa3896b3e69b487f17e31ed2143d69a8e30c2d8a"
 
@@ -1878,6 +2005,16 @@ gruntfile-editor@^1.0.0:
   dependencies:
     ast-query "^2.0.0"
     lodash "^4.6.1"
+
+handlebars@^4.0.3:
+  version "4.0.10"
+  resolved "http://10.252.156.164:4880/handlebars/-/handlebars-4.0.10.tgz#3d30c718b09a3d96f23ea4cc1f403c4d3ba9ff4f"
+  dependencies:
+    async "^1.4.0"
+    optimist "^0.6.1"
+    source-map "^0.4.4"
+  optionalDependencies:
+    uglify-js "^2.6"
 
 har-schema@^2.0.0:
   version "2.0.0"
@@ -2243,6 +2380,12 @@ interpret@^1.0.0:
   version "1.0.4"
   resolved "http://10.252.156.164:4880/interpret/-/interpret-1.0.4.tgz#820cdd588b868ffb191a809506d6c9c8f212b1b0"
 
+invariant@^2.2.2:
+  version "2.2.2"
+  resolved "http://10.252.156.164:4880/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
+  dependencies:
+    loose-envify "^1.0.0"
+
 ipaddr.js@1.0.5:
   version "1.0.5"
   resolved "http://10.252.156.164:4880/ipaddr.js/-/ipaddr.js-1.0.5.tgz#5fa78cf301b825c78abc3042d812723049ea23c7"
@@ -2256,6 +2399,10 @@ is-absolute@^0.1.7:
 is-arrayish@^0.2.1:
   version "0.2.1"
   resolved "http://10.252.156.164:4880/is-arrayish/-/is-arrayish-0.2.1.tgz#77c99840527aa8ecb1a8ba697b80645a7a926a9d"
+
+is-buffer@^1.1.5:
+  version "1.1.5"
+  resolved "http://10.252.156.164:4880/is-buffer/-/is-buffer-1.1.5.tgz#1f3b26ef613b214b88cbca23cc6c01d87961eecc"
 
 is-builtin-module@^1.0.0:
   version "1.0.0"
@@ -2372,6 +2519,82 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "http://10.252.156.164:4880/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
+istanbul-api@^1.0.0-alpha:
+  version "1.1.14"
+  resolved "http://10.252.156.164:4880/istanbul-api/-/istanbul-api-1.1.14.tgz#25bc5701f7c680c0ffff913de46e3619a3a6e680"
+  dependencies:
+    async "^2.1.4"
+    fileset "^2.0.2"
+    istanbul-lib-coverage "^1.1.1"
+    istanbul-lib-hook "^1.0.7"
+    istanbul-lib-instrument "^1.8.0"
+    istanbul-lib-report "^1.1.1"
+    istanbul-lib-source-maps "^1.2.1"
+    istanbul-reports "^1.1.2"
+    js-yaml "^3.7.0"
+    mkdirp "^0.5.1"
+    once "^1.4.0"
+
+istanbul-lib-coverage@^1.1.1:
+  version "1.1.1"
+  resolved "http://10.252.156.164:4880/istanbul-lib-coverage/-/istanbul-lib-coverage-1.1.1.tgz#73bfb998885299415c93d38a3e9adf784a77a9da"
+
+istanbul-lib-hook@^1.0.7:
+  version "1.0.7"
+  resolved "http://10.252.156.164:4880/istanbul-lib-hook/-/istanbul-lib-hook-1.0.7.tgz#dd6607f03076578fe7d6f2a630cf143b49bacddc"
+  dependencies:
+    append-transform "^0.4.0"
+
+istanbul-lib-instrument@^1.8.0:
+  version "1.8.0"
+  resolved "http://10.252.156.164:4880/istanbul-lib-instrument/-/istanbul-lib-instrument-1.8.0.tgz#66f6c9421cc9ec4704f76f2db084ba9078a2b532"
+  dependencies:
+    babel-generator "^6.18.0"
+    babel-template "^6.16.0"
+    babel-traverse "^6.18.0"
+    babel-types "^6.18.0"
+    babylon "^6.18.0"
+    istanbul-lib-coverage "^1.1.1"
+    semver "^5.3.0"
+
+istanbul-lib-report@^1.1.1:
+  version "1.1.1"
+  resolved "http://10.252.156.164:4880/istanbul-lib-report/-/istanbul-lib-report-1.1.1.tgz#f0e55f56655ffa34222080b7a0cd4760e1405fc9"
+  dependencies:
+    istanbul-lib-coverage "^1.1.1"
+    mkdirp "^0.5.1"
+    path-parse "^1.0.5"
+    supports-color "^3.1.2"
+
+istanbul-lib-source-maps@^1.2.1:
+  version "1.2.1"
+  resolved "http://10.252.156.164:4880/istanbul-lib-source-maps/-/istanbul-lib-source-maps-1.2.1.tgz#a6fe1acba8ce08eebc638e572e294d267008aa0c"
+  dependencies:
+    debug "^2.6.3"
+    istanbul-lib-coverage "^1.1.1"
+    mkdirp "^0.5.1"
+    rimraf "^2.6.1"
+    source-map "^0.5.3"
+
+istanbul-reports@^1.1.2:
+  version "1.1.2"
+  resolved "http://10.252.156.164:4880/istanbul-reports/-/istanbul-reports-1.1.2.tgz#0fb2e3f6aa9922bd3ce45d05d8ab4d5e8e07bd4f"
+  dependencies:
+    handlebars "^4.0.3"
+
+istanbul@1.0.0-alpha.2:
+  version "1.0.0-alpha.2"
+  resolved "http://10.252.156.164:4880/istanbul/-/istanbul-1.0.0-alpha.2.tgz#06096bc08e98baad744aae46962d8df9fac63d08"
+  dependencies:
+    abbrev "1.0.x"
+    async "1.x"
+    istanbul-api "^1.0.0-alpha"
+    js-yaml "3.x"
+    mkdirp "0.5.x"
+    nopt "3.x"
+    which "^1.1.1"
+    wordwrap "^1.0.0"
+
 istextorbinary@^2.1.0:
   version "2.1.0"
   resolved "http://10.252.156.164:4880/istextorbinary/-/istextorbinary-2.1.0.tgz#dbed2a6f51be2f7475b68f89465811141b758874"
@@ -2389,11 +2612,11 @@ joi@~6.10.1:
     moment "2.x.x"
     topo "1.x.x"
 
-js-tokens@^3.0.2:
+js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "http://10.252.156.164:4880/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
 
-js-yaml@^3.5.1:
+js-yaml@3.x, js-yaml@^3.5.1, js-yaml@^3.7.0:
   version "3.10.0"
   resolved "http://10.252.156.164:4880/js-yaml/-/js-yaml-3.10.0.tgz#2e78441646bd4682e963f22b6e92823c309c62dc"
   dependencies:
@@ -2411,6 +2634,10 @@ jschardet@^1.4.2:
 jsen@0.6.4:
   version "0.6.4"
   resolved "http://10.252.156.164:4880/jsen/-/jsen-0.6.4.tgz#ddd0ee19f5b7102c8f50f98dd0a9feee4ef576ce"
+
+jsesc@^1.3.0:
+  version "1.3.0"
+  resolved "http://10.252.156.164:4880/jsesc/-/jsesc-1.3.0.tgz#46c3fec8c1892b12b0833db9bc7622176dbab34b"
 
 jsforce@1.7.1:
   version "1.7.1"
@@ -2512,6 +2739,12 @@ keypress@~0.2.1:
   version "0.2.1"
   resolved "http://10.252.156.164:4880/keypress/-/keypress-0.2.1.tgz#1e80454250018dbad4c3fe94497d6e67b6269c77"
 
+kind-of@^3.0.2:
+  version "3.2.2"
+  resolved "http://10.252.156.164:4880/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
+  dependencies:
+    is-buffer "^1.1.5"
+
 klaw-sync@^3.0.0:
   version "3.0.0"
   resolved "http://10.252.156.164:4880/klaw-sync/-/klaw-sync-3.0.0.tgz#07ff84e82e3f7c1c39dd0c9b7259db826ec998f6"
@@ -2523,6 +2756,10 @@ klaw@^1.0.0:
   resolved "http://10.252.156.164:4880/klaw/-/klaw-1.3.1.tgz#4088433b46b3b1ba259d78785d8e96f73ba02439"
   optionalDependencies:
     graceful-fs "^4.1.9"
+
+lazy-cache@^1.0.3:
+  version "1.0.4"
+  resolved "http://10.252.156.164:4880/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
 
 lazystream@^1.0.0:
   version "1.0.0"
@@ -2837,6 +3074,16 @@ lolex@^1.6.0:
   version "1.6.0"
   resolved "http://10.252.156.164:4880/lolex/-/lolex-1.6.0.tgz#3a9a0283452a47d7439e72731b9e07d7386e49f6"
 
+longest@^1.0.1:
+  version "1.0.1"
+  resolved "http://10.252.156.164:4880/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
+
+loose-envify@^1.0.0:
+  version "1.3.1"
+  resolved "http://10.252.156.164:4880/loose-envify/-/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
+  dependencies:
+    js-tokens "^3.0.0"
+
 loud-rejection@^1.0.0:
   version "1.6.0"
   resolved "http://10.252.156.164:4880/loud-rejection/-/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
@@ -2968,7 +3215,7 @@ mimic-fn@^1.0.0:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/mimic-fn/-/mimic-fn-1.1.0.tgz#e667783d92e89dbd342818b5230b9d62a672ad18"
 
-"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.4:
+"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"
   resolved "http://10.252.156.164:4880/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
@@ -3009,7 +3256,7 @@ mkdirp@0.5.0:
   dependencies:
     minimist "0.0.8"
 
-mkdirp@0.5.1, mkdirp@0.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
+mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@0.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   version "0.5.1"
   resolved "http://10.252.156.164:4880/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
@@ -3163,7 +3410,7 @@ noop2@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/noop2/-/noop2-2.0.0.tgz#4b636015e9882b54783c02b412f699d8c5cd0a5b"
 
-"nopt@2 || 3", nopt@^3.0.0:
+"nopt@2 || 3", nopt@3.x, nopt@^3.0.0:
   version "3.0.6"
   resolved "http://10.252.156.164:4880/nopt/-/nopt-3.0.6.tgz#c6465dbf08abcd4db359317f79ac68a646b28ff9"
   dependencies:
@@ -3653,9 +3900,17 @@ redeyed@~1.0.0:
   dependencies:
     esprima "~3.0.0"
 
+regenerator-runtime@^0.11.0:
+  version "0.11.0"
+  resolved "http://10.252.156.164:4880/regenerator-runtime/-/regenerator-runtime-0.11.0.tgz#7e54fe5b5ccd5d6624ea6255c3473be090b802e1"
+
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
+
+repeat-string@^1.5.2:
+  version "1.6.1"
+  resolved "http://10.252.156.164:4880/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
 
 repeating@^2.0.0:
   version "2.0.1"
@@ -3812,7 +4067,13 @@ rgb2hex@~0.1.0:
   version "0.1.0"
   resolved "http://10.252.156.164:4880/rgb2hex/-/rgb2hex-0.1.0.tgz#ccd55f860ae0c5c4ea37504b958e442d8d12325b"
 
-rimraf@2, rimraf@^2.2.0, rimraf@^2.2.8, rimraf@^2.4.4:
+right-align@^0.1.1:
+  version "0.1.3"
+  resolved "http://10.252.156.164:4880/right-align/-/right-align-0.1.3.tgz#61339b722fe6a3515689210d24e14c96148613ef"
+  dependencies:
+    align-text "^0.1.1"
+
+rimraf@2, rimraf@^2.2.0, rimraf@^2.2.8, rimraf@^2.4.4, rimraf@^2.6.1:
   version "2.6.2"
   resolved "http://10.252.156.164:4880/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
   dependencies:
@@ -4151,6 +4412,16 @@ source-map@^0.1.38:
   dependencies:
     amdefine ">=0.0.4"
 
+source-map@^0.4.4:
+  version "0.4.4"
+  resolved "http://10.252.156.164:4880/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
+  dependencies:
+    amdefine ">=0.0.4"
+
+source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1:
+  version "0.5.7"
+  resolved "http://10.252.156.164:4880/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
+
 source-map@~0.2.0:
   version "0.2.0"
   resolved "http://10.252.156.164:4880/source-map/-/source-map-0.2.0.tgz#dab73fbcfc2ba819b4de03bd6f6eaa48164b3f9d"
@@ -4434,6 +4705,10 @@ tmp@^0.0.33:
   dependencies:
     os-tmpdir "~1.0.2"
 
+to-fast-properties@^1.0.3:
+  version "1.0.3"
+  resolved "http://10.252.156.164:4880/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
+
 topo@1.x.x:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/topo/-/topo-1.1.0.tgz#e9d751615d1bb87dc865db182fa1ca0a5ef536d5"
@@ -4453,6 +4728,10 @@ traverse@^0.6.6:
 trim-newlines@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/trim-newlines/-/trim-newlines-1.0.0.tgz#5887966bb582a4503a41eb524f7d35011815a613"
+
+trim-right@^1.0.1:
+  version "1.0.1"
+  resolved "http://10.252.156.164:4880/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
 tryit@^1.0.1:
   version "1.0.3"
@@ -4531,6 +4810,19 @@ typedarray@^0.0.6:
 typescript@2.5.2:
   version "2.5.2"
   resolved "http://10.252.156.164:4880/typescript/-/typescript-2.5.2.tgz#038a95f7d9bbb420b1bf35ba31d4c5c1dd3ffe34"
+
+uglify-js@^2.6:
+  version "2.8.29"
+  resolved "http://10.252.156.164:4880/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
+  dependencies:
+    source-map "~0.5.1"
+    yargs "~3.10.0"
+  optionalDependencies:
+    uglify-to-browserify "~1.0.0"
+
+uglify-to-browserify@~1.0.0:
+  version "1.0.2"
+  resolved "http://10.252.156.164:4880/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
 
 underscore.string@^3.0.3:
   version "3.3.4"
@@ -4707,7 +4999,7 @@ wgxpath@~1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/wgxpath/-/wgxpath-1.0.0.tgz#eef8a4b9d558cc495ad3a9a2b751597ecd9af690"
 
-which@1, which@^1.2.9:
+which@1, which@^1.1.1, which@^1.2.9:
   version "1.3.0"
   resolved "http://10.252.156.164:4880/which/-/which-1.3.0.tgz#ff04bdfc010ee547d780bec38e1ac1c2777d253a"
   dependencies:
@@ -4725,13 +5017,21 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2"
 
+window-size@0.1.0:
+  version "0.1.0"
+  resolved "http://10.252.156.164:4880/window-size/-/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
+
+wordwrap@0.0.2:
+  version "0.0.2"
+  resolved "http://10.252.156.164:4880/wordwrap/-/wordwrap-0.0.2.tgz#b79669bb42ecb409f83d583cad52ca17eaa1643f"
+
+wordwrap@^1.0.0, wordwrap@~1.0.0:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
+
 wordwrap@~0.0.2:
   version "0.0.3"
   resolved "http://10.252.156.164:4880/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
-
-wordwrap@~1.0.0:
-  version "1.0.0"
-  resolved "http://10.252.156.164:4880/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
 
 wrappy@1:
   version "1.0.2"
@@ -4775,9 +5075,25 @@ xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
   resolved "http://10.252.156.164:4880/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 
+xunit-file@1.0.0:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/xunit-file/-/xunit-file-1.0.0.tgz#6cb35a024ee94b49b2507ee3878968c6baaec398"
+  dependencies:
+    dateformat "^1.0.12"
+    mkdirp "^0.5.1"
+
 yallist@^2.1.2:
   version "2.1.2"
   resolved "http://10.252.156.164:4880/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
+
+yargs@~3.10.0:
+  version "3.10.0"
+  resolved "http://10.252.156.164:4880/yargs/-/yargs-3.10.0.tgz#f7ee7bd857dd7c1d2d38c0e74efbd681d1431fd1"
+  dependencies:
+    camelcase "^1.0.2"
+    cliui "^2.1.0"
+    decamelize "^1.0.0"
+    window-size "0.1.0"
 
 yauzl@^2.5.0:
   version "2.8.0"

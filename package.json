@@ -77,10 +77,12 @@
     "@types/request": "2.0.3",
     "@types/sinon": "2.3.5",
     "chai": "4.1.2",
+    "istanbul": "1.0.0-alpha.2",
     "mocha": "3.5.0",
     "sinon": "2.3.5",
     "tslint": "5.7.0",
-    "typescript": "2.5.2"
+    "typescript": "2.5.2",
+    "xunit-file": "1.0.0"
   },
   "scripts": {
     "clean": "bash scripts/clean",
@@ -96,6 +98,8 @@
     "scorch-the-earth": "scripts/scorch-the-earth",
     "setup": "scripts/setup",
     "test": "yarn prepare && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
+    "unit": "yarn prepare && yarn lint && ./node_modules/istanbul/lib/cli.js cover --report html _mocha -- -t 240000 --recursive \"dist/**/*.test.js\" -R xunit-file",
+    "coverage-report": "./node_modules/istanbul/lib/cli.js report --report html json-summary",
     "watch": "tsc -w -p tsconfig.json"
   }
 }

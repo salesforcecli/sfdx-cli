@@ -86,7 +86,7 @@ def doUnitTests(PLATFORM os) {
                         currentBuild.result = 'Failed'
                         return
                     }
-                    rc = sh returnStatus: true, script: 'yarn test'
+                    rc = sh returnStatus: true, script: 'yarn unit'
                     if (rc != 0)
                     {
                         currentBuild.result = 'Unstable'
@@ -404,19 +404,21 @@ try {
         if (!computers[i].isOffline()) {
             def props = computers[i].getSystemProperties()
             def osname = props['os.name']
-            if (osname.contains('Mac')) {
-                nodeNames[i] = "${PLATFORM.MAC}-test-results".toString()
-                nodes[nodeNames[i]] = createNodeExecution(PLATFORM.MAC, 'mac', nodeNames[i])
-            } else if (osname.contains('Linux')) {
+            // if (osname.contains('Mac')) {
+            //     nodeNames[i] = "${PLATFORM.MAC}-test-results".toString()
+            //     nodes[nodeNames[i]] = createNodeExecution(PLATFORM.MAC, 'mac', nodeNames[i])
+            // } else 
+            if (osname.contains('Linux')) {
                 nodeNames[i] = "${PLATFORM.LINUX}-test-results".toString()
                 nodes[nodeNames[i]] = createNodeExecution(PLATFORM.LINUX, 'linux', nodeNames[i])
-            } else if (osname.contains('Windows')) {
-                // don't run perfCI job on Windows node yet
-                if (!jobMatches(/.*perfci.*/) && !jobMatches(/.*steelbrick-validation.*/) && !jobMatches(/.*q3-smoketest.*/) && !jobMatches(/.*dreamhouse.*/)) {
-                    nodeNames[i] = "${PLATFORM.WINDOWS}-test-results".toString()
-                    nodes[nodeNames[i]] = createNodeExecution(PLATFORM.WINDOWS, 'windows', nodeNames[i])
-                }
-            }
+            } 
+            // else if (osname.contains('Windows')) {
+            //     // don't run perfCI job on Windows node yet
+            //     if (!jobMatches(/.*perfci.*/) && !jobMatches(/.*steelbrick-validation.*/) && !jobMatches(/.*q3-smoketest.*/) && !jobMatches(/.*dreamhouse.*/)) {
+            //         nodeNames[i] = "${PLATFORM.WINDOWS}-test-results".toString()
+            //         nodes[nodeNames[i]] = createNodeExecution(PLATFORM.WINDOWS, 'windows', nodeNames[i])
+            //     }
+            // }
         }
     }
 
