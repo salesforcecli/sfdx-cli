@@ -46,26 +46,26 @@ def runTheJob(PLATFORM os) {
  * The stages necessary to accomplish unit tests
  */
 def doUnitTests(PLATFORM os) {
-    npmInstall(os)
+    // npmInstall(os)
 
-    stage('Run Unit tests')
-    {
-        sh 'npm run prepare'
-        sh 'npm run lint'
-        rc = sh returnStatus: true, script: 'npm run lint'
-        if (rc != 0)
-        {
-            currentBuild.result = 'Failed'
-            return
-        }
-        rc = sh returnStatus: true, script: 'mocha --recursive \"dist/**/*.test.js\"'
-        if (rc != 0)
-        {
-            currentBuild.result = 'Failed'
-            return
-        }
-    }
-    return;
+    // stage('Run Unit tests')
+    // {
+    //     sh 'npm run prepare'
+    //     sh 'npm run lint'
+    //     rc = sh returnStatus: true, script: 'npm run lint'
+    //     if (rc != 0)
+    //     {
+    //         currentBuild.result = 'Failed'
+    //         return
+    //     }
+    //     rc = sh returnStatus: true, script: 'mocha --recursive \"dist/**/*.test.js\"'
+    //     if (rc != 0)
+    //     {
+    //         currentBuild.result = 'Failed'
+    //         return
+    //     }
+    // }
+    // return;
     
     stage('Run Unit tests/checkstyle/coverage')
     {
