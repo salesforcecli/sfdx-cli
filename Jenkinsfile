@@ -1,16 +1,13 @@
 library identifier: 'salesforcedx-library'
 /**
- * Jenkinsfile for force-com-toolbelt project.
+ * Jenkinsfile for cli project.
+ *
  * This Jenkinsfile is for use in a Multibranch Jenkins pipeline job ONLY.
  * The Entry-point into this code will attempt to run the current set of pipeline steps
  * according to the Jenkins job name. If the job name includes the word "unit", then unit
- * tests will be run and if the job name includes the word "integration"
- * then the integration tests will be run.
+ * tests will be run.
  *
- * So a Jenkins job name of Appcloud-Unit-CI will run the unit tests and a job named
- * Appcloud-Integration-Tests will run the integration tests'
- *
- * If no match is made based on job name, then unit tests are run.
+ * So a Jenkins job name of SFDX CLI Unit Test will run the unit test.
  */
 
 enum PLATFORM {
@@ -49,7 +46,7 @@ def runTheJob(PLATFORM os) {
  * The stages necessary to accomplish unit tests
  */
 def doUnitTests(PLATFORM os) {
-    //npmInstall(os)
+    installYarn();
 
     stage('Run Unit tests/checkstyle/coverage')
     {
@@ -87,6 +84,14 @@ def doUnitTests(PLATFORM os) {
                     break
             }
         }
+    }
+}
+
+def installYarn() {
+    rc = sh returnStatus: true, script: 'npm run coverage-report'
+    if (rc != 0)
+    {
+        rc = sh returnStatus: true, script: 'npm install --global yarn'
     }
 }
 
