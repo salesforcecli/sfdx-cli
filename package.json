@@ -30,14 +30,12 @@
         "./dist/hooks/plugins/convertFromV5.js"
       ],
       "init": [
-        "./dist/hooks/init.js"
+        "./dist/hooks/plugins/migrate.js"
       ],
       "prerun": [
         "./dist/hooks/logAnalytics.js"
       ],
-      "update": [
-        "./dist/hooks/update.js"
-      ]
+      "update": []
     },
     "plugins": [
       "salesforcedx"
@@ -95,7 +93,8 @@
     "release-all": "scripts/release-all",
     "scorch-the-earth": "scripts/scorch-the-earth",
     "setup": "scripts/setup",
-    "test": "yarn prepare && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
+    "test": "yarn typings && yarn prepare && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
+    "typings": "tsc -p typings/tsconfig.json",
     "watch": "tsc -w -p tsconfig.json"
   }
 }
