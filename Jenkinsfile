@@ -37,7 +37,7 @@ def runTheJob(PLATFORM os) {
 
     step([$class: 'GitHubSetCommitStatusBuilder'])
 
-    if (jobMatches(/.*unit.*/)) {
+    if (jobMatches(/.*unit.*/) && os == PLATFORM.LINUX) {
         doUnitTests(os);
     }
 }
@@ -78,6 +78,8 @@ def doUnitTests(PLATFORM os) {
             switch(os) {
                 case PLATFORM.MAC:
                 case PLATFORM.LINUX:
+                    sh 'node --version'
+                    sh 'echo $PATH'
                     rc = sh returnStatus: true, script: 'yarn test'
                     if (rc != 0)
                     {
