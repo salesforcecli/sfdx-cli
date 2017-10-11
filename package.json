@@ -5,8 +5,7 @@
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
-    "sfdx": "bin/run",
-    "sfdx_sign": "dist/codeSigning/packAndSign.js"
+    "sfdx": "bin/run"
   },
   "engines": {
     "node": ">=8.4.0"
@@ -30,14 +29,12 @@
         "./dist/hooks/plugins/convertFromV5.js"
       ],
       "init": [
-        "./dist/hooks/init.js"
+        "./dist/hooks/plugins/migrate.js"
       ],
       "prerun": [
         "./dist/hooks/logAnalytics.js"
       ],
-      "update": [
-        "./dist/hooks/update.js"
-      ]
+      "update": []
     },
     "plugins": [
       "salesforcedx"
@@ -101,6 +98,7 @@
     "test": "yarn prepare && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
     "unit": "yarn prepare && ./node_modules/istanbul/lib/cli.js cover --report html _mocha -- -t 240000 --recursive \"dist/**/*.test.js\" -R xunit-file",
     "coverage-report": "./node_modules/istanbul/lib/cli.js report --report html json-summary",
+    "typings": "tsc -p typings/tsconfig.json",
     "watch": "tsc -w -p tsconfig.json"
   }
 }
