@@ -81,6 +81,11 @@ def doUnitTests(PLATFORM os) {
                     sh 'node --version'
                     sh 'echo $PATH'
                     rc = sh returnStatus: true, script: 'yarn'
+                    rc = sh returnStatus: true, script: 'yarn lint-with-style'
+                    if (rc != 0)
+                    {
+                        currentBuild.result = 'Unstable'
+                    }
                     if (rc != 0)
                     {
                         currentBuild.result = 'Failed'
@@ -91,7 +96,7 @@ def doUnitTests(PLATFORM os) {
                     {
                         currentBuild.result = 'Unstable'
                     }
-                    //rc = sh returnStatus: true, script: 'npm run coverage-report'
+                    rc = sh returnStatus: true, script: 'npm run coverage-report'
                     //rc = sh returnStatus: true, script: 'mv checkstyle.xml linux-checkstyle.xml; mv xunit.xml linux-unit-xunit.xml; rm -rf linuxunitcoverage; mv coverage linuxunitcoverage'
                     break
                 case PLATFORM.WINDOWS:

@@ -16,3 +16,4 @@ package-lock.json
 *.sig
 .history
 coverage/
+checkstyle.xml
