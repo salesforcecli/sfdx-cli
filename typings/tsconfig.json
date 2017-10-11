@@ -1,11 +1,10 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "es6",
+        "target": "es2017",
+        "module": "commonjs",
         "lib": [
-            "es6"
+            "es2017"
         ],
-        "noImplicitAny": true,
         "noImplicitThis": true,
         "strictNullChecks": true,
         "baseUrl": ".",
@@ -16,13 +15,14 @@
         "noEmit": true
     },
     "files": [
-        "cli-engine-config/cli-engine.d.ts",
-        "cli-engine-config/cli-engine-tests.ts",
+        "cli-engine/cli-engine.d.ts",
+        "cli-engine/cli-engine-tests.ts",
         "cli-engine-config/cli-engine-config.d.ts",
         "cli-engine-config/cli-engine-config-tests.ts",
         "cli-engine-command/cli-engine-command.d.ts",
         "cli-engine-command/cli-engine-command-tests.ts",
-        "cli-engine-command/cli-engine-heroku.d.ts",
-        "cli-engine-command/cli-engine-heroku-tests.ts"
+        "cli-engine-heroku/cli-engine-heroku.d.ts",
+        "cli-engine-heroku/cli-engine-heroku-tests.ts",
+        "heroku-cli-util/heroku-cli-util.d.ts"
     ]
 }
