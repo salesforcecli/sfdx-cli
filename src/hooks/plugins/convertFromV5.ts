@@ -26,7 +26,7 @@ function convertFromV5Commands(commands: any[] = [], ns: string) {
             cmd.buildHelp = (config: Config) => {
                 const help = Command.buildHelp.call(cmd, config);
                 // Strip the possibly ANSI-colored '[flags]' suffix cli-engine appends to usage strings
-                return help.replace(/(?:\u001b\[[0-9]+m)?\[flags\](?:\u001b\[[0-9]+m)/, '');
+                return help.replace(/(?:\u001b\[[0-9]+m)?\[flags\](?:\u001b\[[0-9]+m)?/, '');
             };
 
             // Do not use arrow function here because we need access to the command's properties

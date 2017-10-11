@@ -347,7 +347,7 @@ def teamsWithFailedTests = [:]
 def shouldCollectResults = true
 
 try {
-    loadProperties(env.TEST_PROPERTIES_BRANCH_OVERRIDE ?: env.CHANGE_TARGET ?: env.BRANCH_NAME)
+    // loadProperties(env.TEST_PROPERTIES_BRANCH_OVERRIDE ?: env.CHANGE_TARGET ?: env.BRANCH_NAME)
     currentBuild.result = "SUCCESS"
 
     // Get all nodes (master & slave)
