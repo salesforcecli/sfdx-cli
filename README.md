@@ -5,7 +5,7 @@ This is the latest `sfdx` CLI application, based on Heroku's v6
 
 ## Installation
 
-You can install this by either using an OS-specific installer [available here](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm), or by directly installing it with `npm` or `yarn`.  For the latter two options, see the instructions below.
+You can install this by either using an OS-specific installer [available here](https://developer.salesforce.com/tools/sfdxcli), or by directly installing it with `npm` or `yarn`.  For the latter two options, see the instructions below.
 
 This approach is only recommended for users of Node.js on macOS, Linux, or Windows with bash (e.g. using WSL on Windows10).  Other OSs should use an installer.
 
