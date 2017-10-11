@@ -37,8 +37,19 @@ def runTheJob(PLATFORM os) {
 
     step([$class: 'GitHubSetCommitStatusBuilder'])
 
+    runYarn();
+
     if (jobMatches(/.*unit.*/) && os == PLATFORM.LINUX) {
         doUnitTests(os);
+    }
+}
+
+def runYarn() {
+    stage('Run yarn')
+    {
+        sh 'node --version'
+        sh 'echo $PATH'
+        rc = sh returnStatus: true, script: 'yarn'
     }
 }
 
@@ -46,65 +57,34 @@ def runTheJob(PLATFORM os) {
  * The stages necessary to accomplish unit tests
  */
 def doUnitTests(PLATFORM os) {
-    // npmInstall(os)
-
-    // stage('Run Unit tests')
-    // {
-    //     sh 'npm run prepare'
-    //     sh 'npm run lint'
-    //     rc = sh returnStatus: true, script: 'npm run lint'
-    //     if (rc != 0)
-    //     {
-    //         currentBuild.result = 'Failed'
-    //         return
-    //     }
-    //     rc = sh returnStatus: true, script: 'mocha --recursive \"dist/**/*.test.js\"'
-    //     if (rc != 0)
-    //     {
-    //         currentBuild.result = 'Failed'
-    //         return
-    //     }
-    // }
-    // return;
-    
     stage('Run Unit tests/checkstyle/coverage')
     {
+        // TODO Do we need these ENV vars for CLI tests?
         withEnv([
             "HOME=${env.WORKSPACE}",
             "APPDATA=${env.WORKSPACE}",
             "USERPROFILE=${env.WORKSPACE}"
         ])
         {
+            rc = sh returnStatus: true, script: 'yarn lint-with-style'
+            if (rc != 0)
+            {
+                currentBuild.result = 'Unstable'
+            }
+            rc = sh returnStatus: true, script: 'yarn unit'
+            if (rc != 0)
+            {
+                currentBuild.result = 'Unstable'
+            }
+
             switch(os) {
                 case PLATFORM.MAC:
                 case PLATFORM.LINUX:
-                    sh 'node --version'
-                    sh 'echo $PATH'
-                    rc = sh returnStatus: true, script: 'yarn'
-                    rc = sh returnStatus: true, script: 'yarn lint-with-style'
-                    if (rc != 0)
-                    {
-                        currentBuild.result = 'Unstable'
-                    }
-                    if (rc != 0)
-                    {
-                        currentBuild.result = 'Failed'
-                        return
-                    }
-                    rc = sh returnStatus: true, script: 'yarn unit'
-                    if (rc != 0)
-                    {
-                        currentBuild.result = 'Unstable'
-                    }
-                    rc = sh returnStatus: true, script: 'npm run coverage-report'
-                    //rc = sh returnStatus: true, script: 'mv checkstyle.xml linux-checkstyle.xml; mv xunit.xml linux-unit-xunit.xml; rm -rf linuxunitcoverage; mv coverage linuxunitcoverage'
+                    rc = sh returnStatus: true, script: 'mv checkstyle.xml linux-checkstyle.xml; mv xunit.xml linux-unit-xunit.xml; rm -rf linuxunitcoverage; mv coverage linuxunitcoverage'
+                    rc = sh returnStatus: true, script: 'npm run coverage-report -- --root linuxunitcoverage --dir linuxunitcoverage  --include allCoverage.json'
                     break
                 case PLATFORM.WINDOWS:
-                    // rc = bat returnStatus: true, script: 'yarn test'
-                    // if (rc != 0)
-                    // {
-                    //     currentBuild.result = 'Unstable'
-                    // }
+                    // TODO When we add to windows, create a cross platform script to do all this, and have package.json reference that.
                     // rc = bat returnStatus: true, script: 'node node_modules\\istanbul\\lib\\cli.js cover --report html node_modules\\mocha\\bin\\_mocha -- -t 240000 --recursive dist\\test\\unit -R xunit-file'
                     // if (rc != 0)
                     // {
