@@ -69,7 +69,9 @@ export default class PluginMigrator {
         debug('migrating %s plugin%s', pluginsJson.length, pluginsJson.length === 1 ? '' : 's');
 
         if (pluginsJson.length > 0) {
-            this.cliUx.warn(color.bold.blue('v5 plug-ins found -- Complete your update to v6:'));
+            if (pluginsJson.filter((plugin) => !this.corePlugins.includes(plugin.name)).length !== 0) {
+                this.cliUx.warn(color.bold.blue('v5 plug-ins found -- Complete your update to v6:'));
+            }
             for (const plugin of pluginsJson) {
                 this.migratePlugin(plugin.name, plugin.tag);
             }

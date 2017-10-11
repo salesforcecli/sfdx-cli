@@ -43,7 +43,7 @@ describe('plugin migrator', () => {
                 version: '1.0.1'
             }, {
                 name: 'core-plugin',
-                tag: 'pre-release',
+                tag: '',
                 version: '40.10.0'
             }]
         });
@@ -177,7 +177,6 @@ describe('plugin migrator', () => {
         // log assertions
         const warn = (cliUx.warn as SinonSpy);
         const warnCalls = warn.getCalls();
-        expect((cliUx.warn as SinonSpy).callCount).to.equal(5);
         const expectedLines = [
             'v5 plug-ins found -- Complete your update to v6:',
             '- linked-plugin -- To re-link, run sfdx plugins:link <path>',
@@ -185,6 +184,57 @@ describe('plugin migrator', () => {
             '- user-plugin-versioned -- To re-install, run sfdx plugins:install user-plugin-versioned@1.0.1',
             '- core-plugin is now a core plug-in -- Use sfdx plugins --core to view its version'
         ];
+        expect((cliUx.warn as SinonSpy).callCount).to.equal(expectedLines.length);
+        for (const [i, line] of expectedLines.entries()) {
+            expect(warnCalls[i].args.map(stripColors)).to.deep.equal([line]);
+        }
+        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
+    });
+
+    it('should not show the instruction to complete your update if only core plugins are found', async () => {
+        config = { pjson: { 'cli-engine': { plugins: ['core-plugin1', 'core-plugin2'] } } };
+        existsSync = stubExistsSync({
+            [userPluginsPjsonV6Path]: false,
+            [userPluginsPjsonV5Path]: true
+        });
+        readJsonSync = stubReadJsonSync({
+            [userPluginsPjsonV5Path]: [{
+                name: 'core-plugin1',
+                tag: '',
+                version: '40.10.0'
+            }, {
+                name: 'core-plugin2',
+                tag: '',
+                version: '40.10.0'
+            }]
+        });
+
+        await newMigrator().run();
+
+        // fs assertions
+        expect(existsSync.callCount).to.equal(4);
+        const existsCalls = existsSync.getCalls();
+        expect(existsCalls[0].args).to.deep.equal([userPluginsPjsonV6Path]);
+        expect(existsCalls[1].args).to.deep.equal([userPluginsPjsonV5Path]);
+        expect(existsCalls[2].args).to.deep.equal([userPluginsPjsonV6Path]);
+        expect(existsCalls[3].args).to.deep.equal([userPluginsPjsonV5Path]);
+        expect(readJsonSync.calledOnce).to.equal(true);
+        expect(removeSync.calledOnce).to.equal(true);
+        expect(removeSync.firstCall.args).to.deep.equal([userPluginsPjsonV5Path]);
+
+        // lock assertions
+        expect(lockUpgrade.calledOnce).to.equal(true);
+        expect(lockDowngrade.calledOnce).to.equal(true);
+
+        // log assertions
+        const warn = (cliUx.warn as SinonSpy);
+        const warnCalls = warn.getCalls();
+        // this is a little weird looking but not a real case we'll be dealing with for the current v5 -> v6 update
+        const expectedLines = [
+            '- core-plugin1 is now a core plug-in -- Use sfdx plugins --core to view its version',
+            '- core-plugin2 is now a core plug-in -- Use sfdx plugins --core to view its version'
+        ];
+        expect((cliUx.warn as SinonSpy).callCount).to.equal(expectedLines.length);
         for (const [i, line] of expectedLines.entries()) {
             expect(warnCalls[i].args.map(stripColors)).to.deep.equal([line]);
         }
