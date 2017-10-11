@@ -27,34 +27,27 @@ export default class PluginMigrator {
     }
 
     private readonly corePlugins: string[];
-    private readonly cliUx: CliUx;
-    private readonly userPluginsPjsonV5Path: string;
-    private readonly userPluginsPjsonV6Path: string;
-    private readonly lock: Lock;
 
     public constructor(
-        config: Config,
-        cliUx: CliUx,
-        userPluginsPjsonV5Path: string,
-        userPluginsPjsonV6Path: string,
-        lock: Lock
+        private config: Config,
+        private cliUx: CliUx,
+        private userPluginsPjsonV5Path: string,
+        private userPluginsPjsonV6Path: string,
+        private lock: Lock
     ) {
         this.corePlugins = ((config.pjson || {})['cli-engine'] || {}).plugins || [];
-        this.cliUx = cliUx;
-        this.userPluginsPjsonV5Path = userPluginsPjsonV5Path;
-        this.userPluginsPjsonV6Path = userPluginsPjsonV6Path;
-        this.lock = lock;
     }
 
     public async run() {
         // Short circuit quickly without having to acquire the writer lock
         if (fs.existsSync(this.userPluginsPjsonV6Path) || !fs.existsSync(this.userPluginsPjsonV5Path)) {
-            debug('nothing to do');
+            debug('no v5 plugins need migration');
             return;
         }
 
         const pluginsJson = this.readPluginsJson();
         if (!pluginsJson) {
+            debug('no v5 plugins read');
             return false;
         }
 
@@ -69,6 +62,7 @@ export default class PluginMigrator {
     public migratePlugins(pluginsJson: any[]) {
         // Prevent two parallel migrations from happening in case of a race
         if (fs.existsSync(this.userPluginsPjsonV6Path)) {
+            debug('migration race detected, nothing left to do');
             return;
         }
 
@@ -106,11 +100,13 @@ export default class PluginMigrator {
 
     private readPluginsJson() {
         try {
+            debug('reading plugins.json');
             const plugins = fs.readJsonSync(this.userPluginsPjsonV5Path);
             if (!Array.isArray(plugins)) {
                 throw new Error('plugins.json does not contain an array');
             }
             if (plugins.length === 0) {
+                debug('zero length plugins array read');
                 return;
             }
             return plugins;

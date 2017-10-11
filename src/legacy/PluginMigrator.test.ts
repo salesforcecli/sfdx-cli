@@ -74,6 +74,7 @@ describe('plugin migrator', () => {
 
         // log assertions
         expect((cliUx.warn as SinonSpy).notCalled).to.equal(true);
+        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
     });
 
     it('should short-circuit if the v6 plugin file is found', async () => {
@@ -95,6 +96,7 @@ describe('plugin migrator', () => {
 
         // log assertions
         expect((cliUx.warn as SinonSpy).notCalled).to.equal(true);
+        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
     });
 
     it('should short-circuit if the v5 plugin file cannot be read', async () => {
@@ -120,6 +122,7 @@ describe('plugin migrator', () => {
 
         // log assertions
         expect((cliUx.warn as SinonSpy).notCalled).to.equal(true);
+        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
     });
 
     it('should short-circuit if the v5 plugin file does not contain an array', async () => {
@@ -145,6 +148,7 @@ describe('plugin migrator', () => {
 
         // log assertions
         expect((cliUx.warn as SinonSpy).notCalled).to.equal(true);
+        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
     });
 
     it('should read and warn on v5 plugins if the v5 plugin file exists without the v6 file', async () => {
@@ -184,6 +188,7 @@ describe('plugin migrator', () => {
         for (const [i, line] of expectedLines.entries()) {
             expect(warnCalls[i].args.map(stripColors)).to.deep.equal([line]);
         }
+        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
     });
 
     function stubExistsSync(paths: any) {
