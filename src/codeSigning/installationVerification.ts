@@ -16,7 +16,7 @@ import {
 } from './codeSignApi';
 
 import { NamedError, UnexpectedHost, UnauthorizedSslConnection } from '../util/NamedError';
-import { get as httpsGet } from 'https';
+import * as https from 'https';
 import { EOL } from 'os';
 
 export const WHITELIST_FILENAME = 'unsignedPluginWhiteList.json';
@@ -80,11 +80,11 @@ export class InstallationVerification {
         const info = new CodeVerifierInfo();
         info.dataToVerify = fs.createReadStream(npmMeta.tarballLocalPath, {encoding: 'binary'});
 
-        const signatureReq = httpsGet(this.getHttpOptions(npmMeta.signatureUrl));
+        const signatureReq = https.get(this.getHttpOptions(npmMeta.signatureUrl));
         validateRequestCert(signatureReq, npmMeta.signatureUrl);
         info.signatureStream = await this.retrieveUrlContent(signatureReq, npmMeta.signatureUrl);
 
-        const publicKeyReq = httpsGet(this.getHttpOptions(npmMeta.publicKeyUrl));
+        const publicKeyReq = https.get(this.getHttpOptions(npmMeta.publicKeyUrl));
         validateRequestCert(publicKeyReq, npmMeta.publicKeyUrl);
         info.publicKeyStream = await this.retrieveUrlContent(publicKeyReq, npmMeta.publicKeyUrl);
 
@@ -268,7 +268,7 @@ export class InstallationVerification {
         return new Promise<NpmMeta>((resolve, reject) => {
             const cacheFilePath = path.join(this.getCachePath(), fileNameStr);
             const writeStream = fs.createWriteStream(cacheFilePath, { encoding: 'binary' });
-            const req = request(npmMeta.tarballUrl)
+            const req = request.get(npmMeta.tarballUrl)
                 .on('end', () => {
                     npmMeta.tarballLocalPath = cacheFilePath;
                     resolve(npmMeta);
