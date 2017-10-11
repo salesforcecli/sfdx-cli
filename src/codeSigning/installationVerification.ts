@@ -268,7 +268,7 @@ export class InstallationVerification {
         return new Promise<NpmMeta>((resolve, reject) => {
             const cacheFilePath = path.join(this.getCachePath(), fileNameStr);
             const writeStream = fs.createWriteStream(cacheFilePath, { encoding: 'binary' });
-            const req = request(npmMeta.tarballUrl)
+            const req = request.get(npmMeta.tarballUrl)
                 .on('end', () => {
                     npmMeta.tarballLocalPath = cacheFilePath;
                     resolve(npmMeta);
