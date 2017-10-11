@@ -255,12 +255,12 @@ def collectCoverageResults() {
         coverageNotifications('./linuxintegrationcoverage')
 
         // by team coverage health
-        def teamSummaryFiles = findFiles glob: 'teamcoverage/**/coverage-summary.json'
-        for (int i = 0; i < teamSummaryFiles.length; i++) {
-            def teamSummaryFile = new File(teamSummaryFiles[i].path)
-            echo "Publish Coverage Notifications for team ${teamSummaryFile.getParent()}"
-            coverageNotifications(teamSummaryFile.getParent())
-        }
+        // def teamSummaryFiles = findFiles glob: 'teamcoverage/**/coverage-summary.json'
+        // for (int i = 0; i < teamSummaryFiles.length; i++) {
+        //     def teamSummaryFile = new File(teamSummaryFiles[i].path)
+        //     echo "Publish Coverage Notifications for team ${teamSummaryFile.getParent()}"
+        //     coverageNotifications(teamSummaryFile.getParent())
+        // }
     }
 }
 
@@ -352,34 +352,8 @@ def createNodeExecution(PLATFORM os, String nodeLabel, String nodeResultsName) {
         node (nodeLabel) {
             deleteDir()
 
-            if (jobMatches(/.*perfci.*/)) {
-                dir('toolbelt') {
-                    checkout scm
-                    npmInstall(os, true)
-                }
-                dir('perfCI') {
-                    runCommands(os, nodeResultsName)
-                }
-            } else if (jobMatches(/.*sfdx-dreamhouse.*/)) {
-                dir('toolbelt') {
-                    checkout scm
-                    npmInstall(os, true)
-                }
-                dir('sfdx-dreamhouse') {
-                    runCommands(os, nodeResultsName)
-                }
-            } else if (jobMatches(/.*steelbrick-validation.*/)) {
-                dir('toolbelt') {
-                    checkout scm
-                    npmInstall(os, true)
-                }
-                dir('steelbrick-workspace') {
-                    runCommands(os, nodeResultsName)
-                }
-            } else {
-                checkout scm
-                runCommands(os, nodeResultsName)
-            }
+            checkout scm
+            runCommands(os, nodeResultsName)
         }
     }
 }
@@ -424,8 +398,6 @@ try {
 
     parallel nodes
 
-    shouldCollectResults = !jobMatches(/.*steelbrick-validation.*/) && !jobMatches(/.*perfci.*/) && !jobMatches(/.*dreamhouse.*/)
-
     stage('Collect results') {
         node() {
             if (shouldCollectResults) {
@@ -435,45 +407,45 @@ try {
                         unstash nodeNames[i]
                     }
                 }
-                def moduleMap = readJSON file: './src/test/moduleOwner.json'
+                // def moduleMap = readJSON file: './src/test/moduleOwner.json'
 
-                def checkStyleFiles = findFiles glob: '*checkstyle.xml'
+                // def checkStyleFiles = findFiles glob: '*checkstyle.xml'
 
-                for (int f= 0; f < checkStyleFiles.size(); f++) {
-                    echo "Processing checkstyle result file ${checkStyleFiles[f].path}"
-                    checkstyleText = readFile encoding: 'utf8', file: checkStyleFiles[f].path
-                    groovy.util.Node checkstyle = new XmlParser().parseText(checkstyleText)
-                    teamsWithFailedTests = mapCheckstyleFailuresToTeam(checkstyle, "${env.WORKSPACE}/src", moduleMap, teamsWithFailedTests)
-                }
+                // for (int f= 0; f < checkStyleFiles.size(); f++) {
+                //     echo "Processing checkstyle result file ${checkStyleFiles[f].path}"
+                //     checkstyleText = readFile encoding: 'utf8', file: checkStyleFiles[f].path
+                //     groovy.util.Node checkstyle = new XmlParser().parseText(checkstyleText)
+                //     teamsWithFailedTests = mapCheckstyleFailuresToTeam(checkstyle, "${env.WORKSPACE}/src", moduleMap, teamsWithFailedTests)
+                // }
 
-                def xunitFiles = findFiles glob: '*xunit.xml'
+                // def xunitFiles = findFiles glob: '*xunit.xml'
 
-                for (int f= 0; f < xunitFiles.size(); f++) {
-                    echo "Processing test result file ${xunitFiles[f].path}"
-                    xunitText = readFile encoding: 'utf8', file: xunitFiles[f].path
-                    groovy.util.Node testsuite = new XmlParser().parseText(xunitText)
-                    teamsWithFailedTests = mapTestFailuresToTeam(testsuite, "${env.WORKSPACE}/src", moduleMap, teamsWithFailedTests)
-                }
+                // for (int f= 0; f < xunitFiles.size(); f++) {
+                //     echo "Processing test result file ${xunitFiles[f].path}"
+                //     xunitText = readFile encoding: 'utf8', file: xunitFiles[f].path
+                //     groovy.util.Node testsuite = new XmlParser().parseText(xunitText)
+                //     teamsWithFailedTests = mapTestFailuresToTeam(testsuite, "${env.WORKSPACE}/src", moduleMap, teamsWithFailedTests)
+                // }
 
-                def packageJson = loadPackageJson('package.json')
-                saveTestFailures(toJson(teamsWithTestFailuresToArray(teamsWithFailedTests)), 'testFailures.json', packageJson['version'] ?: 'unknown')
+                // def packageJson = loadPackageJson('package.json')
+                // saveTestFailures(toJson(teamsWithTestFailuresToArray(teamsWithFailedTests)), 'testFailures.json', packageJson['version'] ?: 'unknown')
 
-                withCredentials([usernamePassword(credentialsId: 'GUS_UNAME_PASSWORD', passwordVariable: 'gusUserPassword', usernameVariable: 'gusUsername')]) {
-                    if ((env.DO_NOT_CREATE_BUGS ?: 'false') == 'false') { // be able to stop the bug creation process if needed
-                        echo 'creating bugs'
-                        def params = []
-                        if (env.NPM_PUBLIC_PROXY != null) {
-                            params = ["https_proxy=${env.NPM_PUBLIC_PROXY}", "proxy=${env.NPM_PUBLIC_PROXY}"]
-                        }
-           				withEnv(params) {
-           				    // Only create test failure bugs for base branches
-                            if (!(env.BRANCH_NAME?:'').matches(/^PR-[0-9]{1,10}/)) {
-                                echo 'creating bugs in branch'
-                                createTestFailureBugs('Platform - DX', 'sfdx.cli', gusUsername, gusUserPassword, 'testFailures.json')
-                            }
-                        }
-                    }
-                }
+                // withCredentials([usernamePassword(credentialsId: 'GUS_UNAME_PASSWORD', passwordVariable: 'gusUserPassword', usernameVariable: 'gusUsername')]) {
+                //     if ((env.DO_NOT_CREATE_BUGS ?: 'false') == 'false') { // be able to stop the bug creation process if needed
+                //         echo 'creating bugs'
+                //         def params = []
+                //         if (env.NPM_PUBLIC_PROXY != null) {
+                //             params = ["https_proxy=${env.NPM_PUBLIC_PROXY}", "proxy=${env.NPM_PUBLIC_PROXY}"]
+                //         }
+           		// 		withEnv(params) {
+           		// 		    // Only create test failure bugs for base branches
+                //             if (!(env.BRANCH_NAME?:'').matches(/^PR-[0-9]{1,10}/)) {
+                //                 echo 'creating bugs in branch'
+                //                 createTestFailureBugs('Platform - DX', 'sfdx.cli', gusUsername, gusUserPassword, 'testFailures.json')
+                //             }
+                //         }
+                //     }
+                // }
 
                 collectTestResults()
                 collectCheckstyleResults()
