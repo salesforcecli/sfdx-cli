@@ -116,3 +116,6 @@ package.json.bak
 # lock files
 yarn.lock
 package-lock.json
+
+# doc
+DEVELOPER.md
