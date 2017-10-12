@@ -15,7 +15,7 @@ To get started, you'll need to install `node` v8.4 or greater, though we recomme
 
 If using `nvm`, be sure that you've selected the v8.4+ version with `nvm use v8.x.y`, where `x` and `y` are specific to the version that you installed. If you want to use this version by default run `nvm alias default node` -- otherwise, when you restart your shell `nvm` will revert to whatever version configured prior to installing v8.x.y.
 
-### `npm`
+### Installing with `npm`
 
 `npm` is installed automatically with Node.js.  Install the CLI using `npm` as follows:
 
