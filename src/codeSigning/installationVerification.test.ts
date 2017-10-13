@@ -4,9 +4,8 @@ import * as sinon from 'sinon';
 import * as events from 'events';
 import { Readable, Writable } from 'stream';
 import * as fs from 'fs';
-import * as request from 'request' ;
+import * as request from 'request';
 import { TEST_DATA, TEST_DATA_SIGNATURE, CERTIFICATE } from './testCert';
-import * as https from 'https';
 import { SALESFORCE_CERT_FINGERPRINT } from './codeSignApi';
 import { expect } from 'chai';
 
@@ -48,55 +47,6 @@ class YarnEmitter extends events.EventEmitter {
 class SocketEmitter extends events.EventEmitter {
     public getPeerCertificate() {
         return { fingerprint: SALESFORCE_CERT_FINGERPRINT };
-    }
-}
-
-class HttpRequestMock {
-    private _statusCodeCallback: any;
-
-    public set statusCodeCallback(cb: any) {
-        this._statusCodeCallback = cb;
-    }
-
-    public get(url: any) {
-        let response: Readable = new Readable();
-        if (_.includes(url.path, 'cert')) {
-            response = new Readable({
-                read() {
-                    this.push(CERTIFICATE);
-                    this.push(null);
-                }
-            });
-        }
-
-        if (_.includes(url.path, 'sig')) {
-            response = new Readable({
-                read() {
-                    this.push(TEST_DATA_SIGNATURE);
-                    this.push(null);
-                }
-            });
-        }
-
-        // Assume successful response
-        _.set(response, 'statusCode', 200);
-
-        // unless statusCodeCallback is specified then ask the test to supply for a given url;
-        if (this._statusCodeCallback) {
-            const responseStatusCode = this._statusCodeCallback();
-            if (_.includes(responseStatusCode.url, url.path)) {
-                _.set(response, 'statusCode', responseStatusCode.code);
-            }
-        }
-        const _request = new events.EventEmitter();
-        process.nextTick(() => {
-            const _socket = new SocketEmitter();
-            _request.emit('socket', _socket);
-            _socket.emit('secureConnect');
-            _request.emit('response', response);
-        });
-
-        return _request;
     }
 }
 
@@ -143,8 +93,6 @@ describe('InstallationVerification Tests', () => {
     const plugin = 'foo';
 
     let yarnEmitter = new YarnEmitter();
-    const httpMock: HttpRequestMock = new HttpRequestMock();
-
     let fsReadFileFunc;
 
     before(() => {
@@ -152,10 +100,6 @@ describe('InstallationVerification Tests', () => {
         sandbox.stub(child_process, 'fork').callsFake(() => {
             return yarnEmitter;
          });
-
-        sandbox.stub(https, 'get').callsFake((url: string) => {
-            return httpMock.get(url);
-        });
 
         sandbox.stub(fs, 'createReadStream').callsFake((path: string) => {
             return new Readable({
@@ -195,6 +139,26 @@ describe('InstallationVerification Tests', () => {
         });
 
         iv = require('./installationVerification');
+
+        sandbox.stub(iv.InstallationVerification.prototype, 'getSigningContent').callsFake((url: string) => {
+            if (_.includes(url, 'cert')) {
+                return Promise.resolve(new Readable({
+                    read() {
+                        this.push(CERTIFICATE);
+                        this.push(null);
+                    }
+                }));
+            } else if (_.includes(url, 'sig')) {
+                return Promise.resolve(new Readable({
+                    read() {
+                        this.push(TEST_DATA_SIGNATURE);
+                        this.push(null);
+                    }
+                }));
+            } else {
+                Promise.reject(new Error('UnknownRequest'));
+            }
+        });
     });
 
     after(() => {
@@ -244,10 +208,19 @@ describe('InstallationVerification Tests', () => {
 
         yarnEmitter = new YarnEmitter();
         yarnEmitter.stdout = getYarnSuccess(yarnEmitter);
-        httpMock.statusCodeCallback = () => ({
-            code: 404,
-            url: YARN_META.data.sfdx.publicKeyUrl
+
+        iv.InstallationVerification.prototype.getSigningContent.restore();
+        sandbox.stub(iv.InstallationVerification.prototype, 'streamTagGz').callsFake(() => {
+            const meta = new iv.NpmMeta();
+            meta.tarballLocalPath = 'foo';
+            return Promise.resolve(meta);
         });
+        sandbox.stub(iv.InstallationVerification.prototype, 'getSigningContent').callsFake((url: string) => {
+            const error = new Error('404');
+            (error as any).code = 404;
+            throw error;
+        });
+
         const verification = new iv.InstallationVerification()
             .setPluginName(plugin).setCliEngineConfig(config);
 
@@ -256,31 +229,7 @@ describe('InstallationVerification Tests', () => {
                 throw new Error('This shouldn\'t happen. Failure expected');
             })
             .catch((err: Error) => {
-                expect(err).to.have.property('name', 'RetrieveFailed');
-                expect(err.message).to.include('404');
-                expect(err.message).to.include('cert');
-            });
-    });
-
-    it ('500 for signature', () => {
-
-        yarnEmitter = new YarnEmitter();
-        yarnEmitter.stdout = getYarnSuccess(yarnEmitter);
-        httpMock.statusCodeCallback = () => ({
-            code: 500,
-            url: YARN_META.data.sfdx.signatureUrl
-        });
-        const verification = new iv.InstallationVerification()
-            .setPluginName(plugin).setCliEngineConfig(config);
-
-        return verification.verify()
-            .then(() => {
-                throw new Error('This shouldn\'t happen. Failure expected');
-            })
-            .catch((err: Error) => {
-                expect(err).to.have.property('name', 'RetrieveFailed');
-                expect(err.message).to.include('500');
-                expect(err.message).to.include('sig');
+                expect(err).to.have.property('code', 404);
             });
     });
 

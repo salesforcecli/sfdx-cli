@@ -4,7 +4,7 @@ import * as path from 'path';
 import { parse as urlParse } from 'url';
 import _ = require('lodash');
 import { fork } from 'child_process';
-import request = require('request');
+import * as request from 'request';
 import { Readable, Writable } from 'stream';
 import { promisify as utilPromisify } from 'util';
 
@@ -16,8 +16,6 @@ import {
 } from './codeSignApi';
 
 import { NamedError, UnexpectedHost, UnauthorizedSslConnection } from '../util/NamedError';
-import * as https from 'https';
-import { EOL } from 'os';
 
 export const WHITELIST_FILENAME = 'unsignedPluginWhiteList.json';
 
@@ -80,17 +78,15 @@ export class InstallationVerification {
         const info = new CodeVerifierInfo();
         info.dataToVerify = fs.createReadStream(npmMeta.tarballLocalPath, {encoding: 'binary'});
 
-        const signatureReq = https.get(this.getHttpOptions(npmMeta.signatureUrl));
-        validateRequestCert(signatureReq, npmMeta.signatureUrl);
-        info.signatureStream = await this.retrieveUrlContent(signatureReq, npmMeta.signatureUrl);
-
-        const publicKeyReq = https.get(this.getHttpOptions(npmMeta.publicKeyUrl));
-        validateRequestCert(publicKeyReq, npmMeta.publicKeyUrl);
-        info.publicKeyStream = await this.retrieveUrlContent(publicKeyReq, npmMeta.publicKeyUrl);
-
-        const valid = await verify(info);
-        npmMeta.verified = valid;
-        return npmMeta;
+        return Promise.all([this.getSigningContent(npmMeta.signatureUrl), this.getSigningContent(npmMeta.publicKeyUrl)])
+            .then((result) => {
+                info.signatureStream = result[0];
+                info.publicKeyStream = result[1];
+                return verify(info);
+            }).then((result) => {
+                npmMeta.verified = result;
+                return npmMeta;
+            });
     }
 
     public async isWhiteListed() {
@@ -107,6 +103,55 @@ export class InstallationVerification {
                 throw err;
             }
         }
+    }
+
+    /**
+     * Retrieve url content for a host
+     * @param url host url.
+     */
+    public getSigningContent(url): Promise<Readable> {
+        return new Promise((resolve, reject) => {
+            request(url, (err, response, responseData) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    if (response && response.statusCode === 200) {
+                        // The verification api expects a readable
+                        resolve(new Readable({
+                            read() {
+                                this.push(responseData);
+                                this.push(null);
+                            }
+                        }));
+                    } else {
+                        reject(new NamedError('ErrorGettingContent', `A request to url ${url} failed with error code: [${response ? 'undefined' : response.statusCode}]`));
+                    }
+                }
+            });
+        });
+    }
+
+    /**
+     * Downloads the tgz file content and stores it in a yarn cache folder
+     */
+    public async streamTagGz(): Promise<NpmMeta> {
+        const npmMeta = await this.retrieveNpmMeta();
+        const urlObject: any = urlParse(npmMeta.tarballUrl);
+        const urlPathsAsArray = _.split(urlObject.pathname, '/');
+        const fileNameStr: any = _.last(urlPathsAsArray);
+        return new Promise<NpmMeta>((resolve, reject) => {
+            const cacheFilePath = path.join(this.getCachePath(), fileNameStr);
+            const writeStream = fs.createWriteStream(cacheFilePath, { encoding: 'binary' });
+            const req = request(npmMeta.tarballUrl)
+                .on('end', () => {
+                    npmMeta.tarballLocalPath = cacheFilePath;
+                    resolve(npmMeta);
+                })
+                .on('error', (err) => {
+                    reject(err);
+                })
+                .pipe(writeStream);
+        });
     }
 
     /**
@@ -135,6 +180,7 @@ export class InstallationVerification {
         return new Promise((resolve, reject) => {
             req.on('response', (resp: any) => {
                 if (resp && resp.statusCode === 200) {
+                    console.log(`${_url} resolved`);
                     resolve(resp);
                 } else {
                     reject(new NamedError('RetrieveFailed', `Failed to retrieve content at ${_url} error code: ${resp.statusCode}.`));
@@ -254,29 +300,6 @@ export class InstallationVerification {
                     reject(new NamedError('InternalYarnError', returnError));
                 }
             });
-        });
-    }
-
-    /**
-     * Downloads the tgz file content and stores it in a yarn cache folder
-     */
-    private async streamTagGz(): Promise<NpmMeta> {
-        const npmMeta = await this.retrieveNpmMeta();
-        const urlObject: any = urlParse(npmMeta.tarballUrl);
-        const urlPathsAsArray = _.split(urlObject.pathname, '/');
-        const fileNameStr: any = _.last(urlPathsAsArray);
-        return new Promise<NpmMeta>((resolve, reject) => {
-            const cacheFilePath = path.join(this.getCachePath(), fileNameStr);
-            const writeStream = fs.createWriteStream(cacheFilePath, { encoding: 'binary' });
-            const req = request.get(npmMeta.tarballUrl)
-                .on('end', () => {
-                    npmMeta.tarballLocalPath = cacheFilePath;
-                    resolve(npmMeta);
-                })
-                .on('error', (err) => {
-                    reject(err);
-                })
-                .pipe(writeStream);
         });
     }
 }
