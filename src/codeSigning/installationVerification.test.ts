@@ -11,7 +11,7 @@ import { expect } from 'chai';
 
 let iv: any;
 
-class YarnEmitter extends events.EventEmitter {
+class NpmEmitter extends events.EventEmitter {
     private _stdout: Readable;
     private _stderr: Readable;
 
@@ -50,7 +50,7 @@ class SocketEmitter extends events.EventEmitter {
     }
 }
 
-const YARN_META = {
+const NPM_META = {
     data: {
         dist: {
             tarball: 'https://example.com/tarball'
@@ -62,14 +62,14 @@ const YARN_META = {
     }
 };
 
-const getYarnSuccess = (yarnEmitter: YarnEmitter) => {
+const getNpmSuccess = (npmEmitter: NpmEmitter) => {
     return new Readable({
         read() {
-            this.push(JSON.stringify(YARN_META));
+            this.push(JSON.stringify(NPM_META));
             this.push(null);
 
             process.nextTick(() => {
-                yarnEmitter.emit('close', 0);
+                npmEmitter.emit('close', 0);
             });
         }
     });
@@ -92,13 +92,13 @@ describe('InstallationVerification Tests', () => {
 
     const plugin = 'foo';
 
-    let yarnEmitter = new YarnEmitter();
+    let npmEmitter = new NpmEmitter();
     let fsReadFileFunc;
 
     before(() => {
         sandbox = sinon.sandbox.create();
         sandbox.stub(child_process, 'fork').callsFake(() => {
-            return yarnEmitter;
+            return npmEmitter;
          });
 
         sandbox.stub(fs, 'createReadStream').callsFake((path: string) => {
@@ -166,7 +166,7 @@ describe('InstallationVerification Tests', () => {
     });
 
     it('Steel thread test', async () => {
-        yarnEmitter.stdout = getYarnSuccess(yarnEmitter);
+        npmEmitter.stdout = getNpmSuccess(npmEmitter);
 
         const verification = new iv.InstallationVerification()
             .setPluginName(plugin).setCliEngineConfig(config);
@@ -182,12 +182,12 @@ describe('InstallationVerification Tests', () => {
 
     it('Read tarball stream failed', () => {
         const ERROR = 'Ok, who brought the dog? - Louis Tully';
-        yarnEmitter.stderr = new Readable({
+        npmEmitter.stderr = new Readable({
             read() {
                 this.push(ERROR);
                 this.push(null);
                 process.nextTick(() => {
-                    yarnEmitter.emit('close', 1);
+                    npmEmitter.emit('close', 1);
                 });
             }
         });
@@ -206,8 +206,8 @@ describe('InstallationVerification Tests', () => {
 
     it ('404 for public key', () => {
 
-        yarnEmitter = new YarnEmitter();
-        yarnEmitter.stdout = getYarnSuccess(yarnEmitter);
+        npmEmitter = new NpmEmitter();
+        npmEmitter.stdout = getNpmSuccess(npmEmitter);
 
         iv.InstallationVerification.prototype.getSigningContent.restore();
         sandbox.stub(iv.InstallationVerification.prototype, 'streamTagGz').callsFake(() => {

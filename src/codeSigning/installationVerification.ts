@@ -132,7 +132,7 @@ export class InstallationVerification {
     }
 
     /**
-     * Downloads the tgz file content and stores it in a yarn cache folder
+     * Downloads the tgz file content and stores it in a cache folder
      */
     public async streamTagGz(): Promise<NpmMeta> {
         const npmMeta = await this.retrieveNpmMeta();
@@ -210,23 +210,22 @@ export class InstallationVerification {
         return _.get(this.config, 'cacheDir');
     }
 
-    private getYarnPath(): string {
+    private getNpmPath(): string {
         if (this.config) {
-            const dataPath = this.getDataPath();
-            return path.join(dataPath, 'client', 'node_modules', 'cli-engine', 'yarn', 'yarn.js' );
+            return path.join(__dirname, '..', '..', 'node_modules', 'npm', 'cli.js' );
         } else {
             throw new Error('Please specify the cliEngine Config');
         }
     }
 
     /**
-     * Invoke yarn to discover a urls for the certificate and digital signature.
+     * Invoke npm to discover a urls for the certificate and digital signature.
      */
     private async retrieveNpmMeta(): Promise<NpmMeta> {
         return new Promise<NpmMeta>((resolve, reject) => {
             // console.log('@TODO - support proxies');
             // console.log('@TODO - https thumbprints');
-            const yarnPath = this.getYarnPath();
+            const npmPath = this.getNpmPath();
 
             const options = {
                 env: process.env,
@@ -234,30 +233,30 @@ export class InstallationVerification {
                 execArgv: [],
                 stdio: [null, null, null, 'ipc']
             };
-            const yarnFork = fork(yarnPath, ['info', this.pluginName, '--json', '--non-interactive'], options);
+            const npmFork = fork(npmPath, ['info', this.pluginName, '--json'], options);
 
-            yarnFork.stdout.setEncoding('utf8');
-            yarnFork.stderr.setEncoding('utf8');
+            npmFork.stdout.setEncoding('utf8');
+            npmFork.stderr.setEncoding('utf8');
 
             let jsonContent = '';
             let errorContent = '';
 
-            yarnFork.stdout.on('data', (data) => {
+            npmFork.stdout.on('data', (data) => {
                 if (data) {
                     jsonContent += data;
                 }
             });
-            yarnFork.stderr.on('data', (data) => {
+            npmFork.stderr.on('data', (data) => {
                 if (data) {
                     errorContent += data;
                 }
             });
 
-            yarnFork.on('error', (err) => {
+            npmFork.on('error', (err) => {
                 reject(new Error(`plugins install verification failed with: ${err.name}`));
             });
 
-            yarnFork.on('close', (code) => {
+            npmFork.on('close', (code) => {
                 if (code === 0) {
 
                     let metadata;
@@ -268,23 +267,23 @@ export class InstallationVerification {
                     }
                     const meta = new NpmMeta();
 
-                    if (!metadata.data.sfdx) {
+                    if (!metadata.sfdx) {
                         reject(new NamedError('NotSigned', 'This plugin is not signed by Salesforce.com ,Inc'));
                     } else {
 
-                        if (!validSalesforceHostname(metadata.data.sfdx.publicKeyUrl)) {
-                            reject(new UnexpectedHost(metadata.data.sfdx.publicKeyUrl));
+                        if (!validSalesforceHostname(metadata.sfdx.publicKeyUrl)) {
+                            reject(new UnexpectedHost(metadata.sfdx.publicKeyUrl));
                         } else {
-                            meta.publicKeyUrl = metadata.data.sfdx.publicKeyUrl;
+                            meta.publicKeyUrl = metadata.sfdx.publicKeyUrl;
                         }
 
-                        if (!validSalesforceHostname(metadata.data.sfdx.signatureUrl)) {
-                            reject(new UnexpectedHost(metadata.data.sfdx.signatureUrl));
+                        if (!validSalesforceHostname(metadata.sfdx.signatureUrl)) {
+                            reject(new UnexpectedHost(metadata.sfdx.signatureUrl));
                         } else {
-                            meta.signatureUrl = metadata.data.sfdx.signatureUrl;
+                            meta.signatureUrl = metadata.sfdx.signatureUrl;
                         }
 
-                        meta.tarballUrl = metadata.data.dist.tarball;
+                        meta.tarballUrl = metadata.dist.tarball;
                     }
                     resolve(meta);
                 } else {
@@ -297,7 +296,7 @@ export class InstallationVerification {
                     } catch (e) {
                         // Assume a parse failure is because the error isn't a json string. Just pass it along.
                     }
-                    reject(new NamedError('InternalYarnError', returnError));
+                    reject(new NamedError('InternalNpmError', returnError));
                 }
             });
         });
