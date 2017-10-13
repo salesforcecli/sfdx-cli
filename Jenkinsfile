@@ -100,87 +100,6 @@ def doUnitTests(PLATFORM os) {
 }
 
 /**
-* Rollup coverage data files from unit and integration tests
-*/
-def rollupCoverage() {
-    def unitCoverageExists = fileExists './linuxunitcoverage/coverage.json'
-    def integrationCoverageExists = fileExists './linuxintegrationcoverage/coverage.json'
-
-    def coverageFiles = ''
-
-    if (unitCoverageExists) {
-        coverageFiles = '-c ./linuxunitcoverage/coverage.json '
-    }
-
-    if (integrationCoverageExists) {
-        coverageFiles += ' -c ./linuxintegrationcoverage/coverage.json '
-    }
-
-    if (coverageFiles != '') {
-        rc = sh returnStatus: true, script: "ci-utils rollupcoverage ${coverageFiles} -o ./linuxintegrationcoverage"
-    }
-}
-
-/**
- * Run npm install of toolbelt to local directory.
- * @return
- */
-def npmInstallInternal(PLATFORM os, linkHeroku = false) {
-    try {
-        setGithubProxy(os)
-
-        def home = env.WORKSPACE
-        def npmPublicProxy = env.NPM_PUBLIC_PROXY
-        def npmCacheDir = env.NPM_CACHE_DIR
-        if (npmCacheDir != null) {
-            npmCacheDir = "-c ${npmCacheDir}"
-        } else {
-            npmCacheDir = ''
-        }
-            withEnv([
-              "HOME=${home}",
-              "APPDATA=${home}",
-              "USERPROFILE=${home}"
-            ]) {
-                switch(os) {
-                    case PLATFORM.LINUX:
-                    case PLATFORM.MAC:
-                        if (npmPublicProxy != null) {
-                            sh "npm config set prefix ${home}"
-                            sh "npm config set https-proxy ${npmPublicProxy} -g"
-                            sh "npm config set proxy ${npmPublicProxy} -g"
-                        }
-                        sh "npm-cache install ${npmCacheDir} npm"
-                        break
-                    case PLATFORM.WINDOWS:
-                        if (npmPublicProxy != null) {
-                            bat "npm config set prefix ${home}"
-                            bat "npm config set https-proxy ${npmPublicProxy} -g"
-                            bat "npm config set proxy ${npmPublicProxy} -g"
-                        }
-                        bat "npm-cache install ${npmCacheDir} npm"
-                        break
-                }
-            }
-        } finally {
-            unsetGithubProxy(os)
-        }
-}
-
-/**
- * Run npm install of toolbelt to local directory.
- * @return
- */
-def npmInstall(PLATFORM os, linkHeroku = false) {
-    stage('Install Toolbelt') {
-        def withEnvParams = env.SFDX_PUBLIC_PROXY != null ? ["http_proxy=${env.SFDX_PUBLIC_PROXY}","https_proxy=${env.SFDX_PUBLIC_PROXY}"] : []
-        withEnv(withEnvParams) {
-            npmInstallInternal(os, linkHeroku)
-        }
-    }
-}
-
-/**
  * post results to github
  */
 def postResultsToGithub() {
@@ -231,10 +150,10 @@ def coverageNotifications(coverageDir) {
 def collectCoverageResults() {
     stage('Collect Coverage Results') {
         publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'linuxunitcoverage', reportFiles: 'index.html', reportName: 'Linux Unit Test Coverage Report'])
-        publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'linuxintegrationcoverage', reportFiles: 'index.html', reportName: 'Linux Integration Test Coverage Report'])
-        publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'windowsunitcoverage', reportFiles: 'index.html', reportName: 'Windows Unit Test Coverage Report'])
-        publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'integration-coverage', reportFiles: 'index.html', reportName: 'Windows Integration Test Coverage Report'])
-        publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'teamcoverage', reportFiles: 'index.html', reportName: 'Code Coverage by Team (Integration)'])
+        // publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'linuxintegrationcoverage', reportFiles: 'index.html', reportName: 'Linux Integration Test Coverage Report'])
+        // publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'windowsunitcoverage', reportFiles: 'index.html', reportName: 'Windows Unit Test Coverage Report'])
+        // publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'integration-coverage', reportFiles: 'index.html', reportName: 'Windows Integration Test Coverage Report'])
+        // publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'teamcoverage', reportFiles: 'index.html', reportName: 'Code Coverage by Team (Integration)'])
 
         echo 'Publish Coverage Notifications for entire project'
         coverageNotifications('./linuxintegrationcoverage')
