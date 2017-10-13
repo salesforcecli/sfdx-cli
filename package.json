@@ -64,6 +64,7 @@
     "debug": "3.0.1",
     "fs-extra": "4.0.2",
     "lodash": "4.11.1",
+    "request": "2.79.0",
     "salesforcedx": "41.2.3-0"
   },
   "devDependencies": {

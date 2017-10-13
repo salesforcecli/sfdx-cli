@@ -1,12 +1,30 @@
 import child_process  = require('child_process');
 import { Readable } from 'stream';
 import fs = require('fs-extra');
-import https  = require('https');
 import { CERTIFICATE, PRIVATE_KEY } from './testCert';
 import * as _ from 'lodash';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as _Promise from 'bluebird';
+import * as request from 'request';
+import * as events from 'events';
+
+const _getCertResponse = (path: string) => {
+    const response = new Readable({
+        read() {
+            this.push(CERTIFICATE);
+            this.push(null);
+        }
+    });
+    (response as any).statusCode = 200;
+    const requestEmitter =  new events.EventEmitter();
+
+    process.nextTick(() => {
+        requestEmitter.emit('response', response);
+    });
+
+    return requestEmitter;
+};
 
 let packAndSignApi: any;
 
@@ -60,17 +78,8 @@ describe('doPackAndSign', () => {
             }
         });
 
-        globalSandbox.stub(https, 'get').callsFake((path: any, cb: any) => {
-            if (_.includes(_.toLower(path.path), 'publickeyurlvalue')) {
-                const response = new Readable({
-                    read() {
-                        this.push(CERTIFICATE);
-                        this.push(null);
-                    }
-                });
-                _.set(response, 'statusCode', 200);
-                cb(response);
-            }
+        globalSandbox.stub(request, 'get').callsFake((path: any) => {
+            return _getCertResponse(path);
         });
 
         packAndSignApi = require('./packAndSign').api;
@@ -136,16 +145,9 @@ describe('packAndSign Tests', () => {
     describe('verify', () => {
         it('verify flow - false', () => {
             let url: any;
-            sandbox.stub(https, 'get').callsFake((_url: string, cb: any) => {
+            sandbox.stub(request, 'get').callsFake((_url: string) => {
                 url = _url;
-                const response = new Readable({
-                    read() {
-                        this.push(CERTIFICATE);
-                        this.push(null);
-                    }
-                });
-                _.set(response, 'statusCode', 200);
-                cb(response);
+                return _getCertResponse(_url);
             });
 
             const tarGz = new Readable({
@@ -162,9 +164,13 @@ describe('packAndSign Tests', () => {
                 }
             });
 
+            if (!packAndSignApi) {
+                packAndSignApi = require('./packAndSign').api;
+            }
+
             return packAndSignApi.verify(tarGz, signature, 'baz').then((authentic: boolean) => {
                 expect(authentic).to.be.equal(false);
-                expect(url.path).to.be.equal('baz');
+                expect(url).to.be.equal('baz');
             });
         });
     });

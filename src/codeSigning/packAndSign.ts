@@ -10,7 +10,6 @@ import {
     writeFile
 } from 'fs-extra';
 
-import { get as httpsGet } from 'https';
 import { parse as parseUrl } from 'url';
 import { Writable, Readable } from 'stream';
 import { join as pathJoin } from 'path';
@@ -20,6 +19,7 @@ import { sep as pathSep, basename as pathBasename } from 'path';
 import { Config } from 'cli-engine-config';
 import { CLI } from 'cli-ux';
 import * as _ from 'lodash';
+import * as request from 'request';
 
 import {
     ExecProcessFailed,
@@ -57,6 +57,26 @@ const cliUx = new CLI();
 export const api = {
 
     /**
+     * Validates that a url is a valid salesforce url.
+     * @param url - The url to validate.
+     */
+    validateUrl(url: string) {
+        try {
+            const urlObj = parseUrl(url);
+            if (!urlObj.host) {
+                throw new InvalidUrlError(url);
+            }
+            if (!validSalesforceHostname(url)) {
+                throw new NamedError('NotASalesforceHost', 'Signing urls must have the hostname dev');
+            }
+        } catch (e) {
+            const err = new InvalidUrlError(url);
+            err.reason = e;
+            throw err;
+        }
+    },
+
+    /**
      * call out to yarn pack;
      */
     pack(): Promise<string> {
@@ -91,25 +111,17 @@ export const api = {
             verifyInfo.dataToVerify = tarGzStream;
             verifyInfo.signatureStream = sigFilenameStream;
 
-            const parsedUrl = parseUrl(publicKeyUrl);
+            const req = request.get(publicKeyUrl);
+            validateRequestCert(req, publicKeyUrl);
 
-            // You can set the following env variable NODE_TLS_REJECT_UNAUTHORIZED=0 to more easily support
-            // self signed certs.
-            const options = {
-                host: parsedUrl.hostname,
-                path: parsedUrl.path,
-                port: parsedUrl.port
-            };
-            const req = httpsGet(options, (resp) => {
-                if (resp && resp.statusCode === 200) {
-                    verifyInfo.publicKeyStream = resp;
+            req.on('response', (response) => {
+                if (response && response.statusCode === 200) {
+                    verifyInfo.publicKeyStream = response;
                     resolve(verify(verifyInfo));
                 } else {
-                    reject(new NamedError('RetrievePublicKeyFailed', `Couldn't retrieve public key at url: ${publicKeyUrl}`));
+                    reject(new NamedError('RetrievePublicKeyFailed', `Couldn't retrieve public key at url: ${publicKeyUrl} error code: ${response.statusCode}`));
                 }
-
             });
-            validateRequestCert(req, publicKeyUrl);
 
             req.on('error', (err: any) => {
                 if (err && err.code === 'DEPTH_ZERO_SELF_SIGNED_CERT') {
@@ -210,6 +222,7 @@ export const api = {
      */
     async doPackAndSign(args) {
         let packageDotJsonBackedUp = false;
+        let error;
 
         try {
 
@@ -260,11 +273,16 @@ export const api = {
 
                 cliUx.log(`Artifact signed and saved in ${sigFilename}`);
 
+                let verified;
+                try {
                 // verify the signature with the public key url
-                const verified = await api.verify(
+                verified = await api.verify(
                     createReadStream(filepath, { encoding: 'binary' }),
                     createReadStream(pathJoin(process.cwd(), sigFilename)),
                     args.publicKeyUrl);
+                } catch (e) {
+                    console.log(e);
+                }
 
                 if (verified) {
                     cliUx.log(`Successfully verified signature with public key at: ${args.publicKeyUrl}`);
@@ -276,17 +294,24 @@ export const api = {
                 throw new NamedError('EmptySignature', 'The generated signature is empty. Verify the private key and try again');
             }
         } catch (e) {
-            process.exitCode = 1;
-            cliUx.error(`ERROR: ${e.message}`);
-            if (e.reason) {
-                cliUx.error(e.reason.message);
-            }
+             error = e;
         } finally {
+
             // Restore the package.json file so it doesn't show a git diff.
             if (packageDotJsonBackedUp) {
                 cliUx.log('Restoring package.json');
                 await api.copyPackageDotJson(PACKAGE_DOT_JSON_PATH_BAK, PACKAGE_DOT_JSON_PATH);
                 await removeFileAsync(PACKAGE_DOT_JSON_PATH_BAK);
+            }
+
+            if (error) {
+                process.exitCode = 1;
+                // TODO - You can't call cliUx.error here because finally won't be invoked. error is doing something with
+                // process.exit
+                cliUx.error(`ERROR: ${error.message}`);
+                if (error.reason) {
+                    cliUx.log(error.reason.message);
+                }
             }
         }
     }
