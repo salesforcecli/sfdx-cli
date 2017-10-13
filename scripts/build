@@ -61,6 +61,8 @@ if [ ! -f $WORKSPACE/node_modules/cli-engine/lib/cli.js ]; then
   yarn run prepare
 fi
 
+rm -rf "$WORKSPACE/node_modules/webdriverio/test"
+
 # install node
 if [ "$OS" == windows ]; then
   NODE_BASE=node-v$NODE_VERSION-win-$ARCH

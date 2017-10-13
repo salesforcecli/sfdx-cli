@@ -1,3 +1,9 @@
+import { Config } from 'cli-engine-config';
 import CLI from 'cli-engine';
+import Lock from 'cli-engine/lib/lock';
 
-new CLI({ argv: [], config: {} }).run();
+const config: Config = {};
+
+new CLI({ argv: [], config }).run();
+
+new Lock(config).upgrade();

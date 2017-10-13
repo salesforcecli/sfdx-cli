@@ -38,11 +38,15 @@ NAME=$(node -p "require('./package.json').name")
 S3_BUCKET=$(node -p "require('./package.json')['cli-engine'].s3.bucket")
 S3_BASE="s3://$S3_BUCKET/media/salesforce-cli/$NAME"
 
-# TODO: uncomment proper cache control values
-#VERSIONED_CACHE_CONTROL=86400
-#UNVERSIONED_CACHE_CONTROL=60
-VERSIONED_CACHE_CONTROL=0
-UNVERSIONED_CACHE_CONTROL=0
+if [ "$CHANNEL" == "stable" ]; then
+  VERSIONED_CACHE_CONTROL=86400   # 1 day
+  UNVERSIONED_CACHE_CONTROL=300   # 5 minutes
+  LATEST_VERSION_CACHE_CONTROL=60 # 1 minute
+else
+  VERSIONED_CACHE_CONTROL=0
+  UNVERSIONED_CACHE_CONTROL=0
+  LATEST_VERSION_CACHE_CONTROL=0
+fi
 
 function release {
   "$DIR/build" "$PLATFORM" "$CHANNEL"
@@ -52,7 +56,7 @@ function release {
   aws s3 cp --cache-control max-age=$UNVERSIONED_CACHE_CONTROL "$remote_base/$NAME-v$VERSION-$PLATFORM.tar.xz" "$remote_base/$NAME-$PLATFORM.tar.xz"
   aws s3 cp --cache-control max-age=$VERSIONED_CACHE_CONTROL "tmp/build/$NAME-v$VERSION-$PLATFORM.tar.gz" "$remote_base/$NAME-v$VERSION-$PLATFORM.tar.gz"
   aws s3 cp --cache-control max-age=$UNVERSIONED_CACHE_CONTROL "$remote_base/$NAME-v$VERSION-$PLATFORM.tar.gz" "$remote_base/$NAME-$PLATFORM.tar.gz"
-  aws s3 cp --cache-control max-age=$UNVERSIONED_CACHE_CONTROL --content-type application/json "tmp/build/$PLATFORM" "$remote_base/$PLATFORM"
+  aws s3 cp --cache-control max-age=$LATEST_VERSION_CACHE_CONTROL --content-type application/json "tmp/build/$PLATFORM" "$remote_base/$PLATFORM"
 }
 
 pids=""
@@ -88,13 +92,4 @@ if [ $RESULT -ne 0 ]; then
   exit $RESULT
 fi
 
-aws s3 cp --cache-control max-age=$UNVERSIONED_CACHE_CONTROL --content-type application/json tmp/build/version "$S3_BASE/channels/$CHANNEL/version"
-
-# TODO: This is how Heroku's release invalidates their cloudfront cdn...
-# can we do similarly for Fast.ly?
-#
-# invalidate CDN
-# CLOUDFRONT_DISTRIBUTION=$(node -p "require('./package.json')['cli-engine'].cloudfront")
-# if [ "$CLOUDFRONT_DISTRIBUTION" != "undefined" ]; then
-#   aws cloudfront create-invalidation --distribution-id EHF9FOCUJYVZ --paths "/$NAME/channels/$CHANNEL/*"
-# fi
+aws s3 cp --cache-control max-age=$LATEST_VERSION_CACHE_CONTROL --content-type application/json tmp/build/version "$S3_BASE/channels/$CHANNEL/version"

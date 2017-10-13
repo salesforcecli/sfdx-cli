@@ -122,7 +122,13 @@ describe('InstallationVerification Tests', () => {
             return 5;
         });
 
-        sandbox.stub(request, 'get').callsFake(() => {});
+        sandbox.stub(request, 'get').callsFake(() => {
+            const readable = new Readable();
+            process.nextTick(() => {
+                readable.emit('end');
+            });
+            return readable;
+        });
 
         sandbox.stub(fs, 'readFile').callsFake((path, cb) => {
             try {
