@@ -306,8 +306,6 @@ export const api = {
 
             if (error) {
                 process.exitCode = 1;
-                // TODO - You can't call cliUx.error here because finally won't be invoked. error is doing something with
-                // process.exit
                 cliUx.error(`ERROR: ${error.message}`);
                 if (error.reason) {
                     cliUx.log(error.reason.message);

@@ -16,8 +16,6 @@ import {
 } from './codeSignApi';
 
 import { NamedError, UnexpectedHost, UnauthorizedSslConnection } from '../util/NamedError';
-// import { get as httpsGet } from 'https';
-import { EOL } from 'os';
 
 export const WHITELIST_FILENAME = 'unsignedPluginWhiteList.json';
 
@@ -118,6 +116,7 @@ export class InstallationVerification {
                     reject(err);
                 } else {
                     if (response && response.statusCode === 200) {
+                        // The verification api expects a readable
                         resolve(new Readable({
                             read() {
                                 this.push(responseData);
