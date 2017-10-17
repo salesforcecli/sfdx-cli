@@ -12,7 +12,9 @@ import {
     doInstallationCodeSigningVerification,
     InstallationVerification,
     WHITELIST_FILENAME,
-    VerificationConfig
+    VerificationConfig,
+    getNpmRegistry,
+    DEFAULT_REGISTRY
 } from './installationVerification';
 
 class NpmEmitter extends events.EventEmitter {
@@ -78,6 +80,27 @@ const getNpmSuccess = (npmEmitter: NpmEmitter) => {
         }
     });
 };
+
+describe('getNpmRegistry', () => {
+    const currentRegistry = process.env.SFDX_NPM_REGISTRY;
+    after(() => {
+        if (currentRegistry) {
+            process.env.SFDX_NPM_REGISTRY = currentRegistry;
+        }
+    });
+    it ('set registry', () => {
+        const TEST_REG = 'https://registry.example.com/';
+        process.env.SFDX_NPM_REGISTRY = TEST_REG;
+        const reg = getNpmRegistry();
+        console.log(`reg.href: ${reg.href}`);
+        expect(reg.href).to.be.equal(TEST_REG);
+    });
+    it ('default registry', () => {
+        delete process.env.SFDX_NPM_REGISTRY;
+        const reg = getNpmRegistry();
+        expect(reg.href).to.be.equal(DEFAULT_REGISTRY);
+    });
+});
 
 describe('InstallationVerification Tests', () => {
 

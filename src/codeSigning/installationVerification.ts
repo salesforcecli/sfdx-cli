@@ -19,7 +19,11 @@ import { NamedError, UnexpectedHost, UnauthorizedSslConnection, SignSignedCertEr
 
 export const WHITELIST_FILENAME = 'unsignedPluginWhiteList.json';
 
-const NPM_REGISTRY = new URL(process.env.SFDX_NPM_REGISTRY || 'https://registry.npmjs.org');
+export const DEFAULT_REGISTRY = 'https://registry.npmjs.org/';
+
+export const getNpmRegistry = () => {
+    return new URL(process.env.SFDX_NPM_REGISTRY || DEFAULT_REGISTRY);
+};
 
 /**
  * simple data structure representing the discovered meta information needed for signing,
@@ -231,9 +235,9 @@ export class InstallationVerification {
         return new Promise<NpmMeta>((resolve, reject) => {
             // console.log('@TODO - support proxies');
             // console.log('@TODO - https thumbprints');
-
-            NPM_REGISTRY.pathname = this.pluginName;
-            this.requestImpl(NPM_REGISTRY.href, (err, response, body) => {
+            const npmRegistry = getNpmRegistry();
+            npmRegistry.pathname = this.pluginName;
+            this.requestImpl(npmRegistry.href, (err, response, body) => {
                 if (response && response.statusCode === 200) {
                     const responseObj = JSON.parse(body);
                     const distTags: string = _.get(responseObj, 'dist-tags');
@@ -277,7 +281,7 @@ export class InstallationVerification {
                         reject(new NamedError('UnexpectedNpmFormat', 'The deployed NPM is missing dist-tags.'));
                     }
                 } else {
-                    reject(new NamedError('UrlRetrieve', `The url request returned ${response.statusCode} - ${NPM_REGISTRY.toString()}`));
+                    reject(new NamedError('UrlRetrieve', `The url request returned ${response.statusCode} - ${npmRegistry.href}`));
                 }
             });
         });
