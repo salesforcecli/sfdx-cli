@@ -16,7 +16,11 @@ async function run(config: Config, {plugin, tag}: {plugin: string, tag: string})
     const cliUx = new CLI();
     cliUx.action.stop('Checking for digital signature.');
     const vConfig = new VerificationConfig();
-    vConfig.verifier = new InstallationVerification().setPluginName(plugin).setCliEngineConfig(config);
+    vConfig.verifier = new InstallationVerification()
+        .setPluginName(plugin)
+        .setPluginTag(tag)
+        .setCliEngineConfig(config);
+
     vConfig.log = cliUx.log.bind(cliUx);
     vConfig.prompt = cliUx.prompt.bind(cliUx);
 

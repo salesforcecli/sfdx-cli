@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { exec } from 'child_process';
-
+import { EOL } from 'os';
 import {
     copy as copyFile,
     createReadStream,
@@ -10,7 +10,7 @@ import {
     writeFile
 } from 'fs-extra';
 
-import { parse as parseUrl } from 'url';
+import { URL } from 'url';
 import { Writable, Readable } from 'stream';
 import { join as pathJoin } from 'path';
 import { parse as parsePath } from 'path';
@@ -25,6 +25,7 @@ import {
     ExecProcessFailed,
     InvalidUrlError,
     MissingRequiredParameter,
+    SignSignedCertError,
     NamedError
 } from '../util/NamedError';
 
@@ -62,12 +63,12 @@ export const api = {
      */
     validateUrl(url: string) {
         try {
-            const urlObj = parseUrl(url);
+            const urlObj = new URL(url);
             if (!urlObj.host) {
                 throw new InvalidUrlError(url);
             }
             if (!validSalesforceHostname(url)) {
-                throw new NamedError('NotASalesforceHost', 'Signing urls must have the hostname dev');
+                throw new NamedError('NotASalesforceHost', 'Signing urls must have the hostname developer.salesforce.com and be https');
             }
         } catch (e) {
             const err = new InvalidUrlError(url);
@@ -77,22 +78,27 @@ export const api = {
     },
 
     /**
-     * call out to yarn pack;
+     * call out to npm pack;
      */
     pack(): Promise<string> {
         return new Promise<string>((resolve, reject) => {
-            const command: string = 'yarn pack --json';
+            const command: string = 'npm pack -p -s';
             exec(command, (error: any, stdout: string, stderr: string) => {
                 if (error && error.code) {
                     const err = new ExecProcessFailed(command, error.code).setReasonByMessage(stderr);
                     reject(err);
                 } else {
-                    const data = JSON.parse(stdout).data;
-                    const path = _.find(_.split(data, '"'), (word) => _.includes(word, 'tgz'));
-                    if (!path) {
-                        reject(new NamedError('UnexpectedYarnFormat', `Yarn pack did not return an expected tgz filename result: [${data}]`));
+                    const output = stdout.split(EOL);
+                    if (output.length > 1) {
+                        // note the output end with a newline;
+                        const path = output[output.length - 2];
+                        if (path && path.endsWith('tgz')) {
+                            resolve(path);
+                        } else {
+                            reject(new NamedError('UnexpectedNpmFormat', `Npm pack did not return an expected tgz filename result: [${path}]`));
+                        }
                     } else {
-                        resolve(path);
+                        reject(new NamedError('UnexpectedNpmFormat', `The output from the npm utility is unexpected [${stdout}]`));
                     }
                 }
             });
@@ -112,6 +118,7 @@ export const api = {
             verifyInfo.signatureStream = sigFilenameStream;
 
             const req = request.get(publicKeyUrl);
+            console.log(publicKeyUrl);
             validateRequestCert(req, publicKeyUrl);
 
             req.on('response', (response) => {
@@ -125,7 +132,7 @@ export const api = {
 
             req.on('error', (err: any) => {
                 if (err && err.code === 'DEPTH_ZERO_SELF_SIGNED_CERT') {
-                    reject(new NamedError('SelfSignedCert', 'Encountered a self signed certificated. To enable "export NODE_TLS_REJECT_UNAUTHORIZED=0"'));
+                    reject(new SignSignedCertError());
                 } else {
                     reject(err);
                 }
@@ -226,6 +233,9 @@ export const api = {
 
         try {
 
+            api.validateUrl(args.signatureUrl);
+            api.validateUrl(args.publicKeyUrl);
+
             // validate npm ignore has what we name.
             let filename = '.npmignore';
             const npmIgnoreContent = await api.retrieveIgnoreFile(filename);
@@ -245,7 +255,7 @@ export const api = {
             let packageJson = JSON.parse(packageJsonContent);
 
             // compute the name of the signature file
-            const sigFilename = `${packageJson.name}-v${packageJson.version}.sig`;
+            const sigFilename = `${packageJson.name}-${packageJson.version}.sig`;
 
             // make a backup of the signature file
             await api.copyPackageDotJson(PACKAGE_DOT_JSON_PATH, PACKAGE_DOT_JSON_PATH_BAK);
@@ -275,13 +285,15 @@ export const api = {
 
                 let verified;
                 try {
-                // verify the signature with the public key url
-                verified = await api.verify(
-                    createReadStream(filepath, { encoding: 'binary' }),
-                    createReadStream(pathJoin(process.cwd(), sigFilename)),
-                    args.publicKeyUrl);
+                    // verify the signature with the public key url
+                    verified = await api.verify(
+                        createReadStream(filepath, { encoding: 'binary' }),
+                        createReadStream(pathJoin(process.cwd(), sigFilename)),
+                        args.publicKeyUrl);
                 } catch (e) {
-                    console.log(e);
+                    const e1 = new NamedError('VerificationError', 'An error occurred trying to validate the signature. Check the public key url and try again.');
+                    e1.reason = e;
+                    throw e1;
                 }
 
                 if (verified) {
@@ -305,11 +317,12 @@ export const api = {
             }
 
             if (error) {
-                process.exitCode = 1;
-                cliUx.error(`ERROR: ${error.message}`);
                 if (error.reason) {
-                    cliUx.log(error.reason.message);
+                    cliUx.error(`ERROR: ${error.message} REASON: ${error.reason.message}`);
+                } else {
+                    cliUx.error(`ERROR: ${error.message}`);
                 }
+                process.exitCode = 1;
             }
         }
     }

@@ -8,8 +8,12 @@ import * as request from 'request';
 import { TEST_DATA, TEST_DATA_SIGNATURE, CERTIFICATE } from './testCert';
 import { SALESFORCE_CERT_FINGERPRINT } from './codeSignApi';
 import { expect } from 'chai';
-
-let iv: any;
+import {
+    doInstallationCodeSigningVerification,
+    InstallationVerification,
+    WHITELIST_FILENAME,
+    VerificationConfig
+} from './installationVerification';
 
 class NpmEmitter extends events.EventEmitter {
     private _stdout: Readable;
@@ -76,7 +80,6 @@ const getNpmSuccess = (npmEmitter: NpmEmitter) => {
 };
 
 describe('InstallationVerification Tests', () => {
-    let sandbox: any;
 
     const config = {
         get dataDir() {
@@ -92,83 +95,61 @@ describe('InstallationVerification Tests', () => {
 
     const plugin = 'foo';
 
-    let npmEmitter = new NpmEmitter();
-    let fsReadFileFunc;
-
-    before(() => {
-        sandbox = sinon.sandbox.create();
-        sandbox.stub(child_process, 'fork').callsFake(() => {
-            return npmEmitter;
-         });
-
-        sandbox.stub(fs, 'createReadStream').callsFake((path: string) => {
-            return new Readable({
-                read() {
-                    if (_.includes(path, 'tarball')) {
-                        this.push(TEST_DATA);
-                    }
-                    this.push(null);
-                }
-            });
-        });
-
-        sandbox.stub(fs, 'createWriteStream').callsFake(() => {
-            return new Writable({
-                write() {}
-            });
-        });
-
-        sandbox.stub(fs, 'open').callsFake(() => {
-            return 5;
-        });
-
-        sandbox.stub(request, 'get').callsFake(() => {
-            const readable = new Readable();
-            process.nextTick(() => {
-                readable.emit('end');
-            });
-            return readable;
-        });
-
-        sandbox.stub(fs, 'readFile').callsFake((path, cb) => {
-            try {
-                cb(undefined, fsReadFileFunc(path));
-            } catch (err) {
-                cb(fsReadFileFunc(err));
-            }
-        });
-
-        iv = require('./installationVerification');
-
-        sandbox.stub(iv.InstallationVerification.prototype, 'getSigningContent').callsFake((url: string) => {
-            if (_.includes(url, 'cert')) {
-                return Promise.resolve(new Readable({
-                    read() {
-                        this.push(CERTIFICATE);
-                        this.push(null);
-                    }
-                }));
-            } else if (_.includes(url, 'sig')) {
-                return Promise.resolve(new Readable({
-                    read() {
-                        this.push(TEST_DATA_SIGNATURE);
-                        this.push(null);
-                    }
-                }));
-            } else {
-                Promise.reject(new Error('UnknownRequest'));
-            }
-        });
-    });
-
-    after(() => {
-        sandbox.restore();
-    });
-
     it('Steel thread test', async () => {
-        npmEmitter.stdout = getNpmSuccess(npmEmitter);
+        const _request = (url, cb) => {
+            if (_.includes(url, 'foo.tgz')) {
+                const reader = new Readable({
+                    read() {}
+                });
+                process.nextTick(() => {
+                    reader.emit('end');
+                });
+                return reader;
+            } else if (_.includes(url, 'sig')) {
+                cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
+            } else if (_.includes(url, 'key')) {
+                cb(null, { statusCode: 200 }, CERTIFICATE);
+            } else {
+                cb(null, { statusCode: 200 }, JSON.stringify({
+                    'versions': {
+                        '1.2.3': {
+                            sfdx: {
+                                publicKeyUrl: 'https://developer.salesforce.com/key',
+                                signatureUrl: 'https://developer.salesforce.com/sig'
+                            },
+                            dist: {
+                                tarball: 'https://registry.example.com/foo.tgz'
+                            }
+                        }
+                    },
+                    'dist-tags': {
+                        latest: '1.2.3'
+                    }
+                }));
+            }
+        };
 
-        const verification = new iv.InstallationVerification()
+        const _fs = {
+            readFile(path, cb) {},
+            createWriteStream(path) {
+                return new Writable({
+                    write(data) {
+                        console.log(data);
+                    }
+                });
+            },
+            createReadStream() {
+                return new Readable({
+                    read() {
+                        this.push(TEST_DATA);
+                        this.push(null);
+                    }
+                });
+            }
+
+        };
+
+        const verification = new InstallationVerification(_request, _fs)
             .setPluginName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
@@ -181,19 +162,49 @@ describe('InstallationVerification Tests', () => {
     });
 
     it('Read tarball stream failed', () => {
-        const ERROR = 'Ok, who brought the dog? - Louis Tully';
-        npmEmitter.stderr = new Readable({
-            read() {
-                this.push(ERROR);
-                this.push(null);
+        const _request = (url, cb) => {
+            if (_.includes(url, 'foo.tgz')) {
+                const reader = new Readable({
+                    read() {}
+                });
                 process.nextTick(() => {
-                    npmEmitter.emit('close', 1);
+                    reader.emit('error', new Error(ERROR));
+                });
+                return reader;
+            } else {
+                cb(null, { statusCode: 200 }, JSON.stringify({
+                    'versions': {
+                        '1.2.3': {
+                            sfdx: {
+                                publicKeyUrl: 'https://developer.salesforce.com/key',
+                                signatureUrl: 'https://developer.salesforce.com/sig'
+                            },
+                            dist: {
+                                tarball: 'https://registry.example.com/foo.tgz'
+                            }
+                        }
+                    },
+                    'dist-tags': {
+                        latest: '1.2.3'
+                    }
+                }));
+            }
+        };
+
+        const ERROR = 'Ok, who brought the dog? - Louis Tully';
+        const _fs = {
+            readFile(path, cb) {},
+            createWriteStream(path) {
+                return new Writable({
+                    write(data) {
+                        console.log(data);
+                    }
                 });
             }
-        });
+        };
 
-        const verification = new iv.InstallationVerification()
-        .setPluginName(plugin).setCliEngineConfig(config);
+        const verification = new InstallationVerification(_request, _fs)
+            .setPluginName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
             .then(() => {
@@ -206,22 +217,60 @@ describe('InstallationVerification Tests', () => {
 
     it ('404 for public key', () => {
 
-        npmEmitter = new NpmEmitter();
-        npmEmitter.stdout = getNpmSuccess(npmEmitter);
+        const _request = (url, cb) => {
+            if (_.includes(url, 'foo.tgz')) {
+                const reader = new Readable({
+                    read() {}
+                });
+                process.nextTick(() => {
+                    reader.emit('end');
+                });
+                return reader;
+            } else if (_.includes(url, 'sig')) {
+                cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
+            } else if (_.includes(url, 'key')) {
+                cb(null, { statusCode: 404 });
+            } else {
+                cb(null, { statusCode: 200 }, JSON.stringify({
+                    'versions': {
+                        '1.2.3': {
+                            sfdx: {
+                                publicKeyUrl: 'https://developer.salesforce.com/key',
+                                signatureUrl: 'https://developer.salesforce.com/sig'
+                            },
+                            dist: {
+                                tarball: 'https://registry.example.com/foo.tgz'
+                            }
+                        }
+                    },
+                    'dist-tags': {
+                        latest: '1.2.3'
+                    }
+                }));
+            }
+        };
 
-        iv.InstallationVerification.prototype.getSigningContent.restore();
-        sandbox.stub(iv.InstallationVerification.prototype, 'streamTagGz').callsFake(() => {
-            const meta = new iv.NpmMeta();
-            meta.tarballLocalPath = 'foo';
-            return Promise.resolve(meta);
-        });
-        sandbox.stub(iv.InstallationVerification.prototype, 'getSigningContent').callsFake((url: string) => {
-            const error = new Error('404');
-            (error as any).code = 404;
-            throw error;
-        });
+        const _fs = {
+            readFile(path, cb) {},
+            createWriteStream(path) {
+                return new Writable({
+                    write(data) {
+                        console.log(data);
+                    }
+                });
+            },
+            createReadStream() {
+                return new Readable({
+                    read() {
+                        this.push(TEST_DATA);
+                        this.push(null);
+                    }
+                });
+            }
 
-        const verification = new iv.InstallationVerification()
+        };
+
+        const verification = new InstallationVerification(_request, _fs)
             .setPluginName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
@@ -229,7 +278,8 @@ describe('InstallationVerification Tests', () => {
                 throw new Error('This shouldn\'t happen. Failure expected');
             })
             .catch((err: Error) => {
-                expect(err).to.have.property('code', 404);
+                expect(err).to.have.property('name', 'ErrorGettingContent');
+                expect(err.message).to.include('404');
             });
     });
 
@@ -237,23 +287,28 @@ describe('InstallationVerification Tests', () => {
         it('steel thread', async () => {
             const TEST_VALUE = 'FOO';
             let expectedPath;
-            fsReadFileFunc = (path) => {
-                expectedPath = path;
-                return `["${TEST_VALUE}"]`;
+            const _fs = {
+                readFile(path, cb) {
+                    expectedPath = path;
+                    cb(null, `["${TEST_VALUE}"]`);
+                }
             };
-            const verification = new iv.InstallationVerification()
+            const verification = new InstallationVerification(null, _fs)
                 .setPluginName(TEST_VALUE).setCliEngineConfig(config);
             expect(await verification.isWhiteListed()).to.be.equal(true);
-            expect(expectedPath).to.include(iv.WHITELIST_FILENAME);
+            expect(expectedPath).to.include(WHITELIST_FILENAME);
         });
 
         it('file doesn\'t exist', async () => {
-            fsReadFileFunc = (path) => {
-                const error = new Error();
-                (error as any).code = 'ENOENT';
-                throw error;
+            const _fs = {
+                readFile(path, cb) {
+                    const error = new Error();
+                    (error as any).code = 'ENOENT';
+                    cb(error);
+                }
             };
-            const verification = new iv.InstallationVerification()
+
+            const verification = new InstallationVerification(null, _fs)
                 .setPluginName('BAR').setCliEngineConfig(config);
             expect(await verification.isWhiteListed()).to.be.equal(false);
         });
@@ -262,42 +317,42 @@ describe('InstallationVerification Tests', () => {
     describe('doInstallationCodeSigningVerification', () => {
         it ('valid signature', async () => {
             let message = '';
-            const vConfig = new iv.VerificationConfig();
-            vConfig.verifier = {
+            const vConfig = new VerificationConfig();
+            vConfig.verifier = ({
                 async verify() {
                     return {
                         verified: true
                     };
                 }
-            };
+            } as any);
 
             vConfig.log = (_message) => {
                 message = _message;
             };
 
-            await iv.doInstallationCodeSigningVerification({}, {}, vConfig);
+            await doInstallationCodeSigningVerification({}, ({} as any), vConfig);
             expect(message).to.include('Successfully');
             expect(message).to.include('digital signature');
         });
 
         it ('FailedDigitalSignatureVerification', () => {
-            const vConfig = new iv.VerificationConfig();
-            vConfig.verifier = {
+            const vConfig = new VerificationConfig();
+            vConfig.verifier = ({
                 async verify() {
                     return {
                         verified: false
                     };
                 }
-            };
+            } as any);
 
-            return iv.doInstallationCodeSigningVerification({}, {}, vConfig).catch((err) => {
+            return doInstallationCodeSigningVerification({}, ({} as any), vConfig).catch((err) => {
                 expect(err).to.have.property('name', 'FailedDigitalSignatureVerification');
             });
         });
 
         it ('Canceled by user', () => {
-            const vConfig = new iv.VerificationConfig();
-            vConfig.verifier = {
+            const vConfig = new VerificationConfig();
+            vConfig.verifier = ({
                 async verify() {
                     const err = new Error();
                     err.name = 'NotSigned';
@@ -306,13 +361,13 @@ describe('InstallationVerification Tests', () => {
                 async isWhiteListed() {
                     return false;
                 }
-            };
+            } as any);
 
             vConfig.prompt = async () => {
                 return 'N';
             };
 
-            return iv.doInstallationCodeSigningVerification({}, {}, vConfig)
+            return doInstallationCodeSigningVerification({}, ({} as any), vConfig)
                 .then(() => {
                     throw new Error('Failure: This should never happen');
                 })
@@ -322,8 +377,8 @@ describe('InstallationVerification Tests', () => {
         });
 
         it ('continue installation', () => {
-            const vConfig = new iv.VerificationConfig();
-            vConfig.verifier = {
+            const vConfig = new VerificationConfig();
+            vConfig.verifier = ({
                 async verify() {
                     const err = new Error();
                     err.name = 'UnexpectedHost';
@@ -332,13 +387,13 @@ describe('InstallationVerification Tests', () => {
                 async isWhiteListed() {
                     return false;
                 }
-            };
+            } as any);
 
             vConfig.prompt = async () => {
                 return 'Y';
             };
 
-            return iv.doInstallationCodeSigningVerification({}, {}, vConfig)
+            return doInstallationCodeSigningVerification({}, ({} as any), vConfig)
                 .then(() => {
                     throw new Error('Failure: This should never happen');
                 })

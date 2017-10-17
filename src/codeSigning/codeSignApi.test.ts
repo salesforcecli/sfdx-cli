@@ -15,6 +15,9 @@ import * as events from 'events';
 describe('Sign Tests', () => {
 
     describe('validSalesforceHostname', () => {
+        before(() => {
+            delete process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING;
+        });
         it ('falsy url', () => {
             expect(validSalesforceHostname(null)).to.be.equal(false);
         });

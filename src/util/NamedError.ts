@@ -63,3 +63,9 @@ To allow this set the following environment variable: NODE_TLS_REJECT_UNAUTHORIZ
         super('UnauthorizedSslConnection', message);
     }
 }
+
+export class SignSignedCertError extends NamedError {
+    constructor() {
+        super('SelfSignedCert', 'Encountered a self signed certificated. To enable "export NODE_TLS_REJECT_UNAUTHORIZED=0"');
+    }
+}
