@@ -147,7 +147,7 @@ describe('packAndSign Tests', () => {
         });
     });
 
-    /*describe('verify', () => {
+    describe('verify', () => {
         it('verify flow - false', () => {
             let url: any;
             sandbox.stub(request, 'get').callsFake((_url: string) => {
@@ -198,5 +198,5 @@ describe('packAndSign Tests', () => {
         it ('has expected patterns', () => {
             expect(packAndSignApi.validateNpmIgnorePatterns('*.tgz*.sigpackage.json.bak')).to.be.equal(undefined);
         });
-    });*/
+    });
 });
