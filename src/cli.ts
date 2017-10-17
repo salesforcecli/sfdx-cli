@@ -12,10 +12,11 @@ export function create(version: string, channel: string) {
         root,
         version
     };
+    
     if (process.env.SFDX_AUTOUPDATE_DISABLE === 'true') {
         config.updateDisabled = process.env.SFDX_AUTOUPDATE_DISABLE_MESSAGE ||
-            'A newer version is available, but CLI updates have ' +
-            'been disabled by setting "SFDX_AUTOUPDATE_DISABLE=true"';
+            'Manual and automatic CLI updates have been disabled by setting "SFDX_AUTOUPDATE_DISABLE=true". ' +
+            'To check for a new version, unset that environment variable.';
     }
     return new CLI({ argv, config });
 }
