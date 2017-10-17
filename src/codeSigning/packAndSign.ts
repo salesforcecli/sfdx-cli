@@ -118,7 +118,6 @@ export const api = {
             verifyInfo.signatureStream = sigFilenameStream;
 
             const req = request.get(publicKeyUrl);
-            console.log(publicKeyUrl);
             validateRequestCert(req, publicKeyUrl);
 
             req.on('response', (response) => {
