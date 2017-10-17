@@ -13,28 +13,30 @@ import { CLI } from 'cli-ux';
 import * as _ from 'lodash';
 
 async function run(config: Config, {plugin, tag}: {plugin: string, tag: string}) {
-    if (process.env.SFDX_ENABLE_CODE_SIGNING) {
-        const cliUx = new CLI();
-        cliUx.action.stop('Checking for digital signature.');
-        const vConfig = new VerificationConfig();
-        vConfig.verifier = new InstallationVerification().setPluginName(plugin).setCliEngineConfig(config);
-        vConfig.log = cliUx.log.bind(cliUx);
-        vConfig.prompt = cliUx.prompt.bind(cliUx);
+    const cliUx = new CLI();
+    cliUx.action.stop('Checking for digital signature.');
+    const vConfig = new VerificationConfig();
+    vConfig.verifier = new InstallationVerification()
+        .setPluginName(plugin)
+        .setPluginTag(tag)
+        .setCliEngineConfig(config);
 
-        let namedError: NamedError | undefined;
-        try {
-            await doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
-        } catch (e) {
-            if (e instanceof NamedError) {
-                namedError = e;
-            }
-            throw e;
-        } finally {
-            if (namedError) {
-                cliUx.action.start('Finished digital signature check. Skipping');
-            } else {
-                cliUx.action.start('Finished digital signature check. Installing');
-            }
+    vConfig.log = cliUx.log.bind(cliUx);
+    vConfig.prompt = cliUx.prompt.bind(cliUx);
+
+    let namedError: NamedError | undefined;
+    try {
+        await doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
+    } catch (e) {
+        if (e instanceof NamedError) {
+            namedError = e;
+        }
+        throw e;
+    } finally {
+        if (namedError) {
+            cliUx.action.start('Finished digital signature check. Skipping');
+        } else {
+            cliUx.action.start('Finished digital signature check. Installing');
         }
     }
 }

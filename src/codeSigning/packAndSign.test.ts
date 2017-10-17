@@ -1,7 +1,8 @@
 import child_process  = require('child_process');
+import { EOL } from 'os';
 import { Readable } from 'stream';
 import fs = require('fs-extra');
-import { CERTIFICATE, PRIVATE_KEY } from './testCert';
+import { CERTIFICATE, PRIVATE_KEY, TEST_DATA } from './testCert';
 import * as _ from 'lodash';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
@@ -64,7 +65,7 @@ describe('doPackAndSign', () => {
             } else if (_.includes(filePath, 'tgz')) {
                 return new Readable({
                     read() {
-                        this.push('Test Tar Gz');
+                        this.push(TEST_DATA);
                         this.push(null);
                     }
                 });
@@ -76,6 +77,10 @@ describe('doPackAndSign', () => {
                     }
                 });
             }
+        });
+
+        globalSandbox.stub(child_process, 'exec').callsFake((command, cb) => {
+            cb(null, `foo.tgz${EOL}`);
         });
 
         globalSandbox.stub(request, 'get').callsFake((path: any) => {
@@ -124,7 +129,7 @@ describe('packAndSign Tests', () => {
 
         it('Process Success', () => {
             sandbox.stub(child_process, 'exec').callsFake((command: string, cb: any) => {
-                cb(null, JSON.stringify({ data: '"foo.tgz' }));
+                cb(null, `foo.tgz${EOL}`);
             });
             return packAndSignApi.pack().then((path: string) => {
                 expect(path).to.be.equal('foo.tgz');
@@ -133,11 +138,11 @@ describe('packAndSign Tests', () => {
 
         it('Process path unexpected format', () => {
             sandbox.stub(child_process, 'exec').callsFake((command: string, cb: any) => {
-                cb(null, JSON.stringify({ data: 'foo' }));
+                cb(null, `foo${EOL}`);
             });
             return packAndSignApi.pack().then(() => { throw REJECT_ERROR; }).catch((err: Error) => {
                 expect(err.message).to.include('expected tgz');
-                expect(err).to.have.property('name', 'UnexpectedYarnFormat');
+                expect(err).to.have.property('name', 'UnexpectedNpmFormat');
             });
         });
     });

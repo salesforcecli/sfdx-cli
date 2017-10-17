@@ -1,7 +1,7 @@
 // import { createReadStream, createWriteStream, readFile } from 'fs';
 import * as fs from 'fs';
 import * as path from 'path';
-import { parse as urlParse } from 'url';
+import { URL } from 'url';
 import _ = require('lodash');
 import { fork } from 'child_process';
 import * as request from 'request';
@@ -15,9 +15,15 @@ import {
     verify
 } from './codeSignApi';
 
-import { NamedError, UnexpectedHost, UnauthorizedSslConnection } from '../util/NamedError';
+import { NamedError, UnexpectedHost, UnauthorizedSslConnection, SignSignedCertError } from '../util/NamedError';
 
 export const WHITELIST_FILENAME = 'unsignedPluginWhiteList.json';
+
+export const DEFAULT_REGISTRY = 'https://registry.npmjs.org/';
+
+export const getNpmRegistry = () => {
+    return new URL(process.env.SFDX_NPM_REGISTRY || DEFAULT_REGISTRY);
+};
 
 /**
  * simple data structure representing the discovered meta information needed for signing,
@@ -35,15 +41,28 @@ export class NpmMeta {
  */
 export class InstallationVerification {
 
-    private readFileAsync;
-
     // The name of the published plugin
     private pluginName: string;
+
+    // The tag name associated with plugin
+    private pluginTag: string;
+
     // config from cli engine
     private config: any;
 
-    constructor() {
-        this.readFileAsync = utilPromisify(fs.readFile);
+    // Reference for the http client;
+    private requestImpl;
+
+    // Reference for fs
+    private fsImpl;
+
+    constructor(requestImpl?: any, fsImpl?: any) {
+        // why? dependency injection is better than sinon
+        this.requestImpl = requestImpl ? requestImpl : request;
+        this.fsImpl = fsImpl ? fsImpl : fs;
+        this.fsImpl.readFileAsync = utilPromisify(this.fsImpl.readFile);
+
+        this.pluginTag = 'latest';
     }
 
     /**
@@ -71,28 +90,49 @@ export class InstallationVerification {
     }
 
     /**
+     * Setter for the plugin tad. If falsy the tag will be latest.
+     * @param _tagName Setter for the plugin tag
+     */
+    public setPluginTag(_tagName: string): InstallationVerification {
+        if (_tagName) {
+            this.pluginTag = _tagName;
+        }
+        return this;
+    }
+
+    /**
      * validates the digital signature.
      */
     public async verify(): Promise<NpmMeta> {
         const npmMeta = await this.streamTagGz();
         const info = new CodeVerifierInfo();
-        info.dataToVerify = fs.createReadStream(npmMeta.tarballLocalPath, {encoding: 'binary'});
+        info.dataToVerify = this.fsImpl.createReadStream(npmMeta.tarballLocalPath, {encoding: 'binary'});
 
-        return Promise.all([this.getSigningContent(npmMeta.signatureUrl), this.getSigningContent(npmMeta.publicKeyUrl)])
+        return Promise.all([
+            this.getSigningContent(npmMeta.signatureUrl),
+            this.getSigningContent(npmMeta.publicKeyUrl)
+        ])
             .then((result) => {
                 info.signatureStream = result[0];
                 info.publicKeyStream = result[1];
                 return verify(info);
-            }).then((result) => {
+            })
+            .then((result) => {
                 npmMeta.verified = result;
                 return npmMeta;
+            })
+            .catch((e) => {
+                if (e.code === 'DEPTH_ZERO_SELF_SIGNED_CERT') {
+                    throw new SignSignedCertError();
+                }
+                throw e;
             });
     }
 
     public async isWhiteListed() {
         const whitelistFilePath = path.join(this.getConfigPath(), WHITELIST_FILENAME);
         try {
-            const fileContent = await this.readFileAsync(whitelistFilePath);
+            const fileContent = await this.fsImpl.readFileAsync(whitelistFilePath);
 
             const whitelistArray = JSON.parse(fileContent);
             return whitelistArray && whitelistArray.includes(this.pluginName);
@@ -111,7 +151,7 @@ export class InstallationVerification {
      */
     public getSigningContent(url): Promise<Readable> {
         return new Promise((resolve, reject) => {
-            request(url, (err, response, responseData) => {
+            this.requestImpl(url, (err, response, responseData) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -124,7 +164,7 @@ export class InstallationVerification {
                             }
                         }));
                     } else {
-                        reject(new NamedError('ErrorGettingContent', `A request to url ${url} failed with error code: [${response ? 'undefined' : response.statusCode}]`));
+                        reject(new NamedError('ErrorGettingContent', `A request to url ${url} failed with error code: [${response ?  response.statusCode : 'undefined'}]`));
                     }
                 }
             });
@@ -136,13 +176,13 @@ export class InstallationVerification {
      */
     public async streamTagGz(): Promise<NpmMeta> {
         const npmMeta = await this.retrieveNpmMeta();
-        const urlObject: any = urlParse(npmMeta.tarballUrl);
+        const urlObject: any = new URL(npmMeta.tarballUrl);
         const urlPathsAsArray = _.split(urlObject.pathname, '/');
         const fileNameStr: any = _.last(urlPathsAsArray);
         return new Promise<NpmMeta>((resolve, reject) => {
             const cacheFilePath = path.join(this.getCachePath(), fileNameStr);
-            const writeStream = fs.createWriteStream(cacheFilePath, { encoding: 'binary' });
-            const req = request(npmMeta.tarballUrl)
+            const writeStream = this.fsImpl.createWriteStream(cacheFilePath, { encoding: 'binary' });
+            const req = this.requestImpl(npmMeta.tarballUrl)
                 .on('end', () => {
                     npmMeta.tarballLocalPath = cacheFilePath;
                     resolve(npmMeta);
@@ -152,23 +192,6 @@ export class InstallationVerification {
                 })
                 .pipe(writeStream);
         });
-    }
-
-    /**
-     * returns the http request options parse from a url
-     * @param _url http url
-     */
-    private getHttpOptions(_url: string) {
-        const urlParsed = urlParse(_url);
-        return {
-            host: urlParsed.hostname,
-            path: urlParsed.path,
-            port: urlParsed.port,
-            // We need to create a new session for each request. The publicKey and Signature could come from the
-            // same server. Setting agent to false forces a SSL handshake for subsequent requests. Bad for a webpages
-            // Good for digital signatures and public keys.
-            agent: false
-        };
     }
 
     /**
@@ -200,22 +223,9 @@ export class InstallationVerification {
         return _.get(this.config, 'configDir');
     }
 
-    // this is generally $HOME/.local/share/sfd
-    private getDataPath(): string {
-        return _.get(this.config, 'dataDir');
-    }
-
     // this is generally $HOME/Library/Caches/sfdx on mac
     private getCachePath(): string {
         return _.get(this.config, 'cacheDir');
-    }
-
-    private getNpmPath(): string {
-        if (this.config) {
-            return path.join(__dirname, '..', '..', 'node_modules', 'npm', 'cli.js' );
-        } else {
-            throw new Error('Please specify the cliEngine Config');
-        }
     }
 
     /**
@@ -225,78 +235,53 @@ export class InstallationVerification {
         return new Promise<NpmMeta>((resolve, reject) => {
             // console.log('@TODO - support proxies');
             // console.log('@TODO - https thumbprints');
-            const npmPath = this.getNpmPath();
+            const npmRegistry = getNpmRegistry();
+            npmRegistry.pathname = this.pluginName;
+            this.requestImpl(npmRegistry.href, (err, response, body) => {
+                if (response && response.statusCode === 200) {
+                    const responseObj = JSON.parse(body);
+                    const distTags: string = _.get(responseObj, 'dist-tags');
 
-            const options = {
-                env: process.env,
-                // Silly debug port is required for the node process.
-                execArgv: [],
-                stdio: [null, null, null, 'ipc']
-            };
-            const npmFork = fork(npmPath, ['info', this.pluginName, '--json'], options);
+                    if (distTags) {
+                        const tagVersionStr: string = _.get(distTags, this.pluginTag);
 
-            npmFork.stdout.setEncoding('utf8');
-            npmFork.stderr.setEncoding('utf8');
+                        if (tagVersionStr && tagVersionStr.length && _.includes(tagVersionStr, '.')) {
 
-            let jsonContent = '';
-            let errorContent = '';
+                            if (!responseObj.versions) {
+                                reject(new NamedError('InvalidNpmMetadata', `The npm metadata for plugin ${this.pluginName} is missing the versions attribute.`));
+                            }
 
-            npmFork.stdout.on('data', (data) => {
-                if (data) {
-                    jsonContent += data;
-                }
-            });
-            npmFork.stderr.on('data', (data) => {
-                if (data) {
-                    errorContent += data;
-                }
-            });
+                            const versionObject: any = _.get(responseObj.versions, tagVersionStr);
 
-            npmFork.on('error', (err) => {
-                reject(new Error(`plugins install verification failed with: ${err.name}`));
-            });
+                            const meta: NpmMeta = new NpmMeta();
 
-            npmFork.on('close', (code) => {
-                if (code === 0) {
+                            if (!(versionObject && versionObject.sfdx)) {
+                                reject(new NamedError('NotSigned', 'This plugin is not signed by Salesforce.com ,Inc'));
+                            } else {
 
-                    let metadata;
-                    try {
-                        metadata = JSON.parse(jsonContent);
-                    } catch (e) {
-                        reject(new Error(`failed parsing metadata json value: ${metadata}`));
-                    }
-                    const meta = new NpmMeta();
+                                if (!validSalesforceHostname(versionObject.sfdx.publicKeyUrl)) {
+                                    reject(new UnexpectedHost(versionObject.sfdx.publicKeyUrl));
+                                } else {
+                                    meta.publicKeyUrl = versionObject.sfdx.publicKeyUrl;
+                                }
 
-                    if (!metadata.sfdx) {
-                        reject(new NamedError('NotSigned', 'This plugin is not signed by Salesforce.com ,Inc'));
+                                if (!validSalesforceHostname(versionObject.sfdx.signatureUrl)) {
+                                    reject(new UnexpectedHost(versionObject.sfdx.signatureUrl));
+                                } else {
+                                    meta.signatureUrl = versionObject.sfdx.signatureUrl;
+                                }
+
+                                meta.tarballUrl = versionObject.dist.tarball;
+                            }
+                            resolve(meta);
+                        } else {
+                            reject(new NamedError('NpmTagNotFound', `The dist tag ${this.pluginTag} was not found for plugin: ${this.pluginName}`));
+                        }
                     } else {
-
-                        if (!validSalesforceHostname(metadata.sfdx.publicKeyUrl)) {
-                            reject(new UnexpectedHost(metadata.sfdx.publicKeyUrl));
-                        } else {
-                            meta.publicKeyUrl = metadata.sfdx.publicKeyUrl;
-                        }
-
-                        if (!validSalesforceHostname(metadata.sfdx.signatureUrl)) {
-                            reject(new UnexpectedHost(metadata.sfdx.signatureUrl));
-                        } else {
-                            meta.signatureUrl = metadata.sfdx.signatureUrl;
-                        }
-
-                        meta.tarballUrl = metadata.dist.tarball;
+                        reject(new NamedError('UnexpectedNpmFormat', 'The deployed NPM is missing dist-tags.'));
                     }
-                    resolve(meta);
                 } else {
-                    let returnError: any = errorContent;
-                    try {
-                        const _data = JSON.parse(errorContent);
-                        if (_data.data) {
-                            returnError = _data.data;
-                        }
-                    } catch (e) {
-                        // Assume a parse failure is because the error isn't a json string. Just pass it along.
-                    }
-                    reject(new NamedError('InternalNpmError', returnError));
+                    reject(new NamedError('UrlRetrieve', `The url request returned ${response.statusCode} - ${npmRegistry.href}`));
                 }
             });
         });

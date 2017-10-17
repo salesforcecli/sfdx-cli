@@ -15,6 +15,15 @@ import * as events from 'events';
 describe('Sign Tests', () => {
 
     describe('validSalesforceHostname', () => {
+        const currentCertSigVar = process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING;
+        before(() => {
+            delete process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING;
+        });
+        after(() => {
+            if (currentCertSigVar) {
+                process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING = currentCertSigVar;
+            }
+        });
         it ('falsy url', () => {
             expect(validSalesforceHostname(null)).to.be.equal(false);
         });
