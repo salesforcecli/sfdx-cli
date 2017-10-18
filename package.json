@@ -97,7 +97,7 @@
     "scorch-the-earth": "scripts/scorch-the-earth",
     "setup": "scripts/setup",
     "test": "yarn typings && yarn prepare && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
-    "unit": "yarn typings && yarn prepare && ./node_modules/istanbul/lib/cli.js cover --report html _mocha -- -t 240000 --recursive \"dist/**/*.test.js\" -R xunit-file",
+    "unit": "yarn typings && yarn prepare && ./node_modules/istanbul/lib/cli.js cover --report cobertura _mocha -- -t 240000 --recursive \"dist/**/*.test.js\" -R xunit-file",
     "coverage-report": "./node_modules/istanbul/lib/cli.js report --report html json-summary",
     "typings": "tsc -p typings/tsconfig.json",
     "watch": "tsc -w -p tsconfig.json"
