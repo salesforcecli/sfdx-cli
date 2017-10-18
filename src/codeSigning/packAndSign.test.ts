@@ -10,18 +10,28 @@ import * as _Promise from 'bluebird';
 import * as request from 'request';
 import * as events from 'events';
 
-const _getCertResponse = (path: string) => {
+const _getCertResponse = (path: string, e?: Error, statusCode?: number) => {
     const response = new Readable({
         read() {
             this.push(CERTIFICATE);
             this.push(null);
         }
     });
-    (response as any).statusCode = 200;
+
+    if (statusCode) {
+        (response as any).statusCode = statusCode;
+    } else {
+        (response as any).statusCode = 200;
+    }
+
     const requestEmitter =  new events.EventEmitter();
 
     process.nextTick(() => {
-        requestEmitter.emit('response', response);
+        if (e) {
+            requestEmitter.emit('error', e);
+        } else {
+            requestEmitter.emit('response', response);
+        }
     });
 
     return requestEmitter;
@@ -116,6 +126,23 @@ describe('packAndSign Tests', () => {
         sandbox.restore();
     });
 
+    describe('validate url', () => {
+        it ('with host', () => {
+            const TEST = 'https://developer.salesforce.com/foo/bar';
+            expect(() => packAndSignApi.validateUrl(TEST)).to.not.throw(Error);
+        });
+
+        it ('with host', () => {
+            const TEST = 'https://www.example.com/foo/bar';
+            expect(() => packAndSignApi.validateUrl(TEST)).to.throw(Error);
+        });
+
+        it('no host', () => {
+            const TEST = 'foo/bar';
+            expect(() => packAndSignApi.validateUrl(TEST)).to.throw(Error);
+        });
+    });
+
     describe('pack', () => {
         it('Process Failed', () => {
             sandbox.stub(child_process, 'exec').callsFake((command: string, cb: any) => {
@@ -143,6 +170,26 @@ describe('packAndSign Tests', () => {
             return packAndSignApi.pack().then(() => { throw REJECT_ERROR; }).catch((err: Error) => {
                 expect(err.message).to.include('expected tgz');
                 expect(err).to.have.property('name', 'UnexpectedNpmFormat');
+            });
+        });
+
+        it('Process path unexpected format', () => {
+            sandbox.stub(child_process, 'exec').callsFake((command: string, cb: any) => {
+                cb(null, 'foo');
+            });
+            return packAndSignApi.pack().then(() => { throw REJECT_ERROR; }).catch((err: Error) => {
+                expect(err.message).to.include('npm utility');
+                expect(err).to.have.property('name', 'UnexpectedNpmFormat');
+            });
+        });
+    });
+
+    describe('writeSignatureFile', () => {
+        it('no tgz', () => {
+            return packAndSignApi.writeSignatureFile('foo').then(() => {
+                throw new Error('This shouldn\'t happen');
+            }).catch((e) => {
+                expect(e).to.have.property('name', 'UnexpectedTgzName');
             });
         });
     });
@@ -178,6 +225,77 @@ describe('packAndSign Tests', () => {
                 expect(url).to.be.equal('baz');
             });
         });
+
+        it('verify flow - self signed', () => {
+            let url: any;
+            sandbox.stub(request, 'get').callsFake((_url: string) => {
+                url = _url;
+                const e: any = new Error();
+                e.code = 'DEPTH_ZERO_SELF_SIGNED_CERT';
+                return _getCertResponse(_url, e);
+            });
+
+            const tarGz = new Readable({
+                read() {
+                    this.push('foo');
+                    this.push(null);
+                }
+            });
+
+            const signature = new Readable({
+                read() {
+                    this.push('bar');
+                    this.push(null);
+                }
+            });
+
+            if (!packAndSignApi) {
+                packAndSignApi = require('./packAndSign').api;
+            }
+
+            return packAndSignApi.verify(tarGz, signature, 'baz')
+                .then(() => {
+                    throw new Error('This should never happen');
+                })
+                .catch((e) => {
+                    expect(e).to.have.property('name', 'SelfSignedCert');
+                });
+        });
+
+        it('verify flow - http 500', () => {
+            let url: any;
+            sandbox.stub(request, 'get').callsFake((_url: string) => {
+                url = _url;
+                return _getCertResponse(_url, undefined, 500);
+            });
+
+            const tarGz = new Readable({
+                read() {
+                    this.push('foo');
+                    this.push(null);
+                }
+            });
+
+            const signature = new Readable({
+                read() {
+                    this.push('bar');
+                    this.push(null);
+                }
+            });
+
+            if (!packAndSignApi) {
+                packAndSignApi = require('./packAndSign').api;
+            }
+
+            return packAndSignApi.verify(tarGz, signature, 'baz')
+                .then(() => {
+                    throw new Error('This should never happen');
+                })
+                .catch((e) => {
+                    expect(e).to.have.property('name', 'RetrievePublicKeyFailed');
+                });
+        });
+
     });
 
     describe('validateNpmIgnore', () => {

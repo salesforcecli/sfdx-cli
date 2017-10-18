@@ -190,9 +190,122 @@ describe('InstallationVerification Tests', () => {
         return verification.verify()
             .then((meta: any) => {
                 expect(meta).to.have.property('verified', true);
+            });
+    });
+
+    it('InvalidNpmMetadata', async () => {
+        const _request = (url, cb) => {
+            if (_.includes(url, 'foo.tgz')) {
+                const reader = new Readable({
+                    read() {}
+                });
+                process.nextTick(() => {
+                    reader.emit('end');
+                });
+                return reader;
+            } else if (_.includes(url, 'sig')) {
+                cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
+            } else if (_.includes(url, 'key')) {
+                cb(null, { statusCode: 200 }, CERTIFICATE);
+            } else {
+                cb(null, { statusCode: 200 }, JSON.stringify({}));
+            }
+        };
+
+        const _fs = {
+            readFile(path, cb) {}
+        };
+
+        const verification = new InstallationVerification(_request, _fs)
+            .setPluginName(plugin).setCliEngineConfig(config);
+
+        return verification.verify()
+            .then(() => {
+                throw new Error('This shouldn\'t happen. Failure expected');
             })
-            .catch((e) => {
-                console.log(e);
+            .catch((err: Error) => {
+                expect(err).to.have.property('name', 'UnexpectedNpmFormat');
+            });
+    });
+
+    it('Not Signed', async () => {
+        const _request = (url, cb) => {
+            if (_.includes(url, 'foo.tgz')) {
+                const reader = new Readable({
+                    read() {}
+                });
+                process.nextTick(() => {
+                    reader.emit('end');
+                });
+                return reader;
+            } else if (_.includes(url, 'sig')) {
+                cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
+            } else if (_.includes(url, 'key')) {
+                cb(null, { statusCode: 200 }, CERTIFICATE);
+            } else {
+                cb(null, { statusCode: 200 }, JSON.stringify({
+                    'versions': {
+                        '1.2.3': {
+                            dist: {
+                                tarball: 'https://registry.example.com/foo.tgz'
+                            }
+                        }
+                    },
+                    'dist-tags': {
+                        latest: '1.2.3'
+                    }
+                }));
+            }
+        };
+
+        const _fs = {
+            readFile(path, cb) {}
+        };
+
+        const verification = new InstallationVerification(_request, _fs)
+            .setPluginName(plugin).setCliEngineConfig(config);
+
+        return verification.verify()
+            .then(() => {
+                throw new Error('This shouldn\'t happen. Failure expected');
+            })
+            .catch((err: Error) => {
+                expect(err).to.have.property('name', 'NotSigned');
+            });
+    });
+
+    it('server 404', async () => {
+        const _request = (url, cb) => {
+            if (_.includes(url, 'foo.tgz')) {
+                const reader = new Readable({
+                    read() {}
+                });
+                process.nextTick(() => {
+                    reader.emit('end');
+                });
+                return reader;
+            } else if (_.includes(url, 'sig')) {
+                cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
+            } else if (_.includes(url, 'key')) {
+                cb(null, { statusCode: 200 }, CERTIFICATE);
+            } else {
+                cb(null, { statusCode: 404 });
+            }
+        };
+
+        const _fs = {
+            readFile(path, cb) {}
+        };
+
+        const verification = new InstallationVerification(_request, _fs)
+            .setPluginName(plugin).setCliEngineConfig(config);
+
+        return verification.verify()
+            .then(() => {
+                throw new Error('This shouldn\'t happen. Failure expected');
+            })
+            .catch((err: Error) => {
+                expect(err).to.have.property('name', 'UrlRetrieve');
             });
     });
 
