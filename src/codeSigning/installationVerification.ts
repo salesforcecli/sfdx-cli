@@ -56,11 +56,13 @@ export class InstallationVerification {
     // Reference for fs
     private fsImpl;
 
+    private readFileAsync;
+
     constructor(requestImpl?: any, fsImpl?: any) {
         // why? dependency injection is better than sinon
         this.requestImpl = requestImpl ? requestImpl : request;
         this.fsImpl = fsImpl ? fsImpl : fs;
-        this.fsImpl.readFileAsync = utilPromisify(this.fsImpl.readFile);
+        this.readFileAsync = utilPromisify(this.fsImpl.readFile);
 
         this.pluginTag = 'latest';
     }
@@ -139,7 +141,7 @@ export class InstallationVerification {
     public async isWhiteListed() {
         const whitelistFilePath = path.join(this.getConfigPath(), WHITELIST_FILENAME);
         try {
-            const fileContent = await this.fsImpl.readFileAsync(whitelistFilePath);
+            const fileContent = await this.readFileAsync(whitelistFilePath);
 
             const whitelistArray = JSON.parse(fileContent);
             return whitelistArray && whitelistArray.includes(this.pluginName);
