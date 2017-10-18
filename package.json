@@ -63,7 +63,7 @@
     "fs-extra": "4.0.2",
     "lodash": "4.11.1",
     "request": "2.79.0",
-    "salesforcedx": "41.3.0"
+    "salesforcedx": "41.4.1"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
