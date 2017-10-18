@@ -91,7 +91,7 @@
     "downgrade": "scripts/downgrade",
     "kill-updaters": "scripts/kill-updaters",
     "lint": "tslint -p tslint.json",
-    "lint-with-style": "tslint -p tslint.json -o ./checkstyle.xml",
+    "lint-with-style": "tslint -p tslint.json -t checkstyle -o ./checkstyle.xml",
     "prepare": "tsc -p tsconfig.json",
     "release-all": "scripts/release-all",
     "scorch-the-earth": "scripts/scorch-the-earth",
