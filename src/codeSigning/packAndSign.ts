@@ -63,10 +63,8 @@ export const api = {
      */
     validateUrl(url: string) {
         try {
+            // new URL throws if a host cannot be parsed out.
             const urlObj = new URL(url);
-            if (!urlObj.host) {
-                throw new InvalidUrlError(url);
-            }
             if (!validSalesforceHostname(url)) {
                 throw new NamedError('NotASalesforceHost', 'Signing urls must have the hostname developer.salesforce.com and be https');
             }
