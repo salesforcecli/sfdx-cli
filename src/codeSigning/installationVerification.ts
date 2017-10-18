@@ -69,35 +69,42 @@ export class InstallationVerification {
      * setter for the cli engine config
      * @param _config cli engine config
      */
-    public setCliEngineConfig(_config: any): InstallationVerification {
+    public setCliEngineConfig(_config?: any): InstallationVerification {
         if (_config) {
             this.config = _config;
             return this;
         }
-        throw new Error('the cli engine config cannot be null');
+        throw new NamedError('InvalidParam', 'the cli engine config cannot be null');
     }
 
     /**
      * setter for the plugin name
      * @param _pluginName the published plugin name
      */
-    public setPluginName(_pluginName: string): InstallationVerification {
+    public setPluginName(_pluginName?: string | undefined): InstallationVerification {
         if (_pluginName) {
             this.pluginName = _pluginName;
             return this;
         }
-        throw new Error('pluginName cannot be nll');
+        throw new NamedError('InvalidParam', 'pluginName cannot be nll');
     }
 
     /**
      * Setter for the plugin tad. If falsy the tag will be latest.
      * @param _tagName Setter for the plugin tag
      */
-    public setPluginTag(_tagName: string): InstallationVerification {
+    public setPluginTag(_tagName?: string): InstallationVerification {
         if (_tagName) {
             this.pluginTag = _tagName;
         }
         return this;
+    }
+
+    /**
+     * return the plugins tag name. 'latest' is returned by default
+     */
+    public getPluginTag() {
+        return this.pluginTag;
     }
 
     /**
@@ -191,30 +198,6 @@ export class InstallationVerification {
                     reject(err);
                 })
                 .pipe(writeStream);
-        });
-    }
-
-    /**
-     * obtains a readable http response stream
-     * @param req - the https request object
-     * @param _url - url object
-     */
-    private retrieveUrlContent(req: any, _url: string): Promise<Readable> {
-        return new Promise((resolve, reject) => {
-            req.on('response', (resp: any) => {
-                if (resp && resp.statusCode === 200) {
-                    console.log(`${_url} resolved`);
-                    resolve(resp);
-                } else {
-                    reject(new NamedError('RetrieveFailed', `Failed to retrieve content at ${_url} error code: ${resp.statusCode}.`));
-                }
-            });
-            req.on('error', (err) => {
-                if (err.code === 'DEPTH_ZERO_SELF_SIGNED_CERT') {
-                    throw new UnauthorizedSslConnection(_url);
-                }
-                throw err;
-            });
         });
     }
 

@@ -92,7 +92,6 @@ describe('getNpmRegistry', () => {
         const TEST_REG = 'https://registry.example.com/';
         process.env.SFDX_NPM_REGISTRY = TEST_REG;
         const reg = getNpmRegistry();
-        console.log(`reg.href: ${reg.href}`);
         expect(reg.href).to.be.equal(TEST_REG);
     });
     it ('default registry', () => {
@@ -117,6 +116,19 @@ describe('InstallationVerification Tests', () => {
     };
 
     const plugin = 'foo';
+
+    it('falsy engine config', () => {
+        expect(() => new InstallationVerification().setCliEngineConfig(null)).to.throw(Error).and.have.property('name', 'InvalidParam');
+    });
+
+    it ('falsy plugin name', () => {
+        expect(() => new InstallationVerification().setPluginName()).to.throw(Error).and.have.property('name', 'InvalidParam');
+    });
+
+    it ('default plugin name', () => {
+        const verification = new InstallationVerification().setPluginTag();
+        expect(verification.getPluginTag()).to.be.equal('latest');
+    });
 
     it('Steel thread test', async () => {
         const _request = (url, cb) => {
