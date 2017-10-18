@@ -80,8 +80,8 @@ def doUnitTests(PLATFORM os) {
             switch(os) {
                 case PLATFORM.MAC:
                 case PLATFORM.LINUX:
+                    rc = sh returnStatus: true, script: 'npm run coverage-report'
                     rc = sh returnStatus: true, script: 'mv checkstyle.xml linux-checkstyle.xml; mv xunit.xml linux-unit-xunit.xml; rm -rf linuxunitcoverage; mv coverage linuxunitcoverage'
-                    rc = sh returnStatus: true, script: 'npm run coverage-report -- --root linuxunitcoverage --dir linuxunitcoverage  --include allCoverage.json'
                     break
                 case PLATFORM.WINDOWS:
                     // TODO When we add to windows, create a cross platform script to do all this, and have package.json reference that.
