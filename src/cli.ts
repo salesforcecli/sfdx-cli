@@ -12,7 +12,6 @@ export function create(version: string, channel: string) {
         root,
         version
     };
-    
     if (process.env.SFDX_AUTOUPDATE_DISABLE === 'true') {
         config.updateDisabled = process.env.SFDX_AUTOUPDATE_DISABLE_MESSAGE ||
             'Manual and automatic CLI updates have been disabled by setting "SFDX_AUTOUPDATE_DISABLE=true". ' +
