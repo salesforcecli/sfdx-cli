@@ -165,7 +165,7 @@ require(path.join(root, 'dist', 'versions'))
     .checkNodeVersion();
 
 const pjson = require(path.join(root, 'package.json'));
-require(path.join(root, 'dist', 'experiments', 'lazy'));
+require(path.join(root, 'dist', 'experiments', 'lazy-modules'));
 require(path.join(root, 'dist', 'cli'))
     .create('$VERSION', '$CHANNEL')
     .run();
