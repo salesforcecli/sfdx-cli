@@ -19,7 +19,7 @@ function run(config: Config, opts: any) {
                 const logFile = path.join(config.cacheDir as string, 'analytics.log');
                 debug(`using ${logFile}} for usage error logging`);
 
-                let fd = fs.openSync(logFile, 'a');
+                const fd = fs.openSync(logFile, 'a');
 
                 cp.spawn(process.argv[0], [
                     path.join(__dirname, '../processes/logUsage'),
