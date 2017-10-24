@@ -24,7 +24,7 @@
 const loadIfNeeded = (mod, realLoad, request, parent, isMain) => {
     if (mod === undefined) {
         trace('[lazy]', request);
-        return realLoad(request, parent, isMain);
+        mod = realLoad(request, parent, isMain);
     }
     return mod;
 }
@@ -76,6 +76,9 @@ const makeLazy = (realLoad) => {
             apply: (target, thisArg, argumentsList) => {
                 mod = loadIfNeeded(mod, realLoad, request, parent, isMain);
                 try {
+                    if (typeof mod !== 'function') {
+                        throw new Error(`Module ${request} is not a function: possible typeof error`);
+                    }
                     return Reflect.apply(mod, thisArg, argumentsList);
                 } catch (err) {
                     trace('error:apply', request, mod, err);
@@ -86,6 +89,9 @@ const makeLazy = (realLoad) => {
             construct: (target, argumentsList, newTarget) => {
                 mod = loadIfNeeded(mod, realLoad, request, parent, isMain);
                 try {
+                    if (typeof mod !== 'function') {
+                        throw new Error(`Module ${request} is not a constructor: possible typeof error`);
+                    }
                     return Reflect.construct(mod, argumentsList, newTarget);
                 } catch (err) {
                     trace('error:construct', request, mod, err);
@@ -286,6 +292,7 @@ exports._excludesRe = (() => {
         // it's possible there's no fix for this scenario since the lazy proxies always
         // yield a typeof 'function'; it is required by yeomen
         'user-home',            // force:project:create
+        'joi',                  // force:auth:jwt:grant
     ];
 
     // `outages` are modules that are known to have problems with the lazy proxy, but for which
