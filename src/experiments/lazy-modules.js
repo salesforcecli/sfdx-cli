@@ -20,6 +20,8 @@
  * - http://soft.vub.ac.be/~tvcutsem/invokedynamic/js-membranes
  */
 
+const NamedError = require('../util/NamedError').NamedError;
+
 // Loads a module using the original module loader if the module is undefined
 const loadIfNeeded = (mod, realLoad, request, parent, isMain) => {
     if (mod === undefined) {
@@ -77,7 +79,7 @@ const makeLazy = (realLoad) => {
                 mod = loadIfNeeded(mod, realLoad, request, parent, isMain);
                 try {
                     if (typeof mod !== 'function') {
-                        throw new Error(`Module ${request} is not a function: possible typeof error`);
+                        throw new NamedError('LazyModuleProxyTypeError', `Module ${request} is not a function: possible typeof error`);
                     }
                     return Reflect.apply(mod, thisArg, argumentsList);
                 } catch (err) {
@@ -90,7 +92,7 @@ const makeLazy = (realLoad) => {
                 mod = loadIfNeeded(mod, realLoad, request, parent, isMain);
                 try {
                     if (typeof mod !== 'function') {
-                        throw new Error(`Module ${request} is not a constructor: possible typeof error`);
+                        throw new NamedError('LazyModuleProxyTypeError', `Module ${request} is not a constructor: possible typeof error`);
                     }
                     return Reflect.construct(mod, argumentsList, newTarget);
                 } catch (err) {
@@ -292,6 +294,10 @@ exports._excludesRe = (() => {
         // it's possible there's no fix for this scenario since the lazy proxies always
         // yield a typeof 'function'; it is required by yeomen
         'user-home',            // force:project:create
+        // `joi` is sort of a type-checking object schema library that represents different types
+        // in individual module files, and then performs dynamic dispatch on those loaded types
+        // through typeof checks -- as with `user-home`, the module proxies erroneously
+        // return `typeof m === 'function'`, which causes this library to break
         'joi',                  // force:auth:jwt:grant
     ];
 

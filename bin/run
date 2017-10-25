@@ -35,6 +35,15 @@ case $key in
         export CLI_ENGINE_SHOW_CONFIG=1
         shift
     ;;
+    # --exp-* flags are experimental and may be removed at any time
+    --exp-lazy-load)
+        export SFDX_LAZY_LOAD_MODULES=true
+        shift
+    ;;
+    --exp-lazy-load-trace)
+        export SFDX_LAZY_LOAD_MODULES_TRACE=true
+        shift
+    ;;
     *)
         CLI_ARGS+=("$key")
         shift
