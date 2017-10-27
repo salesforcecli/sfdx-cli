@@ -55,6 +55,7 @@ function release {
   aws s3 cp --cache-control max-age=$UNVERSIONED_CACHE_CONTROL "$remote_base/$NAME-v$VERSION-$PLATFORM.tar.xz" "$remote_base/$NAME-$PLATFORM.tar.xz"
   aws s3 cp --cache-control max-age=$VERSIONED_CACHE_CONTROL "tmp/build/$NAME-v$VERSION-$PLATFORM.tar.gz" "$remote_base/$NAME-v$VERSION-$PLATFORM.tar.gz"
   aws s3 cp --cache-control max-age=$UNVERSIONED_CACHE_CONTROL "$remote_base/$NAME-v$VERSION-$PLATFORM.tar.gz" "$remote_base/$NAME-$PLATFORM.tar.gz"
+  aws s3 cp --cache-control max-age=$LATEST_VERSION_CACHE_CONTROL --content-type application/json "tmp/build/$PLATFORM" "$remote_base/$NAME-v$VERSION-$PLATFORM"
   aws s3 cp --cache-control max-age=$LATEST_VERSION_CACHE_CONTROL --content-type application/json "tmp/build/$PLATFORM" "$remote_base/$PLATFORM"
 }
 
