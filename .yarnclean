@@ -1,6 +1,5 @@
 # test directories
 __tests__
-test
 tests
 powered-test
 
@@ -49,4 +48,3 @@ wercker.yml
 
 !istanbul/lib/assets
 !istanbul-reports/lib/html/assets
-!templates/**/*.md

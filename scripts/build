@@ -47,7 +47,7 @@ mkdir -p $WORKSPACE/node_modules
 mkdir -p $WORKSPACE/bin
 if [ -f README.md ]; then cp README.md $WORKSPACE; fi
 if [ -f LICENSE ]; then cp LICENSE $WORKSPACE; fi
-if [ -f .yarnclean ]; then cp .yarnclean $WORKSPACE; fi
+#if [ -f .yarnclean ]; then cp .yarnclean $WORKSPACE; fi
 cp package.json $WORKSPACE
 cp -r dist $WORKSPACE
 find $WORKSPACE/dist -name \*.map | xargs rm
@@ -59,6 +59,9 @@ yarn install --silent --no-progress --production
 # .yarnclean seems to be flakey about exclusions, so manually
 # clean .md files that don't live in templates dirs
 find . -name '*.md' | grep -v /templates/ | xargs rm
+
+# webdriver includes tests with paths too long for windows
+rm -rf $WORKSPACE/node_modules/webdriverio/test
 
 if [ ! -f $WORKSPACE/node_modules/cli-engine/lib/cli.js ]; then
   cd $WORKSPACE/node_modules/cli-engine
