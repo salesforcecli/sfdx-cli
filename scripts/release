@@ -49,7 +49,6 @@ else
 fi
 
 function release {
-  "$DIR/build" "$PLATFORM" "$CHANNEL"
   remote_path=channels/$CHANNEL
   remote_base="$S3_BASE/$remote_path"
   aws s3 cp --cache-control max-age=$VERSIONED_CACHE_CONTROL "tmp/build/$NAME-v$VERSION-$PLATFORM.tar.xz" "$remote_base/$NAME-v$VERSION-$PLATFORM.tar.xz"
@@ -70,6 +69,10 @@ cp "$ROOT/yarn.lock" "$YARN_DIR"
 cd "$YARN_DIR"
 yarn --production --prefer-offline --pure-lockfile
 cd "$ROOT"
+
+for PLATFORM in "${PLATFORMS[@]}"; do
+  "$DIR/build" "$PLATFORM" "$CHANNEL"
+done
 
 for PLATFORM in "${PLATFORMS[@]}"; do
   release &
