@@ -38,10 +38,6 @@ rm -rf node_modules
 rm -rf dist
 yarn install --silent --no-progress
 
-# Yarn clean should remove this, and does locally, but not on Jenkins.
-# DO NOT remove without through testing of jenkin jobs and windows upgrades
-rm -rf "$WORKSPACE/node_modules/webdriverio/test"
-
 # setup workspace
 TARBALL_BASE=$NAME-v$VERSION-$PLATFORM
 WORKSPACE=$ROOT/tmp/build/$TARBALL_BASE
@@ -59,16 +55,11 @@ find $WORKSPACE/dist -name \*.map | xargs rm
 # install packages
 cd $WORKSPACE
 
-if [ -d "$ROOT/tmp/build/yarn" ]; then
-  cp "$ROOT/tmp/build/yarn/package.json" "$WORKSPACE"
-  cp "$ROOT/tmp/build/yarn/yarn.lock" "$WORKSPACE"
-  cp -r "$ROOT/tmp/build/yarn/node_modules" "$WORKSPACE"
-else
-  yarn install --silent --no-progress --production
-  # .yarnclean seems to be flakey about exclusions, so manually
-  # clean .md files that don't live in templates dirs
-  find . -name '*.md' | grep -v /templates/ | xargs rm
-fi
+yarn install --silent --no-progress --production
+# .yarnclean seems to be flakey about exclusions, so manually
+# clean .md files that don't live in templates dirs
+find . -name '*.md' | grep -v /templates/ | xargs rm
+
 if [ ! -f $WORKSPACE/node_modules/cli-engine/lib/cli.js ]; then
   cd $WORKSPACE/node_modules/cli-engine
   yarn install --silent --no-progress
