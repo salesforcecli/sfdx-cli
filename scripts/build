@@ -38,6 +38,10 @@ rm -rf node_modules
 rm -rf dist
 yarn install --silent --no-progress
 
+# Yarn clean should remove this, and does locally, but not on Jenkins.
+# DO NOT remove without through testing of jenkin jobs and windows upgrades
+rm -rf "$WORKSPACE/node_modules/webdriverio/test"
+
 # setup workspace
 TARBALL_BASE=$NAME-v$VERSION-$PLATFORM
 WORKSPACE=$ROOT/tmp/build/$TARBALL_BASE
