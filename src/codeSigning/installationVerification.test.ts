@@ -144,7 +144,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else {
+            } else if (_.endsWith(url, plugin)) {
                 cb(null, { statusCode: 200 }, JSON.stringify({
                     'versions': {
                         '1.2.3': {
@@ -161,6 +161,8 @@ describe('InstallationVerification Tests', () => {
                         latest: '1.2.3'
                     }
                 }));
+            } else {
+                throw new Error(`Unexpected test url - ${url}`);
             }
         };
 
@@ -193,6 +195,156 @@ describe('InstallationVerification Tests', () => {
             });
     });
 
+    it('Steel thread version - version number', async () => {
+        const _request = (url, cb) => {
+            if (_.includes(url, 'foo.tgz')) {
+                const reader = new Readable({
+                    read() {}
+                });
+                process.nextTick(() => {
+                    reader.emit('end');
+                });
+                return reader;
+            } else if (_.includes(url, 'sig')) {
+                cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
+            } else if (_.includes(url, 'key')) {
+                cb(null, { statusCode: 200 }, CERTIFICATE);
+            } else if (_.endsWith(url, plugin)) {
+                cb(null, { statusCode: 200 }, JSON.stringify({
+                    'versions': {
+                        '1.2.3': {
+                            sfdx: {
+                                publicKeyUrl: 'https://developer.salesforce.com/key',
+                                signatureUrl: 'https://developer.salesforce.com/sig'
+                            },
+                            dist: {
+                                tarball: 'https://registry.example.com/foo.tgz'
+                            }
+                        },
+                        '1.2.4': {
+                            sfdx: {
+                                publicKeyUrl: 'https://developer.salesforce.com/key1',
+                                signatureUrl: 'https://developer.salesforce.com/sig1'
+                            },
+                            dist: {
+                                tarball: 'https://registry.example.com/foo1.tgz'
+                            }
+                        }
+                    },
+                    'dist-tags': {
+                        latest: '1.2.4'
+                    }
+                }));
+            } else {
+                throw new Error(`Unexpected test url - ${url}`);
+            }
+        };
+
+        const _fs = {
+            readFile(path, cb) {},
+            createWriteStream(path) {
+                return new Writable({
+                    write(data) {
+                        console.log(data);
+                    }
+                });
+            },
+            createReadStream() {
+                return new Readable({
+                    read() {
+                        this.push(TEST_DATA);
+                        this.push(null);
+                    }
+                });
+            }
+
+        };
+
+        const verification = new InstallationVerification(_request, _fs)
+            .setPluginName(plugin).setPluginTag('1.2.3').setCliEngineConfig(config);
+
+        return verification.verify()
+            .then((meta: any) => {
+                expect(meta).to.have.property('verified', true);
+            });
+    });
+
+    it('Steel thread version - tag name', async () => {
+        const _request = (url, cb) => {
+            if (_.includes(url, 'foo.tgz')) {
+                const reader = new Readable({
+                    read() {}
+                });
+                process.nextTick(() => {
+                    reader.emit('end');
+                });
+                return reader;
+            } else if (_.includes(url, 'sig.weaver')) {
+                cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
+            } else if (_.includes(url, 'key.master')) {
+                cb(null, { statusCode: 200 }, CERTIFICATE);
+            } else if (_.endsWith(url, plugin)) {
+                cb(null, { statusCode: 200 }, JSON.stringify({
+                    'versions': {
+                        '1.2.3': {
+                            sfdx: {
+                                publicKeyUrl: 'https://developer.salesforce.com/key.master',
+                                signatureUrl: 'https://developer.salesforce.com/sig.weaver'
+                            },
+                            dist: {
+                                tarball: 'https://registry.example.com/foo.tgz'
+                            }
+                        },
+                        '1.2.4': {
+                            sfdx: {
+                                publicKeyUrl: 'https://developer.salesforce.com/key1',
+                                signatureUrl: 'https://developer.salesforce.com/sig1'
+                            },
+                            dist: {
+                                tarball: 'https://registry.example.com/foo1.tgz'
+                            }
+                        }
+                    },
+                    'dist-tags': {
+                        latest: '1.2.4',
+                        gozer: '1.2.3'
+                    }
+                }));
+            } else {
+                throw new Error(`Unexpected test url - ${url}`);
+            }
+        };
+
+        const _fs = {
+            readFile(path, cb) {},
+            createWriteStream(path) {
+                return new Writable({
+                    write(data) {
+                        console.log(data);
+                    }
+                });
+            },
+            createReadStream() {
+                return new Readable({
+                    read() {
+                        this.push(TEST_DATA);
+                        this.push(null);
+                    }
+                });
+            }
+
+        };
+
+        // For the key and signature to line up gozer must map to 1.2.3
+        const verification = new InstallationVerification(_request, _fs)
+            .setPluginName(plugin).setPluginTag('gozer').setCliEngineConfig(config);
+
+        return verification.verify()
+            .then((meta: any) => {
+                expect(meta).to.have.property('verified', true);
+            });
+    });
+
     it('InvalidNpmMetadata', async () => {
         const _request = (url, cb) => {
             if (_.includes(url, 'foo.tgz')) {
@@ -207,8 +359,10 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else {
+            } else if (_.endsWith(url, plugin))  {
                 cb(null, { statusCode: 200 }, JSON.stringify({}));
+            } else {
+                throw new Error(`Unexpected test url - ${url}`);
             }
         };
 
@@ -224,7 +378,7 @@ describe('InstallationVerification Tests', () => {
                 throw new Error('This shouldn\'t happen. Failure expected');
             })
             .catch((err: Error) => {
-                expect(err).to.have.property('name', 'UnexpectedNpmFormat');
+                expect(err).to.have.property('name', 'InvalidNpmMetadata');
             });
     });
 
@@ -242,7 +396,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else {
+            } else if (_.endsWith(url, plugin)) {
                 cb(null, { statusCode: 200 }, JSON.stringify({
                     'versions': {
                         '1.2.3': {
@@ -255,6 +409,8 @@ describe('InstallationVerification Tests', () => {
                         latest: '1.2.3'
                     }
                 }));
+            } else {
+                throw new Error(`Unexpected test url - ${url}`);
             }
         };
 
@@ -288,8 +444,10 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else {
+            } else if (_.endsWith(url, plugin)) {
                 cb(null, { statusCode: 404 });
+            } else {
+                throw new Error(`Unexpected test url - ${url}`);
             }
         };
 
@@ -319,7 +477,7 @@ describe('InstallationVerification Tests', () => {
                     reader.emit('error', new Error(ERROR));
                 });
                 return reader;
-            } else {
+            } else if (_.endsWith(url, plugin)) {
                 cb(null, { statusCode: 200 }, JSON.stringify({
                     'versions': {
                         '1.2.3': {
@@ -336,6 +494,8 @@ describe('InstallationVerification Tests', () => {
                         latest: '1.2.3'
                     }
                 }));
+            } else {
+                throw new Error(`Unexpected test url - ${url}`);
             }
         };
 
@@ -378,7 +538,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 404 });
-            } else {
+            } else if (_.endsWith(url, plugin)) {
                 cb(null, { statusCode: 200 }, JSON.stringify({
                     'versions': {
                         '1.2.3': {
@@ -395,6 +555,8 @@ describe('InstallationVerification Tests', () => {
                         latest: '1.2.3'
                     }
                 }));
+            } else {
+                throw new Error(`Unexpected test url - ${url}`);
             }
         };
 

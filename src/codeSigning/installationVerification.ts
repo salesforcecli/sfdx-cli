@@ -225,45 +225,53 @@ export class InstallationVerification {
             this.requestImpl(npmRegistry.href, (err, response, body) => {
                 if (response && response.statusCode === 200) {
                     const responseObj = JSON.parse(body);
-                    const distTags: string = _.get(responseObj, 'dist-tags');
 
-                    if (distTags) {
-                        const tagVersionStr: string = _.get(distTags, this.pluginTag);
+                    // Make sure the response has a version attribute
+                    if (!responseObj.versions) {
+                        reject(new NamedError('InvalidNpmMetadata', `The npm metadata for plugin ${this.pluginName} is missing the versions attribute.`));
+                    }
 
-                        if (tagVersionStr && tagVersionStr.length && _.includes(tagVersionStr, '.')) {
+                    // Assume the tag is version tag.
+                    let versionObject: any = _.get(responseObj.versions, this.pluginTag);
 
-                            if (!responseObj.versions) {
-                                reject(new NamedError('InvalidNpmMetadata', `The npm metadata for plugin ${this.pluginName} is missing the versions attribute.`));
-                            }
+                    // If the assumption was not correct the tag must be a non-versioned dist-tag or not specified.
+                    if (!versionObject) {
 
-                            const versionObject: any = _.get(responseObj.versions, tagVersionStr);
+                        // Assume dist-tag;
+                        const distTags: string = _.get(responseObj, 'dist-tags');
+                        if (distTags) {
+                            const tagVersionStr: string = _.get(distTags, this.pluginTag);
 
-                            const meta: NpmMeta = new NpmMeta();
-
-                            if (!(versionObject && versionObject.sfdx)) {
-                                reject(new NamedError('NotSigned', 'This plugin is not signed by Salesforce.com ,Inc'));
+                            // if we got a dist tag hit look up the version object
+                            if (tagVersionStr && tagVersionStr.length > 0 && _.includes(tagVersionStr, '.')) {
+                                versionObject = _.get(responseObj.versions, tagVersionStr);
                             } else {
-
-                                if (!validSalesforceHostname(versionObject.sfdx.publicKeyUrl)) {
-                                    reject(new UnexpectedHost(versionObject.sfdx.publicKeyUrl));
-                                } else {
-                                    meta.publicKeyUrl = versionObject.sfdx.publicKeyUrl;
-                                }
-
-                                if (!validSalesforceHostname(versionObject.sfdx.signatureUrl)) {
-                                    reject(new UnexpectedHost(versionObject.sfdx.signatureUrl));
-                                } else {
-                                    meta.signatureUrl = versionObject.sfdx.signatureUrl;
-                                }
-
-                                meta.tarballUrl = versionObject.dist.tarball;
+                                reject(new NamedError('NpmTagNotFound', `The dist tag ${this.pluginTag} was not found for plugin: ${this.pluginName}`));
                             }
-                            resolve(meta);
                         } else {
-                            reject(new NamedError('NpmTagNotFound', `The dist tag ${this.pluginTag} was not found for plugin: ${this.pluginName}`));
+                            reject(new NamedError('UnexpectedNpmFormat', 'The deployed NPM is missing dist-tags.'));
                         }
+                    }
+
+                    if (!(versionObject && versionObject.sfdx)) {
+                        reject(new NamedError('NotSigned', 'This plugin is not signed by Salesforce.com ,Inc'));
                     } else {
-                        reject(new NamedError('UnexpectedNpmFormat', 'The deployed NPM is missing dist-tags.'));
+                        const meta: NpmMeta = new NpmMeta();
+                        if (!validSalesforceHostname(versionObject.sfdx.publicKeyUrl)) {
+                            reject(new UnexpectedHost(versionObject.sfdx.publicKeyUrl));
+                        } else {
+                            meta.publicKeyUrl = versionObject.sfdx.publicKeyUrl;
+                        }
+
+                        if (!validSalesforceHostname(versionObject.sfdx.signatureUrl)) {
+                            reject(new UnexpectedHost(versionObject.sfdx.signatureUrl));
+                        } else {
+                            meta.signatureUrl = versionObject.sfdx.signatureUrl;
+                        }
+
+                        meta.tarballUrl = versionObject.dist.tarball;
+
+                        resolve(meta);
                     }
                 } else {
                     reject(new NamedError('UrlRetrieve', `The url request returned ${response.statusCode} - ${npmRegistry.href}`));
