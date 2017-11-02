@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -x
+
+# setup workspace
+rm -rf "${BASE_DIR}"
+mkdir -p "${BASE_DIR}/node_modules"
+mkdir -p "${BASE_DIR}/bin"
+cp "$ROOT_DIR/README.md" "${BASE_DIR}"
+cp "$ROOT_DIR/LICENSE" "${BASE_DIR}"
+cp "$ROOT_DIR/package.json" "${BASE_DIR}"
+cp "$ROOT_DIR/yarn.lock" "${BASE_DIR}"
+cp "$ROOT_DIR/.yarnclean" "${BASE_DIR}"
+cp -r "$ROOT_DIR/dist" "${BASE_DIR}/dist"
+
+(
+  cd "${BASE_DIR}"
+  # install packages
+  yarn install --no-progress --production --non-interactive
+)
+
+# build cli-engine if needed
+if [ ! -f "${BASE_DIR}/node_modules/cli-engine/lib/cli.js" ]; then
+  cd "${BASE_DIR}/node_modules/cli-engine"
+  yarn
+  yarn run prepare
+fi
+
+# clean installed modules of useless junk to reduce tarball sizes
+script "clean/modules"
+
+# make sure cleaning was not too aggressive and that path lengths
+# in the build tree are as windows-safe as they can be
+script "build/sanity_checks"
+
+# copy bin/run.js to bin/sfdx.js in the build, and inject build vars
+sed "s/\/\*@OVERRIDES@\*\//\
+version:'${VERSION}', channel:'${CHANNEL}'\
+/" "$ROOT_DIR/bin/run.js" > "${BASE_DIR}/bin/$BIN_NAME.js"

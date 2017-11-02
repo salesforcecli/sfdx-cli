@@ -16,7 +16,7 @@
   "cli-engine": {
     "bin": "sfdx",
     "dirname": "sfdx",
-    "node": "8.6.0",
+    "node": "8.9.0",
     "userPlugins": true,
     "commands": "./dist/commands",
     "legacyConverter": "./dist/legacy/converter",
@@ -83,23 +83,17 @@
     "xunit-file": "1.0.0"
   },
   "scripts": {
-    "clean": "bash scripts/clean",
-    "build": "scripts/build",
-    "clean-all": "scripts/clean-all",
-    "clean-cache": "scripts/clean-cache",
-    "clean-dev": "scripts/clean-dev",
-    "downgrade": "scripts/downgrade",
-    "kill-updaters": "scripts/kill-updaters",
-    "lint": "tslint -p tslint.json",
-    "lint-with-style": "tslint -p tslint.json -t checkstyle -o ./checkstyle.xml",
-    "prepare": "tsc -p tsconfig.json",
-    "release-all": "scripts/release-all",
-    "scorch-the-earth": "scripts/scorch-the-earth",
-    "setup": "scripts/setup",
-    "test": "yarn typings && yarn prepare && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
-    "unit": "yarn typings && yarn prepare && ./node_modules/istanbul/lib/cli.js cover --report cobertura _mocha -x \"dist/**/*.test.js\" -- -t 240000 --recursive \"dist/**/*.test.js\" -R xunit-file",
-    "coverage-report": "./node_modules/istanbul/lib/cli.js report --report html json-summary",
-    "typings": "tsc -p typings/tsconfig.json",
+    "build": "bash scripts/build/all",
+    "clean": "bash scripts/clean/dist && bash scripts/clean/side_effects",
+    "clean-all": "bash scripts/clean/all",
+    "compile": "bash scripts/compile",
+    "lint": "bash scripts/lint/lint",
+    "lint-with-style": "bash scripts/test/lint_with_style",
+    "prepare": "yarn compile",
+    "test": "yarn typings && yarn compile && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
+    "unit": "bash scripts/test/unit",
+    "coverage-report": "bash scripts/test/coverage",
+    "typings": "bash scripts/test/typings",
     "watch": "tsc -w -p tsconfig.json"
   }
 }

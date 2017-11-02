@@ -60,17 +60,6 @@ The following flags are supported by the `bin/run` script, and can be combined a
 * *--dev-debug*: Sets the `SFDX_DEBUG=1` and `DEBUG=\*` envars for the CLI's `node` process, which enables full debug output from the v6 `cli-engine`.
 * *--dev-config*: Sets the `CLI_ENGINE_SHOW_CONFIG=1` envar for the CLI's `node` process, which causes the cli-engine to dump it's runtime configuration value at startup.
 
-### Scripts
-
-A few additional convenience scripts are available to help with common development tasks:
-
-* `yarn run build [PLATFORM] [CHANNEL]` - Builds a release package into the `./tmp` directory.  For example, `yarn run build darwin-x64 alpha` will create a macOS build for the `alpha` channel.
-* `yarn run clean-dev` - Uninstalls the salesforcedx plugin and then deletes all node\_modules directories for the CLI and its linked plugin dependencies.
-* `yarn run clean-cache` - Deletes the v6 CLI's plugin cache.
-* `yarn run clean-all` - Runs both `clean-dev` and `clean-cache`
-* `yarn run downgrade` - For testing the v5-\>v6 CLI migration, this removes both the v6 caches and the v6 installation and all plugins!  Use with care.
-* `yarn run release-all` - Builds and releases all distributions to the channel configured in `package.json`'s `cli.channel` property.
-
 ### Developer notes
 
 * If you change the `bin/run` or `bin/run.js` files and want those changes to be carried forward in the released binary, you will also need to make those changes in the `scripts/build` script.

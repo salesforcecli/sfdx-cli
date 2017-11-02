@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC2034
+
+source ./scripts/_init
+
+REMOTE_BASE="s3://$S3_BUCKET/$PKG_NAME/channels/$CHANNEL"

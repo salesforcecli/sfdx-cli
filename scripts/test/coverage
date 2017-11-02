@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+"$ROOT_DIR/node_modules/istanbul/lib/cli.js" report --report html json-summary

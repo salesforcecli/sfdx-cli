@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -x
+
+rm -rf "$ROOT_DIR/dist"

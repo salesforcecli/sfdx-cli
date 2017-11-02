@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -x
+
+script "test/typings"
+script "test/unit"
+script "test/coverage"
+script "test/smoke"

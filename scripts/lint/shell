@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -x
+
+if [ -x "$(command -v shellcheck)" ]; then
+  find scripts -type f -print0 | xargs shellcheck --external-sources
+else
+  echoerr "install shellcheck to lint the scripts"
+fi

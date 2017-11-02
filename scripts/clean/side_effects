@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -x
+
+rm -rf \
+    "$ROOT_DIR/*.tgz" \
+    "$ROOT_DIR/*.sig" \
+    "$ROOT_DIR/coverage" \
+    "$ROOT_DIR/xunit.xml" \
+    "$ROOT_DIR/checkstyle.xml" \
+    "$ROOT_DIR/yarn-error.log"

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -x
+
+tslint -p "$ROOT_DIR/tslint.json"

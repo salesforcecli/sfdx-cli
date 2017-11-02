@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -x
+
+function build () {
+  setarch $ARCH
+  # setup workspace
+  rm -rf "${WORKSPACE_DIR}"
+  cp -r "$BASE_DIR" "$WORKSPACE_DIR"
+
+  "$ROOT_DIR/scripts/build/_fetch_node_binary" "${WORKSPACE_DIR}/bin"
+
+  # create bin runner
+  if [ "${OS}" == "windows" ]; then
+    cat << EOF > "${WORKSPACE_DIR}/bin/$BIN_NAME.cmd"
+@echo off
+set CLI_BINPATH=%~dp0\\$BIN_NAME.cmd
+"%~dp0\\node.exe" "%~dp0\\$BIN_NAME.js" %*
+EOF
+  else
+    cat << EOF > "${WORKSPACE_DIR}/bin/$BIN_NAME"
+#!/usr/bin/env bash
+set -e
+get_script_dir () {
+  SOURCE="\${BASH_SOURCE[0]}"
+  # While \$SOURCE is a symlink, resolve it
+  while [ -h "\$SOURCE" ]; do
+    DIR="\$( cd -P "\$( dirname "\$SOURCE" )" && pwd )"
+    SOURCE="\$( readlink "\$SOURCE" )"
+    # If \$SOURCE was a relative symlink (so no "/" as prefix, need to resolve it relative to the symlink base directory
+    [[ \$SOURCE != /* ]] && SOURCE="\$DIR/\$SOURCE"
+  done
+  DIR="\$( cd -P "\$( dirname "\$SOURCE" )" && pwd )"
+  echo "\$DIR"
+}
+DIR=\$(get_script_dir)
+# normalize home directory
+CLI_HOME=\$(cd && pwd)
+XDG_DATA_HOME=\${XDG_DATA_HOME:="\$CLI_HOME/.local/share"}
+BIN_DIR="\$XDG_DATA_HOME/$BIN_NAME/client/bin"
+if [ -x "\$BIN_DIR/$BIN_NAME" ] && [ ! "\$BIN_DIR" -ef "\$DIR" ]; then
+  "\$XDG_DATA_HOME/$BIN_NAME/client/bin/$BIN_NAME" "\$@"
+else
+  CLI_BINPATH="\$DIR/$BIN_NAME" "\$DIR/node" "\$DIR/$BIN_NAME.js" "\$@"
+fi
+EOF
+    chmod +x "${WORKSPACE_DIR}/bin/$BIN_NAME"
+  fi
+}
+
+for ARCH in "${ARCHS[@]}"; do
+  bg build
+done
+wait_all

@@ -5,7 +5,7 @@ set -e
 # want for BOTH local dev AND the npm distribution, but NOT for the release binary.
 # Do NOT include this in the scripts/build script, which is what the release
 # binary includes.
-if [ -z ${SFDX_AUTOUPDATE_DISABLE+x} ]; then
+if [[ "${SFDX_NPM:-}" == "true" && -z "${SFDX_AUTOUPDATE_DISABLE+x}" ]]; then
     export SFDX_AUTOUPDATE_DISABLE="true"
     # This only applies to npm updates, but shouldn't hurt anything in the local dev case
     export SFDX_AUTOUPDATE_DISABLE_MESSAGE="update with 'npm install --global sfdx-cli'"
@@ -14,41 +14,12 @@ fi
 NODE_FLAGS=()
 CLI_ARGS=()
 
-while [[ $# -gt 0 ]]; do
-key="$1"
-
-case $key in
-    --dev-suspend)
-        NODE_FLAGS+=("--inspect-brk")
-        shift
-    ;;
-    --dev-profile)
-        NODE_FLAGS+=("--prof")
-        shift
-    ;;
-    --dev-debug)
-        export SFDX_DEBUG=1
-        export DEBUG=\*
-        shift
-    ;;
-    --dev-config)
-        export CLI_ENGINE_SHOW_CONFIG=1
-        shift
-    ;;
-    # --exp-* flags are experimental and may be removed at any time
-    --exp-lazy-load)
-        export SFDX_LAZY_LOAD_MODULES=true
-        shift
-    ;;
-    --exp-lazy-load-trace)
-        export SFDX_LAZY_LOAD_MODULES_TRACE=true
-        shift
-    ;;
-    *)
-        CLI_ARGS+=("$key")
-        shift
-    ;;
-esac
+while [[ "$#" -gt 0 ]]; do
+    case "$1" in
+        --dev-suspend) NODE_FLAGS+=("--inspect-brk");   shift;;
+        --dev-profile) NODE_FLAGS+=("--prof");          shift;;
+                    *) CLI_ARGS+=("$1");                shift;;
+    esac
 done
 
 get_script_dir () {
@@ -58,11 +29,11 @@ get_script_dir () {
         DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
         SOURCE="$( readlink "$SOURCE" )"
         # If $SOURCE was a relative symlink (so no "/" as prefix, need to resolve it relative to the symlink base directory
-        [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+        [[ "$SOURCE" != /* ]] && SOURCE="$DIR/$SOURCE"
     done
     DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
     echo "$DIR"
 }
 DIR=$(get_script_dir)
 
-CLI_BINPATH=$DIR/run node "${NODE_FLAGS[@]}" $DIR/run.js "${CLI_ARGS[@]}"
+CLI_BINPATH="$DIR/run" node "${NODE_FLAGS[@]}" "$DIR/run.js" "${CLI_ARGS[@]}"
