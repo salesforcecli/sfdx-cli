@@ -7,4 +7,5 @@ set -x
 script "test/typings"
 script "test/unit"
 script "test/coverage"
+script "test/pack"
 script "test/smoke"
