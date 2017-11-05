@@ -52,6 +52,11 @@
       }
     }
   },
+  "files": [
+    "bin",
+    "dist/**/*.js",
+    "!dist/**/*.test.js"
+  ],
   "dependencies": {
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.6.17",
