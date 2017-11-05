@@ -16,16 +16,16 @@ cp "$ROOT_DIR/.yarnclean" "${BASE_DIR}"
 cp -r "$ROOT_DIR/dist" "${BASE_DIR}/dist"
 
 (
-  cd "${BASE_DIR}"
-  # install packages
-  yarn install --no-progress --production --non-interactive
+    cd "${BASE_DIR}"
+    # install packages
+    yarn install --no-progress --production --non-interactive
 )
 
 # build cli-engine if needed
 if [ ! -f "${BASE_DIR}/node_modules/cli-engine/lib/cli.js" ]; then
-  cd "${BASE_DIR}/node_modules/cli-engine"
-  yarn
-  yarn run prepare
+    cd "${BASE_DIR}/node_modules/cli-engine"
+    yarn
+    yarn run prepare
 fi
 
 # clean installed modules of useless junk to reduce tarball sizes

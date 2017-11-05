@@ -5,11 +5,11 @@ source ./scripts/_init
 set -ex
 
 if [ ! -d "$TMP_DIR/base" ]; then
-  ./scripts/build/base
+    ./scripts/build/base
 fi
 
 function sfdx () {
-  node "$TMP_DIR/base/bin/$BIN_NAME.js" "$@"
+    node "$TMP_DIR/base/bin/$BIN_NAME.js" "$@"
 }
 
 # enter tmp directory

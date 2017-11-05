@@ -9,44 +9,44 @@ echo "$SFDX_WINDOWS_KEY" | base64 --decode > /tmp/$BIN_NAME-windows-key
 source ./scripts/_init
 
 function build () {
-  set -x
-  # setup workspace
-  INSTALLER_BASE=$TMP_DIR/windows-$ARCH-installer
-  rm -rf "$INSTALLER_BASE"
-  mkdir -p "$INSTALLER_BASE/bin"
+    set -x
+    # setup workspace
+    INSTALLER_BASE=$TMP_DIR/windows-$ARCH-installer
+    rm -rf "$INSTALLER_BASE"
+    mkdir -p "$INSTALLER_BASE/bin"
 
-  cp "$ROOT_DIR/resources/exe/$BIN_NAME.cmd" "$INSTALLER_BASE/bin/$BIN_NAME.cmd"
-  cp "$ROOT_DIR/resources/exe/$BIN_NAME" "$INSTALLER_BASE/bin/$BIN_NAME"
+    cp "$ROOT_DIR/resources/exe/$BIN_NAME.cmd" "$INSTALLER_BASE/bin/$BIN_NAME.cmd"
+    cp "$ROOT_DIR/resources/exe/$BIN_NAME" "$INSTALLER_BASE/bin/$BIN_NAME"
 
-  tar xzf "$TGZ_PATH"
-  mv "$VERSIONED_BASE" "$INSTALLER_BASE/client"
+    tar xzf "$TGZ_PATH"
+    mv "$VERSIONED_BASE" "$INSTALLER_BASE/client"
 
-  if [ "$ARCH" == "x64" ]; then
-    PROGRAMSUFFIX="64"
-  else
-    PROGRAMSUFFIX=""
-  fi
+    if [ "$ARCH" == "x64" ]; then
+        PROGRAMSUFFIX="64"
+    else
+        PROGRAMSUFFIX=""
+    fi
 
-  # TODO
-  sed -e "s/!define Version 'VERSION'/!define Version '${SHORT_VERSION}'/" resources/exe/$BIN_NAME.nsi |\
-    sed -e "s/InstallDir .*/InstallDir \"\$PROGRAMFILES$PROGRAMSUFFIX\\\$BIN_NAME\"/" \
-    > "$INSTALLER_BASE/$BIN_NAME.nsi"
+    # TODO
+    sed -e "s/!define Version 'VERSION'/!define Version '${SHORT_VERSION}'/" resources/exe/$BIN_NAME.nsi |\
+        sed -e "s/InstallDir .*/InstallDir \"\$PROGRAMFILES$PROGRAMSUFFIX\\\$BIN_NAME\"/" \
+        > "$INSTALLER_BASE/$BIN_NAME.nsi"
 
-  makensis "$INSTALLER_BASE/$BIN_NAME.nsi" \
-    | grep -v "\[compress\]" \
-    | grep -v "^File: Descending to"
+    makensis "$INSTALLER_BASE/$BIN_NAME.nsi" \
+        | grep -v "\[compress\]" \
+        | grep -v "^File: Descending to"
 
-  set +x
-  # TODO
-  osslsigncode -pkcs12 /tmp/$BIN_NAME-windows-key \
-    -pass "$SFDX_WINDOWS_SIGNING_PASS" \
-    -n 'Salesforce CLI' \
-    -i https://toolbelt.heroku.com/ \
-    -in "$INSTALLER_BASE/installer.exe" -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
+    set +x
+    # TODO
+    osslsigncode -pkcs12 /tmp/$BIN_NAME-windows-key \
+        -pass "$SFDX_WINDOWS_SIGNING_PASS" \
+        -n 'Salesforce CLI' \
+        -i https://toolbelt.heroku.com/ \
+        -in "$INSTALLER_BASE/installer.exe" -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
 }
 
 for ARCH in "${ARCHS[@]}"; do
-  setarch "$ARCH"
-  bg build
+    setarch "$ARCH"
+    bg build
 done
 wait_all

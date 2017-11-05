@@ -11,5 +11,5 @@ find "${ROOT_DIR}/dist" -name \*.map | xargs rm
 
 # build only if it is a git checkout
 if [ ! -d "${ROOT_DIR}/node_modules/cli-engine/lib" ]; then
-  cd "${ROOT_DIR}/node_modules/cli-engine" && yarn && cd ~/cli
+    cd "${ROOT_DIR}/node_modules/cli-engine" && yarn && cd ~/cli
 fi

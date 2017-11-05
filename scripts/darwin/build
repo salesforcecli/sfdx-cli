@@ -13,16 +13,16 @@ script "build/workspace"
 keychain=""
 
 if [[ ! -z "${OSX_KEYCHAIN:-}" ]]; then
-  keychain="--keychain ${OSX_KEYCHAIN}"
+    keychain="--keychain ${OSX_KEYCHAIN}"
 fi
 
 # TODO
 # shellcheck disable=SC2086
 pkgbuild --root "$WORKSPACE_DIR" \
-  --identifier com.salesforce.developer.cli \
-  --install-location /usr/local/lib/$BIN_NAME \
-  --version "${VERSION}" \
-  --sign "Developer ID Installer: Heroku INC" \
-  --scripts "$ROOT_DIR/scripts/darwin/scripts" \
-  $keychain \
-  "tmp/$PKG_NAME.pkg"
+    --identifier com.salesforce.developer.cli \
+    --install-location /usr/local/lib/$BIN_NAME \
+    --version "${VERSION}" \
+    --sign "Developer ID Installer: Heroku INC" \
+    --scripts "$ROOT_DIR/scripts/darwin/scripts" \
+    $keychain \
+    "tmp/$PKG_NAME.pkg"

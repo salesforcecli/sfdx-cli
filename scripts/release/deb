@@ -17,13 +17,13 @@ cd "$CACHE_DIR"
 
 # do long cache files first
 for ARCH in "${ARCHS[@]}"; do
-  setarch "$ARCH"
-  mv "$UNVERSIONED_DEB_PATH" "$CACHE_DIR/$VERSIONED_DEB_BASE.deb"
+    setarch "$ARCH"
+    mv "$UNVERSIONED_DEB_PATH" "$CACHE_DIR/$VERSIONED_DEB_BASE.deb"
 done
 
 s3upload "$VESIONED_CACHE_CONTROL" \
-  --recursive "$CACHE_DIR" \
-  "$DEB_REMOTE_BASE"
+    --recursive "$CACHE_DIR" \
+    "$DEB_REMOTE_BASE"
 
 # create Package apt file
 apt-ftparchive packages . > Packages
@@ -40,5 +40,5 @@ gpg --digest-algo SHA512 -abs -u 0F1B0520 -o Release.gpg Release
 rm ./*.deb
 
 s3upload "$UNVERSIONED_CACHE_CONTROL" \
-  --recursive "$CACHE_DIR" \
-  "$DEB_REMOTE_BASE"
+    --recursive "$CACHE_DIR" \
+    "$DEB_REMOTE_BASE"
