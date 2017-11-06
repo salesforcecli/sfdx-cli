@@ -1,5 +1,5 @@
 export class Env {
-    constructor(private env: typeof process.env) {
+    constructor(private env: typeof process.env = process.env) {
         this.env = env;
     }
 
@@ -8,9 +8,8 @@ export class Env {
     }
 
     public getBoolean(key: string, def?: boolean) {
-        const d = (def || false).toString();
-        return this.get(key, d)!.toLowerCase() === d;
+        return this.get(key, (!!def).toString())!.toLowerCase() === 'true';
     }
 }
 
-export default new Env(process.env);
+export default new Env();
