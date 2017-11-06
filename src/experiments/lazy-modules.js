@@ -21,6 +21,7 @@
  */
 
 const NamedError = require('../util/NamedError').NamedError;
+const env = require('../util/env').default;
 
 // Loads a module using the original module loader if the module is undefined
 const loadIfNeeded = (mod, realLoad, request, parent, isMain) => {
@@ -350,14 +351,9 @@ exports.isEnabled = function () {
 };
 
 // Require a dark feature envar to enable this experiment
-if (isEnvSet('SFDX_LAZY_LOAD_MODULES')) {
+if (env.getBoolean('SFDX_LAZY_LOAD_MODULES')) {
     exports.enable();
-    if (isEnvSet('SFDX_LAZY_LOAD_MODULES_TRACE')) {
+    if (env.getBoolean('SFDX_LAZY_LOAD_MODULES_TRACE')) {
         trace = debug;
     }
-}
-
-// Check whether an envar is set
-function isEnvSet(name) {
-    return (process.env[name] || '').toLowerCase() === 'true';
 }

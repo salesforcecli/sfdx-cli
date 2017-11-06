@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# disable shellcheck for legacy build files until they are removed
+# shellcheck disable=SC2006
+# shellcheck disable=SC2086
+
 set -ex
 
 get_script_dir () {

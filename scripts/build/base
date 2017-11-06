@@ -22,7 +22,7 @@ cp -r "$ROOT_DIR/dist" "${BASE_DIR}/dist"
 )
 
 # build cli-engine if needed
-if [ ! -f "${BASE_DIR}/node_modules/cli-engine/lib/cli.js" ]; then
+if [[ ! -f "${BASE_DIR}/node_modules/cli-engine/lib/cli.js" ]]; then
     cd "${BASE_DIR}/node_modules/cli-engine"
     yarn
     yarn run prepare
@@ -36,6 +36,5 @@ script "clean/modules"
 script "build/sanity_checks"
 
 # copy bin/run.js to bin/sfdx.js in the build, and inject build vars
-sed "s/\/\*@OVERRIDES@\*\//\
-version:'${VERSION}', channel:'${CHANNEL}'\
-/" "$ROOT_DIR/bin/run.js" > "${BASE_DIR}/bin/$BIN_NAME.js"
+sed "s/\/\*@OVERRIDES@\*\//version:'${VERSION}', channel:'${CHANNEL}'/" \
+    "$ROOT_DIR/bin/run.js" > "${BASE_DIR}/bin/$BIN_NAME.js"

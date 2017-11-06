@@ -8,7 +8,7 @@ npm pack
 
 # make sure we don't include anything unexpected in the npm distro
 tar tf "$tarball" | while read -r f; do
-    if [[(
+    if [[ (
         "$f" != "package/package.json" &&
         "$f" != "package/LICENSE" &&
         "$f" != "package/README.md" &&
@@ -16,8 +16,7 @@ tar tf "$tarball" | while read -r f; do
         "$f" != "package/dist/"*".js"
     ) || (
         "$f" == "package/dist/"*".test.js"
-    )
-    ]]; then
+    ) ]]; then
         echo "Unexpected file found in npm packaged tarball! ${f}"
         exit 1
     fi

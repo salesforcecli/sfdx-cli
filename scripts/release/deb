@@ -21,7 +21,7 @@ for ARCH in "${ARCHS[@]}"; do
     mv "$UNVERSIONED_DEB_PATH" "$CACHE_DIR/$VERSIONED_DEB_BASE.deb"
 done
 
-s3upload "$VESIONED_CACHE_CONTROL" \
+s3upload "$VERSIONED_CACHE_CONTROL" \
     --recursive "$CACHE_DIR" \
     "$DEB_REMOTE_BASE"
 

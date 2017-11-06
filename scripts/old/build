@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# disable shellcheck for legacy build files until they are removed
+# shellcheck disable=SC1083
+# shellcheck disable=SC2006
+# shellcheck disable=SC2038
+# shellcheck disable=SC2086
+# shellcheck disable=SC2115
+
 set -ex
 
 if [ $# -ne 2 ]; then

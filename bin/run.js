@@ -14,6 +14,8 @@ require(path.join(root, 'dist', 'flags'))
 const pjson = require(path.join(root, 'package.json'));
 require(path.join(root, 'dist', 'experiments', 'lazy-modules'));
 
+// Overrides get replaced with particular values for binary builds,
+// but simply use defaults for npm and local invocations.
 const overrides = {/*@OVERRIDES@*/};
 const version = overrides.version || pjson.version;
 const channel = overrides.channel || pjson.cli.channel;
