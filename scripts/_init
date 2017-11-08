@@ -121,10 +121,18 @@ function wait_all () {
     done
 }
 
+# TODO: replace fake s3upload with this when ready to actually release
+# function s3upload () {
+#     maxage="$1"
+#     shift
+#     aws s3 cp --cache-control max-age="$maxage" "$@"
+# }
 function s3upload () {
-    maxage="$1"
-    shift
-    aws s3 cp --cache-control max-age="$maxage" "$@"
+    shift # maxage
+    shift # --recursive
+    fakes3="tmp/fakes3"
+    mkdir -p "$fakes3"
+    cp -r "$1" "$fakes3"
 }
 
 if [ ! -z "${OS:-}" ]; then

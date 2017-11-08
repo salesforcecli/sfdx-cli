@@ -6,13 +6,13 @@ set -x
 
 function build () {
     setarch "$ARCH"
-    # setup workspace
+    # Setup workspace
     rm -rf "${WORKSPACE_DIR}"
     cp -r "$BASE_DIR" "$WORKSPACE_DIR"
 
     "$ROOT_DIR/scripts/build/_fetch_node_binary" "${WORKSPACE_DIR}/bin"
 
-    # create bin runner
+    # Create bin runner
     if [ "${OS}" == "windows" ]; then
         sed "s/REM @OVERRIDES@/set SFDX_BINARY=true \\& set BIN_NAME=$BIN_NAME/" \
             "$ROOT_DIR/bin/run.cmd" > "${WORKSPACE_DIR}/bin/$BIN_NAME.cmd"

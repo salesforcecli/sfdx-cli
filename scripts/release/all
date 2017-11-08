@@ -4,4 +4,5 @@ source ./scripts/_init
 
 set -ex
 
-# TODO
+script "build/all"
+script "release/upload_release"
