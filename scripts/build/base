@@ -2,7 +2,7 @@
 
 source ./scripts/_init
 
-set -x
+set -ex
 
 # setup workspace
 rm -rf "${BASE_DIR}"
@@ -27,13 +27,6 @@ if [[ ! -f "${BASE_DIR}/node_modules/cli-engine/lib/cli.js" ]]; then
     yarn
     yarn run prepare
 fi
-
-# clean installed modules of useless junk to reduce tarball sizes
-script "clean/modules"
-
-# make sure cleaning was not too aggressive and that path lengths
-# in the build tree are as windows-safe as they can be
-script "build/sanity_checks"
 
 # copy bin/run.js to bin/sfdx.js in the build, and inject build vars
 sed "s/\/\* @OVERRIDES@ \*\//version:'${VERSION}', channel:'${CHANNEL}'/" \

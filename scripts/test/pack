@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
+set -ex
+
 source ./scripts/_init
 
 tarball="${PKG_NAME}-${SHORT_VERSION}.tgz"
 
 npm pack
 
-# make sure we don't include anything unexpected in the npm distro
+# Make sure we won't include anything unintended in the packed npm distro
 tar tf "$tarball" | while read -r f; do
+    set +x
+    echo "$f"
     if [[ (
         "$f" != "package/package.json" &&
         "$f" != "package/LICENSE" &&
@@ -17,9 +21,10 @@ tar tf "$tarball" | while read -r f; do
     ) || (
         "$f" == "package/dist/"*".test.js"
     ) ]]; then
-        echo "Unexpected file found in npm packaged tarball! ${f}"
+        stderr "Unexpected file found in npm packaged tarball! ${f}"
         exit 1
     fi
+    set -x
 done
 
 rm "$tarball"

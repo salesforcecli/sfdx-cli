@@ -2,7 +2,7 @@
 
 source ./scripts/_init
 
-set -x
+set -ex
 
 eslint bin src
 tslint -p "$ROOT_DIR/tslint.json" -t checkstyle -o "$ROOT_DIR/checkstyle.xml"

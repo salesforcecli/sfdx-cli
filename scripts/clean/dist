@@ -2,6 +2,6 @@
 
 source ./scripts/_init
 
-set -x
+set -ex
 
 rm -rf "$ROOT_DIR/dist"

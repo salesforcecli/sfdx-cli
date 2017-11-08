@@ -2,7 +2,7 @@
 
 source ./scripts/_init
 
-set -x
+set -ex
 
 script "lint/lint_with_style"
 script "lint/shell"

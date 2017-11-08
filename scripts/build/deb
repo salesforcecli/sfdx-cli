@@ -8,7 +8,7 @@ export OS=linux
 
 source ./scripts/_init
 
-set -x
+set -ex
 
 function build () {
     __workspace="$TMP_DIR/apt/$VERSIONED_DEB_BASE.apt"

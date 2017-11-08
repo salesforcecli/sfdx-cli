@@ -2,7 +2,12 @@
 
 source ./scripts/_init
 
-set -x
+set -ex
+
+#
+# Make sure cleaning was not too aggressive and that path lengths
+# in the build tree are as windows-safe as they can be
+#
 
 # Check for potentially overflowing windows paths:
 # * assume a max practical windows username length of 64 characters (https://technet.microsoft.com/it-it/library/bb726984(en-us).aspx)
@@ -19,12 +24,12 @@ function scan_path_lengths() {
     cd "$BASE_DIR"
     warntest=$(find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) print "fail" }' | uniq)
     if [ "$warntest" == "fail" ]; then
-        echo "WARN: Some paths could result in update errors for Windows users with usernames greater than 48 characters!"
+        stdout "WARN: Some paths could result in update errors for Windows users with usernames greater than 48 characters!"
         find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) printf("%-3s  %s\n", length($0), $0) }'
     fi
     maxtest=$(find node_modules | awk -v maxlen="$maxlen" '{ if (length($0) > maxlen) print "fail" }' | uniq)
     if [ "$maxtest" == "fail" ]; then
-        echo "ERROR: Unacceptably long paths detected in base build!"
+        stderr "ERROR: Unacceptably long paths detected in base build!"
         find node_modules | awk -v maxlen="$maxlen" '{ if (length($0) > maxlen) printf("%-3s  %s\n", length($0), $0) }'
         exit 1
     fi
@@ -35,7 +40,7 @@ function scan_path_lengths() {
 function ensure_no_webdriverio_test() {
     test_dir="$BASE_DIR/node_modules/webdriverio/test"
     if [ -e "$test_dir" ]; then
-        echoerr "$test_dir is present! Was the test not aggressive enough?"
+        stderr "$test_dir is present! Was the test not aggressive enough?"
         exit 1
     fi
 }
@@ -44,7 +49,7 @@ function ensure_no_webdriverio_test() {
 function ensure_apex_test() {
     src_dir="$BASE_DIR/node_modules/salesforce-alm/dist/lib/test"
     if [ ! -d "$src_dir" ]; then
-        echoerr "$src_dir is missing! Was the test clean too aggressive?"
+        stderr "$src_dir is missing! Was the test clean too aggressive?"
         exit 1
     fi
 }
@@ -53,7 +58,21 @@ function ensure_apex_test() {
 function ensure_templates_md() {
     template_readme="$BASE_DIR/node_modules/force-language-services/dist/project/templates/README.md"
     if [ ! -e "$template_readme" ]; then
-        echoerr "$src_dir is missing! Was the *.md clean too aggressive?"
+        stderr "$src_dir is missing! Was the *.md clean too aggressive?"
+        exit 1
+    fi
+}
+
+# Make sure no cli test or maps files are included in the cli dist dir
+function ensure_no_dist_tests_or_maps() {
+    tests=$(find "$BASE_DIR/dist" -name \*.test.js | wc -l | awk '{ print $1 }')
+    if [[ "$tests" != "0" ]]; then
+        stderr "Found $tests tests in $BASE_DIR/dist!"
+        exit 1
+    fi
+    maps=$(find "$BASE_DIR/dist" -name \*.js.map | wc -l | awk '{ print $1 }')
+    if [[ "$maps" != "0" ]]; then
+        stderr "Found $maps maps in $BASE_DIR/dist!"
         exit 1
     fi
 }
@@ -62,3 +81,4 @@ scan_path_lengths
 ensure_no_webdriverio_test
 ensure_apex_test
 ensure_templates_md
+ensure_no_dist_tests_or_maps

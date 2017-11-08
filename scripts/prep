@@ -2,14 +2,11 @@
 
 source ./scripts/_init
 
-set -x
+set -ex
 
 yarn install --pure-lockfile --non-interactive
 
-# clean map files from dist
-find "${ROOT_DIR}/dist" -name \*.map -print0 | xargs -0 rm
-
-# build only if it is a git checkout
+# Build cli-engine only if it is a git checkout
 if [ ! -d "${ROOT_DIR}/node_modules/cli-engine/lib" ]; then
-    cd "${ROOT_DIR}/node_modules/cli-engine" && yarn && cd ~/cli
+    cd "${ROOT_DIR}/node_modules/cli-engine" && yarn && cd "$ROOT_DIR"
 fi

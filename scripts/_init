@@ -14,8 +14,16 @@ set -o nounset
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)"
 cd "$ROOT_DIR"
 
-function echoerr() {
+function stderr() {
+    set +x
     echo "$@" 1>&2
+    set -x
+}
+
+function stdout() {
+    set +x
+    echo "$@"
+    set -x
 }
 
 function script () {

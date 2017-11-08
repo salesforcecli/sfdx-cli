@@ -14,7 +14,7 @@ function build () {
 
     # create bin runner
     if [ "${OS}" == "windows" ]; then
-        sed "s/REM @OVERRIDES@/set SFDX_BINARY=true & set BIN_NAME=$BIN_NAME/" \
+        sed "s/REM @OVERRIDES@/set SFDX_BINARY=true \\& set BIN_NAME=$BIN_NAME/" \
             "$ROOT_DIR/bin/run.cmd" > "${WORKSPACE_DIR}/bin/$BIN_NAME.cmd"
     else
         sed "s/# @OVERRIDES@/export SFDX_BINARY=\"true\" BIN_NAME=\"$BIN_NAME\"/" \

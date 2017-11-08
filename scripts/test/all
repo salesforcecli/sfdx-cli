@@ -2,7 +2,7 @@
 
 source ./scripts/_init
 
-set -x
+set -ex
 
 script "test/typings"
 script "test/unit"

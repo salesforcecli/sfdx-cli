@@ -8,9 +8,9 @@ source ./scripts/release/_init
 script "prep"
 script "darwin/build"
 
-set -x
+set -ex
 
-echo "Releasing ${CHANNEL}"
+stdout "Releasing ${CHANNEL}"
 
 s3upload "$UNVERSIONED_CACHE_CONTROL" \
     "${TMP_DIR}/$PKG_NAME.pkg" \

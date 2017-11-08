@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+cd "$BASE_DIR"
+
+# Remove non-production cli tests and js map assets from dist
+find dist -name \*.test.js -print0 | xargs -0 rm
+find dist -name \*.js.map -print0 | xargs -0 rm
+
+# Make sure .yarnclean has been applied node_modules
+yarn autoclean --force
+
+# Module readmes and other markdown docs not found in template directories
+find node_modules -name \*.md | grep -v /templates/ | xargs rm
+
+# Module test dirs, except in salesforce-alm, which includes production source code in such a dir
+find node_modules -name test -type d | grep -v /salesforce-alm/ | xargs rm -rf
