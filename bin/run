@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+export SFDX_BINARY="false" BIN_NAME="run"
 # @OVERRIDES@
-# If autoupdate is not explicitly set for local dev or npm modes, make sure they are disabled.
-if [[ "${SFDX_BINARY:-}" != "true" && -z "${SFDX_AUTOUPDATE_DISABLE+x}" ]]; then
-    export SFDX_AUTOUPDATE_DISABLE="true"
-    # This only applies to npm updates, but shouldn't hurt anything in the local dev case
-    export SFDX_AUTOUPDATE_DISABLE_MESSAGE="update with 'npm install --global sfdx-cli'"
-fi
 
 DEV_FLAGS=()
 NODE_FLAGS=()
@@ -18,7 +13,7 @@ while [[ "$#" -gt 0 ]]; do
     case "$1" in
         --dev-suspend) NODE_FLAGS+=("--inspect-brk"); DEV_FLAGS+=("$1"); shift;;
         --dev-profile) NODE_FLAGS+=("--prof");        DEV_FLAGS+=("$1"); shift;;
-                    *) CLI_ARGS+=("$1");                               ; shift;;
+                    *) CLI_ARGS+=("$1");                                 shift;;
     esac
 done
 
@@ -44,5 +39,5 @@ BIN_DIR="$XDG_DATA_HOME/$BIN_NAME/client/bin"
 if [[ "${SFDX_BINARY:-}" == "true" && -x "$BIN_DIR/$BIN_NAME" && ! "$BIN_DIR" -ef "$DIR" ]]; then
     "$XDG_DATA_HOME/$BIN_NAME/client/bin/$BIN_NAME" "${DEV_FLAGS[@]}" "${CLI_ARGS[@]}"
 else
-    CLI_BINPATH="$DIR/run" node "${NODE_FLAGS[@]}" "$DIR/run.js" "${CLI_ARGS[@]}"
+    CLI_BINPATH="$DIR/$BIN_NAME" node "${NODE_FLAGS[@]}" "$DIR/$BIN_NAME.js" "${CLI_ARGS[@]}"
 fi

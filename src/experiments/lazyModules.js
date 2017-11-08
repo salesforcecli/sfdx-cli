@@ -20,6 +20,11 @@
  * - http://soft.vub.ac.be/~tvcutsem/invokedynamic/js-membranes
  */
 
+// Disable eslint until converted to typescript or removed
+/* eslint-disable */
+
+'use strict';
+
 const NamedError = require('../util/NamedError').NamedError;
 const env = require('../util/env').default;
 
