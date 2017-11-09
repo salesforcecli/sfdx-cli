@@ -127,10 +127,12 @@ function wait_all () {
 #     shift
 #     aws s3 cp --cache-control max-age="$maxage" "$@"
 # }
+#
+# Mocks the s3 upload by copying files into a similar structure on the file system.
 function s3upload () {
     shift # maxage
     shift # --recursive
-    fakes3="tmp/fakes3"
+    fakes3="$ROOT_DIR/tmp/fakes3"
     mkdir -p "$fakes3"
     cp -r "$1" "$fakes3"
 }

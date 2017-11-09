@@ -15,7 +15,7 @@ if [[ $# -ne 1 ]]; then
     exit 1
 fi
 
-output=$1
+output="$1"
 node_ext=""
 NODE_VERSION=$(node -p "require('./package.json')['cli-engine'].node || process.versions.node")
 NODE_DIR="$TMP_DIR/node"
@@ -28,10 +28,10 @@ mkdir -p "$NODE_CACHE_DIR"
 # install node
 if [ "${OS}" == "windows" ]; then
     node_ext=".exe"
-    node_base=node-v${NODE_VERSION}-win-${ARCH}
+    node_base="node-v${NODE_VERSION}-win-${ARCH}"
     if [ ! -f "$NODE_CACHE_DIR/${node_base}" ]; then
         stdout "fetching ${node_base}"
-        url=https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-win-${ARCH}.7z
+        url="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-win-${ARCH}.7z"
         curl -fSsLo "$NODE_DIR/${node_base}.7z" "${url}"
         (
             cd "$NODE_DIR"
@@ -41,10 +41,10 @@ if [ "${OS}" == "windows" ]; then
     fi
 else
     if [ "${ARCH}" == "arm" ]; then node_arch=armv7l; else node_arch="${ARCH}"; fi
-    node_base=node-v${NODE_VERSION}-${OS}-${node_arch}
+    node_base="node-v${NODE_VERSION}-${OS}-${node_arch}"
     if [ ! -f "$NODE_CACHE_DIR/${node_base}" ]; then
         stdout "fetching ${node_base}"
-        url=https://nodejs.org/dist/v${NODE_VERSION}/${node_base}.tar.xz
+        url="https://nodejs.org/dist/v${NODE_VERSION}/${node_base}.tar.xz"
         curl -fSsL "${url}" | tar -C "${TMP_DIR}/node" -xJ
         mv "$NODE_DIR/${node_base}/bin/node" "$NODE_CACHE_DIR/${node_base}"
     fi

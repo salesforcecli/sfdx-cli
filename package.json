@@ -92,7 +92,7 @@
   },
   "scripts": {
     "build": "bash scripts/build/all",
-    "clean": "bash scripts/clean/dist && bash scripts/clean/side_effects",
+    "clean": "bash scripts/clean/dist && bash scripts/clean/test",
     "clean-all": "bash scripts/clean/all",
     "compile": "bash scripts/compile",
     "lint": "bash scripts/lint/sources",

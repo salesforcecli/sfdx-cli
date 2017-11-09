@@ -5,6 +5,5 @@ source ./scripts/_init
 set -ex
 
 script "clean/dist"
-script "clean/side_effects"
-
-rm -rf "$ROOT_DIR/node_modules"
+script "clean/test"
+script "clean/build"
