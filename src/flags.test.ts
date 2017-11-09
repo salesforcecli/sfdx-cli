@@ -33,13 +33,6 @@ describe('CLI flags', () => {
         expect(process.env.SFDX_DEBUG).to.equal('1');
     });
 
-    it('should convert --dev-config to envars', () => {
-        process.argv = ['--dev-config'];
-        processCliFlags(process);
-        expect(process.argv).not.to.include('--dev-config');
-        expect(process.env.CLI_ENGINE_SHOW_CONFIG).to.equal('1');
-    });
-
     it('should convert --exp-lazy-load to envars', () => {
         process.argv = ['--exp-lazy-load'];
         processCliFlags(process);

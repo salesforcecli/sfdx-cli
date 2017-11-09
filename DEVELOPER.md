@@ -58,7 +58,6 @@ The following flags are supported by the `bin/run` script, and can be combined a
 
 * *--dev-suspend*: Starts the `node` binary with the `--inspect-brk` flag to allow a remote debugger to attach before running.
 * *--dev-debug*: Sets the `SFDX_DEBUG=1` and `DEBUG=\*` envars for the CLI's `node` process, which enables full debug output from the v6 `cli-engine`.
-* *--dev-config*: Sets the `CLI_ENGINE_SHOW_CONFIG=1` envar for the CLI's `node` process, which causes the cli-engine to dump it's runtime configuration value at startup.
 
 ### Developer notes
 
