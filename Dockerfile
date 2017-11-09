@@ -12,7 +12,6 @@ RUN apt-get -y update && \
   && \
   curl https://bootstrap.pypa.io/get-pip.py | python && \
   pip install awscli --upgrade && \
-  aws configure set preview.cloudfront true && \
   apt-get remove -y python-dev && \
   apt-get clean && apt-get -y autoremove && \
   rm -rf /var/lib/apt/lists/* ~/.cache
