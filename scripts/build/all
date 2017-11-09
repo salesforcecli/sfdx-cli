@@ -10,6 +10,7 @@ script "lint/all"
 script "build/base"
 script "test/all"
 script "clean/base"
+script "test/base"
 script "build/verify"
 
 function build_os () {
