@@ -33,17 +33,17 @@ describe('CLI flags', () => {
         expect(process.env.SFDX_DEBUG).to.equal('1');
     });
 
-    it('should convert --exp-lazy-load to envars', () => {
-        process.argv = ['--exp-lazy-load'];
+    it('should convert --x-lazy-load to envars', () => {
+        process.argv = ['--x-lazy-load'];
         processCliFlags(process);
-        expect(process.argv).not.to.include('--exp-lazy-load');
+        expect(process.argv).not.to.include('--x-lazy-load');
         expect(process.env.SFDX_LAZY_LOAD_MODULES).to.equal('true');
     });
 
-    it('should convert --exp-lazy-load-trace to envars', () => {
-        process.argv = ['--exp-lazy-load-trace'];
+    it('should convert --x-lazy-load-trace to envars', () => {
+        process.argv = ['--x-lazy-load-trace'];
         processCliFlags(process);
-        expect(process.argv).not.to.include('--exp-lazy-load-trace');
+        expect(process.argv).not.to.include('--x-lazy-load-trace');
         expect(process.env.SFDX_LAZY_LOAD_MODULES).to.equal('true');
         expect(process.env.SFDX_LAZY_LOAD_MODULES_TRACE).to.equal('true');
         expect(process.env.DEBUG).to.equal('sfdx:lazy-modules');

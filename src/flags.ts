@@ -7,11 +7,11 @@ export function processCliFlags(process) {
                 process.env.SFDX_DEBUG = '1';
                 break;
             }
-            case '--exp-lazy-load': {
+            case '--x-lazy-load': {
                 process.env.SFDX_LAZY_LOAD_MODULES = 'true';
                 break;
             }
-            case '--exp-lazy-load-trace': {
+            case '--x-lazy-load-trace': {
                 process.env.SFDX_LAZY_LOAD_MODULES = 'true';
                 process.env.SFDX_LAZY_LOAD_MODULES_TRACE = 'true';
                 process.env.DEBUG = process.env.DEBUG || 'sfdx:lazy-modules';
