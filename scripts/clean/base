@@ -10,6 +10,10 @@ cd "$BASE_DIR"
 find dist -name \*.test.js -print0 | xargs -0 rm
 find dist -name \*.js.map -print0 | xargs -0 rm
 
+# Remove yarn files
+rm -f .yarnclean
+rm -f yarn.lock
+
 # Module readmes and other markdown docs not found in template directories
 find node_modules -name \*.md | grep -v /templates/ | xargs rm
 
