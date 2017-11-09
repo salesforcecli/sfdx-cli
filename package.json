@@ -16,7 +16,7 @@
   "cli-engine": {
     "bin": "sfdx",
     "dirname": "sfdx",
-    "node": "8.9.0",
+    "node": "8.9.1",
     "userPlugins": true,
     "commands": "./dist/commands",
     "legacyConverter": "./dist/legacy/converter",
