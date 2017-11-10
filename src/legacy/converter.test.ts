@@ -26,7 +26,7 @@ describe('legacy converter', () => {
                 userAgent: 'test'
             };
             const v5 = new V5({config});
-            v5.argv = ['run.js', 'topic:command', 'foo', '--bar'];
+            v5.argv = ['run', 'topic:command', 'foo', '--bar'];
             await v5.init();
             await v5.run();
 

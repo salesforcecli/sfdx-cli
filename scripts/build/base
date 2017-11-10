@@ -32,6 +32,6 @@ if [[ ! -f "${BASE_DIR}/node_modules/cli-engine/lib/cli.js" ]]; then
     yarn run prepare
 fi
 
-# Copy bin/run.js to bin/sfdx.js in the build, and inject build vars
+# Copy bin/run to bin/sfdx.js in the build, and inject build vars
 sed "s/\/\* @OVERRIDES@ \*\//version:'${VERSION}', channel:'${CHANNEL}'/" \
-    "$ROOT_DIR/bin/run.js" > "${BASE_DIR}/bin/$BIN_NAME.js"
+    "$ROOT_DIR/bin/run" > "${BASE_DIR}/bin/$BIN_NAME.js"

@@ -18,7 +18,7 @@ function build () {
             "$ROOT_DIR/bin/run.cmd" > "${WORKSPACE_DIR}/bin/$BIN_NAME.cmd"
     else
         sed "s/# @OVERRIDES@/export SFDX_BINARY=\"true\" BIN_NAME=\"$BIN_NAME\"/" \
-            "$ROOT_DIR/bin/run" > "${WORKSPACE_DIR}/bin/$BIN_NAME"
+            "$ROOT_DIR/bin/run.sh" > "${WORKSPACE_DIR}/bin/$BIN_NAME"
         chmod +x "${WORKSPACE_DIR}/bin/$BIN_NAME"
     fi
 }
