@@ -6,4 +6,6 @@ source ./scripts/_init
 
 DEFAULT_S3_BUCKET=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.bucket")
 S3_BUCKET="${S3_BUCKET:-"$DEFAULT_S3_BUCKET"}"
-REMOTE_BASE="s3://$S3_BUCKET/$PKG_NAME/channels/$CHANNEL"
+DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.folder")
+S3_FOLDER="${S3_FOLDER:-"$DEFAULT_S3_FOLDER"}"
+S3_BASE_URL="s3://$S3_BUCKET/$S3_FOLDER/$PKG_NAME/channels/$CHANNEL"

@@ -41,6 +41,7 @@
     ],
     "s3": {
       "bucket": "dfc-data-production",
+      "folder": "media/salesforce-cli",
       "host": "developer.salesforce.com/media/salesforce-cli"
     },
     "help": {

@@ -9,7 +9,7 @@ set -ex
 source ./scripts/_init
 
 CACHE_DIR="$TMP_DIR/s3"
-DEB_REMOTE_BASE=s3://$S3_BUCKET/branches/$CHANNEL/apt
+DEB_S3_BASE_URL=s3://$S3_BUCKET/$S3_FOLDER/branches/$CHANNEL/apt
 
 rm -rf "$CACHE_DIR"
 mkdir -p "$CACHE_DIR"
@@ -23,7 +23,7 @@ done
 
 s3upload "$VERSIONED_CACHE_CONTROL" \
     --recursive "$CACHE_DIR" \
-    "$DEB_REMOTE_BASE"
+    "$DEB_S3_BASE_URL"
 
 # create Package apt file
 apt-ftparchive packages . > Packages
@@ -41,4 +41,4 @@ rm ./*.deb
 
 s3upload "$UNVERSIONED_CACHE_CONTROL" \
     --recursive "$CACHE_DIR" \
-    "$DEB_REMOTE_BASE"
+    "$DEB_S3_BASE_URL"

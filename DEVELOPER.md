@@ -63,8 +63,7 @@ The following flags are supported by the `bin/run` script, and can be combined a
 
 * To manually install a specific version of the `salesforcedx` plugin from an internal npm registry, you can set `SFDX_NPM_REGISTRY` with the internal URL (e.g. `registry "http://10.252.156.164:4880"`).
 * If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `yarn run watch`.
-* The `build` and `release-all` scripts currently require [Docker](https://www.docker.com/get-docker) to run.
 
 ## Releasing
 
-Building and publishing a release manually currently requires [Docker](https://www.docker.com/get-docker).  You will also need salesforcedx S3 bucket write credentials stored in a standard AWS config file in `./.aws/credentials`.  Then, you should be able to build and release by running `yarn run release-all`.
+The CLI can be built and released to S3 on various channels by using the [Publish CLI](http://10.252.156.172:8080/job/Publish_CLI/) job available on Jenkins.
