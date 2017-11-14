@@ -121,26 +121,6 @@ function wait_all () {
     done
 }
 
-# TODO: replace fake s3upload with this when ready to actually release
-# function s3upload () {
-#     maxage="$1"
-#     shift
-#     aws s3 cp --cache-control max-age="$maxage" "$@"
-# }
-#
-# Mocks the s3 upload by copying files into a similar structure on the file system.
-function s3upload () {
-    maxage="$1"
-    shift
-    stdout "Simulating s3 upload:"
-    stdout "> aws s3 cp --cache-control max-age=$maxage" "$@"
-    fake_s3="$ROOT_DIR/tmp/fakes3"
-    mkdir -p "$fake_s3"
-    shift # --recursive
-    upload_dir="$1"
-    cp -r "$upload_dir" "$fake_s3"
-}
-
 if [ ! -z "${OS:-}" ]; then
     setos "$OS"
     IFS='|' read -ra ARCHS <<< "$(archs)"

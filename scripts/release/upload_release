@@ -26,8 +26,9 @@ done
 
 # Upload unversioned tarballs
 s3upload "$VERSIONED_CACHE_CONTROL" \
-    --recursive "$CACHE_DIR" \
-    "$S3_BASE_URL"
+    "$CACHE_DIR" \
+    "$S3_BASE_URL" \
+    --recursive
 
 for OS in "${OS_TARGETS[@]}"; do
     setos "$OS"
@@ -40,8 +41,9 @@ for OS in "${OS_TARGETS[@]}"; do
 done
 
 s3upload "$UNVERSIONED_CACHE_CONTROL" \
-    --recursive "$CACHE_DIR" \
-    "$S3_BASE_URL"
+    "$CACHE_DIR" \
+    "$S3_BASE_URL" \
+    --recursive
 
 rm -rf "${CACHE_DIR:?}"/*
 
@@ -69,6 +71,7 @@ cp "$RELEASE_DIR/version" "$CACHE_DIR/version"
 cp -r "$RELEASE_VERSION_DIR" "$CACHE_DIR"
 
 s3upload "$LATEST_VERSION_CACHE_CONTROL" \
-    --recursive "$CACHE_DIR" \
-    --content-type application/json \
-    "$S3_BASE_URL"
+    "$CACHE_DIR" \
+    "$S3_BASE_URL" \
+    --recursive \
+    --content-type "application/json"

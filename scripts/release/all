@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ./scripts/_init
+source ./scripts/release/_init
 
 set -ex
 

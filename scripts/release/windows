@@ -13,5 +13,6 @@ mv "$RELEASE_DIR/$PKG_NAME-x64.exe" "$CACHE_DIR"
 mv "$RELEASE_DIR/$PKG_NAME-x86.exe" "$CACHE_DIR"
 
 s3upload "$UNVERSIONED_CACHE_CONTROL" \
-    --recursive "$CACHE_DIR" \
-    "$S3_BASE_URL"
+    "$CACHE_DIR" \
+    "$S3_BASE_URL" \
+    --recursive
