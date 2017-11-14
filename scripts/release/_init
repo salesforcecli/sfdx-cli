@@ -27,6 +27,5 @@ function s3upload () {
         exit 1
     fi
 
-    # TODO: remove echo when ready to actually start publishing
-    echo aws s3 cp --cache-control max-age="$maxage" "$local" "$remote" "$@"
+    aws s3 cp --cache-control max-age="$maxage" "$local" "$remote" "$@"
 }
