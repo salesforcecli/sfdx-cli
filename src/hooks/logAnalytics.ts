@@ -17,7 +17,7 @@ function run(config: Config, opts: any) {
             debug('setting up exit handler');
             process.on('exit', (status) => {
                 const logFile = path.join(config.cacheDir as string, 'analytics.log');
-                debug(`using ${logFile}} for usage error logging`);
+                debug(`using ${logFile} for usage error logging`);
 
                 const fd = fs.openSync(logFile, 'a');
 
