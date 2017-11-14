@@ -15,7 +15,8 @@ if (process.env.SFDX_ALLOW_ALL_SALESFORCE_CERTSIG_HOSTING === 'true') {
 }
 
 // This is the fingerprint for https://developer.salesforce.com
-export const SALESFORCE_CERT_FINGERPRINT = '4B:72:59:41:2E:62:1C:C2:B9:D0:7F:A3:85:B4:58:E3:C6:17:E0:8F';
+export const SALESFORCE_CERT_FINGERPRINT = process.env.SFDX_DEVELOPER_TRUSTED_FINGERPRINT ||
+    '5E:E3:12:97:09:3E:60:11:50:9A:B2:A7:5B:49:B9:78:C4:7B:4B:D9';
 
 export function validSalesforceHostname(url: string | null) {
     if (!url) {
@@ -45,7 +46,7 @@ export function validateRequestCert(request: any, url: string) {
 
                 if (!_.includes(SALESFORCE_CERT_FINGERPRINT, fingerprint)) {
                     throw new NamedError('CertificateFingerprintNotMatch',
-                        `The expected fingerprint and the fingerprint [${fingerprint}] from the certificate found at ${url} do not match.`);
+                        `The expected fingerprint and the fingerprint [${fingerprint}] from the certificate found at https://developer.salesforce.com do not match.`);
                 }
             });
         });
