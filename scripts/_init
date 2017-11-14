@@ -51,7 +51,7 @@ BIN_NAME=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].bin")
 if [ "$CHANNEL" == "stable" ]; then
     VERSIONED_CACHE_CONTROL=86400     # 1 day
     UNVERSIONED_CACHE_CONTROL=300     # 5 minutes
-    LATEST_VERSION_CACHE_CONTROL=60 # 1 minute
+    LATEST_VERSION_CACHE_CONTROL=60   # 1 minute
 else
     VERSIONED_CACHE_CONTROL=0
     UNVERSIONED_CACHE_CONTROL=0
