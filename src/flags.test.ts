@@ -23,6 +23,7 @@ describe('CLI flags', () => {
         expect(process.argv).not.to.include('--dev-debug');
         expect(process.env.DEBUG).to.equal('*');
         expect(process.env.SFDX_DEBUG).to.equal('1');
+        expect(process.env.SFDX_ENV).to.equal('development');
     });
 
     it('should convert --dev-debug to envars', () => {

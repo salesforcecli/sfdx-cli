@@ -54,10 +54,18 @@ When you make changes to this project's `.ts`. sources, you will need to recompi
 
 ### Developer CLI flags
 
-The following flags are supported by the `bin/run` script, and can be combined as desired.  They are stripped from the args passed to the CLI application itself.
+#### bin/run flags
+
+The following flags are supported by the `bin/run` script, and can be combined as desired.
+
+* *--dev-debug*: Sets the `SFDX_DEBUG=1`, `SFDX_ENV=development`, and `DEBUG=\*` envars for the CLI's `node` process, which enables full debug output from the v6 `cli-engine`.
+
+#### bin/run.sh flags
+
+The following flags are supported by the `bin/run.sh` script, which wraps the `bin/run` script referenced in the rest of this document, and can be combined as desired.  They are stripped from the args passed to the CLI application itself.
 
 * *--dev-suspend*: Starts the `node` binary with the `--inspect-brk` flag to allow a remote debugger to attach before running.
-* *--dev-debug*: Sets the `SFDX_DEBUG=1` and `DEBUG=\*` envars for the CLI's `node` process, which enables full debug output from the v6 `cli-engine`.
+* *--dev-profile*: Starts the `node` binary with the `--prof` flag to allow a heap dump to be generated after running.
 
 ### Developer notes
 

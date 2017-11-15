@@ -5,6 +5,7 @@ export function processCliFlags(process) {
             case '--dev-debug': {
                 process.env.DEBUG = '*';
                 process.env.SFDX_DEBUG = '1';
+                process.env.SFDX_ENV = 'development';
                 break;
             }
             case '--x-lazy-load': {
