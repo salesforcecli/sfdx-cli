@@ -97,7 +97,7 @@
     "clean-all": "bash scripts/clean/all",
     "compile": "bash scripts/compile",
     "lint": "bash scripts/lint/sources",
-    "lint-with-style": "bash scripts/test/lint_with_style",
+    "lint-with-style": "bash scripts/lint/sources_with_style",
     "prepare": "yarn compile",
     "test": "yarn typings && yarn compile && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
     "unit": "bash scripts/test/unit",

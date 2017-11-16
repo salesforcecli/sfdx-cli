@@ -4,7 +4,7 @@ source ./scripts/_init
 
 set -ex
 
-TEST_DIR="${BASE_DIR:-$ROOT_DIR}"
+TEST_DIR="${1:-$ROOT_DIR}"
 
 "$ROOT_DIR/node_modules/istanbul/lib/cli.js" cover \
     --report cobertura "$ROOT_DIR/node_modules/.bin/_mocha" \

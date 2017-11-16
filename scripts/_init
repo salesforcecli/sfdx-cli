@@ -27,7 +27,9 @@ function stdout() {
 }
 
 function script () {
-    "$ROOT_DIR/scripts/$1"
+    name="$1"
+    shift
+    "$ROOT_DIR/scripts/$name" "$@"
 }
 
 # Set channel and version vars

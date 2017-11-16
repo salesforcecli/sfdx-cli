@@ -4,5 +4,5 @@ source ./scripts/_init
 
 set -ex
 
-script "lint/lint_with_style"
+script "lint/sources_with_style"
 script "lint/shell"

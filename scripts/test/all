@@ -5,7 +5,7 @@ source ./scripts/_init
 set -ex
 
 script "test/typings"
-script "test/unit"
+script "test/unit" "$BASE_DIR"
 script "test/coverage"
 script "test/pack"
 script "test/smoke"
