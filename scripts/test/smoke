@@ -16,6 +16,7 @@ function sfdx () {
 cd "$(mktemp -d)"
 
 # run basic smoke tests
+sfdx --dev-debug
 sfdx version
 sfdx help
 sfdx plugins --core

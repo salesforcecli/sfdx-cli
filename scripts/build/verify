@@ -4,11 +4,27 @@ source ./scripts/_init
 
 set -ex
 
-#
+# Pre-check for some known path length offenders
+
+function ensure_no_webdriverio_test() {
+    test_dir="$BASE_DIR/node_modules/webdriverio/test"
+    if [ -e "$test_dir" ]; then
+        stderr "$test_dir is present! Was the clean not aggressive enough?"
+        exit 1
+    fi
+}
+
+function ensure_no_heroku_cli_util_nyc() {
+    test_dir="$BASE_DIR/node_modules/force-language-services/node_modules/salesforce-alm/node_modules/heroku-cli-util/.nyc_output"
+    if [ -e "$test_dir" ]; then
+        stderr "$test_dir is present! Was the clean not aggressive enough?"
+        exit 1
+    fi
+}
+
 # Make sure cleaning was not too aggressive and that path lengths
 # in the build tree are as windows-safe as they can be
 #
-
 # Check for potentially overflowing windows paths:
 # * assume a max practical windows username length of 64 characters (https://technet.microsoft.com/it-it/library/bb726984(en-us).aspx)
 # * add characters to account for the root sfdx client tmp untar path for a total of 135
@@ -34,15 +50,6 @@ function scan_path_lengths() {
         exit 1
     fi
     cd -
-}
-
-# This should be caught by the path lengths test above, but we've regressed enough on this that it's worth checking for explicitly
-function ensure_no_webdriverio_test() {
-    test_dir="$BASE_DIR/node_modules/webdriverio/test"
-    if [ -e "$test_dir" ]; then
-        stderr "$test_dir is present! Was the clean not aggressive enough?"
-        exit 1
-    fi
 }
 
 # We've accidentally over-cleaned the force:apex:test code in the past, so let's make sure we don't repeat that mistake
@@ -98,8 +105,9 @@ function ensure_no_unexpected_files() {
     done
 }
 
-scan_path_lengths
 ensure_no_webdriverio_test
+ensure_no_heroku_cli_util_nyc
+scan_path_lengths
 ensure_apex_test
 ensure_templates_md
 ensure_no_dist_tests_or_maps

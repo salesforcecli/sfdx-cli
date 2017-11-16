@@ -4,4 +4,7 @@ source ./scripts/_init
 
 set -ex
 
+TEST_DIR="${1:-$ROOT_DIR}"
+cd "$TEST_DIR"
+
 "$ROOT_DIR/node_modules/istanbul/lib/cli.js" report --report html json-summary

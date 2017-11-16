@@ -4,10 +4,12 @@ source ./scripts/_init
 
 set -ex
 
+TEST_DIR="${1:-$ROOT_DIR}"
+
 rm -rf \
-    "$ROOT_DIR/*.tgz" \
-    "$ROOT_DIR/*.sig" \
-    "$ROOT_DIR/coverage" \
-    "$ROOT_DIR/xunit.xml" \
-    "$ROOT_DIR/checkstyle.xml" \
-    "$ROOT_DIR/yarn-error.log"
+    "$TEST_DIR/*.tgz" \
+    "$TEST_DIR/*.sig" \
+    "$TEST_DIR/coverage" \
+    "$TEST_DIR/xunit.xml" \
+    "$TEST_DIR/checkstyle.xml" \
+    "$TEST_DIR/yarn-error.log"
