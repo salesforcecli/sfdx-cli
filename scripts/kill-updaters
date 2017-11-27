@@ -1,7 +1,0 @@
-#!/bin/bash
-
-results=$(ps aux | grep "cli/bin/run.js update --autoupdate")
-if [ "$?" == "0" ]; then
-  echo $results | awk '{ print $2 }' | xargs kill &> /dev/null
-fi
-exit 0

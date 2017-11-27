@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC2034
+
+source ./scripts/_init
+
+DEFAULT_S3_BUCKET=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.bucket")
+S3_BUCKET="${S3_BUCKET:-"$DEFAULT_S3_BUCKET"}"
+DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.folder")
+S3_FOLDER="${S3_FOLDER:-"$DEFAULT_S3_FOLDER"}"
+S3_BASE_URL="s3://$S3_BUCKET/$S3_FOLDER/$PKG_NAME/channels/$CHANNEL"
+
+function s3upload () {
+    maxage="$1"; shift
+    local="$1";  shift
+    remote="$1"; shift
+
+    # Only allow uploads from the build tmp dir
+    if [[ "$local" != "$TMP_DIR"* ]]; then
+        stderr "Unexpected upload request from local dir: '$local'"
+        exit 1
+    fi
+
+    # Only allow uploads to the target s3 bucket
+    if [[ "$remote" != "$S3_BASE_URL"* ]]; then
+        stderr "Unexpected upload request to s3 url: '$remote'"
+        exit 1
+    fi
+
+    aws s3 cp --cache-control max-age="$maxage" "$local" "$remote" "$@"
+}

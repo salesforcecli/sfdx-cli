@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+set -ex
+
+source ./scripts/release/_init
+
+CACHE_DIR="$TMP_DIR/s3"
+
+# TODO remove
+rm -rf "$TMP_DIR/fakes3"
+
+rm -rf "$CACHE_DIR"
+mkdir -p "$CACHE_DIR"
+cd "$CACHE_DIR"
+
+# Upload versioned tarballs
+for OS in "${OS_TARGETS[@]}"; do
+    setos "$OS"
+    IFS='|' read -ra ARCHS <<< "$(archs)"
+    for ARCH in "${ARCHS[@]}"; do
+        setarch "$ARCH"
+        cp "$TGZ_PATH" "$VERSIONED_BASE.tar.gz"
+        cp "$TXZ_PATH" "$VERSIONED_BASE.tar.xz"
+    done
+done
+
+# Upload unversioned tarballs
+s3upload "$VERSIONED_CACHE_CONTROL" \
+    "$CACHE_DIR" \
+    "$S3_BASE_URL" \
+    --recursive
+
+for OS in "${OS_TARGETS[@]}"; do
+    setos "$OS"
+    IFS='|' read -ra ARCHS <<< "$(archs)"
+    for ARCH in "${ARCHS[@]}"; do
+        setarch "$ARCH"
+        mv "$VERSIONED_BASE.tar.gz" "$UNVERSIONED_BASE.tar.gz"
+        mv "$VERSIONED_BASE.tar.xz" "$UNVERSIONED_BASE.tar.xz"
+    done
+done
+
+s3upload "$UNVERSIONED_CACHE_CONTROL" \
+    "$CACHE_DIR" \
+    "$S3_BASE_URL" \
+    --recursive
+
+rm -rf "${CACHE_DIR:?}"/*
+
+# Now upload json files
+
+for OS in "${OS_TARGETS[@]}"; do
+    setos "$OS"
+    IFS='|' read -ra ARCHS <<< "$(archs)"
+    for ARCH in "${ARCHS[@]}"; do
+        setarch "$ARCH"
+        cp "$RELEASE_DIR/${OS}-${ARCH}" "$CACHE_DIR"
+    done
+done
+
+# Generate general version file
+cat << EOF > "$RELEASE_DIR/version"
+{
+    "channel": "${CHANNEL}",
+    "version": "${VERSION}"
+}
+EOF
+
+cp "$RELEASE_DIR/version" "$RELEASE_VERSION_DIR/version"
+cp "$RELEASE_DIR/version" "$CACHE_DIR/version"
+cp -r "$RELEASE_VERSION_DIR" "$CACHE_DIR"
+
+s3upload "$LATEST_VERSION_CACHE_CONTROL" \
+    "$CACHE_DIR" \
+    "$S3_BASE_URL" \
+    --recursive \
+    --content-type "application/json"

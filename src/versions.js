@@ -1,4 +1,6 @@
 // Note: Leave this file as ES5 js for compatibility with earlier Node.js versions
+/* eslint-disable */
+
 'use strict';
 
 /**

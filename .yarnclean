@@ -40,6 +40,9 @@ wercker.yml
 .yarn-metadata.json
 .travis.yml
 
+# editors
+.idea
+
 # misc
 *.gz
 *.map

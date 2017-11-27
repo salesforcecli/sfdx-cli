@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "SalesforceDX CLI",
-  "version": "6.0.13",
+  "version": "6.0.16",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -16,7 +16,7 @@
   "cli-engine": {
     "bin": "sfdx",
     "dirname": "sfdx",
-    "node": "8.6.0",
+    "node": "8.9.1",
     "userPlugins": true,
     "commands": "./dist/commands",
     "legacyConverter": "./dist/legacy/converter",
@@ -41,17 +41,23 @@
     ],
     "s3": {
       "bucket": "dfc-data-production",
+      "folder": "media/salesforce-cli",
       "host": "developer.salesforce.com/media/salesforce-cli"
     },
     "help": {
       "plugins": {
         "salesforcedx": {
-          "version": "41.2.0",
+          "version": "41.8.7",
           "type": "core"
         }
       }
     }
   },
+  "files": [
+    "bin",
+    "dist/**/*.js",
+    "!dist/**/*.test.js"
+  ],
   "dependencies": {
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.6.17",
@@ -63,7 +69,7 @@
     "fs-extra": "4.0.2",
     "lodash": "4.11.1",
     "request": "2.79.0",
-    "salesforcedx": "41.5.2"
+    "salesforcedx": "41.8.7"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
@@ -75,6 +81,9 @@
     "@types/request": "2.0.3",
     "@types/sinon": "2.3.5",
     "chai": "4.1.2",
+    "eslint": "3.2.2",
+    "eslint-config-airbnb-base": "5.0.1",
+    "eslint-plugin-import": "1.13.0",
     "istanbul": "1.0.0-alpha.2",
     "mocha": "3.5.0",
     "sinon": "2.3.5",
@@ -83,23 +92,17 @@
     "xunit-file": "1.0.0"
   },
   "scripts": {
-    "clean": "bash scripts/clean",
-    "build": "scripts/build",
-    "clean-all": "scripts/clean-all",
-    "clean-cache": "scripts/clean-cache",
-    "clean-dev": "scripts/clean-dev",
-    "downgrade": "scripts/downgrade",
-    "kill-updaters": "scripts/kill-updaters",
-    "lint": "tslint -p tslint.json",
-    "lint-with-style": "tslint -p tslint.json -t checkstyle -o ./checkstyle.xml",
-    "prepare": "tsc -p tsconfig.json",
-    "release-all": "scripts/release-all",
-    "scorch-the-earth": "scripts/scorch-the-earth",
-    "setup": "scripts/setup",
-    "test": "yarn typings && yarn prepare && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
-    "unit": "yarn typings && yarn prepare && ./node_modules/istanbul/lib/cli.js cover --report cobertura _mocha -x \"dist/**/*.test.js\" -- -t 240000 --recursive \"dist/**/*.test.js\" -R xunit-file",
-    "coverage-report": "./node_modules/istanbul/lib/cli.js report --report html json-summary",
-    "typings": "tsc -p typings/tsconfig.json",
+    "build": "bash scripts/build/all",
+    "clean": "bash scripts/clean/dist && bash scripts/clean/test",
+    "clean-all": "bash scripts/clean/all",
+    "compile": "bash scripts/compile",
+    "lint": "bash scripts/lint/sources",
+    "lint-with-style": "bash scripts/lint/sources_with_style",
+    "prepare": "yarn compile",
+    "test": "yarn typings && yarn compile && yarn lint && mocha --recursive \"dist/**/*.test.js\"",
+    "unit": "bash scripts/test/unit",
+    "coverage-report": "bash scripts/test/coverage",
+    "typings": "bash scripts/test/typings",
     "watch": "tsc -w -p tsconfig.json"
   }
 }

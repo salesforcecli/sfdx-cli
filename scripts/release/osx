@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+export OS=darwin
+export ARCH=x64
+
+source ./scripts/release/_init
+
+script "prep"
+script "darwin/build"
+
+set -ex
+
+stdout "Releasing ${CHANNEL}"
+
+s3upload "$UNVERSIONED_CACHE_CONTROL" \
+    "${TMP_DIR}/$PKG_NAME.pkg" \
+    "${S3_BASE_URL}/$PKG_NAME.pkg"

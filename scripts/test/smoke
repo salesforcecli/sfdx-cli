@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+if [ ! -d "$TMP_DIR/base" ]; then
+    ./scripts/build/base
+fi
+
+function sfdx () {
+    node "$TMP_DIR/base/bin/$BIN_NAME.js" "$@"
+}
+
+# enter tmp directory
+cd "$(mktemp -d)"
+
+# run basic smoke tests
+sfdx --dev-debug
+sfdx version
+sfdx help
+sfdx plugins --core
+sfdx force -h
+sfdx force
+sfdx force:alias:list

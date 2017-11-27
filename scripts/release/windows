@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -ex
+
+source ./scripts/release/_init
+
+CACHE_DIR="$TMP_DIR/s3"
+
+rm -rf "$CACHE_DIR"
+mkdir -p "$CACHE_DIR"
+
+mv "$RELEASE_DIR/$PKG_NAME-x64.exe" "$CACHE_DIR"
+mv "$RELEASE_DIR/$PKG_NAME-x86.exe" "$CACHE_DIR"
+
+s3upload "$UNVERSIONED_CACHE_CONTROL" \
+    "$CACHE_DIR" \
+    "$S3_BASE_URL" \
+    --recursive

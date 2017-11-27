@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [[ "${CHANNEL:-}" != "" ]]; then
+    echo "$CHANNEL"
+else
+    pjson_channel="$(node -p "try{require('./package.json').cli.channel}catch(e){}")"
+    if [[ "$pjson_channel" != "undefined" ]]; then
+        echo "$pjson_channel"
+    else
+        echo "develop"
+    fi
+fi
