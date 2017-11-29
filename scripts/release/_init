@@ -27,5 +27,9 @@ function s3upload () {
         exit 1
     fi
 
-    aws s3 cp --cache-control max-age="$maxage" "$local" "$remote" "$@"
+    if [-v "$S3_ENDPOINT_URL"]; then
+        aws s3 cp --cache-control max-age="$maxage" "$local" "$remote" "$@"
+    else
+        aws s3 cp --endpoint-url "$S3_ENDPOINT_URL" --cache-control max-age="$maxage" "$local" "$remote" "$@"
+    fi
 }
