@@ -95,7 +95,7 @@
     "build": "bash scripts/build/all",
     "clean": "bash scripts/clean/dist && bash scripts/clean/test",
     "clean-all": "bash scripts/clean/all",
-    "compile": "bash scripts/compile",
+    "compile": "bash scripts/build/compile",
     "lint": "bash scripts/lint/sources",
     "lint-with-style": "bash scripts/lint/sources_with_style",
     "prepare": "yarn compile",

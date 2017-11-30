@@ -11,6 +11,7 @@ S3_FOLDER="${S3_FOLDER:-"$DEFAULT_S3_FOLDER"}"
 S3_BASE_URL="s3://$S3_BUCKET/$S3_FOLDER/$PKG_NAME/channels/$CHANNEL"
 
 function s3upload () {
+
     maxage="$1"; shift
     local="$1";  shift
     remote="$1"; shift
@@ -27,9 +28,14 @@ function s3upload () {
         exit 1
     fi
 
-    if [-v "$S3_ENDPOINT_URL"]; then
-        aws s3 cp --cache-control max-age="$maxage" "$local" "$remote" "$@"
-    else
-        aws s3 cp --endpoint-url "$S3_ENDPOINT_URL" --cache-control max-age="$maxage" "$local" "$remote" "$@"
+    if [[ "${DEBUG_S3_UPLOAD:-}" == "true" ]]; then
+        echo "[DEBUG] aws s3 cp --cache-control max-age=$maxage $local $remote" "$@"
+        return 0
     fi
+
+    extra_args=()
+    if [[ ! -z "${S3_ENDPOINT_URL:-}" ]]; then
+        extra_args+=("--endpoint-url" "$S3_ENDPOINT_URL")
+    fi
+    aws s3 cp "${extra_args[@]}" --cache-control max-age="$maxage" "$local" "$remote" "$@"
 }

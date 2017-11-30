@@ -4,7 +4,7 @@ import { assert, expect } from 'chai';
 import { Env } from './util/env';
 import {
     configureAutoUpdate,
-    UPDATE_DISABLED_BINARY,
+    UPDATE_DISABLED_INSTALLER,
     UPDATE_DISABLED_OTHER
 } from './cli';
 
@@ -31,7 +31,7 @@ describe('CLI flags', () => {
     });
 
     it('should default to autoupdate enabled for binary installs', () => {
-        env.setBoolean('SFDX_BINARY', true);
+        env.setBoolean('SFDX_INSTALLER', true);
         const config = configureAutoUpdate(env, {});
 
         expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.false;
@@ -39,11 +39,11 @@ describe('CLI flags', () => {
     });
 
     it('should have autoupdate disabled for binary installs when SFDX_AUTOUPDATE_DISABLE is set to true', () => {
-        env.setBoolean('SFDX_BINARY', true);
+        env.setBoolean('SFDX_INSTALLER', true);
         env.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
         const config = configureAutoUpdate(env, {});
 
         expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
-        expect(config.updateDisabled).to.equal(UPDATE_DISABLED_BINARY);
+        expect(config.updateDisabled).to.equal(UPDATE_DISABLED_INSTALLER);
     });
 });

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-export SFDX_BINARY="false" BIN_NAME="run"
+export SFDX_INSTALLER="false" BIN_NAME="run"
 # @OVERRIDES@
 
 DEV_FLAGS=()
@@ -36,12 +36,12 @@ CLI_HOME=$(cd && pwd)
 XDG_DATA_HOME="${XDG_DATA_HOME:="$CLI_HOME/.local/share"}"
 BIN_DIR="$XDG_DATA_HOME/$BIN_NAME/client/bin"
 
-if [[ "${SFDX_BINARY:-}" == "true" && -x "$BIN_DIR/$BIN_NAME" && ! "$BIN_DIR" -ef "$DIR" ]]; then
+if [[ "${SFDX_INSTALLER:-}" == "true" && -x "$BIN_DIR/$BIN_NAME" && ! "$BIN_DIR" -ef "$DIR" ]]; then
     "$XDG_DATA_HOME/$BIN_NAME/client/bin/$BIN_NAME.sh" "${DEV_FLAGS[@]}" "${CLI_ARGS[@]}"
 else
     MAIN_NAME="$BIN_NAME"
     NODE_PATH="node"
-    if [[ "${SFDX_BINARY:-}" == "true" ]]; then
+    if [[ "${SFDX_INSTALLER:-}" == "true" ]]; then
         MAIN_NAME="$MAIN_NAME.js"
         NODE_PATH="$BIN_DIR/$NODE_PATH"
     fi
