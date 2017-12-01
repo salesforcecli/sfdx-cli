@@ -28,14 +28,15 @@ function s3upload () {
         exit 1
     fi
 
-    if [[ "${DEBUG_S3_UPLOAD:-}" == "true" ]]; then
-        echo "[DEBUG] aws s3 cp --cache-control max-age=$maxage $local $remote" "$@"
-        return 0
-    fi
-
     extra_args=()
     if [[ ! -z "${S3_ENDPOINT_URL:-}" ]]; then
         extra_args+=("--endpoint-url" "$S3_ENDPOINT_URL")
     fi
+
+    if [[ "${DEBUG_S3_UPLOAD:-}" == "true" ]]; then
+        echo "[DEBUG] aws s3 cp " "${extra_args[@]}" "--cache-control max-age=$maxage $local $remote" "$@"
+        return 0
+    fi
+
     aws s3 cp "${extra_args[@]}" --cache-control max-age="$maxage" "$local" "$remote" "$@"
 }
