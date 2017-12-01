@@ -5,4 +5,4 @@ source ./scripts/release/_init
 set -ex
 
 script "build/all"
-script "release/upload_release"
+script "release/tarballs"
