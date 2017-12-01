@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "SalesforceDX CLI",
-  "version": "6.0.16",
+  "version": "6.0.24",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -60,16 +60,16 @@
   ],
   "dependencies": {
     "ansi-escapes": "3.0.0",
-    "cli-engine": "4.6.17",
-    "cli-engine-command": "9.0.2",
+    "cli-engine": "4.6.20",
+    "cli-engine-command": "9.0.3",
     "cli-engine-config": "3.4.0",
-    "cli-engine-heroku": "5.0.0",
-    "cli-ux": "2.0.3",
-    "debug": "3.0.1",
+    "cli-engine-heroku": "5.0.3",
+    "cli-ux": "2.0.4",
+    "debug": "3.1.0",
     "fs-extra": "4.0.2",
-    "lodash": "4.11.1",
-    "request": "2.79.0",
-    "salesforcedx": "41.8.7"
+    "lodash": "4.17.4",
+    "request": "2.83.0",
+    "salesforcedx": "41.10.0"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
