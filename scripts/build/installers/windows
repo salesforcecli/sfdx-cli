@@ -4,7 +4,8 @@ OS=windows
 
 source ./scripts/_init
 
-set -ex
+set -e
+set +x
 
 if [[ -z "${WINDOWS_SIGNING_KEY:-}" ]]; then
     stderr "Missing required variable WINDOWS_SIGNING_KEY"
@@ -16,7 +17,6 @@ if [[ -z "${WINDOWS_SIGNING_PASS:-}" ]]; then
     exit 1
 fi
 
-set +x
 echo "$WINDOWS_SIGNING_KEY" | base64 --decode > "/tmp/$BIN_NAME-windows-key"
 
 function build () {
