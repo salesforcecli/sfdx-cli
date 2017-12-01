@@ -24,6 +24,7 @@ function build () {
     tar xzf "$TGZ_PATH"
     mv "$VERSIONED_BASE" "$__workspace/usr/lib/$BIN_NAME"
 
+    # TODO
     # add bin loader scripts
     cat << EOF > "$__workspace/usr/lib/$BIN_NAME/bin/$BIN_NAME"
 #!/usr/bin/env bash
@@ -45,7 +46,7 @@ CLI_BINPATH=\$DIR/$BIN_NAME \$DIR/node \$DIR/$BIN_NAME.js "\$@"
 EOF
     chmod +x "$__workspace/usr/lib/$BIN_NAME/bin/$BIN_NAME"
 
-# TODO
+    # TODO
     cat << EOF > "$__workspace/usr/lib/$BIN_NAME/bin/$BIN_NAME.js"
 #!/usr/bin/env node
 const {run} = require('cli-engine')

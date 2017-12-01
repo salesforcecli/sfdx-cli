@@ -29,3 +29,7 @@ else
         build_os "$OS"
     done
 fi
+
+if [[ "${BUILD_INSTALLERS:-}" == "true" ]]; then
+    script "build/installers/all"
+fi

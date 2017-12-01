@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-source ./scripts/_init
-
-set -ex
-
-script "build/windows"

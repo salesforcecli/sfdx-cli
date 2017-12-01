@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-OS=linux
-set +x
-# TODO
-echo "$SFDX_DEB_KEY" | base64 -d | gpg --import
-set -ex
+export OS=linux
 
 source ./scripts/release/_init
 
+set +x
+echo "$SFDX_DEB_KEY" | base64 -d | gpg --import
+set -ex
+
+stdout "Releasing debian installer to ${CHANNEL}"
+
 CACHE_DIR="$TMP_DIR/s3"
-DEB_S3_BASE_URL=s3://$S3_BUCKET/$S3_FOLDER/branches/$CHANNEL/apt
+DEB_S3_BASE_URL="s3://$S3_BUCKET/$S3_FOLDER/branches/$CHANNEL/apt"
 
 rm -rf "$CACHE_DIR"
 mkdir -p "$CACHE_DIR"

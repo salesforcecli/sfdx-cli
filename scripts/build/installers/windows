@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 OS=windows
+
 source ./scripts/_init
 
-set -e
+set -ex
 
 if [[ -z "${WINDOWS_SIGNING_KEY:-}" ]]; then
     stderr "Missing required variable WINDOWS_SIGNING_KEY"
@@ -30,8 +31,8 @@ function build () {
         "$ROOT_DIR/bin/run.cmd" > "$INSTALLER_BASE/bin/$BIN_NAME.cmd"
     cp "$ROOT_DIR/resources/exe/$BIN_NAME" "$INSTALLER_BASE/bin/$BIN_NAME"
 
-    tar xzf "$TGZ_PATH"
-    mv "$VERSIONED_BASE" "$INSTALLER_BASE/client"
+    tar xzf "$TGZ_PATH" -C "$TMP_DIR"
+    mv "$TMP_DIR/$VERSIONED_BASE" "$INSTALLER_BASE/client"
 
     if [ "$ARCH" == "x64" ]; then
         PROGRAMSUFFIX="64"
@@ -52,7 +53,8 @@ function build () {
         -pass "$WINDOWS_SIGNING_PASS" \
         -n 'Salesforce CLI' \
         -i https://developer.salesforce.com/platform/dx/ \
-        -in "$INSTALLER_BASE/installer.exe" -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
+        -in "$INSTALLER_BASE/installer.exe" \
+        -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
 }
 
 for ARCH in "${ARCHS[@]}"; do

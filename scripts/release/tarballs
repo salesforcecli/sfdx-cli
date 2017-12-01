@@ -6,9 +6,6 @@ source ./scripts/release/_init
 
 CACHE_DIR="$TMP_DIR/s3"
 
-# TODO remove
-rm -rf "$TMP_DIR/fakes3"
-
 rm -rf "$CACHE_DIR"
 mkdir -p "$CACHE_DIR"
 cd "$CACHE_DIR"
