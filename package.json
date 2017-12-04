@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "SalesforceDX CLI",
-  "version": "6.0.24",
+  "version": "6.0.17",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -63,7 +63,7 @@
     "fs-extra": "4.0.2",
     "lodash": "4.17.4",
     "request": "2.83.0",
-    "salesforcedx": "41.10.0"
+    "salesforcedx": "41.10.2"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
