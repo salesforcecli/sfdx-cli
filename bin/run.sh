@@ -37,7 +37,7 @@ XDG_DATA_HOME="${XDG_DATA_HOME:="$CLI_HOME/.local/share"}"
 BIN_DIR="$XDG_DATA_HOME/$BIN_NAME/client/bin"
 
 if [[ "${SFDX_INSTALLER:-}" == "true" && -x "$BIN_DIR/$BIN_NAME" && ! "$BIN_DIR" -ef "$DIR" ]]; then
-    "$XDG_DATA_HOME/$BIN_NAME/client/bin/$BIN_NAME.sh" "${DEV_FLAGS[@]}" "${CLI_ARGS[@]}"
+    "$XDG_DATA_HOME/$BIN_NAME/client/bin/$BIN_NAME" "${DEV_FLAGS[@]}" "${CLI_ARGS[@]}"
 else
     MAIN_NAME="$BIN_NAME"
     NODE_PATH="node"
