@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+#script "build/installers/darwin"
+script "build/installers/windows"
+#script "build/installers/deb"

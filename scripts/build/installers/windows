@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+OS=windows
+
+source ./scripts/_init
+
+set -e
+set +x
+
+if [[ -z "${WINDOWS_SIGNING_KEY:-}" ]]; then
+    stderr "Missing required variable WINDOWS_SIGNING_KEY"
+    exit 1
+fi
+
+if [[ -z "${WINDOWS_SIGNING_PASS:-}" ]]; then
+    stderr "Missing required variable WINDOWS_SIGNING_PASS"
+    exit 1
+fi
+
+echo "$WINDOWS_SIGNING_KEY" | base64 --decode > "/tmp/$BIN_NAME-windows-key"
+
+function build () {
+    set -x
+
+    # setup workspace
+    INSTALLER_BASE="$TMP_DIR/windows-$ARCH-installer"
+    rm -rf "$INSTALLER_BASE"
+    mkdir -p "$INSTALLER_BASE/bin"
+
+    sed "s/REM @OVERRIDES@/set SFDX_INSTALLER=true\\&set BIN_NAME=$BIN_NAME/" \
+        "$ROOT_DIR/bin/run.cmd" > "$INSTALLER_BASE/bin/$BIN_NAME.cmd"
+    cp "$ROOT_DIR/resources/exe/$BIN_NAME" "$INSTALLER_BASE/bin/$BIN_NAME"
+
+    tar xzf "$TGZ_PATH" -C "$TMP_DIR"
+    mv "$TMP_DIR/$VERSIONED_BASE" "$INSTALLER_BASE/client"
+
+    if [ "$ARCH" == "x64" ]; then
+        PROGRAMSUFFIX="64"
+    else
+        PROGRAMSUFFIX=""
+    fi
+
+    sed -e "s/!define Version 'VERSION'/!define Version '${SHORT_VERSION}'/" "resources/exe/$BIN_NAME.nsi" |\
+        sed -e "s/InstallDir .*/InstallDir \"\$PROGRAMFILES$PROGRAMSUFFIX\\$BIN_NAME\"/" \
+        > "$INSTALLER_BASE/$BIN_NAME.nsi"
+
+    makensis "$INSTALLER_BASE/$BIN_NAME.nsi" \
+        | grep -v "\[compress\]" \
+        | grep -v "^File: Descending to"
+
+    set +x
+    osslsigncode -pkcs12 "/tmp/$BIN_NAME-windows-key" \
+        -pass "$WINDOWS_SIGNING_PASS" \
+        -n 'Salesforce CLI' \
+        -i https://developer.salesforce.com/platform/dx/ \
+        -in "$INSTALLER_BASE/installer.exe" \
+        -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
+}
+
+for ARCH in "${ARCHS[@]}"; do
+    setarch "$ARCH"
+    bg build
+done
+wait_all

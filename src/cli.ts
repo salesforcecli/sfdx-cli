@@ -15,7 +15,7 @@ export function create(version: string, channel: string) {
     });
 }
 
-export const UPDATE_DISABLED_BINARY =
+export const UPDATE_DISABLED_INSTALLER =
     'Manual and automatic CLI updates have been disabled by setting "SFDX_AUTOUPDATE_DISABLE=true". ' +
     'To check for a new version, unset that environment variable.';
 
@@ -23,9 +23,9 @@ export const UPDATE_DISABLED_OTHER =
     'Use "npm install --global sfdx-cli" to update npm-based installations.';
 
 export function configureAutoUpdate(envars: typeof env, config: Config): Config {
-    if (envars.getBoolean('SFDX_BINARY')) {
+    if (envars.getBoolean('SFDX_INSTALLER')) {
         if (envars.getBoolean('SFDX_AUTOUPDATE_DISABLE')) {
-            config.updateDisabled = UPDATE_DISABLED_BINARY;
+            config.updateDisabled = UPDATE_DISABLED_INSTALLER;
         }
         return config;
     }
