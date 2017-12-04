@@ -43,7 +43,7 @@ else
     NODE_PATH="node"
     if [[ "${SFDX_INSTALLER:-}" == "true" ]]; then
         MAIN_NAME="$MAIN_NAME.js"
-        NODE_PATH="$BIN_DIR/$NODE_PATH"
+        NODE_PATH="$DIR/$NODE_PATH"
     fi
     CLI_BINPATH="$DIR/$BIN_NAME" "$NODE_PATH" "${NODE_FLAGS[@]}" "$DIR/$MAIN_NAME" "${CLI_ARGS[@]}"
 fi
