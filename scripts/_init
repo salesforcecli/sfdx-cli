@@ -64,7 +64,7 @@ S3_CHANNEL_UPLOAD_URL="$S3_BASE_UPLOAD_URL/$S3_CHANNEL_SUBFOLDER"
 DEFAULT_S3_HOST=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.host")
 S3_HOST="${S3_HOST:-"$DEFAULT_S3_HOST"}"
 S3_HOST_SCHEME="${S3_HOST_SCHEME:-"https"}"
-S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST/$S3_FOLDER/$S3_CHANNEL_SUBFOLDER"
+S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST/$S3_CHANNEL_SUBFOLDER"
 
 # S3 cache-control maxage constants
 if [[ "$CHANNEL" == "stable" ]]; then
