@@ -4,4 +4,4 @@ source ./scripts/_init
 
 set -ex
 
-node_modules/.bin/tsc -p "$ROOT_DIR/tsconfig.json"
+tsc -p "$ROOT_DIR/tsconfig.json"

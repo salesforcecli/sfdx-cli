@@ -11,7 +11,7 @@ set -ex
 stdout "Releasing debian installer to ${CHANNEL}"
 
 CACHE_DIR="$TMP_DIR/s3"
-DEB_S3_BASE_URL="s3://$S3_BUCKET/$S3_FOLDER/branches/$CHANNEL/apt"
+DEB_S3_CHANNEL_UPLOAD_URL="s3://$S3_BUCKET/$S3_FOLDER/branches/$CHANNEL/apt"
 
 rm -rf "$CACHE_DIR"
 mkdir -p "$CACHE_DIR"
@@ -25,7 +25,7 @@ done
 
 s3upload "$VERSIONED_CACHE_CONTROL" \
     "$CACHE_DIR" \
-    "$DEB_S3_BASE_URL" \
+    "$DEB_S3_CHANNEL_UPLOAD_URL" \
     --recursive
 
 # create Package apt file
@@ -35,7 +35,7 @@ bzip2 -k Packages
 xz -k Packages
 
 # create Release apt file
-apt-ftparchive -c "$ROOT_DIR/resources/deb/apt-ftparchive.conf" release . > Release
+apt-ftparchive -c "$RESOURCES_DIR/deb/apt-ftparchive.conf" release . > Release
 gpg --digest-algo SHA512 --clearsign -u 0F1B0520 -o InRelease Release
 gpg --digest-algo SHA512 -abs -u 0F1B0520 -o Release.gpg Release
 
@@ -44,5 +44,5 @@ rm ./*.deb
 
 s3upload "$UNVERSIONED_CACHE_CONTROL" \
     "$CACHE_DIR" \
-    "$DEB_S3_BASE_URL" \
+    "$DEB_S3_CHANNEL_UPLOAD_URL" \
     --recursive

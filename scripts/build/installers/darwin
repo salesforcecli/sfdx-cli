@@ -20,6 +20,6 @@ pkgbuild --root "$WORKSPACE_DIR" \
     --identifier com.salesforce.developer.cli \
     --install-location "/usr/local/lib/$BIN_NAME" \
     --version "${VERSION}" \
-    --scripts "$ROOT_DIR/resources/darwin" \
+    --scripts "$RESOURCES_DIR/darwin" \
     "${extra_args[@]+"${extra_args[@]}"}" \
-    "tmp/$PKG_NAME.pkg"
+    "$RELEASE_DIR/$PKG_NAME.pkg"
