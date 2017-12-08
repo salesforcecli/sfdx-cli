@@ -29,7 +29,7 @@ function build () {
 
     sed "s/REM @OVERRIDES@/set SFDX_INSTALLER=true\\&set BIN_NAME=$BIN_NAME/" \
         "$ROOT_DIR/bin/run.cmd" > "$INSTALLER_BASE/bin/$BIN_NAME.cmd"
-    cp "$ROOT_DIR/resources/exe/$BIN_NAME" "$INSTALLER_BASE/bin/$BIN_NAME"
+    cp "$RESOURCES_DIR/exe/$BIN_NAME" "$INSTALLER_BASE/bin/$BIN_NAME"
 
     tar xzf "$TGZ_PATH" -C "$TMP_DIR"
     mv "$TMP_DIR/$VERSIONED_BASE" "$INSTALLER_BASE/client"

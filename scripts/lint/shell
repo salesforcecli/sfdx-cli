@@ -4,8 +4,8 @@ source ./scripts/_init
 
 set -ex
 
-if [ -x "$(command -v shellcheck)" ]; then
-    find scripts -type f -print0 | xargs -0 shellcheck --external-sources
+if [[ -x "$(command -v shellcheck)" ]]; then
+    find scripts -type f -not -name \*.js -print0 | xargs -0 shellcheck --external-sources
 else
-    stderr "install shellcheck to lint the scripts"
+    stderr "Install shellcheck to lint the scripts"
 fi

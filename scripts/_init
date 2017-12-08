@@ -10,6 +10,8 @@ set -o pipefail
 set -o nounset
 # set -o xtrace
 
+PATH="$PATH:node_modules/.bin"
+
 # Set magic root dir from current file
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)"
 cd "$ROOT_DIR"
@@ -42,6 +44,7 @@ DEB_VERSION="${SHORT_VERSION}-1"
 TMP_DIR="$ROOT_DIR/tmp"
 BASE_DIR="$TMP_DIR/base"
 RELEASE_DIR="$ROOT_DIR/release"
+RESOURCES_DIR="$ROOT_DIR/resources"
 RELEASE_VERSION_DIR="$RELEASE_DIR/v$VERSION"
 RELEASE_APT_DIR="$RELEASE_DIR/apt"
 
@@ -49,8 +52,22 @@ RELEASE_APT_DIR="$RELEASE_DIR/apt"
 PKG_NAME=$(node -p "require('$ROOT_DIR/package.json').name")
 BIN_NAME=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].bin")
 
-# Set s3 cache-control maxage constants
-if [ "$CHANNEL" == "stable" ]; then
+# S3 configuration
+
+DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.folder")
+S3_FOLDER="${S3_FOLDER:-"$DEFAULT_S3_FOLDER"}"
+S3_CHANNEL_SUBFOLDER="$PKG_NAME/channels/$CHANNEL"
+DEFAULT_S3_BUCKET=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.bucket")
+S3_BUCKET="${S3_BUCKET:-"$DEFAULT_S3_BUCKET"}"
+S3_BASE_UPLOAD_URL="s3://$S3_BUCKET/$S3_FOLDER"
+S3_CHANNEL_UPLOAD_URL="$S3_BASE_UPLOAD_URL/$S3_CHANNEL_SUBFOLDER"
+DEFAULT_S3_HOST=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.host")
+S3_HOST="${S3_HOST:-"$DEFAULT_S3_HOST"}"
+S3_HOST_SCHEME="${S3_HOST_SCHEME:-"https"}"
+S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST/$S3_CHANNEL_SUBFOLDER"
+
+# S3 cache-control maxage constants
+if [[ "$CHANNEL" == "stable" ]]; then
     VERSIONED_CACHE_CONTROL=86400     # 1 day
     UNVERSIONED_CACHE_CONTROL=300     # 5 minutes
     LATEST_VERSION_CACHE_CONTROL=60   # 1 minute
@@ -123,7 +140,7 @@ function wait_all () {
     done
 }
 
-if [ ! -z "${OS:-}" ]; then
+if [[ ! -z "${OS:-}" ]]; then
     setos "$OS"
     IFS='|' read -ra ARCHS <<< "$(archs)"
 fi

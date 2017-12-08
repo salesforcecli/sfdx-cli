@@ -16,5 +16,5 @@ cp "$RELEASE_DIR/$PKG_NAME-x86.exe" "$CACHE_DIR"
 
 s3upload "$UNVERSIONED_CACHE_CONTROL" \
     "$CACHE_DIR" \
-    "$S3_BASE_URL" \
+    "$S3_CHANNEL_UPLOAD_URL" \
     --recursive
