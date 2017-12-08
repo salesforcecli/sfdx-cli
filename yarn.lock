@@ -4160,9 +4160,9 @@ salesforce-alm@41.7.0:
     xml2js "0.4.17"
     xmldom "0.1.22"
 
-salesforce-alm@41.8.0:
-  version "41.8.0"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-41.8.0.tgz#701cabd16e65705a46b085fc70040e9cea01a9c7"
+salesforce-alm@41.9.0:
+  version "41.9.0"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-41.9.0.tgz#98a1fc9f3d9e60b0b9df96d58189fd5716b24c31"
   dependencies:
     adm-zip "0.4.7"
     archiver "1.0.1"
@@ -4208,12 +4208,12 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@41.8.7:
-  version "41.8.7"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-41.8.7.tgz#56f4a55860f3fba6223a691907b7d1895703c38d"
+salesforcedx@41.10.3:
+  version "41.10.3"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-41.10.3.tgz#6c8d2f39070cdef0ab0198a0fa82882a284153b5"
   dependencies:
     force-language-services "41.7.0"
-    salesforce-alm "41.8.0"
+    salesforce-alm "41.9.0"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.x, samsam@^1.1.3:
