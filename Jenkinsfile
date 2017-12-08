@@ -133,19 +133,18 @@ def collectTestResults() {
 }
 
 def coverageNotifications(coverageDir, threshold = 70) {
-	def coverageExists = fileExists "${coverageDir}/coverage-summary.json"
-	if (coverageExists) {
-		def summary = readJSON file: "${coverageDir}/coverage-summary.json"
-		if (summary && summary['total']) {
+    def coverageExists = fileExists "${coverageDir}/coverage-summary.json"
+    if (coverageExists) {
+        def summary = readJSON file: "${coverageDir}/coverage-summary.json"
+        if (summary && summary['total']) {
             currentBuild.result = currentBuild?.result ?: 'SUCCESS'
-            currentBuild.result = (summary?.total?.lines?.pct ?: 0) < threshold ? 'Unstable' : currentBuild.result
-            currentBuild.result = (summary?.total?.statements?.pct ?: 0) < threshold ? 'Unstable' : currentBuild.result
-            currentBuild.result = (summary?.total?.functions?.pct ?: 0) < threshold ? 'Unstable' : currentBuild.result
-            currentBuild.result = (summary?.total?.branches?.pct ?: 0) < threshold ? 'Unstable' : currentBuild.result
-		}
-	}
+            currentBuild.result = (summary?.total?.lines ?: 0) < threshold ? 'Unstable' : currentBuild.result
+            currentBuild.result = (summary?.total?.statements ?: 0) < threshold ? 'Unstable' : currentBuild.result
+            currentBuild.result = (summary?.total?.functions ?: 0) < threshold ? 'Unstable' : currentBuild.result
+            currentBuild.result = (summary?.total?.branches ?: 0) < threshold ? 'Unstable' : currentBuild.result
+        }
+    }
 }
-
 
 /**
  * post the code coverage results - only done in HTML format since cobertura plugin is not yet supported in pipelines
