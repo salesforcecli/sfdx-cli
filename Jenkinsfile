@@ -82,10 +82,11 @@ def doUnitTests(PLATFORM os) {
                 case PLATFORM.LINUX:
                     rc = sh returnStatus: true, script: 'npm run coverage-report'
                     rc = sh returnStatus: true, script: 'mv checkstyle.xml linux-checkstyle.xml; mv xunit.xml linux-unit-xunit.xml; rm -rf linuxunitcoverage; mv coverage linuxunitcoverage'
+					rc = sh returnStatus: true, script: 'npm run coverage-report -- --config unitTestCoverageTargets.yaml --root linuxintegrationcoverage --dir linuxintegrationcoverage  --include allCoverage.json'
                     break
                 case PLATFORM.WINDOWS:
                     // TODO When we add to windows, create a cross platform script to do all this, and have package.json reference that.
-                    // rc = bat returnStatus: true, script: 'node node_modules\\istanbul\\lib\\cli.js cover --report html node_modules\\mocha\\bin\\_mocha -- -t 240000 --recursive dist\\test\\unit -R xunit-file'
+                    // rc = bat returnStatus: true, script: 'node node_modules\\istanbul\\lib\\cli.js cover --config overallTestCoverageTargets.yaml --report html node_modules\\mocha\\bin\\_mocha -- -t 240000 --recursive dist\\test\\unit -R xunit-file'
                     // if (rc != 0)
                     // {
                     //     currentBuild.result = 'Unstable'
@@ -131,18 +132,20 @@ def collectTestResults() {
     stage('Collect Test Results') { junit '*xunit.xml,**/test-result*.xml' }
 }
 
-def coverageNotifications(coverageDir) {
-    def coverageExists = fileExists "${coverageDir}/coverage-summary.json"
-    if (coverageExists) {
-        def summary = readJSON file: "${coverageDir}/coverage-summary.json"
-        if (summary && summary['total']) {
-            currentBuild.result = (summary.total.lines ?: 0) < 70 ? 'Unstable' : currentBuild.result
-            currentBuild.result = (summary.total.statements ?: 0) < 70 ? 'Unstable' : currentBuild.result
-            currentBuild.result = (summary.total.functions ?: 0) < 70 ? 'Unstable' : currentBuild.result
-            currentBuild.result = (summary.total.branches ?: 0) < 70 ? 'Unstable' : currentBuild.result
-        }
-    }
+def coverageNotifications(coverageDir, threshold = 70) {
+	def coverageExists = fileExists "${coverageDir}/coverage-summary.json"
+	if (coverageExists) {
+		def summary = readJSON file: "${coverageDir}/coverage-summary.json"
+		if (summary && summary['total']) {
+            currentBuild.result = currentBuild?.result ?: 'SUCCESS'
+            currentBuild.result = (summary?.total?.lines?.pct ?: 0) < threshold ? 'Unstable' : currentBuild.result
+            currentBuild.result = (summary?.total?.statements?.pct ?: 0) < threshold ? 'Unstable' : currentBuild.result
+            currentBuild.result = (summary?.total?.functions?.pct ?: 0) < threshold ? 'Unstable' : currentBuild.result
+            currentBuild.result = (summary?.total?.branches?.pct ?: 0) < threshold ? 'Unstable' : currentBuild.result
+		}
+	}
 }
+
 
 /**
  * post the code coverage results - only done in HTML format since cobertura plugin is not yet supported in pipelines
@@ -156,7 +159,7 @@ def collectCoverageResults() {
         // publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'teamcoverage', reportFiles: 'index.html', reportName: 'Code Coverage by Team (Integration)'])
 
         echo 'Publish Coverage Notifications for entire project'
-        coverageNotifications('./linuxintegrationcoverage')
+        coverageNotifications('./linuxintegrationcoverage', 60)
 
         // by team coverage health
         // def teamSummaryFiles = findFiles glob: 'teamcoverage/**/coverage-summary.json'
