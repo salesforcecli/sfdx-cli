@@ -23,7 +23,12 @@ BIN_PATH="$BIN_DIR/sfdx"
 LIB_PATH="$LIB_DIR/sfdx"
 SRC_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-if [[ ! -w "$BIN_DIR" || ! -w "$LIB_DIR" || ! -w "$BIN_PATH" || "0" != "$( find "$LIB_PATH" ! -perm -u=w | wc -l )" ]]; then
+if [[ \
+  ! -w "$BIN_DIR" || \
+  ! -w "$LIB_DIR" || \
+  ( -e "$BIN_PATH" && ! -w "$BIN_PATH" ) || \
+  ( -e "$LIB_PATH" && "0" != "$( find "$LIB_PATH" ! -perm -u=w | wc -l | awk '{ print $1 }' )" ) \
+  ]]; then
   echo "One or more target directories or files are not writeable; sudo permissions required." 1>&2
   sudo -k # Always prompt for password
   SUDO="sudo"
