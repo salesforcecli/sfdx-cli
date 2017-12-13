@@ -34,11 +34,11 @@ if [[ \
   SUDO="sudo"
 fi
 
-$SUDO rm -rf "$LIB_PATH" "$BIN_PATH"
+$SUDO rm -rf "${LIB_PATH:?}" "${BIN_PATH:?}"
 $SUDO cp -a "$SRC_PATH" "$LIB_PATH"
 $SUDO chmod 755 "$LIB_PATH/bin/sfdx"
 $SUDO ln -sf "$LIB_PATH/bin/sfdx" "$BIN_PATH"
-$SUDO rm -rf "$BIN_HOME/cli" "$BIN_HOME/client"
+$SUDO rm -rf "${BIN_HOME:?}/cli" "${BIN_HOME:?}/client"
 $SUDO mkdir -p "$BIN_HOME"
 
 printf "\e[0msfdx installed to \e[38;5;104m%s\e[0m\n" "$BIN_PATH"

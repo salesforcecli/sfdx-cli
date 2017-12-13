@@ -4,13 +4,7 @@ source ./scripts/_init
 
 set -ex
 
-script "clean/all"
-script "prep"
-script "lint/all"
-script "build/base"
-script "test/all" "$BASE_DIR"
-script "clean/base"
-script "build/verify"
+script "build/prep"
 
 function build_os () {
     setos "$1"

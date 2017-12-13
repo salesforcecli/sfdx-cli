@@ -4,6 +4,13 @@ set -ex
 
 source ./scripts/release/_init
 
+X64_PATH="$RELEASE_DIR/$PKG_NAME-x64.exe"
+X86_PATH="$RELEASE_DIR/$PKG_NAME-x86.exe"
+
+if [[ ! -e "$X64_PATH" || ! -e "$X86_PATH" ]]; then
+    script "build/installers/windows"
+fi
+
 stdout "Releasing windows installers to ${CHANNEL}"
 
 CACHE_DIR="$TMP_DIR/s3"
@@ -11,8 +18,8 @@ CACHE_DIR="$TMP_DIR/s3"
 rm -rf "$CACHE_DIR"
 mkdir -p "$CACHE_DIR"
 
-cp "$RELEASE_DIR/$PKG_NAME-x64.exe" "$CACHE_DIR"
-cp "$RELEASE_DIR/$PKG_NAME-x86.exe" "$CACHE_DIR"
+cp "$X64_PATH" "$CACHE_DIR"
+cp "$X86_PATH" "$CACHE_DIR"
 
 s3upload "$UNVERSIONED_CACHE_CONTROL" \
     "$CACHE_DIR" \

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -ex
+
+source ./scripts/release/_init
+
+set +x
+
+envars=()
+if [[ ! -z "${DEBUG_S3_UPLOAD:-}" ]]; then
+    envars+=("-e" "DEBUG_S3_UPLOAD=$DEBUG_S3_UPLOAD")
+fi
+if [[ ! -z "${WINDOWS_SIGNING_KEY:-}" ]]; then
+    envars+=("-e" "WINDOWS_SIGNING_KEY=$WINDOWS_SIGNING_KEY")
+fi
+if [[ ! -z "${WINDOWS_SIGNING_PASS:-}" ]]; then
+    envars+=("-e" "WINDOWS_SIGNING_PASS=$WINDOWS_SIGNING_PASS")
+fi
+
+docker run \
+    -t \
+    --rm \
+    -i \
+    -v "$ROOT_DIR:/root/sfdx" \
+    -w /root/sfdx \
+    "${envars[@]}" \
+    --entrypoint scripts/release/installers/windows \
+    dickeyxxx/cli-engine-docker-nsis:v3.0.3
