@@ -4,7 +4,7 @@ source ./scripts/_init
 
 set -ex
 
-script "build/prep"
+script "build/common"
 
 function build_os () {
     setos "$1"

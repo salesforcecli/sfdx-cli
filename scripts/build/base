@@ -5,7 +5,7 @@ source ./scripts/_init
 set -ex
 
 if [[ ! -e "$ROOT_DIR/dist" ]]; then
-    script "prep"
+    script "build/dist"
 fi
 
 # Setup workspace

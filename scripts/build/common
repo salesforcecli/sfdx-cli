@@ -5,7 +5,7 @@ source ./scripts/_init
 set -ex
 
 script "clean/all"
-script "prep"
+script "build/dist"
 script "lint/all"
 script "build/base"
 script "test/all" "$BASE_DIR"
