@@ -18,11 +18,13 @@ function build () {
     local xzpid=$!
     tar czf "$TGZ_PATH" "$VERSIONED_BASE"
     wait $xzpid || exit 1
+    cp "$TGZ_PATH" "$VERSIONED_BASE.tar.gz"
+    cp "$TXZ_PATH" "$VERSIONED_BASE.tar.xz"
 
     mv "$VERSIONED_BASE" "$WORKSPACE_DIR"
 
-    sha256=$(shasum -a 256 "$TGZ_PATH" | awk \{'print $1'\})
-    sha256xz=$(shasum -a 256 "$TXZ_PATH" | awk \{'print $1'\})
+    sha256=$( shasum -a 256 "$TGZ_PATH" | awk \{'print $1'\} )
+    sha256xz=$( shasum -a 256 "$TXZ_PATH" | awk \{'print $1'\} )
     cat << EOF > "$RELEASE_DIR/${OS}-${ARCH}"
 {
     "channel": "${CHANNEL}",
