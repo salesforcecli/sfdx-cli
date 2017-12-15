@@ -1,12 +1,6 @@
 import * as _ from 'lodash';
-import * as child_process from 'child_process';
-import * as sinon from 'sinon';
-import * as events from 'events';
 import { Readable, Writable } from 'stream';
-import * as fs from 'fs';
-import * as request from 'request';
 import { TEST_DATA, TEST_DATA_SIGNATURE, CERTIFICATE } from './testCert';
-import { SALESFORCE_CERT_FINGERPRINT } from './codeSignApi';
 import { expect } from 'chai';
 import {
     doInstallationCodeSigningVerification,
@@ -16,70 +10,6 @@ import {
     getNpmRegistry,
     DEFAULT_REGISTRY
 } from './installationVerification';
-
-class NpmEmitter extends events.EventEmitter {
-    private _stdout: Readable;
-    private _stderr: Readable;
-
-    constructor() {
-        super();
-        this._stdout = new Readable({
-            read() { this.push(null); }
-        });
-
-        this._stderr = new Readable({
-            read() { this.push(null); }
-        });
-    }
-
-    public get stdout(): Readable {
-        return this._stdout;
-    }
-
-    public set stdout(value: Readable) {
-        const obj = _.merge(value, { setEncoding(encoding: string) {} });
-        this._stdout = obj;
-    }
-
-    public get stderr(): Readable {
-        return this._stderr;
-    }
-
-    public set stderr(value: Readable) {
-        this._stderr = _.merge(value, { setEncoding(encoding: string) {} });
-    }
-}
-
-class SocketEmitter extends events.EventEmitter {
-    public getPeerCertificate() {
-        return { fingerprint: SALESFORCE_CERT_FINGERPRINT };
-    }
-}
-
-const NPM_META = {
-    data: {
-        dist: {
-            tarball: 'https://example.com/tarball'
-        },
-        sfdx: {
-            publicKeyUrl: 'https://developer.salesforce.com/cert',
-            signatureUrl: 'https://developer.salesforce.com/sig'
-        }
-    }
-};
-
-const getNpmSuccess = (npmEmitter: NpmEmitter) => {
-    return new Readable({
-        read() {
-            this.push(JSON.stringify(NPM_META));
-            this.push(null);
-
-            process.nextTick(() => {
-                npmEmitter.emit('close', 0);
-            });
-        }
-    });
-};
 
 describe('getNpmRegistry', () => {
     const currentRegistry = process.env.SFDX_NPM_REGISTRY;
@@ -167,8 +97,8 @@ describe('InstallationVerification Tests', () => {
         };
 
         const _fs = {
-            readFile(path, cb) {},
-            createWriteStream(path) {
+            readFile() {},
+            createWriteStream() {
                 return new Writable({
                     write(data) {
                         console.log(data);
@@ -241,8 +171,8 @@ describe('InstallationVerification Tests', () => {
         };
 
         const _fs = {
-            readFile(path, cb) {},
-            createWriteStream(path) {
+            readFile() {},
+            createWriteStream() {
                 return new Writable({
                     write(data) {
                         console.log(data);
@@ -316,8 +246,8 @@ describe('InstallationVerification Tests', () => {
         };
 
         const _fs = {
-            readFile(path, cb) {},
-            createWriteStream(path) {
+            readFile() {},
+            createWriteStream() {
                 return new Writable({
                     write(data) {
                         console.log(data);
@@ -367,7 +297,7 @@ describe('InstallationVerification Tests', () => {
         };
 
         const _fs = {
-            readFile(path, cb) {}
+            readFile() {}
         };
 
         const verification = new InstallationVerification(_request, _fs)
@@ -415,7 +345,7 @@ describe('InstallationVerification Tests', () => {
         };
 
         const _fs = {
-            readFile(path, cb) {}
+            readFile() {}
         };
 
         const verification = new InstallationVerification(_request, _fs)
@@ -427,6 +357,45 @@ describe('InstallationVerification Tests', () => {
             })
             .catch((err: Error) => {
                 expect(err).to.have.property('name', 'NotSigned');
+            });
+    });
+
+    it('Npm Meta Request Error', async () => {
+        const _request = (url, cb) => {
+            if (_.includes(url, 'foo.tgz')) {
+                const reader = new Readable({
+                    read() {}
+                });
+                process.nextTick(() => {
+                    reader.emit('end');
+                });
+                return reader;
+            } else if (_.includes(url, 'sig')) {
+                cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
+            } else if (_.includes(url, 'key')) {
+                cb(null, { statusCode: 200 }, CERTIFICATE);
+            } else if (_.endsWith(url, plugin)) {
+                const err = new Error();
+                err.name = 'NPMMetaError';
+                cb(err);
+            } else {
+                throw new Error(`Unexpected test url - ${url}`);
+            }
+        };
+
+        const _fs = {
+            readFile() {}
+        };
+
+        const verification = new InstallationVerification(_request, _fs)
+            .setPluginName(plugin).setCliEngineConfig(config);
+
+        return verification.verify()
+            .then(() => {
+                throw new Error('This shouldn\'t happen. Failure expected');
+            })
+            .catch((err: Error) => {
+                expect(err).to.have.property('name', 'NPMMetaError');
             });
     });
 
@@ -452,7 +421,7 @@ describe('InstallationVerification Tests', () => {
         };
 
         const _fs = {
-            readFile(path, cb) {}
+            readFile() {}
         };
 
         const verification = new InstallationVerification(_request, _fs)
@@ -501,8 +470,8 @@ describe('InstallationVerification Tests', () => {
 
         const ERROR = 'Ok, who brought the dog? - Louis Tully';
         const _fs = {
-            readFile(path, cb) {},
-            createWriteStream(path) {
+            readFile() {},
+            createWriteStream() {
                 return new Writable({
                     write(data) {
                         console.log(data);
@@ -561,8 +530,8 @@ describe('InstallationVerification Tests', () => {
         };
 
         const _fs = {
-            readFile(path, cb) {},
-            createWriteStream(path) {
+            readFile() {},
+            createWriteStream() {
                 return new Writable({
                     write(data) {
                         console.log(data);
@@ -596,7 +565,7 @@ describe('InstallationVerification Tests', () => {
     describe('isWhiteListed', () => {
         it('steel thread', async () => {
             const TEST_VALUE = 'FOO';
-            let expectedPath;
+            let expectedPath = '';
             const _fs = {
                 readFile(path, cb) {
                     expectedPath = path;
