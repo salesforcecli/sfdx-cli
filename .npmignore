@@ -123,3 +123,4 @@ xunit.xml
 /scripts/
 checkstyle.xml
 TODO.md
+unitTestCoverageTargets.yaml

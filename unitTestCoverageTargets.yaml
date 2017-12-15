@@ -1,0 +1,14 @@
+reporting:
+    watermarks:
+        statements: 
+          - 59.99999
+          - 60
+        lines: 
+          - 59.99999
+          - 60
+        functions: 
+          - 59.99999
+          - 60
+        branches: 
+          - 59.99999
+          - 60
