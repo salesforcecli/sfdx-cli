@@ -64,14 +64,16 @@ The following flags are supported by the `bin/run` script, and can be combined a
 
 The following flags are supported by the `bin/run.sh` script, which wraps the `bin/run` script referenced in the rest of this document, and can be combined as desired.  They are stripped from the args passed to the CLI application itself.
 
-* *--dev-suspend*: Starts the `node` binary with the `--inspect-brk` flag to allow a remote debugger to attach before running.
-* *--dev-profile*: Starts the `node` binary with the `--prof` flag to allow a heap dump to be generated after running.
+* *--dev-suspend*: Starts the `node` binary with the `--inspect-brk` flag to allow a remote debugger to attach before running.  _Does not work with npm-based installs.  For this case, you can set the environment variable `NODE_OPTIONS='--inspect-brk'`._
+* To set other Node executable flags, the use of the `NODE_OPTIONS` environment variable is required.
 
 ### Developer notes
 
 * To manually install a specific version of the `salesforcedx` plugin from an internal npm registry, you can set `SFDX_NPM_REGISTRY` with the internal URL (e.g. `registry "http://10.252.156.164:4880"`).
 * If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `yarn run watch`.
 
-## Releasing
+## Build and release
 
-The CLI can be built and released to S3 on various channels by using the [Publish CLI](http://10.252.156.172:8080/job/Publish_CLI/) job available on Jenkins.
+The CLI can be built and released to S3 on various channels by using the [jobs](http://10.252.156.172:8080/job) available on Jenkins.
+
+For more information about how to locally run or modify the build and release scripts, see the [SCRIPTS](SCRIPTS.md) document.
