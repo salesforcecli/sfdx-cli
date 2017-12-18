@@ -65,7 +65,16 @@ function ensure_apex_test() {
 function ensure_templates_md() {
     template_readme="$BASE_DIR/node_modules/force-language-services/dist/project/templates/README.md"
     if [ ! -e "$template_readme" ]; then
-        stderr "$src_dir is missing! Was the *.md clean too aggressive?"
+        stderr "$template_readme is missing! Was the *.md clean too aggressive?"
+        exit 1
+    fi
+}
+
+# Yarnclean was removing .*ignore files, but FLS introduced .forceignore in its templates dir -- double check their preservation
+function ensure_templates_forceignore() {
+    template_forceignore="$BASE_DIR/node_modules/force-language-services/dist/project/templates/.forceignore"
+    if [ ! -e "$template_forceignore" ]; then
+        stderr "$template_forceignore is missing! Was yarn autoclean too aggressive?"
         exit 1
     fi
 }
@@ -110,5 +119,6 @@ ensure_no_heroku_cli_util_nyc
 scan_path_lengths
 ensure_apex_test
 ensure_templates_md
+ensure_templates_forceignore
 ensure_no_dist_tests_or_maps
 ensure_no_unexpected_files
