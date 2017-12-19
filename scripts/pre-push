@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
-source ./scripts/_init
-
-script "lint/all"
+if [[ -e "./scripts/_init" ]]; then
+    source ./scripts/_init
+    script "lint/all"
+    script "test/unit"
+    script "clean/test"
+fi

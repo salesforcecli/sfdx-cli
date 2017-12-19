@@ -29,25 +29,26 @@ The most interesting scripts can be run using
 * `yarn clean`: Both `yarn clean-dist` and `yarn clean-test`
 * `yarn clean-build`: Removes `node_modules`, `tmp`, and `release` dirs
 * `yarn clean-all`: Both `yarn clean` and `yarn clean-build`
+* `yarn clean-dist`: Removes the `dist` dir
 * `yarn clean-test`: Removes all artifacts produced by running tests
-* `compile`: Runs the TypeScript compilation of `src` to `dist`
-* `coverage-report`: Generates a UT coverage report
-* `lint`: Runs `eslint` and `tslint` on the `src` dir
-* `lint-all`: Lints all the things, including scripts
-* `lint-with-style`: Runs `eslint` and `tslint` with checkstyle enabled on the `src` dir
-* `prepare`: Same as `yarn compile`
-* `release`: Same as `yarn release-standalone`
-* `release-debug`: Same as `yarn release-standalone`, but with fake S3 uploads
-* `release-mac`: Builds the macOS installer executable and uploads to S3
-* `release-mac-debug`: Same as `yarn release-mac`, but with fake S3 uploads
-* `release-standalone`: Builds all standalone installer tarballs and uploads to S3
-* `release-standalone-debug`: Same as `yarn release-standalone`, but with fake S3 uploads
-* `release-windows`: Builds all Windows installer executables and uploads to S3
-* `release-windows-debug`: Same as `yarn release-windows`, but with fake S3 uploads
-* `test`: Runs unit tests
-* `typings`: Runs typings tests
-* `unit`: Runs unit tests with coverage
-* `watch`: Runs the TypeScript compiler in watch mode
+* `yarn compile`: Runs the TypeScript compilation of `src` to `dist`
+* `yarn coverage-report`: Generates a UT coverage report
+* `yarn lint`: Runs `eslint` and `tslint` on the `src` dir
+* `yarn lint-all`: Lints all the things, including scripts
+* `yarn lint-with-style`: Runs `eslint` and `tslint` with checkstyle enabled on the `src` dir
+* `yarn prepare`: Same as `yarn compile`
+* `yarn release`: Same as `yarn release-standalone`
+* `yarn release-debug`: Same as `yarn release-standalone`, but with fake S3 uploads
+* `yarn release-mac`: Builds the macOS installer executable and uploads to S3
+* `yarn release-mac-debug`: Same as `yarn release-mac`, but with fake S3 uploads
+* `yarn release-standalone`: Builds all standalone installer tarballs and uploads to S3
+* `yarn release-standalone-debug`: Same as `yarn release-standalone`, but with fake S3 uploads
+* `yarn release-windows`: Builds all Windows installer executables and uploads to S3
+* `yarn release-windows-debug`: Same as `yarn release-windows`, but with fake S3 uploads
+* `yarn test`: Runs unit tests
+* `yarn typings`: Runs typings tests
+* `yarn unit`: Runs unit tests with coverage
+* `yarn watch`: Runs the TypeScript compiler in watch mode
 
 ## Optional git pre-push hook
 
@@ -59,9 +60,12 @@ In order to run all scripts locally on macOS, you'll need the following:
 
 * Xcode
 * p7zip (`brew install p7zip`)
+* [optional] shellcheck (`brew install shellcheck`)
 * [optional] [Docker for Mac](https://www.docker.com/docker-mac)
 * [optional] osslsigncode (`brew install osslsigncode`)
 * [optional] makensis (`brew install makensis`)
+
+`shellcheck` is not strictly required, but is strongly encouraged, especially if you are going to modify the `bash` scripts.
 
 If you install Docker, you can skip `osslsigncode` and `makensis`, or vice versa.  The former uses Docker to avoid the requirement of the latter two.  The Docker build runs substantially slower on macOS than running the scripts directly, though, so if you need to run the Windows installer build frequently it makes sense to skip Docker and install the other dependencies.
 

@@ -1,7 +1,12 @@
 // Note: Leave this file as ES5 js for compatibility with earlier Node.js versions
-/* eslint-disable */
+/* eslint-disable no-console, no-process-exit, prefer-template */
 
 'use strict';
+
+const path = require('path');
+
+const root = path.join(__dirname, '..');
+const pjson = require(path.join(root, 'package.json'));
 
 /**
  * Determines whether or not a tag string is a semantic version.
@@ -50,9 +55,6 @@ module.exports.compareVersions = compareVersions;
  * Checks the current Node version for compatibility before launching the CLI.
  */
 function checkNodeVersion() {
-    const path = require('path');
-    const root = path.join(__dirname, '..');
-    const pjson = require(path.join(root, 'package.json'));
     const currentVersion = process.versions.node;
     const requiredVersion = pjson.engines.node.slice(2); // chop '>=' prefix
 
