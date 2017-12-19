@@ -7,6 +7,12 @@ export ARCH=x64
 
 source ./scripts/_init
 
+if [[ ! -e "$RELEASE_DIR/sfdx-cli-v${VERSION}-darwin-x64.tar.gz" ]]; then
+    script "build/common"
+    script "build/workspace"
+    script "build/tarballs"
+fi
+
 extra_args=()
 if [[ ! -z "${OSX_KEYCHAIN:-}" ]]; then
     extra_args+=(
