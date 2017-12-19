@@ -52,7 +52,7 @@ The most interesting scripts can be run using
 
 ## Optional git pre-push hook
 
-It is recommended to copy the git `pre-push` hook found in `scripts/pre-push` to `.git/hooks/pre-push`.  This script will run `scripts/lint/all`, which can help detect linting errors earlier in development than when you go to create PR.
+It is recommended to copy the git `pre-push` hook found in `scripts/pre-push` to `.git/hooks/pre-push`.  This script will run all lint and unit-test-with-coverage tasks, which can help detect errors earlier in development than when you go to create a PR.
 
 ## Local build requirements
 
