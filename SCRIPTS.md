@@ -18,7 +18,7 @@ Build and release of the CLI platform and standalone installers (which double as
 
 ## Shortcuts for invoking build and/or release scripts
 
-The most interesting scripts can be run using
+The most useful scripts can be run from `yarn`:
 
 * `yarn build`: Alias for `yarn build-standalone`
 * `yarn build-mac`: Builds the macOS installer executable `sfdx-cli.pkg`
