@@ -22,8 +22,12 @@ function s3upload () {
     fi
 
     extra_args=()
-    if [[ ! -z "${S3_ENDPOINT_URL:-}" ]]; then
-        extra_args+=("--endpoint-url" "$S3_ENDPOINT_URL")
+    if [[ ! -z "${S3_ENDPOINT:-}" ]]; then
+        extra_args+=("--endpoint-url" "$S3_ENDPOINT")
+    fi
+
+    if [[ ! -z "${S3_PROFILE:-}" ]]; then
+        extra_args+=("$S3_PROFILE")
     fi
 
     if [[ "${DEBUG_S3_UPLOAD:-}" == "true" ]]; then

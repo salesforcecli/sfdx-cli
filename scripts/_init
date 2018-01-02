@@ -66,6 +66,37 @@ S3_HOST="${S3_HOST:-"$DEFAULT_S3_HOST"}"
 S3_HOST_SCHEME="${S3_HOST_SCHEME:-"https"}"
 S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST/$S3_CHANNEL_SUBFOLDER"
 
+function awsConfigureSetFromEnvVar() {
+    if [ $# -ne 3 ]; then
+        echo "assertion expected 3 arguments but received $#"
+        exit 1
+    fi
+
+    if [[ ! -v "$1" ]] || [[ $(expr length "${!1}") -eq 0 ]]; then
+        echo "Missing Env Variable for $1"
+        exit 1
+    fi
+
+    aws configure set $2 ${!1} --profile $3
+}
+
+if [[ ! -v S3_ENDPOINT ]] || [[ ${#S3_ENDPOINT} -eq 0 ]]; then
+    echo "S3_ENDPOINT is not specified. Specify an s3 host url or \"AWS\"".
+fi
+
+if [[ ! ${S3_ENDPOINT} -eq "AWS" ]]; then
+    S3_ENDPOINT="--endpoint-url ${S3_ENDPOINT}"
+    S3_PROFILE_NAME="sfdx"
+    S3_PROFILE="--profile sfdx"
+    awsConfigureSetFromEnvVar "S3_REGION" "region" $S3_PROFILE_NAME
+    awsConfigureSetFromEnvVar "S3_ACCESS_KEY" "aws_access_key_id" $S3_PROFILE_NAME
+    awsConfigureSetFromEnvVar "S3_SECRET" "aws_secret_access_key" $S3_PROFILE_NAME
+    aws configure list $S3_PROFILE
+else
+    S3_ENDPOINT=""
+    S3_PROFILE=""
+fi
+
 # S3 cache-control maxage constants
 if [[ "$CHANNEL" == "stable" ]]; then
     VERSIONED_CACHE_CONTROL=86400     # 1 day
