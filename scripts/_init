@@ -82,11 +82,12 @@ function awsConfigureSetFromEnvVar() {
         exit 1
     fi
 
-    echo aws configure set $2 ${!1} --profile $3
+    aws configure set $2 ${!1} --profile $3
 }
 
 if [ -z S3_ENDPOINT ] || [ ${#S3_ENDPOINT} -eq 0 ]; then
     echo "S3_ENDPOINT is not specified. Specify an s3 host url or \"AWS\"".
+    exit 1
 fi
 
 if [ ${S3_ENDPOINT} !=  "AWS" ]; then
