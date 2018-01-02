@@ -4230,9 +4230,9 @@ safe-json-stringify@~1:
   version "1.0.4"
   resolved "http://10.252.156.164:4880/safe-json-stringify/-/safe-json-stringify-1.0.4.tgz#81a098f447e4bbc3ff3312a243521bc060ef5911"
 
-salesforce-alm@41.11.0:
-  version "41.11.0"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-41.11.0.tgz#5aa563d38fd04e27149c9d7e8719f45bd331354f"
+salesforce-alm@41.12.0:
+  version "41.12.0"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-41.12.0.tgz#4c21bf5c23ded2514bd8ba151f37df40ec4b28a5"
   dependencies:
     adm-zip "0.4.7"
     archiver "1.0.1"
@@ -4315,12 +4315,12 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@41.12.0:
-  version "41.12.0"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-41.12.0.tgz#bfe71e4e427173af4460c20eba863110dcc45f3e"
+salesforcedx@41.13.0:
+  version "41.13.0"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-41.13.0.tgz#b6e7aa3e07489c7e3e2534be7f05629acb4221b9"
   dependencies:
     force-language-services "41.9.0"
-    salesforce-alm "41.11.0"
+    salesforce-alm "41.12.0"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.x, samsam@^1.1.3:
