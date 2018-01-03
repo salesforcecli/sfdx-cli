@@ -4,6 +4,9 @@ source ./scripts/_init
 
 set -ex
 
+yarn config set registry $NPM_REGISTRY
+npm config set registry $NPM_REGISTRY
+
 yarn install --pure-lockfile --non-interactive
 
 # Build cli-engine only if it is a git checkout
