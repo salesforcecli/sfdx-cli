@@ -87,13 +87,12 @@ function awsConfigureSetFromEnvVar() {
 
 S3_ENDPOINT="${S3_ENDPOINT:-AWS}"
 
-set +e
-CURRENT_S3_REGION="$(aws configure get region --profile $S3_PROFILE_NAME)"
-set -e
+
+CURRENT_S3_REGION="$(aws configure get region --profile $S3_PROFILE_NAME;exit 0)"
 
 if [ $S3_ENDPOINT != "AWS" ]; then
 
-    S3_PROFILE="sfdx"
+    S3_PROFILE="$S3_PROFILE_NAME"
 
     if [ "$CURRENT_S3_REGION" != "${S3_REGION}" ]; then
 
