@@ -4,9 +4,10 @@ source ./scripts/_init
 
 set -ex
 
-yarn config set registry $NPM_REGISTRY
-npm config set registry $NPM_REGISTRY
-
+if [[ ! -z "${S3_PROFILE:-}" ]]; then
+    yarn config set registry $NPM_REGISTRY
+    npm config set registry $NPM_REGISTRY
+fi
 yarn install --pure-lockfile --non-interactive
 
 # Build cli-engine only if it is a git checkout

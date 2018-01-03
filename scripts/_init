@@ -85,15 +85,7 @@ function awsConfigureSetFromEnvVar() {
     aws configure set $2 ${!1} --profile $3
 }
 
-if [[ -z "${S3_ENDPOINT:-}" ]]; then
-    echo "S3_ENDPOINT is not defined. Specify an S3 endpoint url or 'AWS'"
-    exit 1
-fi
-
-if [[ -z "${NPM_REGISTRY:-}" ]]; then
-    echo "NPM_REGISTRY is not defined. Specify and npm registry url"
-    exit 1
-fi
+S3_ENDPOINT="${S3_ENDPOINT:-AWS}"
 
 set +e
 CURRENT_S3_REGION="$(aws configure get region --profile $S3_PROFILE_NAME)"
