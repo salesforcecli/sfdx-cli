@@ -34,7 +34,9 @@
       "prerun": [
         "./dist/hooks/logAnalytics.js"
       ],
-      "update": []
+      "update": [
+        "./dist/experiments/lazyModules/updateHook.js"
+      ]
     },
     "plugins": [
       "salesforcedx"
