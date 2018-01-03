@@ -23,8 +23,8 @@ function build () {
 
     mv "$VERSIONED_BASE" "$WORKSPACE_DIR"
 
-    sha256=$( shasum -a 256 "$TGZ_PATH" | awk \{'print $1'\} )
-    sha256xz=$( shasum -a 256 "$TXZ_PATH" | awk \{'print $1'\} )
+    sha256=$(sha "$TGZ_PATH")
+    sha256xz=$(sha "$TXZ_PATH")
     cat << EOF > "$RELEASE_DIR/${OS}-${ARCH}"
 {
     "channel": "${CHANNEL}",

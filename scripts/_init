@@ -34,6 +34,21 @@ function script () {
     "$ROOT_DIR/scripts/$name" "$@"
 }
 
+function sha() {
+    if [[ -x "$(command -v shasum)" ]]; then
+        digest=$(shasum -a 256 < "$1" | awk '{print $1}')
+    elif [[ -x "$(command -v sha256sum)" ]]; then
+        digest=$(sha256sum < "$1" | awk '{print $1}')
+    elif [[ -x "$(command -v openssl)" ]]; then
+        # use sed to portably strip the "(stdin)= " prefix present on some systems
+        digest=$(openssl dgst -sha256 < "$1" | sed 's/^.* //')
+    else
+        stderr "No command found to generate sha256 sums"
+        exit 1
+    fi
+    echo "$digest"
+}
+
 # Set channel and version vars
 CHANNEL=$(script "_vars/channel")
 VERSION=$(script "_vars/version")
