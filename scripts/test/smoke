@@ -6,9 +6,6 @@ set -ex
 
 export SFDX_AUTOUPDATE_DISABLE=true
 
-export HTTP_PROXY=$GIT_PUBLIC_PROXY
-export HTTPS_PROXY=$GIT_PUBLIC_PROXY
-
 if [ ! -d "$TMP_DIR/base" ]; then
     ./scripts/build/base
 fi
