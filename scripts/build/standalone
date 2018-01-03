@@ -40,8 +40,8 @@ for OS in "${OS_TARGETS[@]}"; do
     for ARCH in "${ARCHS[@]}"; do
         setarch "$ARCH"
         builds+=("builds.${OS}-${ARCH}.url=${S3_HOST_BASE_URL}/${PKG_NAME}-v${VERSION}-${OS}-${ARCH}.tar.xz")
-        builds+=("builds.${OS}-${ARCH}.sha256=$( shasum -a 256 "${TXZ_PATH}" | awk '{print $1}' )")
-        builds+=("builds.${OS}-${ARCH}.bytes=$( wc -c < "${TXZ_PATH}" | awk '{print $1}' )")
+        builds+=("builds.${OS}-${ARCH}.sha256=$(sha "${TXZ_PATH}")")
+        builds+=("builds.${OS}-${ARCH}.bytes=$(wc -c < "${TXZ_PATH}" | awk '{print $1}')")
     done
 done
 script "build/manifest.js" version="$VERSION" channel="$CHANNEL" "${builds[@]}" > "$RELEASE_DIR/manifest.json"
