@@ -31,11 +31,14 @@ if [ "${OS}" == "windows" ]; then
     node_base="node-v${NODE_VERSION}-win-${ARCH}"
     if [ ! -f "$NODE_CACHE_DIR/${node_base}" ]; then
         stdout "fetching ${node_base}"
-        url="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-win-${ARCH}.7z"
-        curl -fSsLo "$NODE_DIR/${node_base}.7z" "${url}"
+        # url="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-win-${ARCH}.7z"
+        url="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-win-${ARCH}.zip"
+        # curl -fSsLo "$NODE_DIR/${node_base}.7z" "${url}"
+        curl -fSsLo "$NODE_DIR/${node_base}.zip" "${url}"
         (
             cd "$NODE_DIR"
-            7z x -bd -y "$NODE_DIR/${node_base}.7z" > /dev/null
+            # 7z x -bd -y "$NODE_DIR/${node_base}.7z" > /dev/null
+            unzip "$NODE_DIR/${node_base}.zip" > /dev/null
             mv "${node_base}/node.exe" "$NODE_CACHE_DIR/${node_base}"
         )
     fi

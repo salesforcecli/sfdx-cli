@@ -10,7 +10,7 @@ function build () {
     rm -rf "$WORKSPACE_DIR"
     cp -r "$BASE_DIR" "$WORKSPACE_DIR"
 
-    "$ROOT_DIR/scripts/build/_fetch_node_binary" "$WORKSPACE_DIR/bin"
+    "$ROOT_DIR/scripts/build/node" "$WORKSPACE_DIR/bin"
 
     # Add bin runner and optional standalone installer
     if [ "$OS" == "windows" ]; then
