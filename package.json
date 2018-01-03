@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "SalesforceDX CLI",
-  "version": "6.0.27-3",
+  "version": "6.0.27-8",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
