@@ -77,12 +77,12 @@ function awsConfigureSetFromEnvVar() {
         exit 1
     fi
 
-    if [ -z ${1} ] || [[ $(len "${!1}") -eq 0 ]]; then
+    if [ -z "${1}" ] || [[ $(len "${!1}") -eq 0 ]]; then
         echo "Missing Env Variable for $1"
         exit 1
     fi
 
-    aws configure set $2 ${!1} --profile $3
+    aws configure set "$2" "${!1}" --profile "$3"
 }
 
 S3_ENDPOINT="${S3_ENDPOINT:-AWS}"
@@ -90,7 +90,7 @@ S3_ENDPOINT="${S3_ENDPOINT:-AWS}"
 
 CURRENT_S3_REGION="$(aws configure get region --profile $S3_PROFILE_NAME;exit 0)"
 
-if [ $S3_ENDPOINT != "AWS" ]; then
+if [ "$S3_ENDPOINT" != "AWS" ]; then
 
     S3_PROFILE="$S3_PROFILE_NAME"
 
