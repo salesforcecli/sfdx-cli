@@ -36,5 +36,5 @@ if [[ ! -f "${BASE_DIR}/node_modules/cli-engine/lib/cli.js" ]]; then
 fi
 
 # Copy bin/run to bin/sfdx.js in the build, and inject build vars
-sed "s/\/\* @OVERRIDES@ \*\//version:'${VERSION}', channel:'${CHANNEL}'/" \
+sed "s/\\/\\* @OVERRIDES@ \\*\\//version:'${VERSION}', channel:'${CHANNEL}'/" \
     "$ROOT_DIR/bin/run" > "${BASE_DIR}/bin/$BIN_NAME.js"

@@ -8,7 +8,7 @@ set -ex
 
 function ensure_no_webdriverio_test() {
     test_dir="$BASE_DIR/node_modules/webdriverio/test"
-    if [ -e "$test_dir" ]; then
+    if [[ -e "$test_dir" ]]; then
         stderr "$test_dir is present! Was the clean not aggressive enough?"
         exit 1
     fi
@@ -16,7 +16,7 @@ function ensure_no_webdriverio_test() {
 
 function ensure_no_heroku_cli_util_nyc() {
     test_dir="$BASE_DIR/node_modules/force-language-services/node_modules/salesforce-alm/node_modules/heroku-cli-util/.nyc_output"
-    if [ -e "$test_dir" ]; then
+    if [[ -e "$test_dir" ]]; then
         stderr "$test_dir is present! Was the clean not aggressive enough?"
         exit 1
     fi
@@ -39,12 +39,12 @@ function scan_path_lengths() {
     maxlen=140
     cd "$BASE_DIR"
     warntest=$(find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) print "fail" }' | uniq)
-    if [ "$warntest" == "fail" ]; then
+    if [[ "$warntest" == "fail" ]]; then
         stdout "WARN: Some paths could result in update errors for Windows users with usernames greater than 48 characters!"
         find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) printf("%-3s  %s\n", length($0), $0) }'
     fi
     maxtest=$(find node_modules | awk -v maxlen="$maxlen" '{ if (length($0) > maxlen) print "fail" }' | uniq)
-    if [ "$maxtest" == "fail" ]; then
+    if [[ "$maxtest" == "fail" ]]; then
         stderr "ERROR: Unacceptably long paths detected in base build!"
         find node_modules | awk -v maxlen="$maxlen" '{ if (length($0) > maxlen) printf("%-3s  %s\n", length($0), $0) }'
         exit 1
@@ -55,7 +55,7 @@ function scan_path_lengths() {
 # We've accidentally over-cleaned the force:apex:test code in the past, so let's make sure we don't repeat that mistake
 function ensure_apex_test() {
     src_dir="$BASE_DIR/node_modules/salesforce-alm/dist/lib/test"
-    if [ ! -d "$src_dir" ]; then
+    if [[ ! -d "$src_dir" ]]; then
         stderr "$src_dir is missing! Was the test clean too aggressive?"
         exit 1
     fi
@@ -64,7 +64,7 @@ function ensure_apex_test() {
 # We delete *.md files from node_modules, except in `templates` dirs -- double check their preservation
 function ensure_templates_md() {
     template_readme="$BASE_DIR/node_modules/force-language-services/dist/project/templates/README.md"
-    if [ ! -e "$template_readme" ]; then
+    if [[ ! -e "$template_readme" ]]; then
         stderr "$template_readme is missing! Was the *.md clean too aggressive?"
         exit 1
     fi
@@ -73,7 +73,7 @@ function ensure_templates_md() {
 # Yarnclean was removing .*ignore files, but FLS introduced .forceignore in its templates dir -- double check their preservation
 function ensure_templates_forceignore() {
     template_forceignore="$BASE_DIR/node_modules/force-language-services/dist/project/templates/.forceignore"
-    if [ ! -e "$template_forceignore" ]; then
+    if [[ ! -e "$template_forceignore" ]]; then
         stderr "$template_forceignore is missing! Was yarn autoclean too aggressive?"
         exit 1
     fi

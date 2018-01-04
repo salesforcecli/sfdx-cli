@@ -4,9 +4,7 @@ source ./scripts/_init
 
 set -ex
 
-export SFDX_AUTOUPDATE_DISABLE=true
-
-if [ ! -d "$TMP_DIR/base" ]; then
+if [[ ! -d "$TMP_DIR/base" ]]; then
     ./scripts/build/base
 fi
 
@@ -14,10 +12,13 @@ function sfdx () {
     node "$TMP_DIR/base/bin/$BIN_NAME.js" "$@"
 }
 
-# enter tmp directory
+# Enter tmp directory
 cd "$(mktemp -d)"
 
-# run basic smoke tests
+# Disable the background autoupdater when smoke testing
+export SFDX_AUTOUPDATE_DISABLE=true
+
+# Run basic smoke tests
 sfdx --dev-debug
 sfdx version
 sfdx help

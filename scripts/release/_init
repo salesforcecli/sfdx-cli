@@ -4,6 +4,16 @@
 
 source ./scripts/_init
 
+AWS_CLI=$(command -v aws)
+
+function aws() {
+    if [[ "${SKIP_AWS:-}" == "true" || ! -x "$AWS_CLI" ]]; then
+        stdout "[SKIP] aws" "$@"
+        return 0
+    fi
+    "$AWS_CLI" "$@"
+}
+
 function s3upload () {
     maxage="$1"; shift
     local="$1";  shift
@@ -30,8 +40,8 @@ function s3upload () {
         extra_args+=("--profile $S3_PROFILE")
     fi
 
-    if [[ "${DEBUG_S3_UPLOAD:-}" == "true" ]]; then
-        echo "[SKIP] S3 upload from '$local' to '$remote'..."
+    if [[ "${SKIP_AWS:-}" == "true" ]]; then
+        stdout "[SKIP] S3 upload from '$local' to '$remote'..."
         find "$local"
         return 0
     fi
@@ -39,4 +49,28 @@ function s3upload () {
     aws s3 cp ${extra_args[@]+${extra_args[@]}} --cache-control max-age="$maxage" "$local" "$remote" "$@"
 }
 
+function awsConfigureSetFromEnvVar() {
+    if [[ $# -ne 3 ]]; then
+        stderr "Assertion expected 3 arguments but received $#"
+        exit 1
+    fi
 
+    if [[ -z "${1}" || $(len "${!1}") -eq 0 ]]; then
+        stderr "Missing env variable for $1"
+        exit 1
+    fi
+
+    aws configure set "$2" "${!1}" --profile "$3"
+}
+
+CURRENT_S3_REGION="$(aws configure get region --profile "$S3_PROFILE_NAME";exit 0)"
+
+if [[ "$S3_ENDPOINT" != "AWS" ]]; then
+    S3_PROFILE="$S3_PROFILE_NAME"
+    if [[ "$SKIP_AWS" != "true" && "$CURRENT_S3_REGION" != "${S3_REGION}" ]]; then
+        awsConfigureSetFromEnvVar "S3_REGION" "region" "$S3_PROFILE"
+        awsConfigureSetFromEnvVar "S3_ACCESS_KEY" "aws_access_key_id" "$S3_PROFILE"
+        awsConfigureSetFromEnvVar "S3_SECRET" "aws_secret_access_key" "$S3_PROFILE"
+        aws configure list "$S3_PROFILE"
+    fi
+fi
