@@ -102,7 +102,7 @@
     "clean-dist": "bash scripts/clean/dist",
     "clean-test": "bash scripts/clean/test",
     "compile": "bash scripts/build/compile",
-    "coverage-report": "bash scripts/test/coverage",
+    "coverage-report": "./node_modules/istanbul/lib/cli.js report --report html json-summary",
     "lint": "bash scripts/lint/sources",
     "lint-all": "bash scripts/lint/all",
     "lint-with-style": "bash scripts/lint/sources_with_style",
