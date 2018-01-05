@@ -55,22 +55,41 @@ function awsConfigureSetFromEnvVar() {
         exit 1
     fi
 
-    if [[ -z "${1}" || $(len "${!1}") -eq 0 ]]; then
-        stderr "Missing env variable for $1"
+    if [[ -z "${1}" || -z "${!1-}" || $(len "${!1}") -eq 0 ]]; then
+        stderr "Missing env variable for ${1}"
         exit 1
     fi
 
     aws configure set "$2" "${!1}" --profile "$3"
 }
 
-CURRENT_S3_REGION="$(aws configure get region --profile "$S3_PROFILE_NAME";exit 0)"
+# S3 cache-control maxage constants
+if [[ "$CHANNEL" == "stable" ]]; then
+    VERSIONED_CACHE_CONTROL=86400     # 1 day
+    UNVERSIONED_CACHE_CONTROL=300     # 5 minutes
+    LATEST_VERSION_CACHE_CONTROL=60   # 1 minute
+else
+    VERSIONED_CACHE_CONTROL=0
+    UNVERSIONED_CACHE_CONTROL=0
+    LATEST_VERSION_CACHE_CONTROL=0
+fi
 
-if [[ "$S3_ENDPOINT" != "AWS" ]]; then
+# Set up an aws profile if we are targeting a specific endpoint
+if [[ "${SKIP_AWS:-}" != "true" && "$S3_ENDPOINT" != "AWS" ]]; then
     S3_PROFILE="$S3_PROFILE_NAME"
-    if [[ "$SKIP_AWS" != "true" && "$CURRENT_S3_REGION" != "${S3_REGION}" ]]; then
-        awsConfigureSetFromEnvVar "S3_REGION" "region" "$S3_PROFILE"
-        awsConfigureSetFromEnvVar "S3_ACCESS_KEY" "aws_access_key_id" "$S3_PROFILE"
-        awsConfigureSetFromEnvVar "S3_SECRET" "aws_secret_access_key" "$S3_PROFILE"
-        aws configure list "$S3_PROFILE"
+
+    # Does the profile exist?
+    aws configure get aws_access_key_id --profile $S3_PROFILE_NAME &> /dev/null || HAS_PROFILE="false"
+
+    if [[ "${HAS_PROFILE:-}" == "false" ]]; then
+        stdout "Setting up the AWS profile for $S3_ENDPOINT"
+
+        # Local minio doesn't have a region
+        if [[ ! -z "${S3_REGION:-}" ]]; then
+            awsConfigureSetFromEnvVar "S3_REGION" "region" $S3_PROFILE_NAME
+        fi
+        awsConfigureSetFromEnvVar "S3_ACCESS_KEY" "aws_access_key_id" $S3_PROFILE_NAME
+        awsConfigureSetFromEnvVar "S3_SECRET" "aws_secret_access_key" $S3_PROFILE_NAME
+        aws configure list --profile $S3_PROFILE_NAME
     fi
 fi

@@ -175,7 +175,15 @@ You can use the `SKIP_AWS=true` envar when running release scripts to disable AW
 
 #### Using an alternate S3 endpoint
 
-_TODO_
+By default, the release scripts will point to aws using the `cli-engine.s3` property in the [package.json](package.json), which uses the default profile in the `~/.aws` path or the `S3_ACCESS_KEY` and `S3_SECRET` envars for credentials.
+
+Deploying the release artifacts to a local server is especially useful when making changes to the release scripts, or if you want to share modified installers before pushing changes. Assuming you have something like a [minio server](https://www.minio.io/), you can set the `S3_ENDPOINT` envar to point to your local server. If you don't have an aws *sfdx* profile, then you must first [create one](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) **OR** also set the `S3_ACCESS_KEY` and `S3_SECRET` and the release script will set up the aws *sfdx* profile for you.
+
+`S3_ENDPOINT=http://tdvornik-wsm5.internal.salesforce.com:9000/ S3_ACCESS_KEY=<key> S3_SECRET=<secret> yarn release`
+
+***Note:*** After the first time, you no longer need to include the `S3_ACCESS_KEY` or `S3_SECRET` when using the `S3_ENDPOINT_URL` envar, unless you want to update the profile.
+
+***Note:*** If you have a different bucket set up on your local server, you can set the `S3_BUCKET` envar.
 
 ## Release
 

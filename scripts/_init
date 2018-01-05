@@ -10,7 +10,7 @@ set -o pipefail
 set -o nounset
 # set -o xtrace
 
-PATH="$PATH:node_modules/.bin"
+PATH="node_modules/.bin:$PATH"
 
 # Set magic root dir from current file
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)"
@@ -72,7 +72,6 @@ PKG_NAME=$(node -p "require('$ROOT_DIR/package.json').name")
 BIN_NAME=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].bin")
 
 # S3 configuration
-
 DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.folder")
 S3_FOLDER="${S3_FOLDER:-"$DEFAULT_S3_FOLDER"}"
 S3_CHANNEL_SUBFOLDER="$PKG_NAME/channels/$CHANNEL"
@@ -86,17 +85,6 @@ S3_HOST_SCHEME="${S3_HOST_SCHEME:-"https"}"
 S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST/$S3_CHANNEL_SUBFOLDER"
 S3_PROFILE_NAME="sfdx"
 S3_ENDPOINT="${S3_ENDPOINT:-AWS}"
-
-# S3 cache-control maxage constants
-if [[ "$CHANNEL" == "stable" ]]; then
-    VERSIONED_CACHE_CONTROL=86400     # 1 day
-    UNVERSIONED_CACHE_CONTROL=300     # 5 minutes
-    LATEST_VERSION_CACHE_CONTROL=60   # 1 minute
-else
-    VERSIONED_CACHE_CONTROL=0
-    UNVERSIONED_CACHE_CONTROL=0
-    LATEST_VERSION_CACHE_CONTROL=0
-fi
 
 # Set OS targets
 OS_TARGETS=(
