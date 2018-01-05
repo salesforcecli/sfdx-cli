@@ -3,10 +3,16 @@
 if [[ "${CHANNEL:-}" != "" ]]; then
     echo "$CHANNEL"
 else
-    pjson_channel="$(node -p "try{require('./package.json').cli.channel}catch(e){}")"
-    if [[ "$pjson_channel" != "undefined" ]]; then
-        echo "$pjson_channel"
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+
+    if [[ "$branch" == "master" ]]; then
+        pjson_channel="$(node -p "try{require('./package.json').cli.channel}catch(e){}")"
+        if [[ "$pjson_channel" != "undefined" ]]; then
+            echo "$pjson_channel"
+        else
+            echo "$branch"
+        fi
     else
-        echo "develop"
+        echo "$USER"
     fi
 fi
