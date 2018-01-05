@@ -41,7 +41,7 @@ function build () {
     tar xzf "$TGZ_PATH" -C "$TMP_DIR"
     mv "$TMP_DIR/$VERSIONED_BASE" "$INSTALLER_BASE/client"
 
-    if [ "$ARCH" == "x64" ]; then
+    if [[ "$ARCH" == "x64" ]]; then
         PROGRAMSUFFIX="64"
     else
         PROGRAMSUFFIX=""
@@ -52,7 +52,7 @@ function build () {
         > "$INSTALLER_BASE/$BIN_NAME.nsi"
 
     makensis "$INSTALLER_BASE/$BIN_NAME.nsi" \
-        | grep -v "\[compress\]" \
+        | grep -v "\\[compress\\]" \
         | grep -v "^File: Descending to"
 
     set +x

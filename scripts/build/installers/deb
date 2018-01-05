@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# outputs a .deb file to dist/apt
+# Outputs a .deb file to dist/apt
 
 set +x
 
@@ -24,7 +24,6 @@ function build () {
     tar xzf "$TGZ_PATH"
     mv "$VERSIONED_BASE" "$__workspace/usr/lib/$BIN_NAME"
 
-    # TODO
     # add bin loader scripts
     cat << EOF > "$__workspace/usr/lib/$BIN_NAME/bin/$BIN_NAME"
 #!/usr/bin/env bash
@@ -32,7 +31,7 @@ set -e
 get_script_dir () {
     SOURCE="\${BASH_SOURCE[0]}"
     # While \$SOURCE is a symlink, resolve it
-    while [ -h "\$SOURCE" ]; do
+    while [[ -h "\$SOURCE" ]]; do
         DIR="\$( cd -P "\$( dirname "\$SOURCE" )" && pwd )"
         SOURCE="\$( readlink "\$SOURCE" )"
         # If \$SOURCE was a relative symlink (so no "/" as prefix, need to resolve it relative to the symlink base directory

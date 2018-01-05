@@ -38,13 +38,13 @@ The most useful scripts can be run from `yarn`:
 * `yarn lint-with-style`: Runs `eslint` and `tslint` with checkstyle enabled on the `src` dir
 * `yarn prepare`: Same as `yarn compile`
 * `yarn release`: Same as `yarn release-standalone`
-* `yarn release-debug`: Same as `yarn release-standalone`, but with fake S3 uploads
+* `yarn release-debug`: Same as `yarn release-standalone`, but with AWS actions disabled
 * `yarn release-mac`: Builds the macOS installer executable and uploads to S3
-* `yarn release-mac-debug`: Same as `yarn release-mac`, but with fake S3 uploads
+* `yarn release-mac-debug`: Same as `yarn release-mac`, but with AWS actions disabled
 * `yarn release-standalone`: Builds all standalone installer tarballs and uploads to S3
-* `yarn release-standalone-debug`: Same as `yarn release-standalone`, but with fake S3 uploads
+* `yarn release-standalone-debug`: Same as `yarn release-standalone`, but with AWS actions disabled
 * `yarn release-windows`: Builds all Windows installer executables and uploads to S3
-* `yarn release-windows-debug`: Same as `yarn release-windows`, but with fake S3 uploads
+* `yarn release-windows-debug`: Same as `yarn release-windows`, but with AWS actions disabled
 * `yarn test`: Runs unit tests
 * `yarn typings`: Runs typings tests
 * `yarn unit`: Runs unit tests with coverage
@@ -65,7 +65,7 @@ In order to run all scripts locally on macOS, you'll need the following:
 * [optional] osslsigncode (`brew install osslsigncode`)
 * [optional] makensis (`brew install makensis`)
 
-`shellcheck` is not strictly required, but is strongly encouraged, especially if you are going to modify the `bash` scripts.
+*Note that `shellcheck` is not strictly required, but is strongly encouraged, especially if you are going to modify the `bash` build and release scripts.*
 
 If you install Docker, you can skip `osslsigncode` and `makensis`, or vice versa.  The former uses Docker to avoid the requirement of the latter two.  The Docker build runs substantially slower on macOS than running the scripts directly, though, so if you need to run the Windows installer build frequently it makes sense to skip Docker and install the other dependencies.
 
@@ -167,11 +167,21 @@ The `build/verify` script contains several sanity checks that ensure we don't re
 
 Any known regressions in CLI artifact stability should have verification tests added here to help ensure they don't recur in the future.
 
+### Build and release environment variables
+
+#### Disabling AWS usage for local release script dev
+
+You can use the `SKIP_AWS=true` envar when running release scripts to disable AWS CLI calls.  This is useful for running the release scripts locally without actually invoking any AWS commands.
+
+#### Using an alternate S3 endpoint
+
+_TODO_
+
 ## Release
 
 The suite of release scripts primarily uploads the artifacts produced by the build scripts to S3 (or an S3-like internal service, such as `minio`).  Releases are uploaded to named channels, depending on which git branch is being released.
 
-## Channels
+### Channels
 
 The following release channels are in active use:
 
@@ -180,10 +190,6 @@ The following release channels are in active use:
 * `release`: Development releases
 
 The `master` and `release` branches track the state of their respective git branches.  The flow of channel progression is first to `release` as nightlies or on-demand builds, then to `master` as release candidates, and finally as a promotion from `master` to `stable` when releasing to customers.
-
-### Internal and test releases using `minio` instead of S3
-
-_TODO_
 
 ### Rolling back a release
 
