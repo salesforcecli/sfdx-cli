@@ -1719,9 +1719,9 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-force-language-services@41.9.0:
-  version "41.9.0"
-  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-41.9.0.tgz#59f69156e35dc1ae5d4d7c965a3fc71af2407423"
+force-language-services@41.10.0:
+  version "41.10.0"
+  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-41.10.0.tgz#ed7919203f2576024acfaddec046bd64d5dc401e"
   dependencies:
     fs-extra "1.0.0"
     heroku-cli-util "6.0.11"
@@ -4230,9 +4230,9 @@ safe-json-stringify@~1:
   version "1.0.4"
   resolved "http://10.252.156.164:4880/safe-json-stringify/-/safe-json-stringify-1.0.4.tgz#81a098f447e4bbc3ff3312a243521bc060ef5911"
 
-salesforce-alm@41.12.0:
-  version "41.12.0"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-41.12.0.tgz#4c21bf5c23ded2514bd8ba151f37df40ec4b28a5"
+salesforce-alm@41.13.0:
+  version "41.13.0"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-41.13.0.tgz#4fab0c1ac621dfa56763b5b7fedb150fe67a7ca9"
   dependencies:
     adm-zip "0.4.7"
     archiver "1.0.1"
@@ -4315,12 +4315,12 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@41.13.0:
-  version "41.13.0"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-41.13.0.tgz#b6e7aa3e07489c7e3e2534be7f05629acb4221b9"
+salesforcedx@41.16.0:
+  version "41.16.0"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-41.16.0.tgz#9ade26421b9dd0d847f3119f2bccef5590f929c9"
   dependencies:
-    force-language-services "41.9.0"
-    salesforce-alm "41.12.0"
+    force-language-services "41.10.0"
+    salesforce-alm "41.13.0"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.x, samsam@^1.1.3:
