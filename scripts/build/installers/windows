@@ -6,7 +6,9 @@ source ./scripts/_init
 
 set -e
 
-if [[ ! -e "$RELEASE_DIR/sfdx-cli-v${VERSION}-windows-x64.tar.gz" || ! -e "$RELEASE_DIR/sfdx-cli-v${VERSION}-windows-x86.tar.gz" ]]; then
+INSTALLER_BASE_NAME="sfdx-cli-v$VERSION"
+
+if [[ ! -e "$RELEASE_DIR/$INSTALLER_BASE_NAME-windows-x64.tar.gz" || ! -e "$RELEASE_DIR/$INSTALLER_BASE_NAME-windows-x86.tar.gz" ]]; then
     script "build/common"
     script "build/workspace"
     script "build/tarballs"
@@ -52,10 +54,11 @@ function build () {
         set +x
         osslsigncode -pkcs12 "/tmp/$BIN_NAME-windows-key" \
             -pass "$WINDOWS_SIGNING_PASS" \
-            -n 'Salesforce CLI' \
+            -n "$PKG_DESC" \
             -i https://developer.salesforce.com/platform/dx/ \
             -in "$INSTALLER_BASE/installer.exe" \
             -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
+        cp "$RELEASE_DIR/$PKG_NAME-$ARCH.exe" "$RELEASE_DIR/$INSTALLER_BASE_NAME-$ARCH.exe"
     else
         cp "$INSTALLER_BASE/installer.exe" "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
     fi

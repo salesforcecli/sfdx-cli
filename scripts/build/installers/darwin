@@ -7,25 +7,44 @@ export ARCH=x64
 
 source ./scripts/_init
 
-if [[ ! -e "$RELEASE_DIR/sfdx-cli-v${VERSION}-darwin-x64.tar.gz" ]]; then
+INSTALLER_BASE_NAME="sfdx-cli-v$VERSION"
+
+if [[ ! -e "$RELEASE_DIR/$INSTALLER_BASE_NAME-darwin-x64.tar.gz" ]]; then
     script "build/common"
     script "build/workspace"
     script "build/tarballs"
 fi
 
+# TODO - move signing to post-productbuild?
 extra_args=()
 if [[ ! -z "${OSX_KEYCHAIN:-}" ]]; then
     extra_args+=(
         "--sign" "Developer ID Installer: Salesforce"
-        "--keychain" "${OSX_KEYCHAIN}"
+        "--keychain" "$OSX_KEYCHAIN"
     )
 fi
 
+PKG_DIR="$WORKSPACE_DIR/installer"
+mkdir -p "$PKG_DIR"
+
+IDENTIFIER="com.salesforce.developer.cli"
+
 # shellcheck disable=SC2086
 pkgbuild --root "$WORKSPACE_DIR" \
-    --identifier com.salesforce.developer.cli \
+    --identifier "$IDENTIFIER" \
     --install-location "/usr/local/lib/$BIN_NAME" \
-    --version "${VERSION}" \
-    --scripts "$RESOURCES_DIR/darwin" \
+    --version "$VERSION" \
+    --scripts "$RESOURCES_DIR/darwin/scripts" \
     "${extra_args[@]+"${extra_args[@]}"}" \
+    "$PKG_DIR/$PKG_NAME.pkg"
+
+sed "s/IDENTIFIER/$IDENTIFIER/g" "$RESOURCES_DIR/darwin/distribution.xml" |
+    sed "s/PKG_NAME/$PKG_NAME/g" |
+    sed "s/PKG_DESC/$PKG_DESC/g" |
+    sed "s/VERSION/$SHORT_VERSION/g" > "$TMP_DIR/$OS-$ARCH-distribution.xml"
+
+productbuild --distribution "$TMP_DIR/$OS-$ARCH-distribution.xml" \
+    --package-path "$PKG_DIR" \
     "$RELEASE_DIR/$PKG_NAME.pkg"
+
+cp "$RELEASE_DIR/$PKG_NAME.pkg" "$RELEASE_DIR/$INSTALLER_BASE_NAME.pkg"
