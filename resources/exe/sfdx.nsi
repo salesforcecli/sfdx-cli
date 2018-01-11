@@ -15,14 +15,14 @@ InstallDirRegKey HKCU "Software\sfdx" ""
 !insertmacro MUI_LANGUAGE "English"
 
 OutFile "installer.exe"
-VIProductVersion "${VERSION}.0"
+VIProductVersion "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "Salesforce CLI"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "Comments" "https://developer.salesforce.com/platform/dx"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "Salesforce.com"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "2017"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "CLI Application"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${VERSION}.0"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "${VERSION}.0"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${VERSION}"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "${VERSION}"
 
 InstallDir "$PROGRAMFILES64\sfdx"
 
