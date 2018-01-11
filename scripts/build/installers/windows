@@ -58,10 +58,11 @@ function build () {
             -i https://developer.salesforce.com/platform/dx/ \
             -in "$INSTALLER_BASE/installer.exe" \
             -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
-        cp "$RELEASE_DIR/$PKG_NAME-$ARCH.exe" "$RELEASE_DIR/$INSTALLER_BASE_NAME-$ARCH.exe"
     else
         cp "$INSTALLER_BASE/installer.exe" "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
     fi
+
+    cp "$RELEASE_DIR/$PKG_NAME-$ARCH.exe" "$RELEASE_DIR/$INSTALLER_BASE_NAME-$ARCH.exe"
 }
 
 for ARCH in "${ARCHS[@]}"; do
