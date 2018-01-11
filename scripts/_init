@@ -69,6 +69,7 @@ RELEASE_APT_DIR="$RELEASE_DIR/apt"
 
 # Determine pkg and bin names
 PKG_NAME=$(node -p "require('$ROOT_DIR/package.json').name")
+PKG_DESC=$(node -p "require('$ROOT_DIR/package.json').description")
 BIN_NAME=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].bin")
 
 # S3 configuration
