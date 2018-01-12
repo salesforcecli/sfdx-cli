@@ -53,52 +53,6 @@ function len() {
     echo ${#1}
 }
 
-# Set channel and version vars
-CHANNEL=$(script "_vars/channel")
-VERSION=$(script "_vars/version")
-SHORT_VERSION=$(node -p "require('$ROOT_DIR/package.json').version")
-DEB_VERSION="${SHORT_VERSION}-1"
-
-# Set basic dir vars
-TMP_DIR="$ROOT_DIR/tmp"
-BASE_DIR="$TMP_DIR/base"
-RELEASE_DIR="$ROOT_DIR/release"
-RESOURCES_DIR="$ROOT_DIR/resources"
-RELEASE_VERSION_DIR="$RELEASE_DIR/v$VERSION"
-RELEASE_APT_DIR="$RELEASE_DIR/apt"
-
-# Determine pkg and bin names
-PKG_NAME=$(node -p "require('$ROOT_DIR/package.json').name")
-PKG_DESC=$(node -p "require('$ROOT_DIR/package.json').description")
-BIN_NAME=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].bin")
-
-# S3 configuration
-DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.folder")
-S3_FOLDER="${S3_FOLDER:-"$DEFAULT_S3_FOLDER"}"
-S3_CHANNEL_SUBFOLDER="$PKG_NAME/channels/$CHANNEL"
-DEFAULT_S3_BUCKET=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.bucket")
-S3_BUCKET="${S3_BUCKET:-"$DEFAULT_S3_BUCKET"}"
-S3_BASE_UPLOAD_URL="s3://$S3_BUCKET/$S3_FOLDER"
-S3_CHANNEL_UPLOAD_URL="$S3_BASE_UPLOAD_URL/$S3_CHANNEL_SUBFOLDER"
-DEFAULT_S3_HOST=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.host")
-S3_HOST="${S3_HOST:-"$DEFAULT_S3_HOST"}"
-S3_HOST_SCHEME="${S3_HOST_SCHEME:-"https"}"
-S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST/$S3_CHANNEL_SUBFOLDER"
-S3_PROFILE_NAME="sfdx"
-S3_ENDPOINT="${S3_ENDPOINT:-AWS}"
-
-# Set OS targets
-OS_TARGETS=(
-    "darwin"
-    "linux"
-    "windows"
-)
-
-# Ensure dirs are created
-mkdir -p "$TMP_DIR"
-mkdir -p "$RELEASE_DIR"
-mkdir -p "$RELEASE_VERSION_DIR"
-
 function archs () {
     if [[ "$OS" == "darwin" ]]; then
         echo "x64"
@@ -149,6 +103,47 @@ function wait_all () {
         wait "${pid}" || exit 1
     done
 }
+
+# Set channel and version vars
+CHANNEL=$(script "_vars/channel")
+VERSION=$(script "_vars/version")
+SHORT_VERSION=$(node -p "require('$ROOT_DIR/package.json').version")
+DEB_VERSION="${SHORT_VERSION}-1"
+
+# Set basic dir vars
+TMP_DIR="$ROOT_DIR/tmp"
+BASE_DIR="$TMP_DIR/base"
+RELEASE_DIR="$ROOT_DIR/release"
+RESOURCES_DIR="$ROOT_DIR/resources"
+RELEASE_VERSION_DIR="$RELEASE_DIR/v$VERSION"
+RELEASE_APT_DIR="$RELEASE_DIR/apt"
+
+# Determine pkg and bin names
+PKG_NAME=$(node -p "require('$ROOT_DIR/package.json').name")
+PKG_DESC=$(node -p "require('$ROOT_DIR/package.json').description")
+BIN_NAME=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].bin")
+
+# S3 configuration
+DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.folder")
+S3_FOLDER="${S3_FOLDER:-"$DEFAULT_S3_FOLDER"}"
+S3_CHANNEL_SUBFOLDER="$PKG_NAME/channels/$CHANNEL"
+DEFAULT_S3_BUCKET=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.bucket")
+S3_BUCKET="${S3_BUCKET:-"$DEFAULT_S3_BUCKET"}"
+S3_BASE_UPLOAD_URL="s3://$S3_BUCKET/$S3_FOLDER"
+S3_CHANNEL_UPLOAD_URL="$S3_BASE_UPLOAD_URL/$S3_CHANNEL_SUBFOLDER"
+DEFAULT_S3_HOST=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.host")
+S3_HOST="${S3_HOST:-"$DEFAULT_S3_HOST"}"
+S3_HOST_SCHEME="${S3_HOST_SCHEME:-"https"}"
+S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST/$S3_CHANNEL_SUBFOLDER"
+S3_PROFILE_NAME="sfdx"
+S3_ENDPOINT="${S3_ENDPOINT:-AWS}"
+
+# Set OS targets
+OS_TARGETS=(
+    "darwin"
+    "linux"
+    "windows"
+)
 
 if [[ ! -z "${OS:-}" ]]; then
     setos "$OS"

@@ -4,6 +4,10 @@ source ./scripts/_init
 
 set -ex
 
+mkdir -p "$TMP_DIR"
+mkdir -p "$RELEASE_DIR"
+mkdir -p "$RELEASE_VERSION_DIR"
+
 script "clean/all"
 script "build/dist"
 script "lint/all"

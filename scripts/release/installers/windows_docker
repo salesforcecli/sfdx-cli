@@ -8,9 +8,12 @@ set +x
 
 envars=()
 passthroughs=(
+    "http_proxy"
     "HTTP_PROXY"
     "HTTPS_PROXY"
     "NO_PROXY"
+    "PARALLEL_OS_BUILDS"
+    "DISABLE_YARNCLEAN"
     "SKIP_AWS"
     "WINDOWS_SIGNING_KEY"
     "WINDOWS_SIGNING_PASS"
@@ -24,7 +27,7 @@ if [[ "${SKIP_AWS:-}" == "true" ]]; then
     stdout "Skipping AWS in docker build"
 else
     for var in $(compgen -e); do
-        if [[ "${var}" == "S3"* ]]; then
+        if [[ "$var" == "S3"* ]]; then
             envars+=("-e" "$var=${!var}")
         fi
     done
