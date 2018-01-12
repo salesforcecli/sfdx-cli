@@ -28,7 +28,6 @@ fi
 docker run \
     -t \
     --rm \
-    -i \
     -v "$ROOT_DIR:/root/sfdx" \
     -w /root/sfdx \
     "${envars[@]}" \
