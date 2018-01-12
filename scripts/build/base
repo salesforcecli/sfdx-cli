@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+if [[ ! -e "$ROOT_DIR/dist" ]]; then
+    script "build/dist"
+fi
+
+# Setup workspace
+rm -rf "${BASE_DIR}"
+mkdir -p "${BASE_DIR}/node_modules"
+mkdir -p "${BASE_DIR}/bin"
+cp "$ROOT_DIR/README.md" "${BASE_DIR}"
+cp "$ROOT_DIR/LICENSE" "${BASE_DIR}"
+cp "$ROOT_DIR/package.json" "${BASE_DIR}"
+cp "$ROOT_DIR/yarn.lock" "${BASE_DIR}"
+cp -r "$ROOT_DIR/dist" "${BASE_DIR}/dist"
+
+# Allow yarn autoclean to be disabled quickly in case it is found to be over-cleaning
+if [[ "${DISABLE_YARNCLEAN:-}" != "true" ]]; then
+    cp "$ROOT_DIR/.yarnclean" "${BASE_DIR}"
+fi
+
+(
+    cd "${BASE_DIR}"
+    # Install packages
+    yarn install --no-progress --production --non-interactive --pure-lockfile
+)
+
+# Build cli-engine if needed
+if [[ ! -f "${BASE_DIR}/node_modules/cli-engine/lib/cli.js" ]]; then
+    cd "${BASE_DIR}/node_modules/cli-engine"
+    yarn
+fi
+
+# Copy bin/run to bin/sfdx.js in the build, and inject build vars
+sed "s/\\/\\* @OVERRIDES@ \\*\\//version:'${VERSION}', channel:'${CHANNEL}'/" \
+    "$ROOT_DIR/bin/run" > "${BASE_DIR}/bin/$BIN_NAME.js"

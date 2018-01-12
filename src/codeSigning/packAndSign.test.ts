@@ -6,7 +6,6 @@ import { CERTIFICATE, PRIVATE_KEY, TEST_DATA } from './testCert';
 import * as _ from 'lodash';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import * as _Promise from 'bluebird';
 import * as request from 'request';
 import * as events from 'events';
 
@@ -44,7 +43,6 @@ const REJECT_ERROR = new Error('Should have been rejected');
 describe('doPackAndSign', () => {
     let globalSandbox: any;
 
-    const logMessages = [];
     before(() => {
         globalSandbox = sinon.sandbox.create();
         let signature: string;
@@ -63,7 +61,7 @@ describe('doPackAndSign', () => {
             cb(null, {});
         });
 
-        globalSandbox.stub(fs, 'createReadStream').callsFake((filePath: string, options: any) => {
+        globalSandbox.stub(fs, 'createReadStream').callsFake((filePath: string) => {
             if (_.includes(filePath, 'privateKey')) {
                 return new Readable({
                     read() {

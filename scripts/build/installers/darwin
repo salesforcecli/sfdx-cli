@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -ex
+
+export OS=darwin
+export ARCH=x64
+
+source ./scripts/_init
+
+if [[ ! -e "$RELEASE_DIR/sfdx-cli-v${VERSION}-darwin-x64.tar.gz" ]]; then
+    script "build/common"
+    script "build/workspace"
+    script "build/tarballs"
+fi
+
+extra_args=()
+if [[ ! -z "${OSX_KEYCHAIN:-}" ]]; then
+    extra_args+=(
+        "--sign" "Developer ID Installer: Salesforce"
+        "--keychain" "${OSX_KEYCHAIN}"
+    )
+fi
+
+# shellcheck disable=SC2086
+pkgbuild --root "$WORKSPACE_DIR" \
+    --identifier com.salesforce.developer.cli \
+    --install-location "/usr/local/lib/$BIN_NAME" \
+    --version "${VERSION}" \
+    --scripts "$RESOURCES_DIR/darwin" \
+    "${extra_args[@]+"${extra_args[@]}"}" \
+    "$RELEASE_DIR/$PKG_NAME.pkg"

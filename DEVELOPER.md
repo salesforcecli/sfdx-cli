@@ -54,32 +54,26 @@ When you make changes to this project's `.ts`. sources, you will need to recompi
 
 ### Developer CLI flags
 
-The following flags are supported by the `bin/run` script, and can be combined as desired.  They are stripped from the args passed to the CLI application itself.
+#### bin/run flags
 
-* *--dev-suspend*: Starts the `node` binary with the `--inspect-brk` flag to allow a remote debugger to attach before running.
-* *--dev-debug*: Sets the `SFDX_DEBUG=1` and `DEBUG=\*` envars for the CLI's `node` process, which enables full debug output from the v6 `cli-engine`.
-* *--dev-config*: Sets the `CLI_ENGINE_SHOW_CONFIG=1` envar for the CLI's `node` process, which causes the cli-engine to dump it's runtime configuration value at startup.
+The following flags are supported by the `bin/run` script, and can be combined as desired.
 
-### Scripts
+* *--dev-debug*: Sets the `SFDX_DEBUG=1`, `SFDX_ENV=development`, and `DEBUG=\*` envars for the CLI's `node` process, which enables full debug output from the v6 `cli-engine`.
 
-A few additional convenience scripts are available to help with common development tasks:
+#### bin/run.sh flags
 
-* `yarn run build [PLATFORM] [CHANNEL]` - Builds a release package into the `./tmp` directory.  For example, `yarn run build darwin-x64 alpha` will create a macOS build for the `alpha` channel.
-* `yarn run clean-dev` - Uninstalls the salesforcedx plugin and then deletes all node\_modules directories for the CLI and its linked plugin dependencies.
-* `yarn run clean-cache` - Deletes the v6 CLI's plugin cache.
-* `yarn run clean-all` - Runs both `clean-dev` and `clean-cache`
-* `yarn run downgrade` - For testing the v5-\>v6 CLI migration, this removes both the v6 caches and the v6 installation and all plugins!  Use with care.
-* `yarn run release-all` - Builds and releases all distributions to the channel configured in `package.json`'s `cli.channel` property.
+The following flags are supported by the `bin/run.sh` script, which wraps the `bin/run` script referenced in the rest of this document, and can be combined as desired.  They are stripped from the args passed to the CLI application itself.
+
+* *--dev-suspend*: Starts the `node` binary with the `--inspect-brk` flag to allow a remote debugger to attach before running.  _Does not work with npm-based installs.  For this case, you can set the environment variable `NODE_OPTIONS='--inspect-brk'`._
+* To set other Node executable flags, the use of the `NODE_OPTIONS` environment variable is required.
 
 ### Developer notes
 
-* If you change the `bin/run` or `bin/run.js` files and want those changes to be carried forward in the released binary, you will also need to make those changes in the `scripts/build` script.
-* If you change this project's `package.json` to reference a new core plugin, or change the `package.json` of any referenced plugins, you may need to delete `cli-engine`'s plugin cache to force it to reload.
-    * Use `yarn run clean-cache`
+* To manually install a specific version of the `salesforcedx` plugin from an internal npm registry, you can set `SFDX_NPM_REGISTRY` with the internal URL (e.g. `registry "http://10.252.156.164:4880"`).
 * If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `yarn run watch`.
-* The `build` and `release-all` scripts currently require [Docker](https://www.docker.com/get-docker) to run.
-* To manually install a specific version of the `salesforcedx` plugin before v6 builds of it start getting published publicly, you can edit `~/.local/share/sfdx/plugins/.yarnrc` to point to the internal v6 npm registry (i.e. `registry "http://10.252.156.164:4876"`).  You can then install v6 builds of salesforcedx as a user plugin pinned to a specific version like so: `sfdx plugins:install salesforcedx@41.2.0-v6.0`, or from the `alpha` dist tag like this`sfdx plugins:install salesforcedx@alpha`.
 
-## Releasing
+## Build and release
 
-Building and publishing a release manually currently requires [Docker](https://www.docker.com/get-docker).  You will also need salesforcedx S3 bucket write credentials stored in a standard AWS config file in `./.aws/credentials`.  Then, you should be able to build and release by running `yarn run release-all`.
+The CLI can be built and released to S3 on various channels by using the [jobs](http://10.252.156.172:8080/job) available on Jenkins.
+
+For more information about how to locally run or modify the build and release scripts, see the [SCRIPTS](SCRIPTS.md) document.

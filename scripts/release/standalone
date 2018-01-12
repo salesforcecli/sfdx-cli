@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+source ./scripts/release/_init
+
+set -ex
+
+script "build/standalone"
+script "release/tarballs"

@@ -7,7 +7,7 @@ import {
     default as sign
 } from './codeSignApi';
 
-import { Readable, Writable } from 'stream';
+import { Readable } from 'stream';
 import { expect } from 'chai';
 import { CERTIFICATE, PRIVATE_KEY, TEST_DATA } from './testCert';
 import * as events from 'events';
@@ -79,7 +79,7 @@ describe('Sign Tests', () => {
                 }
                 const socket = new Socket();
 
-                validateRequestCert(request, 'https://developer.salesforce.com');
+                validateRequestCert(request);
                 request.emit('socket', socket);
                 socket.emit('secureConnect');
                 throw new Error('Shouldn\'t Get Here!');

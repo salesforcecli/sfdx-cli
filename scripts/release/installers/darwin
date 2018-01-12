@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -ex
+
+source ./scripts/release/_init
+
+PKG_PATH="$RELEASE_DIR/$PKG_NAME.pkg"
+
+if [[ ! -e "$PKG_PATH" ]]; then
+    script "build/installers/darwin"
+fi
+
+stdout "Releasing darwin installers to ${CHANNEL}"
+
+CACHE_DIR="$TMP_DIR/s3"
+
+rm -rf "$CACHE_DIR"
+mkdir -p "$CACHE_DIR"
+
+cp "$PKG_PATH" "$CACHE_DIR"
+
+s3upload "$UNVERSIONED_CACHE_CONTROL" \
+    "$CACHE_DIR/$PKG_NAME.pkg" \
+    "$S3_CHANNEL_UPLOAD_URL/$PKG_NAME.pkg"

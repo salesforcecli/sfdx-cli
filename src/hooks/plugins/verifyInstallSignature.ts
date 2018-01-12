@@ -1,5 +1,4 @@
 import { Config } from 'cli-engine-config';
-import * as path from 'path';
 import timedHook from '../timedHook';
 import { NamedError } from '../../util/NamedError';
 import {
@@ -9,8 +8,6 @@ import {
 } from '../../codeSigning/installationVerification';
 
 import { CLI } from 'cli-ux';
-
-import * as _ from 'lodash';
 
 async function run(config: Config, {plugin, tag}: {plugin: string, tag: string}) {
     const cliUx = new CLI();

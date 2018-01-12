@@ -32,13 +32,17 @@ wercker.yml
 .tern-project
 .gitattributes
 .editorconfig
-.*ignore
+.npmignore
+.gitignore
 .eslintrc
 .jshintrc
 .flowconfig
 .documentup.json
 .yarn-metadata.json
 .travis.yml
+
+# editors
+.idea
 
 # misc
 *.gz

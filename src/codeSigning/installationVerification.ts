@@ -1,21 +1,18 @@
-// import { createReadStream, createWriteStream, readFile } from 'fs';
 import * as fs from 'fs';
 import * as path from 'path';
 import { URL } from 'url';
 import _ = require('lodash');
-import { fork } from 'child_process';
 import * as request from 'request';
-import { Readable, Writable } from 'stream';
+import { Readable } from 'stream';
 import { promisify as utilPromisify } from 'util';
 
 import {
     CodeVerifierInfo,
-    validateRequestCert,
     validSalesforceHostname,
     verify
 } from './codeSignApi';
 
-import { NamedError, UnexpectedHost, UnauthorizedSslConnection, SignSignedCertError } from '../util/NamedError';
+import { NamedError, UnexpectedHost, SignSignedCertError } from '../util/NamedError';
 
 export const WHITELIST_FILENAME = 'unsignedPluginWhiteList.json';
 
@@ -162,18 +159,18 @@ export class InstallationVerification {
         return new Promise((resolve, reject) => {
             this.requestImpl(url, (err, response, responseData) => {
                 if (err) {
-                    reject(err);
+                    return reject(err);
                 } else {
                     if (response && response.statusCode === 200) {
                         // The verification api expects a readable
-                        resolve(new Readable({
+                        return resolve(new Readable({
                             read() {
                                 this.push(responseData);
                                 this.push(null);
                             }
                         }));
                     } else {
-                        reject(new NamedError('ErrorGettingContent', `A request to url ${url} failed with error code: [${response ?  response.statusCode : 'undefined'}]`));
+                        return reject(new NamedError('ErrorGettingContent', `A request to url ${url} failed with error code: [${response ?  response.statusCode : 'undefined'}]`));
                     }
                 }
             });
@@ -191,13 +188,13 @@ export class InstallationVerification {
         return new Promise<NpmMeta>((resolve, reject) => {
             const cacheFilePath = path.join(this.getCachePath(), fileNameStr);
             const writeStream = this.fsImpl.createWriteStream(cacheFilePath, { encoding: 'binary' });
-            const req = this.requestImpl(npmMeta.tarballUrl)
+            this.requestImpl(npmMeta.tarballUrl)
                 .on('end', () => {
                     npmMeta.tarballLocalPath = cacheFilePath;
-                    resolve(npmMeta);
+                    return resolve(npmMeta);
                 })
                 .on('error', (err) => {
-                    reject(err);
+                    return reject(err);
                 })
                 .pipe(writeStream);
         });
@@ -223,12 +220,15 @@ export class InstallationVerification {
             const npmRegistry = getNpmRegistry();
             npmRegistry.pathname = this.pluginName;
             this.requestImpl(npmRegistry.href, (err, response, body) => {
+                if (err) {
+                    return reject(err);
+                }
                 if (response && response.statusCode === 200) {
                     const responseObj = JSON.parse(body);
 
                     // Make sure the response has a version attribute
                     if (!responseObj.versions) {
-                        reject(new NamedError('InvalidNpmMetadata', `The npm metadata for plugin ${this.pluginName} is missing the versions attribute.`));
+                        return reject(new NamedError('InvalidNpmMetadata', `The npm metadata for plugin ${this.pluginName} is missing the versions attribute.`));
                     }
 
                     // Assume the tag is version tag.
@@ -246,35 +246,35 @@ export class InstallationVerification {
                             if (tagVersionStr && tagVersionStr.length > 0 && _.includes(tagVersionStr, '.')) {
                                 versionObject = _.get(responseObj.versions, tagVersionStr);
                             } else {
-                                reject(new NamedError('NpmTagNotFound', `The dist tag ${this.pluginTag} was not found for plugin: ${this.pluginName}`));
+                                return reject(new NamedError('NpmTagNotFound', `The dist tag ${this.pluginTag} was not found for plugin: ${this.pluginName}`));
                             }
                         } else {
-                            reject(new NamedError('UnexpectedNpmFormat', 'The deployed NPM is missing dist-tags.'));
+                            return reject(new NamedError('UnexpectedNpmFormat', 'The deployed NPM is missing dist-tags.'));
                         }
                     }
 
                     if (!(versionObject && versionObject.sfdx)) {
-                        reject(new NamedError('NotSigned', 'This plugin is not signed by Salesforce.com ,Inc'));
+                        return reject(new NamedError('NotSigned', 'This plugin is not signed by Salesforce.com ,Inc'));
                     } else {
                         const meta: NpmMeta = new NpmMeta();
                         if (!validSalesforceHostname(versionObject.sfdx.publicKeyUrl)) {
-                            reject(new UnexpectedHost(versionObject.sfdx.publicKeyUrl));
+                            return reject(new UnexpectedHost(versionObject.sfdx.publicKeyUrl));
                         } else {
                             meta.publicKeyUrl = versionObject.sfdx.publicKeyUrl;
                         }
 
                         if (!validSalesforceHostname(versionObject.sfdx.signatureUrl)) {
-                            reject(new UnexpectedHost(versionObject.sfdx.signatureUrl));
+                            return reject(new UnexpectedHost(versionObject.sfdx.signatureUrl));
                         } else {
                             meta.signatureUrl = versionObject.sfdx.signatureUrl;
                         }
 
                         meta.tarballUrl = versionObject.dist.tarball;
 
-                        resolve(meta);
+                        return resolve(meta);
                     }
                 } else {
-                    reject(new NamedError('UrlRetrieve', `The url request returned ${response.statusCode} - ${npmRegistry.href}`));
+                    return reject(new NamedError('UrlRetrieve', `The url request returned ${response.statusCode} - ${npmRegistry.href}`));
                 }
             });
         });

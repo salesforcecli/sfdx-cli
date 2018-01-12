@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+export BUILD_INSTALLERS=true
+script "build/all"
+
+#script "release/installers/darwin"
+script "release/installers/windows"
+#script "release/installers/deb"
