@@ -4,7 +4,9 @@ set -ex
 
 source ./scripts/release/_init
 
-set +x
+if [[ "${DOCKER_DEBUG:-}" != "true" ]]; then
+    set +x
+fi
 
 envars=()
 passthroughs=(
