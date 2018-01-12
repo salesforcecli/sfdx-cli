@@ -23,7 +23,7 @@ passthroughs=(
     "WINDOWS_SIGNING_PASS"
 )
 
-for var in ${passthroughs[@]}; do
+for var in "${passthroughs[@]}"; do
     if [[ ! -z "${!var:-}" ]]; then
         envars+=("-e" "$var=${!var}")
     else
