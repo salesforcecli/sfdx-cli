@@ -4,23 +4,39 @@ set -ex
 
 source ./scripts/release/_init
 
-set +x
+if [[ "${DOCKER_DEBUG:-}" != "true" ]]; then
+    set +x
+fi
 
 envars=()
-if [[ ! -z "${WINDOWS_SIGNING_PASS:-}" ]]; then
-    envars+=("-e" "WINDOWS_SIGNING_PASS=$WINDOWS_SIGNING_PASS")
-fi
-if [[ ! -z "${WINDOWS_SIGNING_KEY:-}" ]]; then
-    envars+=("-e" "WINDOWS_SIGNING_KEY=$WINDOWS_SIGNING_KEY")
-fi
+passthroughs=(
+    "CHANNEL"
+    "FORCE_BUILD"
+    "http_proxy"
+    "HTTP_PROXY"
+    "HTTPS_PROXY"
+    "NO_PROXY"
+    "PARALLEL_OS_BUILDS"
+    "DISABLE_YARNCLEAN"
+    "SKIP_AWS"
+    "WINDOWS_SIGNING_KEY"
+    "WINDOWS_SIGNING_PASS"
+)
 
-if [[ ! -z "${SKIP_AWS:-}" ]]; then
+for var in ${passthroughs[@]}; do
+    if [[ ! -z "${!var:-}" ]]; then
+        envars+=("-e" "$var=${!var}")
+    else
+        stdout "$var is not defined"
+    fi
+done
+
+if [[ "${SKIP_AWS:-}" == "true" ]]; then
     stdout "Skipping AWS in docker build"
-    envars+=("-e" "SKIP_AWS=$SKIP_AWS")
 else
     for var in $(compgen -e); do
-        if [[ "${var}" == "S3"* ]]; then
-            envars+=( "-e" "$var=${!var}" )
+        if [[ "$var" == "S3"* ]]; then
+            envars+=("-e" "$var=${!var}")
         fi
     done
 fi
