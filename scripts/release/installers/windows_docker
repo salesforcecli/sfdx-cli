@@ -10,6 +10,7 @@ fi
 
 envars=()
 passthroughs=(
+    "CHANNEL"
     "http_proxy"
     "HTTP_PROXY"
     "HTTPS_PROXY"
