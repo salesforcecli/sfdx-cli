@@ -10,13 +10,10 @@ import {
     writeFile
 } from 'fs-extra';
 
-import { URL } from 'url';
-import { Writable, Readable } from 'stream';
+import { Readable } from 'stream';
 import { join as pathJoin } from 'path';
-import { parse as parsePath } from 'path';
-import { sep as pathSep, basename as pathBasename } from 'path';
+import { sep as pathSep } from 'path';
 
-import { Config } from 'cli-engine-config';
 import { CLI } from 'cli-ux';
 import * as _ from 'lodash';
 import * as request from 'request';
@@ -24,12 +21,9 @@ import * as request from 'request';
 import {
     ExecProcessFailed,
     InvalidUrlError,
-    MissingRequiredParameter,
     SignSignedCertError,
     NamedError
 } from '../util/NamedError';
-
-import parseSimpleArgs from '../util/simpleArgs';
 
 import {
     CodeSignInfo,
@@ -51,8 +45,6 @@ const PACKAGE_DOT_JSON = 'package.json';
 const PACKAGE_DOT_JSON_PATH = pathJoin(process.cwd(), PACKAGE_DOT_JSON);
 const PACKAGE_DOT_JSON_PATH_BAK = pathJoin(process.cwd(), `${PACKAGE_DOT_JSON}.bak`);
 
-const BIN_NAME = 'sfdx_sign';
-
 const cliUx = new CLI();
 
 export const api = {
@@ -64,7 +56,6 @@ export const api = {
     validateUrl(url: string) {
         try {
             // new URL throws if a host cannot be parsed out.
-            const urlObj = new URL(url);
             if (!validSalesforceHostname(url)) {
                 throw new NamedError('NotASalesforceHost', 'Signing urls must have the hostname developer.salesforce.com and be https');
             }
@@ -84,19 +75,19 @@ export const api = {
             exec(command, (error: any, stdout: string, stderr: string) => {
                 if (error && error.code) {
                     const err = new ExecProcessFailed(command, error.code).setReasonByMessage(stderr);
-                    reject(err);
+                    return reject(err);
                 } else {
                     const output = stdout.split(EOL);
                     if (output.length > 1) {
                         // note the output end with a newline;
                         const path = output[output.length - 2];
                         if (path && path.endsWith('tgz')) {
-                            resolve(path);
+                            return resolve(path);
                         } else {
-                            reject(new NamedError('UnexpectedNpmFormat', `Npm pack did not return an expected tgz filename result: [${path}]`));
+                            return reject(new NamedError('UnexpectedNpmFormat', `Npm pack did not return an expected tgz filename result: [${path}]`));
                         }
                     } else {
-                        reject(new NamedError('UnexpectedNpmFormat', `The output from the npm utility is unexpected [${stdout}]`));
+                        return reject(new NamedError('UnexpectedNpmFormat', `The output from the npm utility is unexpected [${stdout}]`));
                     }
                 }
             });
@@ -116,14 +107,14 @@ export const api = {
             verifyInfo.signatureStream = sigFilenameStream;
 
             const req = request.get(publicKeyUrl);
-            validateRequestCert(req, publicKeyUrl);
+            validateRequestCert(req);
 
             req.on('response', (response) => {
                 if (response && response.statusCode === 200) {
                     verifyInfo.publicKeyStream = response;
-                    resolve(verify(verifyInfo));
+                    return resolve(verify(verifyInfo));
                 } else {
-                    reject(new NamedError('RetrievePublicKeyFailed', `Couldn't retrieve public key at url: ${publicKeyUrl} error code: ${response.statusCode}`));
+                    return reject(new NamedError('RetrievePublicKeyFailed', `Couldn't retrieve public key at url: ${publicKeyUrl} error code: ${response.statusCode}`));
                 }
             });
 
@@ -222,7 +213,7 @@ export const api = {
 
     /**
      * main method to pack and sign an npm.
-     * @param processArgv - reference to process.argv
+     * @param args - reference to process.argv
      */
     async doPackAndSign(args) {
         let packageDotJsonBackedUp = false;

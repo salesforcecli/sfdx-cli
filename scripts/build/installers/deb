@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+# Outputs a .deb file to dist/apt
+
+set +x
+
+export OS=linux
+
+source ./scripts/_init
+
+set -ex
+
+function build () {
+    __workspace="$TMP_DIR/apt/$VERSIONED_DEB_BASE.apt"
+    rm -rf "$__workspace"
+
+    # prep workspace
+    mkdir -p "$__workspace/DEBIAN"
+    mkdir -p "$__workspace/usr/bin"
+    mkdir -p "$__workspace/usr/lib"
+    mkdir -p "$RELEASE_APT_DIR"
+
+    # setup base
+    tar xzf "$TGZ_PATH"
+    mv "$VERSIONED_BASE" "$__workspace/usr/lib/$BIN_NAME"
+
+    # add bin loader scripts
+    cat << EOF > "$__workspace/usr/lib/$BIN_NAME/bin/$BIN_NAME"
+#!/usr/bin/env bash
+set -e
+get_script_dir () {
+    SOURCE="\${BASH_SOURCE[0]}"
+    # While \$SOURCE is a symlink, resolve it
+    while [[ -h "\$SOURCE" ]]; do
+        DIR="\$( cd -P "\$( dirname "\$SOURCE" )" && pwd )"
+        SOURCE="\$( readlink "\$SOURCE" )"
+        # If \$SOURCE was a relative symlink (so no "/" as prefix, need to resolve it relative to the symlink base directory
+        [[ \$SOURCE != /* ]] && SOURCE="\$DIR/\$SOURCE"
+    done
+    DIR="\$( cd -P "\$( dirname "\$SOURCE" )" && pwd )"
+    echo "\$DIR"
+}
+DIR=\$(get_script_dir)
+CLI_BINPATH=\$DIR/$BIN_NAME \$DIR/node \$DIR/$BIN_NAME.js "\$@"
+EOF
+    chmod +x "$__workspace/usr/lib/$BIN_NAME/bin/$BIN_NAME"
+
+    # TODO
+    cat << EOF > "$__workspace/usr/lib/$BIN_NAME/bin/$BIN_NAME.js"
+#!/usr/bin/env node
+const {run} = require('cli-engine')
+const config = {
+    channel: '${CHANNEL}',
+    version: '${VERSION}',
+    updateDisabled: 'update the CLI with "sudo apt-get upgrade $BIN_NAME"'
+}
+run({config})
+EOF
+
+    # add debian config
+    sed -e "s/Architecture: ARCHITECTURE/Architecture: $DEB_ARCH/" resources/deb/control | \
+    sed -e "s/Version: VERSION/Version: $DEB_VERSION/" \
+    > "$__workspace/DEBIAN/control"
+
+    # symlink bin
+    ln -s "../lib/$BIN_NAME/bin/$BIN_NAME" "$__workspace/usr/bin/$BIN_NAME"
+
+    # reset permissions
+    chown -R root "$__workspace"
+    chgrp -R root "$__workspace"
+
+    # build deb package
+    dpkg --build "$__workspace" "$UNVERSIONED_DEB_PATH"
+}
+
+for ARCH in "${ARCHS[@]}"; do
+    setarch "$ARCH"
+    bg build
+done
+wait_all

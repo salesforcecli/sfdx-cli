@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# This script is deprecated due to its misleading name, but is currently
+# kept around to delegate to release/standalone since some CI jobs still
+# depend on the presence of release/all.
+
+source ./scripts/release/_init
+
+set -ex
+
+script "release/standalone"

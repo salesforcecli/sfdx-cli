@@ -1,68 +1,25 @@
-#!/usr/bin/env bash
-set -e
+#!/usr/bin/env node
 
-# If autoupdate is not set, default to false. NOTE -- this is the behavior we
-# want for BOTH local dev AND the npm distribution, but NOT for the release binary.
-# Do NOT include this in the scripts/build script, which is what the release
-# binary includes.
-if [ -z ${SFDX_AUTOUPDATE_DISABLE+x} ]; then
-    export SFDX_AUTOUPDATE_DISABLE="true"
-    # This only applies to npm updates, but shouldn't hurt anything in the local dev case
-    export SFDX_AUTOUPDATE_DISABLE_MESSAGE="update with 'npm install --global sfdx-cli'"
-fi
+const path = require('path');
 
-NODE_FLAGS=()
-CLI_ARGS=()
+const root = path.join(__dirname, '..');
 
-while [[ $# -gt 0 ]]; do
-key="$1"
+// Check node version before requiring additional packages
+require(path.join(root, 'dist', 'versions'))
+    .checkNodeVersion();
 
-case $key in
-    --dev-suspend)
-        NODE_FLAGS+=("--inspect-brk")
-        shift
-    ;;
-    --dev-profile)
-        NODE_FLAGS+=("--prof")
-        shift
-    ;;
-    --dev-debug)
-        export SFDX_DEBUG=1
-        export DEBUG=\*
-        shift
-    ;;
-    --dev-config)
-        export CLI_ENGINE_SHOW_CONFIG=1
-        shift
-    ;;
-    # --exp-* flags are experimental and may be removed at any time
-    --exp-lazy-load)
-        export SFDX_LAZY_LOAD_MODULES=true
-        shift
-    ;;
-    --exp-lazy-load-trace)
-        export SFDX_LAZY_LOAD_MODULES_TRACE=true
-        shift
-    ;;
-    *)
-        CLI_ARGS+=("$key")
-        shift
-    ;;
-esac
-done
+// Check and prune CLI-defined flags
+require(path.join(root, 'dist', 'flags'))
+    .processCliFlags(process);
 
-get_script_dir () {
-    SOURCE="${BASH_SOURCE[0]}"
-    # While $SOURCE is a symlink, resolve it
-    while [ -h "$SOURCE" ]; do
-        DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-        SOURCE="$( readlink "$SOURCE" )"
-        # If $SOURCE was a relative symlink (so no "/" as prefix, need to resolve it relative to the symlink base directory
-        [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
-    done
-    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-    echo "$DIR"
-}
-DIR=$(get_script_dir)
+const pjson = require(path.join(root, 'package.json'));
+require(path.join(root, 'dist', 'experiments', 'lazyModules'));
 
-CLI_BINPATH=$DIR/run node "${NODE_FLAGS[@]}" $DIR/run.js "${CLI_ARGS[@]}"
+// Overrides get replaced with particular values for binary builds,
+// but simply use defaults for npm and local invocations.
+const overrides = { /* @OVERRIDES@ */ };
+const version = overrides.version || pjson.version;
+const channel = overrides.channel || pjson.cli.channel;
+require(path.join(root, 'dist', 'cli'))
+    .create(version, channel)
+    .run();

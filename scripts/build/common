@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+script "clean/all"
+script "build/dist"
+script "lint/all"
+script "build/base"
+script "test/all" "$BASE_DIR"
+script "clean/base"
+script "build/verify"

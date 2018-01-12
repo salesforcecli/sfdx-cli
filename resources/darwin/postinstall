@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -ex
+
+sudo mkdir -p /usr/local/bin
+sudo ln -sf /usr/local/lib/sfdx/bin/sfdx /usr/local/bin/sfdx

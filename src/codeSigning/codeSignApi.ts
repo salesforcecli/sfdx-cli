@@ -1,6 +1,6 @@
 import * as crypto from 'crypto';
 
-import { Writable, Readable } from 'stream';
+import { Readable } from 'stream';
 
 import * as _ from 'lodash';
 import { NamedError } from '../util/NamedError';
@@ -31,7 +31,7 @@ export function validSalesforceHostname(url: string | null) {
     }
 }
 
-export function validateRequestCert(request: any, url: string) {
+export function validateRequestCert(request: any) {
     if (!(process.env.SFDX_DISABLE_CERT_PINNING === 'true')) {
         request.on('socket', (socket: any) => {
             socket.on('secureConnect', () => {
@@ -114,12 +114,12 @@ function retrieveKey(stream: Readable): Promise<string> {
             });
             stream.on('end', () => {
                 if (!_.startsWith(key, '-----BEGIN')) {
-                    reject(new NamedError('InvalidKeyFormat', 'The specified key format is invalid.'));
+                    return reject(new NamedError('InvalidKeyFormat', 'The specified key format is invalid.'));
                 }
-                resolve(key);
+                return resolve(key);
             });
             stream.on('error', (err) => {
-                reject(err);
+                return reject(err);
             });
         }
     });
@@ -134,11 +134,11 @@ export default async function sign(codeSignInfo: CodeSignInfo): Promise<string> 
     return new Promise<string>((resolve, reject) => {
         codeSignInfo.dataToSignStream.pipe(signApi);
         codeSignInfo.dataToSignStream.on('end', () => {
-            resolve(signApi.sign(privateKey, 'base64'));
+            return resolve(signApi.sign(privateKey, 'base64'));
         });
 
         codeSignInfo.dataToSignStream.on('error', (err) => {
-            reject(err);
+            return reject(err);
         });
     });
 }
@@ -161,21 +161,21 @@ export async function verify(codeVerifierInfo: CodeVerifierInfo): Promise<boolea
 
             codeVerifierInfo.signatureStream.on('end', () => {
                 if (signature.byteLength === 0) {
-                    reject(new NamedError('InvalidSignature', 'The provided signature is invalid or missing.'));
+                    return reject(new NamedError('InvalidSignature', 'The provided signature is invalid or missing.'));
                 } else {
                     const verification = signApi.verify(publicKey, signature.toString('utf8'), 'base64');
-                    resolve(verification);
+                    return resolve(verification);
                 }
             });
 
             codeVerifierInfo.signatureStream.on('error', (err) => {
-                reject(err);
+                return reject(err);
             });
 
         });
 
         codeVerifierInfo.dataToVerify.on('error', (err) => {
-            reject(err);
+            return reject(err);
         });
     });
 }

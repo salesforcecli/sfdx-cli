@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC2034
+
+source ./scripts/_init
+
+AWS_CLI=$(command -v aws)
+
+function aws() {
+    if [[ "${SKIP_AWS:-}" == "true" || ! -x "$AWS_CLI" ]]; then
+        stdout "[SKIP] aws" "$@"
+        return 0
+    fi
+    "$AWS_CLI" "$@"
+}
+
+function s3upload () {
+    maxage="$1"; shift
+    local="$1";  shift
+    remote="$1"; shift
+
+    # Only allow uploads from the build tmp dir
+    if [[ "$local" != "$TMP_DIR"* ]]; then
+        stderr "Unexpected upload request from local dir: '$local'"
+        exit 1
+    fi
+
+    # Only allow uploads to the target s3 bucket
+    if [[ "$remote" != "$S3_BASE_UPLOAD_URL"* ]]; then
+        stderr "Unexpected upload request to s3 url: '$remote'"
+        exit 1
+    fi
+
+    extra_args=()
+    if [[ ! -z "${S3_ENDPOINT:-}" ]]; then
+        extra_args+=("--endpoint-url $S3_ENDPOINT")
+    fi
+
+    if [[ ! -z "${S3_PROFILE:-}" ]]; then
+        extra_args+=("--profile $S3_PROFILE")
+    fi
+
+    if [[ "${SKIP_AWS:-}" == "true" ]]; then
+        stdout "[SKIP] S3 upload from '$local' to '$remote'..."
+        find "$local"
+        return 0
+    fi
+
+    aws s3 cp ${extra_args[@]+${extra_args[@]}} --cache-control max-age="$maxage" "$local" "$remote" "$@"
+}
+
+function awsConfigureSetFromEnvVar() {
+    if [[ $# -ne 3 ]]; then
+        stderr "Assertion expected 3 arguments but received $#"
+        exit 1
+    fi
+
+    if [[ -z "${1}" || -z "${!1-}" || $(len "${!1}") -eq 0 ]]; then
+        stderr "Missing env variable for ${1}"
+        exit 1
+    fi
+
+    aws configure set "$2" "${!1}" --profile "$3"
+}
+
+# S3 cache-control maxage constants
+if [[ "$CHANNEL" == "stable" ]]; then
+    VERSIONED_CACHE_CONTROL=86400     # 1 day
+    UNVERSIONED_CACHE_CONTROL=300     # 5 minutes
+    LATEST_VERSION_CACHE_CONTROL=60   # 1 minute
+else
+    VERSIONED_CACHE_CONTROL=0
+    UNVERSIONED_CACHE_CONTROL=0
+    LATEST_VERSION_CACHE_CONTROL=0
+fi
+
+# Set up an aws profile if we are targeting a specific endpoint
+if [[ "${SKIP_AWS:-}" != "true" && "$S3_ENDPOINT" != "AWS" ]]; then
+    S3_PROFILE="$S3_PROFILE_NAME"
+
+    # Does the profile exist?
+    aws configure get aws_access_key_id --profile $S3_PROFILE_NAME &> /dev/null || HAS_PROFILE="false"
+
+    if [[ "${HAS_PROFILE:-}" == "false" ]]; then
+        stdout "Setting up the AWS profile for $S3_ENDPOINT"
+
+        # Local minio doesn't have a region
+        if [[ ! -z "${S3_REGION:-}" ]]; then
+            awsConfigureSetFromEnvVar "S3_REGION" "region" $S3_PROFILE_NAME
+        fi
+        awsConfigureSetFromEnvVar "S3_ACCESS_KEY" "aws_access_key_id" $S3_PROFILE_NAME
+        awsConfigureSetFromEnvVar "S3_SECRET" "aws_secret_access_key" $S3_PROFILE_NAME
+        aws configure list --profile $S3_PROFILE_NAME
+    fi
+fi
