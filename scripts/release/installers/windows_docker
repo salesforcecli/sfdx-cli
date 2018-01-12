@@ -22,7 +22,11 @@ passthroughs=(
 )
 
 for var in ${passthroughs[@]}; do
-    envars+=("-e" "$var=${!var}")
+    if [[ ! -z "${!var:-}" ]]; then
+        envars+=("-e" "$var=${!var}")
+    else
+        stdout "$var is not defined"
+    fi
 done
 
 if [[ "${SKIP_AWS:-}" == "true" ]]; then
