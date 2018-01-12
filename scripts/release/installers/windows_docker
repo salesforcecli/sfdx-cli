@@ -7,20 +7,25 @@ source ./scripts/release/_init
 set +x
 
 envars=()
-if [[ ! -z "${WINDOWS_SIGNING_PASS:-}" ]]; then
-    envars+=("-e" "WINDOWS_SIGNING_PASS=$WINDOWS_SIGNING_PASS")
-fi
-if [[ ! -z "${WINDOWS_SIGNING_KEY:-}" ]]; then
-    envars+=("-e" "WINDOWS_SIGNING_KEY=$WINDOWS_SIGNING_KEY")
-fi
+passthroughs=(
+    "HTTP_PROXY"
+    "HTTPS_PROXY"
+    "NO_PROXY"
+    "SKIP_AWS"
+    "WINDOWS_SIGNING_KEY"
+    "WINDOWS_SIGNING_PASS"
+)
 
-if [[ ! -z "${SKIP_AWS:-}" ]]; then
+for var in $passthroughs; do
+    envars+=("-e" "$var=${!var}")
+done
+
+if [[ "${SKIP_AWS:-}" == "true" ]]; then
     stdout "Skipping AWS in docker build"
-    envars+=("-e" "SKIP_AWS=$SKIP_AWS")
 else
     for var in $(compgen -e); do
         if [[ "${var}" == "S3"* ]]; then
-            envars+=( "-e" "$var=${!var}" )
+            envars+=("-e" "$var=${!var}")
         fi
     done
 fi
