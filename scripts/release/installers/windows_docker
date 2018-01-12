@@ -26,7 +26,6 @@ else
 fi
 
 docker run \
-    -t \
     --rm \
     -v "$ROOT_DIR:/root/sfdx" \
     -w /root/sfdx \
