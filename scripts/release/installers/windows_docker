@@ -41,6 +41,8 @@ else
     done
 fi
 
+envars+=("-e" "USERID=$UID")
+
 docker run \
     --rm \
     -v "$ROOT_DIR:/root/sfdx" \
