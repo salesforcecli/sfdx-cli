@@ -6,7 +6,7 @@ source ./scripts/_init
 
 set -e
 
-if [[ ! -e "$RELEASE_DIR/sfdx-cli-v${VERSION}-windows-x64.tar.gz" || ! -e "$RELEASE_DIR/sfdx-cli-v${VERSION}-windows-x86.tar.gz" ]]; then
+if [[ "${FORCE_BUILD:-}" == true || ! -e "$RELEASE_DIR/$INSTALLER_BASE_NAME-windows-x64.tar.gz" || ! -e "$RELEASE_DIR/$INSTALLER_BASE_NAME-windows-x86.tar.gz" ]]; then
     script "build/common"
     script "build/workspace"
     script "build/tarballs"
@@ -14,17 +14,9 @@ fi
 
 set +x
 
-if [[ -z "${WINDOWS_SIGNING_KEY:-}" ]]; then
-    stderr "Missing required variable WINDOWS_SIGNING_KEY"
-    exit 1
+if [[ ! -z "${WINDOWS_SIGNING_KEY:-}" ]]; then
+    echo "$WINDOWS_SIGNING_KEY" | base64 --decode > "/tmp/$BIN_NAME-windows-key"
 fi
-
-if [[ -z "${WINDOWS_SIGNING_PASS:-}" ]]; then
-    stderr "Missing required variable WINDOWS_SIGNING_PASS"
-    exit 1
-fi
-
-echo "$WINDOWS_SIGNING_KEY" | base64 --decode > "/tmp/$BIN_NAME-windows-key"
 
 function build () {
     set -x
@@ -47,7 +39,8 @@ function build () {
         PROGRAMSUFFIX=""
     fi
 
-    sed -e "s/!define Version 'VERSION'/!define Version '${SHORT_VERSION}'/" "resources/exe/$BIN_NAME.nsi" |\
+    WIN_VERSION=$(node -p "a='${SHORT_VERSION}'.split('-');a[0]+'.'+(a.length===2?a[1]:0)")
+    sed -e "s/!define Version 'VERSION'/!define Version '${WIN_VERSION}'/" "resources/exe/$BIN_NAME.nsi" |\
         sed -e "s/InstallDir .*/InstallDir \"\$PROGRAMFILES$PROGRAMSUFFIX\\$BIN_NAME\"/" \
         > "$INSTALLER_BASE/$BIN_NAME.nsi"
 
@@ -55,13 +48,19 @@ function build () {
         | grep -v "\\[compress\\]" \
         | grep -v "^File: Descending to"
 
-    set +x
-    osslsigncode -pkcs12 "/tmp/$BIN_NAME-windows-key" \
-        -pass "$WINDOWS_SIGNING_PASS" \
-        -n 'Salesforce CLI' \
-        -i https://developer.salesforce.com/platform/dx/ \
-        -in "$INSTALLER_BASE/installer.exe" \
-        -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
+    if [[ ! -z "${WINDOWS_SIGNING_KEY:-}" && ! -z "${WINDOWS_SIGNING_PASS:-}" ]]; then
+        set +x
+        osslsigncode -pkcs12 "/tmp/$BIN_NAME-windows-key" \
+            -pass "$WINDOWS_SIGNING_PASS" \
+            -n "$PKG_DESC" \
+            -i https://developer.salesforce.com/platform/dx/ \
+            -in "$INSTALLER_BASE/installer.exe" \
+            -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
+    else
+        cp "$INSTALLER_BASE/installer.exe" "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
+    fi
+
+    cp "$RELEASE_DIR/$PKG_NAME-$ARCH.exe" "$RELEASE_DIR/$INSTALLER_BASE_NAME-$ARCH.exe"
 }
 
 for ARCH in "${ARCHS[@]}"; do

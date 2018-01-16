@@ -32,7 +32,7 @@ function s3upload () {
     fi
 
     extra_args=()
-    if [[ ! -z "${S3_ENDPOINT:-}" ]]; then
+    if [[ ! -z "${S3_ENDPOINT:-}" && "$S3_ENDPOINT" != "AWS" ]]; then
         extra_args+=("--endpoint-url $S3_ENDPOINT")
     fi
 
@@ -76,6 +76,7 @@ fi
 
 # Set up an aws profile if we are targeting a specific endpoint
 if [[ "${SKIP_AWS:-}" != "true" && "$S3_ENDPOINT" != "AWS" ]]; then
+    set +x
     S3_PROFILE="$S3_PROFILE_NAME"
 
     # Does the profile exist?
@@ -92,4 +93,5 @@ if [[ "${SKIP_AWS:-}" != "true" && "$S3_ENDPOINT" != "AWS" ]]; then
         awsConfigureSetFromEnvVar "S3_SECRET" "aws_secret_access_key" $S3_PROFILE_NAME
         aws configure list --profile $S3_PROFILE_NAME
     fi
+    set -x
 fi
