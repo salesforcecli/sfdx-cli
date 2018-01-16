@@ -149,3 +149,5 @@ if [[ ! -z "${OS:-}" ]]; then
     setos "$OS"
     IFS='|' read -ra ARCHS <<< "$(archs)"
 fi
+
+INSTALLER_BASE_NAME="$PKG_NAME-v$VERSION"
