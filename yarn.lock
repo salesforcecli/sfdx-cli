@@ -4401,9 +4401,9 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@41.16.0:
-  version "41.16.0"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-41.16.0.tgz#9ade26421b9dd0d847f3119f2bccef5590f929c9"
+salesforcedx@41.16.5:
+  version "41.16.5"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-41.16.5.tgz#bde8391608c4b2f411c560b9dce875bd19b43178"
   dependencies:
     force-language-services "41.10.0"
     salesforce-alm "41.13.0"
