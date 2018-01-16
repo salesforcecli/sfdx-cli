@@ -70,6 +70,6 @@ s3upload "$LATEST_VERSION_CACHE_CONTROL" \
 if [[ "$CHANNEL" == "stable" ]]; then
     s3upload "$LATEST_VERSION_CACHE_CONTROL" \
         "$CACHE_DIR/manifest.json" \
-        "$S3_BASE_UPLOAD_URL" \
+        "$S3_BASE_UPLOAD_URL/" \
         --content-type "application/json"
 fi
