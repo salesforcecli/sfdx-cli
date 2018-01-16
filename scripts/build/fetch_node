@@ -25,20 +25,32 @@ mkdir -p "$output"
 mkdir -p "$NODE_DIR"
 mkdir -p "$NODE_CACHE_DIR"
 
+if [[ -x "$(command -v 7z)" ]]; then
+    zip_cli="7z"
+    zip_ext="7z"
+elif [[ -x "$(command -v 7za)" ]]; then
+    zip_cli="7za"
+    zip_ext="7z"
+else
+    zip_cli="unzip"
+    zip_ext="zip"
+fi
+
 # Install node
 if [[ "${OS}" == "windows" ]]; then
     node_ext=".exe"
     node_base="node-v${NODE_VERSION}-win-${ARCH}"
     if [[ ! -f "$NODE_CACHE_DIR/${node_base}" ]]; then
         stdout "fetching ${node_base}"
-        # url="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-win-${ARCH}.7z"
-        url="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-win-${ARCH}.zip"
-        # curl -fSsLo "$NODE_DIR/${node_base}.7z" "${url}"
-        curl -fSsLo "$NODE_DIR/${node_base}.zip" "${url}"
+        url="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-win-${ARCH}.${zip_ext}"
+        curl -fSsLo "$NODE_DIR/${node_base}.${zip_ext}" "${url}"
         (
             cd "$NODE_DIR"
-            # 7z x -bd -y "$NODE_DIR/${node_base}.7z" > /dev/null
-            unzip "$NODE_DIR/${node_base}.zip" > /dev/null
+            if [[ "$zip_cli" == "unzip" ]]; then
+                $zip_cli "$NODE_DIR/${node_base}.zip" > /dev/null
+            else
+                $zip_cli x -bd -y "$NODE_DIR/${node_base}.7z" > /dev/null
+            fi
             mv "${node_base}/node.exe" "$NODE_CACHE_DIR/${node_base}"
         )
     fi

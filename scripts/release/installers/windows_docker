@@ -4,25 +4,32 @@ set -ex
 
 source ./scripts/release/_init
 
-set +x
-
-envars=()
-if [[ ! -z "${DEBUG_S3_UPLOAD:-}" ]]; then
-    envars+=("-e" "DEBUG_S3_UPLOAD=$DEBUG_S3_UPLOAD")
-fi
-if [[ ! -z "${WINDOWS_SIGNING_KEY:-}" ]]; then
-    envars+=("-e" "WINDOWS_SIGNING_KEY=$WINDOWS_SIGNING_KEY")
-fi
-if [[ ! -z "${WINDOWS_SIGNING_PASS:-}" ]]; then
-    envars+=("-e" "WINDOWS_SIGNING_PASS=$WINDOWS_SIGNING_PASS")
+if [[ "${DOCKER_DEBUG:-}" != "true" ]]; then
+    set +x
 fi
 
 docker run \
-    -t \
     --rm \
-    -i \
     -v "$ROOT_DIR:/root/sfdx" \
     -w /root/sfdx \
-    "${envars[@]}" \
+    -e CHANNEL \
+    -e DISABLE_YARNCLEAN \
+    -e FORCE_BUILD \
+    -e http_proxy \
+    -e HTTP_PROXY \
+    -e https_proxy \
+    -e HTTPS_PROXY \
+    -e NO_PROXY \
+    -e NPM_REGISTRY \
+    -e PARALLEL_OS_BUILDS \
+    -e S3_ACCESS_KEY \
+    -e S3_SECRET \
+    -e S3_ENDPOINT \
+    -e S3_BUCKET \
+    -e S3_REGION \
+    -e SKIP_AWS \
+    -e "USERID=$UID" \
+    -e WINDOWS_SIGNING_KEY \
+    -e WINDOWS_SIGNING_PASS \
     --entrypoint scripts/release/installers/windows \
     dickeyxxx/cli-engine-docker-nsis:v3.0.3
