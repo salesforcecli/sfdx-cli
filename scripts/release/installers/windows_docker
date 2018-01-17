@@ -9,15 +9,20 @@ if [[ "$USER" == "jenkins" ]]; then
     extra_args+=(
         "-v" "/etc/passwd:/etc/passwd"
         "-v" "/etc/group:/etc/group"
+        "-v" "$HOME:$HOME"
+        "-w" "$ROOT_DIR"
         "-u" $(id -u):$(id -g)
+    )
+else
+    extra_args+=(
+        "-v" "$ROOT_DIR:/home/sfdx"
+        "-w" "/home/sfdx"
     )
 fi
 
 docker run \
     ${extra_args[@]+${extra_args[@]}} \
     --rm \
-    -v "$ROOT_DIR:/home/sfdx" \
-    -w /home/sfdx \
     -e CHANNEL \
     -e DISABLE_YARNCLEAN \
     -e FORCE_BUILD \
