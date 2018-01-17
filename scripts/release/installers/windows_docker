@@ -4,10 +4,6 @@ set -ex
 
 source ./scripts/release/_init
 
-if [[ "${DOCKER_DEBUG:-}" != "true" ]]; then
-    set +x
-fi
-
 extra_args=()
 if [[ "$USER" == "jenkins" ]]; then
     extra_args+=(
