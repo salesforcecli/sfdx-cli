@@ -710,17 +710,9 @@ cli-engine-command@^9.0.3:
     string "3.x"
     supports-color "^4.4.0"
 
-cli-engine-config@3.5.0:
+cli-engine-config@3.5.0, cli-engine-config@^3.4.0:
   version "3.5.0"
   resolved "http://10.252.156.164:4880/cli-engine-config/-/cli-engine-config-3.5.0.tgz#8514e17020ad3443787c60c5f35951260b33478e"
-  dependencies:
-    debug "^3.1.0"
-    fs-extra "^4.0.2"
-    uuid "^3.1.0"
-
-cli-engine-config@^3.4.0:
-  version "3.4.0"
-  resolved "http://10.252.156.164:4880/cli-engine-config/-/cli-engine-config-3.4.0.tgz#b496169525a8e07aaface467995b6c52baf3611c"
   dependencies:
     debug "^3.1.0"
     fs-extra "^4.0.2"
