@@ -8,10 +8,20 @@ if [[ "${DOCKER_DEBUG:-}" != "true" ]]; then
     set +x
 fi
 
+extra_args=()
+if [[ "$USER" == "jenkins" ]]; then
+    extra_args+=(
+        "-v" "/etc/passwd:/etc/passwd"
+        "-v" "/etc/group:/etc/group"
+        "-u" $(id -u):$(id -g)
+    )
+fi
+
 docker run \
+    ${extra_args[@]+${extra_args[@]}} \
     --rm \
-    -v "$ROOT_DIR:/root/sfdx" \
-    -w /root/sfdx \
+    -v "$ROOT_DIR:/home/sfdx" \
+    -w /home/sfdx \
     -e CHANNEL \
     -e DISABLE_YARNCLEAN \
     -e FORCE_BUILD \
@@ -28,7 +38,6 @@ docker run \
     -e S3_BUCKET \
     -e S3_REGION \
     -e SKIP_AWS \
-    -e "USERID=$UID" \
     -e WINDOWS_SIGNING_KEY \
     -e WINDOWS_SIGNING_PASS \
     --entrypoint scripts/release/installers/windows \
