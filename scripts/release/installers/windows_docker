@@ -8,6 +8,7 @@ if [[ "${DOCKER_DEBUG:-}" != "true" ]]; then
     set +x
 fi
 
+<<<<<<< HEAD
 extra_args=()
 if [[ "$USER" == "jenkins" ]]; then
     extra_args+=(
@@ -17,11 +18,18 @@ if [[ "$USER" == "jenkins" ]]; then
     )
 fi
 
+=======
+>>>>>>> master
 docker run \
     ${extra_args[@]+${extra_args[@]}} \
     --rm \
+<<<<<<< HEAD
     -v "$ROOT_DIR:/home/sfdx" \
     -w /home/sfdx \
+=======
+    -v "$ROOT_DIR:/root/sfdx" \
+    -w /root/sfdx \
+>>>>>>> master
     -e CHANNEL \
     -e DISABLE_YARNCLEAN \
     -e FORCE_BUILD \
@@ -38,6 +46,10 @@ docker run \
     -e S3_BUCKET \
     -e S3_REGION \
     -e SKIP_AWS \
+<<<<<<< HEAD
+=======
+    -e "USERID=$UID" \
+>>>>>>> master
     -e WINDOWS_SIGNING_KEY \
     -e WINDOWS_SIGNING_PASS \
     --entrypoint scripts/release/installers/windows \
