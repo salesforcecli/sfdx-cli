@@ -12,7 +12,7 @@ if [[ "$USER" == "jenkins" ]]; then
         "-v" "$HOME:$HOME"
         "-w" "$ROOT_DIR"
         "-u" $(id -u):$(id -g)
-        "-e" "$HOME"
+        "-e" "HOME=$HOME"
     )
 else
     extra_args+=(
