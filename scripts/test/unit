@@ -11,5 +11,6 @@ TEST_DIR="${1:-$ROOT_DIR}"
     -x "$TEST_DIR/dist/**/*.test.js" \
     -- \
     -t 240000 \
+    --require source-map-support/register \
     --recursive "$TEST_DIR/dist/**/*.test.js" \
     -R xunit-file
