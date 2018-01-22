@@ -727,9 +727,9 @@ cli-engine-heroku@5.0.3:
     http-call "^3.0.2"
     netrc-parser "^2.0.3"
 
-cli-engine@4.6.20:
-  version "4.6.20"
-  resolved "http://10.252.156.164:4880/cli-engine/-/cli-engine-4.6.20.tgz#ef56d43fc24469ad409c1d4d45d74bb2f8d96dbf"
+cli-engine@4.6.22:
+  version "4.6.22"
+  resolved "http://10.252.156.164:4880/cli-engine/-/cli-engine-4.6.22.tgz#bb26aabf1e76aefbc6aafd5f9e986b316b1cb7c0"
   dependencies:
     "@heroku/linewrap" "^1.0.0"
     ansi-escapes "^3.0.0"
@@ -751,6 +751,7 @@ cli-engine@4.6.20:
     netrc-parser "^2.0.3"
     node-gyp "3.x"
     rwlockfile "^1.4.10"
+    semver "5.4.1"
     string "3.x"
     string-similarity "^1.2.0"
     tar-fs "1.16.0"
@@ -4429,7 +4430,7 @@ selenium-standalone@5.7.1:
     which "1.1.1"
     yauzl "^2.5.0"
 
-"semver@2 || 3 || 4 || 5", semver@^5.3.0:
+"semver@2 || 3 || 4 || 5", semver@5.4.1, semver@^5.3.0:
   version "5.4.1"
   resolved "http://10.252.156.164:4880/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
 
@@ -4574,6 +4575,12 @@ source-map-resolve@^0.3.0:
     source-map-url "~0.3.0"
     urix "~0.1.0"
 
+source-map-support@0.5.2:
+  version "0.5.2"
+  resolved "http://10.252.156.164:4880/source-map-support/-/source-map-support-0.5.2.tgz#1a6297fd5b2e762b39688c7fc91233b60984f0a5"
+  dependencies:
+    source-map "^0.6.0"
+
 source-map-url@~0.3.0:
   version "0.3.0"
   resolved "http://10.252.156.164:4880/source-map-url/-/source-map-url-0.3.0.tgz#7ecaf13b57bcd09da8a40c5d269db33799d4aaf9"
@@ -4593,6 +4600,10 @@ source-map@^0.4.4:
 source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1:
   version "0.5.7"
   resolved "http://10.252.156.164:4880/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
+
+source-map@^0.6.0:
+  version "0.6.1"
+  resolved "http://10.252.156.164:4880/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
 source-map@~0.2.0:
   version "0.2.0"

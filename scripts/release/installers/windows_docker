@@ -11,7 +11,7 @@ if [[ "$USER" == "jenkins" ]]; then
         "-v" "/etc/group:/etc/group"
         "-v" "$HOME:$HOME"
         "-w" "$ROOT_DIR"
-        "-u" $(id -u):$(id -g)
+        "-u" "$(id -u):$(id -g)"
         "-e" "HOME=$HOME"
     )
 else
