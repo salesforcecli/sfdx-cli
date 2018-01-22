@@ -727,9 +727,9 @@ cli-engine-heroku@5.0.3:
     http-call "^3.0.2"
     netrc-parser "^2.0.3"
 
-cli-engine@4.6.20:
-  version "4.6.20"
-  resolved "http://10.252.156.164:4880/cli-engine/-/cli-engine-4.6.20.tgz#ef56d43fc24469ad409c1d4d45d74bb2f8d96dbf"
+cli-engine@4.6.22:
+  version "4.6.22"
+  resolved "http://10.252.156.164:4880/cli-engine/-/cli-engine-4.6.22.tgz#bb26aabf1e76aefbc6aafd5f9e986b316b1cb7c0"
   dependencies:
     "@heroku/linewrap" "^1.0.0"
     ansi-escapes "^3.0.0"
@@ -751,6 +751,7 @@ cli-engine@4.6.20:
     netrc-parser "^2.0.3"
     node-gyp "3.x"
     rwlockfile "^1.4.10"
+    semver "5.4.1"
     string "3.x"
     string-similarity "^1.2.0"
     tar-fs "1.16.0"
@@ -4429,7 +4430,7 @@ selenium-standalone@5.7.1:
     which "1.1.1"
     yauzl "^2.5.0"
 
-"semver@2 || 3 || 4 || 5", semver@^5.3.0:
+"semver@2 || 3 || 4 || 5", semver@5.4.1, semver@^5.3.0:
   version "5.4.1"
   resolved "http://10.252.156.164:4880/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
 
