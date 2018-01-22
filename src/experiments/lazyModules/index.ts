@@ -1,12 +1,12 @@
 import Module = require('module');
 import path = require('path');
 import fs = require('fs');
+import { type } from 'os';
 import Debug = require('debug');
-import { buildConfig, Config } from 'cli-engine-config';
+import { buildConfig } from 'cli-engine-config';
 
 import LazyModules from './LazyModules';
 import TypeCache from './TypeCache';
-import { type } from 'os';
 
 const pjson = require('../../../package.json'); // tslint:disable-line no-var-requires
 const cacheDir = buildConfig({ bin: pjson['cli-engine'].bin }).cacheDir!;
@@ -26,11 +26,4 @@ export function start() {
     typeCache.load();
     process.on('exit', () => typeCache.save());
     lazyModules.enable();
-}
-
-/**
- * Reset the current type cache data and file store.
- */
-export function resetTypeCache() {
-    typeCache.reset();
 }

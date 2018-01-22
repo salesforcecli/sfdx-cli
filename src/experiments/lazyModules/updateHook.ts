@@ -4,7 +4,7 @@ import * as lazyModules from './index';
 
 function run(config: Config) {
     // Reset the type cache on CLI or plugin updates in case a dependency has changed types
-    lazyModules.resetTypeCache();
+    lazyModules.typeCache.reset();
 }
 
 export = timedHook('update:lazy-modules', run);
