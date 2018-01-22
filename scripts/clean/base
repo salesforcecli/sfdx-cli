@@ -22,5 +22,8 @@ find node_modules -name \*.md | grep -v /templates/ | xargs rm
 # Module test dirs, except in salesforce-alm, which includes production source code in such a dir
 find node_modules -name test -type d | grep -v /salesforce-alm/ | xargs rm -rf
 
+# Module doc dirs, except in salesforce-alm, which includes production source code in such a dir
+find node_modules -name doc -type d | grep -v /salesforce-alm/ | xargs rm -rf
+
 # In case yarn autoclean is disabled, delete some known windows file path length offenders
 find node_modules -name .nyc_output -print0 | xargs rm -rf
