@@ -149,7 +149,7 @@ export default class LazyModules {
                 return mod;
             }
         };
-    };
+    }
 
     private createProxy(filename, realLoad, request, parent, isMain) {
         // Create a new lazy loading module proxy

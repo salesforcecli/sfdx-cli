@@ -6,14 +6,15 @@ import { buildConfig, Config } from 'cli-engine-config';
 
 import LazyModules from './LazyModules';
 import TypeCache from './TypeCache';
+import { type } from 'os';
 
 const pjson = require('../../../package.json'); // tslint:disable-line no-var-requires
-const cacheDir = buildConfig({bin: pjson['cli-engine'].bin}).cacheDir!;
+const cacheDir = buildConfig({ bin: pjson['cli-engine'].bin }).cacheDir!;
 const typeCacheFile = path.join(cacheDir, 'module-types.json');
-
-export const typeCache = new TypeCache(fs, typeCacheFile);
-
+const typeCache = new TypeCache(fs, typeCacheFile);
 const lazyModules = new LazyModules(cacheDir, typeCache, Module as any);
+
+export { typeCache };
 
 /**
  * Start lazy loading type-compatible modules.

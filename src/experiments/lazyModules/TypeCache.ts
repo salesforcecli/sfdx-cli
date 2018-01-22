@@ -3,12 +3,12 @@ import fs = require('fs');
 import { debug, trace } from './debug';
 
 export default class TypeCache {
-    private hasChanged = false;
+    private changed = false;
 
     constructor(
         private fsLib: typeof fs,
         private cacheFile: string,
-        private values: {[key: string]: string} = {}
+        private values: { [key: string]: string } = {}
     ) {
     }
 
@@ -21,7 +21,7 @@ export default class TypeCache {
         } catch (err) {
             if (err.code === 'ENOENT') {
                 debug('type cache not found');
-                return;
+                return false;
             }
             throw err;
         }
@@ -33,18 +33,26 @@ export default class TypeCache {
         } catch (err) {
             debug('removing corrupted type cache');
             this.fsLib.unlinkSync(this.cacheFile);
+            return false;
         }
+        return true;
     }
 
     public save() {
         debug('saving type cache to %s', this.cacheFile);
-        if (!this.hasChanged) {
+        if (!this.changed) {
             debug('no changes to save');
-            return;
+            return false;
         }
         const json = JSON.stringify(this.values);
-        this.fsLib.writeFileSync(this.cacheFile, json);
+        try {
+            this.fsLib.writeFileSync(this.cacheFile, json);
+        } catch (err) {
+            debug(err.message);
+            return false;
+        }
         debug('saved type cache');
+        return true;
     }
 
     public reset() {
@@ -53,8 +61,14 @@ export default class TypeCache {
             this.fsLib.unlinkSync(this.cacheFile);
         } catch (err) {
             debug(err.message);
+            return false;
         }
         debug('type cache reset');
+        return true;
+    }
+
+    public hasChanged() {
+        return this.changed;
     }
 
     public hasType(filename) {
@@ -74,7 +88,7 @@ export default class TypeCache {
         const type = this.getType(filename);
         switch (type) {
             // MUST return a function expression, not an arrow function
-            case 'function': return function() {}; // tslint:disable-line:only-arrow-functions
+            case 'function': return function () { }; // tslint:disable-line:only-arrow-functions
             case 'object': return {};
             default: throw new Error(`Unexpected module proxy target type: ${type}`);
         }
@@ -82,14 +96,19 @@ export default class TypeCache {
 
     public setTypeIfUnknown(filename, type) {
         if (this.values[filename]) {
-            return;
+            return false;
         }
         this.values[filename] = type;
-        this.hasChanged = true;
+        this.changed = true;
+        return true;
     }
 
     public clearType(filename) {
-        delete this.values[filename];
-        this.hasChanged = true;
+        if (this.values[filename]) {
+            delete this.values[filename];
+            this.changed = true;
+            return true;
+        }
+        return false;
     }
 }

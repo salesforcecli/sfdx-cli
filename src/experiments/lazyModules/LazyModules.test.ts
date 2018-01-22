@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import { sandbox as Sandbox } from 'sinon';
 
 import fs = require('fs');
+import Module = require('module');
 import { Config } from 'cli-engine-config';
 
 import TypeCache from './TypeCache';
@@ -24,16 +25,14 @@ describe('lazy module loader', () => {
         sandbox = Sandbox.create();
 
         modLib = {
-            _load: (request, parent, isMain) => { },
-            _resolveFilename: (request) => { }
+            _load: (request, parent, isMain) => {
+                realLoadTime = Date.now();
+                return testModule;
+            },
+            _resolveFilename: (request) => {
+                return `/fake/${request}.js`;
+            }
         };
-        sandbox.stub(modLib, '_load').callsFake((request, parent, isMain) => {
-            realLoadTime = Date.now();
-            return testModule;
-        });
-        sandbox.stub(modLib, '_resolveFilename').callsFake((request) => {
-            return `/test/${request}.js`;
-        });
 
         origRequire = require;
         require = ((request: string) => {
@@ -45,12 +44,12 @@ describe('lazy module loader', () => {
         // make sure the test type cache has values for all possible module requests, even if they wouldn't
         // be primed in the cache normally (i.e. for being non-objects or non-functions) so ensure that a
         // cache miss doesn't create a false positive when testing excludes
-        typeCache = new TypeCache(fsLib, '/tmp/cache.json', {
-            '/test/testFunction.js': 'function',
-            '/test/testObject.js': 'object',
-            '/test/testString.js': 'string',
-            '/test/excludedObject.js': 'object',
-            '/test/excludedString.json': 'string'
+        typeCache = new TypeCache(fsLib, '/fake/cache.json', {
+            '/fake/testFunction.js': 'function',
+            '/fake/testObject.js': 'object',
+            '/fake/testString.js': 'string',
+            '/fake/excludedObject.js': 'object',
+            '/fake/excludedString.json': 'string'
         });
         lazyModules = new LazyModules('/tmp', typeCache, modLib, fsLib);
         sandbox.stub(lazyModules, 'getExcludes').callsFake(() => /^(?:.+\.json|excludedObject|excludedString)$/);
@@ -63,6 +62,7 @@ describe('lazy module loader', () => {
 
     afterEach(() => {
         require = origRequire;
+        sandbox.restore();
     });
 
     describe('basic behaviors', () => {
@@ -332,7 +332,7 @@ describe('lazy module loader', () => {
         it('should require a function that accurately reports its own keys', () => {
             // `function(){}` returns different keys than `()=>{}` and we need to match the proxy target type
             // tslint:disable-next-line:only-arrow-functions
-            testModule = function() { };
+            testModule = function () { };
             testModule.foo = 'bar';
             const test = require('testFunction');
             const testKeys = Reflect.ownKeys(test).map((k) => k.toString()).sort();
