@@ -23,10 +23,12 @@ import TypeCache from './TypeCache';
 import env from '../../util/env';
 import { debug, trace } from './debug';
 
-const PROXY_ALL = env.getBoolean('SFDX_LAZY_LOAD_MODULES_ALL');
+// Proxy all modules unless this envar is set, in which case we only proxy "main" modules to reduce cache file
+// size at the expense of some performance
+const PROXY_ALL = !env.getBoolean('SFDX_LAZY_LOAD_MAIN_MODULES');
 
 export default class LazyModules {
-    private proxyCache: {[key: string]: any};
+    private proxyCache: { [key: string]: any };
 
     private excludes = (() => {
         // Exclude Node SDK builtin modules, which already load hella quick; some of them,
