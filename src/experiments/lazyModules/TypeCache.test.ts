@@ -1,4 +1,3 @@
-import { type } from 'os';
 /* tslint:disable:no-unused-expression */
 
 import { expect } from 'chai';
