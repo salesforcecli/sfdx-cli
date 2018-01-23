@@ -78,7 +78,7 @@ describe('lazy module loader', () => {
                 } catch (err) {
                     done(err);
                 }
-            }, 100);
+            }, 110);
         });
 
         it('should immediately load excluded modules', (done) => {
@@ -93,7 +93,7 @@ describe('lazy module loader', () => {
                 } catch (err) {
                     done(err);
                 }
-            }, 100);
+            }, 110);
         });
 
         it('should immediately load json files', (done) => {
@@ -111,7 +111,7 @@ describe('lazy module loader', () => {
                 } catch (err) {
                     done(err);
                 }
-            }, 100);
+            }, 110);
         });
 
         it('should require an object that is cached idempotently', () => {
