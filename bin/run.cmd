@@ -6,7 +6,7 @@ set CLI_BINPATH=%~dp0%BIN_NAME%.cmd
 set LATEST_BINPATH=%LOCALAPPDATA%\%BIN_NAME%\client\bin\%BIN_NAME%.cmd
 if "%SFDX_INSTALLER%" == "true" (
     REM installer/update that shipped its own node binary
-    if "%LATEST_BINPATH%"=="%CLI_BINPATH%" (
+    if /I "%LATEST_BINPATH%"=="%CLI_BINPATH%" (
         REM latest version installed by the autoupdater
         "%~dp0node.exe" "%~dp0%BIN_NAME%.js" %*
     ) else if exist "%LATEST_BINPATH%" (
