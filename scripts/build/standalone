@@ -45,7 +45,3 @@ for OS in "${OS_TARGETS[@]}"; do
     done
 done
 script "build/manifest.js" version="$VERSION" channel="$CHANNEL" "${builds[@]}" > "$RELEASE_DIR/manifest.json"
-
-if [[ "${BUILD_INSTALLERS:-}" == "true" ]]; then
-    script "build/installers/all"
-fi
