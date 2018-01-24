@@ -87,7 +87,7 @@ describe('lazy module type cache', () => {
         cacheValue = cacheValid;
         typeCache.load();
         expect(typeCache.hasChanged()).to.be.false;
-        typeCache.setTypeIfUnknown('/fake/foo.js', 'object');
+        typeCache.setType('/fake/foo.js', 'object');
         expect(typeCache.hasChanged()).to.be.true;
     });
 
@@ -102,7 +102,7 @@ describe('lazy module type cache', () => {
     it('should save when its values have changed', () => {
         cacheValue = cacheValid;
         typeCache.load();
-        typeCache.setTypeIfUnknown('/fake/foo.js', 'object');
+        typeCache.setType('/fake/foo.js', 'object');
         expect(typeCache.hasChanged()).to.be.true;
         expect(typeCache.save()).to.be.true;
         expect((fsLib.writeFileSync as any).calledOnce).to.be.true;
@@ -113,7 +113,7 @@ describe('lazy module type cache', () => {
         sandbox.stub(fsLib, 'writeFileSync').callsFake(() => { throw new Error('Fail!'); });
         cacheValue = cacheValid;
         typeCache.load();
-        typeCache.setTypeIfUnknown('/fake/foo.js', 'object');
+        typeCache.setType('/fake/foo.js', 'object');
         expect(typeCache.save()).to.be.false;
         expect((fsLib.writeFileSync as any).calledOnce).to.be.true;
     });
@@ -121,7 +121,7 @@ describe('lazy module type cache', () => {
     it('should clear entries and unlink an existing cache file when reset', () => {
         cacheValue = cacheValid;
         typeCache.load();
-        typeCache.setTypeIfUnknown('/fake/foo.js', 'object');
+        typeCache.setType('/fake/foo.js', 'object');
         typeCache.reset();
         expect(typeCache.hasType('/fake/foo.js')).to.be.false;
         expect((fsLib.unlinkSync as any).calledOnce).to.be.true;
@@ -151,7 +151,7 @@ describe('lazy module type cache', () => {
         cacheValue = cacheValid;
         typeCache.load();
         expect(typeCache.hasProxiableType('/fake/none.js')).to.be.false;
-        typeCache.setTypeIfUnknown('/fake/foo.js', 'string');
+        typeCache.setType('/fake/foo.js', 'string');
         expect(typeCache.hasProxiableType('/fake/foo.js')).to.be.false;
     });
 
@@ -173,14 +173,14 @@ describe('lazy module type cache', () => {
         typeCache.load();
         expect(typeCache.hasProxiableType('/fake/testObject.js')).to.be.true;
         expect(typeCache.hasProxiableType('/fake/testFunction.js')).to.be.true;
-        typeCache.setTypeIfUnknown('/fake/foo.js', 'string');
+        typeCache.setType('/fake/foo.js', 'string');
         expect(typeCache.hasProxiableType('/fake/foo.js')).to.be.false;
     });
 
     it('should throw an error when creating a proxy target for a module who\'s type is not proxiable', () => {
         cacheValue = cacheValid;
         typeCache.load();
-        typeCache.setTypeIfUnknown('/fake/foo.js', 'string');
+        typeCache.setType('/fake/foo.js', 'string');
         expect(() => typeCache.getTargetForProxiableType('/fake/foo.js')).to.throw();
     });
 
@@ -188,7 +188,7 @@ describe('lazy module type cache', () => {
         cacheValue = cacheValid;
         typeCache.load();
         expect(typeCache.hasType('/fake/foo.js')).to.be.false;
-        expect(typeCache.setTypeIfUnknown('/fake/foo.js', 'object')).to.be.true;
+        expect(typeCache.setType('/fake/foo.js', 'object')).to.be.true;
         expect(typeCache.hasType('/fake/foo.js')).to.be.true;
     });
 
@@ -196,7 +196,7 @@ describe('lazy module type cache', () => {
         cacheValue = cacheValid;
         typeCache.load();
         expect(typeCache.hasType('/fake/testObject.js')).to.be.true;
-        expect(typeCache.setTypeIfUnknown('/fake/testObject.js', 'object')).to.be.false;
+        expect(typeCache.setType('/fake/testObject.js', 'object')).to.be.false;
         expect(typeCache.hasType('/fake/testObject.js')).to.be.true;
     });
 

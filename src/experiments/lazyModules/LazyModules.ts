@@ -28,7 +28,7 @@ import { debug, trace } from './debug';
 const PROXY_ALL = !env.getBoolean('SFDX_LAZY_LOAD_MAIN_MODULES');
 
 export default class LazyModules {
-    private proxyCache: { [key: string]: any };
+    private moduleCache: { [key: string]: any };
 
     private excludes = (() => {
         // Exclude Node SDK builtin modules, which already load hella quick; some of them,
@@ -46,6 +46,7 @@ export default class LazyModules {
 
         const snowflakes = [
             // If a module is discovered to be incompatible with lazy proxies, add it here
+            'jsforce' // jsforce employs some incompatible module loading anti-patterns
         ];
 
         // The complete set of modules for which lazy loading should be disabled
@@ -69,14 +70,14 @@ export default class LazyModules {
         const origLoad = this.modLib._load;
         this.modLib._load = this.makeLazy(origLoad);
         this.modLib._load._origLoad = origLoad;
-        this.proxyCache = {};
+        this.moduleCache = {};
         debug('enabled');
     }
 
     public disable() {
         if (this.modLib._load._origLoad) {
             this.modLib._load = this.modLib._load._origLoad;
-            this.proxyCache = {};
+            this.moduleCache = {};
             this.typeCache.reset();
         }
         debug('disabled');
@@ -134,26 +135,52 @@ export default class LazyModules {
                 }
             }
 
-            // Return from cache if it exists rather than creating a new proxy
+            // TODO: could resolveFileName be returning a misleading value causing requests to stomp on each other?
+            //       the real question is why do some modules change type when the type cache is clean?
             const filename = this.modLib._resolveFilename(request, parent, isMain);
-            const cachedProxy = this.proxyCache[filename];
-            if (cachedProxy) {
-                return cachedProxy;
+
+            // Return from cache if it exists rather than creating a new proxy
+            const cachedModule = this.moduleCache[filename];
+            if (cachedModule) {
+                trace('[cache]', request, filename, typeof cachedModule);
+                return cachedModule;
             }
 
             if (this.typeCache.hasProxiableType(filename)) {
-                trace('[prxy] (%s) %s', this.typeCache.getType(filename), request);
+                // If the module's type is known and is proxiable, create and return a proxy
                 return this.createProxy(filename, realLoad, request, parent, isMain);
             } else {
-                trace('[type]', request);
-                const mod = realLoad(request, parent, isMain);
-                this.typeCache.setTypeIfUnknown(filename, typeof mod);
-                return mod;
+                // Otherwise, immediately load the module without a proxy, recording its type in the type cache
+                return this.loadModule(filename, realLoad, request, parent, isMain);
             }
         };
     }
 
+    private loadModule(filename, realLoad, request, parent, isMain) {
+        const mod = realLoad(request, parent, isMain);
+        const type = typeof mod;
+        // Circular module refs can cause premature requires of modules to
+        // _load as an empty object, so if we detect this we ignore recording
+        // the type on that pass and simply return the module stubs as Node's
+        // native _load would; if they are _loaded again later, they may reify
+        // correctly and we'll catch it then.  This is known to happen with
+        // jsforce/lib/connection.js, as an example.
+        //
+        // Some modules legitimately return an empty object, or do nothing but
+        // cause side effects, which results in the same thing.  In these cases
+        // the noop should not be harmful.
+        if (Object.keys(mod).length === 0 && mod.constructor === Object) {
+            trace('[noop]', request, filename, type);
+        } else {
+            trace('[type]', request, filename, type);
+            this.typeCache.setType(filename, type);
+        }
+        this.moduleCache[filename] = mod;
+        return mod;
+    }
+
     private createProxy(filename, realLoad, request, parent, isMain) {
+        trace('[proxy]', request, filename, this.typeCache.getType(filename));
         // Create a new lazy loading module proxy
         let mod;
         const proxyTarget = this.typeCache.getTargetForProxiableType(filename);
@@ -342,7 +369,7 @@ export default class LazyModules {
             }
         });
 
-        this.proxyCache[filename] = proxy;
+        this.moduleCache[filename] = proxy;
         return proxy;
     }
 }

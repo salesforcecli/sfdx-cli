@@ -94,9 +94,11 @@ export default class TypeCache {
         }
     }
 
-    public setTypeIfUnknown(filename, type) {
-        if (this.values[filename]) {
+    public setType(filename, type) {
+        if (this.values[filename] === type) {
             return false;
+        } else if (this.values[filename]) {
+            trace('module type change: %s from %s to %s', filename, this.values[filename], type);
         }
         this.values[filename] = type;
         this.changed = true;

@@ -129,7 +129,15 @@ describe('lazy module loader', () => {
             expect(test.foo).to.equal('bar');
         });
 
-        it('should require a usable constructor', () => {
+        it('should require a usable function constructor', () => {
+            testModule = function (this: any, _name: string) {
+                this.name = _name;
+            };
+            const test = require('testFunction');
+            expect(new test('foo').name).to.equal('foo');
+        });
+
+        it('should require a usable class constructor', () => {
             testModule = class {
                 constructor(private _name: string) { }
                 get name() { return this._name; }
