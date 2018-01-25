@@ -34,7 +34,9 @@
       "prerun": [
         "./dist/hooks/logAnalytics.js"
       ],
-      "update": []
+      "update": [
+        "./dist/experiments/lazyModules/updateHook.js"
+      ]
     },
     "plugins": [
       "salesforcedx"
@@ -100,6 +102,7 @@
     "clean": "yarn clean-dist && yarn clean-test",
     "clean-all": "bash scripts/clean/all",
     "clean-build": "bash scripts/clean/build",
+    "clean-compile": "yarn clean-all && yarn install --pure-lockfile",
     "clean-dist": "bash scripts/clean/dist",
     "clean-test": "bash scripts/clean/test",
     "compile": "bash scripts/build/compile",
