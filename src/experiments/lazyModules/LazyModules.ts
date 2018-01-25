@@ -23,10 +23,6 @@ import TypeCache from './TypeCache';
 import env from '../../util/env';
 import { debug, trace } from './debug';
 
-// Proxy all modules unless this envar is set, in which case we only proxy "main" modules to reduce cache file
-// size at the expense of some performance
-const PROXY_ALL = !env.getBoolean('SFDX_LAZY_LOAD_MAIN_MODULES');
-
 export default class LazyModules {
     private moduleCache: { [key: string]: any };
 
@@ -46,7 +42,6 @@ export default class LazyModules {
 
         const snowflakes = [
             // If a module is discovered to be incompatible with lazy proxies, add it here
-            'jsforce' // jsforce employs some incompatible module loading anti-patterns
         ];
 
         // The complete set of modules for which lazy loading should be disabled
@@ -119,7 +114,8 @@ export default class LazyModules {
                 return realLoad(request, parent, isMain);
             }
 
-            if (!PROXY_ALL && request.includes('/')) {
+            // Only proxy main modules (modules without a relative `\` in the request name)
+            if (request.includes('/')) {
                 trace('[real]', request);
                 return realLoad(request, parent, isMain);
             }

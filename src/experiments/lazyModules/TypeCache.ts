@@ -1,5 +1,6 @@
 import fs = require('fs');
 
+import { NamedError } from '../../util/NamedError';
 import { debug, trace } from './debug';
 
 export default class TypeCache {
@@ -90,7 +91,7 @@ export default class TypeCache {
             // MUST return a function expression, not an arrow function
             case 'function': return function () { }; // tslint:disable-line:only-arrow-functions
             case 'object': return {};
-            default: throw new Error(`Unexpected module proxy target type: ${type}`);
+            default: throw new NamedError('LazyModuleProxyTypeError', `Unexpected module proxy target type: ${type}`);
         }
     }
 
