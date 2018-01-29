@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+set -ex
+
+export OS=darwin
+export ARCH=x64
+
+source ./scripts/_init
+
+# Use the specified version if set, otherwise default to the most recent tag
+RELEASE_TAG="${RELEASE_TAG:-"$(git describe --abbrev=0 --tags)"}"
+
+if [[ "$RELEASE_TAG" != "v6."* ]]; then
+    sterr "Unexpected format for RELEASE_TAG: '$RELEASE_TAG', expected 'v6.x.y'"
+    exit 1
+fi
+
+if git rev-parse "$RELEASE_TAG" >/dev/null 2>&1; then
+    stdout "RELEASE_TAG '$RELEASE_TAG' is valid, continuing..."
+else
+    stderr "RELEASE_TAG '$RELEASE_TAG' not found, aborting."
+    exit 1
+fi
+
+# Envar overrides of _init script values
+export SHORT_VERSION="${RELEASE_TAG:1}" # Remove leading `v`
+sha=$(git rev-parse --short=10 "$RELEASE_TAG^{commit}")
+export VERSION="$SHORT_VERSION-$sha"
+export INSTALLER_BASE_NAME="$PKG_NAME-v$VERSION"
+
+rm -rf "$TMP_DIR" "$RELEASE_DIR"
+mkdir -p "$TMP_DIR" "$RELEASE_DIR"
+cd "$TMP_DIR"
+
+GIT_BASE_URL="https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli"
+TAG="v$SHORT_VERSION"
+ASSET="$INSTALLER_BASE_NAME-darwin-x64.tar.xz"
+
+set +x
+RELEASE_JSON=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$GIT_BASE_URL/releases/tags/$TAG?access_token=$GIT_READ_TOKEN")
+set -x
+
+set +e
+IFS='' read -r -d '' ASSET_SCRIPT <<EOF
+const fs = require('fs');
+const stdin = process.stdin;
+const chunks = [];
+stdin.resume();
+stdin.setEncoding('utf8');
+stdin.on('data', (chunk) => chunks.push(chunk));
+stdin.on('end', () => {
+    console.log(JSON.parse(chunks.join()).assets.filter((asset) => asset.name === '$ASSET')[0].url);
+});
+EOF
+set -e
+
+ASSET_URL=$(echo "$RELEASE_JSON" | node -e "$ASSET_SCRIPT")
+
+cd "$TMP_DIR"
+
+set +x
+curl -L -H "Accept: application/octet-stream" "$ASSET_URL?access_token=$GIT_READ_TOKEN" | tar xz
+set -x
+
+mv "$TMP_DIR/$INSTALLER_BASE_NAME-darwin-x64" "$WORKSPACE_DIR"
+
+export TMP_DIR
+export RELEASE_DIR
+export RESOURCES_DIR
+export BIN_NAME
+export PKG_NAME
+export PKG_DESC
+export PKG_DIR
+export OSX_KEYCHAIN
+
+script "build/installers/darwin_package"
