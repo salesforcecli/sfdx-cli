@@ -85,5 +85,5 @@ UPLOAD_URL=$(echo "$RELEASE_JSON" | node -e "$UPLOAD_URL_SCRIPT")
 VERSIONED_INSTALLER_NAME="$INSTALLER_BASE_NAME.pkg"
 
 set +x
-curl -X POST --data-binary "$RELEASE_DIR/$VERSIONED_INSTALLER_NAME" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=$VERSIONED_INSTALLER_NAME&access_token=$GIT_TOKEN"
+curl -X POST --data-binary "@$RELEASE_DIR/$VERSIONED_INSTALLER_NAME" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=$VERSIONED_INSTALLER_NAME&access_token=$GIT_TOKEN"
 set -x
