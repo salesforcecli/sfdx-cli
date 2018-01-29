@@ -72,20 +72,20 @@ export OSX_KEYCHAIN
 script "build/installers/darwin_package"
 
 set +e
-IFS='' read -r -d '' UPLOAD_URL_SCRIPT <<EOF
+IFS='' read -r -d '' ASSETS_URL_SCRIPT <<EOF
 const fs = require('fs'), stdin = process.stdin, chunks = [];
 stdin.resume();
 stdin.setEncoding('utf8');
 stdin.on('data', (chunk) => chunks.push(chunk));
-stdin.on('end', () => console.log(JSON.parse(chunks.join()).upload_url));
+stdin.on('end', () => console.log(JSON.parse(chunks.join()).assets_url));
 EOF
 set -e
 
-UPLOAD_URL=$(echo "$RELEASE_JSON" | node -e "$UPLOAD_URL_SCRIPT")
+ASSETS_URL=$(echo "$RELEASE_JSON" | node -e "$ASSETS_URL_SCRIPT")
 VERSIONED_INSTALLER_NAME="$INSTALLER_BASE_NAME.pkg"
 
 set +x
-curl -X POST --data-binary "$RELEASE_DIR/$VERSIONED_INSTALLER_NAME" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=$VERSIONED_INSTALLER_NAME&access_token=$GIT_TOKEN"
+curl -X POST --data-binary "$RELEASE_DIR/$VERSIONED_INSTALLER_NAME" -H "Content-Type: application/octet-stream" "$ASSETS_URL?name=$VERSIONED_INSTALLER_NAME&access_token=$GIT_TOKEN"
 set -x
 
-echo "Uploaded $VERSIONED_INSTALLER_NAME to $UPLOAD_URL"
+echo "Uploaded $VERSIONED_INSTALLER_NAME to $ASSETS_URL"

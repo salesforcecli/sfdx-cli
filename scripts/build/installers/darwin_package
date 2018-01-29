@@ -7,8 +7,6 @@ source ./scripts/_init
 
 set -ex
 
-env
-
 PKG_DIR="$WORKSPACE_DIR/installer"
 mkdir -p "$PKG_DIR"
 
