@@ -10,7 +10,7 @@ if [[ ! -e "$PKG_PATH" ]]; then
     script "build/installers/darwin_from_archive"
 fi
 
-stdout "Releasing darwin installers to ${CHANNEL}"
+stdout "Releasing darwin installer to ${CHANNEL}"
 
 CACHE_DIR="$TMP_DIR/s3"
 

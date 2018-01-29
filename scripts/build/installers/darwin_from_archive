@@ -37,29 +37,25 @@ TAG="v$SHORT_VERSION"
 ASSET="$INSTALLER_BASE_NAME-darwin-x64.tar.xz"
 
 set +x
-RELEASE_JSON=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$GIT_BASE_URL/releases/tags/$TAG?access_token=$GIT_READ_TOKEN")
+RELEASE_JSON=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$GIT_BASE_URL/releases/tags/$TAG?access_token=$GIT_TOKEN")
 set -x
 
 set +e
-IFS='' read -r -d '' ASSET_SCRIPT <<EOF
-const fs = require('fs');
-const stdin = process.stdin;
-const chunks = [];
+IFS='' read -r -d '' ASSET_URL_SCRIPT <<EOF
+const fs = require('fs'), stdin = process.stdin, chunks = [];
 stdin.resume();
 stdin.setEncoding('utf8');
 stdin.on('data', (chunk) => chunks.push(chunk));
-stdin.on('end', () => {
-    console.log(JSON.parse(chunks.join()).assets.filter((asset) => asset.name === '$ASSET')[0].url);
-});
+stdin.on('end', () => console.log(JSON.parse(chunks.join()).assets.filter((asset) => asset.name === '$ASSET')[0].url));
 EOF
 set -e
 
-ASSET_URL=$(echo "$RELEASE_JSON" | node -e "$ASSET_SCRIPT")
+ASSET_URL=$(echo "$RELEASE_JSON" | node -e "$ASSET_URL_SCRIPT")
 
 cd "$TMP_DIR"
 
 set +x
-curl -L -H "Accept: application/octet-stream" "$ASSET_URL?access_token=$GIT_READ_TOKEN" | tar xz
+curl -L -H "Accept: application/octet-stream" "$ASSET_URL?access_token=$GIT_TOKEN" | tar xz
 set -x
 
 mv "$TMP_DIR/$INSTALLER_BASE_NAME-darwin-x64" "$WORKSPACE_DIR"
@@ -74,3 +70,22 @@ export PKG_DIR
 export OSX_KEYCHAIN
 
 script "build/installers/darwin_package"
+
+set +e
+IFS='' read -r -d '' UPLOAD_URL_SCRIPT <<EOF
+const fs = require('fs'), stdin = process.stdin, chunks = [];
+stdin.resume();
+stdin.setEncoding('utf8');
+stdin.on('data', (chunk) => chunks.push(chunk));
+stdin.on('end', () => console.log(JSON.parse(chunks.join()).upload_url));
+EOF
+set -e
+
+UPLOAD_URL=$(echo "$RELEASE_JSON" | node -e "$UPLOAD_URL_SCRIPT")
+VERSIONED_INSTALLER_NAME="$INSTALLER_BASE_NAME.pkg"
+
+set +x
+curl -X POST --data-binary "$RELEASE_DIR/$VERSIONED_INSTALLER_NAME" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=$VERSIONED_INSTALLER_NAME&access_token=$GIT_TOKEN"
+set -x
+
+echo "Uploaded $VERSIONED_INSTALLER_NAME to $UPLOAD_URL"
