@@ -1,41 +1,33 @@
 #!/usr/bin/env bash
 
-set -ex
-
 export OS=darwin
 export ARCH=x64
 
 source ./scripts/_init
 
-INSTALLER_BASE_NAME="sfdx-cli-v$VERSION"
-
-if [[ ! -e "$RELEASE_DIR/$INSTALLER_BASE_NAME-darwin-x64.tar.gz" ]]; then
-    script "build/common"
-    script "build/workspace"
-    script "build/tarballs"
-fi
-
-# TODO - move signing to post-productbuild?
-extra_args=()
-if [[ ! -z "${OSX_KEYCHAIN:-}" ]]; then
-    extra_args+=(
-        "--sign" "Developer ID Installer: Salesforce"
-        "--keychain" "$OSX_KEYCHAIN"
-    )
-fi
+set -ex
 
 PKG_DIR="$WORKSPACE_DIR/installer"
 mkdir -p "$PKG_DIR"
 
+# TODO: can/should we move signing to post-productbuild?
+# TODO: we may need to use another method of providing the key so we can use the jenkins cred store
+extra_args=()
+if [[ ! -z "${OSX_KEYCHAIN:-}" ]]; then
+    extra_args+=(
+        "--sign" "Developer ID Installer: Salesforce.com"
+        "--keychain" "$OSX_KEYCHAIN"
+    )
+fi
+
 IDENTIFIER="com.salesforce.developer.cli"
 
-# shellcheck disable=SC2086
 pkgbuild --root "$WORKSPACE_DIR" \
     --identifier "$IDENTIFIER" \
     --install-location "/usr/local/lib/$BIN_NAME" \
     --version "$VERSION" \
     --scripts "$RESOURCES_DIR/darwin/scripts" \
-    "${extra_args[@]+"${extra_args[@]}"}" \
+    ${extra_args[@]+${extra_args[@]}} \
     "$PKG_DIR/$PKG_NAME.pkg"
 
 sed "s/IDENTIFIER/$IDENTIFIER/g" "$RESOURCES_DIR/darwin/distribution.xml" |

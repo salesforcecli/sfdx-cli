@@ -96,7 +96,9 @@
   },
   "scripts": {
     "build": "yarn build-standalone",
-    "build-mac": "bash scripts/build/installers/darwin",
+    "build-mac": "yarn build-mac-from-archive",
+    "build-mac-from-archive": "bash scripts/build/installers/darwin_from_archive",
+    "build-mac-from-sources": "bash scripts/build/installers/darwin_from_sources",
     "build-standalone": "bash scripts/build/standalone",
     "build-windows": "bash scripts/build/installers/windows",
     "clean": "yarn clean-dist && yarn clean-test",

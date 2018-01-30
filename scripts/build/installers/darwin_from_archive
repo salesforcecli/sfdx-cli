@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+set -ex
+
+export OS=darwin
+export ARCH=x64
+
+source ./scripts/_init
+
+# Require RELEASE_TAG to be in the form v6.*
+if [[ "$RELEASE_TAG" != "v6."* ]]; then
+    stderr "Expected RELEASE_TAG '$RELEASE_TAG' to match 'v6.*'"
+    exit 1
+fi
+
+# Require RELEASE_TAG to be on the current HEAD commit to ensure we are building with the correct resources
+if [[ "$RELEASE_TAG" != $(git tag -l --points-at HEAD "$RELEASE_TAG") ]]; then
+    stderr "Expected RELEASE_TAG '$RELEASE_TAG' to be on HEAD"
+    exit 1
+fi
+
+# Envar overrides of _init script values
+export SHORT_VERSION="${RELEASE_TAG:1}" # Remove leading `v`
+sha=$(git rev-parse --short=10 "$RELEASE_TAG^{commit}")
+export VERSION="$SHORT_VERSION-$sha"
+export INSTALLER_BASE_NAME="$PKG_NAME-v$VERSION"
+
+rm -rf "$TMP_DIR" "$RELEASE_DIR"
+mkdir -p "$TMP_DIR" "$RELEASE_DIR"
+cd "$TMP_DIR"
+
+GIT_BASE_URL="https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli"
+TAG="v$SHORT_VERSION"
+ASSET="$INSTALLER_BASE_NAME-darwin-x64.tar.xz"
+
+set +x
+RELEASE_JSON=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$GIT_BASE_URL/releases/tags/$TAG?access_token=$GIT_TOKEN")
+set -x
+
+set +e
+IFS='' read -r -d '' ASSET_URL_SCRIPT <<EOF
+const fs = require('fs'), stdin = process.stdin, chunks = [];
+stdin.resume();
+stdin.setEncoding('utf8');
+stdin.on('data', (chunk) => chunks.push(chunk));
+stdin.on('end', () => console.log(JSON.parse(chunks.join()).assets.filter((asset) => asset.name === '$ASSET')[0].url));
+EOF
+set -e
+
+ASSET_URL=$(echo "$RELEASE_JSON" | node -e "$ASSET_URL_SCRIPT")
+
+cd "$TMP_DIR"
+
+set +x
+curl -L -H "Accept: application/octet-stream" "$ASSET_URL?access_token=$GIT_TOKEN" | tar xz
+set -x
+
+mv "$TMP_DIR/$INSTALLER_BASE_NAME-darwin-x64" "$WORKSPACE_DIR"
+
+export TMP_DIR
+export RELEASE_DIR
+export RESOURCES_DIR
+export BIN_NAME
+export PKG_NAME
+export PKG_DESC
+export PKG_DIR
+export OSX_KEYCHAIN
+
+script "build/installers/darwin_package"
+
+set +e
+IFS='' read -r -d '' UPLOAD_URL_SCRIPT <<EOF
+const fs = require('fs'), stdin = process.stdin, chunks = [];
+stdin.resume();
+stdin.setEncoding('utf8');
+stdin.on('data', (chunk) => chunks.push(chunk));
+stdin.on('end', () => console.log(JSON.parse(chunks.join()).upload_url.split('{')[0]));
+EOF
+set -e
+
+UPLOAD_URL=$(echo "$RELEASE_JSON" | node -e "$UPLOAD_URL_SCRIPT")
+VERSIONED_INSTALLER_NAME="$INSTALLER_BASE_NAME.pkg"
+
+set +x
+curl -X POST --data-binary "@$RELEASE_DIR/$VERSIONED_INSTALLER_NAME" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=$VERSIONED_INSTALLER_NAME&access_token=$GIT_TOKEN"
+set -x
