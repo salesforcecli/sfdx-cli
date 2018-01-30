@@ -7,18 +7,15 @@ export ARCH=x64
 
 source ./scripts/_init
 
-# Use the specified version if set, otherwise default to the most recent tag
-RELEASE_TAG="${RELEASE_TAG:-"$(git describe --abbrev=0 --tags)"}"
-
+# Require RELEASE_TAG to be in the form v6.*
 if [[ "$RELEASE_TAG" != "v6."* ]]; then
-    sterr "Unexpected format for RELEASE_TAG: '$RELEASE_TAG', expected 'v6.x.y'"
+    stderr "Expected RELEASE_TAG '$RELEASE_TAG' to match 'v6.*'"
     exit 1
 fi
 
-if git rev-parse "$RELEASE_TAG" >/dev/null 2>&1; then
-    stdout "RELEASE_TAG '$RELEASE_TAG' is valid, continuing..."
-else
-    stderr "RELEASE_TAG '$RELEASE_TAG' not found, aborting."
+# Require RELEASE_TAG to be on the current HEAD commit to ensure we are building with the correct resources
+if [[ "$RELEASE_TAG" != $(git tag -l --points-at HEAD "$RELEASE_TAG") ]]; then
+    stderr "Expected RELEASE_TAG '$RELEASE_TAG' to be on HEAD"
     exit 1
 fi
 
