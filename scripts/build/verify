@@ -31,12 +31,12 @@ function ensure_no_heroku_cli_util_nyc() {
 #   - e.g. C:\Users\<username>\AppData\Local\sfdx\tmp\sfdx-cli-v6.xx.yy-abcdef-windows-x64\
 # * subtract those 135 characters from the max windows path length of 259 to yield the allowable length of 124 path characters
 # * considering that we currently have some dependencies in the built output that exceed 124 characters (up to 139 in salesforce-lightning-cli)
-#   we will consider the maximum path length of 139, plus 1 (for a nice round number), as the hard upper limit to our allowable path length;
-#   this leaves us a relatively comfortable maximum windows username length of 48 characters with a hard maximum path length of 140 characters
+#   we will consider the maximum path length of 139, plus 5 as a buffer, as the hard upper limit to our allowable path length;
+#   this leaves us a relatively comfortable maximum windows username length of 48 characters with a hard maximum path length of 144 characters
 # * then scan the cleaned build output directory for paths exceding this threshold, and exit with an error if detected
 function scan_path_lengths() {
     warnlen=124
-    maxlen=140
+    maxlen=144
     cd "$BASE_DIR"
     warntest=$(find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) print "fail" }' | uniq)
     if [[ "$warntest" == "fail" ]]; then
