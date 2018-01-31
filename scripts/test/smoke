@@ -43,8 +43,8 @@ stdin.on('end', () => {
     JSON.parse(chunks.join()).result.forEach((cmd) => cmds[cmd.name] = true);
     console.log('Verifying that expected commands exist...');
     expected.forEach((cmd) => {
-        if (!cmds[cmd]) throw new Error('Missing command:', cmd);
-        console.log('found', cmd);
+        console.log('Checking ', cmd);
+        if (!cmds[cmd]) throw new Error('Missing command: ' + cmd);
     });
 });
 EOF
