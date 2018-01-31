@@ -104,6 +104,70 @@ function wait_all () {
     done
 }
 
+GITHUB_BASE_URL="https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli"
+
+ghQueryRelease() {
+    TAG="v$SHORT_VERSION"
+
+    set +x
+    RELEASE_JSON=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$GITHUB_BASE_URL/releases/tags/$TAG?access_token=$GIT_TOKEN")
+    set -x
+
+    MESSAGE=$(echo "$RELEASE_JSON" | node -e "require('$ROOT_DIR/scripts/transform')((json)=>json.message)")
+    if [[ "$MESSAGE" == "Not Found" ]]; then
+        set +x
+        RELEASE_JSON=$(curl -X POST -H "Content-Type: application/vnd.github.v3+json" -d "{\"tag_name\":\"$TAG\"}" "$GITHUB_BASE_URL/releases?name=$UPLOAD_FILE_NAME&access_token=$GIT_TOKEN")
+        set -x
+    fi
+
+    stdout "$RELEASE_JSON"
+}
+
+ghAssetUrl() {
+    RELEASE_JSON="$1"
+    ASSET="$2"
+    echo "$RELEASE_JSON" | node -e "require('$ROOT_DIR/scripts/transform')((json)=>(json.assets.filter((a)=>a.name==='$ASSET')[0]||{}).url||'')"
+}
+
+ghUploadUrl() {
+    RELEASE_JSON="$1"
+    echo "$RELEASE_JSON" | node -e "require('$ROOT_DIR/scripts/transform')((json)=>json.upload_url.split('{')[0])"
+}
+
+ghUploadAsset() {
+    UPLOAD_FILE_PATH="$1"
+    UPLOAD_FILE_NAME="$2"
+    stdout "Querying github release $TAG"
+    RELEASE_JSON=$(ghQueryRelease)
+    ASSET_URL=$(ghAssetUrl "$RELEASE_JSON" "$UPLOAD_FILE_NAME")
+
+    if [[ ! -z "${ASSET_URL}" ]]; then
+        stdout "Deleting existing github release asset $UPLOAD_FILE_NAME at $ASSET_URL"
+        set +x
+        curl -X DELETE "$ASSET_URL?access_token=$GIT_TOKEN"
+        set -x
+    fi
+
+    UPLOAD_URL=$(ghUploadUrl "$RELEASE_JSON")
+
+    stdout "Uploading github release asset $UPLOAD_FILE_NAME to $UPLOAD_URL"
+    set +x
+    curl -X POST --data-binary "@$UPLOAD_FILE_PATH" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=$UPLOAD_FILE_NAME&access_token=$GIT_TOKEN"
+    set -x
+}
+
+ghDownloadAsset() {
+    DOWNLOAD_FILE_NAME="$1"
+    stdout "Querying github release $TAG"
+    RELEASE_JSON=$(ghQueryRelease)
+    ASSET_URL=$(ghAssetUrl "$RELEASE_JSON" "$DOWNLOAD_FILE_NAME")
+
+    stdout "Downloading github release asset $DOWNLOAD_FILE_NAME from $ASSET_URL"
+    set +x
+    curl -L -H "Accept: application/octet-stream" "$ASSET_URL?access_token=$GIT_TOKEN" | tar xz
+    set -x
+}
+
 # Set channel and version vars
 CHANNEL=$(script "_vars/channel")
 VERSION=$(script "_vars/version")
