@@ -39,6 +39,7 @@
       ]
     },
     "plugins": [
+      "../dist/builtins",
       "salesforcedx"
     ],
     "s3": {
