@@ -2,7 +2,7 @@ import { flags, Output } from 'cli-engine-command';
 import { ConfigOptions } from 'cli-engine-config';
 import CliEngineUpdate from 'cli-engine/lib/commands/update';
 import { NamedError } from '../util/NamedError';
-import * as request from 'request';
+import * as Request from 'request';
 import * as Debug from 'debug';
 
 const debug = Debug('sfdx:update');
@@ -15,7 +15,8 @@ export default class Update extends CliEngineUpdate {
 
     constructor(
         options: { config?: ConfigOptions, output?: Output } | null,
-        private env: typeof process.env = process.env
+        private env: typeof process.env = process.env,
+        private request: typeof Request = Request
     ) {
         super(options);
     }
@@ -39,10 +40,11 @@ export default class Update extends CliEngineUpdate {
             await this.isS3HostReachable(s3Host);
         }
 
-        this.doUpdate();
+        await this.doUpdate();
     }
 
     public async doUpdate() {
+        debug('Invoking cli-engine update');
         await super.run();
     }
 
@@ -51,7 +53,7 @@ export default class Update extends CliEngineUpdate {
         const RETRY_MILLIS = 1000;
 
         if (attempt > MAX_ATTEMPTS) {
-            throw new NamedError('S3HostReachabilityError', 'SFDX_S3_HOST is not reachable.');
+            throw new NamedError('S3HostReachabilityError', 'S3 host is not reachable.');
         }
 
         if (attempt === 1) {
@@ -85,22 +87,18 @@ export default class Update extends CliEngineUpdate {
         url += 'manifest.json';
         debug('Trying to reach S3 host at %s...', url);
         try {
-            await this.get(url);
-            debug('Reachability test successful');
+            await this.ping(url);
+            debug('Ping succeeded');
             return true;
         } catch (err) {
-            if (err.code === 'ETIMEDOUT') {
-                debug('Reachability test timed out');
-                return false;
-            }
-            debug('Reachability test failed', err);
-            throw err;
+            debug('Ping failed', err);
+            return false;
         }
     }
 
-    private async get(url: string) {
-        await new Promise((resolve, reject) => {
-            request.get({ url, timeout: 4000 }, (err, res) => {
+    private async ping(url: string) {
+        return await new Promise((resolve, reject) => {
+            this.request.get({ url, timeout: 4000 }, (err, res) => {
                 if (err) {
                     return reject(err);
                 }
@@ -116,6 +114,6 @@ export default class Update extends CliEngineUpdate {
     }
 
     private async sleep(millis) {
-        await new Promise((resolve) => setTimeout(resolve.bind(null), millis));
+        await new Promise((resolve) => setTimeout(resolve, millis));
     }
 }
