@@ -23,3 +23,17 @@ declare module 'cli-engine/lib/lock' {
         public upgrade();
     }
 }
+
+declare module 'cli-engine/lib/commands/update' {
+    import { Command, InputFlags } from 'cli-engine-command';
+
+    export default class Update extends Command<any> {
+        public static topic: string;
+        public static description: string;
+        public static args: any[];
+        public static flags: InputFlags;
+
+        public run();
+        public logChop();
+    }
+}
