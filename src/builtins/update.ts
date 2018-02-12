@@ -8,11 +8,6 @@ import * as Debug from 'debug';
 const debug = Debug('sfdx:update');
 
 export default class Update extends CliEngineUpdate {
-    public static topic = 'update';
-    public static description = 'update CLI';
-    public static args = [{ name: 'channel', optional: true }];
-    public static flags = { autoupdate: flags.boolean({ hidden: true }) };
-
     constructor(
         options: { config?: ConfigOptions, output?: Output } | null,
         private env: typeof process.env = process.env,
@@ -26,11 +21,7 @@ export default class Update extends CliEngineUpdate {
             let s3Host = this.env.SFDX_S3_HOST;
             if (s3Host) {
                 // Warn that the updater is targeting something other than the public update site
-                let message = 'Updating from SFDX_S3_HOST override.';
-                // If targeting the IP of our internal Minio server, remind about requiring SFM
-                if (/\b10\.252\.156\.165:9000\b/.test(s3Host)) {
-                    message += ' Are you on SFM?';
-                }
+                const message = 'Updating from SFDX_S3_HOST override. Are you on SFM?';
                 this.out.warn(message);
             }
             s3Host = s3Host || (this.config.s3 || {}).host;

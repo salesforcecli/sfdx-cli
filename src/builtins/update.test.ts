@@ -69,15 +69,7 @@ describe('builtin update command', () => {
         expect((update.doUpdate as any).calledOnce).to.be.true;
     });
 
-    it('should warn about updating from a custom S3 host', async () => {
-        env.SFDX_S3_HOST = 'test';
-        pingRes = { statusCode: 200 } as Request.RequestResponse;
-        await update.run();
-        expect(message).to.equal('Updating from SFDX_S3_HOST override.');
-        expect((update.doUpdate as any).calledOnce).to.be.true;
-    });
-
-    it('should warn about updating from a custom S3 host and ask about SFM if internal', async () => {
+    it('should warn about updating from a custom S3 host and ask about SFM', async () => {
         env.SFDX_S3_HOST = 'http://10.252.156.165:9000/sfdx/media/salesforce-cli';
         pingRes = { statusCode: 200 } as Request.RequestResponse;
         await update.run();
