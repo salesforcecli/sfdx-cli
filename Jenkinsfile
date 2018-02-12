@@ -72,6 +72,10 @@ def doUnitTests(PLATFORM os) {
                 currentBuild.result = 'Unstable'
             }
             rc = sh returnStatus: true, script: 'yarn unit'
+            if (rc != 0)
+            {
+                currentBuild.result = 'Unstable'
+            }
             rc = sh returnStatus: true, script: 'scripts/build/common'
             if (rc != 0)
             {
