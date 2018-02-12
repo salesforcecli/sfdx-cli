@@ -72,6 +72,7 @@ def doUnitTests(PLATFORM os) {
                 currentBuild.result = 'Unstable'
             }
             rc = sh returnStatus: true, script: 'yarn unit'
+            rc = sh returnStatus: true, script: 'scripts/build/common'
             if (rc != 0)
             {
                 currentBuild.result = 'Unstable'
@@ -287,11 +288,11 @@ try {
             // if (osname.contains('Mac')) {
             //     nodeNames[i] = "${PLATFORM.MAC}-test-results".toString()
             //     nodes[nodeNames[i]] = createNodeExecution(PLATFORM.MAC, 'mac', nodeNames[i])
-            // } else 
+            // } else
             if (osname.contains('Linux')) {
                 nodeNames[i] = "${PLATFORM.LINUX}-test-results".toString()
                 nodes[nodeNames[i]] = createNodeExecution(PLATFORM.LINUX, 'linux', nodeNames[i])
-            } 
+            }
             // else if (osname.contains('Windows')) {
             //     // don't run perfCI job on Windows node yet
             //     if (!jobMatches(/.*perfci.*/) && !jobMatches(/.*steelbrick-validation.*/) && !jobMatches(/.*q3-smoketest.*/) && !jobMatches(/.*dreamhouse.*/)) {

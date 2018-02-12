@@ -112,7 +112,8 @@ function ensure_no_unexpected_files() {
             "$f" != "$BASE_DIR/LICENSE" &&
             "$f" != "$BASE_DIR/README.md" &&
             "$f" != "$BASE_DIR/bin/"* &&
-            "$f" != "$BASE_DIR/dist/"*".js"
+            "$f" != "$BASE_DIR/dist/"*".js" &&
+            "$f" != "$BASE_DIR/dist/builtins/package.json"
         ) || (
             "$f" == "$BASE_DIR/dist/"*".test.js"
         ) ]]; then
