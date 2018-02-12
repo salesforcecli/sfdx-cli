@@ -3,7 +3,6 @@
 
 declare module 'cli-engine-command' {
     import { Config, ConfigOptions } from 'cli-engine-config'
-    import * as http from 'http';
 
     type AlphabetUppercase = | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'X' | 'Y' | 'Z'
     type AlphabetLowercase = | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'x' | 'y' | 'z'
@@ -239,7 +238,7 @@ declare module 'cli-engine-command' {
     type Headers = { [key: string]: string }
     type Protocol = | 'https:' | 'http:'
 
-    export type HTTPRequestOptions = http.ClientRequestArgs & {
+    export type HTTPRequestOptions = {
         method?: Method,
         headers?: Headers,
         raw?: boolean,
