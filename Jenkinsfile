@@ -78,6 +78,11 @@ def doUnitTests(PLATFORM os) {
             {
                 currentBuild.result = 'Unstable'
             }
+            rc = sh returnStatus: true, script: 'scripts/test/pack'
+            if (rc != 0)
+            {
+                currentBuild.result = 'Unstable'
+            }
 
             switch(os) {
                 case PLATFORM.MAC:
