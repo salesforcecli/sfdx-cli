@@ -12,12 +12,6 @@ if [[ "${FORCE_BUILD:-}" == true || ! -e "$RELEASE_DIR/$INSTALLER_BASE_NAME-wind
     script "build/tarballs"
 fi
 
-set +x
-
-if [[ ! -z "${WINDOWS_SIGNING_KEY:-}" ]]; then
-    echo "$WINDOWS_SIGNING_KEY" | base64 --decode > "/tmp/$BIN_NAME-windows-key"
-fi
-
 function build () {
     set -x
 
@@ -50,17 +44,22 @@ function build () {
         | grep -v "\\[compress\\]" \
         | grep -v "^File: Descending to"
 
+    set +x
     if [[ ! -z "${WINDOWS_SIGNING_KEY:-}" && ! -z "${WINDOWS_SIGNING_PASS:-}" ]]; then
-        set +x
+        echo "$WINDOWS_SIGNING_KEY" | base64 --decode > "/tmp/$BIN_NAME-windows-key"
+        set +e
         osslsigncode -pkcs12 "/tmp/$BIN_NAME-windows-key" \
             -pass "$WINDOWS_SIGNING_PASS" \
             -n "$PKG_DESC" \
             -i https://developer.salesforce.com/platform/dx/ \
             -in "$INSTALLER_BASE/installer.exe" \
             -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
+        rm -f "/tmp/$BIN_NAME-windows-key"
+        set -e
     else
         cp "$INSTALLER_BASE/installer.exe" "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
     fi
+    set -x
 
     cp "$RELEASE_DIR/$PKG_NAME-$ARCH.exe" "$RELEASE_DIR/$INSTALLER_BASE_NAME-$ARCH.exe"
 }
