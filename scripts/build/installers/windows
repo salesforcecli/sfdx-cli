@@ -39,9 +39,11 @@ function build () {
         PROGRAMSUFFIX=""
     fi
 
-    WIN_VERSION=$(node -p "a='${SHORT_VERSION}'.split('-');a[0]+'.'+(a.length===2?a[1]:0)")
-    sed -e "s/!define Version 'VERSION'/!define Version '${WIN_VERSION}'/" "resources/exe/$BIN_NAME.nsi" |\
-        sed -e "s/InstallDir .*/InstallDir \"\$PROGRAMFILES$PROGRAMSUFFIX\\$BIN_NAME\"/" \
+    WIN_VERSION=$(node -p "a='$SHORT_VERSION'.split('-');a[0]+'.'+(a.length===2?a[1]:0)")
+    sed -e "s/@VERSION@/$WIN_VERSION/g" "resources/exe/$BIN_NAME.nsi" |\
+        sed -e "s/@BIN_NAME@/$BIN_NAME/g" |\
+        sed -e "s/@TITLE@/$PKG_DESC/g" |\
+        sed -e "s/@INSTALL_DIR@/\$PROGRAMFILES$PROGRAMSUFFIX\\\\$PKG_DESC/g" \
         > "$INSTALLER_BASE/$BIN_NAME.nsi"
 
     makensis "$INSTALLER_BASE/$BIN_NAME.nsi" \

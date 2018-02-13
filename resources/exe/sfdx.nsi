@@ -1,9 +1,10 @@
 !include MUI2.nsh
 
-!define Version 'VERSION'
-Name "Salesforce CLI"
+!define Version '@VERSION@'
+!define Title '@TITLE@'
+Name "${TITLE}"
 CRCCheck On
-InstallDirRegKey HKCU "Software\sfdx" ""
+InstallDirRegKey HKCU "Software\@BIN_NAME@" ""
 
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
@@ -16,40 +17,45 @@ InstallDirRegKey HKCU "Software\sfdx" ""
 
 OutFile "installer.exe"
 VIProductVersion "${VERSION}"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "Salesforce CLI"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "${TITLE}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "Comments" "https://developer.salesforce.com/platform/dx"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "Salesforce.com"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "Salesforce.com, inc."
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "2017"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "CLI Application"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "${VERSION}"
 
-InstallDir "$PROGRAMFILES64\sfdx"
+InstallDir "@INSTALL_DIR@"
 
-Section "Salesforce CLI ${VERSION}"
+Section "${TITLE} ${VERSION}"
   SetOutPath $INSTDIR
   File /r bin
   File /r client
-  WriteRegStr HKCU "Software\sfdx" "" $INSTDIR
+  WriteRegStr HKCU "Software\@BIN_NAME@" "" $INSTDIR
   WriteUninstaller "$INSTDIR\Uninstall.exe"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\sfdx" \
-                   "DisplayName" "Salesforce CLI"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\sfdx" \
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@BIN_NAME@" \
+                   "DisplayName" "${TITLE}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@BIN_NAME@" \
                    "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\sfdx" \
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@BIN_NAME@" \
                    "Publisher" "Salesforce.com, inc."
 SectionEnd
 
-Section "Set PATH to Salesforce CLI"
+Section "Set PATH to ${TITLE}"
   Push "$INSTDIR\bin"
   Call AddToPath
 SectionEnd
 
+; TODO: doesn't yet seem to apply the desired effect when enabled... cross-check with Heroku who claims it's working for them
+;Section /o "Exclude %LOCALAPPDATA%\@BIN_NAME@ from Windows Defender (requires PowerShell; highly recommended for performance!)"
+;  ExecShell "" '"$0"' "/C powershell -ExecutionPolicy Bypass -Command $\"& {Add-MpPreference -ExclusionPath $\"$LOCALAPPDATA\@BIN_NAME@$\"}$\" -FFFeatureOff" SW_HIDE
+;SectionEnd
+
 Section "Uninstall"
   Delete "$INSTDIR\Uninstall.exe"
   RMDir /r "$INSTDIR"
-  RMDir /r "$LOCALAPPDATA\sfdx"
-  DeleteRegKey /ifempty HKCU "Software\sfdx"
+  RMDir /r "$LOCALAPPDATA\@BIN_NAME@"
+  DeleteRegKey /ifempty HKCU "Software\@BIN_NAME@"
 SectionEnd
 
 !define Environ 'HKCU "Environment"'
