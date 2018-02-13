@@ -289,10 +289,6 @@ ast-query@^2.0.0:
     lodash "^4.6.1"
     traverse "^0.6.6"
 
-async@1.2.1:
-  version "1.2.1"
-  resolved "http://10.252.156.164:4880/async/-/async-1.2.1.tgz#a4816a17cd5ff516dfa2c7698a453369b9790de0"
-
 async@1.x, async@^1.4.0:
   version "1.5.2"
   resolved "http://10.252.156.164:4880/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
@@ -727,9 +723,9 @@ cli-engine-heroku@5.0.3:
     http-call "^3.0.2"
     netrc-parser "^2.0.3"
 
-cli-engine@4.6.22:
-  version "4.6.22"
-  resolved "http://10.252.156.164:4880/cli-engine/-/cli-engine-4.6.22.tgz#bb26aabf1e76aefbc6aafd5f9e986b316b1cb7c0"
+cli-engine@4.6.23:
+  version "4.6.23"
+  resolved "http://10.252.156.164:4880/cli-engine/-/cli-engine-4.6.23.tgz#323eb5428fc9c147da99d4316fc552dcbc3b57af"
   dependencies:
     "@heroku/linewrap" "^1.0.0"
     ansi-escapes "^3.0.0"
@@ -897,10 +893,6 @@ combined-stream@~0.0.4, combined-stream@~0.0.5:
   resolved "http://10.252.156.164:4880/combined-stream/-/combined-stream-0.0.7.tgz#0137e657baa5a7541c57ac37ac5fc07d73b4dc1f"
   dependencies:
     delayed-stream "0.0.5"
-
-commander@2.6.0:
-  version "2.6.0"
-  resolved "http://10.252.156.164:4880/commander/-/commander-2.6.0.tgz#9df7e52fb2a0cb0fb89058ee80c3104225f37e1d"
 
 commander@2.9.0:
   version "2.9.0"
@@ -1802,14 +1794,6 @@ form-data@~0.1.0:
     combined-stream "~0.0.4"
     mime "~1.2.11"
 
-form-data@~0.2.0:
-  version "0.2.0"
-  resolved "http://10.252.156.164:4880/form-data/-/form-data-0.2.0.tgz#26f8bc26da6440e299cbdcfb69035c4f77a6e466"
-  dependencies:
-    async "~0.9.0"
-    combined-stream "~0.0.4"
-    mime-types "~2.0.3"
-
 form-data@~2.1.1:
   version "2.1.4"
   resolved "http://10.252.156.164:4880/form-data/-/form-data-2.1.4.tgz#33c183acf193276ecaa98143a69e94bfee1750d1"
@@ -1839,16 +1823,6 @@ forwarded@~0.1.0:
 fresh@0.3.0:
   version "0.3.0"
   resolved "http://10.252.156.164:4880/fresh/-/fresh-0.3.0.tgz#651f838e22424e7566de161d8358caa199f83d4f"
-
-fs-extra@0.30.0:
-  version "0.30.0"
-  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-0.30.0.tgz#f233ffcc08d4da7d432daa449776989db1df93f0"
-  dependencies:
-    graceful-fs "^4.1.2"
-    jsonfile "^2.1.0"
-    klaw "^1.0.0"
-    path-is-absolute "^1.0.0"
-    rimraf "^2.2.8"
 
 fs-extra@1.0.0:
   version "1.0.0"
@@ -2542,12 +2516,6 @@ ipaddr.js@1.0.5:
   version "1.0.5"
   resolved "http://10.252.156.164:4880/ipaddr.js/-/ipaddr.js-1.0.5.tgz#5fa78cf301b825c78abc3042d812723049ea23c7"
 
-is-absolute@^0.1.7:
-  version "0.1.7"
-  resolved "http://10.252.156.164:4880/is-absolute/-/is-absolute-0.1.7.tgz#847491119fccb5fb436217cc737f7faad50f603f"
-  dependencies:
-    is-relative "^0.1.0"
-
 is-arrayish@^0.2.1:
   version "0.2.1"
   resolved "http://10.252.156.164:4880/is-arrayish/-/is-arrayish-0.2.1.tgz#77c99840527aa8ecb1a8ba697b80645a7a926a9d"
@@ -2618,10 +2586,6 @@ is-property@^1.0.0:
 is-redirect@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/is-redirect/-/is-redirect-1.0.0.tgz#1d03dded53bd8db0f30c26e4f95d36fc7c87dc24"
-
-is-relative@^0.1.0:
-  version "0.1.3"
-  resolved "http://10.252.156.164:4880/is-relative/-/is-relative-0.1.3.tgz#905fee8ae86f45b3ec614bc3c15c869df0876e82"
 
 is-resolvable@^1.0.0:
   version "1.0.0"
@@ -2790,25 +2754,6 @@ jsen@0.6.4:
 jsesc@^1.3.0:
   version "1.3.0"
   resolved "http://10.252.156.164:4880/jsesc/-/jsesc-1.3.0.tgz#46c3fec8c1892b12b0833db9bc7622176dbab34b"
-
-jsforce@1.7.1:
-  version "1.7.1"
-  resolved "http://10.252.156.164:4880/jsforce/-/jsforce-1.7.1.tgz#b3a4adb3e946d05606f8e9978c4e5105833a7875"
-  dependencies:
-    co-prompt "^1.0.0"
-    coffee-script "^1.10.0"
-    commander "^2.9.0"
-    csv-parse "^1.1.1"
-    csv-stringify "^1.0.4"
-    faye "^1.2.0"
-    inherits "^2.0.1"
-    lodash "^4.11.1"
-    multistream "^2.0.5"
-    open "0.0.5"
-    promise "^7.1.1"
-    readable-stream "^2.1.0"
-    request "^2.72.0"
-    xml2js "^0.4.16"
 
 jsforce@1.8.0:
   version "1.8.0"
@@ -3231,10 +3176,6 @@ lodash.uniqby@4.x:
   version "4.7.0"
   resolved "http://10.252.156.164:4880/lodash.uniqby/-/lodash.uniqby-4.7.0.tgz#d99c07a669e9e6d24e1362dfe266c67616af1302"
 
-lodash@3.9.3:
-  version "3.9.3"
-  resolved "http://10.252.156.164:4880/lodash/-/lodash-3.9.3.tgz#0159e86832feffc6d61d852b12a953b99496bd32"
-
 lodash@4.11.1:
   version "4.11.1"
   resolved "http://10.252.156.164:4880/lodash/-/lodash-4.11.1.tgz#a32106eb8e2ec8e82c241611414773c9df15f8bc"
@@ -3374,10 +3315,6 @@ methods@~1.1.2:
   version "1.1.2"
   resolved "http://10.252.156.164:4880/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
 
-mime-db@~1.12.0:
-  version "1.12.0"
-  resolved "http://10.252.156.164:4880/mime-db/-/mime-db-1.12.0.tgz#3d0c63180f458eb10d325aaa37d7c58ae312e9d7"
-
 mime-db@~1.30.0:
   version "1.30.0"
   resolved "http://10.252.156.164:4880/mime-db/-/mime-db-1.30.0.tgz#74c643da2dd9d6a45399963465b26d5ca7d71f01"
@@ -3391,12 +3328,6 @@ mime-types@^2.1.12, mime-types@~2.1.15, mime-types@~2.1.17, mime-types@~2.1.6, m
 mime-types@~1.0.1:
   version "1.0.2"
   resolved "http://10.252.156.164:4880/mime-types/-/mime-types-1.0.2.tgz#995ae1392ab8affcbfcb2641dd054e943c0d5dce"
-
-mime-types@~2.0.3:
-  version "2.0.14"
-  resolved "http://10.252.156.164:4880/mime-types/-/mime-types-2.0.14.tgz#310e159db23e077f8bb22b748dabfa4957140aa6"
-  dependencies:
-    mime-db "~1.12.0"
 
 mime@1.3.4:
   version "1.3.4"
@@ -3437,10 +3368,6 @@ minimist@0.0.8:
   version "0.0.8"
   resolved "http://10.252.156.164:4880/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
-minimist@1.1.0:
-  version "1.1.0"
-  resolved "http://10.252.156.164:4880/minimist/-/minimist-1.1.0.tgz#cdf225e8898f840a258ded44fc91776770afdc93"
-
 minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "http://10.252.156.164:4880/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
@@ -3448,12 +3375,6 @@ minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0:
 minimist@~0.0.1:
   version "0.0.10"
   resolved "http://10.252.156.164:4880/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
-
-mkdirp@0.5.0:
-  version "0.5.0"
-  resolved "http://10.252.156.164:4880/mkdirp/-/mkdirp-0.5.0.tgz#1d73076a6df986cd9344e15e71fcc05a4c9abf12"
-  dependencies:
-    minimist "0.0.8"
 
 mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@0.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   version "0.5.1"
@@ -4195,27 +4116,6 @@ request@2.49.0:
     tough-cookie ">=0.12.0"
     tunnel-agent "~0.4.0"
 
-request@2.51.0:
-  version "2.51.0"
-  resolved "http://10.252.156.164:4880/request/-/request-2.51.0.tgz#35d00bbecc012e55f907b1bd9e0dbd577bfef26e"
-  dependencies:
-    aws-sign2 "~0.5.0"
-    bl "~0.9.0"
-    caseless "~0.8.0"
-    combined-stream "~0.0.5"
-    forever-agent "~0.5.0"
-    form-data "~0.2.0"
-    hawk "1.1.1"
-    http-signature "~0.10.0"
-    json-stringify-safe "~5.0.0"
-    mime-types "~1.0.1"
-    node-uuid "~1.4.0"
-    oauth-sign "~0.5.0"
-    qs "~2.3.1"
-    stringstream "~0.0.4"
-    tough-cookie ">=0.12.0"
-    tunnel-agent "~0.4.0"
-
 request@2.79.0:
   version "2.79.0"
   resolved "http://10.252.156.164:4880/request/-/request-2.79.0.tgz#4dfe5bf6be8b8cdc37fcf93e04b65577722710de"
@@ -4348,7 +4248,45 @@ safe-json-stringify@~1:
   version "1.0.4"
   resolved "http://10.252.156.164:4880/safe-json-stringify/-/safe-json-stringify-1.0.4.tgz#81a098f447e4bbc3ff3312a243521bc060ef5911"
 
-salesforce-alm@42.0.18-0, salesforce-alm@release:
+salesforce-alm@42.2.1-2:
+  version "42.2.1-2"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-42.2.1-2.tgz#e61b39a72193e0c665e444d451845dd93096fd43"
+  dependencies:
+    adm-zip "0.4.7"
+    archiver "1.0.1"
+    bluebird "3.4.6"
+    body-parser "1.15.0"
+    bunyan-sfdx-no-dtrace "1.8.2"
+    cli-spinner "0.2.5"
+    csv-parse "1.1.2"
+    express "4.13.4"
+    faye "1.1.2"
+    fs-extra "4.0.1"
+    gitignore-parser "0.0.2"
+    glob "7.0.3"
+    heroku-cli-util "6.0.16"
+    jsen "0.6.4"
+    jsforce "1.8.0"
+    jsonwebtoken "7.0.0"
+    klaw "2.1.0"
+    lodash "4.17.4"
+    mime "1.3.6"
+    mkdirp "0.5.1"
+    moment "2.13.0"
+    node-constants "0.0.2"
+    open "0.0.5"
+    optional-js "1.1.2"
+    pluralize "3.0.0"
+    process-promises "1.0.0"
+    readline-sync "1.4.4"
+    replace "0.3.0"
+    request "2.79.0"
+    selenium-standalone "6.6.0"
+    webdriverio "4.1.0"
+    xml2js "0.4.17"
+    xmldom "0.1.22"
+
+salesforce-alm@release:
   version "42.0.18-0"
   resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-42.0.18-0.tgz#54e4b320b2639c7f1961cf966606ea3775bc34f5"
   dependencies:
@@ -4397,12 +4335,12 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@42.0.20-0:
-  version "42.0.20-0"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-42.0.20-0.tgz#25b3dab0470da3bd86deeffbd9d795db439c8f65"
+salesforcedx@42.2.2-2:
+  version "42.2.2-2"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-42.2.2-2.tgz#f453dac02efa956b22edfca544de159c2ca300df"
   dependencies:
     force-language-services "42.0.5-0"
-    salesforce-alm "42.0.18-0"
+    salesforce-alm "42.2.1-2"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.x, samsam@^1.1.3:
@@ -4416,22 +4354,6 @@ sax@>=0.6.0:
 scoped-regex@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/scoped-regex/-/scoped-regex-1.0.0.tgz#a346bb1acd4207ae70bd7c0c7ca9e566b6baddb8"
-
-selenium-standalone@5.7.1:
-  version "5.7.1"
-  resolved "http://10.252.156.164:4880/selenium-standalone/-/selenium-standalone-5.7.1.tgz#7285836e9b79ed9ff22ab96b6ed4c7a1fad6aa98"
-  dependencies:
-    async "1.2.1"
-    commander "2.6.0"
-    lodash "3.9.3"
-    minimist "1.1.0"
-    mkdirp "0.5.0"
-    progress "1.1.8"
-    request "2.51.0"
-    tar-stream "1.5.2"
-    urijs "1.16.1"
-    which "1.1.1"
-    yauzl "^2.5.0"
 
 selenium-standalone@6.6.0:
   version "6.6.0"
@@ -5075,10 +4997,6 @@ unzip-response@^2.0.1:
   version "2.0.1"
   resolved "http://10.252.156.164:4880/unzip-response/-/unzip-response-2.0.1.tgz#d2f0f737d16b0615e72a6935ed04214572d56f97"
 
-urijs@1.16.1:
-  version "1.16.1"
-  resolved "http://10.252.156.164:4880/urijs/-/urijs-1.16.1.tgz#859ad31890f5f9528727be89f1932c94fb4731e2"
-
 urijs@^1.18.4:
   version "1.19.0"
   resolved "http://10.252.156.164:4880/urijs/-/urijs-1.19.0.tgz#d8aa284d0e7469703a6988ad045c4cbfdf08ada0"
@@ -5222,12 +5140,6 @@ which@1, which@^1.1.1, which@^1.2.12, which@^1.2.9:
   resolved "http://10.252.156.164:4880/which/-/which-1.3.0.tgz#ff04bdfc010ee547d780bec38e1ac1c2777d253a"
   dependencies:
     isexe "^2.0.0"
-
-which@1.1.1:
-  version "1.1.1"
-  resolved "http://10.252.156.164:4880/which/-/which-1.1.1.tgz#9ce512459946166e12c083f08ec073380fc8cbbb"
-  dependencies:
-    is-absolute "^0.1.7"
 
 wide-align@^1.1.0:
   version "1.1.2"
