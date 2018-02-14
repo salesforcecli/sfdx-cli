@@ -46,4 +46,15 @@ describe('CLI flags', () => {
         expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
         expect(config.updateDisabled).to.equal(UPDATE_DISABLED_INSTALLER);
     });
+
+    it('should have autoupdate disabled when in demo mode', () => {
+        const SDFX_ENV_ORIGINAL = process.env.SFDX_ENV;
+        delete process.env.SFDX_ENV;
+        process.env.SFDX_ENV = 'DEMO';
+        const config = configureAutoUpdate(env, {});
+
+        expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
+        expect(config.updateDisabled).to.equal(UPDATE_DISABLED_OTHER);
+        process.env.SFDX_ENV = SDFX_ENV_ORIGINAL;
+    });
 });
