@@ -23,6 +23,6 @@ export BIN_NAME
 export PKG_NAME
 export PKG_DESC
 export PKG_DIR
-export OSX_KEYCHAIN
+export OSX_SIGNING_IDENTITY
 
 script "build/installers/darwin_package"

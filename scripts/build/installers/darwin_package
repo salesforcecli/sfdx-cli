@@ -10,13 +10,10 @@ set -ex
 PKG_DIR="$WORKSPACE_DIR/installer"
 mkdir -p "$PKG_DIR"
 
-# TODO: can/should we move signing to post-productbuild?
-# TODO: we may need to use another method of providing the key so we can use the jenkins cred store
 extra_args=()
-if [[ ! -z "${OSX_KEYCHAIN:-}" ]]; then
+if [[ ! -z "${OSX_SIGNING_IDENTITY:-}" ]]; then
     extra_args+=(
-        "--sign" "Developer ID Installer: Salesforce.com"
-        "--keychain" "$OSX_KEYCHAIN"
+        "--sign" "Developer ID Installer: $OSX_SIGNING_IDENTITY"
     )
 fi
 
@@ -27,7 +24,6 @@ pkgbuild --root "$WORKSPACE_DIR" \
     --install-location "/usr/local/lib/$BIN_NAME" \
     --version "$VERSION" \
     --scripts "$RESOURCES_DIR/darwin/scripts" \
-    ${extra_args[@]+${extra_args[@]}} \
     "$PKG_DIR/$PKG_NAME.pkg"
 
 sed "s/IDENTIFIER/$IDENTIFIER/g" "$RESOURCES_DIR/darwin/distribution.xml" |
@@ -37,6 +33,7 @@ sed "s/IDENTIFIER/$IDENTIFIER/g" "$RESOURCES_DIR/darwin/distribution.xml" |
 
 productbuild --distribution "$TMP_DIR/$OS-$ARCH-distribution.xml" \
     --package-path "$PKG_DIR" \
+    "${extra_args[@]+${extra_args[@]}}" \
     "$RELEASE_DIR/$PKG_NAME.pkg"
 
 cp "$RELEASE_DIR/$PKG_NAME.pkg" "$RELEASE_DIR/$INSTALLER_BASE_NAME.pkg"
