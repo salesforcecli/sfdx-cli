@@ -5,7 +5,8 @@ import { Env } from './util/env';
 import {
     configureAutoUpdate,
     UPDATE_DISABLED_INSTALLER,
-    UPDATE_DISABLED_OTHER
+    UPDATE_DISABLED_OTHER,
+    UPDATE_DISABLED_DEMO
 } from './cli';
 
 describe('CLI flags', () => {
@@ -48,13 +49,10 @@ describe('CLI flags', () => {
     });
 
     it('should have autoupdate disabled when in demo mode', () => {
-        const SDFX_ENV_ORIGINAL = process.env.SFDX_ENV;
-        delete process.env.SFDX_ENV;
-        process.env.SFDX_ENV = 'DEMO';
+        env.set('SFDX_ENV', 'DEMO');
         const config = configureAutoUpdate(env, {});
 
         expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
-        expect(config.updateDisabled).to.equal(UPDATE_DISABLED_OTHER);
-        process.env.SFDX_ENV = SDFX_ENV_ORIGINAL;
+        expect(config.updateDisabled).to.equal(UPDATE_DISABLED_DEMO);
     });
 });

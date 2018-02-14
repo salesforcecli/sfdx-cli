@@ -28,13 +28,11 @@ export const UPDATE_DISABLED_INSTALLER =
 export const UPDATE_DISABLED_OTHER =
     'Use "npm install --global sfdx-cli" to update npm-based installations.';
 
-export function configureAutoUpdate(envars: typeof env, config: Config): Config {
-    const sfdxEnv = envars.get('SFDX_ENV');
-    if (sfdxEnv && sfdxEnv.toLowerCase() === 'demo') {
-        // Disable autoupdates in demo mode
-        envars.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
-    }
+export const UPDATE_DISABLED_DEMO =
+    'Manual and automatic CLI updates have been disabled in DEMO mode ' +
+    'To check for a new version, unset the environment variable SFDX_ENV';
 
+export function configureAutoUpdate(envars: typeof env, config: Config): Config {
     if (envars.getBoolean('SFDX_INSTALLER')) {
         if (envars.getBoolean('SFDX_AUTOUPDATE_DISABLE')) {
             config.updateDisabled = UPDATE_DISABLED_INSTALLER;
@@ -50,5 +48,13 @@ export function configureAutoUpdate(envars: typeof env, config: Config): Config 
     if (envars.getBoolean('SFDX_AUTOUPDATE_DISABLE')) {
         config.updateDisabled = UPDATE_DISABLED_OTHER;
     }
+
+    const sfdxEnv = envars.get('SFDX_ENV');
+    if (sfdxEnv && sfdxEnv.toLowerCase() === 'demo') {
+        // Disable autoupdates in demo mode
+        envars.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
+        config.updateDisabled = UPDATE_DISABLED_DEMO;
+    }
+
     return config;
 }
