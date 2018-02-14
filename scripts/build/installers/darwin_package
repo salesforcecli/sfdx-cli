@@ -12,9 +12,10 @@ mkdir -p "$PKG_DIR"
 
 extra_args=()
 if [[ ! -z "${OSX_SIGNING_IDENTITY:-}" ]]; then
-    extra_args+=(
-        "--sign" "Developer ID Installer: $OSX_SIGNING_IDENTITY"
-    )
+    extra_args+=("--sign" "Developer ID Installer: $OSX_SIGNING_IDENTITY")
+    if [[ ! -z "${OSX_KEYCHAIN:-}" ]]; then
+        extra_args+=("--keychain" "$OSX_KEYCHAIN")
+    fi
 fi
 
 IDENTIFIER="com.salesforce.developer.cli"
