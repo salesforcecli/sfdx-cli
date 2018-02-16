@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -ex
+
+source ./scripts/release/_init
+
+DEFAULT_GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+GIT_BRANCH="${GIT_BRANCH:-$DEFAULT_GIT_BRANCH}"
+
+stdout "Triggering darwin installer build of branch $GIT_BRANCH"
+
+set +x
+curl -vL "https://sfdxcli.ci.data.com/job/macOS%20Installer/buildWithParameters?RELEASE_BRANCH=$GIT_BRANCH&token=$MOBILECI_MACOS_INSTALLER_TOKEN"
+set -x
