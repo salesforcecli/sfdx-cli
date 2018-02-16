@@ -124,14 +124,18 @@ ghQueryRelease() {
 }
 
 ghAssetUrl() {
+    set +x
     RELEASE_JSON="$1"
     ASSET="$2"
     echo "$RELEASE_JSON" | node -e "require('$ROOT_DIR/scripts/transform')((json)=>(json.assets.filter((a)=>a.name==='$ASSET')[0]||{}).url||'')"
+    set -x
 }
 
 ghUploadUrl() {
+    set +x
     RELEASE_JSON="$1"
     echo "$RELEASE_JSON" | node -e "require('$ROOT_DIR/scripts/transform')((json)=>json.upload_url.split('{')[0])"
+    set -x
 }
 
 ghUploadAsset() {
@@ -151,6 +155,11 @@ ghUploadAsset() {
 
     UPLOAD_URL=$(ghUploadUrl "$RELEASE_JSON")
 
+    if [[ -z "$UPLOAD_URL" ]]; then
+        stderr "No appropriate asset upload url found in RELEASE_JSON"
+        exit 1
+    fi
+
     stdout "Uploading github release asset $UPLOAD_FILE_NAME to $UPLOAD_URL"
     set +x
     curl -X POST --data-binary "@$UPLOAD_FILE_PATH" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=$UPLOAD_FILE_NAME&access_token=$GIT_TOKEN"
@@ -163,6 +172,11 @@ ghDownloadAsset() {
     stdout "Querying github release $TAG"
     RELEASE_JSON=$(ghQueryRelease)
     ASSET_URL=$(ghAssetUrl "$RELEASE_JSON" "$DOWNLOAD_FILE_NAME")
+
+    if [[ -z "$ASSET_URL" ]]; then
+        stderr "No appropriate asset download url found in RELEASE_JSON"
+        exit 1
+    fi
 
     stdout "Downloading github release asset $DOWNLOAD_FILE_NAME from $ASSET_URL"
     set +x
