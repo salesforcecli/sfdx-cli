@@ -137,6 +137,7 @@ ghUploadUrl() {
 ghUploadAsset() {
     UPLOAD_FILE_PATH="$1"
     UPLOAD_FILE_NAME="$2"
+    TAG="v$SHORT_VERSION"
     stdout "Querying github release $TAG"
     RELEASE_JSON=$(ghQueryRelease)
     ASSET_URL=$(ghAssetUrl "$RELEASE_JSON" "$UPLOAD_FILE_NAME")
@@ -158,6 +159,7 @@ ghUploadAsset() {
 
 ghDownloadAsset() {
     DOWNLOAD_FILE_NAME="$1"
+    TAG="v$SHORT_VERSION"
     stdout "Querying github release $TAG"
     RELEASE_JSON=$(ghQueryRelease)
     ASSET_URL=$(ghAssetUrl "$RELEASE_JSON" "$DOWNLOAD_FILE_NAME")
