@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -ex
+
+source ./scripts/release/_init
+
+bg script "release/installers/darwin_mobileci"
+bg script "release/installers/windows_docker"
+wait_all

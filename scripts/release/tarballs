@@ -18,9 +18,6 @@ for OS in "${OS_TARGETS[@]}"; do
         setarch "$ARCH"
         cp "$TGZ_PATH" "$VERSIONED_BASE.tar.gz"
         cp "$TXZ_PATH" "$VERSIONED_BASE.tar.xz"
-        if [[ "$OS" == "darwin" ]]; then
-            ghUploadAsset "$TXZ_PATH" "$VERSIONED_BASE.tar.xz"
-        fi
     done
 done
 
