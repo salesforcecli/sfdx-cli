@@ -102,6 +102,7 @@ ghPollForAssetUrl() {
     TAG="v$SHORT_VERSION"
 
     declare -i attempts
+    attempts=0
     ASSET_URL=""
     until [[ "$ASSET_URL" != "" ]]; do
         if [[ $attempts -ge 60 ]]; then
