@@ -6,6 +6,7 @@ export OS=darwin
 export ARCH=x64
 
 source ./scripts/_init
+source ./scripts/_github
 
 # Require RELEASE_TAG to be in the form v6.*
 if [[ "$RELEASE_TAG" != "v6."* ]]; then
@@ -29,8 +30,9 @@ rm -rf "$TMP_DIR" "$RELEASE_DIR"
 mkdir -p "$TMP_DIR" "$RELEASE_DIR"
 cd "$TMP_DIR"
 
-ghDownloadAsset "$INSTALLER_BASE_NAME-darwin-x64.tar.xz"
-
+ARCHIVE_FILE_NAME="$INSTALLER_BASE_NAME-darwin-x64.tar.xz"
+ghDownloadAsset "$ARCHIVE_FILE_NAME"
+tar xvf "$ARCHIVE_FILE_NAME"
 mv "$TMP_DIR/$INSTALLER_BASE_NAME-darwin-x64" "$WORKSPACE_DIR"
 
 export TMP_DIR

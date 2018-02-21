@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+set -ex
+
+export OS=darwin
+export ARCH=x64
+
+source ./scripts/release/_init
+source ./scripts/_github
+
+MOBILECI_BASE_URL="https://sfdxcli.ci.data.com"
+
+MOBILECI_MACOS_INSTALLER_TOKEN="${MOBILECI_MACOS_INSTALLER_TOKEN:-}"
+if [[ -z "$MOBILECI_MACOS_INSTALLER_TOKEN" ]]; then
+    stderr "[WARN] MOBILECI_MACOS_INSTALLER_TOKEN is undefined"
+fi
+
+VERSIONED_INSTALLER_NAME="$INSTALLER_BASE_NAME.pkg"
+UNVERSIONED_INSTALLER_NAME="$PKG_NAME.pkg"
+
+triggerBuild() {
+    DEFAULT_GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    GIT_BRANCH="${GIT_BRANCH:-$DEFAULT_GIT_BRANCH}"
+
+    stdout "Triggering remote darwin installer build of branch $GIT_BRANCH at $MOBILECI_BASE_URL"
+
+    set +x
+    curl -vL "$MOBILECI_BASE_URL/job/macOS%20Installer/buildWithParameters?RELEASE_BRANCH=$GIT_BRANCH&token=$MOBILECI_MACOS_INSTALLER_TOKEN"
+    set -x
+}
+
+pollGhAndCopyToS3() {
+    ASSET_FILE_NAME="$VERSIONED_INSTALLER_NAME"
+    TAG="v$SHORT_VERSION"
+
+    stdout "Polling github release $TAG for $ASSET_FILE_NAME"
+    ASSET_URL=$(ghPollForAssetUrl "$ASSET_FILE_NAME")
+
+    cd "$RELEASE_DIR"
+
+    ghDownloadAsset "$ASSET_FILE_NAME"
+    cp "$VERSIONED_INSTALLER_NAME" "$UNVERSIONED_INSTALLER_NAME"
+
+    stdout "Releasing darwin installers to $CHANNEL"
+
+    CACHE_DIR="$TMP_DIR/s3"
+    rm -rf "$CACHE_DIR"
+    mkdir -p "$CACHE_DIR"
+
+    cp "$VERSIONED_INSTALLER_NAME" "$UNVERSIONED_INSTALLER_NAME" "$CACHE_DIR"
+
+    s3upload "$VERSIONED_CACHE_CONTROL" \
+        "$CACHE_DIR/$VERSIONED_INSTALLER_NAME" \
+        "$S3_CHANNEL_UPLOAD_URL"
+
+    s3upload "$UNVERSIONED_CACHE_CONTROL" \
+        "$CACHE_DIR/$UNVERSIONED_INSTALLER_NAME" \
+        "$S3_CHANNEL_UPLOAD_URL"
+}
+
+ghUploadAsset "$TXZ_PATH" "$VERSIONED_BASE.tar.xz"
+ghDeleteAssetIfExists "$RELEASE_JSON" "$VERSIONED_INSTALLER_NAME"
+triggerBuild
+pollGhAndCopyToS3
