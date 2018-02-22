@@ -50,4 +50,6 @@ declare module "cli-engine-config" {
     }>
 
     export type ConfigOptions = Config;
+
+    export function buildConfig(existing?: ConfigOptions): Config;
 }

@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
-source ./scripts/_init
-
 set -ex
 
-export BUILD_INSTALLERS=true
-script "build/all"
+source ./scripts/release/_init
 
-#script "release/installers/darwin"
-script "release/installers/windows"
-#script "release/installers/deb"
+bg script "release/installers/darwin_mobileci"
+bg script "release/installers/windows_docker"
+wait_all

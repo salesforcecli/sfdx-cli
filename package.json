@@ -34,9 +34,12 @@
       "prerun": [
         "./dist/hooks/logAnalytics.js"
       ],
-      "update": []
+      "update": [
+        "./dist/experiments/lazyModules/updateHook.js"
+      ]
     },
     "plugins": [
+      "../dist/builtins",
       "salesforcedx"
     ],
     "s3": {
@@ -60,7 +63,7 @@
   ],
   "dependencies": {
     "ansi-escapes": "3.0.0",
-    "cli-engine": "4.6.22",
+    "cli-engine": "4.6.23",
     "cli-engine-command": "9.0.7",
     "cli-engine-config": "3.5.0",
     "cli-engine-heroku": "5.0.3",
@@ -94,12 +97,15 @@
   },
   "scripts": {
     "build": "yarn build-standalone",
-    "build-mac": "bash scripts/build/installers/darwin",
+    "build-mac": "yarn build-mac-from-archive",
+    "build-mac-from-archive": "bash scripts/build/installers/darwin_from_archive",
+    "build-mac-from-sources": "bash scripts/build/installers/darwin_from_sources",
     "build-standalone": "bash scripts/build/standalone",
     "build-windows": "bash scripts/build/installers/windows",
     "clean": "yarn clean-dist && yarn clean-test",
     "clean-all": "bash scripts/clean/all",
     "clean-build": "bash scripts/clean/build",
+    "clean-compile": "yarn clean-all && yarn install --pure-lockfile",
     "clean-dist": "bash scripts/clean/dist",
     "clean-test": "bash scripts/clean/test",
     "compile": "bash scripts/build/compile",
@@ -108,8 +114,10 @@
     "lint-all": "bash scripts/lint/all",
     "lint-with-style": "bash scripts/lint/sources_with_style",
     "prepare": "yarn compile",
-    "release": "yarn release-standalone",
-    "release-debug": "yarn release-standalone-debug",
+    "release": "yarn release-all",
+    "release-debug": "yarn release-all-debug",
+    "release-all": "bash scripts/release/all",
+    "release-all-debug": "env SKIP_AWS=true yarn release-all",
     "release-mac": "bash scripts/release/installers/darwin",
     "release-mac-debug": "env SKIP_AWS=true yarn release-mac",
     "release-standalone": "bash scripts/release/standalone",

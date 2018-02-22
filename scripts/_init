@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2034
 
-# Fail wait when any children fails
+# Fail wait when any children fail
 set -m
 
 set -o errexit

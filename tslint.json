@@ -14,7 +14,11 @@
         "object-literal-sort-keys": false,
         "ordered-imports": false,
         "quotemark": [true, "single", "avoid-template"],
-	    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
+        "space-before-function-paren": [false],
+        "trailing-comma": [true, {
+            "multiline": "never",
+            "singleline": "never"
+        }],
         "variable-name": [true, "allow-leading-underscore"]
     },
     "rulesDirectory": []

@@ -9,3 +9,7 @@ source ./scripts/release/_init
 set -ex
 
 script "release/standalone"
+
+if [[ "${BUILD_INSTALLERS:-}" == "true" ]]; then
+    script "release/installers/all"
+fi

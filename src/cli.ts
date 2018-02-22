@@ -2,11 +2,17 @@ import CLI from 'cli-engine';
 import { Config } from 'cli-engine-config';
 import * as path from 'path';
 import env from './util/env';
-
-const root = path.join(__dirname, '..');
-const pjson = require(path.join(root, 'package.json')); // tslint:disable-line
+import * as lazyModules from './experiments/lazyModules';
 
 export function create(version: string, channel: string) {
+    const root = path.join(__dirname, '..');
+    const pjson = require(path.join(root, 'package.json')); // tslint:disable-line
+
+    // Require a dark feature envar to enable the lazy loading experiment
+    if (env.getBoolean('SFDX_LAZY_LOAD_MODULES')) {
+        lazyModules.start();
+    }
+
     return new CLI({
         argv: process.argv.slice(1),
         config: configureAutoUpdate(env, {

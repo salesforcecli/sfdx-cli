@@ -22,7 +22,7 @@ The most useful scripts can be run from `yarn`:
 
 * `yarn build`: Alias for `yarn build-standalone`
 * `yarn build-mac`: Builds the macOS installer executable `sfdx-cli.pkg`
-  * Include `OSX_KEYCHAIN` containing the keychain to search for a valid signing identity if a signed installer is required (optional)
+  * Include `OSX_SIGNING_IDENTITY` containing the name of a valid signing identity if a signed installer is required (optional)
 * `yarn build-standalone`: Builds standalone installer/updater tarballs for all platforms
 * `yarn build-windows`: Builds the Windows installer executables `sfdx-cli-x64.exe` and `sfdx-cli-x86.exe`
   * Include `WINDOWS_SIGNING_KEY` and `WINDOWS_SIGNING_PASS` envars (required, see below for details on generating test values)
@@ -151,7 +151,7 @@ The macOS installer must be built on Mac hardware (whether in a VM or not), as r
 
 In order to build the installer, you can simply run `yarn build-mac`.  By default, this will produce an unsigned `.pkg` file in the `release` directory.
 
-To build a signed installer, you will need a valid Apple developer signing identity installed in a keychain on the machine your using to run the build.  You must then put the name of the keychain to search for the signing identity in an envar named `OSX_KEYCHAIN` before running the build script.
+To build a signed installer, you will need a valid Apple "Developer ID Installer" signing identity installed in the default keychain on the machine you're using to run the build.  You must then put the name of the signing identity to search in the default keychain in an envar named `OSX_SIGNING_IDENTITY` before running the build script.
 
 #### Debian Linux
 
