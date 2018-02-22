@@ -36,7 +36,7 @@ declare module 'cli-engine-command' {
         const number: (options: Flag<number> | null) => Flag<number>;
     }
 
-    export type InputFlags = {[name: string]: Flag<any> | BooleanFlag}
+    export type InputFlags = { [name: string]: Flag<any> | BooleanFlag }
     export type Input<Flags extends InputFlags> = {
         flags: Flags,
         args: Arg[],
@@ -44,8 +44,8 @@ declare module 'cli-engine-command' {
         cmd?: Command<Flags>
     }
 
-    export type OutputFlags<Flags extends InputFlags> = {[name: string]: any} // TODO? s/string/$Enum<Flags>
-    export type OutputArgs = {[name: string]: string}
+    export type OutputFlags<Flags extends InputFlags> = { [name: string]: any } // TODO? s/string/$Enum<Flags>
+    export type OutputArgs = { [name: string]: string }
 
     export type Arg = {
         name: string,
@@ -90,9 +90,9 @@ declare module 'cli-engine-command' {
         out: Output;
         flags: OutputFlags<Flags> | null;
         argv: string[];
-        args: {[name: string]: string} | null;
+        args: { [name: string]: string } | null;
 
-        constructor(options: {config?: ConfigOptions, output?: Output} | null);
+        constructor(options: { config?: ConfigOptions, output?: Output } | null);
         init(): Promise<any>;
         run(...rest: void[]): Promise<void>;
         stdout(): string;
@@ -100,8 +100,8 @@ declare module 'cli-engine-command' {
     }
 
     export type CompletionContext = {
-        args?: {[name: string]: string} | null,
-        flags?: {[name: string]: string} | null,
+        args?: { [name: string]: string } | null,
+        flags?: { [name: string]: string } | null,
         argv?: string[] | null,
         out: Output
     }
@@ -147,7 +147,7 @@ declare module 'cli-engine-command' {
         stderr: StreamOutput;
         prompter: Prompter;
 
-        constructor(options: {config?: ConfigOptions | null, mock?: boolean} | null);
+        constructor(options: { config?: ConfigOptions | null, mock?: boolean } | null);
         public color(): any; // TODO: $Shape<typeof chalk & typeof CustomColors>
         public done(...rest: void[]): Promise<void>;
         public log(data: any, ...args: any[]): void;
@@ -162,7 +162,7 @@ declare module 'cli-engine-command' {
         public warn(err: Error | string, prefix?: string): void;
         public logError(err: Error | string): void;
         public prompt(name: string, options: PromptOptions): Promise<string>;
-        public table<T extends {height?: number}>(data: Array<T>, options: TableOptions<T>): void;
+        public table<T extends { height?: number }>(data: Array<T>, options: TableOptions<T>): void;
         public exit(code: number | null): void;
     }
 
@@ -227,7 +227,7 @@ declare module 'cli-engine-command' {
         logfile: string | null;
 
         constructor(stream: any, output: Output); // TODO: stream$Writable?
-        write(msg: string, options: {log?: boolean} | null): void;
+        write(msg: string, options: { log?: boolean } | null): void;
         timestamp(msg: string): string;
         log(data: string, ...args: any[]): void;
         writeLogFile(msg: string, withTimestamp: boolean): void;
@@ -255,7 +255,7 @@ declare module 'cli-engine-command' {
         http: any;
         requestOptions: HTTPRequestOptions;
 
-        constructor (output: Output, config: ConfigOptions | null);
+        constructor(output: Output, config: ConfigOptions | null);
         get(url: string, options: HTTPRequestOptions | null): Promise<any>;
         post(url: string, options: HTTPRequestOptions | null): Promise<any>;
         put(url: string, options: HTTPRequestOptions | null): Promise<any>;

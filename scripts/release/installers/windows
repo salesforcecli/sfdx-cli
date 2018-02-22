@@ -9,7 +9,7 @@ VERSIONED_X86_PATH="$RELEASE_DIR/$INSTALLER_BASE_NAME-x86.exe"
 X64_PATH="$RELEASE_DIR/$PKG_NAME-x64.exe"
 X86_PATH="$RELEASE_DIR/$PKG_NAME-x86.exe"
 
-if [[ ! -e "$VERSIONED_X64_PATH" || ! -e "$VERSIONED_X86_PATH" ]]; then
+if [[ "${FORCE_BUILD:-}" == true || ! -e "$VERSIONED_X64_PATH" || ! -e "$VERSIONED_X86_PATH" ]]; then
     script "build/installers/windows"
 fi
 
