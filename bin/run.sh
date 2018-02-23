@@ -4,6 +4,7 @@ set -e
 export SFDX_INSTALLER="false" BIN_NAME="run"
 # @OVERRIDES@
 
+NO_FORWARD=false
 DEV_FLAGS=()
 NODE_FLAGS=()
 CLI_ARGS=()
@@ -12,7 +13,7 @@ CLI_ARGS=()
 while [[ "$#" -gt 0 ]]; do
     case "$1" in
         --dev-suspend) NODE_FLAGS+=("--inspect-brk"); DEV_FLAGS+=("$1"); shift;;
-        --dev-profile) NODE_FLAGS+=("--prof");        DEV_FLAGS+=("$1"); shift;;
+         --no-forward) CLI_ARGS+=("$1"); NO_FORWARD=true;                shift;;
                     *) CLI_ARGS+=("$1");                                 shift;;
     esac
 done
@@ -36,7 +37,7 @@ CLI_HOME=$(cd && pwd)
 XDG_DATA_HOME="${XDG_DATA_HOME:="$CLI_HOME/.local/share"}"
 BIN_DIR="$XDG_DATA_HOME/$BIN_NAME/client/bin"
 
-if [[ "${SFDX_INSTALLER:-}" == "true" && -x "$BIN_DIR/$BIN_NAME" && ! "$BIN_DIR" -ef "$DIR" ]]; then
+if [[ "$NO_FORWARD" != "true" && "${SFDX_INSTALLER:-}" == "true" && -x "$BIN_DIR/$BIN_NAME" && ! "$BIN_DIR" -ef "$DIR" ]]; then
     "$XDG_DATA_HOME/$BIN_NAME/client/bin/$BIN_NAME" "${DEV_FLAGS[@]}" "${CLI_ARGS[@]}"
 else
     MAIN_NAME="$BIN_NAME"
