@@ -1,20 +1,15 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
-import * as Debug from 'debug';
 import { Command, InputFlags, flags } from 'cli-engine-command';
 import { NamedError } from '../../util/NamedError';
 import { CLI as Ux } from 'cli-ux';
 
-const debug = Debug('sfdx:update:revert');
-
 export default class Revert extends Command<any> {
-    // This is actually used in the bin/run.* scripts, but enforced here
-    public static args = [{
-        name: 'no-forward',
-        required: true
-    }];
+    public static description = 'restores the CLI to the originally installed version, removing updates';
 
     public async run() {
+        const ux = new Ux();
+
         const dataDir = this.config.dataDir;
         if (!dataDir) {
             throw new NamedError('ConfigDataDirNotCountError', 'Config value dataDir not found');
@@ -22,22 +17,21 @@ export default class Revert extends Command<any> {
 
         const clientDir = path.join(dataDir, 'client');
         if (!fs.existsSync(clientDir)) {
-            this.out.log('Nothing to do -- already using the base installation of the CLI');
+            ux.log('Nothing to do -- already using the base installation of the CLI');
             return;
         }
 
         if (__dirname.startsWith(clientDir)) {
-            this.out.warn('The update:revert command can only be run from a base installation; re-run with --no-forward');
+            ux.error('The update:revert command was not found in the base installation -- please re-install to use this command');
             return;
         }
 
-        const ux = new Ux();
-        const response = await ux.prompt('Do you really wish to remove the latest CLI update y/n?');
+        const response = await ux.prompt('Do you really wish to revert to the initially installed version of the CLI y/n?');
         if (response.toLowerCase() !== 'y') {
             return;
         }
 
         fs.removeSync(clientDir);
-        this.out.log('Removed latest update from %s', clientDir);
+        ux.log('Removed updates from %s -- CLI restored to original installation', clientDir);
     }
 }
