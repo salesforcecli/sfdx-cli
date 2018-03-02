@@ -11,10 +11,11 @@ wait_all
 if [[ "$CHANNEL" == "stable" ]]; then
     script "release/installers/downloads"
 
-    cp "$RELEASE_DIR/manifest.json" "$CACHE_DIR"
+    resetS3CacheDir
 
+    cp "$RELEASE_DIR/manifest.json" "$S3_CACHE_DIR"
     s3upload "$LATEST_VERSION_CACHE_CONTROL" \
-        "$CACHE_DIR/manifest.json" \
+        "$S3_CACHE_DIR/manifest.json" \
         "$S3_BASE_UPLOAD_URL/" \
         --content-type "application/json"
 fi

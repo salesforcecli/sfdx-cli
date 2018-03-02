@@ -4,18 +4,15 @@ set -ex
 
 source ./scripts/release/_init
 
-CACHE_DIR="$TMP_DIR/s3"
-
-rm -rf "$CACHE_DIR"
-mkdir -p "$CACHE_DIR"
-cd "$CACHE_DIR"
+resetS3CacheDir
+cd "$S3_CACHE_DIR"
 
 function prepDownload() {
     FILE_KEY="$1"
     SRC_FILE="$2"
     DEST_FILE="$3"
 
-    cp "$RELEASE_DIR/$SRC_FILE" "$CACHE_DIR/$DEST_FILE"
+    cp "$RELEASE_DIR/$SRC_FILE" "$S3_CACHE_DIR/$DEST_FILE"
     addToManifest "downloads" "$FILE_KEY" "$S3_HOST_BASE_URL/$DEST_FILE" "$RELEASE_DIR/$SRC_FILE"
 }
 
@@ -27,6 +24,6 @@ prepDownload "windows-x64"  "${PKG_NAME}-x64.exe"           "sfdx-windows-amd64.
 prepDownload "windows-x86"  "${PKG_NAME}-x86.exe"           "sfdx-windows-386.exe"
 
 s3upload "$LATEST_VERSION_CACHE_CONTROL" \
-    "$CACHE_DIR" \
+    "$S3_CACHE_DIR" \
     "$S3_BASE_UPLOAD_URL" \
     --recursive
