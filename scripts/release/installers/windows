@@ -42,3 +42,11 @@ s3upload "$UNVERSIONED_CACHE_CONTROL" \
     "$CACHE_DIR" \
     "$S3_CHANNEL_UPLOAD_URL" \
     --recursive
+
+function addExeToManifest () {
+    ARCH="$1"
+    addToManifest "installers" "windows-${ARCH}" "$S3_HOST_BASE_CHANNEL_URL/${INSTALLER_BASE_NAME}-${ARCH}.exe" "$RELEASE_DIR/${INSTALLER_BASE_NAME}-${ARCH}.exe"
+}
+
+addExeToManifest "x64"
+addExeToManifest "x86"

@@ -153,10 +153,6 @@ In order to build the installer, you can simply run `yarn build-mac`.  By defaul
 
 To build a signed installer, you will need a valid Apple "Developer ID Installer" signing identity installed in the default keychain on the machine you're using to run the build.  You must then put the name of the signing identity to search in the default keychain in an envar named `OSX_SIGNING_IDENTITY` before running the build script.
 
-#### Debian Linux
-
-Debian/apt-get installer scripts are not yet complete, and the work to finish them is not currently a priority.
-
 #### Homebrew
 
 While we'd like to create a Homebrew installer, this work is not currently a priority.

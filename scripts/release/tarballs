@@ -65,11 +65,3 @@ s3upload "$LATEST_VERSION_CACHE_CONTROL" \
     "$S3_CHANNEL_UPLOAD_URL" \
     --recursive \
     --content-type "application/json"
-
-# Only upload the master manifest if releasing the stable channel
-if [[ "$CHANNEL" == "stable" ]]; then
-    s3upload "$LATEST_VERSION_CACHE_CONTROL" \
-        "$CACHE_DIR/manifest.json" \
-        "$S3_BASE_UPLOAD_URL/" \
-        --content-type "application/json"
-fi

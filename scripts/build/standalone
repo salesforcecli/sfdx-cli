@@ -31,17 +31,3 @@ cat << EOF > "$RELEASE_DIR/version"
     "version": "${VERSION}"
 }
 EOF
-
-# Generate manifest
-builds=()
-for OS in "${OS_TARGETS[@]}"; do
-    setos "$OS"
-    IFS='|' read -ra ARCHS <<< "$(archs)"
-    for ARCH in "${ARCHS[@]}"; do
-        setarch "$ARCH"
-        builds+=("builds.${OS}-${ARCH}.url=${S3_HOST_BASE_URL}/${PKG_NAME}-v${VERSION}-${OS}-${ARCH}.tar.xz")
-        builds+=("builds.${OS}-${ARCH}.sha256=$(sha "${TXZ_PATH}")")
-        builds+=("builds.${OS}-${ARCH}.bytes=$(wc -c < "${TXZ_PATH}" | awk '{print $1}')")
-    done
-done
-script "build/manifest.js" version="$VERSION" channel="$CHANNEL" "${builds[@]}" > "$RELEASE_DIR/manifest.json"
