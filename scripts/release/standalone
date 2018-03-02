@@ -15,7 +15,7 @@ for OS in "${OS_TARGETS[@]}"; do
     for ARCH in "${ARCHS[@]}"; do
         setarch "$ARCH"
         FILE_NAME="${PKG_NAME}-v${VERSION}-${OS}-${ARCH}.tar.xz"
-        addToManifest "archives" "${OS}-${ARCH}" "$FILE_NAME"
+        addToManifest "archives" "${OS}-${ARCH}" "$S3_HOST_CHANNEL_BASE_URL/$FILE_NAME" "$RELEASE_DIR/$FILE_NAME"
         if [[ "$OS" == "linux" ]]; then
             addToManifest "installers" "${OS}-${ARCH}" "$S3_HOST_CHANNEL_BASE_URL/$FILE_NAME" "$RELEASE_DIR/$FILE_NAME"
         fi
