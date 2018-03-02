@@ -39,7 +39,7 @@ s3upload "$UNVERSIONED_CACHE_CONTROL" \
     "$S3_CHANNEL_UPLOAD_URL" \
     --recursive
 
-rm -rf "${CACHE_DIR:?}"/*
+rm -rf "${S3_CACHE_DIR:?}"/*
 
 # Now upload json files
 for OS in "${OS_TARGETS[@]}"; do
