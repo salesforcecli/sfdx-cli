@@ -13,7 +13,7 @@ describe('prerun:analytics hook', () => {
     let unref;
 
     beforeEach(() => {
-        sandbox.stub(fs, 'openSync').callsFake(() => {});
+        sandbox.stub(fs, 'openSync').callsFake(() => { });
 
         unref = sinon.stub();
 
@@ -28,25 +28,25 @@ describe('prerun:analytics hook', () => {
         sandbox.restore();
     });
 
-    it('should not run without command', () => {
-        hook({}, {});
+    it('should not run without command', async () => {
+        await hook({}, {});
 
         expect(spawn.called).to.be.false;
         expect(on.called).to.be.false;
     });
 
-    it('should not run without plugin', () => {
+    it('should not run without plugin', async () => {
         const command = {
             id: 'test'
         };
 
-        hook({}, { Command: command });
+        await hook({}, { Command: command });
 
         expect(spawn.called).to.be.false;
         expect(on.called).to.be.false;
     });
 
-    it('should not spawn with error', () => {
+    it('should not spawn with error', async () => {
         const command = {
             id: 'test',
             plugin: { name: 'root', version: '' }
@@ -54,19 +54,19 @@ describe('prerun:analytics hook', () => {
 
         on.onCall(0).throws();
 
-        hook({}, { Command: command });
+        await hook({}, { Command: command });
 
         expect(spawn.called).to.be.false;
         expect(on.called).to.be.true;
     });
 
-    it('should spawn with command and plugin', () => {
+    it('should spawn with command and plugin', async () => {
         const command = {
             id: 'test',
             plugin: { name: 'root', version: '' }
         };
 
-        hook({ cacheDir: 'tmp', shell : 'zsh' }, { Command: command });
+        await hook({ cacheDir: 'tmp', shell: 'zsh' }, { Command: command });
 
         expect(spawn.called).to.be.true;
         expect(on.called).to.be.true;
@@ -79,13 +79,13 @@ describe('prerun:analytics hook', () => {
         expect(spawn.getCall(0).args[2].detached).to.be.true;
     });
 
-    it('should spawn without detached on windows', () => {
+    it('should spawn without detached on windows', async () => {
         const command = {
             id: 'test',
             plugin: { name: 'root', version: '' }
         };
 
-        hook({ cacheDir: 'tmp', windows: true }, { Command: command });
+        await hook({ cacheDir: 'tmp', windows: true }, { Command: command });
 
         expect(spawn.called).to.be.true;
         expect(spawn.getCall(0).args[2].detached).to.be.false;

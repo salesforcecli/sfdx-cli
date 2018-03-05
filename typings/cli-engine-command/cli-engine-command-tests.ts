@@ -2,7 +2,7 @@ import { Command, InputFlags, Output } from 'cli-engine-command';
 import { ConfigOptions } from 'cli-engine-config';
 
 class TestCommand extends Command<InputFlags> {
-    constructor(options: {config?: ConfigOptions, output?: Output} = {}) {
+    constructor(options: { config?: ConfigOptions, output?: Output } = {}) {
         super(options);
     }
 
@@ -30,4 +30,5 @@ const flags: InputFlags = {
 };
 
 const test = new TestCommand(flags);
+/* tslint:disable:next-line no-floating-promises */
 test.run();

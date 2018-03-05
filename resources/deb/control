@@ -1,7 +1,0 @@
-Package: sfdx
-Version: VERSION
-Section: main
-Priority: standard
-Architecture: ARCHITECTURE
-Maintainer: Salesforce
-Description: Client library and CLI force Salesforce developers.
