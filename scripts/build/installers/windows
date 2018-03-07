@@ -56,6 +56,11 @@ function build () {
             -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
         rm -f "/tmp/$BIN_NAME-windows-key"
         set -e
+        SIGNING_IDENTITY="Salesforce.com, Inc"
+        if [[ "$(osslsigncode verify "$RELEASE_DIR/$PKG_NAME-$ARCH.exe" | grep "$SIGNING_IDENTITY" | uniq)" != *"$SIGNING_IDENTITY"* ]]; then
+            stderr "Failed to find valid '$SIGNING_IDENTITY' signature on built installer product '$RELEASE_DIR/$PKG_NAME-$ARCH.exe'"
+            exit 1
+        fi
     else
         cp "$INSTALLER_BASE/installer.exe" "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
     fi
