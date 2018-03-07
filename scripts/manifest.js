@@ -3,19 +3,27 @@
 /* eslint-disable no-console */
 /* eslint-disable no-process-exit */
 
-const fields = process.argv.slice(2);
+const fs = require('fs');
 
-if (fields.length === 0) {
+const file = process.argv[2];
+const fields = process.argv.slice(3);
+
+if (!file || fields.length === 0) {
     console.error('Usage: %s key.path=value [key.path=value]...', process.argv[1]);
     process.exit(1);
 }
 
-const json = {
-    released_at: new Date(),
-    version: '',
-    channel: '',
-    builds: {}
-};
+let json;
+try {
+    json = JSON.parse(fs.readFileSync(file).toString());
+} catch (err) {
+    if (err.code !== 'ENOENT') {
+        throw err;
+    }
+    json = {
+        released_at: new Date()
+    };
+}
 
 fields.forEach((field) => {
     const [key, value] = field.split('=', 2);
@@ -33,4 +41,4 @@ fields.forEach((field) => {
     });
 });
 
-console.log(JSON.stringify(json, null, 2));
+fs.writeFileSync(file, JSON.stringify(json, null, 2));

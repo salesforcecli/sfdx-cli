@@ -77,20 +77,6 @@ function setarch () {
     export WORKSPACE_DIR="$TMP_DIR/${OS}_${ARCH}"
     export TGZ_PATH="$RELEASE_DIR/$UNVERSIONED_BASE.tar.gz"
     export TXZ_PATH="$RELEASE_DIR/$UNVERSIONED_BASE.tar.xz"
-
-    if [[ "$OS" = "linux" ]]; then
-        if [[ "$ARCH" = "x64" ]]; then
-            export DEB_ARCH="amd64"
-        elif [[ "$ARCH" = "x86" ]]; then
-            export DEB_ARCH="i386"
-        elif [[ "$ARCH" = "arm" ]]; then
-            export DEB_ARCH="armel"
-        fi
-        export VERSIONED_DEB_BASE="${BIN_NAME}_${DEB_VERSION}_$DEB_ARCH"
-        export UNVERSIONED_DEB_BASE="${BIN_NAME}_$DEB_ARCH"
-        export VERSIONED_DEB_PATH="$RELEASE_APT_DIR/$VERSIONED_DEB_BASE.deb"
-        export UNVERSIONED_DEB_PATH="$RELEASE_APT_DIR/$UNVERSIONED_DEB_BASE.deb"
-    fi
 }
 
 function bg () {
@@ -104,11 +90,29 @@ function wait_all () {
     done
 }
 
+function createManifest () {
+    rm -f "$RELEASE_DIR/manifest.json"
+    script "manifest.js" "$RELEASE_DIR/manifest.json" version="$VERSION" channel="$CHANNEL"
+}
+
+function addToManifest () {
+    SECTION="$1"
+    FILE_KEY="$2"
+    FILE_URL="$3"
+    SRC_FILE_PATH="$4"
+
+    keys=()
+    keys+=("${SECTION}.${FILE_KEY}.url=$FILE_URL")
+    keys+=("${SECTION}.${FILE_KEY}.sha256=$(sha "$SRC_FILE_PATH")")
+    keys+=("${SECTION}.${FILE_KEY}.bytes=$(wc -c < "$SRC_FILE_PATH" | awk '{print $1}')")
+
+    script "manifest.js" "$RELEASE_DIR/manifest.json" "${keys[@]}"
+}
+
 # Set channel and version vars
 CHANNEL=$(script "_vars/channel")
 VERSION=$(script "_vars/version")
 SHORT_VERSION=$(node -p "require('$ROOT_DIR/package.json').version")
-DEB_VERSION="${SHORT_VERSION}-1"
 
 # Set basic dir vars
 TMP_DIR="$ROOT_DIR/tmp"
@@ -134,9 +138,11 @@ S3_CHANNEL_UPLOAD_URL="$S3_BASE_UPLOAD_URL/$S3_CHANNEL_SUBFOLDER"
 DEFAULT_S3_HOST=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.host")
 S3_HOST="${S3_HOST:-"$DEFAULT_S3_HOST"}"
 S3_HOST_SCHEME="${S3_HOST_SCHEME:-"https"}"
-S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST/$S3_CHANNEL_SUBFOLDER"
+S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST"
+S3_HOST_CHANNEL_BASE_URL="$S3_HOST_BASE_URL/$S3_CHANNEL_SUBFOLDER"
 S3_PROFILE_NAME="sfdx"
 S3_ENDPOINT="${S3_ENDPOINT:-AWS}"
+S3_CACHE_DIR="$TMP_DIR/s3"
 
 # Set OS targets
 OS_TARGETS=(

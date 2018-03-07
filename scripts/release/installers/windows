@@ -15,30 +15,34 @@ fi
 
 stdout "Releasing windows installers to $CHANNEL"
 
-CACHE_DIR="$TMP_DIR/s3"
+resetS3CacheDir
 
 # Versioned installers
 
-rm -rf "$CACHE_DIR"
-mkdir -p "$CACHE_DIR"
-
-cp "$VERSIONED_X64_PATH" "$CACHE_DIR"
-cp "$VERSIONED_X86_PATH" "$CACHE_DIR"
+cp "$VERSIONED_X64_PATH" "$S3_CACHE_DIR"
+cp "$VERSIONED_X86_PATH" "$S3_CACHE_DIR"
 
 s3upload "$VERSIONED_CACHE_CONTROL" \
-    "$CACHE_DIR" \
+    "$S3_CACHE_DIR" \
     "$S3_CHANNEL_UPLOAD_URL" \
     --recursive
 
 # Unversioned installers
 
-rm -rf "$CACHE_DIR"
-mkdir -p "$CACHE_DIR"
+resetS3CacheDir
 
-cp "$X64_PATH" "$CACHE_DIR"
-cp "$X86_PATH" "$CACHE_DIR"
+cp "$X64_PATH" "$S3_CACHE_DIR"
+cp "$X86_PATH" "$S3_CACHE_DIR"
 
 s3upload "$UNVERSIONED_CACHE_CONTROL" \
-    "$CACHE_DIR" \
+    "$S3_CACHE_DIR" \
     "$S3_CHANNEL_UPLOAD_URL" \
     --recursive
+
+function addExeToManifest () {
+    ARCH="$1"
+    addToManifest "installers" "windows-${ARCH}" "$S3_HOST_CHANNEL_BASE_URL/${INSTALLER_BASE_NAME}-${ARCH}.exe" "$RELEASE_DIR/${INSTALLER_BASE_NAME}-${ARCH}.exe"
+}
+
+addExeToManifest "x64"
+addExeToManifest "x86"

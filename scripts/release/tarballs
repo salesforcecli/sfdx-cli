@@ -4,11 +4,8 @@ set -ex
 
 source ./scripts/release/_init
 
-CACHE_DIR="$TMP_DIR/s3"
-
-rm -rf "$CACHE_DIR"
-mkdir -p "$CACHE_DIR"
-cd "$CACHE_DIR"
+resetS3CacheDir
+cd "$S3_CACHE_DIR"
 
 # Upload versioned tarballs
 for OS in "${OS_TARGETS[@]}"; do
@@ -22,7 +19,7 @@ for OS in "${OS_TARGETS[@]}"; do
 done
 
 s3upload "$VERSIONED_CACHE_CONTROL" \
-    "$CACHE_DIR" \
+    "$S3_CACHE_DIR" \
     "$S3_CHANNEL_UPLOAD_URL" \
     --recursive
 
@@ -38,11 +35,11 @@ for OS in "${OS_TARGETS[@]}"; do
 done
 
 s3upload "$UNVERSIONED_CACHE_CONTROL" \
-    "$CACHE_DIR" \
+    "$S3_CACHE_DIR" \
     "$S3_CHANNEL_UPLOAD_URL" \
     --recursive
 
-rm -rf "${CACHE_DIR:?}"/*
+rm -rf "${S3_CACHE_DIR:?}"/*
 
 # Now upload json files
 for OS in "${OS_TARGETS[@]}"; do
@@ -50,26 +47,16 @@ for OS in "${OS_TARGETS[@]}"; do
     IFS='|' read -ra ARCHS <<< "$(archs)"
     for ARCH in "${ARCHS[@]}"; do
         setarch "$ARCH"
-        cp "$RELEASE_DIR/${OS}-${ARCH}" "$CACHE_DIR"
+        cp "$RELEASE_DIR/${OS}-${ARCH}" "$S3_CACHE_DIR"
     done
 done
 
 cp "$RELEASE_DIR/version" "$RELEASE_VERSION_DIR/version"
-cp "$RELEASE_DIR/version" "$CACHE_DIR/version"
-cp "$RELEASE_DIR/manifest.json" "$RELEASE_VERSION_DIR/manifest.json"
-cp "$RELEASE_DIR/manifest.json" "$CACHE_DIR/manifest.json"
-cp -r "$RELEASE_VERSION_DIR" "$CACHE_DIR"
+cp "$RELEASE_DIR/version" "$S3_CACHE_DIR/version"
+cp -r "$RELEASE_VERSION_DIR" "$S3_CACHE_DIR"
 
 s3upload "$LATEST_VERSION_CACHE_CONTROL" \
-    "$CACHE_DIR" \
+    "$S3_CACHE_DIR" \
     "$S3_CHANNEL_UPLOAD_URL" \
     --recursive \
     --content-type "application/json"
-
-# Only upload the master manifest if releasing the stable channel
-if [[ "$CHANNEL" == "stable" ]]; then
-    s3upload "$LATEST_VERSION_CACHE_CONTROL" \
-        "$CACHE_DIR/manifest.json" \
-        "$S3_BASE_UPLOAD_URL/" \
-        --content-type "application/json"
-fi

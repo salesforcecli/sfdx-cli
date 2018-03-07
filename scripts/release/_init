@@ -63,6 +63,11 @@ function awsConfigureSetFromEnvVar() {
     aws configure set "$2" "${!1}" --profile "$3"
 }
 
+function resetS3CacheDir () {
+    rm -rf "$S3_CACHE_DIR"
+    mkdir -p "$S3_CACHE_DIR"
+}
+
 # S3 cache-control maxage constants
 if [[ "$CHANNEL" == "stable" ]]; then
     VERSIONED_CACHE_CONTROL=86400     # 1 day

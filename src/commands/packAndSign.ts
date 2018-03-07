@@ -28,7 +28,7 @@ import { api as packAndSignApi } from '../codeSigning/packAndSign';
 export default class PackAndSign extends Command<any> {
     public static topic = 'packAndSign';
     public static description = 'pack an npm package and produce a tgz file along with a corresponding digital signature';
-    public  static flags: InputFlags = {
+    public static flags: InputFlags = {
         signatureUrl: flags.string({
             char: 's',
             required: true,
@@ -42,7 +42,7 @@ export default class PackAndSign extends Command<any> {
         privateKeyPath: flags.string({
             char: 'k',
             required: true,
-            descripiton: 'the local file path for the private key.'
+            description: 'the local file path for the private key.'
         })
     };
     public plugins: Plugins;

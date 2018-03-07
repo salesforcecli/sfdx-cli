@@ -4,7 +4,7 @@ import hook = require('./convertFromV5');
 /* tslint:disable:no-unused-expression */
 
 describe('plugins:parse hook', () => {
-    it('should map a namespaced module\'s commands and topics to a nested topic model', () => {
+    it('should map a namespaced module\'s commands and topics to a nested topic model', async () => {
         const rootCommand = {
             namespace: 'root'
         };
@@ -32,7 +32,7 @@ describe('plugins:parse hook', () => {
             }]
         };
 
-        hook({}, {module});
+        await hook({}, { module });
 
         // root command gets ns mapped as a root topic
         expect((rootCommand as any).topic).to.equal('root');
@@ -48,7 +48,7 @@ describe('plugins:parse hook', () => {
         expect(module.namespace).to.be.undefined;
     });
 
-    it('should support a module with only a single topic', () => {
+    it('should support a module with only a single topic', async () => {
         const normalCommand = {
             topic: 'topic',
             command: 'command'
@@ -64,7 +64,7 @@ describe('plugins:parse hook', () => {
             }
         };
 
-        hook({}, {module});
+        await hook({}, { module });
 
         // normal command gets its topic prefixed with the root ns
         expect(normalCommand.topic).to.equal('root:topic');
@@ -78,11 +78,11 @@ describe('plugins:parse hook', () => {
         expect(module.namespace).to.be.undefined;
     });
 
-    it('should not die when given a module object lacking commands or topics', () => {
-        hook({}, {module: {namespace: 'root'}});
+    it('should not die when given a module object lacking commands or topics', async () => {
+        await hook({}, { module: { namespace: 'root' } });
     });
 
-    it('should not show flags in help usage', () => {
+    it('should not show flags in help usage', async () => {
         const normalCommand: any = {
             id: 'topic:command',
             topic: 'topic',
@@ -102,13 +102,13 @@ describe('plugins:parse hook', () => {
             }
         };
 
-        hook({}, {module});
+        await hook({}, { module });
 
         // normal command gets its topic prefixed with the root ns
         expect(normalCommand.buildHelp({ bin: 'sfdx' })).to.not.contain('[flags]');
     });
 
-    it('should not show usage in line help', () => {
+    it('should not show usage in line help', async () => {
         const normalCommand: any = {
             topic: 'topic',
             command: 'command',
@@ -125,7 +125,7 @@ describe('plugins:parse hook', () => {
             }
         };
 
-        hook({}, {module});
+        await hook({}, { module });
 
         // normal command gets its topic prefixed with the root ns
         expect(normalCommand.buildHelpLine()[0]).to.equal('root:topic:command');
