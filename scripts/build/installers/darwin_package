@@ -37,4 +37,11 @@ productbuild --distribution "$TMP_DIR/$OS-$ARCH-distribution.xml" \
     "${extra_args[@]+${extra_args[@]}}" \
     "$RELEASE_DIR/$PKG_NAME.pkg"
 
+if [[ ! -z "${OSX_SIGNING_IDENTITY:-}" ]]; then
+    if [[ "$(pkgutil --check-signature "$RELEASE_DIR/$PKG_NAME.pkg" | grep "$OSX_SIGNING_IDENTITY")" != *"$OSX_SIGNING_IDENTITY"* ]]; then
+        stderr "Failed to find valid '$OSX_SIGNING_IDENTITY' signature on built installer product '$RELEASE_DIR/$PKG_NAME.pkg'"
+        exit 1
+    fi
+fi
+
 cp "$RELEASE_DIR/$PKG_NAME.pkg" "$RELEASE_DIR/$INSTALLER_BASE_NAME.pkg"
