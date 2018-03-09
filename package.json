@@ -63,7 +63,7 @@
   ],
   "dependencies": {
     "ansi-escapes": "3.0.0",
-    "cli-engine": "4.6.23",
+    "cli-engine": "4.7.2",
     "cli-engine-command": "9.0.7",
     "cli-engine-config": "3.5.0",
     "cli-engine-heroku": "5.0.3",
