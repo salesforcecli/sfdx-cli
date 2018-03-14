@@ -4895,9 +4895,9 @@ set-blocking@~2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
 
-sfdx-plugin-create@0.0.1:
-  version "0.0.1"
-  resolved "http://10.252.156.164:4880/sfdx-plugin-create/-/sfdx-plugin-create-0.0.1.tgz#3380c02faf30eec336b6052282d92f816b756330"
+sfdx-plugin-create@0.0.2:
+  version "0.0.2"
+  resolved "http://10.252.156.164:4880/sfdx-plugin-create/-/sfdx-plugin-create-0.0.2.tgz#615706aaf17a62846146d4fa28c3cbae3f05c6d8"
   dependencies:
     "@oclif/command" "^1.4.2"
     "@oclif/config" "^1.3.58"
