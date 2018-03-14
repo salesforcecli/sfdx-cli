@@ -15,9 +15,65 @@
     strip-ansi "^4.0.0"
     supports-color "^5.1.0"
 
+"@heroku-cli/color@^1.1.3":
+  version "1.1.3"
+  resolved "http://10.252.156.164:4880/@heroku-cli%2fcolor/-/color-1.1.3.tgz#f5f3bb043c3c5c78888135a89633227cfca04b2b"
+  dependencies:
+    ansi-styles "^3.2.0"
+    chalk "^2.3.0"
+    strip-ansi "^4.0.0"
+    supports-color "^5.1.0"
+
 "@heroku/linewrap@^1.0.0":
   version "1.0.0"
   resolved "http://10.252.156.164:4880/@heroku%2flinewrap/-/linewrap-1.0.0.tgz#a9d4e99f0a3e423a899b775f5f3d6747a1ff15c6"
+
+"@oclif/command@^1.3.1", "@oclif/command@^1.4.1", "@oclif/command@^1.4.2":
+  version "1.4.2"
+  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.2.tgz#f20ead470e87f629812ce21ddd72042c88517a5d"
+  dependencies:
+    "@oclif/parser" "^3.2.9"
+    semver "^5.5.0"
+
+"@oclif/config@^1.3.56", "@oclif/config@^1.3.58":
+  version "1.3.58"
+  resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.3.58.tgz#b0cfc0e3b5ac860cabdacf50a98035135b5b623a"
+
+"@oclif/errors@^1.0.2":
+  version "1.0.2"
+  resolved "http://10.252.156.164:4880/@oclif%2ferrors/-/errors-1.0.2.tgz#0a3f773d673a3ccd8dc26bf2e3c49580afcbe30e"
+  dependencies:
+    clean-stack "^1.3.0"
+    fs-extra "^5.0.0"
+    indent-string "^3.2.0"
+    strip-ansi "^4.0.0"
+    wrap-ansi "^3.0.1"
+
+"@oclif/parser@^3.2.9":
+  version "3.2.9"
+  resolved "http://10.252.156.164:4880/@oclif%2fparser/-/parser-3.2.9.tgz#76d01106971e20dfcfec5be276c4e6e9edfee9ec"
+  dependencies:
+    "@heroku/linewrap" "^1.0.0"
+
+"@oclif/plugin-help@^1.1.6":
+  version "1.1.6"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-help/-/plugin-help-1.1.6.tgz#2f92e5705ce656e26e75867af74bda3cc4bdfd07"
+  dependencies:
+    "@oclif/command" "^1.4.1"
+    chalk "^2.3.1"
+    indent-string "^3.2.0"
+    lodash.template "^4.4.0"
+    string-width "^2.1.1"
+    widest-line "^2.0.0"
+    wrap-ansi "^3.0.1"
+
+"@oclif/plugin-not-found@^1.0.3":
+  version "1.0.3"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-not-found/-/plugin-not-found-1.0.3.tgz#374421fb981c9e3f28f658b95c33365d59787446"
+  dependencies:
+    "@heroku-cli/color" "^1.1.3"
+    "@oclif/command" "^1.4.1"
+    string-similarity "^1.2.0"
 
 "@types/chai@4.0.4":
   version "4.0.4"
@@ -119,6 +175,13 @@ ajv@^5.1.0:
     json-schema-traverse "^0.3.0"
     json-stable-stringify "^1.0.1"
 
+alce@1.0.0:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/alce/-/alce-1.0.0.tgz#426184c98ee288d0eeac77fd63fed680b667cab6"
+  dependencies:
+    esprima "~1.0.4"
+    estraverse "~1.3.0"
+
 align-text@^0.1.1, align-text@^0.1.3:
   version "0.1.4"
   resolved "http://10.252.156.164:4880/align-text/-/align-text-0.1.4.tgz#0cd90a561093f35d0a99256c22b7069433fad117"
@@ -139,6 +202,10 @@ ansi-escapes@3.0.0, ansi-escapes@^3.0.0:
   version "3.0.0"
   resolved "http://10.252.156.164:4880/ansi-escapes/-/ansi-escapes-3.0.0.tgz#ec3e8b4e9f8064fc02c3ac9b65f1c275bda8ef92"
 
+ansi-regex@^0.2.0, ansi-regex@^0.2.1:
+  version "0.2.1"
+  resolved "http://10.252.156.164:4880/ansi-regex/-/ansi-regex-0.2.1.tgz#0d8e946967a3d8143f93e24e298525fc1b2235f9"
+
 ansi-regex@^1.0.0, ansi-regex@^1.1.1:
   version "1.1.1"
   resolved "http://10.252.156.164:4880/ansi-regex/-/ansi-regex-1.1.1.tgz#41c847194646375e6a1a5d10c3ca054ef9fc980d"
@@ -151,9 +218,19 @@ ansi-regex@^3.0.0:
   version "3.0.0"
   resolved "http://10.252.156.164:4880/ansi-regex/-/ansi-regex-3.0.0.tgz#ed0317c322064f79466c02966bddb605ab37d998"
 
+ansi-styles@^1.1.0:
+  version "1.1.0"
+  resolved "http://10.252.156.164:4880/ansi-styles/-/ansi-styles-1.1.0.tgz#eaecbf66cd706882760b2f4691582b8f55d7a7de"
+
 ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "http://10.252.156.164:4880/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
+
+ansi-styles@^3.0.0, ansi-styles@^3.2.1:
+  version "3.2.1"
+  resolved "http://10.252.156.164:4880/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
+  dependencies:
+    color-convert "^1.9.0"
 
 ansi-styles@^3.1.0, ansi-styles@^3.2.0:
   version "3.2.0"
@@ -164,6 +241,10 @@ ansi-styles@^3.1.0, ansi-styles@^3.2.0:
 ansicolors@~0.2.1:
   version "0.2.1"
   resolved "http://10.252.156.164:4880/ansicolors/-/ansicolors-0.2.1.tgz#be089599097b74a5c9c4a84a0cdbcdb62bd87aef"
+
+any-shell-escape@^0.1.1:
+  version "0.1.1"
+  resolved "http://10.252.156.164:4880/any-shell-escape/-/any-shell-escape-0.1.1.tgz#d55ab972244c71a9a5e1ab0879f30bf110806959"
 
 append-transform@^0.4.0:
   version "0.4.0"
@@ -296,6 +377,12 @@ async@1.x, async@^1.4.0:
 async@^2.0.0, async@^2.1.4:
   version "2.5.0"
   resolved "http://10.252.156.164:4880/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
+  dependencies:
+    lodash "^4.14.0"
+
+async@^2.6.0:
+  version "2.6.0"
+  resolved "http://10.252.156.164:4880/async/-/async-2.6.0.tgz#61a29abb6fcc026fea77e56d1c6ec53a795951f4"
   dependencies:
     lodash "^4.14.0"
 
@@ -608,6 +695,16 @@ chai@4.1.2:
     pathval "^1.0.0"
     type-detect "^4.0.0"
 
+chalk@0.5.1:
+  version "0.5.1"
+  resolved "http://10.252.156.164:4880/chalk/-/chalk-0.5.1.tgz#663b3a648b68b55d04690d49167aa837858f2174"
+  dependencies:
+    ansi-styles "^1.1.0"
+    escape-string-regexp "^1.0.0"
+    has-ansi "^0.1.0"
+    strip-ansi "^0.3.0"
+    supports-color "^0.2.0"
+
 chalk@1.1.3, chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
   resolved "http://10.252.156.164:4880/chalk/-/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
@@ -633,6 +730,14 @@ chalk@^2.3.0:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
+
+chalk@^2.3.1:
+  version "2.3.2"
+  resolved "http://10.252.156.164:4880/chalk/-/chalk-2.3.2.tgz#250dc96b07491bfd601e648d66ddf5f60c7a5c65"
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
 
 check-error@^1.0.1:
   version "1.0.2"
@@ -661,6 +766,14 @@ class-extend@^0.1.0, class-extend@^0.1.1:
   resolved "http://10.252.156.164:4880/class-extend/-/class-extend-0.1.2.tgz#8057a82b00f53f82a5d62c50ef8cffdec6fabc34"
   dependencies:
     object-assign "^2.0.0"
+
+clean-stack@^1.3.0:
+  version "1.3.0"
+  resolved "http://10.252.156.164:4880/clean-stack/-/clean-stack-1.3.0.tgz#9e821501ae979986c46b1d66d2d432db2fd4ae31"
+
+cli-boxes@^1.0.0:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
 
 cli-cursor@1.0.2, cli-cursor@^1.0.1:
   version "1.0.2"
@@ -723,11 +836,15 @@ cli-engine-heroku@5.0.3:
     http-call "^3.0.2"
     netrc-parser "^2.0.3"
 
-cli-engine@4.6.23:
-  version "4.6.23"
-  resolved "http://10.252.156.164:4880/cli-engine/-/cli-engine-4.6.23.tgz#323eb5428fc9c147da99d4316fc552dcbc3b57af"
+cli-engine@4.7.4:
+  version "4.7.4"
+  resolved "http://10.252.156.164:4880/cli-engine/-/cli-engine-4.7.4.tgz#49a5c9f51c1697a7c6c565794e08424cebe99a11"
   dependencies:
     "@heroku/linewrap" "^1.0.0"
+    "@oclif/command" "^1.3.1"
+    "@oclif/config" "^1.3.56"
+    "@oclif/errors" "^1.0.2"
+    "@oclif/plugin-help" "^1.1.6"
     ansi-escapes "^3.0.0"
     cli-engine-command "^9.0.3"
     cli-engine-config "^3.4.0"
@@ -870,6 +987,10 @@ color-name@^1.1.1:
   version "1.1.3"
   resolved "http://10.252.156.164:4880/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
 
+colors@*:
+  version "1.2.1"
+  resolved "http://10.252.156.164:4880/colors/-/colors-1.2.1.tgz#f4a3d302976aaf042356ba1ade3b1a2c62d9d794"
+
 colors@0.5.x:
   version "0.5.1"
   resolved "http://10.252.156.164:4880/colors/-/colors-0.5.1.tgz#7d0023eaeb154e8ee9fce75dcb923d0ed1667774"
@@ -894,6 +1015,10 @@ combined-stream@~0.0.4, combined-stream@~0.0.5:
   dependencies:
     delayed-stream "0.0.5"
 
+commander@2.6.0:
+  version "2.6.0"
+  resolved "http://10.252.156.164:4880/commander/-/commander-2.6.0.tgz#9df7e52fb2a0cb0fb89058ee80c3104225f37e1d"
+
 commander@2.9.0:
   version "2.9.0"
   resolved "http://10.252.156.164:4880/commander/-/commander-2.9.0.tgz#9c99094176e12240cb22d6c5146098400fe0f7d4"
@@ -903,6 +1028,12 @@ commander@2.9.0:
 commander@^2.9.0:
   version "2.11.0"
   resolved "http://10.252.156.164:4880/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
+
+common-tags@^1.4.0:
+  version "1.7.2"
+  resolved "http://10.252.156.164:4880/common-tags/-/common-tags-1.7.2.tgz#24d9768c63d253a56ecff93845b44b4df1d52771"
+  dependencies:
+    babel-runtime "^6.26.0"
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -937,6 +1068,19 @@ concat-stream@^1.4.6, concat-stream@^1.4.7:
     inherits "^2.0.3"
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
+
+concurrently@^3.4.0:
+  version "3.5.1"
+  resolved "http://10.252.156.164:4880/concurrently/-/concurrently-3.5.1.tgz#ee8b60018bbe86b02df13e5249453c6ececd2521"
+  dependencies:
+    chalk "0.5.1"
+    commander "2.6.0"
+    date-fns "^1.23.0"
+    lodash "^4.5.1"
+    rx "2.3.24"
+    spawn-command "^0.0.2-1"
+    supports-color "^3.2.3"
+    tree-kill "^1.1.0"
 
 console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
@@ -974,6 +1118,36 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "http://10.252.156.164:4880/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
+cp-file@^3.1.0:
+  version "3.2.0"
+  resolved "http://10.252.156.164:4880/cp-file/-/cp-file-3.2.0.tgz#6f83616254624f0ad58aa4aa8d076f026be7e188"
+  dependencies:
+    graceful-fs "^4.1.2"
+    mkdirp "^0.5.0"
+    nested-error-stacks "^1.0.1"
+    object-assign "^4.0.1"
+    pify "^2.3.0"
+    pinkie-promise "^2.0.0"
+    readable-stream "^2.1.4"
+
+cpy-cli@^1.0.1:
+  version "1.0.1"
+  resolved "http://10.252.156.164:4880/cpy-cli/-/cpy-cli-1.0.1.tgz#67fb5a4a2dec28ca8abff375de4b9e71f6a7561c"
+  dependencies:
+    cpy "^4.0.0"
+    meow "^3.6.0"
+
+cpy@^4.0.0:
+  version "4.0.1"
+  resolved "http://10.252.156.164:4880/cpy/-/cpy-4.0.1.tgz#b67267eba2f3960ba06a5a61ac94033422833424"
+  dependencies:
+    cp-file "^3.1.0"
+    globby "^4.0.0"
+    meow "^3.6.0"
+    nested-error-stacks "^1.0.0"
+    object-assign "^4.0.1"
+    pinkie-promise "^2.0.0"
+
 crc32-stream@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/crc32-stream/-/crc32-stream-2.0.0.tgz#e3cdd3b4df3168dd74e3de3fbbcb7b297fe908f4"
@@ -997,6 +1171,13 @@ create-error-class@^3.0.0, create-error-class@^3.0.1:
   resolved "http://10.252.156.164:4880/create-error-class/-/create-error-class-3.0.2.tgz#06be7abef947a3f14a30fd610671d401bca8b7b6"
   dependencies:
     capture-stack-trace "^1.0.0"
+
+cross-env@^3.1.4:
+  version "3.2.4"
+  resolved "http://10.252.156.164:4880/cross-env/-/cross-env-3.2.4.tgz#9e0585f277864ed421ce756f81a980ff0d698aba"
+  dependencies:
+    cross-spawn "^5.1.0"
+    is-windows "^1.0.0"
 
 cross-spawn@^4.0.0:
   version "4.0.2"
@@ -1115,6 +1296,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+date-fns@^1.23.0:
+  version "1.29.0"
+  resolved "http://10.252.156.164:4880/date-fns/-/date-fns-1.29.0.tgz#12e609cdcb935127311d04d33334e2960a2a54e6"
+
 dateformat@^1.0.11, dateformat@^1.0.12:
   version "1.0.12"
   resolved "http://10.252.156.164:4880/dateformat/-/dateformat-1.0.12.tgz#9f124b67594c937ff706932e4a642cca8dbbfee9"
@@ -1125,6 +1310,10 @@ dateformat@^1.0.11, dateformat@^1.0.12:
 dateformat@^2.0.0:
   version "2.2.0"
   resolved "http://10.252.156.164:4880/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
+
+dateformat@^3.0.2:
+  version "3.0.3"
+  resolved "http://10.252.156.164:4880/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
 
 debug@2.6.8:
   version "2.6.8"
@@ -1154,6 +1343,12 @@ decamelize@^1.0.0, decamelize@^1.1.2:
   version "1.2.0"
   resolved "http://10.252.156.164:4880/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
+decompress-response@^3.2.0:
+  version "3.3.0"
+  resolved "http://10.252.156.164:4880/decompress-response/-/decompress-response-3.3.0.tgz#80a4dd323748384bfa248083622aedec982adff3"
+  dependencies:
+    mimic-response "^1.0.0"
+
 deep-eql@^3.0.0:
   version "3.0.1"
   resolved "http://10.252.156.164:4880/deep-eql/-/deep-eql-3.0.1.tgz#dfc9404400ad1c8fe023e7da1df1c147c4b444df"
@@ -1163,6 +1358,10 @@ deep-eql@^3.0.0:
 deep-extend@^0.4.0:
   version "0.4.2"
   resolved "http://10.252.156.164:4880/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
+
+deep-extend@~0.2.5:
+  version "0.2.11"
+  resolved "http://10.252.156.164:4880/deep-extend/-/deep-extend-0.2.11.tgz#7a16ba69729132340506170494bc83f7076fe08f"
 
 deep-is@~0.1.3:
   version "0.1.3"
@@ -1346,7 +1545,7 @@ entities@~1.1.1:
   version "1.1.1"
   resolved "http://10.252.156.164:4880/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
-error-ex@^1.2.0:
+error-ex@^1.2.0, error-ex@^1.3.1:
   version "1.3.1"
   resolved "http://10.252.156.164:4880/error-ex/-/error-ex-1.3.1.tgz#f855a86ce61adc4e8621c3cda21e7a7612c3a8dc"
   dependencies:
@@ -1415,7 +1614,7 @@ escape-html@~1.0.3:
   version "1.0.3"
   resolved "http://10.252.156.164:4880/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
 
-escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
+escape-string-regexp@1.0.5, escape-string-regexp@^1.0.0, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "http://10.252.156.164:4880/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
@@ -1568,6 +1767,10 @@ esprima@^4.0.0:
   version "4.0.0"
   resolved "http://10.252.156.164:4880/esprima/-/esprima-4.0.0.tgz#4499eddcd1110e0b218bacf2fa7f7f59f55ca804"
 
+esprima@~1.0.4:
+  version "1.0.4"
+  resolved "http://10.252.156.164:4880/esprima/-/esprima-1.0.4.tgz#9f557e08fc3b4d26ece9dd34f8fbf476b62585ad"
+
 esprima@~3.0.0:
   version "3.0.0"
   resolved "http://10.252.156.164:4880/esprima/-/esprima-3.0.0.tgz#53cf247acda77313e551c3aa2e73342d3fb4f7d9"
@@ -1586,6 +1789,10 @@ estraverse@^1.9.1:
 estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
   version "4.2.0"
   resolved "http://10.252.156.164:4880/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
+
+estraverse@~1.3.0:
+  version "1.3.2"
+  resolved "http://10.252.156.164:4880/estraverse/-/estraverse-1.3.2.tgz#37c2b893ef13d723f276d878d60d8535152a6c42"
 
 esutils@^2.0.2:
   version "2.0.2"
@@ -1635,6 +1842,10 @@ express@4.13.4:
     type-is "~1.6.6"
     utils-merge "1.0.0"
     vary "~1.0.1"
+
+extend-object@^1.0.0:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/extend-object/-/extend-object-1.0.0.tgz#42514f84015d1356caf5187969dfb2bc1bda0823"
 
 extend@^3.0.0, extend@~3.0.0, extend@~3.0.1:
   version "3.0.1"
@@ -1719,6 +1930,10 @@ file-entry-cache@^1.1.1, file-entry-cache@^1.3.1:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
+file-type@^3.6.0:
+  version "3.9.0"
+  resolved "http://10.252.156.164:4880/file-type/-/file-type-3.9.0.tgz#257a078384d1db8087bc449d107d52a52672b9e9"
+
 fileset@^2.0.2:
   version "2.0.3"
   resolved "http://10.252.156.164:4880/fileset/-/fileset-2.0.3.tgz#8e7548a96d3cc2327ee5e674168723a333bba2a0"
@@ -1757,6 +1972,15 @@ first-chunk-stream@^2.0.0:
   resolved "http://10.252.156.164:4880/first-chunk-stream/-/first-chunk-stream-2.0.0.tgz#1bdecdb8e083c0664b91945581577a43a9f31d70"
   dependencies:
     readable-stream "^2.0.2"
+
+fixpack@^2.3.1:
+  version "2.3.1"
+  resolved "http://10.252.156.164:4880/fixpack/-/fixpack-2.3.1.tgz#53f03d88aab7d5123259282f0088a9a3b19836c2"
+  dependencies:
+    alce "1.0.0"
+    colors "*"
+    extend-object "^1.0.0"
+    rc "^0.6.0"
 
 flat-cache@^1.2.1:
   version "1.3.0"
@@ -1900,6 +2124,10 @@ get-stdin@^4.0.1:
   version "4.0.1"
   resolved "http://10.252.156.164:4880/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
 
+get-stdin@^5.0.1:
+  version "5.0.1"
+  resolved "http://10.252.156.164:4880/get-stdin/-/get-stdin-5.0.1.tgz#122e161591e21ff4c52530305693f20e6393a398"
+
 get-stream@^1.1.0:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/get-stream/-/get-stream-1.1.0.tgz#554659093606c1b5284218be65f68385c9f0c18b"
@@ -1929,6 +2157,13 @@ gh-got@^5.0.0:
     got "^6.2.0"
     is-plain-obj "^1.1.0"
 
+gh-got@^6.0.0:
+  version "6.0.0"
+  resolved "http://10.252.156.164:4880/gh-got/-/gh-got-6.0.0.tgz#d74353004c6ec466647520a10bd46f7299d268d0"
+  dependencies:
+    got "^7.0.0"
+    is-plain-obj "^1.1.0"
+
 github-username@^2.0.0:
   version "2.1.0"
   resolved "http://10.252.156.164:4880/github-username/-/github-username-2.1.0.tgz#200e5a104af42ba08a54096c708d4b6ec2fa256b"
@@ -1941,6 +2176,12 @@ github-username@^3.0.0:
   resolved "http://10.252.156.164:4880/github-username/-/github-username-3.0.0.tgz#0a772219b3130743429f2456d0bdd3db55dce7b1"
   dependencies:
     gh-got "^5.0.0"
+
+github-username@^4.0.0:
+  version "4.1.0"
+  resolved "http://10.252.156.164:4880/github-username/-/github-username-4.1.0.tgz#cbe280041883206da4212ae9e4b5f169c30bf417"
+  dependencies:
+    gh-got "^6.0.0"
 
 gitignore-parser@0.0.2:
   version "0.0.2"
@@ -2096,6 +2337,25 @@ got@^6.2.0, got@^6.3.0:
     unzip-response "^2.0.1"
     url-parse-lax "^1.0.0"
 
+got@^7.0.0:
+  version "7.1.0"
+  resolved "http://10.252.156.164:4880/got/-/got-7.1.0.tgz#05450fd84094e6bbea56f451a43a9c289166385a"
+  dependencies:
+    decompress-response "^3.2.0"
+    duplexer3 "^0.1.4"
+    get-stream "^3.0.0"
+    is-plain-obj "^1.1.0"
+    is-retry-allowed "^1.0.0"
+    is-stream "^1.0.0"
+    isurl "^1.0.0-alpha5"
+    lowercase-keys "^1.0.0"
+    p-cancelable "^0.3.0"
+    p-timeout "^1.1.1"
+    safe-buffer "^5.0.1"
+    timed-out "^4.0.0"
+    url-parse-lax "^1.0.0"
+    url-to-options "^1.0.1"
+
 graceful-fs@^4.1.0, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "4.1.11"
   resolved "http://10.252.156.164:4880/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
@@ -2151,6 +2411,12 @@ har-validator@~5.0.3:
     ajv "^5.1.0"
     har-schema "^2.0.0"
 
+has-ansi@^0.1.0:
+  version "0.1.0"
+  resolved "http://10.252.156.164:4880/has-ansi/-/has-ansi-0.1.0.tgz#84f265aae8c0e6a88a12d7022894b7568894c62e"
+  dependencies:
+    ansi-regex "^0.2.0"
+
 has-ansi@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
@@ -2164,6 +2430,20 @@ has-flag@^1.0.0:
 has-flag@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/has-flag/-/has-flag-2.0.0.tgz#e8207af1cc7b30d446cc70b734b5e8be18f88d51"
+
+has-flag@^3.0.0:
+  version "3.0.0"
+  resolved "http://10.252.156.164:4880/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
+
+has-symbol-support-x@^1.4.1:
+  version "1.4.2"
+  resolved "http://10.252.156.164:4880/has-symbol-support-x/-/has-symbol-support-x-1.4.2.tgz#1409f98bc00247da45da67cee0a36f282ff26455"
+
+has-to-string-tag-x@^1.2.0:
+  version "1.4.1"
+  resolved "http://10.252.156.164:4880/has-to-string-tag-x/-/has-to-string-tag-x-1.4.1.tgz#a045ab383d7b4b2012a00148ab0aa5f290044d4d"
+  dependencies:
+    has-symbol-support-x "^1.4.1"
 
 has-unicode@^2.0.0:
   version "2.0.1"
@@ -2410,6 +2690,10 @@ indent-string@^2.1.0:
   dependencies:
     repeating "^2.0.0"
 
+indent-string@^3.2.0:
+  version "3.2.0"
+  resolved "http://10.252.156.164:4880/indent-string/-/indent-string-3.2.0.tgz#4a5fd6d27cc332f37e5419a504dbb837105c9289"
+
 inflection@^1.7.0:
   version "1.12.0"
   resolved "http://10.252.156.164:4880/inflection/-/inflection-1.12.0.tgz#a200935656d6f5f6bc4dc7502e1aecb703228416"
@@ -2432,6 +2716,10 @@ inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, 
 inherits@2.0.1:
   version "2.0.1"
   resolved "http://10.252.156.164:4880/inherits/-/inherits-2.0.1.tgz#b17d08d326b4423e568eff719f91b0b1cbdf69f1"
+
+ini@~1.3.0:
+  version "1.3.5"
+  resolved "http://10.252.156.164:4880/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
 
 inquirer@^0.12.0:
   version "0.12.0"
@@ -2555,6 +2843,10 @@ is-my-json-valid@^2.10.0, is-my-json-valid@^2.12.4:
     jsonpointer "^4.0.0"
     xtend "^4.0.0"
 
+is-object@^1.0.1:
+  version "1.0.1"
+  resolved "http://10.252.156.164:4880/is-object/-/is-object-1.0.1.tgz#8952688c5ec2ffd6b03ecc85e769e02903083470"
+
 is-path-cwd@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/is-path-cwd/-/is-path-cwd-1.0.0.tgz#d225ec23132e89edd38fda767472e62e65f1106d"
@@ -2614,6 +2906,10 @@ is-typedarray@~1.0.0:
 is-utf8@^0.2.0:
   version "0.2.1"
   resolved "http://10.252.156.164:4880/is-utf8/-/is-utf8-0.2.1.tgz#4b0da1442104d1b336340e80797e865cf39f7d72"
+
+is-windows@^1.0.0:
+  version "1.0.2"
+  resolved "http://10.252.156.164:4880/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
 
 isarray@0.0.1:
   version "0.0.1"
@@ -2719,6 +3015,13 @@ istextorbinary@^2.1.0:
     editions "^1.1.1"
     textextensions "1 || 2"
 
+isurl@^1.0.0-alpha5:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/isurl/-/isurl-1.0.0.tgz#b27f4f49f3cdaa3ea44a0a5b7f3462e6edc39d67"
+  dependencies:
+    has-to-string-tag-x "^1.2.0"
+    is-object "^1.0.1"
+
 joi@~6.10.1:
   version "6.10.1"
   resolved "http://10.252.156.164:4880/joi/-/joi-6.10.1.tgz#4d50c318079122000fe5f16af1ff8e1917b77e06"
@@ -2773,6 +3076,10 @@ jsforce@1.8.0:
     readable-stream "^2.1.0"
     request "^2.72.0"
     xml2js "^0.4.16"
+
+json-parse-better-errors@^1.0.1:
+  version "1.0.1"
+  resolved "http://10.252.156.164:4880/json-parse-better-errors/-/json-parse-better-errors-1.0.1.tgz#50183cd1b2d25275de069e9e71b467ac9eab973a"
 
 json-schema-traverse@^0.3.0:
   version "0.3.1"
@@ -2931,6 +3238,15 @@ load-json-file@^2.0.0:
     pify "^2.0.0"
     strip-bom "^3.0.0"
 
+load-json-file@^4.0.0:
+  version "4.0.0"
+  resolved "http://10.252.156.164:4880/load-json-file/-/load-json-file-4.0.0.tgz#2f5f45ab91e33216234fd53adab668eb4ec0993b"
+  dependencies:
+    graceful-fs "^4.1.2"
+    parse-json "^4.0.0"
+    pify "^3.0.0"
+    strip-bom "^3.0.0"
+
 locate-path@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/locate-path/-/locate-path-2.0.0.tgz#2b568b265eec944c6d9c0de9c3dbbbca0354cd8e"
@@ -2978,6 +3294,10 @@ lodash._getnative@^3.0.0:
 lodash._isiterateecall@^3.0.0:
   version "3.0.9"
   resolved "http://10.252.156.164:4880/lodash._isiterateecall/-/lodash._isiterateecall-3.0.9.tgz#5203ad7ba425fae842460e696db9cf3e6aac057c"
+
+lodash._reinterpolate@~3.0.0:
+  version "3.0.0"
+  resolved "http://10.252.156.164:4880/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
 
 lodash._stringtopath@~4.8.0:
   version "4.8.0"
@@ -3164,6 +3484,19 @@ lodash.result@4.5.0:
   version "4.5.0"
   resolved "http://10.252.156.164:4880/lodash.result/-/lodash.result-4.5.0.tgz#8e9c07d3dd0a13f195f29d8bd8a64d4dd26a4321"
 
+lodash.template@^4.4.0:
+  version "4.4.0"
+  resolved "http://10.252.156.164:4880/lodash.template/-/lodash.template-4.4.0.tgz#e73a0385c8355591746e020b99679c690e68fba0"
+  dependencies:
+    lodash._reinterpolate "~3.0.0"
+    lodash.templatesettings "^4.0.0"
+
+lodash.templatesettings@^4.0.0:
+  version "4.1.0"
+  resolved "http://10.252.156.164:4880/lodash.templatesettings/-/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
+  dependencies:
+    lodash._reinterpolate "~3.0.0"
+
 lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "http://10.252.156.164:4880/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
@@ -3187,6 +3520,10 @@ lodash@4.17.4, lodash@^4.0.0, lodash@^4.11.1, lodash@^4.13.1, lodash@^4.14.0, lo
 lodash@^3.2.0, lodash@^3.3.1:
   version "3.10.1"
   resolved "http://10.252.156.164:4880/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
+
+lodash@^4.17.5, lodash@^4.5.1:
+  version "4.17.5"
+  resolved "http://10.252.156.164:4880/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 lodash@~3.2.0:
   version "3.2.0"
@@ -3246,6 +3583,12 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
+make-dir@^1.1.0:
+  version "1.2.0"
+  resolved "http://10.252.156.164:4880/make-dir/-/make-dir-1.2.0.tgz#6d6a49eead4aae296c53bbf3a1a008bd6c89469b"
+  dependencies:
+    pify "^3.0.0"
+
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
@@ -3269,7 +3612,7 @@ mem-fs-editor@^2.0.0:
     through2 "^2.0.0"
     vinyl "^1.1.0"
 
-mem-fs-editor@^3.0.0:
+mem-fs-editor@^3.0.0, mem-fs-editor@^3.0.2:
   version "3.0.2"
   resolved "http://10.252.156.164:4880/mem-fs-editor/-/mem-fs-editor-3.0.2.tgz#dd0a6eaf2bb8a6b37740067aa549eb530105af9f"
   dependencies:
@@ -3292,7 +3635,7 @@ mem-fs@^1.1.0:
     vinyl "^1.1.0"
     vinyl-file "^2.0.0"
 
-meow@^3.3.0, meow@^3.5.0:
+meow@^3.3.0, meow@^3.5.0, meow@^3.6.0, meow@^3.7.0:
   version "3.7.0"
   resolved "http://10.252.156.164:4880/meow/-/meow-3.7.0.tgz#72cb668b425228290abbfa856892587308a801fb"
   dependencies:
@@ -3345,6 +3688,10 @@ mimic-fn@^1.0.0:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/mimic-fn/-/mimic-fn-1.1.0.tgz#e667783d92e89dbd342818b5230b9d62a672ad18"
 
+mimic-response@^1.0.0:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/mimic-response/-/mimic-response-1.0.0.tgz#df3d3652a73fded6b9b0b24146e6fd052353458e"
+
 "minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"
   resolved "http://10.252.156.164:4880/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
@@ -3372,7 +3719,7 @@ minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "http://10.252.156.164:4880/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
 
-minimist@~0.0.1:
+minimist@~0.0.1, minimist@~0.0.7:
   version "0.0.10"
   resolved "http://10.252.156.164:4880/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
@@ -3474,13 +3821,19 @@ native-promise-only@^0.8.1:
   version "0.8.1"
   resolved "http://10.252.156.164:4880/native-promise-only/-/native-promise-only-0.8.1.tgz#20a318c30cb45f71fe7adfbf7b21c99c1472ef11"
 
-ncp@~2.0.0:
+ncp@2.0.0, ncp@~2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/ncp/-/ncp-2.0.0.tgz#195a21d6c46e361d2fb1281ba38b91e9df7bdbb3"
 
 negotiator@0.5.3:
   version "0.5.3"
   resolved "http://10.252.156.164:4880/negotiator/-/negotiator-0.5.3.tgz#269d5c476810ec92edbe7b6c2f28316384f9a7e8"
+
+nested-error-stacks@^1.0.0, nested-error-stacks@^1.0.1:
+  version "1.0.2"
+  resolved "http://10.252.156.164:4880/nested-error-stacks/-/nested-error-stacks-1.0.2.tgz#19f619591519f096769a5ba9a86e6eeec823c3cf"
+  dependencies:
+    inherits "~2.0.1"
 
 netrc-parser@^2.0.3:
   version "2.0.3"
@@ -3574,6 +3927,21 @@ npm-install-package@^1.0.2:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
+nps-utils@^1.5.0:
+  version "1.5.0"
+  resolved "http://10.252.156.164:4880/nps-utils/-/nps-utils-1.5.0.tgz#d20b5848dd20622d4d51c955c8b1790348b57686"
+  dependencies:
+    any-shell-escape "^0.1.1"
+    common-tags "^1.4.0"
+    concurrently "^3.4.0"
+    cpy-cli "^1.0.1"
+    cross-env "^3.1.4"
+    is-windows "^1.0.0"
+    mkdirp "^0.5.1"
+    ncp "2.0.0"
+    opn-cli "^3.1.0"
+    rimraf "^2.6.1"
+
 nth-check@~1.0.0:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/nth-check/-/nth-check-1.0.1.tgz#9929acdf628fc2c41098deab82ac580cf149aae4"
@@ -3626,11 +3994,28 @@ open@0.0.5:
   version "0.0.5"
   resolved "http://10.252.156.164:4880/open/-/open-0.0.5.tgz#42c3e18ec95466b6bf0dc42f3a2945c3f0cad8fc"
 
+opn-cli@^3.1.0:
+  version "3.1.0"
+  resolved "http://10.252.156.164:4880/opn-cli/-/opn-cli-3.1.0.tgz#f819ae6cae0b411bd0149b8560fe6c88adad20f8"
+  dependencies:
+    file-type "^3.6.0"
+    get-stdin "^5.0.1"
+    meow "^3.7.0"
+    opn "^4.0.0"
+    temp-write "^2.1.0"
+
 opn@3.0.3, opn@^3.0.3:
   version "3.0.3"
   resolved "http://10.252.156.164:4880/opn/-/opn-3.0.3.tgz#b6d99e7399f78d65c3baaffef1fb288e9b85243a"
   dependencies:
     object-assign "^4.0.1"
+
+opn@^4.0.0:
+  version "4.0.2"
+  resolved "http://10.252.156.164:4880/opn/-/opn-4.0.2.tgz#7abc22e644dff63b0a96d5ab7f2790c0f01abc95"
+  dependencies:
+    object-assign "^4.0.1"
+    pinkie-promise "^2.0.0"
 
 optimist@^0.6.1:
   version "0.6.1"
@@ -3673,6 +4058,14 @@ osenv@0:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
+p-cancelable@^0.3.0:
+  version "0.3.0"
+  resolved "http://10.252.156.164:4880/p-cancelable/-/p-cancelable-0.3.0.tgz#b9e123800bcebb7ac13a479be195b507b98d30fa"
+
+p-finally@^1.0.0:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/p-finally/-/p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae"
+
 p-limit@^1.1.0:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/p-limit/-/p-limit-1.1.0.tgz#b07ff2d9a5d88bec806035895a2bab66a27988bc"
@@ -3683,11 +4076,28 @@ p-locate@^2.0.0:
   dependencies:
     p-limit "^1.1.0"
 
+p-timeout@^1.1.1:
+  version "1.2.1"
+  resolved "http://10.252.156.164:4880/p-timeout/-/p-timeout-1.2.1.tgz#5eb3b353b7fce99f101a1038880bb054ebbea386"
+  dependencies:
+    p-finally "^1.0.0"
+
+pad-component@0.0.1:
+  version "0.0.1"
+  resolved "http://10.252.156.164:4880/pad-component/-/pad-component-0.0.1.tgz#ad1f22ce1bf0fdc0d6ddd908af17f351a404b8ac"
+
 parse-json@^2.1.0, parse-json@^2.2.0:
   version "2.2.0"
   resolved "http://10.252.156.164:4880/parse-json/-/parse-json-2.2.0.tgz#f480f40434ef80741f8469099f8dea18f55a4dc9"
   dependencies:
     error-ex "^1.2.0"
+
+parse-json@^4.0.0:
+  version "4.0.0"
+  resolved "http://10.252.156.164:4880/parse-json/-/parse-json-4.0.0.tgz#be35f5425be1f7f6c747184f98a788cb99477ee0"
+  dependencies:
+    error-ex "^1.3.1"
+    json-parse-better-errors "^1.0.1"
 
 parseurl@~1.3.1:
   version "1.3.2"
@@ -3752,6 +4162,12 @@ path-type@^2.0.0:
   dependencies:
     pify "^2.0.0"
 
+path-type@^3.0.0:
+  version "3.0.0"
+  resolved "http://10.252.156.164:4880/path-type/-/path-type-3.0.0.tgz#cef31dc8e0a1a3bb0d105c0cd97cf3bf47f4e36f"
+  dependencies:
+    pify "^3.0.0"
+
 pathval@^1.0.0:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/pathval/-/pathval-1.1.0.tgz#b942e6d4bde653005ef6b71361def8727d0645e0"
@@ -3764,7 +4180,7 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "http://10.252.156.164:4880/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
 
-pify@^2.0.0, pify@^2.3.0:
+pify@^2.0.0, pify@^2.2.0, pify@^2.3.0:
   version "2.3.0"
   resolved "http://10.252.156.164:4880/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
 
@@ -3823,6 +4239,10 @@ pretty-bytes@^4.0.2:
 process-nextick-args@^1.0.6, process-nextick-args@~1.0.6:
   version "1.0.7"
   resolved "http://10.252.156.164:4880/process-nextick-args/-/process-nextick-args-1.0.7.tgz#150e20b756590ad3f91093f25a4f2ad8bff30ba3"
+
+process-nextick-args@~2.0.0:
+  version "2.0.0"
+  resolved "http://10.252.156.164:4880/process-nextick-args/-/process-nextick-args-2.0.0.tgz#a37d732f4271b4ab1ad070d35508e8290788ffaa"
 
 process-promises@1.0.0:
   version "1.0.0"
@@ -3912,6 +4332,15 @@ raw-body@~2.1.5:
     iconv-lite "0.4.13"
     unpipe "1.0.0"
 
+rc@^0.6.0:
+  version "0.6.0"
+  resolved "http://10.252.156.164:4880/rc/-/rc-0.6.0.tgz#e1c930059af831c85413fe275ae2f40f4e3c5371"
+  dependencies:
+    deep-extend "~0.2.5"
+    ini "~1.3.0"
+    minimist "~0.0.7"
+    strip-json-comments "0.1.x"
+
 read-all-stream@^3.0.0:
   version "3.1.0"
   resolved "http://10.252.156.164:4880/read-all-stream/-/read-all-stream-3.1.0.tgz#35c3e177f2078ef789ee4bfafa4373074eaef4fa"
@@ -3923,7 +4352,7 @@ read-chunk@^1.0.0:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/read-chunk/-/read-chunk-1.0.1.tgz#5f68cab307e663f19993527d9b589cace4661194"
 
-read-chunk@^2.0.0:
+read-chunk@^2.0.0, read-chunk@^2.1.0:
   version "2.1.0"
   resolved "http://10.252.156.164:4880/read-chunk/-/read-chunk-2.1.0.tgz#6a04c0928005ed9d42e1a6ac5600e19cbc7ff655"
   dependencies:
@@ -3944,6 +4373,13 @@ read-pkg-up@^2.0.0:
     find-up "^2.0.0"
     read-pkg "^2.0.0"
 
+read-pkg-up@^3.0.0:
+  version "3.0.0"
+  resolved "http://10.252.156.164:4880/read-pkg-up/-/read-pkg-up-3.0.0.tgz#3ed496685dba0f8fe118d0691dc51f4a1ff96f07"
+  dependencies:
+    find-up "^2.0.0"
+    read-pkg "^3.0.0"
+
 read-pkg@^1.0.0:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/read-pkg/-/read-pkg-1.1.0.tgz#f5ffaa5ecd29cb31c0474bca7d756b6bb29e3f28"
@@ -3959,6 +4395,14 @@ read-pkg@^2.0.0:
     load-json-file "^2.0.0"
     normalize-package-data "^2.3.2"
     path-type "^2.0.0"
+
+read-pkg@^3.0.0:
+  version "3.0.0"
+  resolved "http://10.252.156.164:4880/read-pkg/-/read-pkg-3.0.0.tgz#9cbc686978fee65d16c00e2b19c237fcf6e38389"
+  dependencies:
+    load-json-file "^4.0.0"
+    normalize-package-data "^2.3.2"
+    path-type "^3.0.0"
 
 readable-stream@1.1:
   version "1.1.13"
@@ -3977,6 +4421,18 @@ readable-stream@^2.0.0, readable-stream@^2.0.2, readable-stream@^2.0.5, readable
     inherits "~2.0.3"
     isarray "~1.0.0"
     process-nextick-args "~1.0.6"
+    safe-buffer "~5.1.1"
+    string_decoder "~1.0.3"
+    util-deprecate "~1.0.1"
+
+readable-stream@^2.1.4:
+  version "2.3.5"
+  resolved "http://10.252.156.164:4880/readable-stream/-/readable-stream-2.3.5.tgz#b4f85003a938cbb6ecbce2a124fb1012bd1a838d"
+  dependencies:
+    core-util-is "~1.0.0"
+    inherits "~2.0.3"
+    isarray "~1.0.0"
+    process-nextick-args "~2.0.0"
     safe-buffer "~5.1.1"
     string_decoder "~1.0.3"
     util-deprecate "~1.0.1"
@@ -4186,7 +4642,7 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@2, rimraf@^2.2.0, rimraf@^2.2.8, rimraf@^2.4.4, rimraf@^2.6.1:
+rimraf@2, rimraf@^2.2.0, rimraf@^2.2.8, rimraf@^2.4.4, rimraf@^2.6.1, rimraf@^2.6.2:
   version "2.6.2"
   resolved "http://10.252.156.164:4880/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
   dependencies:
@@ -4232,6 +4688,10 @@ rx-lite@^3.1.2:
   version "3.1.2"
   resolved "http://10.252.156.164:4880/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
 
+rx@2.3.24:
+  version "2.3.24"
+  resolved "http://10.252.156.164:4880/rx/-/rx-2.3.24.tgz#14f950a4217d7e35daa71bbcbe58eff68ea4b2b7"
+
 rx@^2.4.3:
   version "2.5.3"
   resolved "http://10.252.156.164:4880/rx/-/rx-2.5.3.tgz#21adc7d80f02002af50dae97fd9dbf248755f566"
@@ -4248,9 +4708,9 @@ safe-json-stringify@~1:
   version "1.0.4"
   resolved "http://10.252.156.164:4880/safe-json-stringify/-/safe-json-stringify-1.0.4.tgz#81a098f447e4bbc3ff3312a243521bc060ef5911"
 
-salesforce-alm@42.2.1-2:
-  version "42.2.1-2"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-42.2.1-2.tgz#e61b39a72193e0c665e444d451845dd93096fd43"
+salesforce-alm@42.7.1-0:
+  version "42.7.1-0"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-42.7.1-0.tgz#ba1ff6d50b97a1583a5f543bd05a4e391da0380e"
   dependencies:
     adm-zip "0.4.7"
     archiver "1.0.1"
@@ -4335,12 +4795,12 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@42.2.2-2:
-  version "42.2.2-2"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-42.2.2-2.tgz#f453dac02efa956b22edfca544de159c2ca300df"
+salesforcedx@42.7.1-0:
+  version "42.7.1-0"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-42.7.1-0.tgz#c73116a4ec0d66bd577320f7fa833eb6716fe50c"
   dependencies:
     force-language-services "42.0.5-0"
-    salesforce-alm "42.2.1-2"
+    salesforce-alm "42.7.1-0"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.x, samsam@^1.1.3:
@@ -4376,6 +4836,10 @@ selenium-standalone@6.6.0:
 "semver@2 || 3 || 4 || 5", semver@5.4.1, semver@^5.3.0:
   version "5.4.1"
   resolved "http://10.252.156.164:4880/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
+
+semver@^5.5.0:
+  version "5.5.0"
+  resolved "http://10.252.156.164:4880/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
 semver@~5.3.0:
   version "5.3.0"
@@ -4431,6 +4895,24 @@ set-blocking@~2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
 
+sfdx-plugin-create@0.0.1:
+  version "0.0.1"
+  resolved "http://10.252.156.164:4880/sfdx-plugin-create/-/sfdx-plugin-create-0.0.1.tgz#3380c02faf30eec336b6052282d92f816b756330"
+  dependencies:
+    "@oclif/command" "^1.4.2"
+    "@oclif/config" "^1.3.58"
+    "@oclif/errors" "^1.0.2"
+    "@oclif/plugin-help" "^1.1.6"
+    "@oclif/plugin-not-found" "^1.0.3"
+    debug "^3.1.0"
+    fixpack "^2.3.1"
+    lodash "^4.17.5"
+    nps-utils "^1.5.0"
+    sort-pjson "^1.0.2"
+    yeoman-environment "^2.0.5"
+    yeoman-generator "^2.0.3"
+    yosay "^2.0.1"
+
 shebang-command@^1.2.0:
   version "1.2.0"
   resolved "http://10.252.156.164:4880/shebang-command/-/shebang-command-1.2.0.tgz#44aac65b695b03398968c39f363fee5deafdf1ea"
@@ -4448,6 +4930,14 @@ shelljs@^0.6.0:
 shelljs@^0.7.0:
   version "0.7.8"
   resolved "http://10.252.156.164:4880/shelljs/-/shelljs-0.7.8.tgz#decbcf874b0d1e5fb72e14b164a9683048e9acb3"
+  dependencies:
+    glob "^7.0.0"
+    interpret "^1.0.0"
+    rechoir "^0.6.2"
+
+shelljs@^0.8.0:
+  version "0.8.1"
+  resolved "http://10.252.156.164:4880/shelljs/-/shelljs-0.8.1.tgz#729e038c413a2254c4078b95ed46e0397154a9f1"
   dependencies:
     glob "^7.0.0"
     interpret "^1.0.0"
@@ -4509,6 +4999,12 @@ sntp@2.x.x:
   dependencies:
     hoek "4.x.x"
 
+sort-pjson@^1.0.2:
+  version "1.0.2"
+  resolved "http://10.252.156.164:4880/sort-pjson/-/sort-pjson-1.0.2.tgz#1090b35b43cd1a13648ee7be4c52f926ecc4c6d8"
+  dependencies:
+    fixpack "^2.3.1"
+
 source-map-resolve@^0.3.0:
   version "0.3.1"
   resolved "http://10.252.156.164:4880/source-map-resolve/-/source-map-resolve-0.3.1.tgz#610f6122a445b8dd51535a2a71b783dfc1248761"
@@ -4553,6 +5049,10 @@ source-map@~0.2.0:
   resolved "http://10.252.156.164:4880/source-map/-/source-map-0.2.0.tgz#dab73fbcfc2ba819b4de03bd6f6eaa48164b3f9d"
   dependencies:
     amdefine ">=0.0.4"
+
+spawn-command@^0.0.2-1:
+  version "0.0.2-1"
+  resolved "http://10.252.156.164:4880/spawn-command/-/spawn-command-0.0.2-1.tgz#62f5e9466981c1b796dc5929937e11c9c6921bd0"
 
 spawn-sync@^1.0.15:
   version "1.0.15"
@@ -4627,7 +5127,7 @@ string-width@^1.0.1, string-width@^1.0.2:
     is-fullwidth-code-point "^1.0.0"
     strip-ansi "^3.0.0"
 
-string-width@^2.0.0, string-width@^2.1.0:
+string-width@^2.0.0, string-width@^2.1.0, string-width@^2.1.1:
   version "2.1.1"
   resolved "http://10.252.156.164:4880/string-width/-/string-width-2.1.1.tgz#ab93f27a8dc13d28cac815c462143a6d9012ae9e"
   dependencies:
@@ -4651,6 +5151,12 @@ string_decoder@~1.0.3:
 stringstream@~0.0.4, stringstream@~0.0.5:
   version "0.0.5"
   resolved "http://10.252.156.164:4880/stringstream/-/stringstream-0.0.5.tgz#4e484cd4de5a0bbbee18e46307710a8a81621878"
+
+strip-ansi@^0.3.0:
+  version "0.3.0"
+  resolved "http://10.252.156.164:4880/strip-ansi/-/strip-ansi-0.3.0.tgz#25f48ea22ca79187f3174a4db8759347bb126220"
+  dependencies:
+    ansi-regex "^0.2.1"
 
 strip-ansi@^2.0.1:
   version "2.0.1"
@@ -4693,6 +5199,10 @@ strip-indent@^1.0.1:
   dependencies:
     get-stdin "^4.0.1"
 
+strip-json-comments@0.1.x:
+  version "0.1.3"
+  resolved "http://10.252.156.164:4880/strip-json-comments/-/strip-json-comments-0.1.3.tgz#164c64e370a8a3cc00c9e01b539e569823f0ee54"
+
 strip-json-comments@~1.0.1:
   version "1.0.4"
   resolved "http://10.252.156.164:4880/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
@@ -4703,6 +5213,10 @@ supports-color@3.1.2:
   dependencies:
     has-flag "^1.0.0"
 
+supports-color@^0.2.0:
+  version "0.2.0"
+  resolved "http://10.252.156.164:4880/supports-color/-/supports-color-0.2.0.tgz#d92de2694eb3f67323973d7ae3d8b55b4c22190a"
+
 supports-color@^1.3.1:
   version "1.3.1"
   resolved "http://10.252.156.164:4880/supports-color/-/supports-color-1.3.1.tgz#15758df09d8ff3b4acc307539fabe27095e1042d"
@@ -4711,7 +5225,7 @@ supports-color@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
 
-supports-color@^3.1.2:
+supports-color@^3.1.2, supports-color@^3.2.3:
   version "3.2.3"
   resolved "http://10.252.156.164:4880/supports-color/-/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
   dependencies:
@@ -4729,6 +5243,12 @@ supports-color@^5.1.0:
   dependencies:
     has-flag "^2.0.0"
 
+supports-color@^5.3.0:
+  version "5.3.0"
+  resolved "http://10.252.156.164:4880/supports-color/-/supports-color-5.3.0.tgz#5b24ac15db80fa927cf5227a4a33fd3c4c7676c0"
+  dependencies:
+    has-flag "^3.0.0"
+
 table@^3.7.8:
   version "3.8.3"
   resolved "http://10.252.156.164:4880/table/-/table-3.8.3.tgz#2bbc542f0fda9861a755d3947fefd8b3f513855f"
@@ -4739,6 +5259,13 @@ table@^3.7.8:
     lodash "^4.0.0"
     slice-ansi "0.0.4"
     string-width "^2.0.0"
+
+taketalk@^1.0.0:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/taketalk/-/taketalk-1.0.0.tgz#b4d4f0deed206ae7df775b129ea2ca6de52f26dd"
+  dependencies:
+    get-stdin "^4.0.1"
+    minimist "^1.1.0"
 
 tar-fs@1.16.0:
   version "1.16.0"
@@ -4783,6 +5310,17 @@ tar@^2.0.0:
     block-stream "*"
     fstream "^1.0.2"
     inherits "2"
+
+temp-write@^2.1.0:
+  version "2.1.0"
+  resolved "http://10.252.156.164:4880/temp-write/-/temp-write-2.1.0.tgz#59890918e0ef09d548aaa342f4bd3409d8404e96"
+  dependencies:
+    graceful-fs "^4.1.2"
+    mkdirp "^0.5.0"
+    os-tmpdir "^1.0.0"
+    pify "^2.2.0"
+    pinkie-promise "^2.0.0"
+    uuid "^2.0.1"
 
 text-encoding@0.6.4:
   version "0.6.4"
@@ -4850,6 +5388,10 @@ tough-cookie@, tough-cookie@*, tough-cookie@>=0.12.0, tough-cookie@~2.3.0, tough
 traverse@^0.6.6:
   version "0.6.6"
   resolved "http://10.252.156.164:4880/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
+
+tree-kill@^1.1.0:
+  version "1.2.0"
+  resolved "http://10.252.156.164:4880/tree-kill/-/tree-kill-1.2.0.tgz#5846786237b4239014f05db156b643212d4c6f36"
 
 trim-newlines@^1.0.0:
   version "1.0.0"
@@ -5011,6 +5553,10 @@ url-parse-lax@^1.0.0:
   dependencies:
     prepend-http "^1.0.1"
 
+url-to-options@^1.0.1:
+  version "1.0.1"
+  resolved "http://10.252.156.164:4880/url-to-options/-/url-to-options-1.0.1.tgz#1505a03a289a48cbd7a434efbaeec5055f5633a9"
+
 url@~0.10.3:
   version "0.10.3"
   resolved "http://10.252.156.164:4880/url/-/url-0.10.3.tgz#021e4d9c7705f21bbf37d03ceb58767402774c64"
@@ -5031,6 +5577,10 @@ util-deprecate@^1.0.2, util-deprecate@~1.0.1:
 utils-merge@1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/utils-merge/-/utils-merge-1.0.0.tgz#0294fb922bb9375153541c4f7096231f287c8af8"
+
+uuid@^2.0.1:
+  version "2.0.3"
+  resolved "http://10.252.156.164:4880/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
 
 uuid@^3.0.0, uuid@^3.1.0:
   version "3.1.0"
@@ -5147,6 +5697,12 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2"
 
+widest-line@^2.0.0:
+  version "2.0.0"
+  resolved "http://10.252.156.164:4880/widest-line/-/widest-line-2.0.0.tgz#0142a4e8a243f8882c0233aa0e0281aa76152273"
+  dependencies:
+    string-width "^2.1.1"
+
 window-size@0.1.0:
   version "0.1.0"
   resolved "http://10.252.156.164:4880/window-size/-/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
@@ -5162,6 +5718,20 @@ wordwrap@^1.0.0, wordwrap@~1.0.0:
 wordwrap@~0.0.2:
   version "0.0.3"
   resolved "http://10.252.156.164:4880/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
+
+wrap-ansi@^2.0.0:
+  version "2.1.0"
+  resolved "http://10.252.156.164:4880/wrap-ansi/-/wrap-ansi-2.1.0.tgz#d8fc3d284dd05794fe84973caecdd1cf824fdd85"
+  dependencies:
+    string-width "^1.0.1"
+    strip-ansi "^3.0.1"
+
+wrap-ansi@^3.0.1:
+  version "3.0.1"
+  resolved "http://10.252.156.164:4880/wrap-ansi/-/wrap-ansi-3.0.1.tgz#288a04d87eda5c286e060dfe8f135ce8d007f8ba"
+  dependencies:
+    string-width "^2.1.1"
+    strip-ansi "^4.0.0"
 
 wrappy@1:
   version "1.0.2"
@@ -5288,6 +5858,24 @@ yeoman-environment@^2.0.0:
     text-table "^0.2.0"
     untildify "^3.0.2"
 
+yeoman-environment@^2.0.5:
+  version "2.0.5"
+  resolved "http://10.252.156.164:4880/yeoman-environment/-/yeoman-environment-2.0.5.tgz#84f22bafa84088971fe99ea85f654a3a3dd2b693"
+  dependencies:
+    chalk "^2.1.0"
+    debug "^3.1.0"
+    diff "^3.3.1"
+    escape-string-regexp "^1.0.2"
+    globby "^6.1.0"
+    grouped-queue "^0.3.3"
+    inquirer "^3.3.0"
+    is-scoped "^1.0.0"
+    lodash "^4.17.4"
+    log-symbols "^2.1.0"
+    mem-fs "^1.1.0"
+    text-table "^0.2.0"
+    untildify "^3.0.2"
+
 yeoman-generator@0.24.1:
   version "0.24.1"
   resolved "http://10.252.156.164:4880/yeoman-generator/-/yeoman-generator-0.24.1.tgz#1ca74429d9c5c95db0b22859ec180a2599bc1f8e"
@@ -5364,6 +5952,36 @@ yeoman-generator@^1.1.0:
     user-home "^2.0.0"
     yeoman-environment "^1.1.0"
 
+yeoman-generator@^2.0.3:
+  version "2.0.3"
+  resolved "http://10.252.156.164:4880/yeoman-generator/-/yeoman-generator-2.0.3.tgz#19426ed22687ffe05d31526c3f1c2cf67ba768f3"
+  dependencies:
+    async "^2.6.0"
+    chalk "^2.3.0"
+    cli-table "^0.3.1"
+    cross-spawn "^5.1.0"
+    dargs "^5.1.0"
+    dateformat "^3.0.2"
+    debug "^3.1.0"
+    detect-conflict "^1.0.0"
+    error "^7.0.2"
+    find-up "^2.1.0"
+    github-username "^4.0.0"
+    istextorbinary "^2.1.0"
+    lodash "^4.17.4"
+    make-dir "^1.1.0"
+    mem-fs-editor "^3.0.2"
+    minimist "^1.2.0"
+    pretty-bytes "^4.0.2"
+    read-chunk "^2.1.0"
+    read-pkg-up "^3.0.0"
+    rimraf "^2.6.2"
+    run-async "^2.0.0"
+    shelljs "^0.8.0"
+    text-table "^0.2.0"
+    through2 "^2.0.0"
+    yeoman-environment "^2.0.5"
+
 yeoman-test@^1.0.0:
   version "1.7.0"
   resolved "http://10.252.156.164:4880/yeoman-test/-/yeoman-test-1.7.0.tgz#3edbee64591f2597027a5b42b1dc058251adc9fe"
@@ -5382,6 +6000,20 @@ yeoman-welcome@^1.0.0:
   resolved "http://10.252.156.164:4880/yeoman-welcome/-/yeoman-welcome-1.0.1.tgz#f6cf198fd4fba8a771672c26cdfb8a64795c84ec"
   dependencies:
     chalk "^1.0.0"
+
+yosay@^2.0.1:
+  version "2.0.1"
+  resolved "http://10.252.156.164:4880/yosay/-/yosay-2.0.1.tgz#078167f0365732e5c82d3f64633f9cd3a0526d2f"
+  dependencies:
+    ansi-regex "^2.0.0"
+    ansi-styles "^3.0.0"
+    chalk "^1.0.0"
+    cli-boxes "^1.0.0"
+    pad-component "0.0.1"
+    string-width "^2.0.0"
+    strip-ansi "^3.0.0"
+    taketalk "^1.0.0"
+    wrap-ansi "^2.0.0"
 
 zip-stream@^1.0.0:
   version "1.2.0"

@@ -40,7 +40,8 @@
     },
     "plugins": [
       "../dist/builtins",
-      "salesforcedx"
+      "salesforcedx",
+      "sfdx-plugin-create"
     ],
     "s3": {
       "bucket": "dfc-data-production",
@@ -72,7 +73,8 @@
     "fs-extra": "4.0.2",
     "lodash": "4.17.4",
     "request": "2.83.0",
-    "salesforcedx": "42.7.1-0"
+    "salesforcedx": "42.7.1-0",
+    "sfdx-plugin-create": "0.0.1"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
