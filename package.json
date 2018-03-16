@@ -74,7 +74,7 @@
     "lodash": "4.17.4",
     "request": "2.83.0",
     "salesforcedx": "42.7.1-2",
-    "sfdx-plugin-create": "0.0.2"
+    "sfdx-plugin-create": "0.0.3"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
