@@ -41,7 +41,7 @@
     "plugins": [
       "../dist/builtins",
       "salesforcedx",
-      "sfdx-plugin-create"
+      "@salesforce/plugin-generator"
     ],
     "s3": {
       "bucket": "dfc-data-production",
