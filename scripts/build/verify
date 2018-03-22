@@ -79,6 +79,15 @@ function ensure_templates_md() {
     fi
 }
 
+# We delete the test directory from the plugin generator core plugin, -- double check their preservation
+function ensure_plugin_generate_test_templates() {
+    template_readme="$BASE_DIR/node_modules/@salesforce/plugin-generator/templates/sfdxPlugin/test"
+    if [[ ! -d "$template_readme" ]]; then
+        stderr "$template_readme is missing! Was the test clean too aggressive?"
+        exit 1
+    fi
+}
+
 # Yarnclean was removing .*ignore files, but FLS introduced .forceignore in its templates dir -- double check their preservation
 function ensure_templates_forceignore() {
     template_forceignore="$BASE_DIR/node_modules/force-language-services/dist/project/templates/.forceignore"
@@ -133,3 +142,4 @@ ensure_templates_md
 ensure_templates_forceignore
 ensure_no_dist_tests_or_maps
 ensure_no_unexpected_files
+ensure_plugin_generate_test_templates

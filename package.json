@@ -40,7 +40,8 @@
     },
     "plugins": [
       "../dist/builtins",
-      "salesforcedx"
+      "salesforcedx",
+      "@salesforce/plugin-generator"
     ],
     "s3": {
       "bucket": "dfc-data-production",
@@ -63,7 +64,7 @@
   ],
   "dependencies": {
     "ansi-escapes": "3.0.0",
-    "cli-engine": "4.6.23",
+    "cli-engine": "4.7.4",
     "cli-engine-command": "9.0.7",
     "cli-engine-config": "3.5.0",
     "cli-engine-heroku": "5.0.3",
@@ -72,7 +73,8 @@
     "fs-extra": "4.0.2",
     "lodash": "4.17.4",
     "request": "2.83.0",
-    "salesforcedx": "42.8.1"
+    "salesforcedx": "42.8.1",
+    "@salesforce/plugin-generator": "0.0.5"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
