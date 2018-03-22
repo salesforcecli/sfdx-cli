@@ -81,7 +81,7 @@ function ensure_templates_md() {
 
 # We delete the test directory from the plugin generator core plugin, -- double check their preservation
 function ensure_plugin_generate_test_templates() {
-    template_readme="$BASE_DIR/node_modules/sfdx-plugin-create/templates/sfdxPlugin/test"
+    template_readme="$BASE_DIR/node_modules/@salesforce/plugin-generator/templates/sfdxPlugin/test"
     if [[ ! -d "$template_readme" ]]; then
         stderr "$template_readme is missing! Was the test clean too aggressive?"
         exit 1
