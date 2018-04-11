@@ -27,7 +27,7 @@ if [[ \
   ! -w "$BIN_DIR" || \
   ! -w "$LIB_DIR" || \
   ( -e "$BIN_PATH" && ! -w "$BIN_PATH" ) || \
-  ( -e "$LIB_PATH" && "0" != "$( find "$LIB_PATH" ! -perm -u=w | wc -l | awk '{ print $1 }' )" ) \
+  ( -e "$LIB_PATH" && ! -w "$LIB_PATH" ) \
   ]]; then
   echo "One or more target directories or files are not writeable; sudo permissions required." 1>&2
   sudo -k # Always prompt for password
