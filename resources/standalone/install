@@ -27,7 +27,7 @@ if [[ \
   ! -w "$BIN_DIR" || \
   ! -w "$LIB_DIR" || \
   ( -e "$BIN_PATH" && ! -w "$BIN_PATH" ) || \
-  ( -e "$LIB_PATH" && "0" != "$( find "$LIB_PATH" ! -perm -u=w | wc -l | awk '{ print $1 }' )" ) \
+  ( -e "$LIB_PATH" && ! -w "$LIB_PATH" ) \
   ]]; then
   echo "One or more target directories or files are not writeable; sudo permissions required." 1>&2
   sudo -k # Always prompt for password
@@ -39,7 +39,7 @@ $SUDO cp -a "$SRC_PATH" "$LIB_PATH"
 $SUDO chmod 755 "$LIB_PATH/bin/sfdx"
 $SUDO ln -sf "$LIB_PATH/bin/sfdx" "$BIN_PATH"
 $SUDO rm -rf "${BIN_HOME:?}/cli" "${BIN_HOME:?}/client"
-$SUDO mkdir -p "$BIN_HOME"
+mkdir -p "$BIN_HOME"
 
 printf "\e[0msfdx installed to \e[38;5;104m%s\e[0m\n" "$BIN_PATH"
 "$BIN_PATH" version
