@@ -7,14 +7,15 @@ import * as lazyModules from './experiments/lazyModules';
 export function create(version: string, channel: string) {
     const root = path.join(__dirname, '..');
     const pjson = require(path.join(root, 'package.json')); // tslint:disable-line
+    const args = process.argv.slice(1);
 
-    // Require a dark feature envar to enable the lazy loading experiment
-    if (env.getBoolean('SFDX_LAZY_LOAD_MODULES')) {
+    // Require a dark feature envar to enable the lazy loading experiment, and disallow during updates
+    if (env.getBoolean('SFDX_LAZY_LOAD_MODULES') && args[1] !== 'update') {
         lazyModules.start();
     }
 
     return new CLI({
-        argv: process.argv.slice(1),
+        argv: args,
         config: configureAutoUpdate(env, {
             channel, pjson, root, version
         })

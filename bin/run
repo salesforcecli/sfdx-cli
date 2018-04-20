@@ -8,7 +8,7 @@ const root = path.join(__dirname, '..');
 require(path.join(root, 'dist', 'versions'))
     .checkNodeVersion();
 
-// Check and prune CLI-defined flags
+// Pre-process/prune flags before creating or running the actual CLI
 require(path.join(root, 'dist', 'flags'))
     .processCliFlags(process);
 
