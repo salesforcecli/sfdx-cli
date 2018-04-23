@@ -94,6 +94,7 @@
     "sinon": "2.3.5",
     "source-map-support": "0.5.2",
     "tslint": "5.7.0",
+    "ts-node": "^5.0.1",
     "typescript": "2.5.2",
     "xunit-file": "1.0.0"
   },

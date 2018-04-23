@@ -13,6 +13,7 @@ import {
 } from './codeSignApi';
 
 import { NamedError, UnexpectedHost, SignSignedCertError } from '../util/NamedError';
+import {NpmName} from '../util/NpmName';
 
 export const WHITELIST_FILENAME = 'unsignedPluginWhiteList.json';
 
@@ -39,10 +40,7 @@ export class NpmMeta {
 export class InstallationVerification {
 
     // The name of the published plugin
-    private pluginName: string;
-
-    // The tag name associated with plugin
-    private pluginTag: string;
+    private pluginNpmName: NpmName;
 
     // config from cli engine
     private config: any;
@@ -60,8 +58,6 @@ export class InstallationVerification {
         this.requestImpl = requestImpl ? requestImpl : request;
         this.fsImpl = fsImpl ? fsImpl : fs;
         this.readFileAsync = utilPromisify(this.fsImpl.readFile);
-
-        this.pluginTag = 'latest';
     }
 
     /**
@@ -80,30 +76,12 @@ export class InstallationVerification {
      * setter for the plugin name
      * @param _pluginName the published plugin name
      */
-    public setPluginName(_pluginName?: string | undefined): InstallationVerification {
+    public setPluginNpmName(_pluginName?: NpmName | undefined): InstallationVerification {
         if (_pluginName) {
-            this.pluginName = _pluginName;
+            this.pluginNpmName = _pluginName;
             return this;
         }
         throw new NamedError('InvalidParam', 'pluginName cannot be nll');
-    }
-
-    /**
-     * Setter for the plugin tad. If falsy the tag will be latest.
-     * @param _tagName Setter for the plugin tag
-     */
-    public setPluginTag(_tagName?: string): InstallationVerification {
-        if (_tagName) {
-            this.pluginTag = _tagName;
-        }
-        return this;
-    }
-
-    /**
-     * return the plugins tag name. 'latest' is returned by default
-     */
-    public getPluginTag() {
-        return this.pluginTag;
     }
 
     /**
@@ -141,7 +119,7 @@ export class InstallationVerification {
             const fileContent = await this.readFileAsync(whitelistFilePath);
 
             const whitelistArray = JSON.parse(fileContent);
-            return whitelistArray && whitelistArray.includes(this.pluginName);
+            return whitelistArray && whitelistArray.includes(this.pluginNpmName.name);
         } catch (err) {
             if (err.code === 'ENOENT') {
                 return false;
@@ -218,7 +196,11 @@ export class InstallationVerification {
             // console.log('@TODO - support proxies');
             // console.log('@TODO - https thumbprints');
             const npmRegistry = getNpmRegistry();
-            npmRegistry.pathname = this.pluginName;
+            npmRegistry.pathname = this.pluginNpmName.name;
+            if (this.pluginNpmName.scope) {
+                npmRegistry.pathname = `@${this.pluginNpmName.scope}/${this.pluginNpmName.name}`;
+            }
+
             this.requestImpl(npmRegistry.href, (err, response, body) => {
                 if (err) {
                     return reject(err);
@@ -228,11 +210,11 @@ export class InstallationVerification {
 
                     // Make sure the response has a version attribute
                     if (!responseObj.versions) {
-                        return reject(new NamedError('InvalidNpmMetadata', `The npm metadata for plugin ${this.pluginName} is missing the versions attribute.`));
+                        return reject(new NamedError('InvalidNpmMetadata', `The npm metadata for plugin ${this.pluginNpmName} is missing the versions attribute.`));
                     }
 
                     // Assume the tag is version tag.
-                    let versionObject: any = _.get(responseObj.versions, this.pluginTag);
+                    let versionObject: any = _.get(responseObj.versions, this.pluginNpmName.tag);
 
                     // If the assumption was not correct the tag must be a non-versioned dist-tag or not specified.
                     if (!versionObject) {
@@ -240,13 +222,13 @@ export class InstallationVerification {
                         // Assume dist-tag;
                         const distTags: string = _.get(responseObj, 'dist-tags');
                         if (distTags) {
-                            const tagVersionStr: string = _.get(distTags, this.pluginTag);
+                            const tagVersionStr: string = _.get(distTags, this.pluginNpmName.tag);
 
                             // if we got a dist tag hit look up the version object
                             if (tagVersionStr && tagVersionStr.length > 0 && _.includes(tagVersionStr, '.')) {
                                 versionObject = _.get(responseObj.versions, tagVersionStr);
                             } else {
-                                return reject(new NamedError('NpmTagNotFound', `The dist tag ${this.pluginTag} was not found for plugin: ${this.pluginName}`));
+                                return reject(new NamedError('NpmTagNotFound', `The dist tag ${this.pluginNpmName.tag} was not found for plugin: ${this.pluginNpmName}`));
                             }
                         } else {
                             return reject(new NamedError('UnexpectedNpmFormat', 'The deployed NPM is missing dist-tags.'));

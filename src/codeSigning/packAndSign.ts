@@ -14,7 +14,7 @@ import { Readable } from 'stream';
 import { join as pathJoin } from 'path';
 import { sep as pathSep } from 'path';
 
-import { CLI } from 'cli-ux';
+import { CLI } from '../commands/cliUx';
 import * as _ from 'lodash';
 import * as request from 'request';
 
@@ -35,6 +35,7 @@ import {
 } from '../codeSigning/codeSignApi';
 
 import { promisify as utilPromisify } from 'util';
+import {NpmName} from '../util/NpmName';
 
 const readFileAsync: (path: string, options?: any) => Promise<string> = utilPromisify(readFile);
 const writeFileAsync: (file: string, data: string | Buffer | Uint8Array) => Promise<void> = utilPromisify(writeFile);
@@ -45,7 +46,14 @@ const PACKAGE_DOT_JSON = 'package.json';
 const PACKAGE_DOT_JSON_PATH = pathJoin(process.cwd(), PACKAGE_DOT_JSON);
 const PACKAGE_DOT_JSON_PATH_BAK = pathJoin(process.cwd(), `${PACKAGE_DOT_JSON}.bak`);
 
-const cliUx = new CLI();
+let cliUx;
+
+interface JsonResponse {
+    filename: string;
+    verified: boolean;
+    version: string;
+    name: string;
+}
 
 export const api = {
 
@@ -218,6 +226,7 @@ export const api = {
     async doPackAndSign(args) {
         let packageDotJsonBackedUp = false;
         let error;
+        cliUx = new CLI(args.json);
 
         try {
 
@@ -243,7 +252,9 @@ export const api = {
             let packageJson = JSON.parse(packageJsonContent);
 
             // compute the name of the signature file
-            const sigFilename = `${packageJson.name}-${packageJson.version}.sig`;
+            const npmName: NpmName = NpmName.parse(packageJson.name);
+            npmName.tag = packageJson.version;
+            const sigFilename = npmName.toFilename('.sig');
 
             // make a backup of the signature file
             await api.copyPackageDotJson(PACKAGE_DOT_JSON_PATH, PACKAGE_DOT_JSON_PATH_BAK);
@@ -278,6 +289,9 @@ export const api = {
                         createReadStream(filepath, { encoding: 'binary' }),
                         createReadStream(pathJoin(process.cwd(), sigFilename)),
                         args.publicKeyUrl);
+
+                    cliUx.json({ filename: sigFilename, verified, name: packageJson.name, version: packageJson.version  } as JsonResponse);
+
                 } catch (e) {
                     const e1 = new NamedError('VerificationError', 'An error occurred trying to validate the signature. Check the public key url and try again.');
                     e1.reason = e;
@@ -310,6 +324,7 @@ export const api = {
                 } else {
                     cliUx.error(`ERROR: ${error.message}`);
                 }
+                cliUx.json(error);
                 process.exitCode = 1;
             }
         }
