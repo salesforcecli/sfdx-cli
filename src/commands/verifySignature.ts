@@ -1,5 +1,3 @@
-import { join } from 'path';
-import { homedir, platform } from 'os';
 import { Command, InputFlags, flags } from 'cli-engine-command';
 import { CLI } from './cliUx';
 import Plugins from 'cli-engine';
@@ -18,7 +16,7 @@ interface JsonResponse {
 // sfdx verifySignature --npm @salesforce/jj@0.0.1 --registry http://tnoonan-wsm2.internal.salesforce.com:4874/
 export default class VerifySignature extends Command<any> {
     public static topic = 'verifySignature';
-    public static description = 'From an npm validate the the associate digital signature if it exits.';
+    public static description = 'For an npm validate the the associate digital signature if it exits.';
     public static flags: InputFlags = {
         npm: flags.string({
             char: 'n',
@@ -28,7 +26,7 @@ export default class VerifySignature extends Command<any> {
         registry: flags.string({
             char: 'r',
             required: false,
-            description: 'the behavior is the same as npm.'
+            description: 'The registry name. the behavior is the same as npm.'
         }),
         json: flags.boolean({
             char: 'j',
