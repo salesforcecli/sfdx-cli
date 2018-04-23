@@ -32,7 +32,7 @@ describe('NpmName Tests', () => {
             expect(() => NpmName.parse('@test ')).to.throw().and.have.property('name', 'MissingNameForScope');
         });
 
-        it ('Scope without a name isn\'t allowd', () => {
+        it ('Scope without a name isn\'t allowed', () => {
             expect(() => NpmName.parse('@test/ ')).to.throw().and.have.property('name', 'InvalidNpmName');
         });
 
@@ -42,6 +42,12 @@ describe('NpmName Tests', () => {
             expect(npmName).to.have.property('name', 'foo');
         });
 
+        it ('Should parse non-version tag', () => {
+            const npmName: NpmName = NpmName.parse('@test/foo@pre-release');
+            expect(npmName).to.have.property('name', 'foo');
+            expect(npmName).to.have.property('scope', 'test');
+            expect(npmName).to.have.property('tag', 'pre-release');
+        });
     });
 
     describe('toFilename', () => {

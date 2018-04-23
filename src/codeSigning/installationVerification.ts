@@ -81,7 +81,7 @@ export class InstallationVerification {
             this.pluginNpmName = _pluginName;
             return this;
         }
-        throw new NamedError('InvalidParam', 'pluginName cannot be nll');
+        throw new NamedError('InvalidParam', 'pluginName must be specified.');
     }
 
     /**

@@ -36,22 +36,17 @@ export default class VerifySignature extends Command<any> {
         })
     };
 
-    public readonly configDir: string = join(homedir(), '.config', 'sfdx');
-    public readonly cacheDir: string = ((() => {
-        // Not sure about the packAndSign on windows. But don't want to make the problem worse.
-        if (/^win/.test(platform())) {
-            return join(homedir(), 'AppData', 'Local', 'sfdx');
-        } else if (/darwin/.test(platform())) {
-            return join(homedir(), 'Library', 'Caches', 'sfdx');
-        } else {
-            return `${homedir()}/.cache/sfdx`;
-        }
-    })() as string);
+    public configDir: string;
+    public cacheDir: string;
 
     public plugins: Plugins;
     private ux: CLI;
 
     public async run() {
+
+        this.configDir = this.config.configDir as string;
+        this.cacheDir = this.config.configDir as string;
+
         this.ux = new CLI(this.flags!.json);
         this.ux.log('Checking for digital signature.');
 
