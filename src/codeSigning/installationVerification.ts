@@ -13,7 +13,7 @@ import {
 } from './codeSignApi';
 
 import { NamedError, UnexpectedHost, SignSignedCertError } from '../util/NamedError';
-import {NpmName} from '../util/NpmName';
+import { NpmName } from '../util/NpmName';
 
 export const WHITELIST_FILENAME = 'unsignedPluginWhiteList.json';
 

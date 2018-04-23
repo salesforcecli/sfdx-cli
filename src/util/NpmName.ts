@@ -61,12 +61,26 @@ export class NpmName {
         if (subComponents.length === 2 && _.trim(subComponents[0]).length > 0 &&
             _.trim(subComponents[1]).length > 0) {
 
-            returnNpmName.scope = returnNpmName.validateComponentString(subComponents[0]);
-            returnNpmName.name = returnNpmName.validateComponentString(subComponents[1]);
+            returnNpmName.scope = NpmName.validateComponentString(subComponents[0]);
+            returnNpmName.name = NpmName.validateComponentString(subComponents[1]);
         } else if (subComponents.length === 1) {
-            returnNpmName.name = returnNpmName.validateComponentString(subComponents[0]);
+            returnNpmName.name = NpmName.validateComponentString(subComponents[0]);
         } else {
             throw new NamedError('InvalidNpmName', 'The npm name is invalid.');
+        }
+    }
+
+    /**
+     * Validate a component part that it's not empty and return it trimmed.
+     * @param {string} name The component to validate.
+     * @return {string} A whitespace trimmed version of the component.
+     */
+    private static validateComponentString(name: string) {
+        const trimmedName = _.trim(name);
+        if (trimmedName && trimmedName.length > 0) {
+            return trimmedName;
+        } else {
+            throw new NamedError('MissingOrInvalidNpmName', 'The npm name is missing or invalid.');
         }
     }
 
@@ -125,19 +139,4 @@ export class NpmName {
 
         return nameComponents.join();
     }
-
-    /**
-     * Validate a component part that it's not empty and return it trimmed.
-     * @param {string} name The component to validate.
-     * @return {string} A whitespace trimmed version of the component.
-     */
-    private validateComponentString(name: string) {
-        const trimmedName = _.trim(name);
-        if (trimmedName && trimmedName.length > 0) {
-            return trimmedName;
-        } else {
-            throw new NamedError('MissingOrInvalidNpmName', 'The npm name is missing or invalid.');
-        }
-    }
-
 }

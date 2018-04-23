@@ -1,6 +1,5 @@
 import { NpmName } from './NpmName';
 import { expect } from 'chai';
-import {getNpmRegistry} from '../codeSigning/installationVerification';
 
 describe('NpmName Tests', () => {
     describe('parse', () => {
