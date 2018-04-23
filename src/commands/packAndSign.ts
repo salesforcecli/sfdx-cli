@@ -43,6 +43,10 @@ export default class PackAndSign extends Command<any> {
             char: 'k',
             required: true,
             description: 'the local file path for the private key.'
+        }),
+        json: flags.boolean({
+            char: 'j',
+            description: 'True for json output.'
         })
     };
     public plugins: Plugins;

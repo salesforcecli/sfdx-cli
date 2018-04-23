@@ -119,11 +119,13 @@ describe('packAndSign Tests', () => {
 
     beforeEach(() => {
         sandbox = sinon.sandbox.create();
+        if (!packAndSignApi) {
+            packAndSignApi = require('./packAndSign').api;
+        }
     });
     afterEach(() => {
         sandbox.restore();
     });
-
     describe('validate url', () => {
         it ('with host', () => {
             const TEST = 'https://developer.salesforce.com/foo/bar';
