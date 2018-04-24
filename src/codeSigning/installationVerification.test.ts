@@ -10,6 +10,7 @@ import {
     getNpmRegistry,
     DEFAULT_REGISTRY
 } from './installationVerification';
+import {NpmName} from '../util/NpmName';
 
 describe('getNpmRegistry', () => {
     const currentRegistry = process.env.SFDX_NPM_REGISTRY;
@@ -45,19 +46,14 @@ describe('InstallationVerification Tests', () => {
         }
     };
 
-    const plugin = 'foo';
+    let plugin: NpmName;
+
+    beforeEach(() => {
+        plugin = NpmName.parse('foo');
+    });
 
     it('falsy engine config', () => {
         expect(() => new InstallationVerification().setCliEngineConfig(null)).to.throw(Error).and.have.property('name', 'InvalidParam');
-    });
-
-    it ('falsy plugin name', () => {
-        expect(() => new InstallationVerification().setPluginName()).to.throw(Error).and.have.property('name', 'InvalidParam');
-    });
-
-    it ('default plugin name', () => {
-        const verification = new InstallationVerification().setPluginTag();
-        expect(verification.getPluginTag()).to.be.equal('latest');
     });
 
     it('Steel thread test', async () => {
@@ -74,7 +70,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else if (_.endsWith(url, plugin)) {
+            } else if (_.endsWith(url, plugin.name)) {
                 cb(null, { statusCode: 200 }, JSON.stringify({
                     'versions': {
                         '1.2.3': {
@@ -117,7 +113,7 @@ describe('InstallationVerification Tests', () => {
         };
 
         const verification = new InstallationVerification(_request, _fs)
-            .setPluginName(plugin).setCliEngineConfig(config);
+            .setPluginNpmName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
             .then((meta: any) => {
@@ -139,7 +135,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else if (_.endsWith(url, plugin)) {
+            } else if (_.endsWith(url, plugin.name)) {
                 cb(null, { statusCode: 200 }, JSON.stringify({
                     'versions': {
                         '1.2.3': {
@@ -190,8 +186,9 @@ describe('InstallationVerification Tests', () => {
 
         };
 
+        plugin.tag = '1.2.3';
         const verification = new InstallationVerification(_request, _fs)
-            .setPluginName(plugin).setPluginTag('1.2.3').setCliEngineConfig(config);
+            .setPluginNpmName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
             .then((meta: any) => {
@@ -213,7 +210,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key.master')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else if (_.endsWith(url, plugin)) {
+            } else if (_.endsWith(url, plugin.name)) {
                 cb(null, { statusCode: 200 }, JSON.stringify({
                     'versions': {
                         '1.2.3': {
@@ -265,9 +262,10 @@ describe('InstallationVerification Tests', () => {
 
         };
 
+        plugin.tag = 'gozer';
         // For the key and signature to line up gozer must map to 1.2.3
         const verification = new InstallationVerification(_request, _fs)
-            .setPluginName(plugin).setPluginTag('gozer').setCliEngineConfig(config);
+            .setPluginNpmName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
             .then((meta: any) => {
@@ -289,7 +287,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else if (_.endsWith(url, plugin))  {
+            } else if (_.endsWith(url, plugin.name))  {
                 cb(null, { statusCode: 200 }, JSON.stringify({}));
             } else {
                 throw new Error(`Unexpected test url - ${url}`);
@@ -301,7 +299,7 @@ describe('InstallationVerification Tests', () => {
         };
 
         const verification = new InstallationVerification(_request, _fs)
-            .setPluginName(plugin).setCliEngineConfig(config);
+            .setPluginNpmName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
             .then(() => {
@@ -326,7 +324,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else if (_.endsWith(url, plugin)) {
+            } else if (_.endsWith(url, plugin.name)) {
                 cb(null, { statusCode: 200 }, JSON.stringify({
                     'versions': {
                         '1.2.3': {
@@ -349,7 +347,7 @@ describe('InstallationVerification Tests', () => {
         };
 
         const verification = new InstallationVerification(_request, _fs)
-            .setPluginName(plugin).setCliEngineConfig(config);
+            .setPluginNpmName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
             .then(() => {
@@ -374,7 +372,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else if (_.endsWith(url, plugin)) {
+            } else if (_.endsWith(url, plugin.name)) {
                 const err = new Error();
                 err.name = 'NPMMetaError';
                 cb(err);
@@ -388,7 +386,7 @@ describe('InstallationVerification Tests', () => {
         };
 
         const verification = new InstallationVerification(_request, _fs)
-            .setPluginName(plugin).setCliEngineConfig(config);
+            .setPluginNpmName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
             .then(() => {
@@ -413,7 +411,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 200 }, CERTIFICATE);
-            } else if (_.endsWith(url, plugin)) {
+            } else if (_.endsWith(url, plugin.name)) {
                 cb(null, { statusCode: 404 });
             } else {
                 throw new Error(`Unexpected test url - ${url}`);
@@ -425,7 +423,7 @@ describe('InstallationVerification Tests', () => {
         };
 
         const verification = new InstallationVerification(_request, _fs)
-            .setPluginName(plugin).setCliEngineConfig(config);
+            .setPluginNpmName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
             .then(() => {
@@ -446,7 +444,7 @@ describe('InstallationVerification Tests', () => {
                     reader.emit('error', new Error(ERROR));
                 });
                 return reader;
-            } else if (_.endsWith(url, plugin)) {
+            } else if (_.endsWith(url, plugin.name)) {
                 cb(null, { statusCode: 200 }, JSON.stringify({
                     'versions': {
                         '1.2.3': {
@@ -481,7 +479,7 @@ describe('InstallationVerification Tests', () => {
         };
 
         const verification = new InstallationVerification(_request, _fs)
-            .setPluginName(plugin).setCliEngineConfig(config);
+            .setPluginNpmName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
             .then(() => {
@@ -507,7 +505,7 @@ describe('InstallationVerification Tests', () => {
                 cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
             } else if (_.includes(url, 'key')) {
                 cb(null, { statusCode: 404 });
-            } else if (_.endsWith(url, plugin)) {
+            } else if (_.endsWith(url, plugin.name)) {
                 cb(null, { statusCode: 200 }, JSON.stringify({
                     'versions': {
                         '1.2.3': {
@@ -550,7 +548,7 @@ describe('InstallationVerification Tests', () => {
         };
 
         const verification = new InstallationVerification(_request, _fs)
-            .setPluginName(plugin).setCliEngineConfig(config);
+            .setPluginNpmName(plugin).setCliEngineConfig(config);
 
         return verification.verify()
             .then(() => {
@@ -573,7 +571,7 @@ describe('InstallationVerification Tests', () => {
                 }
             };
             const verification = new InstallationVerification(null, _fs)
-                .setPluginName(TEST_VALUE).setCliEngineConfig(config);
+                .setPluginNpmName(NpmName.parse(TEST_VALUE)).setCliEngineConfig(config);
             expect(await verification.isWhiteListed()).to.be.equal(true);
             expect(expectedPath).to.include(WHITELIST_FILENAME);
         });
@@ -588,7 +586,7 @@ describe('InstallationVerification Tests', () => {
             };
 
             const verification = new InstallationVerification(null, _fs)
-                .setPluginName('BAR').setCliEngineConfig(config);
+                .setPluginNpmName(NpmName.parse('BAR')).setCliEngineConfig(config);
             expect(await verification.isWhiteListed()).to.be.equal(false);
         });
     });

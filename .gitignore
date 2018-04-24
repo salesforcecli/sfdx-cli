@@ -19,3 +19,4 @@ coverage/
 checkstyle.xml
 .sfdx
 /release/
+src/temp

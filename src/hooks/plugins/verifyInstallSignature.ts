@@ -8,14 +8,18 @@ import {
 } from '../../codeSigning/installationVerification';
 
 import { CLI } from 'cli-ux';
+import {NpmName} from '../../util/NpmName';
 
 async function run(config: Config, {plugin, tag}: {plugin: string, tag: string}) {
     const cliUx = new CLI();
     cliUx.action.stop('Checking for digital signature.');
     const vConfig = new VerificationConfig();
+
+    const npmName: NpmName = NpmName.parse(plugin);
+    npmName.tag = tag;
+
     vConfig.verifier = new InstallationVerification()
-        .setPluginName(plugin)
-        .setPluginTag(tag)
+        .setPluginNpmName(npmName)
         .setCliEngineConfig(config);
 
     vConfig.log = cliUx.log.bind(cliUx);
