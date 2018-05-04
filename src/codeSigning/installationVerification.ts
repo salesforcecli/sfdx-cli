@@ -198,7 +198,7 @@ export class InstallationVerification {
             const npmRegistry = getNpmRegistry();
             npmRegistry.pathname = this.pluginNpmName.name;
             if (this.pluginNpmName.scope) {
-                npmRegistry.pathname = `@${this.pluginNpmName.scope}/${this.pluginNpmName.name}`;
+                npmRegistry.pathname = `@${this.pluginNpmName.scope}%2f${this.pluginNpmName.name}`;
             }
 
             this.requestImpl(npmRegistry.href, (err, response, body) => {
