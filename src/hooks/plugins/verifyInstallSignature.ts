@@ -5,7 +5,7 @@ import {
     doInstallationCodeSigningVerification,
     InstallationVerification,
     VerificationConfig
-} from '../../codeSigning/installationVerification';
+} from '@salesforce/sfdx-trust';
 
 import { CLI } from 'cli-ux';
 import {NpmName} from '../../util/NpmName';

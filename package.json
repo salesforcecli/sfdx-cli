@@ -63,6 +63,8 @@
     "!dist/**/*.test.js"
   ],
   "dependencies": {
+    "@salesforce/plugin-generator": "0.0.5",
+    "@salesforce/sfdx-trust": "0.0.10",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.5",
     "cli-engine-command": "9.0.7",
@@ -73,8 +75,12 @@
     "fs-extra": "4.0.2",
     "lodash": "4.17.4",
     "request": "2.83.0",
+<<<<<<< Updated upstream
     "salesforcedx": "42.14.3-1",
     "@salesforce/plugin-generator": "0.0.5"
+=======
+    "salesforcedx": "42.13.1-0"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
