@@ -74,7 +74,7 @@
     "lodash": "4.17.4",
     "request": "2.83.0",
     "salesforcedx": "42.14.3-2",
-    "@salesforce/plugin-generator": "0.0.6"
+    "@salesforce/plugin-generator": "0.0.7"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
