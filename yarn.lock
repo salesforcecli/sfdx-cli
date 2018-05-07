@@ -19,16 +19,31 @@
   version "1.0.0"
   resolved "http://10.252.156.164:4880/@heroku%2flinewrap/-/linewrap-1.0.0.tgz#a9d4e99f0a3e423a899b775f5f3d6747a1ff15c6"
 
-"@oclif/command@^1.3.1", "@oclif/command@^1.4.1", "@oclif/command@^1.4.2":
+"@oclif/command@^1.3.1", "@oclif/command@^1.4.1":
   version "1.4.2"
   resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.2.tgz#f20ead470e87f629812ce21ddd72042c88517a5d"
   dependencies:
     "@oclif/parser" "^3.2.9"
     semver "^5.5.0"
 
-"@oclif/config@^1.3.56", "@oclif/config@^1.3.58":
+"@oclif/command@^1.4.19", "@oclif/command@^1.4.20", "@oclif/command@^1.4.6":
+  version "1.4.21"
+  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.21.tgz#e45f252f8c375ad6e24a0a5f908e6aa692c5c56a"
+  dependencies:
+    "@oclif/errors" "^1.0.9"
+    "@oclif/parser" "^3.3.3"
+    debug "^3.1.0"
+    semver "^5.5.0"
+
+"@oclif/config@^1.3.56":
   version "1.3.59"
   resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.3.59.tgz#10cc39757654850458b2d3f899155af2e069deb5"
+
+"@oclif/config@^1.3.61", "@oclif/config@^1.6.17":
+  version "1.6.17"
+  resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.6.17.tgz#e9608f56e5acd49fcaf3bbfcc3e8818d81b1ba12"
+  dependencies:
+    debug "^3.1.0"
 
 "@oclif/errors@^1.0.2":
   version "1.0.2"
@@ -40,11 +55,32 @@
     strip-ansi "^4.0.0"
     wrap-ansi "^3.0.1"
 
+"@oclif/errors@^1.0.3", "@oclif/errors@^1.0.8", "@oclif/errors@^1.0.9":
+  version "1.0.9"
+  resolved "http://10.252.156.164:4880/@oclif%2ferrors/-/errors-1.0.9.tgz#6fe3afd8e7683c436df63674550899adec10c81c"
+  dependencies:
+    clean-stack "^1.3.0"
+    fs-extra "^6.0.0"
+    indent-string "^3.2.0"
+    strip-ansi "^4.0.0"
+    wrap-ansi "^3.0.1"
+
+"@oclif/linewrap@^1.0.0":
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/@oclif%2flinewrap/-/linewrap-1.0.0.tgz#aedcb64b479d4db7be24196384897b5000901d91"
+
 "@oclif/parser@^3.2.9":
   version "3.2.9"
   resolved "http://10.252.156.164:4880/@oclif%2fparser/-/parser-3.2.9.tgz#76d01106971e20dfcfec5be276c4e6e9edfee9ec"
   dependencies:
     "@heroku/linewrap" "^1.0.0"
+
+"@oclif/parser@^3.3.3":
+  version "3.3.3"
+  resolved "http://10.252.156.164:4880/@oclif%2fparser/-/parser-3.3.3.tgz#bfde499b836178eee2b6b29ccb7fb3f95851d3c6"
+  dependencies:
+    "@oclif/linewrap" "^1.0.0"
+    chalk "^2.4.0"
 
 "@oclif/plugin-help@^1.1.6":
   version "1.1.6"
@@ -58,23 +94,49 @@
     widest-line "^2.0.0"
     wrap-ansi "^3.0.1"
 
-"@oclif/plugin-not-found@^1.0.3":
-  version "1.0.3"
-  resolved "http://10.252.156.164:4880/@oclif%2fplugin-not-found/-/plugin-not-found-1.0.3.tgz#374421fb981c9e3f28f658b95c33365d59787446"
+"@oclif/plugin-help@^1.2.1":
+  version "1.2.10"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-help/-/plugin-help-1.2.10.tgz#c2bb2b8f09027bf5a55e96346b8525d4dcff8c3e"
+  dependencies:
+    "@oclif/command" "^1.4.20"
+    chalk "^2.4.1"
+    indent-string "^3.2.0"
+    lodash.template "^4.4.0"
+    string-width "^2.1.1"
+    widest-line "^2.0.0"
+    wrap-ansi "^3.0.1"
+
+"@oclif/plugin-not-found@^1.0.5":
+  version "1.0.9"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-not-found/-/plugin-not-found-1.0.9.tgz#6758cf2fe349190256db4c9ba497e7fe9b53f27e"
   dependencies:
     "@heroku-cli/color" "^1.1.3"
-    "@oclif/command" "^1.4.1"
+    "@oclif/command" "^1.4.19"
     string-similarity "^1.2.0"
 
-"@salesforce/plugin-generator@0.0.5":
-  version "0.0.5"
-  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-generator/-/plugin-generator-0.0.5.tgz#966ad1440a4ff6f475ac7c44912d524b2371cfc9"
+"@oclif/plugin-warn-if-update-available@^1.2.2":
+  version "1.3.8"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-warn-if-update-available/-/plugin-warn-if-update-available-1.3.8.tgz#bc42e86b83a29a138c8b7ee4e8c38ac066f9adf3"
   dependencies:
-    "@oclif/command" "^1.4.2"
-    "@oclif/config" "^1.3.58"
-    "@oclif/errors" "^1.0.2"
-    "@oclif/plugin-help" "^1.1.6"
-    "@oclif/plugin-not-found" "^1.0.3"
+    "@oclif/command" "^1.4.19"
+    "@oclif/config" "^1.6.17"
+    "@oclif/errors" "^1.0.8"
+    chalk "^2.4.1"
+    debug "^3.1.0"
+    fs-extra "^6.0.0"
+    http-call "^5.1.1"
+    semver "^5.5.0"
+
+"@salesforce/plugin-generator@0.0.7":
+  version "0.0.7"
+  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-generator/-/plugin-generator-0.0.7.tgz#61a65f1763b77264a4b28169a87032c321df6c8e"
+  dependencies:
+    "@oclif/command" "^1.4.6"
+    "@oclif/config" "^1.3.61"
+    "@oclif/errors" "^1.0.3"
+    "@oclif/plugin-help" "^1.2.1"
+    "@oclif/plugin-not-found" "^1.0.5"
+    "@oclif/plugin-warn-if-update-available" "^1.2.2"
     debug "^3.1.0"
     fixpack "^2.3.1"
     lodash "^4.17.5"
@@ -720,6 +782,14 @@ chalk@1.1.3, chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
 chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.1:
   version "2.3.2"
   resolved "http://10.252.156.164:4880/chalk/-/chalk-2.3.2.tgz#250dc96b07491bfd601e648d66ddf5f60c7a5c65"
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
+
+chalk@^2.4.0, chalk@^2.4.1:
+  version "2.4.1"
+  resolved "http://10.252.156.164:4880/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
   dependencies:
     ansi-styles "^3.2.1"
     escape-string-regexp "^1.0.5"
@@ -2071,6 +2141,14 @@ fs-extra@^5.0.0:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
+fs-extra@^6.0.0:
+  version "6.0.0"
+  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-6.0.0.tgz#0f0afb290bb3deb87978da816fcd3c7797f3a817"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -2614,6 +2692,16 @@ http-call@^4.0.6:
     is-retry-allowed "^1.1.0"
     is-stream "^1.1.0"
     tslib "^1.8.1"
+    tunnel-agent "^0.6.0"
+
+http-call@^5.1.1:
+  version "5.1.2"
+  resolved "http://10.252.156.164:4880/http-call/-/http-call-5.1.2.tgz#2320e1aef65f01574723a697aca31748ce578f9d"
+  dependencies:
+    content-type "^1.0.4"
+    debug "^3.1.0"
+    is-retry-allowed "^1.1.0"
+    is-stream "^1.1.0"
     tunnel-agent "^0.6.0"
 
 http-errors@~1.3.1:
@@ -4712,7 +4800,45 @@ safe-json-stringify@~1:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/safe-json-stringify/-/safe-json-stringify-1.1.0.tgz#bd2b6dad1ebafab3c24672a395527f01804b7e19"
 
-salesforce-alm@42.9.0, salesforce-alm@^42.1.0:
+salesforce-alm@42.13.0:
+  version "42.13.0"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-42.13.0.tgz#fc12dcb1474cfb97275bc86b4752cfc801cca4da"
+  dependencies:
+    adm-zip "0.4.7"
+    archiver "1.0.1"
+    bluebird "3.4.6"
+    body-parser "1.15.0"
+    bunyan-sfdx-no-dtrace "1.8.2"
+    cli-spinner "0.2.5"
+    csv-parse "1.1.2"
+    express "4.13.4"
+    faye "1.1.2"
+    fs-extra "4.0.1"
+    gitignore-parser "0.0.2"
+    glob "7.0.3"
+    heroku-cli-util "6.0.16"
+    jsen "0.6.4"
+    jsforce "1.8.0"
+    jsonwebtoken "7.0.0"
+    klaw "2.1.0"
+    lodash "4.17.4"
+    mime "1.3.6"
+    mkdirp "0.5.1"
+    moment "2.13.0"
+    node-constants "0.0.2"
+    open "0.0.5"
+    optional-js "1.1.2"
+    pluralize "3.0.0"
+    process-promises "1.0.0"
+    readline-sync "1.4.4"
+    replace "0.3.0"
+    request "2.79.0"
+    selenium-standalone "6.6.0"
+    webdriverio "4.1.0"
+    xml2js "0.4.17"
+    xmldom "0.1.22"
+
+salesforce-alm@^42.1.0:
   version "42.9.0"
   resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-42.9.0.tgz#518440c53b99edb1f14396a6b2a7024968075eab"
   dependencies:
@@ -4761,12 +4887,12 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@42.8.1:
-  version "42.8.1"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-42.8.1.tgz#a987820f2bdddacd0e24717e9854159b8e65b903"
+salesforcedx@42.14.2:
+  version "42.14.2"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-42.14.2.tgz#312021b2bbd87e33683430edbdf8f55f1afae926"
   dependencies:
     force-language-services "42.1.0"
-    salesforce-alm "42.9.0"
+    salesforce-alm "42.13.0"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.x, samsam@^1.1.3:

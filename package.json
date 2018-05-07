@@ -63,6 +63,7 @@
     "!dist/**/*.test.js"
   ],
   "dependencies": {
+    "@salesforce/plugin-generator": "0.0.7",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.5",
     "cli-engine-command": "9.0.7",
@@ -73,8 +74,7 @@
     "fs-extra": "4.0.2",
     "lodash": "4.17.4",
     "request": "2.83.0",
-    "salesforcedx": "42.14.2",
-    "@salesforce/plugin-generator": "0.0.6"
+    "salesforcedx": "42.14.2"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
@@ -93,8 +93,8 @@
     "mocha": "3.5.0",
     "sinon": "2.3.5",
     "source-map-support": "0.5.2",
-    "tslint": "5.7.0",
     "ts-node": "^5.0.1",
+    "tslint": "5.7.0",
     "typescript": "2.5.2",
     "xunit-file": "1.0.0"
   },
