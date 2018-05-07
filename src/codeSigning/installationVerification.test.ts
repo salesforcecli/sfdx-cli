@@ -187,8 +187,86 @@ describe('InstallationVerification Tests', () => {
         };
 
         plugin.tag = '1.2.3';
+
         const verification = new InstallationVerification(_request, _fs)
             .setPluginNpmName(plugin).setCliEngineConfig(config);
+
+        return verification.verify()
+            .then((meta: any) => {
+                expect(meta).to.have.property('verified', true);
+            });
+    });
+
+    it('Steel thread version - With scope', async () => {
+        const npmName: NpmName = NpmName.parse('@salesforce/baz@gozer');
+        const _request = (url, cb) => {
+            if (_.includes(url, 'baz.tgz')) {
+                const reader = new Readable({
+                    read() {}
+                });
+                process.nextTick(() => {
+                    reader.emit('end');
+                });
+                return reader;
+            } else if (_.includes(url, 'sig.weaver')) {
+                cb(null, { statusCode: 200 }, TEST_DATA_SIGNATURE);
+            } else if (_.includes(url, 'key.master')) {
+                cb(null, { statusCode: 200 }, CERTIFICATE);
+            } else if (_.endsWith(url, `@${npmName.scope}%2f${npmName.name}`)) {
+                cb(null, { statusCode: 200 }, JSON.stringify({
+                    'versions': {
+                        '1.2.3': {
+                            sfdx: {
+                                publicKeyUrl: 'https://developer.salesforce.com/key.master',
+                                signatureUrl: 'https://developer.salesforce.com/sig.weaver'
+                            },
+                            dist: {
+                                tarball: 'https://registry.example.com/baz.tgz'
+                            }
+                        },
+                        '1.2.4': {
+                            sfdx: {
+                                publicKeyUrl: 'https://developer.salesforce.com/key1',
+                                signatureUrl: 'https://developer.salesforce.com/sig1'
+                            },
+                            dist: {
+                                tarball: 'https://registry.example.com/baz.tgz'
+                            }
+                        }
+                    },
+                    'dist-tags': {
+                        latest: '1.2.4',
+                        gozer: '1.2.3'
+                    }
+                }));
+            } else {
+                throw new Error(`Unexpected test url - ${url}`);
+            }
+        };
+
+        const _fs = {
+            readFile() {},
+            createWriteStream() {
+                return new Writable({
+                    write(data) {
+                        console.log(data);
+                    }
+                });
+            },
+            createReadStream() {
+                return new Readable({
+                    read() {
+                        this.push(TEST_DATA);
+                        this.push(null);
+                    }
+                });
+            }
+
+        };
+
+        // For the key and signature to line up gozer must map to 1.2.3
+        const verification = new InstallationVerification(_request, _fs)
+            .setPluginNpmName(npmName).setCliEngineConfig(config);
 
         return verification.verify()
             .then((meta: any) => {
