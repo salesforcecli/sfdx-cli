@@ -41,7 +41,8 @@
     "plugins": [
       "../dist/builtins",
       "salesforcedx",
-      "@salesforce/plugin-generator"
+      "@salesforce/plugin-generator",
+      "@salesforce/sfdx-trust"
     ],
     "s3": {
       "bucket": "dfc-data-production",
@@ -63,6 +64,7 @@
     "!dist/**/*.test.js"
   ],
   "dependencies": {
+    "@salesforce/sfdx-trust": "0.0.18",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.5",
     "cli-engine-command": "9.0.7",

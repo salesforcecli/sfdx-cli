@@ -5,7 +5,7 @@ import {
     doInstallationCodeSigningVerification,
     InstallationVerification,
     VerificationConfig
-} from '../../codeSigning/installationVerification';
+} from '@salesforce/sfdx-trust';
 
 import { CLI } from 'cli-ux';
 import {NpmName} from '../../util/NpmName';
@@ -20,14 +20,14 @@ async function run(config: Config, {plugin, tag}: {plugin: string, tag: string})
 
     vConfig.verifier = new InstallationVerification()
         .setPluginNpmName(npmName)
-        .setCliEngineConfig(config);
+        .setCliEngineConfig(config as any);
 
     vConfig.log = cliUx.log.bind(cliUx);
     vConfig.prompt = cliUx.prompt.bind(cliUx);
 
     let namedError: NamedError | undefined;
     try {
-        await doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
+        await doInstallationCodeSigningVerification(config as any, {plugin, tag}, vConfig);
     } catch (e) {
         if (e instanceof NamedError) {
             namedError = e;
