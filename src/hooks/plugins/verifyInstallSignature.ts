@@ -1,11 +1,14 @@
 import { Config } from 'cli-engine-config';
+
+import _ = require('lodash');
 import timedHook from '../timedHook';
 import { NamedError } from '../../util/NamedError';
 import {
     doInstallationCodeSigningVerification,
     InstallationVerification,
-    VerificationConfig
-} from '../../codeSigning/installationVerification';
+    VerificationConfig,
+    ConfigContext
+} from '@salesforce/sfdx-trust';
 
 import { CLI } from 'cli-ux';
 import {NpmName} from '../../util/NpmName';
@@ -18,16 +21,22 @@ async function run(config: Config, {plugin, tag}: {plugin: string, tag: string})
     const npmName: NpmName = NpmName.parse(plugin);
     npmName.tag = tag;
 
+    const configContext: ConfigContext = {
+        cacheDir: _.get(config, 'configDir'),
+        configDir: _.get(config, 'cacheDir'),
+        dataDir: _.get(config, 'dataDir')
+    };
+
     vConfig.verifier = new InstallationVerification()
         .setPluginNpmName(npmName)
-        .setCliEngineConfig(config);
+        .setConfig(configContext);
 
     vConfig.log = cliUx.log.bind(cliUx);
     vConfig.prompt = cliUx.prompt.bind(cliUx);
 
     let namedError: NamedError | undefined;
     try {
-        await doInstallationCodeSigningVerification(config, {plugin, tag}, vConfig);
+        await doInstallationCodeSigningVerification(configContext, {plugin, tag}, vConfig);
     } catch (e) {
         if (e instanceof NamedError) {
             namedError = e;

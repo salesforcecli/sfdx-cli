@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "6.15.0",
+  "version": "6.16.0",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -41,7 +41,8 @@
     "plugins": [
       "../dist/builtins",
       "salesforcedx",
-      "@salesforce/plugin-generator"
+      "@salesforce/plugin-generator",
+      "@salesforce/sfdx-trust"
     ],
     "s3": {
       "bucket": "dfc-data-production",
@@ -59,11 +60,12 @@
   },
   "files": [
     "bin",
+    "dist/**/package.json",
     "dist/**/*.js",
     "!dist/**/*.test.js"
   ],
   "dependencies": {
-    "@salesforce/plugin-generator": "0.0.7",
+    "@salesforce/sfdx-trust": "1.0.2",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.5",
     "cli-engine-command": "9.0.7",
@@ -74,7 +76,8 @@
     "fs-extra": "4.0.2",
     "lodash": "4.17.4",
     "request": "2.83.0",
-    "salesforcedx": "42.15.0"
+    "salesforcedx": "42.15.1-1",
+    "@salesforce/plugin-generator": "0.0.7"
   },
   "devDependencies": {
     "@types/chai": "4.0.4",
