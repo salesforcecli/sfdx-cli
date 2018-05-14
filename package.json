@@ -59,6 +59,7 @@
   },
   "files": [
     "bin",
+    "dist/**/package.json",
     "dist/**/*.js",
     "!dist/**/*.test.js"
   ],
