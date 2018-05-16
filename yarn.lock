@@ -3420,6 +3420,13 @@ lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "http://10.252.156.164:4880/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
 
+lazy-require@0.0.2:
+  version "0.0.2"
+  resolved "http://10.252.156.164:4880/lazy-require/-/lazy-require-0.0.2.tgz#584832fe211a3a965061249e46732ec8c69c9836"
+  dependencies:
+    "@types/debug" "0.0.30"
+    debug "3.1.0"
+
 lazystream@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/lazystream/-/lazystream-1.0.0.tgz#f6995fe0f820392f61396be89462407bb77168e4"
