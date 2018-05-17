@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "6.16.3",
+  "version": "6.16.6",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -76,7 +76,7 @@
     "fs-extra": "4.0.2",
     "lodash": "4.17.4",
     "request": "2.83.0",
-    "salesforcedx": "42.16.3",
+    "salesforcedx": "42.16.6",
     "@salesforce/plugin-generator": "0.0.7"
   },
   "devDependencies": {
