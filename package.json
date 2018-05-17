@@ -65,7 +65,7 @@
     "!dist/**/*.test.js"
   ],
   "dependencies": {
-    "@salesforce/sfdx-trust": "1.0.2",
+    "@salesforce/sfdx-trust": "1.0.4",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.5",
     "cli-engine-command": "9.0.7",
