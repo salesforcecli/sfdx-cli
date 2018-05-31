@@ -65,7 +65,7 @@
     "!dist/**/*.test.js"
   ],
   "dependencies": {
-    "@salesforce/plugin-generator": "0.0.7",
+    "@salesforce/plugin-generator": "0.0.9",
     "@salesforce/sfdx-trust": "1.0.6",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.5",
