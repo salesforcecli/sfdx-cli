@@ -3,7 +3,7 @@ import fs = require('fs');
 import { type } from 'os';
 import Debug = require('debug');
 import { buildConfig } from 'cli-engine-config';
-import LazyRequire from 'lazy-require';
+import LazyRequire from '@salesforce/lazy-require';
 
 let lazyRequire: LazyRequire;
 
