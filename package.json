@@ -65,6 +65,7 @@
     "!dist/**/*.test.js"
   ],
   "dependencies": {
+    "@salesforce/lazy-require": "0.0.4",
     "@salesforce/plugin-generator": "0.0.9",
     "@salesforce/sfdx-trust": "1.0.6",
     "ansi-escapes": "3.0.0",
@@ -75,7 +76,6 @@
     "cli-ux": "2.0.4",
     "debug": "3.1.0",
     "fs-extra": "4.0.2",
-    "lazy-require": "0.0.2",
     "lodash": "4.17.4",
     "request": "2.83.0",
     "salesforcedx": "43.2.10-2"
