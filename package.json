@@ -35,7 +35,7 @@
         "./dist/hooks/logAnalytics.js"
       ],
       "update": [
-        "./dist/experiments/lazyModules/updateHook.js"
+        "./dist/experiments/lazyRequire/updateHook.js"
       ]
     },
     "plugins": [
@@ -65,6 +65,7 @@
     "!dist/**/*.test.js"
   ],
   "dependencies": {
+    "@salesforce/lazy-require": "0.0.4",
     "@salesforce/plugin-generator": "0.0.9",
     "@salesforce/sfdx-trust": "1.0.6",
     "ansi-escapes": "3.0.0",
