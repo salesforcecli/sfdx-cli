@@ -1,7 +1,4 @@
 import path = require('path');
-import fs = require('fs');
-import { type } from 'os';
-import Debug = require('debug');
 import { buildConfig } from 'cli-engine-config';
 import LazyRequire from '@salesforce/lazy-require';
 
