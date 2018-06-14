@@ -2,16 +2,16 @@ import CLI from 'cli-engine';
 import { Config } from 'cli-engine-config';
 import * as path from 'path';
 import env from './util/env';
-import * as lazyModules from './experiments/lazyModules';
+import * as lazyRequire from './experiments/lazyRequire';
 
 export function create(version: string, channel: string) {
     const root = path.join(__dirname, '..');
     const pjson = require(path.join(root, 'package.json')); // tslint:disable-line
     const args = process.argv.slice(1);
 
-    // Require a dark feature envar to enable the lazy loading experiment, and disallow during updates
+    // Require a dark feature envar to enable the lazy loading experiment, and disable during update commands
     if (env.getBoolean('SFDX_LAZY_LOAD_MODULES') && args[1] !== 'update') {
-        lazyModules.start();
+        lazyRequire.start();
     }
 
     return new CLI({

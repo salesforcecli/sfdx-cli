@@ -190,9 +190,40 @@
     lodash "4.17.4"
     mkdirp "0.5.1"
 
-"@salesforce/plugin-generator@0.0.7":
-  version "0.0.7"
-  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-generator/-/plugin-generator-0.0.7.tgz#61a65f1763b77264a4b28169a87032c321df6c8e"
+"@salesforce/core@0.16.14":
+  version "0.16.14"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.16.14.tgz#ef080188dad5b511de3af2c7227c8c9c398dae12"
+  dependencies:
+    bunyan-sfdx-no-dtrace "1.8.2"
+    chalk "2.4.0"
+    cli-ux "3.3.25"
+    jsforce "1.8.4"
+    jsonwebtoken "7.0.0"
+    lodash "4.17.4"
+    mkdirp "0.5.1"
+
+"@salesforce/core@0.16.16":
+  version "0.16.16"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.16.16.tgz#bc42db643025466536a05eb25d2a6e25da40f89d"
+  dependencies:
+    bunyan-sfdx-no-dtrace "1.8.2"
+    chalk "2.4.0"
+    cli-ux "3.3.25"
+    jsforce "1.8.4"
+    jsonwebtoken "7.0.0"
+    lodash "4.17.4"
+    mkdirp "0.5.1"
+
+"@salesforce/lazy-require@0.0.4":
+  version "0.0.4"
+  resolved "http://10.252.156.164:4880/@salesforce%2flazy-require/-/lazy-require-0.0.4.tgz#b07eea176c96fd75e126766d7ca792b73654b2c6"
+  dependencies:
+    "@types/debug" "0.0.30"
+    debug "3.1.0"
+
+"@salesforce/plugin-generator@0.0.9":
+  version "0.0.9"
+  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-generator/-/plugin-generator-0.0.9.tgz#d97add7210a425e5203b225f1bc7dee6dd586e5e"
   dependencies:
     "@oclif/command" "^1.4.6"
     "@oclif/config" "^1.3.61"
@@ -209,9 +240,9 @@
     yeoman-generator "^2.0.3"
     yosay "^2.0.1"
 
-"@salesforce/sfdx-trust@1.0.2":
-  version "1.0.2"
-  resolved "http://10.252.156.164:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-1.0.2.tgz#6c06926fdab121948169ec1bf7e23e3d484396e0"
+"@salesforce/sfdx-trust@1.0.6":
+  version "1.0.6"
+  resolved "http://10.252.156.164:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-1.0.6.tgz#7d86cc8b41aa43885ac80be3b983b6697ec922bf"
   dependencies:
     "@oclif/command" "1.4.13"
     "@oclif/config" "1.6.3"
@@ -866,6 +897,14 @@ chalk@2.3.0:
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
 
+chalk@2.4.0:
+  version "2.4.0"
+  resolved "http://10.252.156.164:4880/chalk/-/chalk-2.4.0.tgz#a060a297a6b57e15b61ca63ce84995daa0fe6e52"
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
+
 chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.1:
   version "2.3.2"
   resolved "http://10.252.156.164:4880/chalk/-/chalk-2.3.2.tgz#250dc96b07491bfd601e648d66ddf5f60c7a5c65"
@@ -1145,6 +1184,10 @@ code-point-at@^1.0.0:
 coffee-script@^1.10.0:
   version "1.12.7"
   resolved "http://10.252.156.164:4880/coffee-script/-/coffee-script-1.12.7.tgz#c05dae0cb79591d05b3070a8433a98c9a89ccc53"
+
+coffeescript@^1.10.0:
+  version "1.12.7"
+  resolved "http://10.252.156.164:4880/coffeescript/-/coffeescript-1.12.7.tgz#e57ee4c4867cf7f606bfc4a0f2d550c0981ddd27"
 
 color-convert@^1.9.0:
   version "1.9.1"
@@ -2190,14 +2233,14 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-force-language-services@42.0.5-0:
-  version "42.0.5-0"
-  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-42.0.5-0.tgz#3f7e7433871b7b3637e481cec9bff725399256f0"
+force-language-services@43.0.4-0:
+  version "43.0.4-0"
+  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-43.0.4-0.tgz#2394b5a988c075d728f758e94580366a9af58078"
   dependencies:
     fs-extra "1.0.0"
     heroku-cli-util "6.0.11"
     mkdirp "0.5.1"
-    salesforce-alm release
+    salesforce-alm "43.0.25"
     yeoman-environment "1.6.3"
     yeoman-generator "0.24.1"
 
@@ -3288,6 +3331,25 @@ jsforce@1.8.0:
   dependencies:
     co-prompt "^1.0.0"
     coffee-script "^1.10.0"
+    commander "^2.9.0"
+    csv-parse "^1.1.1"
+    csv-stringify "^1.0.4"
+    faye "^1.2.0"
+    inherits "^2.0.1"
+    lodash "^4.11.1"
+    multistream "^2.0.5"
+    open "0.0.5"
+    promise "^7.1.1"
+    readable-stream "^2.1.0"
+    request "^2.72.0"
+    xml2js "^0.4.16"
+
+jsforce@1.8.4:
+  version "1.8.4"
+  resolved "http://10.252.156.164:4880/jsforce/-/jsforce-1.8.4.tgz#7c1a32cd799205e77706fa99229e4dd207030fc6"
+  dependencies:
+    co-prompt "^1.0.0"
+    coffeescript "^1.10.0"
     commander "^2.9.0"
     csv-parse "^1.1.1"
     csv-stringify "^1.0.4"
@@ -4965,10 +5027,11 @@ safe-json-stringify@~1:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/safe-json-stringify/-/safe-json-stringify-1.1.0.tgz#bd2b6dad1ebafab3c24672a395527f01804b7e19"
 
-salesforce-alm@42.14.1-0:
-  version "42.14.1-0"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-42.14.1-0.tgz#3868f3674270052fae1e5226a5528b4b06378379"
+salesforce-alm@43.0.25:
+  version "43.0.25"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-43.0.25.tgz#a9edc33530d70da9acbce98117a4e4514c671763"
   dependencies:
+    "@salesforce/core" "0.16.14"
     adm-zip "0.4.7"
     archiver "1.0.1"
     bluebird "3.4.6"
@@ -4983,7 +5046,7 @@ salesforce-alm@42.14.1-0:
     glob "7.0.3"
     heroku-cli-util "6.0.16"
     jsen "0.6.4"
-    jsforce "1.8.0"
+    jsforce "1.8.4"
     jsonwebtoken "7.0.0"
     klaw "2.1.0"
     lodash "4.17.4"
@@ -5003,10 +5066,11 @@ salesforce-alm@42.14.1-0:
     xml2js "0.4.17"
     xmldom-sfdx-encoding "0.1.28"
 
-salesforce-alm@release:
-  version "42.11.1-2"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-42.11.1-2.tgz#04a05b1540c999dc7df02e6c24b7955dc4ee16ce"
+salesforce-alm@43.1.1-0:
+  version "43.1.1-0"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-43.1.1-0.tgz#9d04e3cba6b39c8a872875d10ee0036d68cf8627"
   dependencies:
+    "@salesforce/core" "0.16.16"
     adm-zip "0.4.7"
     archiver "1.0.1"
     bluebird "3.4.6"
@@ -5021,7 +5085,7 @@ salesforce-alm@release:
     glob "7.0.3"
     heroku-cli-util "6.0.16"
     jsen "0.6.4"
-    jsforce "1.8.0"
+    jsforce "1.8.4"
     jsonwebtoken "7.0.0"
     klaw "2.1.0"
     lodash "4.17.4"
@@ -5039,7 +5103,7 @@ salesforce-alm@release:
     selenium-standalone "6.6.0"
     webdriverio "4.1.0"
     xml2js "0.4.17"
-    xmldom "0.1.22"
+    xmldom-sfdx-encoding "0.1.28"
 
 salesforce-lightning-cli@1.5.2:
   version "1.5.2"
@@ -5052,12 +5116,12 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@42.15.1-1:
-  version "42.15.1-1"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-42.15.1-1.tgz#7560001f55816486b4b8c4538babddba6811046d"
+salesforcedx@43.2.10-1:
+  version "43.2.10-1"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-43.2.10-1.tgz#59ccbecea82abeb53e779201d2aa0f86dfff8d10"
   dependencies:
-    force-language-services "42.0.5-0"
-    salesforce-alm "42.14.1-0"
+    force-language-services "43.0.4-0"
+    salesforce-alm "43.1.1-0"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.x, samsam@^1.1.3:
@@ -6029,10 +6093,6 @@ xmlbuilder@~9.0.1:
 xmldom-sfdx-encoding@0.1.28:
   version "0.1.28"
   resolved "http://10.252.156.164:4880/xmldom-sfdx-encoding/-/xmldom-sfdx-encoding-0.1.28.tgz#c695c6df15c1ad177b6640123ea6b81c6716144d"
-
-xmldom@0.1.22:
-  version "0.1.22"
-  resolved "http://10.252.156.164:4880/xmldom/-/xmldom-0.1.22.tgz#10de4e5e964981f03c8cc72fadc08d14b6c3aa26"
 
 xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
