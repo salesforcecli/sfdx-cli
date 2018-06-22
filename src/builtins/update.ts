@@ -1,9 +1,10 @@
-import { flags, Output } from 'cli-engine-command';
+import { Output } from 'cli-engine-command';
 import { ConfigOptions } from 'cli-engine-config';
 import CliEngineUpdate from 'cli-engine/lib/commands/update';
-import { NamedError } from '../util/NamedError';
-import * as Request from 'request';
 import * as Debug from 'debug';
+import * as Request from 'request';
+import { sleep } from '../util';
+import { NamedError } from '../util/NamedError';
 
 const debug = Debug('sfdx:update');
 
@@ -16,7 +17,7 @@ export default class Update extends CliEngineUpdate {
         super(options);
     }
 
-    public async run() {
+    public async run(): Promise<void> {
         if (!this.config.updateDisabled) {
             let s3Host = this.env.SFDX_S3_HOST;
             if (s3Host) {
@@ -34,12 +35,12 @@ export default class Update extends CliEngineUpdate {
         await this.doUpdate();
     }
 
-    public async doUpdate() {
+    public async doUpdate(): Promise<void> {
         debug('Invoking cli-engine update');
         await super.run();
     }
 
-    private async isS3HostReachable(s3Host: string, attempt = 1) {
+    private async isS3HostReachable(s3Host: string, attempt = 1): Promise<void> {
         const MAX_ATTEMPTS = 3;
         const RETRY_MILLIS = 1000;
 
@@ -51,7 +52,7 @@ export default class Update extends CliEngineUpdate {
             debug('Testing S3 host reachability... (attempt %s)', attempt);
         } else {
             debug('Re-testing S3 host reachability in %s milliseconds...', RETRY_MILLIS);
-            await this.sleep(RETRY_MILLIS);
+            await sleep(RETRY_MILLIS);
         }
 
         if (attempt === 2) {
@@ -62,9 +63,9 @@ export default class Update extends CliEngineUpdate {
                 this.out.warn('Connected.');
             }
             debug('S3 host is reachable (attempt %s)', attempt);
-            return true;
+            return;
         }
-        return await this.isS3HostReachable(s3Host, attempt + 1);
+        await this.isS3HostReachable(s3Host, attempt + 1);
     }
 
     private async isReachable(s3Host: string): Promise<boolean> {
@@ -87,8 +88,8 @@ export default class Update extends CliEngineUpdate {
         }
     }
 
-    private async ping(url: string) {
-        return await new Promise((resolve, reject) => {
+    private async ping(url: string): Promise<void> {
+        await new Promise((resolve, reject) => {
             this.request.get({ url, timeout: 4000 }, (err, res) => {
                 if (err) {
                     return reject(err);
@@ -102,9 +103,5 @@ export default class Update extends CliEngineUpdate {
                 return resolve();
             });
         });
-    }
-
-    private async sleep(millis) {
-        await new Promise((resolve) => setTimeout(resolve, millis));
     }
 }

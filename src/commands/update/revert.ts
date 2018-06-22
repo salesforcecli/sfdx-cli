@@ -1,13 +1,13 @@
-import * as path from 'path';
-import * as fs from 'fs-extra';
-import { Command, InputFlags, flags } from 'cli-engine-command';
-import { NamedError } from '../../util/NamedError';
+import { Command, InputFlags } from 'cli-engine-command';
 import { CLI as Ux } from 'cli-ux';
+import * as fs from 'fs-extra';
+import * as path from 'path';
+import { NamedError } from '../../util/NamedError';
 
-export default class Revert extends Command<any> {
+export default class Revert extends Command<InputFlags> {
     public static description = 'restores the CLI to the originally installed version, removing updates';
 
-    public async run() {
+    public async run(): Promise<void> {
         const ux = new Ux();
 
         const dataDir = this.config.dataDir;

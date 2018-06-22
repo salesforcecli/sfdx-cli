@@ -1,5 +1,5 @@
 import { assert, expect } from 'chai';
-import { isVersion, compareVersions } from './versions';
+import { compareVersions, isVersion } from './versions';
 
 describe('isVersion', () => {
     it('should recognize valid semantic versions', () => {
@@ -16,7 +16,7 @@ describe('isVersion', () => {
             '1.2.3-alpha.10.beta.0+build.unicorn.rainbow'
         ];
 
-        versions.forEach((v) => {
+        versions.forEach(v => {
             assert(isVersion(v), v);
         });
     });
@@ -32,7 +32,7 @@ describe('isVersion', () => {
             'foo 0.0.0 bar 0.0.0'
         ];
 
-        versions.forEach((v) => {
+        versions.forEach(v => {
             assert(!isVersion(v), String(v));
         });
     });

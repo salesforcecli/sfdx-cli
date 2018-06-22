@@ -1,5 +1,5 @@
 import { Config } from 'cli-engine-config';
-import { isVersion, compareVersions } from '../../versions';
+import { compareVersions, isVersion } from '../../versions';
 import timedHook from '../timedHook';
 
 const FORCE_PLUGINS = [

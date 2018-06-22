@@ -1,8 +1,8 @@
 import { Config } from 'cli-engine-config';
-import timedHook from '../../hooks/timedHook';
 import { resetTypeCache } from '.';
+import timedHook from '../../hooks/timedHook';
 
-function run(config: Config) {
+function run(config: Config): void {
     // Reset the type cache on CLI or plugin updates in case a dependency has changed types
     resetTypeCache();
 }

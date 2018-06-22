@@ -1,20 +1,9 @@
-import { assert, expect } from 'chai';
-import { Command } from 'cli-engine-command';
+import { AnyDictionary } from '@salesforce/core';
+import { expect } from 'chai';
 import { Config } from 'cli-engine-config';
 import * as fs from 'fs-extra';
 import * as sinon from 'sinon';
 import AnalyticsCommand from './analytics';
-
-class TestCommand extends Command<any> {
-    public static topic = 'fuzz';
-    public static command = 'fizz';
-}
-
-class TestCommandWithPlugin extends Command<any> {
-    public static topic = 'fuzz';
-    public static command = 'fizz';
-    public static plugin = { name: 'fuzz', version: '9.8.7' };
-}
 
 function analyticsJson() {
     return {
@@ -38,7 +27,7 @@ function analyticsJson() {
     };
 }
 
-function build(configOptions = {}, options: any = {}) {
+function build(configOptions = {}, options: AnyDictionary = {}) {
     const config: Config = {
         version: '1.2.3',
         platform: 'windows',
@@ -61,7 +50,7 @@ describe('analytics', () => {
     let sandbox: sinon.SinonSandbox;
 
     beforeEach(() => {
-        sandbox = sinon.sandbox.create();
+        sandbox = sinon.createSandbox();
         // nock.cleanAll();
         delete process.env['HEROKU_API_KEY'];
         delete process.env['CLI_ENGINE_ANALYTICS_URL'];
