@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "6.20.2-2",
+  "version": "6.21.1-1",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -67,7 +67,7 @@
   "dependencies": {
     "@salesforce/core": "0.17.2",
     "@salesforce/lazy-require": "0.0.4",
-    "@salesforce/plugin-generator": "0.0.9",
+    "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/sfdx-trust": "1.0.8",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.5",
@@ -79,7 +79,7 @@
     "fs-extra": "4.0.2",
     "lodash": "4.17.4",
     "request": "2.83.0",
-    "salesforcedx": "43.3.2-2"
+    "salesforcedx": "43.4.1-1"
   },
   "devDependencies": {
     "@salesforce/dev-config": "1.1.0",
