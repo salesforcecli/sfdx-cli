@@ -1,24 +1,22 @@
-import { Config } from 'cli-engine-config';
-
-import _ = require('lodash');
-import timedHook from '../timedHook';
-import { NamedError } from '../../util/NamedError';
 import {
+    ConfigContext,
     doInstallationCodeSigningVerification,
     InstallationVerification,
-    VerificationConfig,
-    ConfigContext
+    NpmName,
+    VerificationConfig
 } from '@salesforce/sfdx-trust';
-
+import { Config } from 'cli-engine-config';
 import { CLI } from 'cli-ux';
-import {NpmName} from '../../util/NpmName';
+import _ = require('lodash');
+import { NamedError } from '../../util/NamedError';
+import timedHook from '../timedHook';
 
 async function run(config: Config, {plugin, tag}: {plugin: string, tag: string}) {
     const cliUx = new CLI();
     cliUx.action.stop('Checking for digital signature.');
     const vConfig = new VerificationConfig();
 
-    const npmName: NpmName = NpmName.parse(plugin);
+    const npmName = NpmName.parse(plugin);
     npmName.tag = tag;
 
     const configContext: ConfigContext = {

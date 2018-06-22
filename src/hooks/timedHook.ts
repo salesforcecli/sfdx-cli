@@ -6,9 +6,9 @@ import * as Debug from 'debug';
  * @param name The debugging name of the hook; `sfdx:hook:` is automatically added as a prefix
  * @param hook The hook to wrap with debug timings
  */
-export default function timedHook(name: string, hook: (...args: any[]) => any) {
+export default function timedHook(name: string, hook: (...args: any[]) => any) { // tslint:disable-line:no-any
     const debug = Debug(`sfdx:hook:${name}`);
-    return async (...args: any[]) => {
+    return async (...args: any[]) => { // tslint:disable-line:no-any
         debug('enter');
         try {
             return await hook(...args);

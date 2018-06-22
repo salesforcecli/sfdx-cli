@@ -1,23 +1,24 @@
+import { json, JsonArray } from '@salesforce/core';
+import { color } from 'cli-engine-command/lib/color';
+import { Config } from 'cli-engine-config';
+import Lock from 'cli-engine/lib/lock';
+import { CLI as Ux } from 'cli-ux';
 import * as Debug from 'debug';
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import Lock from 'cli-engine/lib/lock';
-import { Config } from 'cli-engine-config';
-import { CLI as CliUx } from 'cli-ux';
-import { color } from 'cli-engine-command/lib/color';
 
 const debug = Debug('sfdx:plugins:migrate');
 
 export default class PluginMigrator {
-    public static run(config: Config) {
-        const cliUx = new CliUx();
+    public static async run(config: Config): Promise<void> {
+        const cliUx = new Ux();
         if (!config.dataDir) {
             return;
         }
         const userPluginsDir = path.join(config.dataDir, 'plugins');
         const userPluginsPjsonV5Path = path.join(userPluginsDir, 'plugins.json');
         const userPluginsPjsonV6Path = path.join(userPluginsDir, 'package.json');
-        return new PluginMigrator(
+        await new PluginMigrator(
             config,
             cliUx,
             userPluginsPjsonV5Path,
@@ -29,8 +30,8 @@ export default class PluginMigrator {
     private readonly corePlugins: string[];
 
     public constructor(
-        private config: Config,
-        private cliUx: CliUx,
+        config: Config,
+        private ux: Ux,
         private userPluginsPjsonV5Path: string,
         private userPluginsPjsonV6Path: string,
         private lock: Lock
@@ -38,7 +39,7 @@ export default class PluginMigrator {
         this.corePlugins = ((config.pjson || {})['cli-engine'] || {}).plugins || [];
     }
 
-    public async run() {
+    public async run(): Promise<void> {
         // Short circuit quickly without having to acquire the writer lock
         if (fs.existsSync(this.userPluginsPjsonV6Path) || !fs.existsSync(this.userPluginsPjsonV5Path)) {
             debug('no v5 plugins need migration');
@@ -48,7 +49,7 @@ export default class PluginMigrator {
         const pluginsJson = this.readPluginsJson();
         if (!pluginsJson) {
             debug('no v5 plugins read');
-            return false;
+            return;
         }
 
         const downgrade = await this.lock.upgrade();
@@ -59,7 +60,7 @@ export default class PluginMigrator {
         }
     }
 
-    public migratePlugins(pluginsJson: any[]) {
+    public migratePlugins(pluginsJson: JsonArray): void {
         // Prevent two parallel migrations from happening in case of a race
         if (fs.existsSync(this.userPluginsPjsonV6Path)) {
             debug('migration race detected, nothing left to do');
@@ -69,11 +70,13 @@ export default class PluginMigrator {
         debug('migrating %s plugin%s', pluginsJson.length, pluginsJson.length === 1 ? '' : 's');
 
         if (pluginsJson.length > 0) {
-            if (pluginsJson.filter((plugin) => !this.corePlugins.includes(plugin.name)).length !== 0) {
-                this.cliUx.warn(color.bold.blue('v5 plug-ins found -- Complete your update to v6:'));
+            if (pluginsJson.some(plugin => json.isJsonMap(plugin) && !this.corePlugins.includes(json.ensureString(plugin.name)))) {
+                this.ux.warn(color.bold.blue('v5 plug-ins found -- Complete your update to v6:'));
             }
             for (const plugin of pluginsJson) {
-                this.migratePlugin(plugin.name, plugin.tag);
+                if (json.isJsonMap(plugin)) {
+                    this.migratePlugin(json.ensureString(plugin.name), json.ensureString(plugin.tag));
+                }
             }
         }
 
@@ -83,12 +86,12 @@ export default class PluginMigrator {
                 debug('removing v5 plugins file');
                 fs.removeSync(this.userPluginsPjsonV5Path);
             } catch (err) {
-                this.cliUx.error(err);
+                this.ux.error(err);
             }
         }
     }
 
-    private migratePlugin(name: string, tag: string) {
+    private migratePlugin(name: string, tag: string): void {
         let message;
         if (tag === 'symlink') {
             message = `- ${color.bold(name)} -- To re-link, run ${color.green('sfdx plugins:link <path>')}`;
@@ -97,10 +100,11 @@ export default class PluginMigrator {
         } else {
             message = `- ${color.bold(name)} -- To re-install, run ${color.green(`sfdx plugins:install ${name}${tag ? '@' : ''}${tag}`)}`;
         }
-        this.cliUx.warn(`${message}`);
+        this.ux.warn(`${message}`);
     }
 
-    private readPluginsJson() {
+    // tslint:disable-next-line:no-any
+    private readPluginsJson(): any[] | undefined {
         try {
             debug('reading plugins.json');
             const plugins = fs.readJsonSync(this.userPluginsPjsonV5Path);

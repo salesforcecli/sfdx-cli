@@ -1,33 +1,32 @@
+import { AnyJson, Dictionary } from '@salesforce/core';
+import { masquerade, Stub, StubbedType, stubInterface } from '@salesforce/ts-sinon';
 import { expect } from 'chai';
-import { sandbox as Sandbox, SinonSpy, createStubInstance } from 'sinon';
-import * as fs from 'fs-extra';
-import { Config } from 'cli-engine-config';
 import Lock from 'cli-engine/lib/lock';
+import { CLI as Ux } from 'cli-ux';
+import * as fs from 'fs-extra';
+import * as sinon from 'sinon';
 import PluginMigrator from './PluginMigrator';
-import { CLI as CliUx } from 'cli-ux';
 
 const userPluginsDir = '/User/foo/.local/share/sfdx/plugins';
 const userPluginsPjsonV5Path = `${userPluginsDir}/plugins.json`;
 const userPluginsPjsonV6Path = `${userPluginsDir}/package.json`;
 
 describe('plugin migrator', () => {
-    let sandbox;
-    let lockUpgrade: sinon.SinonSpy;
-    let lockDowngrade: sinon.SinonSpy;
-    let lock: any;
-    let config: any;
-    let cliUx: CliUx;
-    let existsSync: sinon.SinonSpy;
-    let readJsonSync: sinon.SinonSpy;
-    let removeSync: sinon.SinonSpy;
+    let sandbox: sinon.SinonSandbox;
+    let lockDowngrade: Stub<() => {}>;
+    let lock: StubbedType<Lock>;
+    let config: { pjson: { 'cli-engine': { plugins: string[] } } };
+    let ux: StubbedType<Ux>;
+    let existsSync: Stub<typeof fs.existsSync>;
+    let readJsonSync: Stub<typeof fs.readJsonSync>;
+    let removeSync: Stub<typeof fs.removeSync>;
 
     beforeEach(() => {
-        sandbox = Sandbox.create();
+        sandbox = sinon.createSandbox();
         lockDowngrade = sandbox.stub();
-        lockUpgrade = sandbox.stub().callsFake(() => lockDowngrade);
-        lock = { upgrade: lockUpgrade };
+        lock = stubInterface<Lock>(sandbox, { upgrade: () => lockDowngrade });
         config = { pjson: { 'cli-engine': { plugins: ['core-plugin'] } } };
-        cliUx = createStubInstance(CliUx);
+        ux = stubInterface<Ux>(sandbox);
         readJsonSync = stubReadJsonSync({
             [userPluginsPjsonV5Path]: [{
                 name: 'linked-plugin',
@@ -69,12 +68,12 @@ describe('plugin migrator', () => {
         expect(readJsonSync.notCalled).to.equal(true);
 
         // lock assertions
-        expect(lockUpgrade.notCalled).to.equal(true);
+        expect(lock.upgrade.notCalled).to.equal(true);
         expect(lockDowngrade.notCalled).to.equal(true);
 
         // log assertions
-        expect((cliUx.warn as SinonSpy).notCalled).to.equal(true);
-        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
+        expect(ux.warn.notCalled).to.equal(true);
+        expect(ux.error.notCalled).to.equal(true);
     });
 
     it('should short-circuit if the v6 plugin file is found', async () => {
@@ -91,12 +90,12 @@ describe('plugin migrator', () => {
         expect(readJsonSync.notCalled).to.equal(true);
 
         // lock assertions
-        expect(lockUpgrade.notCalled).to.equal(true);
+        expect(lock.upgrade.notCalled).to.equal(true);
         expect(lockDowngrade.notCalled).to.equal(true);
 
         // log assertions
-        expect((cliUx.warn as SinonSpy).notCalled).to.equal(true);
-        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
+        expect(ux.warn.notCalled).to.equal(true);
+        expect(ux.error.notCalled).to.equal(true);
     });
 
     it('should short-circuit if the v5 plugin file cannot be read', async () => {
@@ -105,7 +104,7 @@ describe('plugin migrator', () => {
             [userPluginsPjsonV5Path]: true
         });
         readJsonSync = stubReadJsonSync({
-            [userPluginsPjsonV5Path]: undefined
+            [userPluginsPjsonV5Path]: null
         });
 
         await newMigrator().run();
@@ -117,12 +116,12 @@ describe('plugin migrator', () => {
         expect(readJsonSync.calledOnce).to.equal(true);
 
         // lock assertions
-        expect(lockUpgrade.notCalled).to.equal(true);
+        expect(lock.upgrade.notCalled).to.equal(true);
         expect(lockDowngrade.notCalled).to.equal(true);
 
         // log assertions
-        expect((cliUx.warn as SinonSpy).notCalled).to.equal(true);
-        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
+        expect(ux.warn.notCalled).to.equal(true);
+        expect(ux.error.notCalled).to.equal(true);
     });
 
     it('should short-circuit if the v5 plugin file does not contain an array', async () => {
@@ -143,12 +142,12 @@ describe('plugin migrator', () => {
         expect(readJsonSync.calledOnce).to.equal(true);
 
         // lock assertions
-        expect(lockUpgrade.notCalled).to.equal(true);
+        expect(lock.upgrade.notCalled).to.equal(true);
         expect(lockDowngrade.notCalled).to.equal(true);
 
         // log assertions
-        expect((cliUx.warn as SinonSpy).notCalled).to.equal(true);
-        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
+        expect(ux.warn.notCalled).to.equal(true);
+        expect(ux.error.notCalled).to.equal(true);
     });
 
     it('should read and warn on v5 plugins if the v5 plugin file exists without the v6 file', async () => {
@@ -171,12 +170,11 @@ describe('plugin migrator', () => {
         expect(removeSync.firstCall.args).to.deep.equal([userPluginsPjsonV5Path]);
 
         // lock assertions
-        expect(lockUpgrade.calledOnce).to.equal(true);
+        expect(lock.upgrade.calledOnce).to.equal(true);
         expect(lockDowngrade.calledOnce).to.equal(true);
 
         // log assertions
-        const warn = (cliUx.warn as SinonSpy);
-        const warnCalls = warn.getCalls();
+        const warnCalls = ux.warn.getCalls();
         const expectedLines = [
             'v5 plug-ins found -- Complete your update to v6:',
             '- linked-plugin -- To re-link, run sfdx plugins:link <path>',
@@ -184,11 +182,11 @@ describe('plugin migrator', () => {
             '- user-plugin-versioned -- To re-install, run sfdx plugins:install user-plugin-versioned@1.0.1',
             '- core-plugin is now a core plug-in -- Use sfdx plugins --core to view its version'
         ];
-        expect((cliUx.warn as SinonSpy).callCount).to.equal(expectedLines.length);
+        expect(ux.warn.callCount).to.equal(expectedLines.length);
         for (const [i, line] of expectedLines.entries()) {
             expect(warnCalls[i].args.map(stripColors)).to.deep.equal([line]);
         }
-        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
+        expect(ux.error.notCalled).to.equal(true);
     });
 
     it('should not show the instruction to complete your update if only core plugins are found', async () => {
@@ -223,44 +221,39 @@ describe('plugin migrator', () => {
         expect(removeSync.firstCall.args).to.deep.equal([userPluginsPjsonV5Path]);
 
         // lock assertions
-        expect(lockUpgrade.calledOnce).to.equal(true);
+        expect(lock.upgrade.calledOnce).to.equal(true);
         expect(lockDowngrade.calledOnce).to.equal(true);
 
         // log assertions
-        const warn = (cliUx.warn as SinonSpy);
-        const warnCalls = warn.getCalls();
+        const warnCalls = ux.warn.getCalls();
         // this is a little weird looking but not a real case we'll be dealing with for the current v5 -> v6 update
         const expectedLines = [
             '- core-plugin1 is now a core plug-in -- Use sfdx plugins --core to view its version',
             '- core-plugin2 is now a core plug-in -- Use sfdx plugins --core to view its version'
         ];
-        expect((cliUx.warn as SinonSpy).callCount).to.equal(expectedLines.length);
+        expect(ux.warn.callCount).to.equal(expectedLines.length);
         for (const [i, line] of expectedLines.entries()) {
             expect(warnCalls[i].args.map(stripColors)).to.deep.equal([line]);
         }
-        expect((cliUx.error as SinonSpy).notCalled).to.equal(true);
+        expect(ux.error.notCalled).to.equal(true);
     });
 
-    function stubExistsSync(paths: any) {
-        return sandbox.stub(fs, 'existsSync').callsFake((path: string) => {
-            return paths[path] || false;
-        });
+    function stubExistsSync(paths: Dictionary<boolean>): Stub<typeof fs.existsSync> {
+        return sandbox.stub(fs, 'existsSync').callsFake(path => paths[path] || false);
     }
 
-    function stubReadJsonSync(paths: any) {
-        if ((fs.readJsonSync as any).isSinonProxy) {
-            (fs.readJsonSync as SinonSpy).restore();
+    function stubReadJsonSync(paths: Dictionary<AnyJson>): Stub<typeof fs.readJsonSync> {
+        if ((fs.readJsonSync as any).isSinonProxy) { // tslint:disable-line:no-any isSinonProxy is not in sinon typings
+            (fs.readJsonSync as sinon.SinonStub).restore();
         }
-        return sandbox.stub(fs, 'readJsonSync').callsFake((path: string) => {
-            return paths[path];
-        });
+        return sandbox.stub(fs, 'readJsonSync').callsFake(path => paths[path]);
     }
 
-    function stubRemoveSync() {
+    function stubRemoveSync(): Stub<typeof fs.removeSync> {
         return sandbox.stub(fs, 'removeSync');
     }
 
-    function stripColors(s: string) {
+    function stripColors(s: string): string {
         const pattern = [
             '[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[a-zA-Z\\d]*)*)?\\u0007)',
             '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))'
@@ -271,7 +264,7 @@ describe('plugin migrator', () => {
     function newMigrator() {
         return new PluginMigrator(
             config,
-            cliUx,
+            masquerade(ux),
             userPluginsPjsonV5Path,
             userPluginsPjsonV6Path,
             lock

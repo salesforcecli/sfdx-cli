@@ -1,9 +1,8 @@
-
-import { Command } from 'cli-engine-command';
+import { Command, InputFlags } from 'cli-engine-command';
 import Analytics from '../../analytics';
 
-export default class AnalyticsClear extends Command<any> {
-    public async run(a: any, b: any, c: any) {
+export default class AnalyticsClear extends Command<InputFlags> {
+    public async run(): Promise<void> {
         await new Analytics(this.config).clear();
     }
 }

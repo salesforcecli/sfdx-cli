@@ -1,6 +1,6 @@
-import path = require('path');
-import { buildConfig } from 'cli-engine-config';
 import LazyRequire from '@salesforce/lazy-require';
+import { buildConfig } from 'cli-engine-config';
+import path = require('path');
 
 let lazyRequire: LazyRequire;
 

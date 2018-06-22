@@ -11,5 +11,6 @@ declare module 'cli-engine-heroku/lib/vars' {
         constructor(env: any);
     }
 
-    export default new Vars({});
+    const vars: Vars;
+    export default vars;
 }

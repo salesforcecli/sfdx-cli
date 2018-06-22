@@ -1,4 +1,3 @@
-
 import Analytics from '../analytics';
 
 try {

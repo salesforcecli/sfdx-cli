@@ -1,10 +1,10 @@
 import CLI from 'cli-engine';
 import { Config } from 'cli-engine-config';
 import * as path from 'path';
-import env from './util/env';
 import * as lazyRequire from './experiments/lazyRequire';
+import env from './util/env';
 
-export function create(version: string, channel: string) {
+export function create(version: string, channel: string): CLI {
     const root = path.join(__dirname, '..');
     const pjson = require(path.join(root, 'package.json')); // tslint:disable-line
     const args = process.argv.slice(1);
@@ -34,7 +34,7 @@ export const UPDATE_DISABLED_DEMO =
     'To check for a new version, unset the environment variable SFDX_ENV.';
 
 export function configureAutoUpdate(envars: typeof env, config: Config): Config {
-    const sfdxEnv = envars.get('SFDX_ENV');
+    const sfdxEnv = envars.getString('SFDX_ENV');
     if (sfdxEnv && sfdxEnv.toLowerCase() === 'demo') {
         // Disable autoupdates in demo mode
         envars.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
@@ -49,7 +49,7 @@ export function configureAutoUpdate(envars: typeof env, config: Config): Config 
         return config;
     }
 
-    if (!envars.get('SFDX_AUTOUPDATE_DISABLE')) {
+    if (!envars.getString('SFDX_AUTOUPDATE_DISABLE')) {
         // Disable autoupdates if run from an npm install or in local dev, if not explicitly set
         envars.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
     }

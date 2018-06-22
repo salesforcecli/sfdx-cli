@@ -265,3 +265,14 @@ declare module 'cli-engine-command' {
         request(url: string, options: HTTPRequestOptions | null): Promise<any>;
     }
 }
+
+declare module 'cli-engine-command/lib/color' {
+    type color = {
+        (s: string): string;
+        dim: color,
+        blue: color,
+        bold: color,
+        green: color
+    };
+    export const color: color;
+}
