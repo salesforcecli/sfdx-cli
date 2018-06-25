@@ -1,13 +1,13 @@
 /* tslint:disable:no-unused-expression */
 
-import { assert, expect } from 'chai';
-import { Env } from './util/env';
+import { expect } from 'chai';
 import {
     configureAutoUpdate,
+    UPDATE_DISABLED_DEMO,
     UPDATE_DISABLED_INSTALLER,
-    UPDATE_DISABLED_OTHER,
-    UPDATE_DISABLED_DEMO
+    UPDATE_DISABLED_OTHER
 } from './cli';
+import { Env } from './util/env';
 
 describe('CLI flags', () => {
     let env: Env;
@@ -49,7 +49,7 @@ describe('CLI flags', () => {
     });
 
     it('should have autoupdate disabled when in demo mode', () => {
-        env.set('SFDX_ENV', 'DEMO');
+        env.setString('SFDX_ENV', 'DEMO');
         const config = configureAutoUpdate(env, {});
 
         expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;

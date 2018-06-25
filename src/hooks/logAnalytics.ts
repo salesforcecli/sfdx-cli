@@ -1,5 +1,6 @@
-import { Config } from 'cli-engine-config';
+import { AnyDictionary } from '@salesforce/core';
 import * as cp from 'child_process';
+import { Config } from 'cli-engine-config';
 import * as Debug from 'debug';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -7,7 +8,7 @@ import timedHook from './timedHook';
 
 const debug = Debug('sfdx:analytics');
 
-function run(config: Config, opts: any) {
+function run(config: Config, opts: AnyDictionary) {
     try {
         const start = Date.now();
         const command = opts.Command;
@@ -15,7 +16,7 @@ function run(config: Config, opts: any) {
         // Only log usage for commands with plugins
         if (command && command.plugin) {
             debug('setting up exit handler');
-            process.on('exit', (status) => {
+            process.on('exit', status => {
                 const logFile = path.join(config.cacheDir as string, 'analytics.log');
                 debug(`using ${logFile} for usage error logging`);
 

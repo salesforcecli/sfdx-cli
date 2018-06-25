@@ -1,8 +1,8 @@
-import { assert, expect } from 'chai';
-import { processCliFlags } from './flags';
+import { expect } from 'chai';
+import { processCliFlags, ProcessLike } from './flags';
 
 describe('CLI flags', () => {
-    let process;
+    let process: ProcessLike;
 
     beforeEach(() => {
         process = {

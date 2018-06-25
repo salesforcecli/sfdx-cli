@@ -1,16 +1,16 @@
-import { assert, expect } from 'chai';
+import { expect } from 'chai';
 import * as cp from 'child_process';
 import * as fs from 'fs';
-import hook = require('./logAnalytics');
 import * as sinon from 'sinon';
+import hook = require('./logAnalytics');
 
 /* tslint:disable:no-unused-expression */
 
 describe('prerun:analytics hook', () => {
-    const sandbox = sinon.sandbox.create();
-    let spawn;
-    let on;
-    let unref;
+    const sandbox = sinon.createSandbox();
+    let spawn: sinon.SinonStub;
+    let on: sinon.SinonStub;
+    let unref: sinon.SinonStub;
 
     beforeEach(() => {
         sandbox.stub(fs, 'openSync').callsFake(() => { });

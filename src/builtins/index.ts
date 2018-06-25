@@ -4,7 +4,7 @@ export const commands = [
     Update
 ];
 
-export const topics = commands.map((cmd) => {
+export const topics = commands.map(cmd => {
     return {
         topic: cmd.topic,
         command: cmd.command,

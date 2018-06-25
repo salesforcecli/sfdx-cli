@@ -4,7 +4,7 @@ import { convertFromV5, LegacyCommand } from './converter';
 describe('legacy converter', () => {
     describe('convertFromV5', () => {
         it('should export a context', async () => {
-            let ctx: any = {};
+            let ctx: any = {}; // tslint:disable-line:no-any
             const lc: LegacyCommand = {
                 args: [{name: 'foo'}],
                 command: 'bar',
@@ -12,7 +12,7 @@ describe('legacy converter', () => {
                 init: () => {
                     return Promise.resolve();
                 },
-                run: (context) => {
+                run: context => {
                     ctx = context;
                     return Promise.resolve();
                 },
@@ -35,7 +35,7 @@ describe('legacy converter', () => {
             expect(ctx.cwd).to.equal(process.cwd());
             expect(ctx.debug).to.equal(config.debug);
             expect(ctx.flags).to.deep.equal({bar: true});
-            expect(ctx.supportsColor).to.equal((v5.out.color as any).enabled);
+            expect(ctx.supportsColor).to.equal((v5.out.color as any).enabled); // tslint:disable-line:no-any
             expect(ctx.version).to.equal(config.userAgent);
         });
     });

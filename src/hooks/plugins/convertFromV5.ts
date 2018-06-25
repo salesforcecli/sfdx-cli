@@ -1,9 +1,9 @@
 import { Command } from 'cli-engine-command';
-import timedHook from '../timedHook';
-import { Config } from 'cli-engine-config';
 import { color } from 'cli-engine-command/lib/color';
+import { Config } from 'cli-engine-config';
+import timedHook from '../timedHook';
 
-function run(config: any, { module }: any) {
+function run(config: Config, { module }: any): void { // tslint:disable-line:no-any
     if (module.namespace) {
         const ns = module.namespace.name;
 
@@ -15,9 +15,9 @@ function run(config: any, { module }: any) {
     }
 }
 
-function convertFromV5Commands(commands: any[] = [], ns: string) {
+function convertFromV5Commands(commands: any[] = [], ns: string): any[] { // tslint:disable-line:no-any
     return commands
-        .map((cmd: any) => {
+        .map((cmd: any) => { // tslint:disable-line:no-any
             if (cmd.namespace === ns) {
                 cmd.topic = ns;
                 return cmd;
@@ -38,22 +38,22 @@ function convertFromV5Commands(commands: any[] = [], ns: string) {
         });
 }
 
-function convertFromV5Topics(topics: any[] = [], ns: string, nsDescription: string) {
+function convertFromV5Topics(topics: any[] = [], ns: string, nsDescription: string): any[] { // tslint:disable-line:no-any
     return [{
         description: nsDescription,
         hidden: false,
         name: ns
-    }].concat(topics.map((topic: any) => {
+    }].concat(topics.map((topic: any) => { // tslint:disable-line:no-any
         topic.name = applyNamespace(topic.name, ns);
         return topic;
     }));
 }
 
-function hasNamespace(name: string, ns: string) {
-    return name && name.indexOf(ns + ':') === 0;
+function hasNamespace(name: string, ns: string): boolean {
+    return !!name && name.indexOf(ns + ':') === 0;
 }
 
-function applyNamespace(name: string, ns: string) {
+function applyNamespace(name: string, ns: string): string {
     return !hasNamespace(name, ns) ? `${ns}:${name}` : name;
 }
 
