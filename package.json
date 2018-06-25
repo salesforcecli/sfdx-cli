@@ -70,7 +70,7 @@
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/sfdx-trust": "1.0.8",
     "ansi-escapes": "3.0.0",
-    "cli-engine": "4.7.5",
+    "cli-engine": "4.7.6",
     "cli-engine-command": "9.0.7",
     "cli-engine-config": "3.5.0",
     "cli-engine-heroku": "5.0.3",
