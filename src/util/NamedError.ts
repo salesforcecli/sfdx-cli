@@ -1,7 +1,7 @@
 export class NamedError extends Error {
 
     private _name: string;
-    private _reason: Error;
+    private _reason?: Error;
 
     constructor(name: string, message: string) {
         super(message);
@@ -12,20 +12,20 @@ export class NamedError extends Error {
         return this._name;
     }
 
-    public get reason(): Error {
+    public get reason(): Error | undefined {
         return this._reason;
     }
 
-    public set reason(value: Error) {
+    public set reason(value: Error | undefined) {
         this._reason = value;
     }
 
-    public setReason(value: Error) {
+    public setReason(value: Error): NamedError {
         this._reason = value;
         return this;
     }
 
-    public setReasonByMessage(value: string) {
+    public setReasonByMessage(value: string): NamedError {
         this._reason = new Error(value);
         return this;
     }

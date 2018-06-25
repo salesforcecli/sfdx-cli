@@ -1,38 +1,9 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
-    "jsRules": {},
-    "rules": {
-        "interface-name": false,
-        "max-classes-per-file": false,
+    "extends": "@salesforce/dev-config/tslint",
+    "jsRules": {
         "max-line-length": false,
         "no-console": false,
-        "no-empty": false,
-        "no-string-literal": false,
-        "object-literal-sort-keys": false,
-        "ordered-imports": false,
-        "no-floating-promises": true,
-        "quotemark": [
-            true,
-            "single",
-            "avoid-template"
-        ],
-        "space-before-function-paren": [
-            false
-        ],
-        "trailing-comma": [
-            true,
-            {
-                "multiline": "never",
-                "singleline": "never"
-            }
-        ],
-        "variable-name": [
-            true,
-            "allow-leading-underscore"
-        ]
-    },
-    "rulesDirectory": []
+        "quotemark": { "options":[ "single" ] },
+        "trailing-comma": false
+    }
 }

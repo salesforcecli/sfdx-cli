@@ -1,16 +1,15 @@
 {
+    "extends": "./node_modules/@salesforce/dev-config/tsconfig.json",
     "compilerOptions": {
-        "target": "es2017",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "lib": [
-            "es2017"
-        ],
-        "noImplicitThis": true,
-        "strictNullChecks": true,
         "sourceRoot": "src",
         "outDir": "dist",
-        "sourceMap": true,
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
+        "baseUrl": "./",
+        "strict": true,
+        "skipLibCheck": true,
+        "declaration": false,
         "allowJs": true
     },
     "include": [

@@ -1,5 +1,12 @@
-export function processCliFlags(process) {
-    process.argv = process.argv.filter((arg) => {
+import { AnyDictionary } from '@salesforce/core';
+
+export interface ProcessLike {
+    argv: string[];
+    env: AnyDictionary;
+}
+
+export function processCliFlags(process: ProcessLike): void {
+    process.argv = process.argv.filter((arg: string) => {
         let match = true;
         switch (arg) {
             case '--dev-debug': {

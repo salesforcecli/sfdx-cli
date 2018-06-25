@@ -1,6 +1,8 @@
 import { Arg, Command, Flag, flags as Flags, InputFlags } from 'cli-engine-command';
-import { Config } from 'cli-engine-config';
 import * as vars from 'cli-engine-heroku/lib/vars';
+
+// tslint:disable:no-any
+// tslint:disable:no-reserved-keywords
 
 export interface LegacyContext {
     supportsColor: boolean;
@@ -81,7 +83,7 @@ export function convertFromV5(c: LegacyCommand) {
                     process.stderr.write(ansi.cursorShow);
                 }
             });
-            Object.keys(ctx.flags).forEach((k) => ctx.flags[k] === undefined && delete ctx.flags[k]);
+            Object.keys(ctx.flags).forEach(k => ctx.flags[k] === undefined && delete ctx.flags[k]);
             return c.run(ctx);
         }
     }
@@ -114,7 +116,7 @@ function convertFlagsFromV5(flags: (LegacyFlag[] | { [name: string]: Flag<any> }
             parse: flag.parse,
             required: flag.required
         };
-        Object.keys(opts).forEach((k) => opts[k] === undefined && delete opts[k]);
+        Object.keys(opts).forEach(k => opts[k] === undefined && delete opts[k]);
         converted[flag.name] = flag.hasValue ? Flags.string(opts) : Flags.boolean(opts as any);
         return converted;
     }, {});

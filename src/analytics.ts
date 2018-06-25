@@ -1,9 +1,7 @@
-
+import { AnyDictionary } from '@salesforce/core';
 import { Config } from 'cli-engine-config';
 import * as fs from 'fs-extra';
 import * as path from 'path';
-
-import { Command } from 'cli-engine-command';
 
 interface AnalyticsJSONCommand {
     command: string;
@@ -34,7 +32,7 @@ export default class AnalyticsCommand {
         return path.join(this.config.cacheDir as string, 'analytics.json');
     }
 
-    public async record(plugin: any, commandId: string, runtime: number, status: number): Promise<void> {
+    public async record(plugin: AnyDictionary | undefined, commandId: string, runtime: number, status: number): Promise<void> {
         if (!plugin) {
             return;
         }
@@ -57,7 +55,7 @@ export default class AnalyticsCommand {
         await this.writeJSON(analyticsJSON);
     }
 
-    public async clear() {
+    public async clear(): Promise<void> {
         await this.writeJSON(this.initialAnalyticsJSON());
     }
 
@@ -81,7 +79,7 @@ export default class AnalyticsCommand {
         };
     }
 
-    private async writeJSON(analyticsJSON: AnalyticsJSON) {
-        return fs.outputJson(this.analyticsPath, analyticsJSON);
+    private async writeJSON(analyticsJSON: AnalyticsJSON): Promise<void> {
+        await fs.outputJson(this.analyticsPath, analyticsJSON);
     }
 }

@@ -1,9 +1,8 @@
-
-import { Command } from 'cli-engine-command';
+import { Command, InputFlags } from 'cli-engine-command';
 import Analytics from '../analytics';
 
-export default class AnalyticsGet extends Command<any> {
-    public async run(a: any, b: any, c: any) {
+export default class AnalyticsGet extends Command<InputFlags> {
+    public async run(): Promise<void> {
         this.out.log(JSON.stringify(await new Analytics(this.config).readJSON()));
     }
 }
