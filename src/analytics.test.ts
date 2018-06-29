@@ -1,4 +1,4 @@
-import { AnyDictionary } from '@salesforce/core';
+import { AnyDictionary } from '@salesforce/ts-json';
 import { expect } from 'chai';
 import { Config } from 'cli-engine-config';
 import * as fs from 'fs-extra';

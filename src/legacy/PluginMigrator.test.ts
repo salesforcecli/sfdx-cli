@@ -1,4 +1,4 @@
-import { AnyJson, Dictionary } from '@salesforce/core';
+import { AnyJson, Dictionary } from '@salesforce/ts-json';
 import { masquerade, Stub, StubbedType, stubInterface } from '@salesforce/ts-sinon';
 import { expect } from 'chai';
 import Lock from 'cli-engine/lib/lock';

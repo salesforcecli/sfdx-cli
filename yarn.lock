@@ -179,10 +179,10 @@
     "@oclif/parser" "3.2.9"
     "@oclif/plugin-help" "^1.2.7"
     "@oclif/test" "^1.0.1"
-    "@salesforce/core" "0.16.13"
+    "@salesforce/ts-json" "0.16.13"
     lodash "4.17.4"
 
-"@salesforce/core@0.16.13":
+"@salesforce/ts-json@0.16.13":
   version "0.16.13"
   resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.16.13.tgz#88b1bd257bcfcc58d74b03a1be646f10e2ecd08a"
   dependencies:
@@ -194,7 +194,7 @@
     lodash "4.17.4"
     mkdirp "0.5.1"
 
-"@salesforce/core@0.16.14":
+"@salesforce/ts-json@0.16.14":
   version "0.16.14"
   resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.16.14.tgz#ef080188dad5b511de3af2c7227c8c9c398dae12"
   dependencies:
@@ -206,27 +206,13 @@
     lodash "4.17.4"
     mkdirp "0.5.1"
 
-"@salesforce/core@0.16.16":
+"@salesforce/ts-json@0.16.16":
   version "0.16.16"
   resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.16.16.tgz#bc42db643025466536a05eb25d2a6e25da40f89d"
   dependencies:
     bunyan-sfdx-no-dtrace "1.8.2"
     chalk "2.4.0"
     cli-ux "3.3.25"
-    jsforce "1.8.4"
-    jsonwebtoken "7.0.0"
-    lodash "4.17.4"
-    mkdirp "0.5.1"
-
-"@salesforce/core@0.17.2":
-  version "0.17.2"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.17.2.tgz#8fd02f5744c3670cca7e4ce4451a837b49bde7dc"
-  dependencies:
-    bunyan-sfdx-no-dtrace "1.8.2"
-    chalk "2.4.0"
-    cli-ux "3.3.25"
-    debug "3.1.0"
-    jsen "0.6.6"
     jsforce "1.8.4"
     jsonwebtoken "7.0.0"
     lodash "4.17.4"
@@ -273,7 +259,7 @@
     "@oclif/config" "1.6.3"
     "@oclif/errors" "1.0.4"
     "@salesforce/command" "0.1.5"
-    "@salesforce/core" "0.16.13"
+    "@salesforce/ts-json" "0.16.13"
     cli-ux "3.4.1"
     mkdirp "0.5.1"
 
@@ -3749,10 +3735,6 @@ jsen@0.6.4:
   version "0.6.4"
   resolved "http://10.252.156.164:4880/jsen/-/jsen-0.6.4.tgz#ddd0ee19f5b7102c8f50f98dd0a9feee4ef576ce"
 
-jsen@0.6.6:
-  version "0.6.6"
-  resolved "http://10.252.156.164:4880/jsen/-/jsen-0.6.6.tgz#0240c18cf11350ac021456f48a7eb13bd67e0420"
-
 jsesc@^1.3.0:
   version "1.3.0"
   resolved "http://10.252.156.164:4880/jsesc/-/jsesc-1.3.0.tgz#46c3fec8c1892b12b0833db9bc7622176dbab34b"
@@ -5600,7 +5582,7 @@ salesforce-alm@43.0.25:
   version "43.0.25"
   resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-43.0.25.tgz#a9edc33530d70da9acbce98117a4e4514c671763"
   dependencies:
-    "@salesforce/core" "0.16.14"
+    "@salesforce/ts-json" "0.16.14"
     adm-zip "0.4.7"
     archiver "1.0.1"
     bluebird "3.4.6"
@@ -5639,7 +5621,7 @@ salesforce-alm@43.3.1-1:
   version "43.3.1-1"
   resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-43.3.1-1.tgz#a358c506e5160aed5032fbbdbb2fd2b64407caa5"
   dependencies:
-    "@salesforce/core" "0.16.16"
+    "@salesforce/ts-json" "0.16.16"
     adm-zip "0.4.7"
     archiver "1.0.1"
     bluebird "3.4.6"

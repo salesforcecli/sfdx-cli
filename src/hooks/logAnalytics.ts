@@ -1,4 +1,4 @@
-import { AnyDictionary } from '@salesforce/core';
+import { AnyDictionary } from '@salesforce/ts-json';
 import * as cp from 'child_process';
 import { Config } from 'cli-engine-config';
 import * as Debug from 'debug';
