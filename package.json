@@ -69,6 +69,7 @@
     "@salesforce/lazy-require": "0.0.4",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/sfdx-trust": "1.0.8",
+    "@salesforce/ts-json": "0.0.2",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.5",
     "cli-engine-command": "9.0.7",

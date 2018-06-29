@@ -6,7 +6,7 @@
   version "0.0.0"
   resolved "http://10.252.156.164:4880/@cli-engine%2fscreen/-/screen-0.0.0.tgz#c2e847c7d4d998490c9097282bf21637d5162116"
 
-"@heroku-cli/color@^1.0.4", "@heroku-cli/color@^1.1.5":
+"@heroku-cli/color@^1.0.4":
   version "1.1.5"
   resolved "http://10.252.156.164:4880/@heroku-cli%2fcolor/-/color-1.1.5.tgz#d98781513f8daebb21aaaf54c9e8d497db3efcfb"
   dependencies:
@@ -30,6 +30,14 @@
   version "1.1.0"
   resolved "http://10.252.156.164:4880/@nodelib%2ffs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
 
+"@oclif/color@^0.0.0":
+  version "0.0.0"
+  resolved "http://10.252.156.164:4880/@oclif%2fcolor/-/color-0.0.0.tgz#54939bbd16d1387511bf1a48ccda1a417248e6a9"
+  dependencies:
+    ansi-styles "^3.2.1"
+    supports-color "^5.4.0"
+    tslib "^1"
+
 "@oclif/command@1.4.2":
   version "1.4.2"
   resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.2.tgz#f20ead470e87f629812ce21ddd72042c88517a5d"
@@ -37,12 +45,21 @@
     "@oclif/parser" "^3.2.9"
     semver "^5.5.0"
 
-"@oclif/command@^1.3.1", "@oclif/command@^1.4.21", "@oclif/command@^1.4.29", "@oclif/command@^1.4.33", "@oclif/command@^1.4.6":
+"@oclif/command@^1.3.1", "@oclif/command@^1.4.21", "@oclif/command@^1.4.29", "@oclif/command@^1.4.33":
   version "1.4.33"
   resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.33.tgz#40a48e7384d6b4394c2ca20e5c05ff45541087f5"
   dependencies:
     "@oclif/errors" "^1.1.2"
     "@oclif/parser" "^3.5.1"
+    debug "^3.1.0"
+    semver "^5.5.0"
+
+"@oclif/command@^1.4.30", "@oclif/command@^1.4.34":
+  version "1.4.34"
+  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.34.tgz#05a8798740e9a01209732cba6557f21629043b30"
+  dependencies:
+    "@oclif/errors" "^1.1.2"
+    "@oclif/parser" "^3.5.2"
     debug "^3.1.0"
     semver "^5.5.0"
 
@@ -52,7 +69,7 @@
   dependencies:
     debug "^3.1.0"
 
-"@oclif/config@^1.3.56", "@oclif/config@^1.3.61", "@oclif/config@^1.6.17":
+"@oclif/config@^1.3.56", "@oclif/config@^1.6.17", "@oclif/config@^1.6.28":
   version "1.6.33"
   resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.6.33.tgz#61906143b30751d96dd29991c20c214bf4d9e4ff"
   dependencies:
@@ -69,7 +86,7 @@
     strip-ansi "^4.0.0"
     wrap-ansi "^3.0.1"
 
-"@oclif/errors@^1.0.11", "@oclif/errors@^1.0.2", "@oclif/errors@^1.0.3", "@oclif/errors@^1.1.2":
+"@oclif/errors@^1.0.11", "@oclif/errors@^1.0.2", "@oclif/errors@^1.1.2":
   version "1.1.2"
   resolved "http://10.252.156.164:4880/@oclif%2ferrors/-/errors-1.1.2.tgz#2a54aae07a7655cc4523cae270d0a50cbc5dbef3"
   dependencies:
@@ -89,14 +106,14 @@
   dependencies:
     "@heroku/linewrap" "^1.0.0"
 
-"@oclif/parser@^3.2.9", "@oclif/parser@^3.5.1":
+"@oclif/parser@^3.2.9", "@oclif/parser@^3.5.1", "@oclif/parser@^3.5.2":
   version "3.5.2"
   resolved "http://10.252.156.164:4880/@oclif%2fparser/-/parser-3.5.2.tgz#541bd783463ea0b3717836a12de36cf2a73297de"
   dependencies:
     "@oclif/linewrap" "^1.0.0"
     chalk "^2.4.1"
 
-"@oclif/plugin-help@^1.1.6", "@oclif/plugin-help@^1.2.1", "@oclif/plugin-help@^1.2.7":
+"@oclif/plugin-help@^1.1.6", "@oclif/plugin-help@^1.2.7":
   version "1.2.11"
   resolved "http://10.252.156.164:4880/@oclif%2fplugin-help/-/plugin-help-1.2.11.tgz#e6413a6009519230bc4c7e7fe45d8e139939e657"
   dependencies:
@@ -108,17 +125,29 @@
     widest-line "^2.0.0"
     wrap-ansi "^3.0.1"
 
-"@oclif/plugin-not-found@^1.0.5":
-  version "1.1.2"
-  resolved "http://10.252.156.164:4880/@oclif%2fplugin-not-found/-/plugin-not-found-1.1.2.tgz#eb8379e0cac4e4d50c495d981726cc0d2c6f1750"
+"@oclif/plugin-help@^2.0.5":
+  version "2.0.5"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-help/-/plugin-help-2.0.5.tgz#98084286099b44c8c6ed6214e3589f32525f4827"
   dependencies:
-    "@heroku-cli/color" "^1.1.5"
-    "@oclif/command" "^1.4.33"
-    cli-ux "^4.6.3"
+    "@oclif/command" "^1.4.30"
+    chalk "^2.4.1"
+    indent-string "^3.2.0"
+    lodash.template "^4.4.0"
+    string-width "^2.1.1"
+    widest-line "^2.0.0"
+    wrap-ansi "^3.0.1"
+
+"@oclif/plugin-not-found@^1.0.9":
+  version "1.1.4"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-not-found/-/plugin-not-found-1.1.4.tgz#e9bf1bb196f28148ae132ed3d224c37bea703ace"
+  dependencies:
+    "@oclif/color" "^0.0.0"
+    "@oclif/command" "^1.4.34"
+    cli-ux "^4.7.3"
     fast-levenshtein "^2.0.6"
     lodash "^4.17.10"
 
-"@oclif/plugin-warn-if-update-available@^1.2.2":
+"@oclif/plugin-warn-if-update-available@^1.3.9":
   version "1.3.9"
   resolved "http://10.252.156.164:4880/@oclif%2fplugin-warn-if-update-available/-/plugin-warn-if-update-available-1.3.9.tgz#ed1f55eea994b0e2bd918b4353daa0d937e84ad6"
   dependencies:
@@ -217,24 +246,25 @@
     "@types/debug" "0.0.30"
     debug "3.1.0"
 
-"@salesforce/plugin-generator@0.0.9":
-  version "0.0.9"
-  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-generator/-/plugin-generator-0.0.9.tgz#d97add7210a425e5203b225f1bc7dee6dd586e5e"
+"@salesforce/plugin-generator@0.0.10":
+  version "0.0.10"
+  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-generator/-/plugin-generator-0.0.10.tgz#44a2ca60a1694a56ac834c1294f6c7d902951017"
   dependencies:
-    "@oclif/command" "^1.4.6"
-    "@oclif/config" "^1.3.61"
-    "@oclif/errors" "^1.0.3"
-    "@oclif/plugin-help" "^1.2.1"
-    "@oclif/plugin-not-found" "^1.0.5"
-    "@oclif/plugin-warn-if-update-available" "^1.2.2"
+    "@oclif/command" "^1.4.33"
+    "@oclif/config" "^1.6.28"
+    "@oclif/errors" "^1.1.2"
+    "@oclif/plugin-help" "^2.0.5"
+    "@oclif/plugin-not-found" "^1.0.9"
+    "@oclif/plugin-warn-if-update-available" "^1.3.9"
     debug "^3.1.0"
     fixpack "^2.3.1"
-    lodash "^4.17.5"
+    lodash "^4.17.10"
     nps-utils "^1.5.0"
     sort-pjson "^1.0.2"
-    yeoman-environment "^2.0.5"
-    yeoman-generator "^2.0.3"
-    yosay "^2.0.1"
+    tslib "^1.9.2"
+    yeoman-environment "^2.2.0"
+    yeoman-generator "^2.0.5"
+    yosay "^2.0.2"
 
 "@salesforce/sfdx-trust@1.0.8":
   version "1.0.8"
@@ -246,6 +276,10 @@
     "@salesforce/core" "0.16.13"
     cli-ux "3.4.1"
     mkdirp "0.5.1"
+
+"@salesforce/ts-json@0.0.2":
+  version "0.0.2"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-json/-/ts-json-0.0.2.tgz#b5d838adcbab20249c3f8d4ac2a36bf9749de6c8"
 
 "@salesforce/ts-sinon@0.0.5":
   version "0.0.5"
@@ -1232,7 +1266,7 @@ cli-ux@^2.0.20, cli-ux@^2.0.4:
     supports-color "^5.1.0"
     ts-lodash "^4.0.8"
 
-cli-ux@^4.6.3:
+cli-ux@^4.7.3:
   version "4.7.3"
   resolved "http://10.252.156.164:4880/cli-ux/-/cli-ux-4.7.3.tgz#5b7f5e70105fde53883c5307a88e2f29f64236c4"
   dependencies:
@@ -5601,9 +5635,9 @@ salesforce-alm@43.0.25:
     xml2js "0.4.17"
     xmldom-sfdx-encoding "0.1.28"
 
-salesforce-alm@43.2.1-1:
-  version "43.2.1-1"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-43.2.1-1.tgz#f937590f4d9bb89d6d8efd117e2c2583c30bae5f"
+salesforce-alm@43.3.1-1:
+  version "43.3.1-1"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-43.3.1-1.tgz#a358c506e5160aed5032fbbdbb2fd2b64407caa5"
   dependencies:
     "@salesforce/core" "0.16.16"
     adm-zip "0.4.7"
@@ -5638,7 +5672,7 @@ salesforce-alm@43.2.1-1:
     selenium-standalone "6.6.0"
     webdriverio "4.1.0"
     xml2js "0.4.17"
-    xmldom-sfdx-encoding "0.1.28"
+    xmldom-sfdx-encoding "0.1.29"
 
 salesforce-lightning-cli@1.5.2:
   version "1.5.2"
@@ -5651,12 +5685,12 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@43.3.2-2:
-  version "43.3.2-2"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-43.3.2-2.tgz#e96750236b984ca4c2d889a335b5022341069a99"
+salesforcedx@43.4.1-2:
+  version "43.4.1-2"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-43.4.1-2.tgz#1c1b8a4104783dbfd7e337916b13c4b888f25f16"
   dependencies:
     force-language-services "43.0.4-0"
-    salesforce-alm "43.2.1-1"
+    salesforce-alm "43.3.1-1"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.3.0:
@@ -6373,7 +6407,7 @@ ts-node@^5.0.1:
     source-map-support "^0.5.3"
     yn "^2.0.0"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.2:
+tslib@^1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.2:
   version "1.9.3"
   resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
 
@@ -6770,6 +6804,10 @@ xmldom-sfdx-encoding@0.1.28:
   version "0.1.28"
   resolved "http://10.252.156.164:4880/xmldom-sfdx-encoding/-/xmldom-sfdx-encoding-0.1.28.tgz#c695c6df15c1ad177b6640123ea6b81c6716144d"
 
+xmldom-sfdx-encoding@0.1.29:
+  version "0.1.29"
+  resolved "http://10.252.156.164:4880/xmldom-sfdx-encoding/-/xmldom-sfdx-encoding-0.1.29.tgz#afe58f6cddc7821845c6b312c6e462a9ce624494"
+
 xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
   resolved "http://10.252.156.164:4880/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
@@ -6859,6 +6897,26 @@ yeoman-environment@^2.0.0, yeoman-environment@^2.0.5:
     text-table "^0.2.0"
     untildify "^3.0.2"
 
+yeoman-environment@^2.2.0:
+  version "2.3.0"
+  resolved "http://10.252.156.164:4880/yeoman-environment/-/yeoman-environment-2.3.0.tgz#53ea899e50dd64c9510bc1b1c96a810582e42bdb"
+  dependencies:
+    chalk "^2.1.0"
+    cross-spawn "^6.0.5"
+    debug "^3.1.0"
+    diff "^3.3.1"
+    escape-string-regexp "^1.0.2"
+    globby "^8.0.1"
+    grouped-queue "^0.3.3"
+    inquirer "^5.2.0"
+    is-scoped "^1.0.0"
+    lodash "^4.17.10"
+    log-symbols "^2.1.0"
+    mem-fs "^1.1.0"
+    strip-ansi "^4.0.0"
+    text-table "^0.2.0"
+    untildify "^3.0.2"
+
 yeoman-generator@0.24.1:
   version "0.24.1"
   resolved "http://10.252.156.164:4880/yeoman-generator/-/yeoman-generator-0.24.1.tgz#1ca74429d9c5c95db0b22859ec180a2599bc1f8e"
@@ -6900,7 +6958,7 @@ yeoman-generator@0.24.1:
     yeoman-test "^1.0.0"
     yeoman-welcome "^1.0.0"
 
-yeoman-generator@^2.0.3, yeoman-generator@^2.0.5:
+yeoman-generator@^2.0.5:
   version "2.0.5"
   resolved "http://10.252.156.164:4880/yeoman-generator/-/yeoman-generator-2.0.5.tgz#57b0b3474701293cc9ec965288f3400b00887c81"
   dependencies:
@@ -6953,7 +7011,7 @@ yn@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/yn/-/yn-2.0.0.tgz#e5adabc8acf408f6385fc76495684c88e6af689a"
 
-yosay@^2.0.1:
+yosay@^2.0.2:
   version "2.0.2"
   resolved "http://10.252.156.164:4880/yosay/-/yosay-2.0.2.tgz#a7017e764cd88d64a1ae64812201de5b157adf6d"
   dependencies:
