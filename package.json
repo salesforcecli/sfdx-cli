@@ -87,7 +87,7 @@
     "@types/chai": "4.0.4",
     "@types/debug": "0.0.30",
     "@types/fs-extra": "4.0.2",
-    "@types/lodash": "4.14.76",
+    "@types/lodash": "4.14.110",
     "@types/mocha": "2.2.43",
     "@types/node": "8.0.28",
     "@types/request": "2.0.3",

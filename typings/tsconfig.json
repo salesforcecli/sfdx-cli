@@ -5,8 +5,7 @@
         "lib": [
             "es2017"
         ],
-        "noImplicitThis": true,
-        "strictNullChecks": true,
+        "strict": true,
         "baseUrl": ".",
         "typeRoots": [
             "."
