@@ -17,10 +17,10 @@ declare module 'cli-engine/lib/lock' {
 
         public constructor(config: Config);
         public updatelockfile(): string;
-        public read();
-        public unread();
-        public canRead();
-        public upgrade();
+        public read(): void;
+        public unread(): void;
+        public canRead(): boolean;
+        public upgrade(): () => { };
     }
 }
 
@@ -33,7 +33,7 @@ declare module 'cli-engine/lib/commands/update' {
         public static args: any[];
         public static flags: InputFlags;
 
-        public run();
-        public logChop();
+        public run(): Promise<void>;
+        public logChop(): void;
     }
 }
