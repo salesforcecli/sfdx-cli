@@ -1,4 +1,4 @@
-import { AnyDictionary } from '@salesforce/core';
+import { AnyDictionary } from '@salesforce/ts-json';
 import { expect } from 'chai';
 import hook = require('./convertFromV5');
 

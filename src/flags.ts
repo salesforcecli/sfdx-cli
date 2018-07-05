@@ -1,4 +1,4 @@
-import { AnyDictionary } from '@salesforce/core';
+import { AnyDictionary } from '@salesforce/ts-json';
 
 export interface ProcessLike {
     argv: string[];

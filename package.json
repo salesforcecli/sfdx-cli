@@ -65,10 +65,10 @@
     "!dist/**/*.test.js"
   ],
   "dependencies": {
-    "@salesforce/core": "0.17.2",
     "@salesforce/lazy-require": "0.0.4",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/sfdx-trust": "1.0.8",
+    "@salesforce/ts-json": "0.0.2",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.6",
     "cli-engine-command": "9.0.7",
@@ -87,7 +87,6 @@
     "@types/chai": "4.0.4",
     "@types/debug": "0.0.30",
     "@types/fs-extra": "4.0.2",
-    "@types/jsforce": "1.8.13",
     "@types/lodash": "4.14.76",
     "@types/mocha": "2.2.43",
     "@types/node": "8.0.28",

@@ -1,10 +1,10 @@
+import { NamedError } from '@salesforce/ts-json';
 import { Output } from 'cli-engine-command';
 import { ConfigOptions } from 'cli-engine-config';
 import CliEngineUpdate from 'cli-engine/lib/commands/update';
 import * as Debug from 'debug';
 import * as Request from 'request';
 import { sleep } from '../util';
-import { NamedError } from '../util/NamedError';
 
 const debug = Debug('sfdx:update');
 

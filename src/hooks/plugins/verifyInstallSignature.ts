@@ -5,10 +5,10 @@ import {
     NpmName,
     VerificationConfig
 } from '@salesforce/sfdx-trust';
+import { NamedError } from '@salesforce/ts-json';
 import { Config } from 'cli-engine-config';
 import { CLI } from 'cli-ux';
 import _ = require('lodash');
-import { NamedError } from '../../util/NamedError';
 import timedHook from '../timedHook';
 
 async function run(config: Config, {plugin, tag}: {plugin: string, tag: string}) {

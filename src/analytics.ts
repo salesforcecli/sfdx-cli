@@ -1,4 +1,4 @@
-import { AnyDictionary } from '@salesforce/core';
+import { AnyDictionary } from '@salesforce/ts-json';
 import { Config } from 'cli-engine-config';
 import * as fs from 'fs-extra';
 import * as path from 'path';
