@@ -46,7 +46,6 @@ The most useful scripts can be run from `yarn`:
 * `yarn release-windows`: Builds all Windows installer executables and uploads to S3
 * `yarn release-windows-debug`: Same as `yarn release-windows`, but with AWS actions disabled
 * `yarn test`: Runs unit tests
-* `yarn typings`: Runs typings tests
 * `yarn unit`: Runs unit tests with coverage
 * `yarn watch`: Runs the TypeScript compiler in watch mode
 

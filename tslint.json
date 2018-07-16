@@ -5,5 +5,10 @@
         "no-console": false,
         "quotemark": { "options":[ "single" ] },
         "trailing-comma": false
+    },
+    "linterOptions": {
+        "exclude": [
+            "dist/**"
+        ]
     }
 }

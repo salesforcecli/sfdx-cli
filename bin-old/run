@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+// TODO replace with oclif plugin?
+// Check node version before requiring additional packages
+require('../dist/versions').checkNodeVersion();
+
+// Pre-process/prune flags before creating or running the actual CLI
+require('../dist/flags').processCliFlags(process);
+
+const cli = require('../dist/cli');
+const pjson = require('../package.json');
+
+module.exports.run = function() {
+    // OVERRIDES gets replaced with particular values for binary builds,
+    // but simply use defaults for npm and local invocations.
+    const overrides = { /* @OVERRIDES@ */ };
+    const version = overrides.version || pjson.version;
+    const channel = overrides.channel || pjson.cli.channel;
+    return cli.create(version, channel).run();
+};

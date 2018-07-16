@@ -20,3 +20,4 @@ checkstyle.xml
 .sfdx
 /release/
 src/temp
+.nyc_output

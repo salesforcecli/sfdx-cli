@@ -3,7 +3,10 @@
 
 'use strict';
 
-const pjson = require('../package.json');
+const path = require('path');
+
+const root = path.join(__dirname, '..');
+const pjson = require(path.join(root, 'package.json'));
 
 /**
  * Determines whether or not a tag string is a semantic version.
@@ -16,7 +19,7 @@ function isVersion(tag) {
         return false;
     }
     // From https://github.com/sindresorhus/semver-regex
-    const SEMVER_REGEX = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-]+(?:\.[\da-z-]+)*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?$/ig;
+    const SEMVER_REGEX = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z\-]+(?:\.[\da-z\-]+)*)?(?:\+[\da-z\-]+(?:\.[\da-z\-]+)*)?$/ig;
     return SEMVER_REGEX.test(tag.toString());
 }
 

@@ -7,7 +7,7 @@ powered-test
 docs
 website
 images
-assets
+#assets
 
 # examples
 example

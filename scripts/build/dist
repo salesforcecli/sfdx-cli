@@ -9,8 +9,3 @@ if [[ ! -z "${NPM_REGISTRY:-}" ]]; then
     npm config set registry "$NPM_REGISTRY"
 fi
 yarn install --pure-lockfile --non-interactive
-
-# Build cli-engine only if it is a git checkout
-if [[ ! -d "${ROOT_DIR}/node_modules/cli-engine/lib" ]]; then
-    cd "${ROOT_DIR}/node_modules/cli-engine" && yarn && cd "$ROOT_DIR"
-fi
