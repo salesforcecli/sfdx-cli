@@ -36,7 +36,7 @@ export default class PluginMigrator {
         private userPluginsPjsonV6Path: string,
         private lock: Lock
     ) {
-        this.corePlugins = ((config.pjson || {})['cli-engine'] || {}).plugins || [];
+        this.corePlugins = ((config.pjson || {})oclif || {}).plugins || [];
     }
 
     public async run(): Promise<void> {

@@ -23,7 +23,7 @@ function getOrCreate(): LazyRequire {
         return lazyRequire;
     }
     const pjson = require('../../../package.json'); // tslint:disable-line no-var-requires
-    const cacheDir = buildConfig({ bin: pjson['cli-engine'].bin }).cacheDir!;
+    const cacheDir = buildConfig({ bin: pjsonoclif.bin }).cacheDir!;
     const typeCacheFile = path.join(cacheDir, 'module-types.json');
     return lazyRequire = LazyRequire.create(typeCacheFile);
 }

@@ -21,19 +21,18 @@
     "channel": "stable"
   },
   "oclif": {
+    "bin": "sfdx",
     "commands": "./dist/commands",
-    "bin": "sfdx",
-    "plugins": [
-      "@oclif/plugin-help"
-    ]
-  },
-  "cli-engine": {
-    "bin": "sfdx",
+    "node": "8.11.3",
     "dirname": "sfdx",
-    "node": "8.9.4",
-    "userPlugins": true,
-    "commands": "./dist/commands",
-    "legacyConverter": "./dist/legacy/converter",
+    "help": {
+      "plugins": {
+        "salesforcedx": {
+          "version": "41.8.7",
+          "type": "core"
+        }
+      }
+    },
     "hooks": {
       "plugins:preinstall": [
         "./dist/hooks/plugins/verifyInstallVersion.js",
@@ -54,7 +53,14 @@
     },
     "plugins": [
       "../dist/builtins",
-      "salesforcedx",
+      "@oclif/plugin-commands",
+      "@oclif/plugin-help",
+      "@oclif/plugin-legacy",
+      "@oclif/plugin-not-found",
+      "@oclif/plugin-plugins",
+      "@oclif/plugin-update",
+      "@oclif/plugin-warn-if-update-available",
+      "@oclif/plugin-which",
       "@salesforce/plugin-generator",
       "@salesforce/sfdx-trust"
     ],
@@ -62,34 +68,28 @@
       "bucket": "dfc-data-production",
       "folder": "media/salesforce-cli",
       "host": "developer.salesforce.com/media/salesforce-cli"
-    },
-    "help": {
-      "plugins": {
-        "salesforcedx": {
-          "version": "41.8.7",
-          "type": "core"
-        }
-      }
     }
   },
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
-    "@oclif/errors": "1.1.2",
+    "@oclif/errors": "^1",
+    "@oclif/plugin-commands": "^1",
     "@oclif/plugin-help": "^2",
+    "@oclif/plugin-legacy": "^1",
+    "@oclif/plugin-not-found": "^1",
+    "@oclif/plugin-plugins": "^1",
+    "@oclif/plugin-update": "^1",
+    "@oclif/plugin-warn-if-update-available": "^1",
+    "@oclif/plugin-which": "^1",
     "@salesforce/lazy-require": "0.0.4",
     "@salesforce/plugin-generator": "0.0.10",
-    "@salesforce/sfdx-trust": "1.0.8",
-    "ansi-escapes": "3.0.0",
-    "cli-engine": "4.7.6",
-    "cli-engine-command": "9.0.7",
-    "cli-engine-config": "3.5.0",
-    "cli-engine-heroku": "5.0.3",
-    "cli-ux": "2.0.4",
-    "debug": "3.1.0",
-    "fs-extra": "4.0.2",
-    "lodash": "4.17.4",
-    "request": "2.83.0",
+    "@salesforce/sfdx-trust": "^1",
+    "ansi-escapes": "^3",
+    "debug": "^3",
+    "fs-extra": "^4",
+    "lodash": "^4",
+    "request": "^2",
     "salesforcedx": "43.8.2-2",
     "tslib": "^1"
   },
@@ -97,7 +97,7 @@
     "@oclif/dev-cli": "^1",
     "@oclif/test": "^1",
     "@oclif/tslint": "^1",
-    "@salesforce/dev-config": "1.1.0",
+    "@salesforce/dev-config": "^1",
     "@salesforce/ts-json": "0.0.2",
     "@salesforce/ts-sinon": "0.0.5",
     "@types/chai": "^4",
@@ -141,6 +141,8 @@
     "lint": "bash scripts/lint/sources",
     "lint-all": "bash scripts/lint/all",
     "lint-with-style": "bash scripts/lint/sources_with_style",
+    "postpack": "rm -f oclif.manifest.json npm-shrinkwrap.json",
+    "prepack": "yarn clean && yarn compile && oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
     "prepare": "yarn clean && yarn compile",
     "release": "yarn release-all",
     "release-debug": "yarn release-all-debug",
@@ -156,9 +158,6 @@
     "unit": "bash scripts/test/unit",
     "uts": "mocha --require source-map-support/register --recursive \"dist/**/*.test.js\"",
     "watch": "tsc -w -p tsconfig.json",
-    "postpack": "rm -f oclif.manifest.json npm-shrinkwrap.json",
-    "posttest": "tsc -p test --noEmit && tslint -p test -t stylish",
-    "prepack": "rm -rf lib && tsc && oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
     "version": "oclif-dev readme && git add README.md"
   }
 }

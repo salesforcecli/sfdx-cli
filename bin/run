@@ -1,5 +1,19 @@
 #!/usr/bin/env node
 
-require('../dist').run()
+// Check node version before requiring additional packages
+require('../dist/versions').checkNodeVersion();
+
+// Pre-process/prune flags before creating or running the actual CLI
+require('../dist/flags').processCliFlags(process);
+
+const cli = require('../dist/cli');
+const pjson = require('../package.json');
+
+// OVERRIDES gets replaced with particular values for binary builds,
+// but simply use defaults for npm and local invocations.
+const overrides = { /* @OVERRIDES@ */ };
+const version = overrides.version || pjson.version;
+const channel = overrides.channel || pjson.cli.channel;
+cli.create(version, channel).run()
     .then(require('@oclif/command/flush'))
     .catch(require('@oclif/errors/handle'));
