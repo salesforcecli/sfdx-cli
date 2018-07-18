@@ -13,6 +13,10 @@
     },
     "include": [
         "src/**/*.ts",
-        "src/**/*.js"
+        "src/**/*.js",
+        "typings/**/*.d.ts"
+    ],
+    "exclude": [
+        "typings/**/*-tests.ts"
     ]
 }

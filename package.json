@@ -17,9 +17,6 @@
     "oclif.manifest.json",
     "!dist/**/*.test.js"
   ],
-  "cli": {
-    "channel": "stable"
-  },
   "oclif": {
     "bin": "sfdx",
     "commands": "./dist/commands",
@@ -48,7 +45,7 @@
         "./dist/hooks/logAnalytics.js"
       ],
       "update": [
-        "./dist/experiments/lazyRequire/updateHook.js"
+        "./dist/hooks/lazyRequire.js"
       ]
     },
     "plugins": [
@@ -85,7 +82,9 @@
     "@salesforce/lazy-require": "0.0.4",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/sfdx-trust": "^1",
+    "@salesforce/ts-json": "0.0.3",
     "ansi-escapes": "^3",
+    "chalk": "^2",
     "debug": "^3",
     "fs-extra": "^4",
     "lodash": "^4",
@@ -98,9 +97,9 @@
     "@oclif/test": "^1",
     "@oclif/tslint": "^1",
     "@salesforce/dev-config": "^1",
-    "@salesforce/ts-json": "0.0.2",
     "@salesforce/ts-sinon": "0.0.5",
     "@types/chai": "^4",
+    "@types/chalk": "2.2.0",
     "@types/debug": "0.0.30",
     "@types/fs-extra": "4.0.2",
     "@types/lodash": "4.14.110",
@@ -155,6 +154,7 @@
     "release-windows": "bash scripts/release/installers/windows_docker",
     "release-windows-debug": "env SKIP_AWS=true yarn release-windows",
     "test": "bash scripts/test/all",
+    "typings": "bash scripts/test/typings",
     "unit": "bash scripts/test/unit",
     "uts": "mocha --require source-map-support/register --recursive \"dist/**/*.test.js\"",
     "watch": "tsc -w -p tsconfig.json",

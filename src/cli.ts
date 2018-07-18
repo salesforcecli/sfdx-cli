@@ -1,20 +1,17 @@
-// TODO
-// import * as lazyRequire from './experiments/lazyRequire';
 import { run } from '@oclif/command';
 import { Config } from '@oclif/config';
 import * as path from 'path';
+import * as lazyRequire from './lazyRequire';
 import { default as env, Env } from './util/env';
 
-// tslint:disable-next-line:no-any
-export function create(version: string, channel: string): { run: () => Promise<any> } {
+export interface AsyncRunnable {
+    run: () => Promise<any>; // tslint:disable-line:no-any
+}
+
+export function create(version: string, channel: string): AsyncRunnable {
     const root = path.resolve(__dirname, '..');
     const pjson = require(path.resolve(__dirname, '..', 'package.json'));
     const args = process.argv.slice(2);
-
-    // Require a dark feature envar to enable the lazy loading experiment, and disable during update commands
-    // if (env.getBoolean('SFDX_LAZY_LOAD_MODULES') && args[1] !== 'update') {
-    //     lazyRequire.start();
-    // }
 
     return {
         async run() {
@@ -22,6 +19,10 @@ export function create(version: string, channel: string): { run: () => Promise<a
             // follow, so we start by loading the config ourselves and then overriding those values with our own
             // TODO: PR oclif to allow us to set these more cleanly without this awkward workaround
             const config = new Config({ name: pjson.oclif.bin, root });
+            // Require a dark feature envar to enable the lazy loading experiment, and disable during update commands
+            if (env.getBoolean('SFDX_LAZY_LOAD_MODULES') && args[1] !== 'update') {
+                await lazyRequire.start(config);
+            }
             await config.load();
             config.version = version;
             config.channel = channel;

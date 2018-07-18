@@ -13,7 +13,7 @@ const pjson = require('../package.json');
 // but simply use defaults for npm and local invocations.
 const overrides = { /* @OVERRIDES@ */ };
 const version = overrides.version || pjson.version;
-const channel = overrides.channel || pjson.cli.channel;
+const channel = overrides.channel || 'stable';
 cli.create(version, channel).run()
     .then(require('@oclif/command/flush'))
     .catch(require('@oclif/errors/handle'));
