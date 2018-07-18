@@ -77,9 +77,9 @@ describe('prerun:analytics hook', () => {
         expect(on.called).to.be.true;
         expect(unref.called).to.be.true;
 
-        const pastInScriptArgs2 = JSON.parse(spawn.getCall(0).args[1][1]);
-        expect(pastInScriptArgs2.commandId).to.equal('test');
-        expect(pastInScriptArgs2.config.shell).to.equal('zsh');
+        const passedInScriptArgs2 = JSON.parse(spawn.getCall(0).args[1][1]);
+        expect(passedInScriptArgs2.commandId).to.equal('test');
+        expect(passedInScriptArgs2.config.shell).to.equal('zsh');
 
         expect(spawn.getCall(0).args[2].detached).to.be.true;
     });
