@@ -12,8 +12,8 @@ export default class UpdateCommand extends OclifUpdateCommand {
     public constructor(
         argv: string[],
         config: IConfig,
-        private env: Env = envars,
-        private request: typeof Request = Request
+        private env = envars,
+        private request = Request
     ) {
         super(argv, config);
     }

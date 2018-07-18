@@ -36,8 +36,15 @@ describe('builtin update command', () => {
         sandbox = sinon.createSandbox();
 
         config = stubInterface<IConfig>(sandbox, {
-            s3: {
-                host: 'developer.salesforce.com/media/salesforce-cli'
+            dataDir: 'test',
+            pjson: {
+                oclif: {
+                    update: {
+                        s3: {
+                            host: 'developer.salesforce.com/media/salesforce-cli'
+                        }
+                    }
+                }
             }
         });
 
@@ -51,9 +58,6 @@ describe('builtin update command', () => {
 
         update = stubObject(sandbox, new UpdateCommand(['update'], config, env, request), {
             request,
-            get config() {
-                return Object.assign({}, super.config, config);
-            },
             async doUpdate() {
                 return Promise.resolve();
             },
