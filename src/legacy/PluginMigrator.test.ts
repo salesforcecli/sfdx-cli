@@ -26,7 +26,9 @@ describe('plugin migrator', () => {
             type: 'core',
             version: '40.10.0'
         })];
-        ux = stubObject<typeof cli>(sandbox, ux);
+        ux = stubObject<typeof cli>(sandbox, cli, {
+            warn: () => { }
+        });
         readJsonSync = stubReadJsonSync({
             [userPluginsPjsonV5Path]: [{
                 name: 'linked-plugin',
