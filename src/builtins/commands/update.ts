@@ -3,8 +3,8 @@ import { default as OclifUpdateCommand } from '@oclif/plugin-update/lib/commands
 import { NamedError } from '@salesforce/ts-json';
 import * as Debug from 'debug';
 import * as Request from 'request';
-import { sleep } from '../util';
-import { default as envars, Env } from '../util/env';
+import { sleep } from '../../util';
+import { default as envars } from '../../util/env';
 
 const debug = Debug('sfdx:update');
 
@@ -19,11 +19,14 @@ export default class UpdateCommand extends OclifUpdateCommand {
     }
 
     public async run(): Promise<void> {
+        let s3Host = this.env.getS3HostOverride();
+        if (s3Host) {
+            // Override config value if set via envar
+            this.config.pjson.oclif.update.s3.host = s3Host;
+        }
+
         if (!this.env.isAutoupdateDisabled()) {
-            let s3Host = this.env.getS3HostOverride();
             if (s3Host) {
-                // Override config value if set via envar
-                this.config.pjson.oclif.update.s3.host = s3Host;
                 // Warn that the updater is targeting something other than the public update site
                 this.warn('Updating from SFDX_S3_HOST override. Are you on SFM?');
             }
@@ -38,7 +41,7 @@ export default class UpdateCommand extends OclifUpdateCommand {
     }
 
     public async doUpdate(): Promise<void> {
-        debug('Invoking cli-engine update');
+        debug('Invoking oclif update');
         await super.run();
     }
 

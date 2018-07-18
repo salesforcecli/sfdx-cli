@@ -12,9 +12,10 @@
   },
   "files": [
     "bin",
-    "dist/**/*.js",
     "npm-shrinkwrap.json",
     "oclif.manifest.json",
+    "dist/**/package.json",
+    "dist/**/*.js",
     "!dist/**/*.test.js"
   ],
   "oclif": {
@@ -22,24 +23,16 @@
     "commands": "./dist/commands",
     "node": "8.11.3",
     "dirname": "sfdx",
-    "help": {
-      "plugins": {
-        "salesforcedx": {
-          "version": "41.8.7",
-          "type": "core"
-        }
-      }
-    },
     "hooks": {
+      "init": [
+        "./dist/hooks/plugins/migrate.js"
+      ],
       "plugins:preinstall": [
         "./dist/hooks/plugins/verifyInstallVersion.js",
         "./dist/hooks/plugins/verifyInstallSignature.js"
       ],
       "plugins:parse": [
         "./dist/hooks/plugins/convertFromV5.js"
-      ],
-      "init": [
-        "./dist/hooks/plugins/migrate.js"
       ],
       "prerun": [
         "./dist/hooks/logAnalytics.js"
@@ -55,16 +48,31 @@
       "@oclif/plugin-legacy",
       "@oclif/plugin-not-found",
       "@oclif/plugin-plugins",
-      "@oclif/plugin-update",
       "@oclif/plugin-warn-if-update-available",
       "@oclif/plugin-which",
       "@salesforce/plugin-generator",
       "@salesforce/sfdx-trust"
     ],
-    "s3": {
-      "bucket": "dfc-data-production",
-      "folder": "media/salesforce-cli",
-      "host": "developer.salesforce.com/media/salesforce-cli"
+    "update": {
+      "s3": {
+        "bucket": "dfc-data-production",
+        "folder": "media/salesforce-cli",
+        "host": "developer.salesforce.com/media/salesforce-cli",
+        "templates": {
+          "target": {
+            "baseDir": "sfdx-cli",
+            "manifest": "<%- 'sfdx-cli/channels/' + channel + '/' %><%- platform %>-<%- arch %>",
+            "unversioned": "<%- 'sfdx-cli/channels/' + channel + '/' %><%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
+            "versioned": "<%- 'sfdx-cli/channels/' + channel + '/' %><%- bin %>-v<%- version %>/<%- bin %>-v<%- version %>-<%- platform %>-<%- arch %><%- ext %>"
+          },
+          "vanilla": {
+            "baseDir": "sfdx-cli",
+            "manifest": "<%- 'sfdx-cli/channels/' + channel + '/' %>version",
+            "unversioned": "<%- 'sfdx-cli/channels/' + channel + '/' %><%- bin %><%- ext %>",
+            "versioned": "<%- 'sfdx-cli/channels/' + channel + '/' %><%- bin %>-v<%- version %>/<%- bin %>-v<%- version %><%- ext %>"
+          }
+        }
+      }
     }
   },
   "dependencies": {

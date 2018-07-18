@@ -128,14 +128,14 @@ PKG_DESC=$(node -p "require('$ROOT_DIR/package.json').description")
 BIN_NAME=$(node -p "require('$ROOT_DIR/package.json').oclif.bin")
 
 # S3 configuration
-DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json').oclif.s3.folder")
+DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json').oclif.update.s3.folder")
 S3_FOLDER="${S3_FOLDER:-"$DEFAULT_S3_FOLDER"}"
 S3_CHANNEL_SUBFOLDER="$PKG_NAME/channels/$CHANNEL"
-DEFAULT_S3_BUCKET=$(node -p "require('$ROOT_DIR/package.json').oclif.s3.bucket")
+DEFAULT_S3_BUCKET=$(node -p "require('$ROOT_DIR/package.json').oclif.update.s3.bucket")
 S3_BUCKET="${S3_BUCKET:-"$DEFAULT_S3_BUCKET"}"
 S3_BASE_UPLOAD_URL="s3://$S3_BUCKET/$S3_FOLDER"
 S3_CHANNEL_UPLOAD_URL="$S3_BASE_UPLOAD_URL/$S3_CHANNEL_SUBFOLDER"
-DEFAULT_S3_HOST=$(node -p "require('$ROOT_DIR/package.json').oclif.s3.host")
+DEFAULT_S3_HOST=$(node -p "require('$ROOT_DIR/package.json').oclif.update.s3.host")
 S3_HOST="${S3_HOST:-"$DEFAULT_S3_HOST"}"
 S3_HOST_SCHEME="${S3_HOST_SCHEME:-"https"}"
 S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST"

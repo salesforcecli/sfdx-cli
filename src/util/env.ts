@@ -9,7 +9,7 @@ export class Env {
     public static readonly S3_HOST = 'SFDX_S3_HOST';
     public static readonly LAZY_LOAD_MODULES = 'SFDX_LAZY_LOAD_MODULES';
 
-    public constructor(private env: typeof process.env = process.env) {
+    public constructor(private env = process.env) {
         this.env = env;
     }
 
@@ -19,8 +19,8 @@ export class Env {
         return this.env[key] || def;
     }
 
-    public getBoolean(key: string, def?: boolean): boolean {
-        return this.getString(key, (!!def).toString()).toLowerCase() === 'true';
+    public getBoolean(key: string, def: boolean = false): boolean {
+        return this.getString(key, def.toString()).toLowerCase() === 'true';
     }
 
     public setString(key: string, val?: string): void {
