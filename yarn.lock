@@ -153,21 +153,12 @@
     "@oclif/parser" "^3.2.9"
     semver "^5.5.0"
 
-"@oclif/command@^1", "@oclif/command@^1.4.30", "@oclif/command@^1.4.32", "@oclif/command@^1.4.34":
-  version "1.4.34"
-  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.34.tgz#05a8798740e9a01209732cba6557f21629043b30"
+"@oclif/command@^1", "@oclif/command@^1.4.21", "@oclif/command@^1.4.29", "@oclif/command@^1.4.30", "@oclif/command@^1.4.32", "@oclif/command@^1.4.33", "@oclif/command@^1.4.34":
+  version "1.4.35"
+  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.35.tgz#28e73de80215e471f953b57f861558efcdd7c677"
   dependencies:
     "@oclif/errors" "^1.1.2"
     "@oclif/parser" "^3.5.2"
-    debug "^3.1.0"
-    semver "^5.5.0"
-
-"@oclif/command@^1.4.21", "@oclif/command@^1.4.29", "@oclif/command@^1.4.33":
-  version "1.4.33"
-  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.33.tgz#40a48e7384d6b4394c2ca20e5c05ff45541087f5"
-  dependencies:
-    "@oclif/errors" "^1.1.2"
-    "@oclif/parser" "^3.5.1"
     debug "^3.1.0"
     semver "^5.5.0"
 
@@ -230,12 +221,13 @@
   dependencies:
     "@heroku/linewrap" "^1.0.0"
 
-"@oclif/parser@^3.2.9", "@oclif/parser@^3.5.1", "@oclif/parser@^3.5.2":
-  version "3.5.2"
-  resolved "http://10.252.156.164:4880/@oclif%2fparser/-/parser-3.5.2.tgz#541bd783463ea0b3717836a12de36cf2a73297de"
+"@oclif/parser@^3.2.9", "@oclif/parser@^3.5.2":
+  version "3.5.3"
+  resolved "http://10.252.156.164:4880/@oclif%2fparser/-/parser-3.5.3.tgz#fa5d0cc616a18240bcaefab02c7b7c9cb322656c"
   dependencies:
     "@oclif/linewrap" "^1.0.0"
     chalk "^2.4.1"
+    tslib "^1.9.3"
 
 "@oclif/plugin-commands@^1":
   version "1.1.3"
@@ -451,8 +443,8 @@
     yosay "^2.0.2"
 
 "@salesforce/sfdx-trust@^1":
-  version "1.0.8"
-  resolved "http://10.252.156.164:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-1.0.8.tgz#104125c27f52deb049871afd5ca7b439dacb9a0a"
+  version "1.0.9"
+  resolved "http://10.252.156.164:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-1.0.9.tgz#411ab48201f197b26436d7216ec9bc9b42067494"
   dependencies:
     "@oclif/config" "1.6.3"
     "@oclif/errors" "1.0.4"
@@ -503,29 +495,21 @@
   dependencies:
     "@types/node" "*"
 
-"@types/lodash@4.14.110", "@types/lodash@^4.14.109":
-  version "4.14.110"
-  resolved "http://10.252.156.164:4880/@types%2flodash/-/lodash-4.14.110.tgz#fb07498f84152947f30ea09d89207ca07123461e"
+"@types/lodash@^4.14.109":
+  version "4.14.112"
+  resolved "http://10.252.156.164:4880/@types%2flodash/-/lodash-4.14.112.tgz#4a8d8e5716b97a1ac01fe1931ad1e4cba719de5a"
 
-"@types/mocha@^5":
-  version "5.2.4"
-  resolved "http://10.252.156.164:4880/@types%2fmocha/-/mocha-5.2.4.tgz#2f8fbdf95c69ebf82150a7864864010f186745bf"
-
-"@types/mocha@^5.2.2":
-  version "5.2.3"
-  resolved "http://10.252.156.164:4880/@types%2fmocha/-/mocha-5.2.3.tgz#11f3a5629d67cd444fa6c94536576244e6a52ea9"
+"@types/mocha@^5", "@types/mocha@^5.2.2":
+  version "5.2.5"
+  resolved "http://10.252.156.164:4880/@types%2fmocha/-/mocha-5.2.5.tgz#8a4accfc403c124a0bafe8a9fc61a05ec1032073"
 
 "@types/nock@^9.1.3":
-  version "9.1.3"
-  resolved "http://10.252.156.164:4880/@types%2fnock/-/nock-9.1.3.tgz#1d445679375b9e25afd449dc56585f81729454e8"
+  version "9.3.0"
+  resolved "http://10.252.156.164:4880/@types%2fnock/-/nock-9.3.0.tgz#9d34358fdcc08afd07144e0784ac9e951d412dd4"
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@^10.3.3":
-  version "10.3.4"
-  resolved "http://10.252.156.164:4880/@types%2fnode/-/node-10.3.4.tgz#c74e8aec19e555df44609b8057311052a2c84d9e"
-
-"@types/node@^10":
+"@types/node@*", "@types/node@^10", "@types/node@^10.3.3":
   version "10.5.2"
   resolved "http://10.252.156.164:4880/@types%2fnode/-/node-10.5.2.tgz#f19f05314d5421fe37e74153254201a7bf00a707"
 
@@ -924,6 +908,10 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
+base64-js@^1.0.2:
+  version "1.3.0"
+  resolved "http://10.252.156.164:4880/base64-js/-/base64-js-1.3.0.tgz#cab1e6118f051095e58b5281aea8c1cd22bfc0e3"
+
 base@^0.11.1:
   version "0.11.2"
   resolved "http://10.252.156.164:4880/base/-/base-0.11.2.tgz#7bde5ced145b6d551a90db87f83c558b4eb48a8f"
@@ -937,8 +925,8 @@ base@^0.11.1:
     pascalcase "^0.1.1"
 
 bcrypt-pbkdf@^1.0.0:
-  version "1.0.1"
-  resolved "http://10.252.156.164:4880/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.1.tgz#63bc5dcb61331b92bc05fd528953c33462a06f8d"
+  version "1.0.2"
+  resolved "http://10.252.156.164:4880/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.2.tgz#a4301d389b6a43f9b67ff3ca11a3f6637e360e9e"
   dependencies:
     tweetnacl "^0.14.3"
 
@@ -1050,6 +1038,13 @@ buffer-fill@^1.0.0:
 buffer-from@^1.0.0, buffer-from@^1.1.0:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/buffer-from/-/buffer-from-1.1.0.tgz#87fcaa3a298358e0ade6e442cfce840740d1ad04"
+
+buffer@^5.1.0:
+  version "5.1.0"
+  resolved "http://10.252.156.164:4880/buffer/-/buffer-5.1.0.tgz#c913e43678c7cb7c8bd16afbcddb6c5505e8f9fe"
+  dependencies:
+    base64-js "^1.0.2"
+    ieee754 "^1.1.4"
 
 builtin-modules@^1.0.0, builtin-modules@^1.1.1:
   version "1.1.1"
@@ -1477,8 +1472,8 @@ commander@2.9.0:
     graceful-readlink ">= 1.0.0"
 
 commander@^2.12.1, commander@^2.9.0:
-  version "2.15.1"
-  resolved "http://10.252.156.164:4880/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
+  version "2.16.0"
+  resolved "http://10.252.156.164:4880/commander/-/commander-2.16.0.tgz#f16390593996ceb4f3eeb020b31d78528f7f8a50"
 
 common-tags@^1.4.0:
   version "1.8.0"
@@ -1626,8 +1621,10 @@ crc32-stream@~0.3.1:
     readable-stream "~1.0.24"
 
 crc@^3.4.4:
-  version "3.5.0"
-  resolved "http://10.252.156.164:4880/crc/-/crc-3.5.0.tgz#98b8ba7d489665ba3979f59b21381374101a1964"
+  version "3.7.0"
+  resolved "http://10.252.156.164:4880/crc/-/crc-3.7.0.tgz#58b7083e32ba4b276e1f4cbce1a78b39a6ab63f9"
+  dependencies:
+    buffer "^5.1.0"
 
 create-error-class@^3.0.0, create-error-class@^3.0.1:
   version "3.0.2"
@@ -1830,9 +1827,9 @@ deep-extend@^0.4.0:
   version "0.4.2"
   resolved "http://10.252.156.164:4880/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
 
-deep-extend@^0.5.1:
-  version "0.5.1"
-  resolved "http://10.252.156.164:4880/deep-extend/-/deep-extend-0.5.1.tgz#b894a9dd90d3023fbf1c55a394fb858eb2066f1f"
+deep-extend@^0.6.0:
+  version "0.6.0"
+  resolved "http://10.252.156.164:4880/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
 
 deep-extend@~0.2.5:
   version "0.2.11"
@@ -2139,8 +2136,8 @@ escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1
   resolved "http://10.252.156.164:4880/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
 escodegen-wallaby@^1.6.7:
-  version "1.6.18"
-  resolved "http://10.252.156.164:4880/escodegen-wallaby/-/escodegen-wallaby-1.6.18.tgz#95a41e2fdc88687466e43550c7bf136386fd4363"
+  version "1.6.19"
+  resolved "http://10.252.156.164:4880/escodegen-wallaby/-/escodegen-wallaby-1.6.19.tgz#acd6bbd73f9270763e18570cdc13c0d694759a23"
   dependencies:
     esprima "^2.7.1"
     estraverse "^1.9.1"
@@ -2287,8 +2284,8 @@ esprima@^2.7.1, esprima@~2.7.0:
   resolved "http://10.252.156.164:4880/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
 
 esprima@^4.0.0, esprima@~4.0.0:
-  version "4.0.0"
-  resolved "http://10.252.156.164:4880/esprima/-/esprima-4.0.0.tgz#4499eddcd1110e0b218bacf2fa7f7f59f55ca804"
+  version "4.0.1"
+  resolved "http://10.252.156.164:4880/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
 
 esprima@~1.0.4:
   version "1.0.4"
@@ -2429,8 +2426,8 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     is-extendable "^1.0.1"
 
 extend@^3.0.0, extend@~3.0.0, extend@~3.0.1:
-  version "3.0.1"
-  resolved "http://10.252.156.164:4880/extend/-/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
+  version "3.0.2"
+  resolved "http://10.252.156.164:4880/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
 
 external-editor@^1.1.0:
   version "1.1.1"
@@ -2940,7 +2937,18 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-globby@^8, globby@^8.0.0, globby@^8.0.1:
+globby@^7.1.1:
+  version "7.1.1"
+  resolved "http://10.252.156.164:4880/globby/-/globby-7.1.1.tgz#fb2ccff9401f8600945dfada97440cca972b8680"
+  dependencies:
+    array-union "^1.0.1"
+    dir-glob "^2.0.0"
+    glob "^7.1.2"
+    ignore "^3.3.5"
+    pify "^3.0.0"
+    slash "^1.0.0"
+
+globby@^8, globby@^8.0.1:
   version "8.0.1"
   resolved "http://10.252.156.164:4880/globby/-/globby-8.0.1.tgz#b5ad48b8aa80b35b814fc1281ecc851f1d2b5b50"
   dependencies:
@@ -3261,8 +3269,8 @@ hoek@2.x.x:
   resolved "http://10.252.156.164:4880/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
 hosted-git-info@^2.1.4:
-  version "2.6.0"
-  resolved "http://10.252.156.164:4880/hosted-git-info/-/hosted-git-info-2.6.0.tgz#23235b29ab230c576aab0d4f13fc046b0b038222"
+  version "2.7.1"
+  resolved "http://10.252.156.164:4880/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
 
 html-wiring@^1.0.0:
   version "1.2.0"
@@ -3346,6 +3354,10 @@ iconv-lite@^0.4.17:
   resolved "http://10.252.156.164:4880/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
+
+ieee754@^1.1.4:
+  version "1.1.12"
+  resolved "http://10.252.156.164:4880/ieee754/-/ieee754-1.1.12.tgz#50bf24e5b9c8bb98af4964c941cdb0918da7b60b"
 
 ignore@^3.1.2, ignore@^3.2.0, ignore@^3.3.5:
   version "3.3.10"
@@ -3598,19 +3610,9 @@ is-number@^3.0.0:
   dependencies:
     kind-of "^3.0.2"
 
-is-number@^4.0.0:
-  version "4.0.0"
-  resolved "http://10.252.156.164:4880/is-number/-/is-number-4.0.0.tgz#0026e37f5454d73e356dfe6564699867c6a7f0ff"
-
 is-object@^1.0.1:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/is-object/-/is-object-1.0.1.tgz#8952688c5ec2ffd6b03ecc85e769e02903083470"
-
-is-odd@^2.0.0:
-  version "2.0.0"
-  resolved "http://10.252.156.164:4880/is-odd/-/is-odd-2.0.0.tgz#7646624671fd7ea558ccd9a2795182f2958f1b24"
-  dependencies:
-    is-number "^4.0.0"
 
 is-path-cwd@^1.0.0:
   version "1.0.0"
@@ -3859,6 +3861,10 @@ joi@~6.10.1:
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "http://10.252.156.164:4880/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
+
+"js-tokens@^3.0.0 || ^4.0.0":
+  version "4.0.0"
+  resolved "http://10.252.156.164:4880/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
 
 js-yaml@3.x, js-yaml@^3.5.1, js-yaml@^3.7.0:
   version "3.12.0"
@@ -4361,7 +4367,7 @@ lodash@^3.2.0, lodash@^3.3.1:
   version "3.10.1"
   resolved "http://10.252.156.164:4880/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4, lodash@^4.0.0, lodash@^4.11.1, lodash@^4.17.10, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.6.1, lodash@^4.8.0:
+lodash@^4.0.0, lodash@^4.11.1, lodash@^4.17.10, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.6.1, lodash@^4.8.0:
   version "4.17.10"
   resolved "http://10.252.156.164:4880/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
@@ -4388,18 +4394,18 @@ log-symbols@^2.1.0:
     chalk "^2.0.1"
 
 lolex@^2.2.0, lolex@^2.3.2, lolex@^2.4.2:
-  version "2.7.0"
-  resolved "http://10.252.156.164:4880/lolex/-/lolex-2.7.0.tgz#9c087a69ec440e39d3f796767cf1b2cdc43d5ea5"
+  version "2.7.1"
+  resolved "http://10.252.156.164:4880/lolex/-/lolex-2.7.1.tgz#e40a8c4d1f14b536aa03e42a537c7adbaf0c20be"
 
 longest@^1.0.1:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
 
 loose-envify@^1.0.0:
-  version "1.3.1"
-  resolved "http://10.252.156.164:4880/loose-envify/-/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
+  version "1.4.0"
+  resolved "http://10.252.156.164:4880/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   dependencies:
-    js-tokens "^3.0.0"
+    js-tokens "^3.0.0 || ^4.0.0"
 
 loud-rejection@^1.0.0:
   version "1.6.0"
@@ -4477,14 +4483,14 @@ mem-fs-editor@^2.0.0:
     vinyl "^1.1.0"
 
 mem-fs-editor@^4.0.0:
-  version "4.0.2"
-  resolved "http://10.252.156.164:4880/mem-fs-editor/-/mem-fs-editor-4.0.2.tgz#55a79b1e824da631254c4c95ba6366602c77af90"
+  version "4.0.3"
+  resolved "http://10.252.156.164:4880/mem-fs-editor/-/mem-fs-editor-4.0.3.tgz#d282a0c4e0d796e9eff9d75661f25f68f389af53"
   dependencies:
     commondir "^1.0.1"
-    deep-extend "^0.5.1"
+    deep-extend "^0.6.0"
     ejs "^2.5.9"
     glob "^7.0.3"
-    globby "^8.0.0"
+    globby "^7.1.1"
     isbinaryfile "^3.0.2"
     mkdirp "^0.5.0"
     multimatch "^2.0.0"
@@ -4557,15 +4563,15 @@ micromatch@^3.1.10, micromatch@^3.1.8:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
-mime-db@~1.33.0:
-  version "1.33.0"
-  resolved "http://10.252.156.164:4880/mime-db/-/mime-db-1.33.0.tgz#a3492050a5cb9b63450541e39d9788d2272783db"
+mime-db@~1.35.0:
+  version "1.35.0"
+  resolved "http://10.252.156.164:4880/mime-db/-/mime-db-1.35.0.tgz#0569d657466491283709663ad379a99b90d9ab47"
 
 mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.18, mime-types@~2.1.6, mime-types@~2.1.7:
-  version "2.1.18"
-  resolved "http://10.252.156.164:4880/mime-types/-/mime-types-2.1.18.tgz#6f323f60a83d11146f831ff11fd66e2fe5503bb8"
+  version "2.1.19"
+  resolved "http://10.252.156.164:4880/mime-types/-/mime-types-2.1.19.tgz#71e464537a7ef81c15f2db9d97e913fc0ff606f0"
   dependencies:
-    mime-db "~1.33.0"
+    mime-db "~1.35.0"
 
 mime-types@~1.0.1:
   version "1.0.2"
@@ -4588,8 +4594,8 @@ mimic-fn@^1.0.0:
   resolved "http://10.252.156.164:4880/mimic-fn/-/mimic-fn-1.2.0.tgz#820c86a39334640e99516928bd03fca88057d022"
 
 mimic-response@^1.0.0:
-  version "1.0.0"
-  resolved "http://10.252.156.164:4880/mimic-response/-/mimic-response-1.0.0.tgz#df3d3652a73fded6b9b0b24146e6fd052353458e"
+  version "1.0.1"
+  resolved "http://10.252.156.164:4880/mimic-response/-/mimic-response-1.0.1.tgz#4923538878eef42063cb8a3e3b0798781487ab1b"
 
 "minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"
@@ -4721,15 +4727,14 @@ nan@^2.0.8:
   resolved "http://10.252.156.164:4880/nan/-/nan-2.10.0.tgz#96d0cd610ebd58d4b4de9cc0c6828cda99c7548f"
 
 nanomatch@^1.2.9:
-  version "1.2.9"
-  resolved "http://10.252.156.164:4880/nanomatch/-/nanomatch-1.2.9.tgz#879f7150cb2dab7a471259066c104eee6e0fa7c2"
+  version "1.2.13"
+  resolved "http://10.252.156.164:4880/nanomatch/-/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
   dependencies:
     arr-diff "^4.0.0"
     array-unique "^0.3.2"
     define-property "^2.0.2"
     extend-shallow "^3.0.2"
     fragment-cache "^0.2.1"
-    is-odd "^2.0.0"
     is-windows "^1.0.2"
     kind-of "^6.0.2"
     object.pick "^1.3.0"
@@ -5657,8 +5662,8 @@ ret@~0.1.10:
   resolved "http://10.252.156.164:4880/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
 
 rgb2hex@~0.1.0:
-  version "0.1.4"
-  resolved "http://10.252.156.164:4880/rgb2hex/-/rgb2hex-0.1.4.tgz#df54571d5b07a1d73e777447f0c8d17b409e3ea3"
+  version "0.1.9"
+  resolved "http://10.252.156.164:4880/rgb2hex/-/rgb2hex-0.1.9.tgz#5d3e0e14b0177b568e6f0d5b43e34fbfdb670346"
 
 right-align@^0.1.1:
   version "0.1.3"
@@ -6505,8 +6510,8 @@ topo@1.x.x:
     hoek "2.x.x"
 
 tough-cookie@, tough-cookie@*, tough-cookie@>=0.12.0:
-  version "2.4.2"
-  resolved "http://10.252.156.164:4880/tough-cookie/-/tough-cookie-2.4.2.tgz#aa9133154518b494efab98a58247bfc38818c00c"
+  version "2.4.3"
+  resolved "http://10.252.156.164:4880/tough-cookie/-/tough-cookie-2.4.3.tgz#53f36da3f47783b0925afa06ff9f3b165280f781"
   dependencies:
     psl "^1.1.24"
     punycode "^1.4.1"
@@ -6577,8 +6582,8 @@ tslint-microsoft-contrib@5.0.2:
     tsutils "^2.12.1"
 
 tslint-microsoft-contrib@^5.0.2:
-  version "5.0.3"
-  resolved "http://10.252.156.164:4880/tslint-microsoft-contrib/-/tslint-microsoft-contrib-5.0.3.tgz#6fc3e238179cd72045c2b422e4d655f4183a8d5c"
+  version "5.1.0"
+  resolved "http://10.252.156.164:4880/tslint-microsoft-contrib/-/tslint-microsoft-contrib-5.1.0.tgz#777c32d51aba16f4565e47aac749a1631176cd9f"
   dependencies:
     tsutils "^2.12.1"
 
@@ -6608,8 +6613,8 @@ tslint@5.9.1:
     tsutils "^2.12.1"
 
 tslint@^5:
-  version "5.10.0"
-  resolved "http://10.252.156.164:4880/tslint/-/tslint-5.10.0.tgz#11e26bccb88afa02dd0d9956cae3d4540b5f54c3"
+  version "5.11.0"
+  resolved "http://10.252.156.164:4880/tslint/-/tslint-5.11.0.tgz#98f30c02eae3cde7006201e4c33cb08b48581eed"
   dependencies:
     babel-code-frame "^6.22.0"
     builtin-modules "^1.1.1"
@@ -6622,7 +6627,7 @@ tslint@^5:
     resolve "^1.3.2"
     semver "^5.3.0"
     tslib "^1.8.0"
-    tsutils "^2.12.1"
+    tsutils "^2.27.2"
 
 tsutils@2.8.0:
   version "2.8.0"
@@ -6630,15 +6635,9 @@ tsutils@2.8.0:
   dependencies:
     tslib "^1.7.1"
 
-tsutils@^2.12.1:
-  version "2.27.1"
-  resolved "http://10.252.156.164:4880/tsutils/-/tsutils-2.27.1.tgz#ab0276ac23664f36ce8fd4414daec4aebf4373ee"
-  dependencies:
-    tslib "^1.8.1"
-
-tsutils@^2.24.0, tsutils@^2.27.0:
-  version "2.27.2"
-  resolved "http://10.252.156.164:4880/tsutils/-/tsutils-2.27.2.tgz#60ba88a23d6f785ec4b89c6e8179cac9b431f1c7"
+tsutils@^2.12.1, tsutils@^2.24.0, tsutils@^2.27.0, tsutils@^2.27.2:
+  version "2.28.0"
+  resolved "http://10.252.156.164:4880/tsutils/-/tsutils-2.28.0.tgz#6bd71e160828f9d019b6f4e844742228f85169a1"
   dependencies:
     tslib "^1.8.1"
 
@@ -6777,10 +6776,8 @@ url@~0.10.3:
     querystring "0.2.0"
 
 use@^3.1.0:
-  version "3.1.0"
-  resolved "http://10.252.156.164:4880/use/-/use-3.1.0.tgz#14716bf03fdfefd03040aef58d8b4b85f3a7c544"
-  dependencies:
-    kind-of "^6.0.2"
+  version "3.1.1"
+  resolved "http://10.252.156.164:4880/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
 
 user-home@^2.0.0:
   version "2.0.0"
@@ -6801,8 +6798,8 @@ uuid@^2.0.1:
   resolved "http://10.252.156.164:4880/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
 
 uuid@^3.0.0, uuid@^3.1.0:
-  version "3.2.1"
-  resolved "http://10.252.156.164:4880/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
+  version "3.3.2"
+  resolved "http://10.252.156.164:4880/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.3"
@@ -7080,8 +7077,8 @@ yarn@^1.7.0:
   resolved "http://10.252.156.164:4880/yarn/-/yarn-1.7.0.tgz#0076b9fde6010e01950526a609bc53bc175ef925"
 
 yauzl@^2.5.0:
-  version "2.9.2"
-  resolved "http://10.252.156.164:4880/yauzl/-/yauzl-2.9.2.tgz#4fb1bc7ae1fc2f57037b54af6acc8fe1031c5b77"
+  version "2.10.0"
+  resolved "http://10.252.156.164:4880/yauzl/-/yauzl-2.10.0.tgz#c7eb17c93e112cb1086fa6d8e51fb0667b79a5f9"
   dependencies:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.1.0"
@@ -7124,29 +7121,9 @@ yeoman-environment@^1.1.0:
     text-table "^0.2.0"
     untildify "^2.0.0"
 
-yeoman-environment@^2.0.0, yeoman-environment@^2.0.5:
-  version "2.2.0"
-  resolved "http://10.252.156.164:4880/yeoman-environment/-/yeoman-environment-2.2.0.tgz#6c0ee93a8d962a9f6dbc5ad4e90ae7ab34875393"
-  dependencies:
-    chalk "^2.1.0"
-    cross-spawn "^6.0.5"
-    debug "^3.1.0"
-    diff "^3.3.1"
-    escape-string-regexp "^1.0.2"
-    globby "^8.0.1"
-    grouped-queue "^0.3.3"
-    inquirer "^5.2.0"
-    is-scoped "^1.0.0"
-    lodash "^4.17.10"
-    log-symbols "^2.1.0"
-    mem-fs "^1.1.0"
-    strip-ansi "^4.0.0"
-    text-table "^0.2.0"
-    untildify "^3.0.2"
-
-yeoman-environment@^2.2.0:
-  version "2.3.0"
-  resolved "http://10.252.156.164:4880/yeoman-environment/-/yeoman-environment-2.3.0.tgz#53ea899e50dd64c9510bc1b1c96a810582e42bdb"
+yeoman-environment@^2.0.5, yeoman-environment@^2.2.0, yeoman-environment@^2.3.0:
+  version "2.3.1"
+  resolved "http://10.252.156.164:4880/yeoman-environment/-/yeoman-environment-2.3.1.tgz#1aa00cc474a8e48518ab2b0f64b43034215e9997"
   dependencies:
     chalk "^2.1.0"
     cross-spawn "^6.0.5"
@@ -7236,16 +7213,16 @@ yeoman-generator@^2.0.5:
     yeoman-environment "^2.0.5"
 
 yeoman-test@^1.0.0:
-  version "1.7.2"
-  resolved "http://10.252.156.164:4880/yeoman-test/-/yeoman-test-1.7.2.tgz#16e09918b61c5f4b9e9414c6819fa72da4a3d61a"
+  version "1.8.0"
+  resolved "http://10.252.156.164:4880/yeoman-test/-/yeoman-test-1.8.0.tgz#737a5c77d05225ac5eb5162f1a90187407938009"
   dependencies:
     inquirer "^5.2.0"
-    lodash "^4.3.0"
+    lodash "^4.17.10"
     mkdirp "^0.5.1"
     pinkie-promise "^2.0.1"
     rimraf "^2.4.4"
     sinon "^5.0.7"
-    yeoman-environment "^2.0.0"
+    yeoman-environment "^2.3.0"
     yeoman-generator "^2.0.5"
 
 yeoman-welcome@^1.0.0:

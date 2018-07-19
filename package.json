@@ -25,6 +25,7 @@
     "dirname": "sfdx",
     "hooks": {
       "init": [
+        "./dist/hooks/plugins/preinstall.js",
         "./dist/hooks/plugins/migrate.js"
       ],
       "plugins:preinstall": [
@@ -95,7 +96,6 @@
     "chalk": "^2",
     "debug": "^3",
     "fs-extra": "^4",
-    "lodash": "^4",
     "request": "^2",
     "salesforcedx": "43.8.2-2",
     "tslib": "^1"
@@ -110,7 +110,6 @@
     "@types/chalk": "2.2.0",
     "@types/debug": "0.0.30",
     "@types/fs-extra": "4.0.2",
-    "@types/lodash": "4.14.110",
     "@types/mocha": "^5",
     "@types/node": "^10",
     "@types/request": "2.0.3",
