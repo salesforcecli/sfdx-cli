@@ -3,8 +3,8 @@ import { default as OclifUpdateCommand } from '@oclif/plugin-update/lib/commands
 import { NamedError } from '@salesforce/ts-json';
 import * as Debug from 'debug';
 import * as Request from 'request';
-import { sleep } from '../../util';
-import { default as envars } from '../../util/env';
+import { sleep } from '../util';
+import { default as envars } from '../util/env';
 
 const debug = Debug('sfdx:update');
 

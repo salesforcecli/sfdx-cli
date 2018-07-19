@@ -9,7 +9,7 @@ import {
 import { assert, expect } from 'chai';
 import * as Request from 'request';
 import * as sinon from 'sinon';
-import { Env } from '../../util/env';
+import { Env } from '../util/env';
 import UpdateCommand from './update';
 
 /* tslint:disable:no-unused-expression */

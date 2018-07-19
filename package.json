@@ -14,7 +14,6 @@
     "bin",
     "npm-shrinkwrap.json",
     "oclif.manifest.json",
-    "dist/**/package.json",
     "dist/**/*.js",
     "!dist/**/*.test.js"
   ],
@@ -43,7 +42,6 @@
       ]
     },
     "plugins": [
-      "../dist/builtins",
       "@oclif/plugin-commands",
       "@oclif/plugin-help",
       "@oclif/plugin-legacy",
