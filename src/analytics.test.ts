@@ -1,6 +1,6 @@
 import { IConfig } from '@oclif/config';
 import { AnyDictionary } from '@salesforce/ts-json';
-import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
+import { stubInterface } from '@salesforce/ts-sinon';
 import { expect } from 'chai';
 import * as fs from 'fs-extra';
 import * as sinon from 'sinon';
