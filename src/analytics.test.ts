@@ -32,6 +32,7 @@ describe('analytics', () => {
     }
 
     function build(configOptions = {}, options: AnyDictionary = {}) {
+        // TODO: not all of these fields are needed now by oclif's IConfig
         const config = stubInterface<IConfig>(sandbox, {
             version: '1.2.3',
             platform: 'windows',
