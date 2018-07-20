@@ -23,7 +23,8 @@ const hook = timedHook<'prerun'>('prerun:log-analytics', async options => {
                 cp.spawn(process.argv[0], [
                     path.join(__dirname, '../processes/logUsage'),
                     JSON.stringify({
-                        config: options.config,
+                        // TODO
+                        // config: options.config,
                         plugin: command.plugin ? { name: command.plugin.name, version: command.plugin.version } : undefined,
                         commandId: command.id,
                         time: Date.now() - start,
