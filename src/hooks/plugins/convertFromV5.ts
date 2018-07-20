@@ -68,7 +68,7 @@ const hook = timedHook<'init'>('init:plugins:legacy', async options => {
             // TODO: maybe post-inspect loaded plugin for ns and massage?  see fct/fls note above
             options.config.plugins[i] = plugin;
         } catch (err) {
-            err.name = `@oclif/plugin-legacy: Plugin ${p.name}: ${err.name}`;
+            err.name = `Plugin ${p.name}: ${err.name}`;
             err.detail = compact([err.detail, p.root]).join(' ');
             process.emitWarning(err);
         }
