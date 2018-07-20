@@ -24,7 +24,6 @@ export function create(version: string, channel: string): AsyncRunnable {
             if (env.getBoolean('SFDX_LAZY_LOAD_MODULES') && args[1] !== 'update') {
                 await lazyRequire.start(config);
             }
-            await config.load();
             config.version = version;
             config.channel = channel;
             configureAutoUpdate(env);
