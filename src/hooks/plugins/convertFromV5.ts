@@ -48,7 +48,7 @@ function applyNamespace(name: string, ns: string): string {
     return !hasNamespace(name, ns) ? `${ns}:${name}` : name;
 }
 
-const hook = timedHook<'init'>('init:legacy', async options => {
+const hook = timedHook<'init'>('init:plugins:legacy', async options => {
     await Promise.all(options.config.plugins.map(async (p, i) => {
         if (p.valid) return;
         try {

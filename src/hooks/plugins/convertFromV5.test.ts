@@ -1,11 +1,10 @@
-// TODO: commented out until oclif adds `module` to the `plugins:parse` hook options?
 // import { AnyDictionary } from '@salesforce/ts-json';
 // import { expect } from 'chai';
 // import hook = require('./convertFromV5');
 
 // /* tslint:disable:no-unused-expression */
 
-// describe('plugins:parse hook', () => {
+// describe('int:plugins:legacy hook', () => {
 //     it('should map a namespaced module\'s commands and topics to a nested topic model', async () => {
 //         const rootCommand: AnyDictionary = {
 //             namespace: 'root'
