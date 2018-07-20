@@ -52,6 +52,7 @@ const hook = timedHook<'init'>('init:plugins:legacy', async options => {
     await Promise.all(options.config.plugins.map(async (p, i) => {
         if (p.valid) return;
         try {
+            // Emulate the cli-engine version envar for plugins previously coded to expect it
             process.env.CLI_ENGINE_VERSION = 'v7';
             const plugin = new PluginLegacy(options.config, p);
             const cliEngineConfig = p.pjson['cli-engine'];
