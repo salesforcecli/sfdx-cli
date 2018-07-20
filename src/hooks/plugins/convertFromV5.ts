@@ -1,6 +1,6 @@
 import { PluginLegacy } from '@oclif/plugin-legacy';
 // import chalk from 'chalk';
-import { asAnyJson, ensureJsonMap, isJsonMap } from '@salesforce/ts-json';
+import { isJsonMap } from '@salesforce/ts-json';
 import { compact } from '../../util';
 import timedHook from '../timedHook';
 
