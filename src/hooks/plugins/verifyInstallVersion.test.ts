@@ -1,6 +1,6 @@
 import { Hook } from '@oclif/config';
 import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
-import { assert, expect } from 'chai';
+import { expect } from 'chai';
 import * as sinon from 'sinon';
 import hook from './verifyInstallVersion';
 
