@@ -160,7 +160,6 @@
     "typings": "bash scripts/test/typings",
     "unit": "bash scripts/test/unit",
     "uts": "mocha --require source-map-support/register --recursive \"dist/**/*.test.js\"",
-    "watch": "tsc -w -p tsconfig.json",
-    "version": "oclif-dev readme && git add README.md"
+    "watch": "tsc -w -p tsconfig.json"
   }
 }
