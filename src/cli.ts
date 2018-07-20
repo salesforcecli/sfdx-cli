@@ -20,13 +20,13 @@ export function create(version: string, channel: string): AsyncRunnable {
             // TODO: PR oclif to allow us to set these more cleanly without this awkward workaround
             const config = new Config({ name: pjson.oclif.bin, root });
             await config.load();
+            config.version = version;
+            config.channel = channel;
+            configureAutoUpdate(env);
             // Require a dark feature envar to enable the lazy loading experiment, and disable during update commands
             if (env.getBoolean('SFDX_LAZY_LOAD_MODULES') && args[1] !== 'update') {
                 await lazyRequire.start(config);
             }
-            config.version = version;
-            config.channel = channel;
-            configureAutoUpdate(env);
             return run(args, config);
         }
     };
