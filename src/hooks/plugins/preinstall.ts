@@ -11,7 +11,7 @@ export interface PreinstallOptions {
     config: Config;
 }
 
-const hook = timedHook<'init'>('init:plugins:preinstall', async function (options) {
+const hook = timedHook<'init'>('init:plugins:preinstall', async function(options) {
     if (options.id === 'plugins:install' && options.argv.length > 0) {
         let plugin = options.argv[0];
         const scoped = plugin.includes('/');
