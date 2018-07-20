@@ -11,13 +11,8 @@ export interface PreinstallOptions {
     config: Config;
 }
 
-// TODO: for some reason oclif seems to fire hooks twice, so this ensures we run this hook once
-let hasFired = false;
-
-const hook = timedHook<'init'>('init:plugins:preinstall', async function(options) {
+const hook = timedHook<'init'>('init:plugins:preinstall', async function (options) {
     if (options.id === 'plugins:install' && options.argv.length > 0) {
-        if (hasFired) return;
-        hasFired = true;
         let plugin = options.argv[0];
         const scoped = plugin.includes('/');
         if (scoped) plugin = plugin.slice(1);

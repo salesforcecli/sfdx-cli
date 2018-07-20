@@ -10,17 +10,11 @@ const FORCE_PLUGINS = [
 
 const MIN_VERSION = '41.2.0';
 
-// TODO: for some reason oclif seems to fire hooks twice, so this ensures we run this hook once
-let hasFired = false;
-
 /**
  * A v6 CLI plugin preinstall hook that checks that the plugin's version is v6-compatible,
  * if it is recognized as a force namespace plugin.
  */
 const hook = timedHook<'plugins:preinstall'>('plugins:preinstall:version', async function(options) {
-    if (hasFired) return;
-    hasFired = true;
-
     // TODO: hopefully this is temporary until oclif adds a real preinstall hook
     const opts = options as PreinstallOptions;
 

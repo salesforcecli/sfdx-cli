@@ -13,13 +13,7 @@ import { PreinstallOptions } from './preinstall';
 
 const debug = Debug('sfdx:plugins:trust:signing');
 
-// TODO: for some reason oclif seems to fire hooks twice, so this ensures we run this hook once
-let hasFired = false;
-
 const hook = timedHook<'plugins:preinstall'>('plugins:preinstall:signing', async function(options) {
-    if (hasFired) return;
-    hasFired = true;
-
     cli.action.stop('Checking for digital signature.');
     const vConfig = new VerificationConfig();
 
