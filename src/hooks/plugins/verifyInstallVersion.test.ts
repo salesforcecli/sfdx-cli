@@ -1,12 +1,14 @@
 import { Hook } from '@oclif/config';
-import { stubInterface } from '@salesforce/ts-sinon';
+import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
 import { assert, expect } from 'chai';
 import * as sinon from 'sinon';
 import hook from './verifyInstallVersion';
 
+// tslint:disable:no-unused-expression
+
 describe('verifyInstallVersion preinstall hook', () => {
     let sandbox: sinon.SinonSandbox;
-    let context: Hook.Context;
+    let context: StubbedType<Hook.Context>;
 
     beforeEach(() => {
         sandbox = sinon.createSandbox();
@@ -40,12 +42,9 @@ describe('verifyInstallVersion preinstall hook', () => {
     });
 
     it('should not allow the salesforcedx plugin with tag "41.1.0" to be installed', async () => {
-        try {
-            await testHook('41.1.0');
-            assert.fail('Expected exception');
-        } catch (err) {
-            expect(err.message).to.contain('can only be installed');
-        }
+        await testHook('41.1.0');
+        expect(context.exit.calledOnce).to.be.true;
+        expect(context.error.getCalls().some(call => call.args[0].includes('can only be installed'))).to.be.true;
     });
 
     async function testHook(tag?: string | null) {
