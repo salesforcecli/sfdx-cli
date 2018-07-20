@@ -25,14 +25,12 @@
     "hooks": {
       "init": [
         "./dist/hooks/plugins/preinstall.js",
-        "./dist/hooks/plugins/migrate.js"
+        "./dist/hooks/plugins/migrate.js",
+        "./dist/hooks/plugins/convertFromV5.js"
       ],
       "plugins:preinstall": [
         "./dist/hooks/plugins/verifyInstallVersion.js",
         "./dist/hooks/plugins/verifyInstallSignature.js"
-      ],
-      "plugins:parse": [
-        "./dist/hooks/plugins/convertFromV5.js"
       ],
       "prerun": [
         "./dist/hooks/logAnalytics.js"
@@ -44,13 +42,13 @@
     "plugins": [
       "@oclif/plugin-commands",
       "@oclif/plugin-help",
-      "@oclif/plugin-legacy",
       "@oclif/plugin-not-found",
       "@oclif/plugin-plugins",
       "@oclif/plugin-warn-if-update-available",
       "@oclif/plugin-which",
       "@salesforce/plugin-generator",
-      "@salesforce/sfdx-trust"
+      "@salesforce/sfdx-trust",
+      "salesforcedx"
     ],
     "update": {
       "s3": {
