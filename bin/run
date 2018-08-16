@@ -17,6 +17,7 @@ const pjson = require('../package.json');
 const overrides = { /* @OVERRIDES@ */ };
 const version = overrides.version || pjson.version;
 const channel = overrides.channel || 'stable';
+
 cli.create(version, channel).run()
     .then(modules.dump, modules.dump)
     .then(require('@oclif/command/flush'))

@@ -4,32 +4,45 @@
 // tslint:disable:no-var-requires
 // tslint:disable:variable-name
 
+import env from './env';
+
 type AnyDictionary = { [key: string]: any };
 
-const debug = process.env.SFDX_DEBUG_MODULES === 'true';
+const enabled = env.getBoolean('SFDX_DEBUG_MODULES', false);
 const list: AnyDictionary = { };
-let node: AnyDictionary = { };
+let tree: AnyDictionary = {};
+let loading = false;
+let time = 0;
 
-if (debug) {
+if (enabled) {
     const paths = require('path');
     const Module = require('module');
     const origLoad = Module._load;
     let path = '';
     Module._load = (request: string, parent: object, isMain: boolean) => {
+        const wasLoading = loading;
+        loading = true;
+
         const lastPath = path;
         path = paths.resolve(path, request);
-        const lastNode = node;
-        if (!lastNode[request]) lastNode[request] = {};
-        node = lastNode[request];
+        const lastTree = tree;
+        if (!lastTree[request]) lastTree[request] = {};
+        tree = lastTree[request];
 
         const mark = Date.now();
         const mod = origLoad.call(Module, request, parent, isMain);
         const elapsed = Date.now() - mark;
 
         if (!list[path]) list[path] = elapsed;
-        if (node.elapsed == null) node.elapsed = elapsed;
-        node = lastNode;
+        if (tree.elapsed == null) tree.elapsed = elapsed;
+        tree = lastTree;
         path = lastPath;
+
+        if (!wasLoading) {
+            loading = false;
+            time += elapsed;
+        }
+
         return mod;
     };
 }
@@ -37,8 +50,9 @@ if (debug) {
 export function start(): { dump: (arg: any) => void } {
     return {
         dump(arg: any): void {
-            if (debug) {
-                console.log(JSON.stringify({ list, node }, null, 2));
+            if (enabled) {
+                const report = { time, list, tree, count: list.length };
+                console.error(JSON.stringify(report, null, 2));
             }
             return arg;
         }
