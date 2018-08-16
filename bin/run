@@ -3,6 +3,9 @@
 // Check node version before requiring additional packages
 require('../dist/versions').checkNodeVersion();
 
+// Collect module loading diagnostics if enabled
+const modules = require('../dist/util/modules').start();
+
 // Pre-process/prune flags before creating or running the actual CLI
 require('../dist/flags').processCliFlags(process);
 
@@ -15,5 +18,6 @@ const overrides = { /* @OVERRIDES@ */ };
 const version = overrides.version || pjson.version;
 const channel = overrides.channel || 'stable';
 cli.create(version, channel).run()
+    .then(modules.dump, modules.dump)
     .then(require('@oclif/command/flush'))
     .catch(require('@oclif/errors/handle'));
