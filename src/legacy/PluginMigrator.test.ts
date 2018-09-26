@@ -1,6 +1,6 @@
 import { IPlugin } from '@oclif/config';
-import { AnyJson, Dictionary } from '@salesforce/ts-json';
-import { masquerade, Stub, StubbedType, stubInterface, stubObject } from '@salesforce/ts-sinon';
+import { fromStub, Stub, StubbedType, stubInterface, stubObject } from '@salesforce/ts-sinon';
+import { AnyJson, Dictionary } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import { cli } from 'cli-ux';
 import * as fs from 'fs-extra';
@@ -250,7 +250,7 @@ describe('plugin migrator', () => {
     function newMigrator() {
         return new PluginMigrator(
             corePlugins,
-            masquerade(ux),
+            fromStub(ux),
             userPluginsPjsonV5Path,
             userPluginsPjsonV6Path
         );

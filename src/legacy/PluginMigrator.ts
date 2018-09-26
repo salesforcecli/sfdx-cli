@@ -1,5 +1,5 @@
 import { IPlugin } from '@oclif/config';
-import { ensureString, isJsonMap, JsonArray, Optional } from '@salesforce/ts-json';
+import { ensureString, isJsonMap, JsonArray, Optional } from '@salesforce/ts-types';
 import chalk from 'chalk';
 import { cli } from 'cli-ux';
 import * as Debug from 'debug';

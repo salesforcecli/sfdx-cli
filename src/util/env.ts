@@ -1,4 +1,5 @@
-import { Optional } from '@salesforce/ts-json';
+import { Env as KitEnv } from '@salesforce/kit';
+import { Optional } from '@salesforce/ts-types';
 
 export class Env {
     public static readonly CLI_MODE = 'SFDX_ENV';

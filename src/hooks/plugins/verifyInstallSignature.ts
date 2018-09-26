@@ -1,3 +1,4 @@
+import { NamedError } from '@salesforce/kit';
 import {
     ConfigContext,
     doInstallationCodeSigningVerification,
@@ -5,7 +6,6 @@ import {
     NpmName,
     VerificationConfig
 } from '@salesforce/sfdx-trust';
-import { NamedError } from '@salesforce/ts-json';
 import { cli } from 'cli-ux';
 import * as Debug from 'debug';
 import timedHook from '../timedHook';

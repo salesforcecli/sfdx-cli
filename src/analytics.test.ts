@@ -1,6 +1,6 @@
 import { IConfig } from '@oclif/config';
-import { AnyDictionary } from '@salesforce/ts-json';
 import { stubInterface } from '@salesforce/ts-sinon';
+import { Dictionary } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import * as fs from 'fs-extra';
 import * as sinon from 'sinon';
@@ -31,7 +31,7 @@ describe('analytics', () => {
         };
     }
 
-    function build(configOptions = {}, options: AnyDictionary = {}) {
+    function build(configOptions: Dictionary<string> = {}, options: Dictionary = {}) {
         // TODO: not all of these fields are needed now by oclif's IConfig
         const config = stubInterface<IConfig>(sandbox, {
             version: '1.2.3',

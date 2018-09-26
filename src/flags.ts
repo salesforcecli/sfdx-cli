@@ -1,4 +1,4 @@
-import { Dictionary } from '@salesforce/ts-json';
+import { Dictionary } from '@salesforce/ts-types';
 
 export interface ProcessLike {
     argv: string[];
@@ -13,6 +13,7 @@ export function processCliFlags(process: ProcessLike): void {
                 process.env.DEBUG = '*';
                 process.env.SFDX_DEBUG = '1';
                 process.env.SFDX_ENV = 'development';
+                process.env.NODE_ENV = 'development';
                 break;
             }
             default: {

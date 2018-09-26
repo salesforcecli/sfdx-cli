@@ -1,5 +1,5 @@
 import { IConfig } from '@oclif/config';
-import { AnyDictionary, Optional } from '@salesforce/ts-json';
+import { Dictionary, Optional } from '@salesforce/ts-types';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
@@ -32,7 +32,7 @@ export default class AnalyticsCommand {
         return path.join(this.config.cacheDir as string, 'analytics.json');
     }
 
-    public async record(plugin: Optional<AnyDictionary>, commandId: string, runtime: number, status: number): Promise<void> {
+    public async record(plugin: Optional<Dictionary>, commandId: string, runtime: number, status: number): Promise<void> {
         if (!plugin) {
             return;
         }

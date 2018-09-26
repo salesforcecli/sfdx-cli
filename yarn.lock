@@ -396,16 +396,18 @@
     lodash "4.17.4"
     mkdirp "0.5.1"
 
-"@salesforce/core@0.16.16":
-  version "0.16.16"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.16.16.tgz#bc42db643025466536a05eb25d2a6e25da40f89d"
+"@salesforce/core@0.18.1":
+  version "0.18.1"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.18.1.tgz#fc78c68e4851dcea11f847526858d427a5644bef"
   dependencies:
+    "@salesforce/ts-json" "0.0.2"
+    "@types/jsforce" "1.8.12"
     bunyan-sfdx-no-dtrace "1.8.2"
-    chalk "2.4.0"
-    cli-ux "3.3.25"
+    debug "^3.1.0"
+    jsen "0.6.6"
     jsforce "1.8.4"
     jsonwebtoken "7.0.0"
-    lodash "4.17.4"
+    lodash "^4.17.4"
     mkdirp "0.5.1"
 
 "@salesforce/dev-config@^1":
@@ -414,6 +416,12 @@
   dependencies:
     tslint "5.9.1"
     tslint-microsoft-contrib "5.0.2"
+
+"@salesforce/kit@0.4.0":
+  version "0.4.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fkit/-/kit-0.4.0.tgz#066c17f19e32b5d1e69a2b9c8cd347dfb15d6613"
+  dependencies:
+    "@salesforce/ts-types" "0.11.0"
 
 "@salesforce/lazy-require@0.0.4":
   version "0.0.4"
@@ -453,15 +461,24 @@
     cli-ux "3.4.1"
     mkdirp "0.5.1"
 
-"@salesforce/ts-json@0.0.3":
-  version "0.0.3"
-  resolved "http://10.252.156.164:4880/@salesforce%2fts-json/-/ts-json-0.0.3.tgz#0356316980b3b6e51e7570ad96b771c48d15b1c1"
+"@salesforce/ts-json@0.0.2":
+  version "0.0.2"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-json/-/ts-json-0.0.2.tgz#b5d838adcbab20249c3f8d4ac2a36bf9749de6c8"
 
-"@salesforce/ts-sinon@0.0.5":
-  version "0.0.5"
-  resolved "http://10.252.156.164:4880/@salesforce%2fts-sinon/-/ts-sinon-0.0.5.tgz#8bdc2b938a32835537aeb44f340a1d23bcb11be9"
+"@salesforce/ts-sinon@0.2.0":
+  version "0.2.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-sinon/-/ts-sinon-0.2.0.tgz#214d21e3db6dd90b1d975271ca9b082949bc2bbb"
   dependencies:
+    "@salesforce/ts-types" "0.12.0"
     sinon "5.0.7"
+
+"@salesforce/ts-types@0.11.0":
+  version "0.11.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.11.0.tgz#09146c909863652652f99d2808b38ca60db24a01"
+
+"@salesforce/ts-types@0.12.0":
+  version "0.12.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.12.0.tgz#174729945da894d36a731d74df41034fd91f91f2"
 
 "@sinonjs/formatio@^2.0.0":
   version "2.0.0"
@@ -483,6 +500,10 @@
   version "0.0.30"
   resolved "http://10.252.156.164:4880/@types%2fdebug/-/debug-0.0.30.tgz#dc1e40f7af3b9c815013a7860e6252f6352a84df"
 
+"@types/events@*":
+  version "1.2.0"
+  resolved "http://10.252.156.164:4880/@types%2fevents/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
+
 "@types/form-data@*":
   version "2.2.1"
   resolved "http://10.252.156.164:4880/@types%2fform-data/-/form-data-2.2.1.tgz#ee2b3b8eaa11c0938289953606b745b738c54b1e"
@@ -494,6 +515,12 @@
   resolved "http://10.252.156.164:4880/@types%2ffs-extra/-/fs-extra-4.0.2.tgz#7b9b1bbf85962cbe029b5a83c9b530d7c75af3ba"
   dependencies:
     "@types/node" "*"
+
+"@types/jsforce@1.8.12":
+  version "1.8.12"
+  resolved "http://10.252.156.164:4880/@types%2fjsforce/-/jsforce-1.8.12.tgz#ff7554feaf2a962513d7167a34975842930a8b6c"
+  dependencies:
+    "@types/events" "*"
 
 "@types/lodash@^4.14.109":
   version "4.14.112"
@@ -694,6 +721,19 @@ archiver@~0.14.3:
     readable-stream "~1.0.26"
     tar-stream "~1.1.0"
     zip-stream "~0.5.0"
+
+archiver@~2.1.0:
+  version "2.1.1"
+  resolved "http://10.252.156.164:4880/archiver/-/archiver-2.1.1.tgz#ff662b4a78201494a3ee544d3a33fe7496509ebc"
+  dependencies:
+    archiver-utils "^1.3.0"
+    async "^2.0.0"
+    buffer-crc32 "^0.2.1"
+    glob "^7.0.0"
+    lodash "^4.8.0"
+    readable-stream "^2.0.0"
+    tar-stream "^1.5.0"
+    zip-stream "^1.2.0"
 
 archy@^1.0.0:
   version "1.0.0"
@@ -985,6 +1025,18 @@ boom@2.x.x:
   resolved "http://10.252.156.164:4880/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+boom@4.x.x:
+  version "4.3.1"
+  resolved "http://10.252.156.164:4880/boom/-/boom-4.3.1.tgz#4f8a3005cb4a7e3889f749030fd25b96e01d2e31"
+  dependencies:
+    hoek "4.x.x"
+
+boom@5.x.x:
+  version "5.2.0"
+  resolved "http://10.252.156.164:4880/boom/-/boom-5.2.0.tgz#5dd9da6ee3a5f302077436290cb717d3f4a54e02"
+  dependencies:
+    hoek "4.x.x"
 
 brace-expansion@^1.0.0, brace-expansion@^1.1.7:
   version "1.1.11"
@@ -1676,6 +1728,12 @@ cryptiles@2.x.x:
   dependencies:
     boom "2.x.x"
 
+cryptiles@3.x.x:
+  version "3.1.2"
+  resolved "http://10.252.156.164:4880/cryptiles/-/cryptiles-3.1.2.tgz#a89fbb220f5ce25ec56e8c4aa8a4fd7b5b0d29fe"
+  dependencies:
+    boom "5.x.x"
+
 csprng@, csprng@*:
   version "0.1.2"
   resolved "http://10.252.156.164:4880/csprng/-/csprng-0.1.2.tgz#4bc68f12fa368d252a59841cbaca974b18ab45e2"
@@ -1842,6 +1900,10 @@ deep-is@~0.1.3:
 deepmerge@~0.2.7:
   version "0.2.10"
   resolved "http://10.252.156.164:4880/deepmerge/-/deepmerge-0.2.10.tgz#8906bf9e525a4fbf1b203b2afcb4640249821219"
+
+deepmerge@~2.0.1:
+  version "2.0.1"
+  resolved "http://10.252.156.164:4880/deepmerge/-/deepmerge-2.0.1.tgz#25c1c24f110fb914f80001b925264dd77f3f4312"
 
 default-require-extensions@^1.0.0:
   version "1.0.0"
@@ -2046,6 +2108,10 @@ ee-first@1.1.1:
 ejs@^2.3.1, ejs@^2.5.9:
   version "2.6.1"
   resolved "http://10.252.156.164:4880/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
+
+ejs@~2.5.6:
+  version "2.5.9"
+  resolved "http://10.252.156.164:4880/ejs/-/ejs-2.5.9.tgz#7ba254582a560d267437109a68354112475b0ce5"
 
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   version "1.4.1"
@@ -2437,7 +2503,7 @@ external-editor@^1.1.0:
     spawn-sync "^1.0.15"
     tmp "^0.0.29"
 
-external-editor@^2.1.0:
+external-editor@^2.0.4, external-editor@^2.1.0:
   version "2.2.0"
   resolved "http://10.252.156.164:4880/external-editor/-/external-editor-2.2.0.tgz#045511cfd8d133f3846673d1047c154e214ad3d5"
   dependencies:
@@ -2647,9 +2713,9 @@ for-in@^1.0.2:
   version "1.0.2"
   resolved "http://10.252.156.164:4880/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
 
-force-language-services@43.0.4-0:
-  version "43.0.4-0"
-  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-43.0.4-0.tgz#2394b5a988c075d728f758e94580366a9af58078"
+force-language-services@43.2.1-0:
+  version "43.2.1-0"
+  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-43.2.1-0.tgz#51eb4a1df8196b86d3fde389e58cbebc4267c13f"
   dependencies:
     fs-extra "1.0.0"
     heroku-cli-util "6.0.11"
@@ -2758,6 +2824,12 @@ fs-extra@^6.0.1:
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
+
+gaze@~1.1.2:
+  version "1.1.3"
+  resolved "http://10.252.156.164:4880/gaze/-/gaze-1.1.3.tgz#c441733e13b927ac8c0ff0b4c3b033f28812924a"
+  dependencies:
+    globule "^1.0.0"
 
 generate-function@^2.0.0:
   version "2.0.0"
@@ -2907,6 +2979,17 @@ glob@~4.3.0:
     minimatch "^2.0.1"
     once "^1.3.0"
 
+glob@~7.1.1:
+  version "7.1.3"
+  resolved "http://10.252.156.164:4880/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.4"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
 globals@^11.1.0:
   version "11.7.0"
   resolved "http://10.252.156.164:4880/globals/-/globals-11.7.0.tgz#a583faa43055b1aca771914bf68258e2fc125673"
@@ -2959,6 +3042,14 @@ globby@^8, globby@^8.0.1:
     ignore "^3.3.5"
     pify "^3.0.0"
     slash "^1.0.0"
+
+globule@^1.0.0:
+  version "1.2.1"
+  resolved "http://10.252.156.164:4880/globule/-/globule-1.2.1.tgz#5dffb1b191f22d20797a9369b49eab4e9839696d"
+  dependencies:
+    glob "~7.1.1"
+    lodash "~4.17.10"
+    minimatch "~3.0.2"
 
 got@6.3.0:
   version "6.3.0"
@@ -3160,6 +3251,15 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
+hawk@~6.0.2:
+  version "6.0.2"
+  resolved "http://10.252.156.164:4880/hawk/-/hawk-6.0.2.tgz#af4d914eb065f9b5ce4d9d11c1cb2126eecc3038"
+  dependencies:
+    boom "4.x.x"
+    cryptiles "3.x.x"
+    hoek "4.x.x"
+    sntp "2.x.x"
+
 he@1.1.1:
   version "1.1.1"
   resolved "http://10.252.156.164:4880/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
@@ -3267,6 +3367,10 @@ hoek@0.9.x:
 hoek@2.x.x:
   version "2.16.3"
   resolved "http://10.252.156.164:4880/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
+
+hoek@4.x.x:
+  version "4.2.1"
+  resolved "http://10.252.156.164:4880/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
 
 hosted-git-info@^2.1.4:
   version "2.7.1"
@@ -3468,6 +3572,25 @@ inquirer@^5.2.0:
     mute-stream "0.0.7"
     run-async "^2.2.0"
     rxjs "^5.5.2"
+    string-width "^2.1.0"
+    strip-ansi "^4.0.0"
+    through "^2.3.6"
+
+inquirer@~3.3.0:
+  version "3.3.0"
+  resolved "http://10.252.156.164:4880/inquirer/-/inquirer-3.3.0.tgz#9dd2f2ad765dcab1ff0443b491442a20ba227dc9"
+  dependencies:
+    ansi-escapes "^3.0.0"
+    chalk "^2.0.0"
+    cli-cursor "^2.1.0"
+    cli-width "^2.0.0"
+    external-editor "^2.0.4"
+    figures "^2.0.0"
+    lodash "^4.3.0"
+    mute-stream "0.0.7"
+    run-async "^2.2.0"
+    rx-lite "^4.0.8"
+    rx-lite-aggregates "^4.0.8"
     string-width "^2.1.0"
     strip-ansi "^4.0.0"
     through "^2.3.6"
@@ -3880,6 +4003,10 @@ jsbn@~0.1.0:
 jsen@0.6.4:
   version "0.6.4"
   resolved "http://10.252.156.164:4880/jsen/-/jsen-0.6.4.tgz#ddd0ee19f5b7102c8f50f98dd0a9feee4ef576ce"
+
+jsen@0.6.6:
+  version "0.6.6"
+  resolved "http://10.252.156.164:4880/jsen/-/jsen-0.6.6.tgz#0240c18cf11350ac021456f48a7eb13bd67e0420"
 
 jsesc@^1.3.0:
   version "1.3.0"
@@ -4375,6 +4502,10 @@ lodash@~3.2.0:
   version "3.2.0"
   resolved "http://10.252.156.164:4880/lodash/-/lodash-3.2.0.tgz#4bf50a3243f9aeb0bac41a55d3d5990675a462fb"
 
+lodash@~4.17.10:
+  version "4.17.11"
+  resolved "http://10.252.156.164:4880/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+
 log-chopper@^1.0.2:
   version "1.0.2"
   resolved "http://10.252.156.164:4880/log-chopper/-/log-chopper-1.0.2.tgz#a88da7a47a9f0e511eda4d5e1dc840e0eaf4547a"
@@ -4597,7 +4728,7 @@ mimic-response@^1.0.0:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/mimic-response/-/mimic-response-1.0.1.tgz#4923538878eef42063cb8a3e3b0798781487ab1b"
 
-"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
+"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4, minimatch@~3.0.2:
   version "3.0.4"
   resolved "http://10.252.156.164:4880/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
@@ -4843,6 +4974,10 @@ npm-install-package@^1.0.2:
   dependencies:
     noop2 "^2.0.0"
 
+npm-install-package@~2.1.0:
+  version "2.1.0"
+  resolved "http://10.252.156.164:4880/npm-install-package/-/npm-install-package-2.1.0.tgz#d7efe3cfcd7ab00614b896ea53119dc9ab259125"
+
 npm-run-path@^2.0.0, npm-run-path@^2.0.2:
   version "2.0.2"
   resolved "http://10.252.156.164:4880/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
@@ -4997,7 +5132,7 @@ opn@^5.3.0:
   dependencies:
     is-wsl "^1.1.0"
 
-optimist@^0.6.1:
+optimist@^0.6.1, optimist@~0.6.1:
   version "0.6.1"
   resolved "http://10.252.156.164:4880/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
   dependencies:
@@ -5291,7 +5426,7 @@ punycode@^1.4.1:
   version "1.4.1"
   resolved "http://10.252.156.164:4880/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-q@^1.2.0:
+q@^1.2.0, q@~1.5.0:
   version "1.5.1"
   resolved "http://10.252.156.164:4880/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
@@ -5610,6 +5745,33 @@ request@^2, request@^2.72.0:
     tunnel-agent "^0.6.0"
     uuid "^3.1.0"
 
+request@~2.83.0:
+  version "2.83.0"
+  resolved "http://10.252.156.164:4880/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
+  dependencies:
+    aws-sign2 "~0.7.0"
+    aws4 "^1.6.0"
+    caseless "~0.12.0"
+    combined-stream "~1.0.5"
+    extend "~3.0.1"
+    forever-agent "~0.6.1"
+    form-data "~2.3.1"
+    har-validator "~5.0.3"
+    hawk "~6.0.2"
+    http-signature "~1.2.0"
+    is-typedarray "~1.0.0"
+    isstream "~0.1.2"
+    json-stringify-safe "~5.0.1"
+    mime-types "~2.1.17"
+    oauth-sign "~0.8.2"
+    performance-now "^2.1.0"
+    qs "~6.5.1"
+    safe-buffer "^5.1.1"
+    stringstream "~0.0.5"
+    tough-cookie "~2.3.3"
+    tunnel-agent "^0.6.0"
+    uuid "^3.1.0"
+
 require-directory@^2.1.1:
   version "2.1.1"
   resolved "http://10.252.156.164:4880/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
@@ -5695,6 +5857,16 @@ run-async@^2.0.0, run-async@^2.2.0:
   dependencies:
     is-promise "^2.1.0"
 
+rx-lite-aggregates@^4.0.8:
+  version "4.0.8"
+  resolved "http://10.252.156.164:4880/rx-lite-aggregates/-/rx-lite-aggregates-4.0.8.tgz#753b87a89a11c95467c4ac1626c4efc4e05c67be"
+  dependencies:
+    rx-lite "*"
+
+rx-lite@*, rx-lite@^4.0.8:
+  version "4.0.8"
+  resolved "http://10.252.156.164:4880/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
+
 rx-lite@^3.1.2:
   version "3.1.2"
   resolved "http://10.252.156.164:4880/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
@@ -5774,11 +5946,12 @@ salesforce-alm@43.0.25:
     xml2js "0.4.17"
     xmldom-sfdx-encoding "0.1.28"
 
-salesforce-alm@43.6.1-0:
-  version "43.6.1-0"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-43.6.1-0.tgz#1f0c9daca466e09b04898ebd15e1904ab35fe97e"
+salesforce-alm@43.7.1-2:
+  version "43.7.1-2"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-43.7.1-2.tgz#12a4c98cd0d69d2dd92679dd270b5600c3cc5e5e"
   dependencies:
-    "@salesforce/core" "0.16.16"
+    "@salesforce/core" "0.18.1"
+    "@salesforce/ts-json" "0.0.2"
     adm-zip "0.4.7"
     archiver "1.0.1"
     bluebird "3.4.6"
@@ -5809,7 +5982,7 @@ salesforce-alm@43.6.1-0:
     replace "0.3.0"
     request "2.79.0"
     selenium-standalone "6.6.0"
-    webdriverio "4.1.0"
+    webdriverio "4.12.0"
     xml2js "0.4.17"
     xmldom-sfdx-encoding "0.1.29"
 
@@ -5824,12 +5997,12 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@43.7.2-0:
-  version "43.7.2-0"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-43.7.2-0.tgz#22e64a0a2d77de48d5ac700001d268b605cced82"
+salesforcedx@43.8.2-2:
+  version "43.8.2-2"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-43.8.2-2.tgz#d70dd9421488fc66cd47989df49493e12f7b4966"
   dependencies:
-    force-language-services "43.0.4-0"
-    salesforce-alm "43.6.1-0"
+    force-language-services "43.2.1-0"
+    salesforce-alm "43.7.1-2"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.3.0:
@@ -6047,6 +6220,12 @@ sntp@1.x.x:
   dependencies:
     hoek "2.x.x"
 
+sntp@2.x.x:
+  version "2.1.0"
+  resolved "http://10.252.156.164:4880/sntp/-/sntp-2.1.0.tgz#2c6cec14fedc2222739caf9b5c3d85d1cc5a2cc8"
+  dependencies:
+    hoek "4.x.x"
+
 sort-keys@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/sort-keys/-/sort-keys-2.0.0.tgz#658535584861ec97d730d6cf41822e1f56684128"
@@ -6240,7 +6419,7 @@ string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
-stringstream@~0.0.4:
+stringstream@~0.0.4, stringstream@~0.0.5:
   version "0.0.6"
   resolved "http://10.252.156.164:4880/stringstream/-/stringstream-0.0.6.tgz#7880225b0d4ad10e30927d167a1d6f2fd3b33a72"
 
@@ -6332,6 +6511,12 @@ supports-color@^5.0.0, supports-color@^5.1.0, supports-color@^5.3.0, supports-co
   resolved "http://10.252.156.164:4880/supports-color/-/supports-color-5.4.0.tgz#1c6b337402c2137605efe19f10fec390f6faab54"
   dependencies:
     has-flag "^3.0.0"
+
+supports-color@~5.0.0:
+  version "5.0.1"
+  resolved "http://10.252.156.164:4880/supports-color/-/supports-color-5.0.1.tgz#1c5331f22250c84202805b2f17adf16699f3a39a"
+  dependencies:
+    has-flag "^2.0.0"
 
 supports-hyperlinks@^1.0.1:
   version "1.0.1"
@@ -6775,6 +6960,13 @@ url@~0.10.3:
     punycode "1.3.2"
     querystring "0.2.0"
 
+url@~0.11.0:
+  version "0.11.0"
+  resolved "http://10.252.156.164:4880/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
+  dependencies:
+    punycode "1.3.2"
+    querystring "0.2.0"
+
 use@^3.1.0:
   version "3.1.1"
   resolved "http://10.252.156.164:4880/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
@@ -6860,6 +7052,10 @@ wdio-dot-reporter@0.0.4:
   version "0.0.4"
   resolved "http://10.252.156.164:4880/wdio-dot-reporter/-/wdio-dot-reporter-0.0.4.tgz#09af52904cfd1b0967e812bed0103f316e10aa59"
 
+wdio-dot-reporter@~0.0.8:
+  version "0.0.10"
+  resolved "http://10.252.156.164:4880/wdio-dot-reporter/-/wdio-dot-reporter-0.0.10.tgz#facfb7c9c5984149951f59cbc3cd0752101cf0e0"
+
 webdriverio@4.1.0:
   version "4.1.0"
   resolved "http://10.252.156.164:4880/webdriverio/-/webdriverio-4.1.0.tgz#18e658acc8c0a9161caef6f4f3b37e3b1ac06e08"
@@ -6883,6 +7079,32 @@ webdriverio@4.1.0:
     url "~0.10.3"
     validator "^4.5.0"
     wdio-dot-reporter "0.0.4"
+    wgxpath "~1.0.0"
+
+webdriverio@4.12.0:
+  version "4.12.0"
+  resolved "http://10.252.156.164:4880/webdriverio/-/webdriverio-4.12.0.tgz#e340def272183c8168a4dd0b382322f9d7bee10d"
+  dependencies:
+    archiver "~2.1.0"
+    babel-runtime "^6.26.0"
+    css-parse "~2.0.0"
+    css-value "~0.0.1"
+    deepmerge "~2.0.1"
+    ejs "~2.5.6"
+    gaze "~1.1.2"
+    glob "~7.1.1"
+    inquirer "~3.3.0"
+    json-stringify-safe "~5.0.1"
+    mkdirp "~0.5.1"
+    npm-install-package "~2.1.0"
+    optimist "~0.6.1"
+    q "~1.5.0"
+    request "~2.83.0"
+    rgb2hex "~0.1.0"
+    safe-buffer "~5.1.1"
+    supports-color "~5.0.0"
+    url "~0.11.0"
+    wdio-dot-reporter "~0.0.8"
     wgxpath "~1.0.0"
 
 websocket-driver@>=0.5.1:
@@ -7249,7 +7471,7 @@ yosay@^2.0.2:
     taketalk "^1.0.0"
     wrap-ansi "^2.0.0"
 
-zip-stream@^1.0.0:
+zip-stream@^1.0.0, zip-stream@^1.2.0:
   version "1.2.0"
   resolved "http://10.252.156.164:4880/zip-stream/-/zip-stream-1.2.0.tgz#a8bc45f4c1b49699c6b90198baacaacdbcd4ba04"
   dependencies:

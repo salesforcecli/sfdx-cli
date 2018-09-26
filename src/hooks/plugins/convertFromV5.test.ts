@@ -1,4 +1,4 @@
-// import { AnyDictionary } from '@salesforce/ts-json';
+// import { Dictionary } from '@salesforce/ts-types';
 // import { expect } from 'chai';
 // import hook = require('./convertFromV5');
 

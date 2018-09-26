@@ -1,6 +1,6 @@
 import { IConfig } from '@oclif/config';
 import { default as OclifUpdateCommand } from '@oclif/plugin-update/lib/commands/update';
-import { NamedError } from '@salesforce/ts-json';
+import { NamedError } from '@salesforce/kit';
 import * as Debug from 'debug';
 import * as Request from 'request';
 import { sleep } from '../util';
