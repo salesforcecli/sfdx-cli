@@ -11,51 +11,52 @@
 // tslint:disable:no-var-requires
 // tslint:disable:variable-name
 
-import env from './env';
+// -------------------------------------------------------------------------------
+// No requires or imports so we can instrument as much module loading as possible.
+// -------------------------------------------------------------------------------
 
-// Don't use ts-types here to ensure we load as little as possible before instrumenting loading
 type Dictionary = { [key: string]: any };
 
-const enabled = env.getBoolean('SFDX_DEBUG_MODULES', false);
-const list: Dictionary = { };
-let tree: Dictionary = {};
-let loading = false;
-let time = 0;
-
-if (enabled) {
-    const paths = require('path');
-    const Module = require('module');
-    const origLoad = Module._load;
-    let path = '';
-    Module._load = (request: string, parent: object, isMain: boolean) => {
-        const wasLoading = loading;
-        loading = true;
-
-        const lastPath = path;
-        path = paths.resolve(path, request);
-        const lastTree = tree;
-        if (!lastTree[request]) lastTree[request] = {};
-        tree = lastTree[request];
-
-        const mark = Date.now();
-        const mod = origLoad.call(Module, request, parent, isMain);
-        const elapsed = Date.now() - mark;
-
-        if (!list[path]) list[path] = elapsed;
-        if (tree.elapsed == null) tree.elapsed = elapsed;
-        tree = lastTree;
-        path = lastPath;
-
-        if (!wasLoading) {
-            loading = false;
-            time += elapsed;
-        }
-
-        return mod;
-    };
-}
-
 export function start(): { dump: (arg: any) => void } {
+    const enabled = process.env.SFDX_DEBUG_MODULES === 'true';
+    const list: Dictionary = {};
+    let tree: Dictionary = {};
+    let loading = false;
+    let time = 0;
+
+    if (enabled) {
+        const paths = require('path');
+        const Module = require('module');
+        const origLoad = Module._load;
+        let path = '';
+        Module._load = (request: string, parent: object, isMain: boolean) => {
+            const wasLoading = loading;
+            loading = true;
+
+            const lastPath = path;
+            path = paths.resolve(path, request);
+            const lastTree = tree;
+            if (!lastTree[request]) lastTree[request] = {};
+            tree = lastTree[request];
+
+            const mark = Date.now();
+            const mod = origLoad.call(Module, request, parent, isMain);
+            const elapsed = Date.now() - mark;
+
+            if (!list[path]) list[path] = elapsed;
+            if (tree.elapsed == null) tree.elapsed = elapsed;
+            tree = lastTree;
+            path = lastPath;
+
+            if (!wasLoading) {
+                loading = false;
+                time += elapsed;
+            }
+
+            return mod;
+        };
+    }
+
     return {
         dump(arg: any): void {
             if (enabled) {
