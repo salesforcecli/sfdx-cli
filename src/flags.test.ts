@@ -33,12 +33,4 @@ describe('CLI flags', () => {
         expect(process.env.SFDX_ENV).to.equal('development');
         expect(process.env.NODE_ENV).to.equal('development');
     });
-
-    it('should convert --dev-debug to envars', () => {
-        process.argv = ['--dev-debug'];
-        processCliFlags(process);
-        expect(process.argv).not.to.include('--dev-debug');
-        expect(process.env.DEBUG).to.equal('*');
-        expect(process.env.SFDX_DEBUG).to.equal('1');
-    });
 });
