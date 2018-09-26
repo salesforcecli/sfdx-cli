@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2018, salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
 // A simple utility for gathering module loading statistics for diagnostic purposes.
 
 // tslint:disable:no-any
@@ -6,11 +13,12 @@
 
 import env from './env';
 
-type AnyDictionary = { [key: string]: any };
+// Don't use ts-types here to ensure we load as little as possible before instrumenting loading
+type Dictionary = { [key: string]: any };
 
 const enabled = env.getBoolean('SFDX_DEBUG_MODULES', false);
-const list: AnyDictionary = { };
-let tree: AnyDictionary = {};
+const list: Dictionary = { };
+let tree: Dictionary = {};
 let loading = false;
 let time = 0;
 
