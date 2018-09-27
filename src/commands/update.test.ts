@@ -5,6 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+// tslint:disable:no-unused-expression
+
 import { IConfig } from '@oclif/config';
 import {
     StubbedCallableType,
@@ -18,8 +20,6 @@ import * as Request from 'request';
 import * as sinon from 'sinon';
 import { Env } from '../util/env';
 import UpdateCommand from './update';
-
-/* tslint:disable:no-unused-expression */
 
 class SystemError extends Error {
     public constructor(

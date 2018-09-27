@@ -5,6 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+// tslint:disable:no-unused-expression
+
 import { Hook } from '@oclif/config';
 import { stubInterface } from '@salesforce/ts-sinon';
 import { expect } from 'chai';
@@ -12,8 +14,6 @@ import * as cp from 'child_process';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
 import hook from './logAnalytics';
-
-/* tslint:disable:no-unused-expression */
 
 describe('prerun:analytics hook', () => {
     const sandbox = sinon.createSandbox();

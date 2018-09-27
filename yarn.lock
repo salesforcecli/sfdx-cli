@@ -450,6 +450,10 @@
     yeoman-generator "^2.0.5"
     yosay "^2.0.2"
 
+"@salesforce/require-analytics@0.4.0":
+  version "0.4.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2frequire-analytics/-/require-analytics-0.4.0.tgz#d0a3ef8be7108eb6a7a8072386d5fe8a71e44e56"
+
 "@salesforce/sfdx-trust@^1":
   version "1.0.9"
   resolved "http://10.252.156.164:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-1.0.9.tgz#411ab48201f197b26436d7216ec9bc9b42067494"

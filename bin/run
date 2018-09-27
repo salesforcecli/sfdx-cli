@@ -5,8 +5,9 @@
 // Check node version before requiring additional packages
 require('../dist/versions').checkNodeVersion();
 
-// Collect module loading diagnostics if enabled
-const modules = require('../dist/util/modules').start();
+// Collect module loading analytics if enabled
+const modules = require('@salesforce/require-analytics')
+    .start(process.env.SFDX_REQUIRE_ANALYTICS === 'true');
 
 // Pre-process/prune flags before creating or running the actual CLI
 require('../dist/flags').processCliFlags(process);
