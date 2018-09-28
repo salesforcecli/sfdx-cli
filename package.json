@@ -81,7 +81,7 @@
     "@oclif/plugin-update": "^1",
     "@oclif/plugin-warn-if-update-available": "^1",
     "@oclif/plugin-which": "^1",
-    "@salesforce/kit": "0.6.0",
+    "@salesforce/kit": "0.7.0",
     "@salesforce/lazy-require": "0.0.4",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/require-analytics": "0.4.0",

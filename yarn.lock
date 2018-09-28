@@ -417,9 +417,9 @@
     tslint "5.9.1"
     tslint-microsoft-contrib "5.0.2"
 
-"@salesforce/kit@0.6.0":
-  version "0.6.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fkit/-/kit-0.6.0.tgz#e45259321ceeeac8fbb794068840ea67bf316ea5"
+"@salesforce/kit@0.7.0":
+  version "0.7.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fkit/-/kit-0.7.0.tgz#ffc74f811227584e2068feda196fd481c3485bc1"
   dependencies:
     "@salesforce/ts-types" "0.12.0"
 
