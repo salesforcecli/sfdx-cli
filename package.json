@@ -20,7 +20,7 @@
   "oclif": {
     "bin": "sfdx",
     "commands": "./dist/commands",
-    "node": "10.11.0",
+    "node": "8.12.0",
     "dirname": "sfdx",
     "hooks": {
       "init": [
