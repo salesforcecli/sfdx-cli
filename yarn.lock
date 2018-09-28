@@ -417,11 +417,11 @@
     tslint "5.9.1"
     tslint-microsoft-contrib "5.0.2"
 
-"@salesforce/kit@0.4.0":
-  version "0.4.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fkit/-/kit-0.4.0.tgz#066c17f19e32b5d1e69a2b9c8cd347dfb15d6613"
+"@salesforce/kit@0.6.0":
+  version "0.6.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fkit/-/kit-0.6.0.tgz#e45259321ceeeac8fbb794068840ea67bf316ea5"
   dependencies:
-    "@salesforce/ts-types" "0.11.0"
+    "@salesforce/ts-types" "0.12.0"
 
 "@salesforce/lazy-require@0.0.4":
   version "0.0.4"
@@ -475,10 +475,6 @@
   dependencies:
     "@salesforce/ts-types" "0.12.0"
     sinon "5.0.7"
-
-"@salesforce/ts-types@0.11.0":
-  version "0.11.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.11.0.tgz#09146c909863652652f99d2808b38ca60db24a01"
 
 "@salesforce/ts-types@0.12.0":
   version "0.12.0"

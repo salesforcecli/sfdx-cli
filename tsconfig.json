@@ -9,7 +9,8 @@
         "baseUrl": "./",
         "strict": true,
         "declaration": false,
-        "allowJs": true
+        "allowJs": true,
+        "importHelpers": true
     },
     "include": [
         "src/**/*.ts",
