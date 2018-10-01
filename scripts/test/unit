@@ -6,10 +6,10 @@ set -ex
 
 TEST_DIR="${1:-$ROOT_DIR}"
 
-"$ROOT_DIR/node_modules/istanbul/lib/cli.js" cover \
-    --report cobertura "$ROOT_DIR/node_modules/.bin/_mocha" \
+"$ROOT_DIR/node_modules/.bin/nyc" \
+    --report cobertura \
+    "$ROOT_DIR/node_modules/.bin/_mocha" \
     -x "$TEST_DIR/dist/**/*.test.js" \
-    -- \
     -t 240000 \
     --require source-map-support/register \
     --recursive "$TEST_DIR/dist/**/*.test.js" \
