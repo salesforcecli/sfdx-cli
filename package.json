@@ -163,7 +163,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn uts"
+      "pre-push": "yarn compile && yarn lint && yarn uts"
     }
   },
   "nyc": {
