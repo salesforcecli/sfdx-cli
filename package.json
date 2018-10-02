@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "6.25.1-2",
+  "version": "6.34.0",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -29,6 +29,9 @@
       "plugins:preinstall": [
         "./dist/hooks/plugins/verifyInstallVersion.js",
         "./dist/hooks/plugins/verifyInstallSignature.js"
+      ],
+      "plugins:preinstall": [
+        "./dist/hooks/plugins/verifyInstallVersion.js"
       ],
       "prerun": [
         "./dist/hooks/logAnalytics.js"
@@ -92,7 +95,7 @@
     "debug": "^3",
     "fs-extra": "^4",
     "request": "^2",
-    "salesforcedx": "43.8.2-2",
+    "salesforcedx": "43.17.0",
     "tslib": "^1"
   },
   "devDependencies": {
