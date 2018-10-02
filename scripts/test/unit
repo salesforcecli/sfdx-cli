@@ -6,6 +6,8 @@ set -ex
 
 TEST_DIR="${1:-$ROOT_DIR}"
 
+cd "$TEST_DIR"
+
 "$ROOT_DIR/node_modules/.bin/nyc" \
     --report cobertura \
     "$ROOT_DIR/node_modules/.bin/_mocha" \
