@@ -75,7 +75,6 @@
     "@oclif/errors": "^1",
     "@oclif/plugin-commands": "^1",
     "@oclif/plugin-help": "^2",
-    "@oclif/plugin-legacy": "^1",
     "@oclif/plugin-not-found": "^1",
     "@oclif/plugin-plugins": "^1",
     "@oclif/plugin-update": "^1",
