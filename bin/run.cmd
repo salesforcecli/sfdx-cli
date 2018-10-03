@@ -1,3 +1,4 @@
 @echo off
 
-node "%~dp0\run" %*
+set SFDX_BINPATH=%~dp0sfdx
+node "%~dp0run" %*
