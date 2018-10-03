@@ -7,7 +7,6 @@
 
 import { compareVersions, isVersion } from '../../versions';
 import timedHook from '../timedHook';
-import { PreinstallOptions } from './preinstall';
 
 const FORCE_PLUGINS = [
     'salesforcedx',
@@ -22,10 +21,7 @@ const MIN_VERSION = '41.2.0';
  * if it is recognized as a force namespace plugin.
  */
 const hook = timedHook<'plugins:preinstall'>('plugins:preinstall:version', async function(options) {
-    // TODO: hopefully this is temporary until oclif adds a real preinstall hook
-    const opts = options as PreinstallOptions;
-
-    const plugin = opts.plugin;
+    const plugin = options.plugin;
     if (FORCE_PLUGINS.includes(plugin.name) && isVersion(plugin.tag) && compareVersions(plugin.tag.slice(1), MIN_VERSION) < 0) {
         this.error(
             `The ${plugin.name} plugin can only be installed using a specific version when ` +

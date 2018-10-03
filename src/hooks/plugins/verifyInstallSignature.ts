@@ -16,7 +16,6 @@ import {
 import { cli } from 'cli-ux';
 import * as Debug from 'debug';
 import timedHook from '../timedHook';
-import { PreinstallOptions } from './preinstall';
 
 const debug = Debug('sfdx:plugins:trust:signing');
 
@@ -24,9 +23,7 @@ const hook = timedHook<'plugins:preinstall'>('plugins:preinstall:signing', async
     cli.action.stop('Checking for digital signature.');
     const vConfig = new VerificationConfig();
 
-    // TODO: hopefully this is temporary until oclif adds a real preinstall hook
-    const opts = options as PreinstallOptions;
-    const plugin = opts.plugin;
+    const plugin = options.plugin;
 
     const npmName = NpmName.parse(plugin.name);
     npmName.tag = plugin.tag || 'latest';
