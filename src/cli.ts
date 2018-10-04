@@ -15,7 +15,7 @@ export interface AsyncRunnable {
     run: () => Promise<any>; // tslint:disable-line:no-any
 }
 
-export function create(version: string, channel: string): AsyncRunnable {
+export function create(version: string, channel: string, exec = run, environment = env): AsyncRunnable {
     const root = path.resolve(__dirname, '..');
     const pjson = require(path.resolve(__dirname, '..', 'package.json'));
     const args = process.argv.slice(2);
@@ -29,12 +29,12 @@ export function create(version: string, channel: string): AsyncRunnable {
             await config.load();
             config.version = version;
             config.channel = channel;
-            configureAutoUpdate(env);
+            configureAutoUpdate(environment);
             // Require a dark feature envar to enable the lazy loading experiment, and disable during update commands
             if (env.getBoolean('SFDX_LAZY_LOAD_MODULES') && args[1] !== 'update') {
                 await lazyRequire.start(config);
             }
-            return run(args, config);
+            return exec(args, config);
         }
     };
 }

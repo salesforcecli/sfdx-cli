@@ -7,6 +7,7 @@
 
 // tslint:disable:no-unused-expression
 
+import * as Config from '@oclif/config';
 import { expect } from 'chai';
 import {
     configureAutoUpdate,
@@ -19,9 +20,15 @@ import { Env } from './util/env';
 
 describe('cli', () => {
     describe('create', () => {
-        it('should create a runnable CLI instance', () => {
-            const cli = create('test', 'test');
+        it('should create a runnable CLI instance', async () => {
+            let options: Config.LoadOptions;
+            const exec = async (argv?: string[], opts?: Config.LoadOptions) => { options = opts; };
+            const cli = create('test', 'test', exec, new Env({}));
             expect(cli).to.have.property('run');
+            await cli.run();
+            expect(options).to.exist;
+            expect(options).to.have.property('version').and.equal('test');
+            expect(options).to.have.property('channel').and.equal('test');
         });
     });
 
