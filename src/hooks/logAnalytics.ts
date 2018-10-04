@@ -5,15 +5,15 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { Hook } from '@oclif/config';
 import * as cp from 'child_process';
 import * as Debug from 'debug';
 import * as fs from 'fs';
 import * as path from 'path';
-import timedHook from './timedHook';
 
 const debug = Debug('sfdx:analytics');
 
-const hook = timedHook<'prerun'>('prerun:log-analytics', async options => {
+const hook: Hook.Prerun = async options => {
     try {
         const start = Date.now();
         const command = options.Command;
@@ -49,6 +49,6 @@ const hook = timedHook<'prerun'>('prerun:log-analytics', async options => {
     } catch (err) {
         debug(`error tracking usage: ${err.message}`);
     }
-});
+};
 
 export default hook;

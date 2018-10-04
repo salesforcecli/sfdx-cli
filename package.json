@@ -24,10 +24,6 @@
     "dirname": "sfdx",
     "hooks": {
       "plugins:preinstall": [
-        "./dist/hooks/plugins/verifyInstallVersion.js",
-        "./dist/hooks/plugins/verifyInstallSignature.js"
-      ],
-      "plugins:preinstall": [
         "./dist/hooks/plugins/verifyInstallVersion.js"
       ],
       "prerun": [
@@ -84,7 +80,7 @@
     "@salesforce/lazy-require": "0.0.4",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/require-analytics": "0.4.0",
-    "@salesforce/sfdx-trust": "^1",
+    "@salesforce/sfdx-trust": "oclif",
     "@salesforce/ts-types": "0.12.0",
     "ansi-escapes": "^3",
     "chalk": "^2",

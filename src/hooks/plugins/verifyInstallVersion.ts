@@ -5,8 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { Hook } from '@oclif/config';
 import { compareVersions, isVersion } from '../../versions';
-import timedHook from '../timedHook';
 
 const FORCE_PLUGINS = [
     'salesforcedx',
@@ -20,7 +20,7 @@ const MIN_VERSION = '41.2.0';
  * A v6 CLI plugin preinstall hook that checks that the plugin's version is v6-compatible,
  * if it is recognized as a force namespace plugin.
  */
-const hook = timedHook<'plugins:preinstall'>('plugins:preinstall:version', async function(options) {
+const hook: Hook.PluginsPreinstall = async function(this: Hook.Context, options) {
     const plugin = options.plugin;
     if (FORCE_PLUGINS.includes(plugin.name) && isVersion(plugin.tag) && compareVersions(plugin.tag.slice(1), MIN_VERSION) < 0) {
         this.error(
@@ -29,6 +29,6 @@ const hook = timedHook<'plugins:preinstall'>('plugins:preinstall:version', async
         );
         this.exit(1);
     }
-});
+};
 
 export default hook;
