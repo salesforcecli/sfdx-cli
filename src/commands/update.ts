@@ -7,7 +7,8 @@
 
 import { IConfig } from '@oclif/config';
 import { default as OclifUpdateCommand } from '@oclif/plugin-update/lib/commands/update';
-import { NamedError, sleep } from '@salesforce/kit';
+import { get, NamedError, set, sleep } from '@salesforce/kit';
+import { ensureString } from '@salesforce/ts-types';
 import * as Debug from 'debug';
 import * as Request from 'request';
 import { default as envars } from '../util/env';
@@ -28,7 +29,7 @@ export default class UpdateCommand extends OclifUpdateCommand {
         let s3Host = this.env.getS3HostOverride();
         if (s3Host) {
             // Override config value if set via envar
-            this.config.pjson.oclif.update.s3.host = s3Host;
+            set(this.config, 'pjson.oclif.update.s3.host', s3Host);
         }
 
         if (!this.env.isAutoupdateDisabled()) {
@@ -36,10 +37,7 @@ export default class UpdateCommand extends OclifUpdateCommand {
                 // Warn that the updater is targeting something other than the public update site
                 this.warn('Updating from SFDX_S3_HOST override. Are you on SFM?');
             }
-            s3Host = s3Host || (this.config.pjson.oclif.update.s3 || {}).host;
-            if (!s3Host) {
-                throw new NamedError('S3HostNotFoundError', 'No S3 host defined');
-            }
+            s3Host = ensureString(s3Host || get(this.config, 'pjson.oclif.update.s3.host'));
             await this.isS3HostReachable(s3Host);
         }
 
