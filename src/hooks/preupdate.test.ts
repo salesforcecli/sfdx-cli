@@ -31,7 +31,7 @@ describe('builtin update command', () => {
     let sandbox: sinon.SinonSandbox;
     let context: Hook.Context;
     let config: IConfig;
-    let options: Hooks['preupdate'];
+    let options: Hooks['preupdate'] & { config: IConfig };
     let env: Env;
     let pingErr: Error;
     let pingRes: Request.RequestResponse;
@@ -65,10 +65,10 @@ describe('builtin update command', () => {
             }
         });
 
-        options = stubInterface<Hooks['preupdate']>(sandbox, {
+        options = {
             channel: 'test',
             config
-        });
+        };
 
         env = new Env({});
 
