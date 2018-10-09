@@ -146,7 +146,7 @@
     "@oclif/parser" "^3.2.9"
     semver "^5.5.0"
 
-"@oclif/command@^1", "@oclif/command@^1.4.29", "@oclif/command@^1.4.33", "@oclif/command@^1.5.0", "@oclif/command@^1.5.1":
+"@oclif/command@^1", "@oclif/command@^1.4.29", "@oclif/command@^1.4.33", "@oclif/command@^1.5.0", "@oclif/command@^1.5.1", "@oclif/command@^1.5.2":
   version "1.5.2"
   resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.5.2.tgz#9c3fc042be785f8cec3f8f9c5d7768ebe80bb625"
   integrity sha512-xNGfzij9l56nkh5fxoHyzI9MpwISp6ZBP3OAZ/SEQyHgPRe4ZrhNHtmoky4X4oZmxzgf317W4c1rUDUCNWWBjQ==
@@ -163,7 +163,15 @@
   dependencies:
     debug "^3.1.0"
 
-"@oclif/config@^1", "@oclif/config@^1.6.28", "@oclif/config@^1.7.6":
+"@oclif/config@^1", "@oclif/config@^1.7.6", "@oclif/config@^1.8.6":
+  version "1.8.6"
+  resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.8.6.tgz#97c6526e82cf0aa362aeb8201bb0d53423ecca3b"
+  integrity sha512-ucSR89AZJ0v48d0ZWBXAWJAGe2uiGBNMnnqzE0fbc3/tDiUokgGleL990JFO3KEWrGYF1e+Sb+YMVIcPxaBKiw==
+  dependencies:
+    debug "^4.0.1"
+    tslib "^1.9.3"
+
+"@oclif/config@^1.6.28":
   version "1.8.4"
   resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.8.4.tgz#cc72102ae225e1885e2ab5419267878bb613854b"
   integrity sha512-T1lnxPnlg+tWCOOlfq1KqmaQTYGnw/nK0pCYAagDyqthxGlWfcq8MYPZPjr4xSSdVt5QHMG4ikplD/cmfgcx+g==
@@ -309,13 +317,13 @@
     yarn "^1.10.1"
 
 "@oclif/plugin-update@^1":
-  version "1.3.2"
-  resolved "http://10.252.156.164:4880/@oclif%2fplugin-update/-/plugin-update-1.3.2.tgz#bdb6402acc9a956e77de2e555fcf5273c4d6646d"
-  integrity sha512-bwqI7XwSKdw84jBiuERM/LVKVoSrpFVxKiMZUs4RM+cPD/RokWCq8d3b6PqwoSjv9Ck6vKs9iJpfWgzLiElJ/g==
+  version "1.3.3"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-update/-/plugin-update-1.3.3.tgz#7235f7b0771c0f46943211a2fb8490b2395b31a4"
+  integrity sha512-YET2TKLGmFr/pqKvaGZOx1yThlflr+1zMNiq7WelGfO838m535QdA1C3J0XKAI42BOnKuuhz7RAhCsnB+bf17w==
   dependencies:
     "@oclif/color" "^0.0.0"
-    "@oclif/command" "^1.5.1"
-    "@oclif/config" "^1.7.6"
+    "@oclif/command" "^1.5.2"
+    "@oclif/config" "^1.8.6"
     "@oclif/errors" "^1.2.1"
     "@types/semver" "^5.5.0"
     cli-ux "^4.8.2"
@@ -469,7 +477,7 @@
   resolved "http://10.252.156.164:4880/@salesforce%2frequire-analytics/-/require-analytics-0.4.0.tgz#d0a3ef8be7108eb6a7a8072386d5fe8a71e44e56"
   integrity sha1-0KPvi+cQjranqAcjhtX+inHkTlY=
 
-"@salesforce/sfdx-trust@^1":
+"@salesforce/sfdx-trust@oclif":
   version "1.0.9"
   resolved "http://10.252.156.164:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-1.0.9.tgz#411ab48201f197b26436d7216ec9bc9b42067494"
   integrity sha1-QRq0ggHxl7JkNtchbsm8m0IGdJQ=
@@ -1977,9 +1985,9 @@ debug@^3, debug@^3.1.0:
     ms "^2.1.1"
 
 debug@^4.0.1:
-  version "4.0.1"
-  resolved "http://10.252.156.164:4880/debug/-/debug-4.0.1.tgz#f9bb36d439b8d1f0dd52d8fb6b46e4ebb8c1cd5b"
-  integrity sha512-K23FHJ/Mt404FSlp6gSZCevIbTMLX0j3fmHhUEhQ3Wq0FMODW3+cUSoLdy1Gx4polAf4t/lphhmHH35BB8cLYw==
+  version "4.1.0"
+  resolved "http://10.252.156.164:4880/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
+  integrity sha512-heNPJUJIqC+xB6ayLAMHaIrmN9HKa7aQO8MGqKpvCA+uJYVcvR6l5kgdrhRuwPFHU7P5/A1w0BjByPHwpfTDKg==
   dependencies:
     ms "^2.1.1"
 
