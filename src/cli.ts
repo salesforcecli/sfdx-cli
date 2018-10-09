@@ -12,29 +12,24 @@ import * as lazyRequire from './lazyRequire';
 import { default as env, Env } from './util/env';
 
 export interface AsyncRunnable {
-    run: () => Promise<any>; // tslint:disable-line:no-any
+    run: () => Promise<any>; // tslint:disable-line:no-any matches oclif
 }
 
-export function create(version: string, channel: string, exec = run, environment = env): AsyncRunnable {
+export function create(version: string, channel: string, execute = run, environment = env): AsyncRunnable {
     const root = path.resolve(__dirname, '..');
     const pjson = require(path.resolve(__dirname, '..', 'package.json'));
     const args = process.argv.slice(2);
 
     return {
         async run() {
-            // Oclif's config loader contains logic that sets version and channel using build assumptions we don't
-            // follow, so we start by loading the config ourselves and then overriding those values with our own
-            // TODO: PR oclif to allow us to set these more cleanly without this awkward workaround
-            const config = new Config({ name: pjson.oclif.bin, root });
+            const config = new Config({ name: pjson.oclif.bin, root, version, channel });
             await config.load();
-            config.version = version;
-            config.channel = channel;
             configureAutoUpdate(environment);
             // Require a dark feature envar to enable the lazy loading experiment, and disable during update commands
             if (env.getBoolean('SFDX_LAZY_LOAD_MODULES') && args[1] !== 'update') {
                 await lazyRequire.start(config);
             }
-            return exec(args, config);
+            return execute(args, config);
         }
     };
 }
@@ -74,6 +69,4 @@ export function configureAutoUpdate(envars: Env): void {
     if (envars.isAutoupdateDisabled()) {
         envars.setUpdateInstructions(UPDATE_DISABLED_NPM);
     }
-
-    return;
 }
