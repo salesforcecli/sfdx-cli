@@ -23,7 +23,7 @@ const MIN_VERSION = '41.2.0';
 const hook: Hook.PluginsPreinstall = async function(this: Hook.Context, options) {
     const plugin = options.plugin;
     if (FORCE_PLUGINS.includes(plugin.name) && isVersion(plugin.tag) && compareVersions(plugin.tag.slice(1), MIN_VERSION) < 0) {
-        this.error(
+        this.warn(
             `The ${plugin.name} plugin can only be installed using a specific version when ` +
             `the version is greater than or equal to ${MIN_VERSION}.`
         );

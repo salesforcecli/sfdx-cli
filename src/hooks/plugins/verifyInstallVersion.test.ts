@@ -9,6 +9,7 @@ import { Hook } from '@oclif/config';
 import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+import { Nullable } from '../../../node_modules/@salesforce/ts-types';
 import hook from './verifyInstallVersion';
 
 // tslint:disable:no-unused-expression
@@ -51,10 +52,10 @@ describe('verifyInstallVersion preinstall hook', () => {
     it('should not allow the salesforcedx plugin with tag "41.1.0" to be installed', async () => {
         await testHook('41.1.0');
         expect(context.exit.calledOnce).to.be.true;
-        expect(context.error.getCalls().some(call => call.args[0].includes('can only be installed'))).to.be.true;
+        expect(context.warn.getCalls().some(call => call.args[0].includes('can only be installed'))).to.be.true;
     });
 
-    async function testHook(tag?: string | null) {
+    async function testHook(tag: Nullable<string>) {
         await hook.call(context, {
             config: { version: '6.0.0' },
             plugin: { name: 'salesforcedx', tag }
