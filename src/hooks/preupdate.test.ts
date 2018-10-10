@@ -27,7 +27,7 @@ class SystemError extends Error {
     }
 }
 
-describe('builtin update command', () => {
+describe('preupdate hook', () => {
     let sandbox: sinon.SinonSandbox;
     let context: Hook.Context;
     let config: IConfig;
