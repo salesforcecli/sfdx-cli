@@ -24,13 +24,13 @@
     "dirname": "sfdx",
     "hooks": {
       "plugins:preinstall": [
-        "./dist/hooks/plugins/verifyInstallVersion.js"
+        "./dist/hooks/verifyPluginVersion.js"
       ],
       "prerun": [
         "./dist/hooks/logAnalytics.js"
       ],
       "preupdate": [
-        "./dist/hooks/preupdate.js"
+        "./dist/hooks/updateReachability.js"
       ],
       "update": [
         "./dist/hooks/lazyRequire.js"

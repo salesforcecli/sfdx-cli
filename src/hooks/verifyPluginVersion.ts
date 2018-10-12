@@ -6,7 +6,7 @@
  */
 
 import { Hook } from '@oclif/config';
-import { compareVersions, isVersion } from '../../versions';
+import { compareVersions, isVersion } from '../versions';
 
 const FORCE_PLUGINS = [
     'salesforcedx',

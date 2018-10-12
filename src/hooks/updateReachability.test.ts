@@ -17,7 +17,7 @@ import { expect } from 'chai';
 import * as Request from 'request';
 import * as sinon from 'sinon';
 import { Env } from '../util/env';
-import hook from './preupdate';
+import hook from './updateReachability';
 
 class SystemError extends Error {
     public constructor(
@@ -27,7 +27,7 @@ class SystemError extends Error {
     }
 }
 
-describe('preupdate hook', () => {
+describe('updateReachability preupdate hook', () => {
     let sandbox: sinon.SinonSandbox;
     let context: Hook.Context;
     let config: IConfig;

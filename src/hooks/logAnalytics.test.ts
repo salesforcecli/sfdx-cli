@@ -15,7 +15,7 @@ import * as fs from 'fs';
 import * as sinon from 'sinon';
 import hook from './logAnalytics';
 
-describe('prerun:analytics hook', () => {
+describe('logAnalytics prerun hook', () => {
     const sandbox = sinon.createSandbox();
     let spawn: sinon.SinonStub;
     let on: sinon.SinonStub;

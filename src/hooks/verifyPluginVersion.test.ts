@@ -7,14 +7,14 @@
 
 import { Hook } from '@oclif/config';
 import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
+import { Nullable } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import { Nullable } from '../../../node_modules/@salesforce/ts-types';
-import hook from './verifyInstallVersion';
+import hook from './verifyPluginVersion';
 
 // tslint:disable:no-unused-expression
 
-describe('verifyInstallVersion preinstall hook', () => {
+describe('verifyPluginVersion preinstall hook', () => {
     let sandbox: sinon.SinonSandbox;
     let context: StubbedType<Hook.Context>;
 
