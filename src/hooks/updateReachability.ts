@@ -80,7 +80,7 @@ async function ping(url: string, request: typeof Request): Promise<void> {
     });
 }
 
-const hook: Hook.Preupdate = async function(this: Hook.Context, options, env = envars, request = Request) {
+const hook: Hook.Preupdate = async function(options, env = envars, request = Request) {
     debug(`preupdate check with channel ${options.channel}`);
     try {
         let s3Host = env.getS3HostOverride();
