@@ -58,10 +58,7 @@ module.exports.compareVersions = compareVersions;
 /**
  * Checks the current Node version for compatibility before launching the CLI.
  */
-function checkNodeVersion() {
-    const currentVersion = process.versions.node;
-    const requiredVersion = pjson.engines.node.slice(2); // chop '>=' prefix
-
+function checkNodeVersion(currentVersion = process.versions.node, requiredVersion = pjson.engines.node.slice(2)) {
     if (module.exports.compareVersions(currentVersion, requiredVersion) < 0) {
         console.error(
             'Unsupported Node.js version ' + currentVersion + ', ' +
