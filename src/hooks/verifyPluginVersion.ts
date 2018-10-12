@@ -20,7 +20,7 @@ const MIN_VERSION = '41.2.0';
  * A v6 CLI plugin preinstall hook that checks that the plugin's version is v6-compatible,
  * if it is recognized as a force namespace plugin.
  */
-const hook: Hook.PluginsPreinstall = async function(this: Hook.Context, options) {
+const hook: Hook.PluginsPreinstall = async function(options) {
     const plugin = options.plugin;
     if (FORCE_PLUGINS.includes(plugin.name) && isVersion(plugin.tag) && compareVersions(plugin.tag.slice(1), MIN_VERSION) < 0) {
         this.warn(

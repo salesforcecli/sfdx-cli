@@ -24,6 +24,9 @@
     "dirname": "sfdx",
     "hooks": {
       "plugins:preinstall": [
+        "./dist/hooks/pluginsPreinstall.js"
+      ],
+      "plugins:preinstall:verify:version": [
         "./dist/hooks/verifyPluginVersion.js"
       ],
       "prerun": [
