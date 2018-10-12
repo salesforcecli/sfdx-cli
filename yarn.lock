@@ -499,6 +499,11 @@
   resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.12.0.tgz#174729945da894d36a731d74df41034fd91f91f2"
   integrity sha1-F0cplF2olNNqcx1030EDT9kfkfI=
 
+"@salesforce/ts-types@0.13.0":
+  version "0.13.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.13.0.tgz#3d30a1864ac6ff48b6e892ee4cf8e30affa16f5c"
+  integrity sha1-PTChhkrG/0i26JLuTPjjCv+hb1w=
+
 "@sinonjs/formatio@3.0.0":
   version "3.0.0"
   resolved "http://10.252.156.164:4880/@sinonjs%2fformatio/-/formatio-3.0.0.tgz#9d282d81030a03a03fa0c5ce31fd8786a4da311a"

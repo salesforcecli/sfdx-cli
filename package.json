@@ -29,9 +29,6 @@
       "plugins:preinstall:verify:version": [
         "./dist/hooks/verifyPluginVersion.js"
       ],
-      "prerun": [
-        "./dist/hooks/logAnalytics.js"
-      ],
       "preupdate": [
         "./dist/hooks/updateReachability.js"
       ],
@@ -48,6 +45,7 @@
       "@oclif/plugin-warn-if-update-available",
       "@oclif/plugin-which",
       "@salesforce/plugin-generator",
+      "@salesforce/plugin-analytics",
       "@salesforce/sfdx-trust"
     ],
     "update": {
@@ -85,10 +83,11 @@
     "@oclif/plugin-which": "^1",
     "@salesforce/kit": "0.7.0",
     "@salesforce/lazy-require": "0.0.4",
+    "@salesforce/plugin-analytics": "0.1.0",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/require-analytics": "0.4.0",
     "@salesforce/sfdx-trust": "oclif",
-    "@salesforce/ts-types": "0.12.0",
+    "@salesforce/ts-types": "0.13.0",
     "ansi-escapes": "^3",
     "chalk": "^2",
     "debug": "^3",
