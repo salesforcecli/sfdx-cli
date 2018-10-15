@@ -17,7 +17,7 @@ const debug = Debug('sfdx:preupdate');
 const MAX_ATTEMPTS = 3;
 const RETRY_MILLIS = 1000;
 
-async function isS3HostReachable(s3Host: string, context: Hook.Context, request: typeof Request, attempt = 1): Promise < void> {
+async function isS3HostReachable(s3Host: string, context: Hook.Context, request: typeof Request, attempt = 1): Promise <void> {
     if (attempt > MAX_ATTEMPTS) {
         throw new NamedError('S3HostReachabilityError', 'S3 host is not reachable.');
     }
