@@ -138,6 +138,16 @@
     supports-color "^5.4.0"
     tslib "^1"
 
+"@oclif/command@1":
+  version "1.5.4"
+  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.5.4.tgz#659456def965454e1c0115e8265533980eefb200"
+  integrity sha512-R76o9r2nMYLmpiRyEGDyIlwWIs5n+7aL6TncnqHCtjk990bN4ax5GyKf1S/+vw+2GswwOzNJ/wvxy5gbB3QZbg==
+  dependencies:
+    "@oclif/errors" "^1.2.2"
+    "@oclif/parser" "^3.6.1"
+    debug "^4.1.0"
+    semver "^5.6.0"
+
 "@oclif/command@1.4.2":
   version "1.4.2"
   resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.2.tgz#f20ead470e87f629812ce21ddd72042c88517a5d"
@@ -155,6 +165,14 @@
     "@oclif/parser" "^3.6.1"
     debug "^4.0.1"
     semver "^5.5.1"
+
+"@oclif/config@1":
+  version "1.8.8"
+  resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.8.8.tgz#fc29da619c9e3dcce6ca786dde3bf65e1875874d"
+  integrity sha512-W+cethXtyFT34JlwzWYVEGNt64vaU9mYI/GYb3ELM+FJIk+N9KGMBNvqiE/MUoiWpvsj5GufrIA8XES7inCVAQ==
+  dependencies:
+    debug "^4.1.0"
+    tslib "^1.9.3"
 
 "@oclif/config@1.6.3":
   version "1.6.3"
@@ -187,6 +205,17 @@
     normalize-package-data "^2.4.0"
     qqjs "^0.3.10"
     tslib "^1.9.3"
+
+"@oclif/errors@1", "@oclif/errors@^1.2.2":
+  version "1.2.2"
+  resolved "http://10.252.156.164:4880/@oclif%2ferrors/-/errors-1.2.2.tgz#9d8f269b15f13d70aa93316fed7bebc24688edc2"
+  integrity sha512-Eq8BFuJUQcbAPVofDxwdE0bL14inIiwt5EaKRVY9ZDIG11jwdXZqiQEECJx0VfnLyUZdYfRd/znDI/MytdJoKg==
+  dependencies:
+    clean-stack "^1.3.0"
+    fs-extra "^7.0.0"
+    indent-string "^3.2.0"
+    strip-ansi "^5.0.0"
+    wrap-ansi "^4.0.0"
 
 "@oclif/errors@1.0.4":
   version "1.0.4"
@@ -385,6 +414,19 @@
     "@salesforce/core" "0.16.13"
     lodash "4.17.4"
 
+"@salesforce/command@0.1.6":
+  version "0.1.6"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-0.1.6.tgz#a246a8ef6f5c3efa91f3a6d9ebe41f0d03954c63"
+  integrity sha1-okao729cPvqR86bZ6+QfDQOVTGM=
+  dependencies:
+    "@oclif/command" "1.4.2"
+    "@oclif/errors" "^1.0.2"
+    "@oclif/parser" "3.2.9"
+    "@oclif/plugin-help" "^1.2.7"
+    "@oclif/test" "^1.0.1"
+    "@salesforce/core" "0.17.2"
+    lodash "4.17.4"
+
 "@salesforce/core@0.16.13":
   version "0.16.13"
   resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.16.13.tgz#88b1bd257bcfcc58d74b03a1be646f10e2ecd08a"
@@ -394,6 +436,21 @@
     chalk "2.3.0"
     cli-ux "3.3.25"
     jsforce "1.8.0"
+    jsonwebtoken "7.0.0"
+    lodash "4.17.4"
+    mkdirp "0.5.1"
+
+"@salesforce/core@0.17.2":
+  version "0.17.2"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.17.2.tgz#8fd02f5744c3670cca7e4ce4451a837b49bde7dc"
+  integrity sha1-j9AvV0TDZwzKfkzkRRqDe0m959w=
+  dependencies:
+    bunyan-sfdx-no-dtrace "1.8.2"
+    chalk "2.4.0"
+    cli-ux "3.3.25"
+    debug "3.1.0"
+    jsen "0.6.6"
+    jsforce "1.8.4"
     jsonwebtoken "7.0.0"
     lodash "4.17.4"
     mkdirp "0.5.1"
@@ -442,6 +499,21 @@
   dependencies:
     "@types/debug" "0.0.30"
     debug "3.1.0"
+
+"@salesforce/plugin-analytics@0.2.0":
+  version "0.2.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-0.2.0.tgz#873413aea997b3251472a515f8f15aadb2a78f7f"
+  integrity sha1-hzQTrqmXsyUUcqUV+PFarbKnj38=
+  dependencies:
+    "@oclif/command" "1"
+    "@oclif/config" "1"
+    "@oclif/errors" "1"
+    "@salesforce/command" "0.1.6"
+    "@salesforce/ts-types" "0.13.0"
+    debug "4.1.0"
+    fs-extra "7.0.0"
+    tslib "1"
+    tslint "5.11.0"
 
 "@salesforce/plugin-generator@0.0.10":
   version "0.0.10"
@@ -711,6 +783,11 @@ ansi-regex@^3.0.0:
   version "3.0.0"
   resolved "http://10.252.156.164:4880/ansi-regex/-/ansi-regex-3.0.0.tgz#ed0317c322064f79466c02966bddb605ab37d998"
   integrity sha1-7QMXwyIGT3lGbAKWa922Bas32Zg=
+
+ansi-regex@^4.0.0:
+  version "4.0.0"
+  resolved "http://10.252.156.164:4880/ansi-regex/-/ansi-regex-4.0.0.tgz#70de791edf021404c3fd615aa89118ae0432e5a9"
+  integrity sha512-iB5Dda8t/UqpPI/IjsejXu5jOGDrzn41wJyljwPH65VCIbk6+1BzFIMJGFwTNrYXT1CrD+B4l19U7awiQ8rk7w==
 
 ansi-styles@^2.2.1:
   version "2.2.1"
@@ -1286,6 +1363,15 @@ chalk@2.3.0:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
+
+chalk@2.4.0:
+  version "2.4.0"
+  resolved "http://10.252.156.164:4880/chalk/-/chalk-2.4.0.tgz#a060a297a6b57e15b61ca63ce84995daa0fe6e52"
+  integrity sha512-Wr/w0f4o9LuE7K53cD0qmbAMM+2XNLzR29vFn5hqko4sxGlUsyy363NvmyGIyk5tpe9cjTr9SJYbysEyPkRnFw==
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
 
 chardet@^0.4.0:
   version "0.4.2"
@@ -1963,6 +2049,13 @@ debug@3.1.0:
   dependencies:
     ms "2.0.0"
 
+debug@4.1.0, debug@^4.0.1, debug@^4.1.0:
+  version "4.1.0"
+  resolved "http://10.252.156.164:4880/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
+  integrity sha512-heNPJUJIqC+xB6ayLAMHaIrmN9HKa7aQO8MGqKpvCA+uJYVcvR6l5kgdrhRuwPFHU7P5/A1w0BjByPHwpfTDKg==
+  dependencies:
+    ms "^2.1.1"
+
 debug@^2.0.0, debug@^2.1.0, debug@^2.1.1, debug@^2.2.0, debug@^2.3.3, debug@^2.6.3:
   version "2.6.9"
   resolved "http://10.252.156.164:4880/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -1981,13 +2074,6 @@ debug@^3.1.0:
   version "3.2.6"
   resolved "http://10.252.156.164:4880/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
   integrity sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==
-  dependencies:
-    ms "^2.1.1"
-
-debug@^4.0.1:
-  version "4.1.0"
-  resolved "http://10.252.156.164:4880/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
-  integrity sha512-heNPJUJIqC+xB6ayLAMHaIrmN9HKa7aQO8MGqKpvCA+uJYVcvR6l5kgdrhRuwPFHU7P5/A1w0BjByPHwpfTDKg==
   dependencies:
     ms "^2.1.1"
 
@@ -3059,6 +3145,15 @@ fs-extra@4.0.1:
     jsonfile "^3.0.0"
     universalify "^0.1.0"
 
+fs-extra@7.0.0, fs-extra@^7.0.0:
+  version "7.0.0"
+  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-7.0.0.tgz#8cc3f47ce07ef7b3593a11b9fb245f7e34c041d6"
+  integrity sha512-EglNDLRpmaTWiD/qraZn6HREAEAHJcJOmxNEYwq6xeMKnVMAy3GUcFB+wXt2C6k4CNvB/mP1y/U3dzvKKj5OtQ==
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
+
 fs-extra@^4:
   version "4.0.3"
   resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
@@ -3081,15 +3176,6 @@ fs-extra@^6.0.1:
   version "6.0.1"
   resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-6.0.1.tgz#8abc128f7946e310135ddc93b98bddb410e7a34b"
   integrity sha512-GnyIkKhhzXZUWFCaJzvyDLEEgDkPfb4/TPvJCJVuS8MWZgoSsErf++QpiAlDnKFcqhRlm+tIOcencCjyJE6ZCA==
-  dependencies:
-    graceful-fs "^4.1.2"
-    jsonfile "^4.0.0"
-    universalify "^0.1.0"
-
-fs-extra@^7.0.0:
-  version "7.0.0"
-  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-7.0.0.tgz#8cc3f47ce07ef7b3593a11b9fb245f7e34c041d6"
-  integrity sha512-EglNDLRpmaTWiD/qraZn6HREAEAHJcJOmxNEYwq6xeMKnVMAy3GUcFB+wXt2C6k4CNvB/mP1y/U3dzvKKj5OtQ==
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
@@ -6653,7 +6739,7 @@ semver-compare@^1.0.0:
   resolved "http://10.252.156.164:4880/semver/-/semver-5.5.1.tgz#7dfdd8814bdb7cabc7be0fb1d734cfb66c940477"
   integrity sha512-PqpAxfrEhlSUWge8dwIp4tZnQ25DIOthpiaHNIthsjEFQD6EvqUKUDM7L8O2rShkFccYo1VjJR0coWfNkCubRw==
 
-semver@^5.5.0, semver@^5.5.1:
+semver@^5.5.0, semver@^5.5.1, semver@^5.6.0:
   version "5.6.0"
   resolved "http://10.252.156.164:4880/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
   integrity sha512-RS9R6R35NYgQn++fkDWaOmqGoj4Ek9gGs+DPxNUZKuwE183xjJroKvyo1IzVFeXvUrvmALy6FWD5xrdJT25gMg==
@@ -7093,6 +7179,13 @@ strip-ansi@^4.0.0:
   dependencies:
     ansi-regex "^3.0.0"
 
+strip-ansi@^5.0.0:
+  version "5.0.0"
+  resolved "http://10.252.156.164:4880/strip-ansi/-/strip-ansi-5.0.0.tgz#f78f68b5d0866c20b2c9b8c61b5298508dc8756f"
+  integrity sha512-Uu7gQyZI7J7gn5qLn1Np3G9vcYGTVqB+lFTytnDJv83dd8T22aGH451P3jueT2/QemInJDfxHB5Tde5OzgG1Ow==
+  dependencies:
+    ansi-regex "^4.0.0"
+
 strip-bom-stream@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/strip-bom-stream/-/strip-bom-stream-2.0.0.tgz#f87db5ef2613f6968aa545abfe1ec728b6a829ca"
@@ -7421,15 +7514,15 @@ ts-node@^6:
     source-map-support "^0.5.6"
     yn "^2.0.0"
 
+tslib@1, tslib@^1, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.2, tslib@^1.9.3:
+  version "1.9.3"
+  resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
+  integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
+
 tslib@1.9.0:
   version "1.9.0"
   resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
   integrity sha512-f/qGG2tUkrISBlQZEjEqoZ3B2+npJjIf04H1wuAv9iA8i04Icp+61KRXxFdha22670NJopsZCIjhC3SnjPRKrQ==
-
-tslib@^1, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.2, tslib@^1.9.3:
-  version "1.9.3"
-  resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
-  integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
 
 tslint-consistent-codestyle@^1.11.0:
   version "1.13.3"
