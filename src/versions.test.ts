@@ -91,7 +91,7 @@ describe('versions', () => {
         it('should exit on older versions', () => {
             checkNodeVersion('8.0.0', '8.4.0');
             expect(exit.calledOnce).to.be.true;
-            expect(exit.callArg(0)).to.equal(1);
+            expect(exit.getCall(0).args[0]).to.equal(1);
         });
 
         it('should not exit on the same version', () => {
