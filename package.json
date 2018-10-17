@@ -86,7 +86,7 @@
     "@salesforce/plugin-analytics": "0.2.0",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/require-analytics": "0.4.0",
-    "@salesforce/sfdx-trust": "oclif",
+    "@salesforce/sfdx-trust": "2.0.0",
     "@salesforce/ts-types": "0.13.0",
     "ansi-escapes": "^3",
     "chalk": "^2",
