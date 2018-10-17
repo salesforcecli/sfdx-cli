@@ -12,7 +12,6 @@
   },
   "files": [
     "bin",
-    "npm-shrinkwrap.json",
     "oclif.manifest.json",
     "dist/**/*.js",
     "!dist/**/*.test.js"
