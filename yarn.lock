@@ -109,11 +109,6 @@
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
 
-"@heroku/linewrap@^1.0.0":
-  version "1.0.0"
-  resolved "http://10.252.156.164:4880/@heroku%2flinewrap/-/linewrap-1.0.0.tgz#a9d4e99f0a3e423a899b775f5f3d6747a1ff15c6"
-  integrity sha512-qPeQp2DnALUwWKaL6ZXfnOw/lHp+zNg5V8whx5c/Y10HMWYjuQFqKupgoJgyuEYjnvYwoZTarW280+aOXWQLCQ==
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "http://10.252.156.164:4880/@mrmlnc%2freaddir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -136,7 +131,7 @@
     supports-color "^5.4.0"
     tslib "^1"
 
-"@oclif/command@1", "@oclif/command@^1", "@oclif/command@^1.4.29", "@oclif/command@^1.4.33", "@oclif/command@^1.5.0", "@oclif/command@^1.5.3", "@oclif/command@^1.5.4":
+"@oclif/command@^1", "@oclif/command@^1.4.33", "@oclif/command@^1.5.0", "@oclif/command@^1.5.3", "@oclif/command@^1.5.4":
   version "1.5.4"
   resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.5.4.tgz#659456def965454e1c0115e8265533980eefb200"
   integrity sha512-R76o9r2nMYLmpiRyEGDyIlwWIs5n+7aL6TncnqHCtjk990bN4ax5GyKf1S/+vw+2GswwOzNJ/wvxy5gbB3QZbg==
@@ -146,15 +141,7 @@
     debug "^4.1.0"
     semver "^5.6.0"
 
-"@oclif/command@1.4.2":
-  version "1.4.2"
-  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.2.tgz#f20ead470e87f629812ce21ddd72042c88517a5d"
-  integrity sha512-1KJWIWO+Kvi+G4aHjB1n9q6lFjdckUlyEawl7cOz8X0zFbE/Syo0HGTGBkWXGuOUHc77vcES6G22yS80j0M4tw==
-  dependencies:
-    "@oclif/parser" "^3.2.9"
-    semver "^5.5.0"
-
-"@oclif/config@1", "@oclif/config@^1", "@oclif/config@^1.6.28", "@oclif/config@^1.8.7":
+"@oclif/config@^1", "@oclif/config@^1.6.28", "@oclif/config@^1.8.7":
   version "1.8.8"
   resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.8.8.tgz#fc29da619c9e3dcce6ca786dde3bf65e1875874d"
   integrity sha512-W+cethXtyFT34JlwzWYVEGNt64vaU9mYI/GYb3ELM+FJIk+N9KGMBNvqiE/MUoiWpvsj5GufrIA8XES7inCVAQ==
@@ -179,7 +166,7 @@
     qqjs "^0.3.10"
     tslib "^1.9.3"
 
-"@oclif/errors@1", "@oclif/errors@^1", "@oclif/errors@^1.0.2", "@oclif/errors@^1.1.2", "@oclif/errors@^1.2.0", "@oclif/errors@^1.2.2":
+"@oclif/errors@^1", "@oclif/errors@^1.1.2", "@oclif/errors@^1.2.0", "@oclif/errors@^1.2.2":
   version "1.2.2"
   resolved "http://10.252.156.164:4880/@oclif%2ferrors/-/errors-1.2.2.tgz#9d8f269b15f13d70aa93316fed7bebc24688edc2"
   integrity sha512-Eq8BFuJUQcbAPVofDxwdE0bL14inIiwt5EaKRVY9ZDIG11jwdXZqiQEECJx0VfnLyUZdYfRd/znDI/MytdJoKg==
@@ -205,14 +192,7 @@
   resolved "http://10.252.156.164:4880/@oclif%2flinewrap/-/linewrap-1.0.0.tgz#aedcb64b479d4db7be24196384897b5000901d91"
   integrity sha512-Ups2dShK52xXa8w6iBWLgcjPJWjais6KPJQq3gQ/88AY6BXoTX+MIGFPrWQO1KLMiQfoTpcLnUwloN4brrVUHw==
 
-"@oclif/parser@3.2.9":
-  version "3.2.9"
-  resolved "http://10.252.156.164:4880/@oclif%2fparser/-/parser-3.2.9.tgz#76d01106971e20dfcfec5be276c4e6e9edfee9ec"
-  integrity sha512-GhyMbMqon/fWkMcxMEeOIpmHYg+4la8i19zRvZjALtHM9s4ESl+Od1Tv6NHRzkmCpN3sr6jfomRra5TU3YRmdg==
-  dependencies:
-    "@heroku/linewrap" "^1.0.0"
-
-"@oclif/parser@^3.2.9", "@oclif/parser@^3.6.0", "@oclif/parser@^3.6.1":
+"@oclif/parser@^3.6.0", "@oclif/parser@^3.6.1":
   version "3.7.0"
   resolved "http://10.252.156.164:4880/@oclif%2fparser/-/parser-3.7.0.tgz#cda3eea341e87cc7390511cf369a0126d0b39a93"
   integrity sha512-CtRbCBJQ8prt9o3nCTSRi/UEw68t7mUf19vu3QKbh6sGc6BkD7OAX6Hfjxif636LSlR+N8eh3PELw9SxHdJcbQ==
@@ -231,19 +211,6 @@
     cli-ux "^4.9.0"
     lodash "^4.17.11"
     tslib "^1.9.3"
-
-"@oclif/plugin-help@^1.2.7":
-  version "1.2.11"
-  resolved "http://10.252.156.164:4880/@oclif%2fplugin-help/-/plugin-help-1.2.11.tgz#e6413a6009519230bc4c7e7fe45d8e139939e657"
-  integrity sha512-tuzhvxxRtfLnWa96klngXBi5IwHt9S/twedCbQhl9dYIKTFMHI1BcOQcPra6ylct+M+b9jhEF5sjWLv78tB6tw==
-  dependencies:
-    "@oclif/command" "^1.4.29"
-    chalk "^2.4.1"
-    indent-string "^3.2.0"
-    lodash.template "^4.4.0"
-    string-width "^2.1.1"
-    widest-line "^2.0.0"
-    wrap-ansi "^3.0.1"
 
 "@oclif/plugin-help@^2", "@oclif/plugin-help@^2.0.5", "@oclif/plugin-help@^2.1.0", "@oclif/plugin-help@^2.1.2":
   version "2.1.3"
@@ -338,7 +305,7 @@
   resolved "http://10.252.156.164:4880/@oclif%2fscreen/-/screen-1.0.4.tgz#b740f68609dfae8aa71c3a6cab15d816407ba493"
   integrity sha512-60CHpq+eqnTxLZQ4PGHYNwUX572hgpMHGPtTWMjdTMsAvlm69lZV/4ly6O3sAYkomo4NggGcomrDpBe34rxUqw==
 
-"@oclif/test@^1", "@oclif/test@^1.0.1", "@oclif/test@^1.2.0":
+"@oclif/test@^1", "@oclif/test@^1.2.0":
   version "1.2.2"
   resolved "http://10.252.156.164:4880/@oclif%2ftest/-/test-1.2.2.tgz#41f531145bf784b28f076d5b9ec9ca6c7bda0284"
   integrity sha512-ig8bwNRQVOqTJL03iSKzkEG0OHp4ai5uDragU1+8RHh1DDs5unF46lyd/zLkIicDZXrmEhlIuAjkBdK1apH6Bw==
@@ -352,20 +319,7 @@
   dependencies:
     tslint-xo "^0.8.0"
 
-"@salesforce/command@0.1.6":
-  version "0.1.6"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-0.1.6.tgz#a246a8ef6f5c3efa91f3a6d9ebe41f0d03954c63"
-  integrity sha1-okao729cPvqR86bZ6+QfDQOVTGM=
-  dependencies:
-    "@oclif/command" "1.4.2"
-    "@oclif/errors" "^1.0.2"
-    "@oclif/parser" "3.2.9"
-    "@oclif/plugin-help" "^1.2.7"
-    "@oclif/test" "^1.0.1"
-    "@salesforce/core" "0.17.2"
-    lodash "4.17.4"
-
-"@salesforce/command@0.2.5":
+"@salesforce/command@0.2.5", "@salesforce/command@^0.2.5":
   version "0.2.5"
   resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-0.2.5.tgz#95857d52b84fb8c2f766339a7c94398519d43ff5"
   integrity sha1-lYV9UrhPuML3ZjOafJQ5hRnUP/U=
@@ -380,21 +334,6 @@
     "@salesforce/ts-types" "0.5.0"
     chalk "^2.4.0"
     cli-ux "^4.8.0"
-
-"@salesforce/core@0.17.2":
-  version "0.17.2"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.17.2.tgz#8fd02f5744c3670cca7e4ce4451a837b49bde7dc"
-  integrity sha1-j9AvV0TDZwzKfkzkRRqDe0m959w=
-  dependencies:
-    bunyan-sfdx-no-dtrace "1.8.2"
-    chalk "2.4.0"
-    cli-ux "3.3.25"
-    debug "3.1.0"
-    jsen "0.6.6"
-    jsforce "1.8.4"
-    jsonwebtoken "7.0.0"
-    lodash "4.17.4"
-    mkdirp "0.5.1"
 
 "@salesforce/core@0.21.1":
   version "0.21.1"
@@ -463,20 +402,19 @@
     "@types/debug" "0.0.30"
     debug "3.1.0"
 
-"@salesforce/plugin-analytics@0.2.0":
-  version "0.2.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-0.2.0.tgz#873413aea997b3251472a515f8f15aadb2a78f7f"
-  integrity sha1-hzQTrqmXsyUUcqUV+PFarbKnj38=
+"@salesforce/plugin-analytics@0.3.0":
+  version "0.3.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-0.3.0.tgz#b4763bec027b00022b59fa8b4e2a86a889c83dbd"
+  integrity sha1-tHY77AJ7AAIrWfqLTiqGqInIPb0=
   dependencies:
-    "@oclif/command" "1"
-    "@oclif/config" "1"
-    "@oclif/errors" "1"
-    "@salesforce/command" "0.1.6"
-    "@salesforce/ts-types" "0.13.0"
-    debug "4.1.0"
-    fs-extra "7.0.0"
-    tslib "1"
-    tslint "5.11.0"
+    "@oclif/command" "^1"
+    "@oclif/config" "^1"
+    "@oclif/errors" "^1"
+    "@salesforce/command" "^0.2.5"
+    "@salesforce/ts-types" "0.14.0"
+    debug "^4.1.0"
+    fs-extra "^7.0.0"
+    tslib "^1"
 
 "@salesforce/plugin-generator@0.0.10":
   version "0.0.10"
@@ -504,7 +442,7 @@
   resolved "http://10.252.156.164:4880/@salesforce%2frequire-analytics/-/require-analytics-0.4.0.tgz#d0a3ef8be7108eb6a7a8072386d5fe8a71e44e56"
   integrity sha1-0KPvi+cQjranqAcjhtX+inHkTlY=
 
-"@salesforce/sfdx-trust@oclif":
+"@salesforce/sfdx-trust@2.0.0":
   version "2.0.0"
   resolved "http://10.252.156.164:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-2.0.0.tgz#e98962baa25a3af4253fdbe59060343195b59af0"
   integrity sha1-6YliuqJaOvQlP9vlkGA0MZW1mvA=
@@ -538,6 +476,13 @@
   version "0.13.0"
   resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.13.0.tgz#3d30a1864ac6ff48b6e892ee4cf8e30affa16f5c"
   integrity sha1-PTChhkrG/0i26JLuTPjjCv+hb1w=
+
+"@salesforce/ts-types@0.14.0":
+  version "0.14.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.14.0.tgz#2cf07ba30378daa15862822185c9f21c953efb3d"
+  integrity sha1-LPB7owN42qFYYoIhhcnyHJU++z0=
+  dependencies:
+    tslib "^1.9.3"
 
 "@salesforce/ts-types@0.5.0":
   version "0.5.0"
@@ -1265,14 +1210,6 @@ cardinal@0.7.1, cardinal@^0.7.1:
     ansicolors "~0.2.1"
     redeyed "~0.6.0"
 
-cardinal@^1.0.0:
-  version "1.0.0"
-  resolved "http://10.252.156.164:4880/cardinal/-/cardinal-1.0.0.tgz#50e21c1b0aa37729f9377def196b5a9cec932ee9"
-  integrity sha1-UOIcGwqjdyn5N33vGWtanOyTLuk=
-  dependencies:
-    ansicolors "~0.2.1"
-    redeyed "~1.0.0"
-
 cardinal@^2.1.1:
   version "2.1.1"
   resolved "http://10.252.156.164:4880/cardinal/-/cardinal-2.1.1.tgz#7cc1055d822d212954d07b085dea251cc7bc5505"
@@ -1322,15 +1259,6 @@ chalk@1.1.3, chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
     has-ansi "^2.0.0"
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
-
-chalk@2.4.0:
-  version "2.4.0"
-  resolved "http://10.252.156.164:4880/chalk/-/chalk-2.4.0.tgz#a060a297a6b57e15b61ca63ce84995daa0fe6e52"
-  integrity sha512-Wr/w0f4o9LuE7K53cD0qmbAMM+2XNLzR29vFn5hqko4sxGlUsyy363NvmyGIyk5tpe9cjTr9SJYbysEyPkRnFw==
-  dependencies:
-    ansi-styles "^3.2.1"
-    escape-string-regexp "^1.0.5"
-    supports-color "^5.3.0"
 
 chardet@^0.4.0:
   version "0.4.2"
@@ -1425,26 +1353,6 @@ cli-table@^0.3.1:
   integrity sha1-9TsFJmqLGguTSz0IIebi3FkUriM=
   dependencies:
     colors "1.0.3"
-
-cli-ux@3.3.25:
-  version "3.3.25"
-  resolved "http://10.252.156.164:4880/cli-ux/-/cli-ux-3.3.25.tgz#2bc2a114149afb3b61c614bd47d204877eff90d2"
-  integrity sha512-9LJfR9sjWxm+aNRFf9R70SIUr1jwI5y6h4+qLUfmJLCujW1ouSBek/VoRs+a96fM6tlmkPdDYF5ewGNP2RSnnA==
-  dependencies:
-    "@heroku/linewrap" "^1.0.0"
-    "@oclif/screen" "^1.0.2"
-    ansi-styles "^3.2.0"
-    cardinal "^1.0.0"
-    chalk "^2.3.0"
-    clean-stack "^1.3.0"
-    extract-stack "^1.0.0"
-    fs-extra "^5.0.0"
-    indent-string "^3.2.0"
-    lodash "^4.17.5"
-    password-prompt "^1.0.4"
-    semver "^5.5.0"
-    strip-ansi "^4.0.0"
-    supports-color "^5.1.0"
 
 cli-ux@4.8.0:
   version "4.8.0"
@@ -2008,13 +1916,6 @@ debug@3.1.0:
   dependencies:
     ms "2.0.0"
 
-debug@4.1.0, debug@^4.1.0:
-  version "4.1.0"
-  resolved "http://10.252.156.164:4880/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
-  integrity sha512-heNPJUJIqC+xB6ayLAMHaIrmN9HKa7aQO8MGqKpvCA+uJYVcvR6l5kgdrhRuwPFHU7P5/A1w0BjByPHwpfTDKg==
-  dependencies:
-    ms "^2.1.1"
-
 debug@^2.0.0, debug@^2.1.0, debug@^2.1.1, debug@^2.2.0, debug@^2.3.3, debug@^2.6.3:
   version "2.6.9"
   resolved "http://10.252.156.164:4880/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -2026,6 +1927,13 @@ debug@^3, debug@^3.1.0:
   version "3.2.6"
   resolved "http://10.252.156.164:4880/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
   integrity sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==
+  dependencies:
+    ms "^2.1.1"
+
+debug@^4.1.0:
+  version "4.1.0"
+  resolved "http://10.252.156.164:4880/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
+  integrity sha512-heNPJUJIqC+xB6ayLAMHaIrmN9HKa7aQO8MGqKpvCA+uJYVcvR6l5kgdrhRuwPFHU7P5/A1w0BjByPHwpfTDKg==
   dependencies:
     ms "^2.1.1"
 
@@ -2587,11 +2495,6 @@ esprima@~1.0.4:
   resolved "http://10.252.156.164:4880/esprima/-/esprima-1.0.4.tgz#9f557e08fc3b4d26ece9dd34f8fbf476b62585ad"
   integrity sha1-n1V+CPw7TSbs6d00+Pv0drYlha0=
 
-esprima@~3.0.0:
-  version "3.0.0"
-  resolved "http://10.252.156.164:4880/esprima/-/esprima-3.0.0.tgz#53cf247acda77313e551c3aa2e73342d3fb4f7d9"
-  integrity sha1-U88kes2ncxPlUcOqLnM0LT+099k=
-
 esquery@^1.0.0:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/esquery/-/esquery-1.0.1.tgz#406c51658b1f5991a5f9b62b1dc25b00e3e5c708"
@@ -3097,15 +3000,6 @@ fs-extra@4.0.1:
     jsonfile "^3.0.0"
     universalify "^0.1.0"
 
-fs-extra@7.0.0, fs-extra@^7.0.0:
-  version "7.0.0"
-  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-7.0.0.tgz#8cc3f47ce07ef7b3593a11b9fb245f7e34c041d6"
-  integrity sha512-EglNDLRpmaTWiD/qraZn6HREAEAHJcJOmxNEYwq6xeMKnVMAy3GUcFB+wXt2C6k4CNvB/mP1y/U3dzvKKj5OtQ==
-  dependencies:
-    graceful-fs "^4.1.2"
-    jsonfile "^4.0.0"
-    universalify "^0.1.0"
-
 fs-extra@^4:
   version "4.0.3"
   resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
@@ -3115,19 +3009,19 @@ fs-extra@^4:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
-fs-extra@^5.0.0:
-  version "5.0.0"
-  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-5.0.0.tgz#414d0110cdd06705734d055652c5411260c31abd"
-  integrity sha512-66Pm4RYbjzdyeuqudYqhFiNBbCIuI9kgRqLPSHIlXHidW8NIQtVdkM1yeZ4lXwuhbTETv3EUGMNHAAw6hiundQ==
+fs-extra@^6.0.1:
+  version "6.0.1"
+  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-6.0.1.tgz#8abc128f7946e310135ddc93b98bddb410e7a34b"
+  integrity sha512-GnyIkKhhzXZUWFCaJzvyDLEEgDkPfb4/TPvJCJVuS8MWZgoSsErf++QpiAlDnKFcqhRlm+tIOcencCjyJE6ZCA==
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
-fs-extra@^6.0.1:
-  version "6.0.1"
-  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-6.0.1.tgz#8abc128f7946e310135ddc93b98bddb410e7a34b"
-  integrity sha512-GnyIkKhhzXZUWFCaJzvyDLEEgDkPfb4/TPvJCJVuS8MWZgoSsErf++QpiAlDnKFcqhRlm+tIOcencCjyJE6ZCA==
+fs-extra@^7.0.0:
+  version "7.0.0"
+  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-7.0.0.tgz#8cc3f47ce07ef7b3593a11b9fb245f7e34c041d6"
+  integrity sha512-EglNDLRpmaTWiD/qraZn6HREAEAHJcJOmxNEYwq6xeMKnVMAy3GUcFB+wXt2C6k4CNvB/mP1y/U3dzvKKj5OtQ==
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
@@ -4951,7 +4845,7 @@ lodash@^3.2.0:
   resolved "http://10.252.156.164:4880/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
   integrity sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y=
 
-lodash@^4.0.0, lodash@^4.11.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.6.1, lodash@^4.8.0, lodash@~4.17.10:
+lodash@^4.0.0, lodash@^4.11.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.6.1, lodash@^4.8.0, lodash@~4.17.10:
   version "4.17.11"
   resolved "http://10.252.156.164:4880/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
@@ -5759,7 +5653,7 @@ pascalcase@^0.1.1:
   resolved "http://10.252.156.164:4880/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
   integrity sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=
 
-password-prompt@^1.0.4, password-prompt@^1.0.7:
+password-prompt@^1.0.7:
   version "1.0.7"
   resolved "http://10.252.156.164:4880/password-prompt/-/password-prompt-1.0.7.tgz#8e27748d3400bc9c9140d5ade705dfb7aeb7d91a"
   integrity sha1-jid0jTQAvJyRQNWt5wXft6632Ro=
@@ -6224,13 +6118,6 @@ redeyed@~0.6.0:
   dependencies:
     esprima "~2.7.0"
 
-redeyed@~1.0.0:
-  version "1.0.1"
-  resolved "http://10.252.156.164:4880/redeyed/-/redeyed-1.0.1.tgz#e96c193b40c0816b00aec842698e61185e55498a"
-  integrity sha1-6WwZO0DAgWsArshCaY5hGF5VSYo=
-  dependencies:
-    esprima "~3.0.0"
-
 redeyed@~2.1.0:
   version "2.1.1"
   resolved "http://10.252.156.164:4880/redeyed/-/redeyed-2.1.1.tgz#8984b5815d99cb220469c99eeeffe38913e6cc0b"
@@ -6606,7 +6493,7 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@oclif:
+salesforcedx@43.17.1-101:
   version "43.17.1-101"
   resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-43.17.1-101.tgz#cc1ff6154c142de71c53297eb16754237983521b"
   integrity sha1-zB/2FUwULeccUyl+sWdUI3mDUhs=
@@ -7421,15 +7308,15 @@ ts-node@^6:
     source-map-support "^0.5.6"
     yn "^2.0.0"
 
-tslib@1, tslib@^1, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.2, tslib@^1.9.3:
-  version "1.9.3"
-  resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
-  integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
-
 tslib@1.9.0:
   version "1.9.0"
   resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
   integrity sha512-f/qGG2tUkrISBlQZEjEqoZ3B2+npJjIf04H1wuAv9iA8i04Icp+61KRXxFdha22670NJopsZCIjhC3SnjPRKrQ==
+
+tslib@^1, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.2, tslib@^1.9.3:
+  version "1.9.3"
+  resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
+  integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
 
 tslint-consistent-codestyle@^1.11.0:
   version "1.13.3"
@@ -7696,6 +7583,11 @@ uuid@^3.0.0, uuid@^3.1.0, uuid@^3.3.2:
   resolved "http://10.252.156.164:4880/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
 
+v8-compile-cache@2.0.2:
+  version "2.0.2"
+  resolved "http://10.252.156.164:4880/v8-compile-cache/-/v8-compile-cache-2.0.2.tgz#a428b28bb26790734c4fc8bc9fa106fccebf6a6c"
+  integrity sha512-1wFuMUIM16MDJRCrpbpuEPTUGmM5QMUg0cr3KFwra2XgOgFcPGDQHDh3CszSCD2Zewc/dh/pamNEW8CbfDebUw==
+
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
   resolved "http://10.252.156.164:4880/validate-npm-package-license/-/validate-npm-package-license-3.0.4.tgz#fc91f6b9c7ba15c857f4cb2c5defeec39d4f410a"
@@ -7837,14 +7729,6 @@ wrap-ansi@^2.0.0:
   dependencies:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
-
-wrap-ansi@^3.0.1:
-  version "3.0.1"
-  resolved "http://10.252.156.164:4880/wrap-ansi/-/wrap-ansi-3.0.1.tgz#288a04d87eda5c286e060dfe8f135ce8d007f8ba"
-  integrity sha1-KIoE2H7aXChuBg3+jxNc6NAH+Lo=
-  dependencies:
-    string-width "^2.1.1"
-    strip-ansi "^4.0.0"
 
 wrap-ansi@^4.0.0:
   version "4.0.0"

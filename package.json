@@ -94,7 +94,8 @@
     "fs-extra": "^4",
     "request": "^2",
     "salesforcedx": "43.17.1-101",
-    "tslib": "^1"
+    "tslib": "^1",
+    "v8-compile-cache": "2.0.2"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1",
