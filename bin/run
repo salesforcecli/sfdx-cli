@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-// tslint:disable:no-var-requires
+/* tslint:disable:no-var-requires */
+/* eslint-disable global-require */
 
 // Check node version before requiring additional packages
 require('../dist/versions').checkNodeVersion();
@@ -9,14 +10,24 @@ require('../dist/versions').checkNodeVersion();
 const modules = require('@salesforce/require-analytics')
     .start(process.env.SFDX_REQUIRE_ANALYTICS === 'true');
 
+// Enable the v8 compile cache by default if not already overridden
+if (process.env.SFDX_COMPILE_CACHE !== 'false') {
+    require('v8-compile-cache');
+}
+
+// Enable lazy requires by default if not already overridden
+if (process.env.SFDX_LAZY_LOAD_MODULES !== 'false') {
+    process.env.SFDX_LAZY_LOAD_MODULES = 'true';
+}
+
 // Pre-process/prune flags before creating or running the actual CLI
-require('../dist/flags').processCliFlags(process);
+require('../dist/flags').preprocessCliFlags(process);
 
 const cli = require('../dist/cli');
 const pjson = require('../package.json');
 
 // OVERRIDES gets replaced with particular values for binary builds,
-// but simply use defaults for npm and local invocations.
+// but simply use defaults for npm and local invocations
 const overrides = { /* @OVERRIDES@ */ };
 const version = overrides.version || pjson.version;
 const channel = overrides.channel || 'stable';

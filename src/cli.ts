@@ -11,11 +11,7 @@ import * as path from 'path';
 import * as lazyRequire from './lazyRequire';
 import { default as env, Env } from './util/env';
 
-export interface AsyncRunnable {
-    run: () => Promise<any>; // tslint:disable-line:no-any matches oclif
-}
-
-export function create(version: string, channel: string, execute = run, environment = env): AsyncRunnable {
+export function create(version: string, channel: string, execute = run, environment = env) {
     const root = path.resolve(__dirname, '..');
     const pjson = require(path.resolve(__dirname, '..', 'package.json'));
     const args = process.argv.slice(2);
@@ -25,8 +21,7 @@ export function create(version: string, channel: string, execute = run, environm
             const config = new Config({ name: pjson.oclif.bin, root, version, channel });
             await config.load();
             configureAutoUpdate(environment);
-            // Require a dark feature envar to enable the lazy loading experiment, and disable during update commands
-            if (env.getBoolean('SFDX_LAZY_LOAD_MODULES') && args[1] !== 'update') {
+            if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
                 await lazyRequire.start(config);
             }
             return execute(args, config);

@@ -90,25 +90,6 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@fimbul/bifrost@^0.11.0":
-  version "0.11.0"
-  resolved "http://10.252.156.164:4880/@fimbul%2fbifrost/-/bifrost-0.11.0.tgz#83cacc21464198b12e3cc1c2204ae6c6d7afd158"
-  integrity sha512-GspMaQafpaUoXWWOUgNLQ4vsV52tIHUt0zpKPeJUYEyMvOSp7FIcZ1eQa7SK3GTusrEiksjMrDX/fwanigC3nQ==
-  dependencies:
-    "@fimbul/ymir" "^0.11.0"
-    get-caller-file "^1.0.2"
-    tslib "^1.8.1"
-    tsutils "^2.24.0"
-
-"@fimbul/ymir@^0.11.0":
-  version "0.11.0"
-  resolved "http://10.252.156.164:4880/@fimbul%2fymir/-/ymir-0.11.0.tgz#892a01997f1f80c7e4e437cf5ca51c95994c136f"
-  integrity sha512-aIYQMCWbBXe7DIofgu+4DLCPDCfqbKhPjBg4ajskJdq6CAJgySz6KyhGLNnKiDYZMF93ZsaEB/y3SafyMi98Mg==
-  dependencies:
-    inversify "^4.10.0"
-    reflect-metadata "^0.1.12"
-    tslib "^1.8.1"
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "http://10.252.156.164:4880/@mrmlnc%2freaddir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -305,19 +286,12 @@
   resolved "http://10.252.156.164:4880/@oclif%2fscreen/-/screen-1.0.4.tgz#b740f68609dfae8aa71c3a6cab15d816407ba493"
   integrity sha512-60CHpq+eqnTxLZQ4PGHYNwUX572hgpMHGPtTWMjdTMsAvlm69lZV/4ly6O3sAYkomo4NggGcomrDpBe34rxUqw==
 
-"@oclif/test@^1", "@oclif/test@^1.2.0":
+"@oclif/test@^1.2.0":
   version "1.2.2"
   resolved "http://10.252.156.164:4880/@oclif%2ftest/-/test-1.2.2.tgz#41f531145bf784b28f076d5b9ec9ca6c7bda0284"
   integrity sha512-ig8bwNRQVOqTJL03iSKzkEG0OHp4ai5uDragU1+8RHh1DDs5unF46lyd/zLkIicDZXrmEhlIuAjkBdK1apH6Bw==
   dependencies:
     fancy-test "^1.4.1"
-
-"@oclif/tslint@^1":
-  version "1.1.2"
-  resolved "http://10.252.156.164:4880/@oclif%2ftslint/-/tslint-1.1.2.tgz#23503ebb56c25556242e23e9df8706efc0b1fafb"
-  integrity sha512-1v1nK3e/qULhnaIIYzza9NR8wHTivEaUodIhpX441A/0b7IJGX8V6oMcY6apshGbXOIOtusTJtWTM1156mRmkw==
-  dependencies:
-    tslint-xo "^0.8.0"
 
 "@salesforce/command@0.2.5", "@salesforce/command@^0.2.5":
   version "0.2.5"
@@ -515,13 +489,6 @@
   resolved "http://10.252.156.164:4880/@types%2fchai/-/chai-4.1.6.tgz#1eb26c040e3a84205b1008ad55c800e5e8a94e34"
   integrity sha512-CBk7KTZt3FhPsEkYioG6kuCIpWISw+YI8o+3op4+NXwTpvAPxE1ES8+PY8zfaK2L98b1z5oq03UHa4VYpeUxnw==
 
-"@types/chalk@2.2.0":
-  version "2.2.0"
-  resolved "http://10.252.156.164:4880/@types%2fchalk/-/chalk-2.2.0.tgz#b7f6e446f4511029ee8e3f43075fb5b73fbaa0ba"
-  integrity sha512-1zzPV9FDe1I/WHhRkf9SNgqtRJWZqrBWgu7JGveuHmmyR9CnAPCie2N/x+iHrgnpYBIcCJWHBoMRv2TRWktsvw==
-  dependencies:
-    chalk "*"
-
 "@types/debug@0.0.30":
   version "0.0.30"
   resolved "http://10.252.156.164:4880/@types%2fdebug/-/debug-0.0.30.tgz#dc1e40f7af3b9c815013a7860e6252f6352a84df"
@@ -682,7 +649,7 @@ ansi-escapes@1.4.0, ansi-escapes@^1.1.0:
   resolved "http://10.252.156.164:4880/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
   integrity sha1-06ioOzGapneTZisT52HHkRQiMG4=
 
-ansi-escapes@^3, ansi-escapes@^3.0.0, ansi-escapes@^3.1.0:
+ansi-escapes@^3.0.0, ansi-escapes@^3.1.0:
   version "3.1.0"
   resolved "http://10.252.156.164:4880/ansi-escapes/-/ansi-escapes-3.1.0.tgz#f73207bb81207d75fd6c83f125af26eea378ca30"
   integrity sha512-UgAb8H9D41AQnu/PbWlCofQVcnV4Gs2bBJi9eZPxfU/hgglFh3SMDMENRIqdr7H6XFnXdoknctFByVsCOotTVw==
@@ -1240,15 +1207,6 @@ chai@^4:
     pathval "^1.1.0"
     type-detect "^4.0.5"
 
-chalk@*, chalk@^2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.4.0, chalk@^2.4.1:
-  version "2.4.1"
-  resolved "http://10.252.156.164:4880/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
-  integrity sha512-ObN6h1v2fTJSmUXoS3nMQ92LbDK9be4TV+6G+omQlGJFdcUX5heKi1LZ1YnRMIgwTLEj3E24bT6tYni50rlCfQ==
-  dependencies:
-    ansi-styles "^3.2.1"
-    escape-string-regexp "^1.0.5"
-    supports-color "^5.3.0"
-
 chalk@1.1.3, chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
   resolved "http://10.252.156.164:4880/chalk/-/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
@@ -1259,6 +1217,15 @@ chalk@1.1.3, chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
     has-ansi "^2.0.0"
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
+
+chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.4.0, chalk@^2.4.1:
+  version "2.4.1"
+  resolved "http://10.252.156.164:4880/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
+  integrity sha512-ObN6h1v2fTJSmUXoS3nMQ92LbDK9be4TV+6G+omQlGJFdcUX5heKi1LZ1YnRMIgwTLEj3E24bT6tYni50rlCfQ==
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
 
 chardet@^0.4.0:
   version "0.4.2"
@@ -2091,14 +2058,6 @@ dir-glob@^2.0.0:
     arrify "^1.0.1"
     path-type "^3.0.0"
 
-doctrine@0.7.2:
-  version "0.7.2"
-  resolved "http://10.252.156.164:4880/doctrine/-/doctrine-0.7.2.tgz#7cb860359ba3be90e040b26b729ce4bfa654c523"
-  integrity sha1-fLhgNZujvpDgQLJrcpzkv6ZUxSM=
-  dependencies:
-    esutils "^1.1.6"
-    isarray "0.0.1"
-
 doctrine@1.2.x:
   version "1.2.3"
   resolved "http://10.252.156.164:4880/doctrine/-/doctrine-1.2.3.tgz#6aec6bbd62cf89dd498cae70c0ed9f49da873a6a"
@@ -2523,11 +2482,6 @@ estraverse@~1.3.0:
   version "1.3.2"
   resolved "http://10.252.156.164:4880/estraverse/-/estraverse-1.3.2.tgz#37c2b893ef13d723f276d878d60d8535152a6c42"
   integrity sha1-N8K4k+8T1yPydth41g2FNRUqbEI=
-
-esutils@^1.1.6:
-  version "1.1.6"
-  resolved "http://10.252.156.164:4880/esutils/-/esutils-1.1.6.tgz#c01ccaa9ae4b897c6d0c3e210ae52f3c7a844375"
-  integrity sha1-wBzKqa5LiXxtDD4hCuUvPHqEQ3U=
 
 esutils@^2.0.2:
   version "2.0.2"
@@ -3000,15 +2954,6 @@ fs-extra@4.0.1:
     jsonfile "^3.0.0"
     universalify "^0.1.0"
 
-fs-extra@^4:
-  version "4.0.3"
-  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
-  integrity sha512-q6rbdDd1o2mAnQreO7YADIxf/Whx4AHBiRf6d+/cVT8h44ss+lHgxf1FemcqDnQt9X3ct4McHr+JMGlYSsK7Cg==
-  dependencies:
-    graceful-fs "^4.1.2"
-    jsonfile "^4.0.0"
-    universalify "^0.1.0"
-
 fs-extra@^6.0.1:
   version "6.0.1"
   resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-6.0.1.tgz#8abc128f7946e310135ddc93b98bddb410e7a34b"
@@ -3053,7 +2998,7 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
-get-caller-file@^1.0.1, get-caller-file@^1.0.2:
+get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "http://10.252.156.164:4880/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
   integrity sha512-3t6rVToeoZfYSGd8YoLFR2DJkiQrIiUrGcjvFX2mDw3bn6k2OtwHN0TNCLbBO+w8qTvimhDkv+LSscbJY1vE6w==
@@ -3875,11 +3820,6 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "http://10.252.156.164:4880/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
   integrity sha1-ftGxQQxqDg94z5XTuEQMY/eLhhQ=
-
-inversify@^4.10.0:
-  version "4.14.0"
-  resolved "http://10.252.156.164:4880/inversify/-/inversify-4.14.0.tgz#393c1f86ee92aef0592eb0e493623b9d88dfb376"
-  integrity sha512-DQLg2u2tWaiHo6V5lGr47a/M9YBX3g72c8Y58+JPH0Lx9fXugEsnXRc08mwsTvDg6gGWBKSkIgtBS/eJCQmDVg==
 
 invert-kv@^1.0.0:
   version "1.0.0"
@@ -6125,11 +6065,6 @@ redeyed@~2.1.0:
   dependencies:
     esprima "~4.0.0"
 
-reflect-metadata@^0.1.12:
-  version "0.1.12"
-  resolved "http://10.252.156.164:4880/reflect-metadata/-/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
-  integrity sha512-n+IyV+nGz3+0q3/Yf1ra12KpCyi001bi4XFxSjbiWWjfqb52iTTtpGXmCCAOWWIAn9KEuFZKGqBERHmrtScZ3A==
-
 regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "http://10.252.156.164:4880/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
@@ -6776,14 +6711,7 @@ source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@0.5.2:
-  version "0.5.2"
-  resolved "http://10.252.156.164:4880/source-map-support/-/source-map-support-0.5.2.tgz#1a6297fd5b2e762b39688c7fc91233b60984f0a5"
-  integrity sha512-9zHceZbQwERaMK1MiFguvx1dL9GQPLXInr2D/wUxAsuV6ZKc9F0DHYWeloMcalkYRbtanwqUakoDjvj55cL/4A==
-  dependencies:
-    source-map "^0.6.0"
-
-source-map-support@^0.5.6:
+source-map-support@^0.5.2, source-map-support@^0.5.6:
   version "0.5.9"
   resolved "http://10.252.156.164:4880/source-map-support/-/source-map-support-0.5.9.tgz#41bc953b2534267ea2d605bccfa7bfa3111ced5f"
   integrity sha512-gR6Rw4MvUlYy83vP0vxoVNzM6t8MUXqNuRsuBmBHQDu1Fh6X015FrLdgoDKcNdkwGubozq0P4N0Q37UyFVr1EA==
@@ -7308,33 +7236,10 @@ ts-node@^6:
     source-map-support "^0.5.6"
     yn "^2.0.0"
 
-tslib@1.9.0:
-  version "1.9.0"
-  resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
-  integrity sha512-f/qGG2tUkrISBlQZEjEqoZ3B2+npJjIf04H1wuAv9iA8i04Icp+61KRXxFdha22670NJopsZCIjhC3SnjPRKrQ==
-
-tslib@^1, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.2, tslib@^1.9.3:
+tslib@^1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.2, tslib@^1.9.3:
   version "1.9.3"
   resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
-
-tslint-consistent-codestyle@^1.11.0:
-  version "1.13.3"
-  resolved "http://10.252.156.164:4880/tslint-consistent-codestyle/-/tslint-consistent-codestyle-1.13.3.tgz#763e8575accc19f17b7d0369ead382bdbf78fd5b"
-  integrity sha512-+ocXSNGHqUCUyTJsPhS7xqcC3qf6FyP4vd1jEaXaWaJ5NNN36gKZhqNt3nAWH/YgSV0tYaapjSWMbJQJmn/5MQ==
-  dependencies:
-    "@fimbul/bifrost" "^0.11.0"
-    tslib "^1.7.1"
-    tsutils "^2.27.0"
-
-tslint-eslint-rules@^5.3.1:
-  version "5.4.0"
-  resolved "http://10.252.156.164:4880/tslint-eslint-rules/-/tslint-eslint-rules-5.4.0.tgz#e488cc9181bf193fe5cd7bfca213a7695f1737b5"
-  integrity sha512-WlSXE+J2vY/VPgIcqQuijMQiel+UtmXS+4nvK4ZzlDiqBfXse8FAvkNnTcYhnQyOTW5KFM+uRRGXxYhFpuBc6w==
-  dependencies:
-    doctrine "0.7.2"
-    tslib "1.9.0"
-    tsutils "^3.0.0"
 
 tslint-microsoft-contrib@5.2.0:
   version "5.2.0"
@@ -7342,22 +7247,6 @@ tslint-microsoft-contrib@5.2.0:
   integrity sha512-gHVEIkTcMB9lS6UPEgEznV5ZmyhDs/aHyBS9E89S8aJiK1qLv22DmfCcda53S024T+WQkGAhLHUQF4Qn4nzCAA==
   dependencies:
     tsutils "^2.12.1 <2.29.0"
-
-tslint-microsoft-contrib@^5.0.2:
-  version "5.2.1"
-  resolved "http://10.252.156.164:4880/tslint-microsoft-contrib/-/tslint-microsoft-contrib-5.2.1.tgz#a6286839f800e2591d041ea2800c77487844ad81"
-  integrity sha512-PDYjvpo0gN9IfMULwKk0KpVOPMhU6cNoT9VwCOLeDl/QS8v8W2yspRpFFuUS7/c5EIH/n8ApMi8TxJAz1tfFUA==
-  dependencies:
-    tsutils "^2.27.2 <2.29.0"
-
-tslint-xo@^0.8.0:
-  version "0.8.0"
-  resolved "http://10.252.156.164:4880/tslint-xo/-/tslint-xo-0.8.0.tgz#2a729485e5698159bcf2cd86339bbca6fc5a45dc"
-  integrity sha512-jJtpBwTXjDsVvcho+zcqjJpFjW8/zrJXXrNwnfcnbmNATIUmMOIgUsk3csbygkdtVeBgEKnXBtkIaMApWZtt+w==
-  dependencies:
-    tslint-consistent-codestyle "^1.11.0"
-    tslint-eslint-rules "^5.3.1"
-    tslint-microsoft-contrib "^5.0.2"
 
 tslint@5.11.0, tslint@^5:
   version "5.11.0"
@@ -7377,24 +7266,17 @@ tslint@5.11.0, tslint@^5:
     tslib "^1.8.0"
     tsutils "^2.27.2"
 
-"tsutils@^2.12.1 <2.29.0", "tsutils@^2.27.2 <2.29.0":
+"tsutils@^2.12.1 <2.29.0":
   version "2.28.0"
   resolved "http://10.252.156.164:4880/tsutils/-/tsutils-2.28.0.tgz#6bd71e160828f9d019b6f4e844742228f85169a1"
   integrity sha512-bh5nAtW0tuhvOJnx1GLRn5ScraRLICGyJV5wJhtRWOLsxW70Kk5tZtpK3O/hW6LDnqKS9mlUMPZj9fEMJ0gxqA==
   dependencies:
     tslib "^1.8.1"
 
-tsutils@^2.24.0, tsutils@^2.27.0, tsutils@^2.27.2:
+tsutils@^2.27.2:
   version "2.29.0"
   resolved "http://10.252.156.164:4880/tsutils/-/tsutils-2.29.0.tgz#32b488501467acbedd4b85498673a0812aca0b99"
   integrity sha512-g5JVHCIJwzfISaXpXE1qvNalca5Jwob6FjI4AoPlqMusJ6ftFE7IkkFoMhVLRgK+4Kx3gkzb8UZK5t5yTTvEmA==
-  dependencies:
-    tslib "^1.8.1"
-
-tsutils@^3.0.0:
-  version "3.1.0"
-  resolved "http://10.252.156.164:4880/tsutils/-/tsutils-3.1.0.tgz#9136fdbc347799941db4eb326af4dcb81454820e"
-  integrity sha512-rmGhespW+nZMtdkc4JJefYSjux2uCDZxCTLU+nu8gvm+gM+YT0W5XAygHxaeOwRAHZ+SoPdrovZmAlZ2a0KSlw==
   dependencies:
     tslib "^1.8.1"
 
