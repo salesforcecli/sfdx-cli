@@ -19,7 +19,6 @@ function prepDownload() {
 # Copy new artifacts to root-level download artifacts with the legacy names
 prepDownload "darwin-x64"   "${PKG_NAME}.pkg"               "sfdx-osx.pkg"
 prepDownload "linux-x64"    "${PKG_NAME}-linux-x64.tar.xz"  "sfdx-linux-amd64.tar.xz"
-prepDownload "linux-x86"    "${PKG_NAME}-linux-x86.tar.xz"  "sfdx-linux-386.tar.xz"
 prepDownload "windows-x64"  "${PKG_NAME}-x64.exe"           "sfdx-windows-amd64.exe"
 prepDownload "windows-x86"  "${PKG_NAME}-x86.exe"           "sfdx-windows-386.exe"
 

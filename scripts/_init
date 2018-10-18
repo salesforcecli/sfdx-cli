@@ -59,7 +59,7 @@ function archs () {
     elif [[ "$OS" == "windows" ]]; then
         echo "x64|x86"
     elif [[ "$OS" == "linux" ]]; then
-        echo "x64|x86|arm"
+        echo "x64|arm"
     fi
 }
 

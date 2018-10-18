@@ -82,7 +82,6 @@ The standalone installers are typically built using the `build\standalone` scrip
 * windows (x64)
 * windows (x86)
 * linux (x64)
-* linux (x86)
 * linux (arm)
 
 Both versioned and unversioned copies of each OS/arch tarball is produced and placed in the `release` directory upon completion.
