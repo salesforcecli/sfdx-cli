@@ -45,7 +45,8 @@
       "@oclif/plugin-which",
       "@salesforce/plugin-generator",
       "@salesforce/plugin-analytics",
-      "@salesforce/sfdx-trust"
+      "@salesforce/sfdx-trust",
+      "salesforcedx"
     ],
     "update": {
       "s3": {
