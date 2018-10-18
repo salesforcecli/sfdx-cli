@@ -82,7 +82,7 @@
     "@oclif/plugin-which": "^1",
     "@salesforce/kit": "0.7.0",
     "@salesforce/lazy-require": "0.0.4",
-    "@salesforce/plugin-analytics": "0.2.0",
+    "@salesforce/plugin-analytics": "0.3.0",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/require-analytics": "0.4.0",
     "@salesforce/sfdx-trust": "2.0.0",
