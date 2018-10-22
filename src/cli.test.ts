@@ -9,6 +9,7 @@
 
 import * as Config from '@oclif/config';
 import { expect } from 'chai';
+import * as sinon from 'sinon';
 import {
     configureAutoUpdate,
     create,
@@ -19,16 +20,27 @@ import {
 import { Env } from './util/env';
 
 describe('cli', () => {
+    let sandbox: sinon.SinonSandbox;
+
+    beforeEach(() => {
+        sandbox = sinon.createSandbox();
+    });
+
+    afterEach(() => {
+        sandbox.restore();
+    });
+
     describe('create', () => {
         it('should create a runnable CLI instance', async () => {
-            let options: Config.LoadOptions;
-            const exec = async (argv?: string[], opts?: Config.LoadOptions) => { options = opts; };
-            const cli = create('test', 'test', exec, new Env({}));
-            expect(cli).to.have.property('run');
-            await cli.run();
-            expect(options).to.exist;
-            expect(options).to.have.property('version').and.equal('test');
-            expect(options).to.have.property('channel').and.equal('test');
+            sandbox.stub(Config.Config.prototype, 'load').callsFake(() => { });
+            let config: Config.LoadOptions;
+            const exec = async (argv?: string[], opts?: Config.LoadOptions) => { config = opts; };
+            const env = new Env({ [Env.LAZY_LOAD_MODULES]: 'false' });
+            await create('test', 'test', exec, env).run();
+            expect(config).to.exist;
+            expect(config).to.have.property('options');
+            expect(config).to.have.nested.property('options.version').and.equal('test');
+            expect(config).to.have.nested.property('options.channel').and.equal('test');
         });
     });
 

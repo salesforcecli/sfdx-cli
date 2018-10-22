@@ -7,7 +7,7 @@
 
 import { IConfig } from '@oclif/config';
 import LazyRequire from '@salesforce/lazy-require';
-import path = require('path');
+import * as path from 'path';
 
 let lazyRequire: LazyRequire;
 

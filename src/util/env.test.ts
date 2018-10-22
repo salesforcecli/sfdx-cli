@@ -101,7 +101,7 @@ describe('Env', () => {
     });
 
     describe('isLazyRequireEnabled', () => {
-        it('should return false if lazy requires are enabled', () => {
+        it('should return false if lazy requires are not enabled', () => {
             expect(env.isLazyRequireEnabled()).to.be.false;
         });
 

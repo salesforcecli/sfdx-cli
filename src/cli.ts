@@ -5,13 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { run } from '@oclif/command';
+import { oclifRun } from '@oclif/command';
 import { Config } from '@oclif/config';
 import * as path from 'path';
 import * as lazyRequire from './lazyRequire';
-import { default as env, Env } from './util/env';
+import { default as nodeEnv, Env } from './util/env';
 
-export function create(version: string, channel: string, execute = run, environment = env) {
+export function create(version: string, channel: string, run = oclifRun, env = nodeEnv) {
     const root = path.resolve(__dirname, '..');
     const pjson = require(path.resolve(__dirname, '..', 'package.json'));
     const args = process.argv.slice(2);
@@ -20,11 +20,11 @@ export function create(version: string, channel: string, execute = run, environm
         async run() {
             const config = new Config({ name: pjson.oclif.bin, root, version, channel });
             await config.load();
-            configureAutoUpdate(environment);
+            configureAutoUpdate(env);
             if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
                 await lazyRequire.start(config);
             }
-            return execute(args, config);
+            return await run(args, config);
         }
     };
 }
