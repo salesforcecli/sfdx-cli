@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { oclifRun } from '@oclif/command';
+import { run as oclifRun } from '@oclif/command';
 import { Config } from '@oclif/config';
 import * as path from 'path';
 import * as lazyRequire from './lazyRequire';
