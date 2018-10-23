@@ -51,8 +51,7 @@ describe('verifyPluginVersion preinstall hook', () => {
 
     it('should not allow the salesforcedx plugin with tag "41.1.0" to be installed', async () => {
         await testHook('41.1.0');
-        expect(context.exit.calledOnce).to.be.true;
-        expect(context.warn.getCalls().some(call => call.args[0].includes('can only be installed'))).to.be.true;
+        expect(context.error.getCalls().some(call => call.args[0].includes('can only be installed'))).to.be.true;
     });
 
     async function testHook(tag: Nullable<string>) {

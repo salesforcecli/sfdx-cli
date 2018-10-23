@@ -34,7 +34,7 @@ async function isS3HostReachable(s3Host: string, context: Hook.Context, request:
     }
     if (await isReachable(s3Host, request)) {
         if (attempt >= 2) {
-            context.warn('Connected.');
+            context.warn('Connected!');
         }
         debug('S3 host is reachable (attempt %s)', attempt);
         return;
@@ -85,6 +85,7 @@ const hook: Hook.Preupdate = async function(options, env = envars, request = Req
     try {
         let s3Host = env.getS3HostOverride();
         if (s3Host) {
+            debug(`s3 host override: ${s3Host}`);
             // Override config value if set via envar
             set(this.config, 'pjson.oclif.update.s3.host', s3Host);
         }
@@ -98,8 +99,7 @@ const hook: Hook.Preupdate = async function(options, env = envars, request = Req
             await isS3HostReachable(s3Host, this, request);
         }
     } catch (err) {
-        this.warn(err.message);
-        this.exit(1);
+        this.error(err.message);
     }
 };
 

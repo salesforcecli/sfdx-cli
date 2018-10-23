@@ -85,7 +85,7 @@
     "@salesforce/lazy-require": "0.0.4",
     "@salesforce/plugin-analytics": "0.3.0",
     "@salesforce/plugin-generator": "0.0.10",
-    "@salesforce/require-analytics": "0.4.0",
+    "@salesforce/require-analytics": "0.5.0",
     "@salesforce/sfdx-trust": "2.0.0",
     "@salesforce/ts-types": "0.13.0",
     "debug": "^3",

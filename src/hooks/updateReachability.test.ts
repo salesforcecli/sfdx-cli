@@ -37,7 +37,7 @@ describe('updateReachability preupdate hook', () => {
     let pingRes: Request.RequestResponse;
     let request: StubbedCallableType<typeof Request>;
     let warnings: string[];
-    let exitCode = 0;
+    let errors: string[];
 
     beforeEach(() => {
         sandbox = sinon.createSandbox();
@@ -57,11 +57,11 @@ describe('updateReachability preupdate hook', () => {
 
         context = stubInterface<Hook.Context>(sandbox, {
             config,
-            exit(code?: number) {
-                exitCode = code != null ? code : 0;
-            },
             warn(...args: any[]) { // tslint:disable-line:no-any
                 warnings.push(args.join(' '));
+            },
+            error(...args: any[]) { // tslint:disable-line:no-any
+                errors.push(args.join(' '));
             }
         });
 
@@ -79,6 +79,7 @@ describe('updateReachability preupdate hook', () => {
         }));
 
         warnings = [];
+        errors = [];
     });
 
     afterEach(() => {
@@ -90,14 +91,12 @@ describe('updateReachability preupdate hook', () => {
         await hook.call(context, options, env, request);
         expect(warnings).to.deep.equal([]);
         expect(request.get.calledOnce).to.be.false;
-        expect(exitCode).to.equal(0);
     }).timeout(5000);
 
     it('should not warn about updating from a custom S3 host when not set', async () => {
         pingRes = { statusCode: 200 } as Request.RequestResponse;
         await hook.call(context, options, env, request);
         expect(warnings).to.deep.equal([]);
-        expect(exitCode).to.equal(0);
     }).timeout(5000);
 
     it('should warn about updating from a custom S3 host and ask about SFM', async () => {
@@ -105,7 +104,6 @@ describe('updateReachability preupdate hook', () => {
         pingRes = { statusCode: 200 } as Request.RequestResponse;
         await hook.call(context, options, env, request);
         expect(warnings).to.deep.equal(['Updating from SFDX_S3_HOST override. Are you on SFM?']);
-        expect(exitCode).to.equal(0);
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with unexpected HTTP status codes', async () => {
@@ -113,10 +111,11 @@ describe('updateReachability preupdate hook', () => {
         await hook.call(context, options, env, request);
         expect(request.get.calledThrice).to.been.true;
         expect(warnings).to.deep.equal([
-            'Attempting to contact update site...',
+            'Attempting to contact update site...'
+        ]);
+        expect(errors).to.deep.equal([
             'S3 host is not reachable.'
         ]);
-        expect(exitCode).to.equal(1);
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with dns resolution errors', async () => {
@@ -124,10 +123,11 @@ describe('updateReachability preupdate hook', () => {
         await hook.call(context, options, env, request);
         expect(request.get.calledThrice).to.been.true;
         expect(warnings).to.deep.equal([
-            'Attempting to contact update site...',
+            'Attempting to contact update site...'
+        ]);
+        expect(errors).to.deep.equal([
             'S3 host is not reachable.'
         ]);
-        expect(exitCode).to.equal(1);
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with reachability errors', async () => {
@@ -135,10 +135,11 @@ describe('updateReachability preupdate hook', () => {
         await hook.call(context, options, env, request);
         expect(request.get.calledThrice).to.been.true;
         expect(warnings).to.deep.equal([
-            'Attempting to contact update site...',
+            'Attempting to contact update site...'
+        ]);
+        expect(errors).to.deep.equal([
             'S3 host is not reachable.'
         ]);
-        expect(exitCode).to.equal(1);
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with timeout errors', async () => {
@@ -146,9 +147,10 @@ describe('updateReachability preupdate hook', () => {
         await hook.call(context, options, env, request);
         expect(request.get.calledThrice).to.been.true;
         expect(warnings).to.deep.equal([
-            'Attempting to contact update site...',
+            'Attempting to contact update site...'
+        ]);
+        expect(errors).to.deep.equal([
             'S3 host is not reachable.'
         ]);
-        expect(exitCode).to.equal(1);
     }).timeout(30000);
 });

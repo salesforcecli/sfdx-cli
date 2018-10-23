@@ -8,29 +8,29 @@
 // tslint:disable:no-unused-expression
 
 import { expect } from 'chai';
-import { preprocessCliFlags } from './flags';
-import { Env } from './util/env';
+import { preprocessCliFlags, ProcessLike } from './flags';
 
 describe('CLI flags', () => {
-    let env: Env;
-
-    beforeEach(() => {
-        env = new Env();
-    });
-
     it('should pass through args it does not recognize', () => {
-        process.argv = ['force:some:command', '--dev-debug', '--foo', '-f', 'bar'];
-        preprocessCliFlags(env);
+        const process: ProcessLike = {
+            argv: ['force:some:command', '--dev-debug', '--foo', '-f', 'bar'],
+            env: { }
+        };
+        preprocessCliFlags(process);
         expect(process.argv).to.deep.equal(['force:some:command', '--foo', '-f', 'bar']);
     });
 
     it('should recognize --dev-debug', () => {
+        const process: ProcessLike = {
+            argv: ['--dev-debug'],
+            env: { }
+        };
         process.argv = ['--dev-debug'];
-        preprocessCliFlags(env);
+        preprocessCliFlags(process);
         expect(process.argv).not.to.include('--dev-debug');
-        expect(env.getString('DEBUG')).to.equal('*');
-        expect(env.getString('SFDX_DEBUG')).to.equal('1');
-        expect(env.getString('SFDX_ENV')).to.equal('development');
-        expect(env.getString('NODE_ENV')).to.equal('development');
+        expect(process.env.DEBUG).to.equal('*');
+        expect(process.env.SFDX_DEBUG).to.equal('1');
+        expect(process.env.SFDX_ENV).to.equal('development');
+        expect(process.env.NODE_ENV).to.equal('development');
     });
 });

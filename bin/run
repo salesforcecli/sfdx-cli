@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-/* tslint:disable:no-var-requires */
-/* eslint-disable global-require */
+/* tslint:disable:no-var-requires only-arrow-functions */
+/* eslint-disable global-require, prefer-arrow-callback */
 
 // Check node version before requiring additional packages
 require('../dist/versions').checkNodeVersion();
@@ -32,7 +32,13 @@ const overrides = { /* @OVERRIDES@ */ };
 const version = overrides.version || pjson.version;
 const channel = overrides.channel || 'stable';
 
-cli.create(version, channel).run()
-    .then(modules.dump, modules.dump)
-    .then(require('@oclif/command/flush'))
-    .catch(require('@oclif/errors/handle'));
+cli.create(version, channel)
+    .run()
+    .then(function(result) {
+        modules.dump();
+        require('@oclif/command/flush')(result);
+    })
+    .catch(function(err) {
+        modules.dump();
+        require('@oclif/errors/handle')(err);
+    });

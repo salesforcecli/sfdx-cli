@@ -411,10 +411,12 @@
     yeoman-generator "^2.0.5"
     yosay "^2.0.2"
 
-"@salesforce/require-analytics@0.4.0":
-  version "0.4.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2frequire-analytics/-/require-analytics-0.4.0.tgz#d0a3ef8be7108eb6a7a8072386d5fe8a71e44e56"
-  integrity sha1-0KPvi+cQjranqAcjhtX+inHkTlY=
+"@salesforce/require-analytics@0.5.0":
+  version "0.5.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2frequire-analytics/-/require-analytics-0.5.0.tgz#e77472ea3ef04cdd0c4d090a536d83ff25aeb6d2"
+  integrity sha1-53Ry6j7wTN0MTQkKU22D/yWuttI=
+  dependencies:
+    tslib "^1.9.3"
 
 "@salesforce/sfdx-trust@2.0.0":
   version "2.0.0"

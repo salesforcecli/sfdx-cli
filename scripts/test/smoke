@@ -22,7 +22,7 @@ export SFDX_AUTOUPDATE_DISABLE=true
 sfdx --dev-debug
 sfdx version
 sfdx help
-#sfdx plugins --core
+sfdx plugins --core
 #sfdx force -h
 #sfdx force
 #sfdx force:alias:list

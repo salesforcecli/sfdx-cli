@@ -87,7 +87,8 @@ def doUnitTests(PLATFORM os) {
             switch(os) {
                 case PLATFORM.MAC:
                 case PLATFORM.LINUX:
-                    rc = sh returnStatus: true, script: 'npm run coverage-report -- --config unitTestCoverageTargets.yaml'
+                    rc = sh returnStatus: true, script: 'npm run unit'
+                    rc = sh returnStatus: true, script: 'npm run coverage-report'
                     rc = sh returnStatus: true, script: 'mv checkstyle.xml linux-checkstyle.xml; mv xunit.xml linux-unit-xunit.xml; rm -rf linuxunitcoverage; mv coverage linuxunitcoverage'
                     break
                 case PLATFORM.WINDOWS:
