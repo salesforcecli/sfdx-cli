@@ -47,6 +47,22 @@ describe('compareVersions', () => {
         expect(compareVersions('1.0.1', '1.1.1')).to.be.lessThan(0);
     });
 
+    it('should show .0 to be the same as the integer value.', () => {
+        expect(compareVersions('41', '41.0')).to.be.equal(0);
+    });
+
+    it('should show .0 to be the same as the integer value.', () => {
+        expect(compareVersions('41.0', '41')).to.be.equal(0);
+    });
+
+    it('should return < 0 when a is 41.0 and b is 41.0.1', () => {
+        expect(compareVersions('41.0', '41.0.1')).to.be.lessThan(0);
+    });
+
+    it('should return <0 when a is 41.0.0.1 and b is 41.0.1', () => {
+        expect(compareVersions('41.0.0.1', '41.0.1')).to.be.lessThan(0);
+    });
+
     it('should return > 0 when a is 1.1.1 and b is 1.0.1', () => {
         expect(compareVersions('1.1.1', '1.0.1')).to.be.greaterThan(0);
     });

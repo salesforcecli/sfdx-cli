@@ -38,7 +38,17 @@ function compareVersions(a, b) {
     const ignore = /-.*$/;
     const partsA = a.replace(ignore, '').split('.');
     const partsB = b.replace(ignore, '').split('.');
-    const len = Math.min(partsA.length, partsB.length);
+    const len = Math.max(partsA.length, partsB.length);
+    const diffInLength = partsA.length - partsB.length;
+    if (diffInLength < 0) {
+        for (let i = partsA.length; i < len; i++) {
+            partsA[i] = 0;
+        }
+    } else {
+        for (let i = partsB.length; i < len; i++) {
+            partsB[i] = 0;
+        }
+    }
     let diff;
     for (let i = 0; i < len; i++) {
         diff = (parseInt(partsA[i] || '0', 10)) - (parseInt(partsB[i] || '0', 10));
@@ -46,7 +56,7 @@ function compareVersions(a, b) {
             return diff;
         }
     }
-    return partsA.length - partsB.length;
+    return 0;
 }
 
 module.exports.compareVersions = compareVersions;

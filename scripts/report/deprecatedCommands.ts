@@ -1,6 +1,5 @@
 #!/usr/bin/env ./node_modules/.bin/ts-node
 
-import { AnyDictionary } from '@salesforce/core';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import { compareVersions } from '../../src/versions';
@@ -17,22 +16,34 @@ const numberOfSpaceChar: number = 4;
 
 const versionToCompareWith = process.argv[2];
 
+interface Flag {
+    deprecated: {
+        version: string
+    };
+}
+
+interface Command {
+    flags: Flag[];
+    deprecated: {
+        version: string
+    };
+   values: number[];
+}
+
 /**
  * Returns true if the deprecated version is less that or equal to the version the user provided.
  * @pvyas version -  deprecated version
  */
 function isFilteredDeprecated(version: string) {
-    const deprecatedVersion = version;
-    if ((compareVersions(deprecatedVersion, versionToCompareWith) <= 1)) {
-        return true;
-    }
+    const _version: number = compareVersions(version, versionToCompareWith);
+    return _version <= 0;
 }
 
 /**
  * Returns a new flags array only containing deprecated flags
  * @pvyas flags List of all flags for a command
  */
-function filterCommandFlags(flags: AnyDictionary[]): AnyDictionary[] {
+function filterCommandFlags(flags: Flag[]): Flag[] {
     if (flags) {
         const newFlags = flags.filter(flag => {
             return (flag.deprecated && isFilteredDeprecated(flag.deprecated.version));
@@ -45,9 +56,9 @@ function filterCommandFlags(flags: AnyDictionary[]): AnyDictionary[] {
  * Used to filter the entire list of commands down to only those that are deprecated.
  * @pvyas cliSchema - All the CLI commands.
  */
-function filterCommandsAndTopics(cliSchema: AnyDictionary): AnyDictionary[] {
+function filterCommandsAndTopics(cliSchema: Command[]): Command[] {
     const deprecatedCommands = cliSchema.filter(commandOrTopic => {
-        const newFlags: AnyDictionary[] = filterCommandFlags(commandOrTopic.flags);
+        const newFlags: Flag[] = filterCommandFlags(commandOrTopic.flags);
         if (newFlags && newFlags.length > 0) {
             commandOrTopic.flags = newFlags;
             return commandOrTopic;
@@ -67,7 +78,7 @@ function filterCommandsAndTopics(cliSchema: AnyDictionary): AnyDictionary[] {
             const cmdResult: { stdout: string, stderr: string } = await execAsync(command, { maxBuffer: 1025 * 500 });
             if (cmdResult.stdout) {
                 const cliSchema = JSON.parse(cmdResult.stdout).result;
-                const deprecatedCommands: AnyDictionary[] = filterCommandsAndTopics(cliSchema);
+                const deprecatedCommands: Command[] = filterCommandsAndTopics(cliSchema);
                 if (deprecatedCommands.length === 0) {
                     console.log(`No deprecated command elements found at version ${versionToCompareWith}`);
                     process.exit(0);
