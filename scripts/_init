@@ -127,6 +127,10 @@ PKG_NAME=$(node -p "require('$ROOT_DIR/package.json').name")
 PKG_DESC=$(node -p "require('$ROOT_DIR/package.json').description")
 BIN_NAME=$(node -p "require('$ROOT_DIR/package.json').oclif.bin")
 
+# Determine node versions
+NODE_VERSION=$(node -p "require('./package.json').oclif.node || process.versions.node")
+NODE_REQUIRED=$(node -p "require('./package.json').engines.node || process.versions.node")
+
 # S3 configuration
 DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json').oclif.update.s3.folder")
 S3_FOLDER="${S3_FOLDER:-"$DEFAULT_S3_FOLDER"}"

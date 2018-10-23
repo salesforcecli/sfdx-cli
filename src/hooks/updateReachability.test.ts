@@ -13,6 +13,7 @@ import {
     stubCallable,
     stubInterface
 } from '@salesforce/ts-sinon';
+import { Optional } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import * as Request from 'request';
 import * as sinon from 'sinon';
@@ -33,8 +34,9 @@ describe('updateReachability preupdate hook', () => {
     let config: IConfig;
     let options: Hooks['preupdate'] & { config: IConfig };
     let env: Env;
-    let pingErr: Error;
-    let pingRes: Request.RequestResponse;
+    let pingErr: Optional<Error>;
+    let pingRes: Optional<Request.RequestResponse>;
+    let pingBody: Optional<string>;
     let request: StubbedCallableType<typeof Request>;
     let warnings: string[];
     let errors: string[];
@@ -72,9 +74,21 @@ describe('updateReachability preupdate hook', () => {
 
         env = new Env({});
 
+        pingRes = { statusCode: 200 } as Request.RequestResponse;
+        pingBody = JSON.stringify({
+            channel: 'oclif',
+            version: '6.36.1-102-e4be126f07',
+            gz: 'https://example.com/archive.tar.gz',
+            sha256gz: 'deadbeef',
+            xz: 'https://example.com/archive.tar.xz',
+            sha256xz: 'feedface',
+            baseDir: 'whatever'
+        });
+        pingErr = undefined;
+
         request = stubCallable<typeof Request>(sandbox, ({
-            get(opts: object, cb: (err?: Error, res?: object) => void) { // tslint:disable-line:no-reserved-keywords
-                return cb(pingErr, pingRes);
+            get(opts: object, cb: (err?: Error, res?: object, body?: string) => void) {
+                return cb(pingErr, pingRes, pingBody);
             }
         }));
 
@@ -94,14 +108,12 @@ describe('updateReachability preupdate hook', () => {
     }).timeout(5000);
 
     it('should not warn about updating from a custom S3 host when not set', async () => {
-        pingRes = { statusCode: 200 } as Request.RequestResponse;
         await hook.call(context, options, env, request);
         expect(warnings).to.deep.equal([]);
     }).timeout(5000);
 
     it('should warn about updating from a custom S3 host and ask about SFM', async () => {
         env.setS3HostOverride('http://10.252.156.165:9000/sfdx/media/salesforce-cli');
-        pingRes = { statusCode: 200 } as Request.RequestResponse;
         await hook.call(context, options, env, request);
         expect(warnings).to.deep.equal(['Updating from SFDX_S3_HOST override. Are you on SFM?']);
     }).timeout(5000);
@@ -119,6 +131,8 @@ describe('updateReachability preupdate hook', () => {
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with dns resolution errors', async () => {
+        pingRes = undefined;
+        pingBody = undefined;
         pingErr = new SystemError('ENOTFOUND');
         await hook.call(context, options, env, request);
         expect(request.get.calledThrice).to.been.true;
@@ -131,6 +145,8 @@ describe('updateReachability preupdate hook', () => {
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with reachability errors', async () => {
+        pingRes = undefined;
+        pingBody = undefined;
         pingErr = new SystemError('ENETUNREACH');
         await hook.call(context, options, env, request);
         expect(request.get.calledThrice).to.been.true;
@@ -143,6 +159,8 @@ describe('updateReachability preupdate hook', () => {
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with timeout errors', async () => {
+        pingRes = undefined;
+        pingBody = undefined;
         pingErr = new SystemError('ETIMEDOUT');
         await hook.call(context, options, env, request);
         expect(request.get.calledThrice).to.been.true;
@@ -152,5 +170,18 @@ describe('updateReachability preupdate hook', () => {
         expect(errors).to.deep.equal([
             'S3 host is not reachable.'
         ]);
-    }).timeout(30000);
+    }).timeout(5000);
+
+    it('should error out with an obsolete manifest', async () => {
+        pingBody = JSON.stringify({
+            channel: 'oclif',
+            version: '6.36.1-102-e4be126f07',
+            sha256gz: 'deadbeef',
+            sha256xz: 'feedface'
+        });
+        await hook.call(context, options, env, request);
+        expect(errors).to.deep.equal([
+            'Incompatible update found for channel \'test\'.'
+        ]);
+    }).timeout(5000);
 });

@@ -18,19 +18,28 @@ function build () {
     local xzpid=$!
     tar czf "$TGZ_PATH" "$VERSIONED_BASE"
     wait $xzpid || exit 1
-    cp "$TGZ_PATH" "$VERSIONED_BASE.tar.gz"
-    cp "$TXZ_PATH" "$VERSIONED_BASE.tar.xz"
+    TGZ_FILE="$VERSIONED_BASE.tar.gz"
+    cp "$TGZ_PATH" "$TGZ_FILE"
+    TXZ_FILE="$VERSIONED_BASE.tar.xz"
+    cp "$TXZ_PATH" "$TXZ_FILE"
 
     mv "$VERSIONED_BASE" "$WORKSPACE_DIR"
 
-    sha256=$(sha "$TGZ_PATH")
-    sha256xz=$(sha "$TXZ_PATH")
+    SHA256_GZ=$(sha "$TGZ_PATH")
+    SHZ256_XZ=$(sha "$TXZ_PATH")
     cat << EOF > "$RELEASE_DIR/${OS}-${ARCH}"
 {
-    "channel": "${CHANNEL}",
     "version": "${VERSION}",
-    "sha256gz": "${sha256}",
-    "sha256xz": "${sha256xz}"
+    "channel": "${CHANNEL}",
+    "baseDir": "${BIN_NAME}",
+    "gz": "${TGZ_FILE}",
+    "xz": "${TXZ_FILE}",
+    "sha256gz": "${SHA256_GZ}",
+    "sha256xz": "${SHZ256_XZ}",
+    "node": {
+        "compatible": "${NODE_REQUIRED}",
+        "recommended": "${NODE_VERSION}"
+    }
 }
 EOF
     cp "$RELEASE_DIR/${OS}-${ARCH}" "$RELEASE_VERSION_DIR/${OS}-${ARCH}"
