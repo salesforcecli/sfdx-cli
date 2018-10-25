@@ -22,7 +22,7 @@ export function create(version: string, channel: string, run = oclifRun, env = n
             await config.load();
             configureAutoUpdate(env);
             if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
-                await lazyRequire.start(config);
+                lazyRequire.start(config);
             }
             return await run(args, config);
         }

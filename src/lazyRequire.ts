@@ -9,26 +9,26 @@ import { IConfig } from '@oclif/config';
 import LazyRequire from '@salesforce/lazy-require';
 import * as path from 'path';
 
-let lazyRequire: LazyRequire;
+export let lazyRequire: LazyRequire;
 
 /**
  * Start lazy requiring type-compatible modules.
  */
-export async function start(config: IConfig): Promise<void> {
-    (await getOrCreate(config)).start();
+export function start(config: IConfig, create = LazyRequire.create): void {
+    getOrCreate(config, create).start();
 }
 
 /**
  * Return the lazy require type cache if it has been initialized.
  */
-export async function resetTypeCache(config: IConfig): Promise<void> {
-    (await getOrCreate(config)).resetTypeCache();
+export function resetTypeCache(config: IConfig, create = LazyRequire.create): void {
+    getOrCreate(config, create).resetTypeCache();
 }
 
-function getOrCreate(config: IConfig): LazyRequire {
+function getOrCreate(config: IConfig, create: typeof LazyRequire.create): LazyRequire {
     if (lazyRequire) {
         return lazyRequire;
     }
     const typeCacheFile = path.join(config.cacheDir, 'module-types.json');
-    return lazyRequire = LazyRequire.create(typeCacheFile);
+    return lazyRequire = create(typeCacheFile);
 }
