@@ -172,16 +172,11 @@ describe('updateReachability preupdate hook', () => {
         ]);
     }).timeout(5000);
 
-    it('should error out with an obsolete manifest', async () => {
-        pingBody = JSON.stringify({
-            channel: 'oclif',
-            version: '6.36.1-102-e4be126f07',
-            sha256gz: 'deadbeef',
-            sha256xz: 'feedface'
-        });
+    it('should error out with an invalid manifest', async () => {
+        pingBody = JSON.stringify({});
         await hook.call(context, options, env, request);
         expect(errors).to.deep.equal([
-            'Incompatible update found for channel \'test\'.'
+            'Invalid update found on channel \'test\'.'
         ]);
     }).timeout(5000);
 });

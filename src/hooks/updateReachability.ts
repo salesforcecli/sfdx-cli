@@ -77,10 +77,10 @@ async function requestManifest(url: string, request: typeof Request): Promise<Js
 }
 
 function validateManifest(context: Hook.Context, channel: string, manifest: JsonMap): void {
-    if (!manifest.gz || !manifest.sha256gz || !manifest.baseDir) {
-        return context.error(`Incompatible update found for channel '${channel}'.`);
+    if (!manifest.version || !manifest.channel || !manifest.sha256gz) {
+        return context.error(`Invalid update found on channel '${channel}'.`);
     }
-    debug('update available with url %s', manifest.gz);
+    debug('update available %s', manifest);
 }
 
 const hook: Hook.Preupdate = async function(options, env = envars, request = Request) {

@@ -55,16 +55,9 @@
         "host": "developer.salesforce.com/media/salesforce-cli",
         "templates": {
           "target": {
-            "baseDir": "sfdx-cli",
-            "manifest": "<%- 'sfdx-cli/channels/' + channel + '/' %><%- platform %>-<%- arch %>",
-            "unversioned": "<%- 'sfdx-cli/channels/' + channel + '/' %><%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
-            "versioned": "<%- 'sfdx-cli/channels/' + channel + '/' %><%- bin %>-v<%- version %>/<%- bin %>-v<%- version %>-<%- platform %>-<%- arch %><%- ext %>"
-          },
-          "vanilla": {
-            "baseDir": "sfdx-cli",
-            "manifest": "<%- 'sfdx-cli/channels/' + channel + '/' %>version",
-            "unversioned": "<%- 'sfdx-cli/channels/' + channel + '/' %><%- bin %><%- ext %>",
-            "versioned": "<%- 'sfdx-cli/channels/' + channel + '/' %><%- bin %>-v<%- version %>/<%- bin %>-v<%- version %><%- ext %>"
+            "baseDir": "<%- bin %>",
+            "manifest": "sfdx-cli/channels/<%- channel %>/<%- platform %>-<%- arch %>",
+            "versioned": "sfdx-cli/channels/<%- channel %>/sfdx-cli-v<%- version %>-<%- platform %>-<%- arch %>.tar.<%- ext %>"
           }
         }
       }

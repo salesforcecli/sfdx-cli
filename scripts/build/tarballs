@@ -31,9 +31,6 @@ function build () {
 {
     "version": "${VERSION}",
     "channel": "${CHANNEL}",
-    "baseDir": "${BIN_NAME}",
-    "gz": "${TGZ_FILE}",
-    "xz": "${TXZ_FILE}",
     "sha256gz": "${SHA256_GZ}",
     "sha256xz": "${SHZ256_XZ}",
     "node": {
