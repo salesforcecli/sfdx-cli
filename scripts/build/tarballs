@@ -10,20 +10,19 @@ set -ex
 cd "$RELEASE_DIR"
 
 function build () {
-    # must be a directory in this format
-    # but it is difficult to work with the version number in other places
-    mv "$WORKSPACE_DIR" "$VERSIONED_BASE"
+    mkdir -p "$VERSIONED_BASE"
+    mv "$WORKSPACE_DIR" "$VERSIONED_BASE/$BIN_NAME"
 
-    tar c "$VERSIONED_BASE" | xz > "$TXZ_PATH" &
+    tar c -C "$VERSIONED_BASE" "$BIN_NAME" | xz > "$TXZ_PATH" &
     local xzpid=$!
-    tar czf "$TGZ_PATH" "$VERSIONED_BASE"
+    tar czf "$TGZ_PATH" -C "$VERSIONED_BASE" "$BIN_NAME"
     wait $xzpid || exit 1
     TGZ_FILE="$VERSIONED_BASE.tar.gz"
     cp "$TGZ_PATH" "$TGZ_FILE"
     TXZ_FILE="$VERSIONED_BASE.tar.xz"
     cp "$TXZ_PATH" "$TXZ_FILE"
 
-    mv "$VERSIONED_BASE" "$WORKSPACE_DIR"
+    mv "$VERSIONED_BASE/$BIN_NAME" "$WORKSPACE_DIR"
 
     SHA256_GZ=$(sha "$TGZ_PATH")
     SHZ256_XZ=$(sha "$TXZ_PATH")
