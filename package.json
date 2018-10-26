@@ -18,6 +18,7 @@
   ],
   "oclif": {
     "bin": "sfdx",
+    "scope": "salesforce",
     "commands": "./dist/commands",
     "node": "10.12.0",
     "dirname": "sfdx",
