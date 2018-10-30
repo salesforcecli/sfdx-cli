@@ -56,9 +56,9 @@
         "host": "developer.salesforce.com/media/salesforce-cli",
         "templates": {
           "target": {
-            "baseDir": "sfdx-cli-v<%- version %>-<%- platform %>-<%- arch %>",
-            "manifest": "sfdx-cli/channels/<%- channel %>/<%- platform %>-<%- arch %>",
-            "versioned": "sfdx-cli/channels/<%- channel %>/sfdx-cli-v<%- version %>-<%- platform %>-<%- arch %>.tar.<%- ext %>"
+            "baseDir": "sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
+            "manifest": "sfdx-cli/channels/<%- channel %>/<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
+            "versioned": "sfdx-cli/channels/<%- channel %>/sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>.tar.<%- ext %>"
           }
         }
       }
