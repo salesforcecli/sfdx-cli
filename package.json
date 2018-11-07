@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.0.0-5",
+  "version": "7.0.0-6",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -59,7 +59,7 @@
             "baseDir": "sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
             "manifest": "sfdx-cli/channels/<%- channel %>/<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
             "versioned": "sfdx-cli/channels/<%- channel %>/sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>.tar.<%- ext %>"
-            }
+          }
         }
       }
     }
