@@ -50,7 +50,7 @@ describe('updateReachability preupdate hook', () => {
                 oclif: {
                     update: {
                         s3: {
-                            host: 'developer.salesforce.com/media/salesforce-cli'
+                            host: 'https://developer.salesforce.com/media/salesforce-cli'
                         }
                     }
                 }
