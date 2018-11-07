@@ -76,13 +76,9 @@ describe('updateReachability preupdate hook', () => {
 
         pingRes = { statusCode: 200 } as Request.RequestResponse;
         pingBody = JSON.stringify({
-            channel: 'oclif',
             version: '6.36.1-102-e4be126f07',
-            gz: 'https://example.com/archive.tar.gz',
-            sha256gz: 'deadbeef',
-            xz: 'https://example.com/archive.tar.xz',
-            sha256xz: 'feedface',
-            baseDir: 'whatever'
+            channel: 'test',
+            sha256gz: 'deadbeef'
         });
         pingErr = undefined;
 
@@ -104,18 +100,21 @@ describe('updateReachability preupdate hook', () => {
         env.setAutoupdateDisabled(true, 'test disabled');
         await hook.call(context, options, env, request);
         expect(warnings).to.deep.equal([]);
+        expect(errors).to.deep.equal([]);
         expect(request.get.calledOnce).to.be.false;
     }).timeout(5000);
 
     it('should not warn about updating from a custom S3 host when not set', async () => {
         await hook.call(context, options, env, request);
         expect(warnings).to.deep.equal([]);
+        expect(errors).to.deep.equal([]);
     }).timeout(5000);
 
     it('should warn about updating from a custom S3 host and ask about SFM', async () => {
         env.setS3HostOverride('http://10.252.156.165:9000/sfdx/media/salesforce-cli');
         await hook.call(context, options, env, request);
         expect(warnings).to.deep.equal(['Updating from SFDX_S3_HOST override. Are you on SFM?']);
+        expect(errors).to.deep.equal([]);
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with unexpected HTTP status codes', async () => {
@@ -176,7 +175,7 @@ describe('updateReachability preupdate hook', () => {
         pingBody = JSON.stringify({});
         await hook.call(context, options, env, request);
         expect(errors).to.deep.equal([
-            'Invalid update found on channel \'test\'.'
+            'Invalid manifest found on channel \'test\'.'
         ]);
     }).timeout(5000);
 });

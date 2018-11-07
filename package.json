@@ -53,7 +53,7 @@
       "s3": {
         "bucket": "dfc-data-production",
         "folder": "media/salesforce-cli",
-        "host": "developer.salesforce.com/media/salesforce-cli",
+        "host": "https://developer.salesforce.com/media/salesforce-cli",
         "templates": {
           "target": {
             "baseDir": "sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",

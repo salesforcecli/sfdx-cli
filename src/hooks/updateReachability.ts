@@ -58,7 +58,6 @@ async function fetchManifest(manifestUrl: string, request: typeof Request): Prom
 }
 
 async function requestManifest(url: string, request: typeof Request): Promise<JsonMap> {
-    if (!/^https?:\/\//.test(url)) url = 'https://' + url;
     return new Promise<JsonMap>((resolve, reject) => {
         request.get({ url, timeout: 4000 }, (err, res, body) => {
             if (err) return reject(err);
@@ -79,7 +78,7 @@ async function requestManifest(url: string, request: typeof Request): Promise<Js
 
 function validateManifest(context: Hook.Context, channel: string, manifest: JsonMap): void {
     if (!manifest.version || !manifest.channel || !manifest.sha256gz) {
-        return context.error(`Invalid update found on channel '${channel}'.`);
+        return context.error(`Invalid manifest found on channel '${channel}'.`);
     }
     debug('update available %s', manifest);
 }
