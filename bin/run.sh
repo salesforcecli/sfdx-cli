@@ -6,15 +6,13 @@ echoerr() { echo "$@" 1>&2; }
 export SFDX_INSTALLER="false" BIN_NAME="run"
 # @OVERRIDES@
 
-CLI_ARGS=()
 NODE_FLAGS=()
 
 # Process only cli flags that must be handled before invoking node
-while [[ "$#" -gt 0 ]]; do
-    case "$1" in
-        --dev-suspend) CLI_ARGS+=("$1"); NODE_FLAGS+=("--inspect-brk"); shift;;
-          --dev-debug) CLI_ARGS+=("$1"); DEV_DEBUG=true;                shift;;
-                    *) CLI_ARGS+=("$1");                                shift;;
+for arg in "$@"; do
+    case "$arg" in
+        --dev-suspend) NODE_FLAGS+=("--inspect-brk");;
+          --dev-debug) DEV_DEBUG=true;;
     esac
 done
 
@@ -38,9 +36,9 @@ BIN_DIR="$XDG_DATA_HOME/$BIN_NAME/client/bin"
 
 if [[ "$SFDX_REDIRECTED" != "1" && "${SFDX_INSTALLER:-}" == "true" && -x "$BIN_DIR/$BIN_NAME" && ! "$BIN_DIR" -ef "$DIR" ]]; then
     if [[ "$DEV_DEBUG" == "true" ]]; then
-        echoerr "Executing:" "$XDG_DATA_HOME/$BIN_NAME/client/bin/$BIN_NAME" "${CLI_ARGS[@]}"
+        echoerr "Executing:" "$XDG_DATA_HOME/$BIN_NAME/client/bin/$BIN_NAME" "$@"
     fi
-    "$XDG_DATA_HOME/$BIN_NAME/client/bin/$BIN_NAME" "${CLI_ARGS[@]}"
+    "$XDG_DATA_HOME/$BIN_NAME/client/bin/$BIN_NAME" "$@"
 else
     MAIN_NAME="$BIN_NAME"
     NODE_PATH="node"
@@ -54,7 +52,7 @@ else
         exit 1
     fi
     if [[ "$DEV_DEBUG" == "true" ]]; then
-        echoerr "Executing:" "SFDX_BINPATH=$DIR/$BIN_NAME" "$NODE_PATH" "${NODE_FLAGS[@]}" "$DIR/$MAIN_NAME" "${CLI_ARGS[@]}"
+        echoerr "Executing:" "SFDX_BINPATH=$DIR/$BIN_NAME" "$NODE_PATH" "${NODE_FLAGS[@]}" "$DIR/$MAIN_NAME" "$@"
     fi
-    SFDX_BINPATH="$DIR/$BIN_NAME" "$NODE_PATH" "${NODE_FLAGS[@]}" "$DIR/$MAIN_NAME" "${CLI_ARGS[@]}"
+    SFDX_BINPATH="$DIR/$BIN_NAME" "$NODE_PATH" "${NODE_FLAGS[@]}" "$DIR/$MAIN_NAME" "$@"
 fi
