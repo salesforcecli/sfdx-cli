@@ -58,6 +58,7 @@ async function fetchManifest(manifestUrl: string, request: typeof Request): Prom
 }
 
 async function requestManifest(url: string, request: typeof Request): Promise<JsonMap> {
+    if (!/^https?:\/\//.test(url)) url = 'https://' + url;
     return new Promise<JsonMap>((resolve, reject) => {
         request.get({ url, timeout: 4000 }, (err, res, body) => {
             if (err) return reject(err);
