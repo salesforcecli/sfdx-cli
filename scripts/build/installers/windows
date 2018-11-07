@@ -24,6 +24,11 @@ function build () {
         "$ROOT_DIR/bin/run.cmd" > "$INSTALLER_BASE/bin/$BIN_NAME.cmd"
     cp "$RESOURCES_DIR/exe/$BIN_NAME" "$INSTALLER_BASE/bin/$BIN_NAME"
 
+    # add cross-spawn for bash->cmd support required by "$RESOURCES_DIR/exe/$BIN_NAME"
+    cd "$INSTALLER_BASE/bin"
+    npm install cross-spawn@6.0.5 --no-save
+    cd -
+
     tar xzf "$TGZ_PATH" -C "$TMP_DIR"
     mv "$TMP_DIR/$VERSIONED_BASE" "$INSTALLER_BASE/client"
 

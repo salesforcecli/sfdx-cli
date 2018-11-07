@@ -17,20 +17,24 @@ export interface ProcessLike {
 }
 
 export function preprocessCliFlags(process: ProcessLike): void {
-    process.argv = process.argv.filter((arg: string) => {
-        let match = true;
+    process.argv = process.argv.filter(arg => {
         switch (arg) {
             case '--dev-debug': {
+                // convert --dev-debug into a set of environment variables
                 process.env.DEBUG = '*';
                 process.env.SFDX_DEBUG = '1';
                 process.env.SFDX_ENV = 'development';
                 process.env.NODE_ENV = 'development';
-                break;
+                return false;
+            }
+            case '--dev-suspend': {
+                // simply ignore --dev-suspend if provided... filtering args in batch scripts is hard
+                return false;
             }
             default: {
-                match = false;
+                // retain all other cli args
+                return true;
             }
         }
-        return !match;
     });
 }

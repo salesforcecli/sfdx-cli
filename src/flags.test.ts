@@ -25,12 +25,20 @@ describe('CLI flags', () => {
             argv: ['--dev-debug'],
             env: { }
         };
-        process.argv = ['--dev-debug'];
         preprocessCliFlags(process);
         expect(process.argv).not.to.include('--dev-debug');
         expect(process.env.DEBUG).to.equal('*');
         expect(process.env.SFDX_DEBUG).to.equal('1');
         expect(process.env.SFDX_ENV).to.equal('development');
         expect(process.env.NODE_ENV).to.equal('development');
+    });
+
+    it('should ignore --dev-suspend', () => {
+        const process: ProcessLike = {
+            argv: ['--dev-suspend'],
+            env: { }
+        };
+        preprocessCliFlags(process);
+        expect(process.argv).not.to.include('--dev-suspend');
     });
 });

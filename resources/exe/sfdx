@@ -1,6 +1,6 @@
-#!/bin/sh
-basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+#!../client/bin/node
 
-"$basedir/sfdx.cmd" "$@"
-ret=$?
-exit $ret
+const join = require('path').join;
+const spawn = require('cross-spawn').sync;
+const result = spawn(join(__dirname, 'sfdx.cmd'), process.argv.slice(2), {stdio: 'inherit'});
+process.exitCode = result.status;
