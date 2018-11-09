@@ -33,7 +33,16 @@ async function canUpdate(context: Hook.Context, channel: string, manifestUrl: st
         context.warn('Attempting to contact update site...');
     }
 
-    const manifest = await fetchManifest(manifestUrl, request);
+    let manifest: Optional<JsonMap>;
+
+    try {
+        manifest = await fetchManifest(manifestUrl, request);
+    } catch (err) {
+        debug('reachability check failed', err);
+        context.error(`Channel "${channel}" not found.`);
+        return;
+    }
+
     if (manifest) {
         if (attempt >= 2) {
             context.warn('Connected!');
@@ -53,6 +62,9 @@ async function fetchManifest(manifestUrl: string, request: typeof Request): Prom
         debug('fetch succeeded', json);
         return json;
     } catch (err) {
+        if (err.name === 'ManifestNotFoundError') {
+            throw err;
+        }
         debug('fetch failed', err);
     }
 }
@@ -61,6 +73,13 @@ async function requestManifest(url: string, request: typeof Request): Promise<Js
     return new Promise<JsonMap>((resolve, reject) => {
         request.get({ url, timeout: 4000 }, (err, res, body) => {
             if (err) return reject(err);
+            if (res.statusCode === 403) {
+                // S3 returns 403 rather than 404 when a manifest is not found
+                return reject(new NamedError(
+                    'ManifestNotFoundError',
+                    `Manifest not found at ${url}`)
+                );
+            }
             if (res.statusCode !== 200) {
                 return reject(new NamedError(
                     'HttpGetUnexpectedStatusError',

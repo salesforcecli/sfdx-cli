@@ -117,6 +117,16 @@ describe('updateReachability preupdate hook', () => {
         expect(errors).to.deep.equal([]);
     }).timeout(5000);
 
+    it('should fail to update from an invalid channel', async () => {
+        pingRes = { statusCode: 403 } as Request.RequestResponse;
+        await hook.call(context, options, env, request);
+        expect(request.get.calledOnce).to.been.true;
+        expect(warnings).to.deep.equal([]);
+        expect(errors).to.deep.equal([
+            'Channel "test" not found.'
+        ]);
+    }).timeout(5000);
+
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with unexpected HTTP status codes', async () => {
         pingRes = { statusCode: 404 } as Request.RequestResponse;
         await hook.call(context, options, env, request);
