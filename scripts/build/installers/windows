@@ -25,6 +25,7 @@ function build () {
     cp "$RESOURCES_DIR/exe/$BIN_NAME" "$INSTALLER_BASE/bin/$BIN_NAME"
 
     # add cross-spawn for bash->cmd support required by "$RESOURCES_DIR/exe/$BIN_NAME"
+    cp "$RESOURCES_DIR/exe/spawn.js" "$INSTALLER_BASE/bin/spawn.js"
     cd "$INSTALLER_BASE/bin"
     npm install cross-spawn@6.0.5 --no-save
     cd -
