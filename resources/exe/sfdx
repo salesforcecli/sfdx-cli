@@ -21,7 +21,6 @@ DIR=$(get_script_dir)
 BIN="$DIR/../client/bin"
 
 SPAWN=$(get_win_path "$DIR/spawn.js")
-echo $SPAWN
 "$BIN/node.exe" "$SPAWN" "$@"
 
 exit $?
