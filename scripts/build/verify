@@ -28,7 +28,7 @@ function ensure_no_heroku_cli_util_nyc() {
 # Check for potentially overflowing windows paths:
 # * assume a max practical windows username length of 64 characters (https://technet.microsoft.com/it-it/library/bb726984(en-us).aspx)
 # * add characters to account for the root sfdx client tmp untar path for a total of 135
-#   - e.g. C:\Users\<username>\AppData\Local\sfdx\tmp\sfdx-cli-v6.xx.yy-abcdef-windows-x64\
+#   - e.g. C:\Users\<username>\AppData\Local\sfdx\tmp\sfdx-cli-v7.xx.yy-abcdef-windows-x64\
 # * subtract those 135 characters from the max windows path length of 259 to yield the allowable length of 124 path characters
 # * considering that we currently have some dependencies in the built output that exceed 124 characters (up to 139 in salesforce-lightning-cli)
 #   we will consider the maximum path length of 139, plus 5 as a buffer, as the hard upper limit to our allowable path length;
