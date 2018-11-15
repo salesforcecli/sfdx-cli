@@ -27,20 +27,20 @@ function ensure_no_heroku_cli_util_nyc() {
 #
 # Check for potentially overflowing windows paths:
 # * assume a max practical windows username length of 64 characters (https://technet.microsoft.com/it-it/library/bb726984(en-us).aspx)
-# * add characters to account for the root sfdx client tmp untar path for a total of 135
-#   - e.g. C:\Users\<username>\AppData\Local\sfdx\tmp\sfdx-cli-v6.xx.yy-abcdef-windows-x64\
-# * subtract those 135 characters from the max windows path length of 259 to yield the allowable length of 124 path characters
-# * considering that we currently have some dependencies in the built output that exceed 124 characters (up to 139 in salesforce-lightning-cli)
-#   we will consider the maximum path length of 139, plus 5 as a buffer, as the hard upper limit to our allowable path length;
-#   this leaves us a relatively comfortable maximum windows username length of 48 characters with a hard maximum path length of 144 characters
+# * add characters to account for the root sfdx client tmp untar path for a total of 138
+#   - e.g. C:\Users\1234567890123456789012345678901234567890123456789012345678901234\AppData\Local\sfdx\tmp\sfdx-cli-v7.xx.yy-abcdefghij-windows-x64\
+# * subtract those 138 characters from the max windows path length of 259 to yield the allowable length of 121 path characters
+# * considering that we currently have some dependencies in the built output that exceed 121 characters (up to 147)
+#   we will consider the maximum path length of 147, as the hard upper limit to our allowable path length;
+#   this leaves us a relatively comfortable maximum practical windows username length of 38 characters with a hard maximum path length of 147 characters
 # * then scan the cleaned build output directory for paths exceding this threshold, and exit with an error if detected
 function scan_path_lengths() {
-    warnlen=124
-    maxlen=144
+    warnlen=121
+    maxlen=147
     cd "$BASE_DIR"
     warntest=$(find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) print "fail" }' | uniq)
     if [[ "$warntest" == "fail" ]]; then
-        stdout "WARN: Some paths could result in update errors for Windows users with usernames greater than 48 characters!"
+        stdout "WARN: Some paths could result in update errors for Windows users with usernames greater than 38 characters!"
         find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) printf("%-3s  %s\n", length($0), $0) }'
     fi
     maxtest=$(find node_modules | awk -v maxlen="$maxlen" '{ if (length($0) > maxlen) print "fail" }' | uniq)
