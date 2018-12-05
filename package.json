@@ -65,9 +65,10 @@
     "!dist/**/*.test.js"
   ],
   "dependencies": {
-    "@salesforce/core": "0.17.2",
+    "@salesforce/kit": "0.13.3",
+    "@salesforce/ts-types": "0.19.3",
     "@salesforce/lazy-require": "0.0.4",
-    "@salesforce/plugin-generator": "0.0.13",
+    "@salesforce/plugin-generator": "^1.0.1",
     "@salesforce/sfdx-trust": "1.0.8",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.6",
@@ -82,8 +83,8 @@
     "salesforcedx": "44.10.0"
   },
   "devDependencies": {
-    "@salesforce/dev-config": "1.1.0",
-    "@salesforce/ts-sinon": "0.0.5",
+    "@salesforce/dev-config": "1.1.5",
+    "@salesforce/ts-sinon": "0.2.7",
     "@types/chai": "4.0.4",
     "@types/debug": "0.0.30",
     "@types/fs-extra": "4.0.2",

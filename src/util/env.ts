@@ -1,11 +1,12 @@
 import { isNil } from 'lodash';
+import { Optional } from '../../node_modules/@salesforce/ts-types';
 
 export class Env {
     constructor(private env: typeof process.env = process.env) {
         this.env = env;
     }
 
-    public getString(key: string, def?: string): string | undefined {
+    public getString(key: string, def?: string): Optional<string> {
         return this.env[key] || def;
     }
 

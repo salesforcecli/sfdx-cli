@@ -1,4 +1,4 @@
-import { json, JsonArray } from '@salesforce/core';
+import { ensureString, isJsonMap, JsonArray, Optional } from '@salesforce/ts-types';
 import { color } from 'cli-engine-command/lib/color';
 import { Config } from 'cli-engine-config';
 import Lock from 'cli-engine/lib/lock';
@@ -70,12 +70,12 @@ export default class PluginMigrator {
         debug('migrating %s plugin%s', pluginsJson.length, pluginsJson.length === 1 ? '' : 's');
 
         if (pluginsJson.length > 0) {
-            if (pluginsJson.some(plugin => json.isJsonMap(plugin) && !this.corePlugins.includes(json.ensureString(plugin.name)))) {
+            if (pluginsJson.some(plugin => isJsonMap(plugin) && !this.corePlugins.includes(ensureString(plugin.name)))) {
                 this.ux.warn(color.bold.blue('v5 plug-ins found -- Complete your update to v6:'));
             }
             for (const plugin of pluginsJson) {
-                if (json.isJsonMap(plugin)) {
-                    this.migratePlugin(json.ensureString(plugin.name), json.ensureString(plugin.tag));
+                if (isJsonMap(plugin)) {
+                    this.migratePlugin(ensureString(plugin.name), ensureString(plugin.tag));
                 }
             }
         }
@@ -104,7 +104,7 @@ export default class PluginMigrator {
     }
 
     // tslint:disable-next-line:no-any
-    private readPluginsJson(): any[] | undefined {
+    private readPluginsJson(): Optional<JsonArray> {
         try {
             debug('reading plugins.json');
             const plugins = fs.readJsonSync(this.userPluginsPjsonV5Path);

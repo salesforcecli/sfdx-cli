@@ -6,7 +6,7 @@
   version "0.0.0"
   resolved "http://10.252.156.164:4880/@cli-engine%2fscreen/-/screen-0.0.0.tgz#c2e847c7d4d998490c9097282bf21637d5162116"
 
-"@heroku-cli/color@^1.0.4", "@heroku-cli/color@^1.1.5":
+"@heroku-cli/color@^1.0.4":
   version "1.1.5"
   resolved "http://10.252.156.164:4880/@heroku-cli%2fcolor/-/color-1.1.5.tgz#d98781513f8daebb21aaaf54c9e8d497db3efcfb"
   dependencies:
@@ -30,6 +30,15 @@
   version "1.1.0"
   resolved "http://10.252.156.164:4880/@nodelib%2ffs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
 
+"@oclif/color@^0.0.0":
+  version "0.0.0"
+  resolved "http://10.252.156.164:4880/@oclif%2fcolor/-/color-0.0.0.tgz#54939bbd16d1387511bf1a48ccda1a417248e6a9"
+  integrity sha512-KKd3W7eNwfNF061tr663oUNdt8EMnfuyf5Xv55SGWA1a0rjhWqS/32P7OeB7CbXcJUBdfVrPyR//1afaW12AWw==
+  dependencies:
+    ansi-styles "^3.2.1"
+    supports-color "^5.4.0"
+    tslib "^1"
+
 "@oclif/command@1.4.2":
   version "1.4.2"
   resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.2.tgz#f20ead470e87f629812ce21ddd72042c88517a5d"
@@ -37,7 +46,7 @@
     "@oclif/parser" "^3.2.9"
     semver "^5.5.0"
 
-"@oclif/command@^1.3.1", "@oclif/command@^1.4.21", "@oclif/command@^1.4.29", "@oclif/command@^1.4.30", "@oclif/command@^1.4.33":
+"@oclif/command@^1.3.1", "@oclif/command@^1.4.29":
   version "1.4.33"
   resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.4.33.tgz#40a48e7384d6b4394c2ca20e5c05ff45541087f5"
   dependencies:
@@ -46,18 +55,36 @@
     debug "^3.1.0"
     semver "^5.5.0"
 
+"@oclif/command@^1.5.1", "@oclif/command@^1.5.3", "@oclif/command@^1.5.4":
+  version "1.5.6"
+  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.5.6.tgz#318e03bc81513e90347ee6a0258140312e06e3d6"
+  integrity sha512-XBj13dw13qrRzUfAc4d6b8PlZXALFglJ8xydX34aazLJCzeP8mtTcAJTi6ylTwWVhIW2HDO9npTd4FviDY279g==
+  dependencies:
+    "@oclif/errors" "^1.2.2"
+    "@oclif/parser" "^3.7.0"
+    debug "^4.1.0"
+    semver "^5.6.0"
+
 "@oclif/config@1.6.3":
   version "1.6.3"
   resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.6.3.tgz#8c28cec59a9ff9486aab580de2d6635d80ce44f4"
   dependencies:
     debug "^3.1.0"
 
-"@oclif/config@^1.3.56", "@oclif/config@^1.6.17", "@oclif/config@^1.6.28":
+"@oclif/config@^1.3.56":
   version "1.6.33"
   resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.6.33.tgz#61906143b30751d96dd29991c20c214bf4d9e4ff"
   dependencies:
     debug "^3.1.0"
     tslib "^1.9.2"
+
+"@oclif/config@^1.7.6", "@oclif/config@^1.8.7":
+  version "1.9.0"
+  resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.9.0.tgz#f0df483bad3988f24cddd4d85fdc8eafa9eb7ff2"
+  integrity sha512-R9HJvS7x4Ff/VFGlg8b7hxFnuC77y7znr1iXwRay4Jhd/EFJyZRT9d9SHzA6TS8lz9vDTW93xOFakT9AXld4Kg==
+  dependencies:
+    debug "^4.1.0"
+    tslib "^1.9.3"
 
 "@oclif/errors@1.0.4":
   version "1.0.4"
@@ -69,7 +96,7 @@
     strip-ansi "^4.0.0"
     wrap-ansi "^3.0.1"
 
-"@oclif/errors@^1.0.11", "@oclif/errors@^1.0.2", "@oclif/errors@^1.1.2":
+"@oclif/errors@^1.0.2", "@oclif/errors@^1.1.2":
   version "1.1.2"
   resolved "http://10.252.156.164:4880/@oclif%2ferrors/-/errors-1.1.2.tgz#2a54aae07a7655cc4523cae270d0a50cbc5dbef3"
   dependencies:
@@ -78,6 +105,27 @@
     indent-string "^3.2.0"
     strip-ansi "^4.0.0"
     wrap-ansi "^3.0.1"
+
+"@oclif/errors@^1.2.0", "@oclif/errors@^1.2.1", "@oclif/errors@^1.2.2":
+  version "1.2.2"
+  resolved "http://10.252.156.164:4880/@oclif%2ferrors/-/errors-1.2.2.tgz#9d8f269b15f13d70aa93316fed7bebc24688edc2"
+  integrity sha512-Eq8BFuJUQcbAPVofDxwdE0bL14inIiwt5EaKRVY9ZDIG11jwdXZqiQEECJx0VfnLyUZdYfRd/znDI/MytdJoKg==
+  dependencies:
+    clean-stack "^1.3.0"
+    fs-extra "^7.0.0"
+    indent-string "^3.2.0"
+    strip-ansi "^5.0.0"
+    wrap-ansi "^4.0.0"
+
+"@oclif/fixpack@^2.3.0":
+  version "2.3.0"
+  resolved "http://10.252.156.164:4880/@oclif%2ffixpack/-/fixpack-2.3.0.tgz#4b2c3500c4545b6a2a9ad89de8320a1e6535ba5a"
+  integrity sha512-49WCnMIUO6MOj5h0kSsSh0JsrKVXa332nwMYafz1mvfrLhWHvA/7CW1yvWXbmVT7RUdE0+EfqVTHFdNlipAfpg==
+  dependencies:
+    alce "1.2.0"
+    colors "*"
+    extend-object "^1.0.0"
+    rc "^1.2.8"
 
 "@oclif/linewrap@^1.0.0":
   version "1.0.0"
@@ -96,6 +144,15 @@
     "@oclif/linewrap" "^1.0.0"
     chalk "^2.4.1"
 
+"@oclif/parser@^3.7.0":
+  version "3.7.0"
+  resolved "http://10.252.156.164:4880/@oclif%2fparser/-/parser-3.7.0.tgz#cda3eea341e87cc7390511cf369a0126d0b39a93"
+  integrity sha512-CtRbCBJQ8prt9o3nCTSRi/UEw68t7mUf19vu3QKbh6sGc6BkD7OAX6Hfjxif636LSlR+N8eh3PELw9SxHdJcbQ==
+  dependencies:
+    "@oclif/linewrap" "^1.0.0"
+    chalk "^2.4.1"
+    tslib "^1.9.3"
+
 "@oclif/plugin-help@^1.1.6", "@oclif/plugin-help@^1.2.7":
   version "1.2.11"
   resolved "http://10.252.156.164:4880/@oclif%2fplugin-help/-/plugin-help-1.2.11.tgz#e6413a6009519230bc4c7e7fe45d8e139939e657"
@@ -108,44 +165,53 @@
     widest-line "^2.0.0"
     wrap-ansi "^3.0.1"
 
-"@oclif/plugin-help@^2.0.5":
-  version "2.0.5"
-  resolved "http://10.252.156.164:4880/@oclif%2fplugin-help/-/plugin-help-2.0.5.tgz#98084286099b44c8c6ed6214e3589f32525f4827"
+"@oclif/plugin-help@^2.1.2":
+  version "2.1.4"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-help/-/plugin-help-2.1.4.tgz#b530fa3147d5ae91ba9c84d085f53a829b2914dc"
+  integrity sha512-wG4eR/UxYangQlyn4XvslVV4wpBNQrEC/PvRibQq+0jNop/7zfK3jdWuK5PVB0mxZfhPwBSMZzV/3ur6DN+Bbg==
   dependencies:
-    "@oclif/command" "^1.4.30"
+    "@oclif/command" "^1.5.4"
     chalk "^2.4.1"
     indent-string "^3.2.0"
     lodash.template "^4.4.0"
     string-width "^2.1.1"
-    widest-line "^2.0.0"
-    wrap-ansi "^3.0.1"
+    strip-ansi "^5.0.0"
+    widest-line "^2.0.1"
+    wrap-ansi "^4.0.0"
 
-"@oclif/plugin-not-found@^1.0.9":
-  version "1.1.2"
-  resolved "http://10.252.156.164:4880/@oclif%2fplugin-not-found/-/plugin-not-found-1.1.2.tgz#eb8379e0cac4e4d50c495d981726cc0d2c6f1750"
+"@oclif/plugin-not-found@^1.2.0":
+  version "1.2.2"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-not-found/-/plugin-not-found-1.2.2.tgz#3e601f6e4264d7a0268cd03c152d90aa9c0cec6d"
+  integrity sha512-SPlmiJFmTFltQT/owdzQwKgq6eq5AEKVwVK31JqbzK48bRWvEL1Ye60cgztXyZ4bpPn2Fl+KeL3FWFQX41qJuA==
   dependencies:
-    "@heroku-cli/color" "^1.1.5"
-    "@oclif/command" "^1.4.33"
-    cli-ux "^4.6.3"
+    "@oclif/color" "^0.0.0"
+    "@oclif/command" "^1.5.3"
+    cli-ux "^4.9.0"
     fast-levenshtein "^2.0.6"
-    lodash "^4.17.10"
+    lodash "^4.17.11"
 
-"@oclif/plugin-warn-if-update-available@^1.3.9":
-  version "1.3.9"
-  resolved "http://10.252.156.164:4880/@oclif%2fplugin-warn-if-update-available/-/plugin-warn-if-update-available-1.3.9.tgz#ed1f55eea994b0e2bd918b4353daa0d937e84ad6"
+"@oclif/plugin-warn-if-update-available@^1.5.3":
+  version "1.5.4"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-warn-if-update-available/-/plugin-warn-if-update-available-1.5.4.tgz#f590c5bfbe2a8196d5b3285f367912fb9125dea0"
+  integrity sha512-WRLofKh7eejSlHx6N10kOddAzdftgBYRI7SwzEznDe67AijJo8uboUQUh3Emk8g3iLV77GkXP8FU49W5klmrdg==
   dependencies:
-    "@oclif/command" "^1.4.21"
-    "@oclif/config" "^1.6.17"
-    "@oclif/errors" "^1.0.11"
+    "@oclif/command" "^1.5.3"
+    "@oclif/config" "^1.8.7"
+    "@oclif/errors" "^1.2.2"
     chalk "^2.4.1"
-    debug "^3.1.0"
-    fs-extra "^6.0.1"
-    http-call "^5.1.2"
-    semver "^5.5.0"
+    debug "^4.1.0"
+    fs-extra "^7.0.0"
+    http-call "^5.2.2"
+    semver "^5.6.0"
 
 "@oclif/screen@^1.0.2":
   version "1.0.2"
   resolved "http://10.252.156.164:4880/@oclif%2fscreen/-/screen-1.0.2.tgz#c9d7c84b0ea60ecec8dd7a9b22c012ba9967aed8"
+
+"@oclif/screen@^1.0.3":
+  version "1.0.4"
+  resolved "http://10.252.156.164:4880/@oclif%2fscreen/-/screen-1.0.4.tgz#b740f68609dfae8aa71c3a6cab15d816407ba493"
+  integrity sha512-60CHpq+eqnTxLZQ4PGHYNwUX572hgpMHGPtTWMjdTMsAvlm69lZV/4ly6O3sAYkomo4NggGcomrDpBe34rxUqw==
 
 "@oclif/test@^1.0.1":
   version "1.1.0"
@@ -177,50 +243,66 @@
     lodash "4.17.4"
     mkdirp "0.5.1"
 
-"@salesforce/core@0.16.14":
-  version "0.16.14"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.16.14.tgz#ef080188dad5b511de3af2c7227c8c9c398dae12"
+"@salesforce/core@0.22.0":
+  version "0.22.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.22.0.tgz#9d51f0eae8ef61cb9dd8817703fe69dbbb5aca0c"
+  integrity sha1-nVHw6ujvYcud2IF3A/5p27taygw=
   dependencies:
+    "@salesforce/kit" "0.4.0"
+    "@salesforce/ts-types" "0.11.0"
+    "@types/jsforce" "1.8.12"
     bunyan-sfdx-no-dtrace "1.8.2"
-    chalk "2.4.0"
-    cli-ux "3.3.25"
-    jsforce "1.8.4"
-    jsonwebtoken "7.0.0"
-    lodash "4.17.4"
-    mkdirp "0.5.1"
-
-"@salesforce/core@0.16.16":
-  version "0.16.16"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.16.16.tgz#bc42db643025466536a05eb25d2a6e25da40f89d"
-  dependencies:
-    bunyan-sfdx-no-dtrace "1.8.2"
-    chalk "2.4.0"
-    cli-ux "3.3.25"
-    jsforce "1.8.4"
-    jsonwebtoken "7.0.0"
-    lodash "4.17.4"
-    mkdirp "0.5.1"
-
-"@salesforce/core@0.17.2":
-  version "0.17.2"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.17.2.tgz#8fd02f5744c3670cca7e4ce4451a837b49bde7dc"
-  dependencies:
-    bunyan-sfdx-no-dtrace "1.8.2"
-    chalk "2.4.0"
-    cli-ux "3.3.25"
-    debug "3.1.0"
+    debug "^3.1.0"
     jsen "0.6.6"
     jsforce "1.8.4"
     jsonwebtoken "7.0.0"
-    lodash "4.17.4"
     mkdirp "0.5.1"
 
-"@salesforce/dev-config@1.1.0":
-  version "1.1.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fdev-config/-/dev-config-1.1.0.tgz#d3277925b6086114b3a3f33c37cb97f6b19e5c4f"
+"@salesforce/core@^0.24.8":
+  version "0.24.8"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.24.8.tgz#71680e7e4e9aeccba3660383eebb79861c19b8de"
+  integrity sha512-ptJQXrdO2v5XoBX86BColg5CQLZEV73y0tBJJtwDHVc9DqCxsn9Eq3HC8SnIcJCFfUHkVHIOe1hnSPhXW0ENLg==
   dependencies:
-    tslint "5.9.1"
-    tslint-microsoft-contrib "5.0.2"
+    "@salesforce/kit" "0.13.3"
+    "@salesforce/ts-types" "0.19.3"
+    "@types/jsforce" "1.8.12"
+    bunyan-sfdx-no-dtrace "1.8.2"
+    debug "^3.1.0"
+    jsen "0.6.6"
+    jsforce "1.8.4"
+    jsonwebtoken "7.0.0"
+    mkdirp "0.5.1"
+    sfdx-faye "^1.0.8"
+
+"@salesforce/dev-config@1.1.5":
+  version "1.1.5"
+  resolved "http://10.252.156.164:4880/@salesforce%2fdev-config/-/dev-config-1.1.5.tgz#acf08bbe14d4f963dc33275399fada9e8a87e3c0"
+  integrity sha1-rPCLvhTU+WPcMydTmfranoqH48A=
+  dependencies:
+    tslint "5.11.0"
+    tslint-microsoft-contrib "5.2.0"
+
+"@salesforce/kit@0.13.3", "@salesforce/kit@^0.13.3":
+  version "0.13.3"
+  resolved "http://10.252.156.164:4880/@salesforce%2fkit/-/kit-0.13.3.tgz#359c2398ffa1a15e7936b28927a9b00426f54ead"
+  integrity sha512-a5pFcuUGIYHAjanhb9caZtvysb8yCfZrv+WVwP5uCYyP2+5Pw+qxvrbMO5uPFpnt4tD38Z1yPSVWo/jdbJRsdw==
+  dependencies:
+    "@salesforce/ts-types" "^0.19.3"
+    tslib "^1"
+
+"@salesforce/kit@0.4.0":
+  version "0.4.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fkit/-/kit-0.4.0.tgz#066c17f19e32b5d1e69a2b9c8cd347dfb15d6613"
+  integrity sha1-BmwX8Z4ytdHmmiucjNNH37FdZhM=
+  dependencies:
+    "@salesforce/ts-types" "0.11.0"
+
+"@salesforce/kit@0.7.0":
+  version "0.7.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fkit/-/kit-0.7.0.tgz#ffc74f811227584e2068feda196fd481c3485bc1"
+  integrity sha1-/8dPgRInWE4gaP7aGW/UgcNIW8E=
+  dependencies:
+    "@salesforce/ts-types" "0.12.0"
 
 "@salesforce/lazy-require@0.0.4":
   version "0.0.4"
@@ -229,24 +311,25 @@
     "@types/debug" "0.0.30"
     debug "3.1.0"
 
-"@salesforce/plugin-generator@0.0.10":
-  version "0.0.10"
-  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-generator/-/plugin-generator-0.0.10.tgz#44a2ca60a1694a56ac834c1294f6c7d902951017"
+"@salesforce/plugin-generator@^1.0.1":
+  version "1.0.1"
+  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-generator/-/plugin-generator-1.0.1.tgz#0713cd376e97da2c00162576be2356b7e7e52b28"
+  integrity sha1-BxPNN26X2iwAFiV2viNWt+flKyg=
   dependencies:
-    "@oclif/command" "^1.4.33"
-    "@oclif/config" "^1.6.28"
-    "@oclif/errors" "^1.1.2"
-    "@oclif/plugin-help" "^2.0.5"
-    "@oclif/plugin-not-found" "^1.0.9"
-    "@oclif/plugin-warn-if-update-available" "^1.3.9"
-    debug "^3.1.0"
-    fixpack "^2.3.1"
-    lodash "^4.17.10"
-    nps-utils "^1.5.0"
-    sort-pjson "^1.0.2"
-    tslib "^1.9.2"
-    yeoman-environment "^2.2.0"
-    yeoman-generator "^2.0.5"
+    "@oclif/command" "^1.5.1"
+    "@oclif/config" "^1.7.6"
+    "@oclif/errors" "^1.2.1"
+    "@oclif/fixpack" "^2.3.0"
+    "@oclif/plugin-help" "^2.1.2"
+    "@oclif/plugin-not-found" "^1.2.0"
+    "@oclif/plugin-warn-if-update-available" "^1.5.3"
+    debug "^4.0.1"
+    lodash "^4.17.11"
+    nps-utils "^1.7.0"
+    sort-pjson "^1.0.3"
+    tslib "^1.9.3"
+    yeoman-environment "^2.3.3"
+    yeoman-generator "^3.1.1"
     yosay "^2.0.2"
 
 "@salesforce/sfdx-trust@1.0.8":
@@ -260,11 +343,31 @@
     cli-ux "3.4.1"
     mkdirp "0.5.1"
 
-"@salesforce/ts-sinon@0.0.5":
-  version "0.0.5"
-  resolved "http://10.252.156.164:4880/@salesforce%2fts-sinon/-/ts-sinon-0.0.5.tgz#8bdc2b938a32835537aeb44f340a1d23bcb11be9"
+"@salesforce/ts-sinon@0.2.7":
+  version "0.2.7"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-sinon/-/ts-sinon-0.2.7.tgz#52032445e32eac13b7b89965d434df7bc27b80b1"
+  integrity sha512-D5YGBqLi7Mfsq4A1LMVW6ctAZjzrht6/ZCpQaHHt05yvcWtLG4tHJYWCSNlbFRF3hiy1i8KmpxqjfbM106jBEw==
   dependencies:
+    "@salesforce/ts-types" "^0.19.3"
     sinon "5.0.7"
+    tslib "^1.9.3"
+
+"@salesforce/ts-types@0.11.0":
+  version "0.11.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.11.0.tgz#09146c909863652652f99d2808b38ca60db24a01"
+  integrity sha1-CRRskJhjZSZS+Z0oCLOMpg2ySgE=
+
+"@salesforce/ts-types@0.12.0":
+  version "0.12.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.12.0.tgz#174729945da894d36a731d74df41034fd91f91f2"
+  integrity sha1-F0cplF2olNNqcx1030EDT9kfkfI=
+
+"@salesforce/ts-types@0.19.3", "@salesforce/ts-types@^0.19.3":
+  version "0.19.3"
+  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.19.3.tgz#df19fbddf33bf8dbdc00a27852cf6ed93251467b"
+  integrity sha512-YhmeVI5p8qqSqjcSH1xExDd73w2eATeWlf4B/UPQK4ZKxBgoTErBWHQ4cy4ETOMcHitDPlOMHstFK7tRh4y1bg==
+  dependencies:
+    tslib "^1"
 
 "@sinonjs/formatio@^2.0.0":
   version "2.0.0"
@@ -299,6 +402,13 @@
   resolved "http://10.252.156.164:4880/@types%2ffs-extra/-/fs-extra-4.0.2.tgz#7b9b1bbf85962cbe029b5a83c9b530d7c75af3ba"
   dependencies:
     "@types/node" "*"
+
+"@types/jsforce@1.8.12":
+  version "1.8.12"
+  resolved "http://10.252.156.164:4880/@types%2fjsforce/-/jsforce-1.8.12.tgz#ff7554feaf2a962513d7167a34975842930a8b6c"
+  integrity sha512-xHDW0ZlzH8E+BZCdYvA846tE36C/QfQpIpDEUo3kLjCk5+LFtK9BKgscpVlUeH4FB+3tpxg0Jsn70fXgTXxEuw==
+  dependencies:
+    "@types/events" "*"
 
 "@types/jsforce@1.8.13":
   version "1.8.13"
@@ -404,12 +514,13 @@ ajv@^5.1.0:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
 
-alce@1.0.0:
-  version "1.0.0"
-  resolved "http://10.252.156.164:4880/alce/-/alce-1.0.0.tgz#426184c98ee288d0eeac77fd63fed680b667cab6"
+alce@1.2.0:
+  version "1.2.0"
+  resolved "http://10.252.156.164:4880/alce/-/alce-1.2.0.tgz#a8be2dacaac42494612f18dc09db691f3dea4aab"
+  integrity sha1-qL4trKrEJJRhLxjcCdtpHz3qSqs=
   dependencies:
-    esprima "~1.0.4"
-    estraverse "~1.3.0"
+    esprima "^1.2.0"
+    estraverse "^1.5.0"
 
 align-text@^0.1.1, align-text@^0.1.3:
   version "0.1.4"
@@ -435,10 +546,6 @@ ansi-escapes@^3.0.0, ansi-escapes@^3.1.0:
   version "3.1.0"
   resolved "http://10.252.156.164:4880/ansi-escapes/-/ansi-escapes-3.1.0.tgz#f73207bb81207d75fd6c83f125af26eea378ca30"
 
-ansi-regex@^1.0.0, ansi-regex@^1.1.1:
-  version "1.1.1"
-  resolved "http://10.252.156.164:4880/ansi-regex/-/ansi-regex-1.1.1.tgz#41c847194646375e6a1a5d10c3ca054ef9fc980d"
-
 ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "http://10.252.156.164:4880/ansi-regex/-/ansi-regex-2.1.1.tgz#c3b33ab5ee360d86e0e628f0468ae7ef27d654df"
@@ -446,6 +553,11 @@ ansi-regex@^2.0.0:
 ansi-regex@^3.0.0:
   version "3.0.0"
   resolved "http://10.252.156.164:4880/ansi-regex/-/ansi-regex-3.0.0.tgz#ed0317c322064f79466c02966bddb605ab37d998"
+
+ansi-regex@^4.0.0:
+  version "4.0.0"
+  resolved "http://10.252.156.164:4880/ansi-regex/-/ansi-regex-4.0.0.tgz#70de791edf021404c3fd615aa89118ae0432e5a9"
+  integrity sha512-iB5Dda8t/UqpPI/IjsejXu5jOGDrzn41wJyljwPH65VCIbk6+1BzFIMJGFwTNrYXT1CrD+B4l19U7awiQ8rk7w==
 
 ansi-styles@^2.2.1:
   version "2.2.1"
@@ -464,6 +576,11 @@ ansicolors@~0.2.1:
 ansicolors@~0.3.2:
   version "0.3.2"
   resolved "http://10.252.156.164:4880/ansicolors/-/ansicolors-0.3.2.tgz#665597de86a9ffe3aa9bfbe6cae5c6ea426b4979"
+
+antlr4@4.7.1:
+  version "4.7.1"
+  resolved "http://10.252.156.164:4880/antlr4/-/antlr4-4.7.1.tgz#69984014f096e9e775f53dd9744bf994d8959773"
+  integrity sha512-haHyTW7Y9joE5MVs37P2lNYfU2RWBLfcRDD8OWldcdZm5TiCE91B5Xl1oWSwiDUSd4rlExpt2pu1fksYQjRBYQ==
 
 any-shell-escape@^0.1.1:
   version "0.1.1"
@@ -503,18 +620,19 @@ archiver@1.0.1:
     tar-stream "^1.5.0"
     zip-stream "^1.0.0"
 
-archiver@~0.14.3:
-  version "0.14.4"
-  resolved "http://10.252.156.164:4880/archiver/-/archiver-0.14.4.tgz#5b9ddb9f5ee1ceef21cb8f3b020e6240ecb4315c"
+archiver@~2.1.0:
+  version "2.1.1"
+  resolved "http://10.252.156.164:4880/archiver/-/archiver-2.1.1.tgz#ff662b4a78201494a3ee544d3a33fe7496509ebc"
+  integrity sha1-/2YrSnggFJSj7lRNOjP+dJZQnrw=
   dependencies:
-    async "~0.9.0"
-    buffer-crc32 "~0.2.1"
-    glob "~4.3.0"
-    lazystream "~0.1.0"
-    lodash "~3.2.0"
-    readable-stream "~1.0.26"
-    tar-stream "~1.1.0"
-    zip-stream "~0.5.0"
+    archiver-utils "^1.3.0"
+    async "^2.0.0"
+    buffer-crc32 "^0.2.1"
+    glob "^7.0.0"
+    lodash "^4.8.0"
+    readable-stream "^2.0.0"
+    tar-stream "^1.5.0"
+    zip-stream "^1.2.0"
 
 are-we-there-yet@~1.1.2:
   version "1.1.5"
@@ -571,13 +689,9 @@ arrify@^1.0.0, arrify@^1.0.1:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
-asap@*, asap@~2.0.3:
+asap@*, asap@~2.0.3, asap@~2.0.6:
   version "2.0.6"
   resolved "http://10.252.156.164:4880/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
-
-asn1@0.1.11:
-  version "0.1.11"
-  resolved "http://10.252.156.164:4880/asn1/-/asn1-0.1.11.tgz#559be18376d08a4ec4dbe80877d27818639b2df7"
 
 asn1@~0.2.3:
   version "0.2.3"
@@ -586,10 +700,6 @@ asn1@~0.2.3:
 assert-plus@1.0.0, assert-plus@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/assert-plus/-/assert-plus-1.0.0.tgz#f12e0f3c5d77b0b1cdd9146942e4e96c1e4dd525"
-
-assert-plus@^0.1.5:
-  version "0.1.5"
-  resolved "http://10.252.156.164:4880/assert-plus/-/assert-plus-0.1.5.tgz#ee74009413002d84cec7219c6ac811812e723160"
 
 assert-plus@^0.2.0:
   version "0.2.0"
@@ -623,10 +733,6 @@ async@^2.0.0, async@^2.1.4, async@^2.6.0:
   dependencies:
     lodash "^4.17.10"
 
-async@~0.9.0:
-  version "0.9.2"
-  resolved "http://10.252.156.164:4880/async/-/async-0.9.2.tgz#aea74d5e61c1f899613bf64bda66d4c78f2fd17d"
-
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "http://10.252.156.164:4880/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -634,10 +740,6 @@ asynckit@^0.4.0:
 atob@^2.1.1:
   version "2.1.1"
   resolved "http://10.252.156.164:4880/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
-
-aws-sign2@~0.5.0:
-  version "0.5.0"
-  resolved "http://10.252.156.164:4880/aws-sign2/-/aws-sign2-0.5.0.tgz#c57103f7a17fc037f02d7c2e64b602ea223f7d63"
 
 aws-sign2@~0.6.0:
   version "0.6.0"
@@ -677,12 +779,6 @@ babel-messages@^6.23.0:
   resolved "http://10.252.156.164:4880/babel-messages/-/babel-messages-6.23.0.tgz#f3cdf4703858035b2a2951c6ec5edf6c62f2630e"
   dependencies:
     babel-runtime "^6.22.0"
-
-babel-runtime@^5.8.25:
-  version "5.8.38"
-  resolved "http://10.252.156.164:4880/babel-runtime/-/babel-runtime-5.8.38.tgz#1c0b02eb63312f5f087ff20450827b425c9d4c19"
-  dependencies:
-    core-js "^1.0.0"
 
 babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
@@ -754,12 +850,6 @@ binaryextensions@2:
   version "2.1.1"
   resolved "http://10.252.156.164:4880/binaryextensions/-/binaryextensions-2.1.1.tgz#3209a51ca4a4ad541a3b8d3d6a6d5b83a2485935"
 
-bl@^0.9.0, bl@~0.9.0:
-  version "0.9.5"
-  resolved "http://10.252.156.164:4880/bl/-/bl-0.9.5.tgz#c06b797af085ea00bc527afc8efcf11de2232054"
-  dependencies:
-    readable-stream "~1.0.26"
-
 bl@^1.0.0:
   version "1.2.2"
   resolved "http://10.252.156.164:4880/bl/-/bl-1.2.2.tgz#a160911717103c07410cef63ef51b397c025af9c"
@@ -800,12 +890,6 @@ boolbase@~1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
 
-boom@0.4.x:
-  version "0.4.2"
-  resolved "http://10.252.156.164:4880/boom/-/boom-0.4.2.tgz#7a636e9ded4efcefb19cef4947a3c67dfaee911b"
-  dependencies:
-    hoek "0.9.x"
-
 boom@2.x.x:
   version "2.10.1"
   resolved "http://10.252.156.164:4880/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
@@ -824,7 +908,7 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-brace-expansion@^1.0.0, brace-expansion@^1.1.7:
+brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "http://10.252.156.164:4880/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
   dependencies:
@@ -861,7 +945,7 @@ buffer-alloc@^1.1.0:
     buffer-alloc-unsafe "^1.1.0"
     buffer-fill "^1.0.0"
 
-buffer-crc32@^0.2.1, buffer-crc32@~0.2.1, buffer-crc32@~0.2.3:
+buffer-crc32@^0.2.1, buffer-crc32@~0.2.3:
   version "0.2.13"
   resolved "http://10.252.156.164:4880/buffer-crc32/-/buffer-crc32-0.2.13.tgz#0d333e3f00eac50aa1454abd30ef8c2a5d9a7242"
 
@@ -978,10 +1062,6 @@ caseless@~0.12.0:
   version "0.12.0"
   resolved "http://10.252.156.164:4880/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
 
-caseless@~0.8.0:
-  version "0.8.0"
-  resolved "http://10.252.156.164:4880/caseless/-/caseless-0.8.0.tgz#5bca2881d41437f54b2407ebe34888c7b9ad4f7d"
-
 center-align@^0.1.1:
   version "0.1.3"
   resolved "http://10.252.156.164:4880/center-align/-/center-align-0.1.3.tgz#aa0d32629b6ee972200411cbd4461c907bc2b7ad"
@@ -1018,14 +1098,6 @@ chalk@2.3.0:
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
 
-chalk@2.4.0:
-  version "2.4.0"
-  resolved "http://10.252.156.164:4880/chalk/-/chalk-2.4.0.tgz#a060a297a6b57e15b61ca63ce84995daa0fe6e52"
-  dependencies:
-    ansi-styles "^3.2.1"
-    escape-string-regexp "^1.0.5"
-    supports-color "^5.3.0"
-
 chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.4.0, chalk@^2.4.1:
   version "2.4.1"
   resolved "http://10.252.156.164:4880/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
@@ -1037,6 +1109,11 @@ chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.4.0, chalk@^2.4
 chardet@^0.4.0:
   version "0.4.2"
   resolved "http://10.252.156.164:4880/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
+
+chardet@^0.7.0:
+  version "0.7.0"
+  resolved "http://10.252.156.164:4880/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
+  integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
 check-error@^1.0.1:
   version "1.0.2"
@@ -1078,6 +1155,11 @@ class-utils@^0.3.5:
 clean-stack@^1.3.0:
   version "1.3.0"
   resolved "http://10.252.156.164:4880/clean-stack/-/clean-stack-1.3.0.tgz#9e821501ae979986c46b1d66d2d432db2fd4ae31"
+
+clean-stack@^2.0.0:
+  version "2.0.0"
+  resolved "http://10.252.156.164:4880/clean-stack/-/clean-stack-2.0.0.tgz#301bfa9e8dd2d3d984c0e542f7aa67b996f63e0a"
+  integrity sha512-VEoL9Qh7I8s8iHnV53DaeWSt8NJ0g3khMfK6NiCPB7H657juhro+cSw2O88uo3bo0c0X5usamtXk0/Of0wXa5A==
 
 cli-boxes@^1.0.0:
   version "1.0.0"
@@ -1227,6 +1309,29 @@ cli-ux@3.4.1:
     strip-ansi "^4.0.0"
     supports-color "^5.4.0"
 
+cli-ux@4.8.0:
+  version "4.8.0"
+  resolved "http://10.252.156.164:4880/cli-ux/-/cli-ux-4.8.0.tgz#4013e177bfb6a2138565c071ef99f4a13e1cab20"
+  integrity sha512-IpiBsAMobdrP301ElhB9wf2T/f87WqxLmKUS7pakGIIK5PrW/CkXYh55MDaf3lFzhETS38Cxa0XIzxglVF+93g==
+  dependencies:
+    "@oclif/linewrap" "^1.0.0"
+    "@oclif/screen" "^1.0.2"
+    ansi-styles "^3.2.1"
+    cardinal "^2.1.1"
+    chalk "^2.4.1"
+    clean-stack "^1.3.0"
+    extract-stack "^1.0.0"
+    fs-extra "^7.0.0"
+    hyperlinker "^1.0.0"
+    indent-string "^3.2.0"
+    is-wsl "^1.1.0"
+    lodash "^4.17.10"
+    password-prompt "^1.0.7"
+    semver "^5.5.0"
+    strip-ansi "^4.0.0"
+    supports-color "^5.4.0"
+    supports-hyperlinks "^1.0.1"
+
 cli-ux@^2.0.20, cli-ux@^2.0.4:
   version "2.1.1"
   resolved "http://10.252.156.164:4880/cli-ux/-/cli-ux-2.1.1.tgz#07021d2b084d739af5d3c0f9d3d07673cb203947"
@@ -1245,31 +1350,32 @@ cli-ux@^2.0.20, cli-ux@^2.0.4:
     supports-color "^5.1.0"
     ts-lodash "^4.0.8"
 
-cli-ux@^4.6.3:
-  version "4.7.3"
-  resolved "http://10.252.156.164:4880/cli-ux/-/cli-ux-4.7.3.tgz#5b7f5e70105fde53883c5307a88e2f29f64236c4"
+cli-ux@^4.9.0:
+  version "4.9.3"
+  resolved "http://10.252.156.164:4880/cli-ux/-/cli-ux-4.9.3.tgz#4c3e070c1ea23eef010bbdb041192e0661be84ce"
+  integrity sha512-/1owvF0SZ5Gn54cgrikJ0QskgTzeg30HGjkmjFoaHDJzAqFpuX1DBpFR8aLvsE1J5s9MgeYRENQK4BFwOag5VA==
   dependencies:
+    "@oclif/errors" "^1.2.2"
     "@oclif/linewrap" "^1.0.0"
-    "@oclif/screen" "^1.0.2"
+    "@oclif/screen" "^1.0.3"
+    ansi-escapes "^3.1.0"
     ansi-styles "^3.2.1"
     cardinal "^2.1.1"
     chalk "^2.4.1"
-    clean-stack "^1.3.0"
+    clean-stack "^2.0.0"
     extract-stack "^1.0.0"
-    fs-extra "^6.0.1"
+    fs-extra "^7.0.0"
     hyperlinker "^1.0.0"
     indent-string "^3.2.0"
     is-wsl "^1.1.0"
-    lodash "^4.17.10"
-    password-prompt "^1.0.6"
-    semver "^5.5.0"
-    strip-ansi "^4.0.0"
-    supports-color "^5.4.0"
+    lodash "^4.17.11"
+    password-prompt "^1.0.7"
+    semver "^5.6.0"
+    strip-ansi "^5.0.0"
+    supports-color "^5.5.0"
     supports-hyperlinks "^1.0.1"
-
-cli-width@^1.0.1:
-  version "1.1.1"
-  resolved "http://10.252.156.164:4880/cli-width/-/cli-width-1.1.1.tgz#a4d293ef67ebb7b88d4a4d42c0ccf00c4d1e366d"
+    treeify "^1.1.0"
+    tslib "^1.9.3"
 
 cli-width@^2.0.0:
   version "2.2.0"
@@ -1368,12 +1474,6 @@ combined-stream@1.0.6, combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-combined-stream@~0.0.4, combined-stream@~0.0.5:
-  version "0.0.7"
-  resolved "http://10.252.156.164:4880/combined-stream/-/combined-stream-0.0.7.tgz#0137e657baa5a7541c57ac37ac5fc07d73b4dc1f"
-  dependencies:
-    delayed-stream "0.0.5"
-
 commander@2.6.0:
   version "2.6.0"
   resolved "http://10.252.156.164:4880/commander/-/commander-2.6.0.tgz#9df7e52fb2a0cb0fb89058ee80c3104225f37e1d"
@@ -1412,15 +1512,6 @@ compress-commons@^1.2.0:
     crc32-stream "^2.0.0"
     normalize-path "^2.0.0"
     readable-stream "^2.0.0"
-
-compress-commons@~0.2.0:
-  version "0.2.9"
-  resolved "http://10.252.156.164:4880/compress-commons/-/compress-commons-0.2.9.tgz#422d927430c01abd06cd455b6dfc04cb4cf8003c"
-  dependencies:
-    buffer-crc32 "~0.2.1"
-    crc32-stream "~0.3.1"
-    node-int64 "~0.3.0"
-    readable-stream "~1.0.26"
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -1477,10 +1568,6 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "http://10.252.156.164:4880/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
 
-core-js@^1.0.0:
-  version "1.2.7"
-  resolved "http://10.252.156.164:4880/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
-
 core-js@^2.4.0:
   version "2.5.7"
   resolved "http://10.252.156.164:4880/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
@@ -1526,13 +1613,6 @@ crc32-stream@^2.0.0:
     crc "^3.4.4"
     readable-stream "^2.0.0"
 
-crc32-stream@~0.3.1:
-  version "0.3.4"
-  resolved "http://10.252.156.164:4880/crc32-stream/-/crc32-stream-0.3.4.tgz#73bc25b45fac1db6632231a7bfce8927e9f06552"
-  dependencies:
-    buffer-crc32 "~0.2.1"
-    readable-stream "~1.0.24"
-
 crc@^3.4.4:
   version "3.5.0"
   resolved "http://10.252.156.164:4880/crc/-/crc-3.5.0.tgz#98b8ba7d489665ba3979f59b21381374101a1964"
@@ -1575,12 +1655,6 @@ cross-spawn@^6.0.5:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-cryptiles@0.2.x:
-  version "0.2.2"
-  resolved "http://10.252.156.164:4880/cryptiles/-/cryptiles-0.2.2.tgz#ed91ff1f17ad13d3748288594f8a48a0d26f325c"
-  dependencies:
-    boom "0.4.x"
-
 cryptiles@2.x.x:
   version "2.0.5"
   resolved "http://10.252.156.164:4880/cryptiles/-/cryptiles-2.0.5.tgz#3bdfecdc608147c1c67202fa291e7dca59eaa3b8"
@@ -1593,7 +1667,7 @@ cryptiles@3.x.x:
   dependencies:
     boom "5.x.x"
 
-csprng@, csprng@*:
+csprng@, csprng@*, csprng@~0.1.2:
   version "0.1.2"
   resolved "http://10.252.156.164:4880/csprng/-/csprng-0.1.2.tgz#4bc68f12fa368d252a59841cbaca974b18ab45e2"
   dependencies:
@@ -1645,10 +1719,6 @@ csv-stringify@^1.0.4:
   dependencies:
     lodash.get "~4.4.2"
 
-ctype@0.5.3:
-  version "0.5.3"
-  resolved "http://10.252.156.164:4880/ctype/-/ctype-0.5.3.tgz#82c18c2461f74114ef16c135224ad0b9144ca12f"
-
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "http://10.252.156.164:4880/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -1670,6 +1740,11 @@ dargs@^4.0.0:
 dargs@^5.1.0:
   version "5.1.0"
   resolved "http://10.252.156.164:4880/dargs/-/dargs-5.1.0.tgz#ec7ea50c78564cd36c9d5ec18f66329fade27829"
+
+dargs@^6.0.0:
+  version "6.0.0"
+  resolved "http://10.252.156.164:4880/dargs/-/dargs-6.0.0.tgz#da35d4633cd821de868f97d645f8d1f9b0353a24"
+  integrity sha512-6lJauzNaI7MiM8EHQWmGj+s3rP5/i1nYs8GAvKrLAx/9dpc9xS/4seFb1ioR39A+kcfu4v3jnEa/EE5qWYnitQ==
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -1710,6 +1785,13 @@ debug@^2.0.0, debug@^2.1.0, debug@^2.1.1, debug@^2.2.0, debug@^2.3.3, debug@^2.6
   dependencies:
     ms "2.0.0"
 
+debug@^4.0.1, debug@^4.1.0:
+  version "4.1.0"
+  resolved "http://10.252.156.164:4880/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
+  integrity sha512-heNPJUJIqC+xB6ayLAMHaIrmN9HKa7aQO8MGqKpvCA+uJYVcvR6l5kgdrhRuwPFHU7P5/A1w0BjByPHwpfTDKg==
+  dependencies:
+    ms "^2.1.1"
+
 debug@~2.2.0:
   version "2.2.0"
   resolved "http://10.252.156.164:4880/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
@@ -1744,17 +1826,19 @@ deep-extend@^0.5.1:
   version "0.5.1"
   resolved "http://10.252.156.164:4880/deep-extend/-/deep-extend-0.5.1.tgz#b894a9dd90d3023fbf1c55a394fb858eb2066f1f"
 
-deep-extend@~0.2.5:
-  version "0.2.11"
-  resolved "http://10.252.156.164:4880/deep-extend/-/deep-extend-0.2.11.tgz#7a16ba69729132340506170494bc83f7076fe08f"
+deep-extend@^0.6.0:
+  version "0.6.0"
+  resolved "http://10.252.156.164:4880/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
+  integrity sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==
 
 deep-is@~0.1.3:
   version "0.1.3"
   resolved "http://10.252.156.164:4880/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
-deepmerge@~0.2.7:
-  version "0.2.10"
-  resolved "http://10.252.156.164:4880/deepmerge/-/deepmerge-0.2.10.tgz#8906bf9e525a4fbf1b203b2afcb4640249821219"
+deepmerge@~2.0.1:
+  version "2.0.1"
+  resolved "http://10.252.156.164:4880/deepmerge/-/deepmerge-2.0.1.tgz#25c1c24f110fb914f80001b925264dd77f3f4312"
+  integrity sha512-VIPwiMJqJ13ZQfaCsIFnp5Me9tnjURiaIFxfz7EH0Ci0dTSQpZtSLrqOicXqEd/z2r+z+Klk9GzmnRsgpgbOsQ==
 
 default-require-extensions@^2.0.0:
   version "2.0.0"
@@ -1793,10 +1877,6 @@ del@^2.0.2:
     pinkie-promise "^2.0.0"
     rimraf "^2.2.8"
 
-delayed-stream@0.0.5:
-  version "0.0.5"
-  resolved "http://10.252.156.164:4880/delayed-stream/-/delayed-stream-0.0.5.tgz#d4b1f43a93e8296dfe02694f4680bc37a313c73f"
-
 delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
@@ -1804,10 +1884,6 @@ delayed-stream@~1.0.0:
 delegates@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
-
-depd@1.1.0:
-  version "1.1.0"
-  resolved "http://10.252.156.164:4880/depd/-/depd-1.1.0.tgz#e1bd82c6aab6ced965b97b88b17ed3e528ca18c3"
 
 depd@~1.1.0:
   version "1.1.2"
@@ -1940,6 +2016,11 @@ ee-first@1.1.1:
 ejs@^2.3.1, ejs@^2.5.9:
   version "2.6.1"
   resolved "http://10.252.156.164:4880/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
+
+ejs@~2.5.6:
+  version "2.5.9"
+  resolved "http://10.252.156.164:4880/ejs/-/ejs-2.5.9.tgz#7ba254582a560d267437109a68354112475b0ce5"
+  integrity sha512-GJCAeDBKfREgkBtgrYSf9hQy9kTb3helv0zGdzqhM7iAkW8FA/ZF97VQDbwFiwIT8MQLLOe5VlPZOEvZAqtUAQ==
 
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   version "1.4.1"
@@ -2170,6 +2251,11 @@ espree@^3.1.6:
     acorn "^5.5.0"
     acorn-jsx "^3.0.0"
 
+esprima@^1.2.0:
+  version "1.2.5"
+  resolved "http://10.252.156.164:4880/esprima/-/esprima-1.2.5.tgz#0993502feaf668138325756f30f9a51feeec11e9"
+  integrity sha1-CZNQL+r2aBODJXVvMPmlH+7sEek=
+
 esprima@^2.7.1, esprima@~2.7.0:
   version "2.7.3"
   resolved "http://10.252.156.164:4880/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
@@ -2177,10 +2263,6 @@ esprima@^2.7.1, esprima@~2.7.0:
 esprima@^4.0.0, esprima@~4.0.0:
   version "4.0.0"
   resolved "http://10.252.156.164:4880/esprima/-/esprima-4.0.0.tgz#4499eddcd1110e0b218bacf2fa7f7f59f55ca804"
-
-esprima@~1.0.4:
-  version "1.0.4"
-  resolved "http://10.252.156.164:4880/esprima/-/esprima-1.0.4.tgz#9f557e08fc3b4d26ece9dd34f8fbf476b62585ad"
 
 esprima@~3.0.0:
   version "3.0.0"
@@ -2192,17 +2274,14 @@ esrecurse@^4.1.0:
   dependencies:
     estraverse "^4.1.0"
 
-estraverse@^1.9.1:
+estraverse@^1.5.0, estraverse@^1.9.1:
   version "1.9.3"
   resolved "http://10.252.156.164:4880/estraverse/-/estraverse-1.9.3.tgz#af67f2dc922582415950926091a4005d29c9bb44"
+  integrity sha1-r2fy3JIlgkFZUJJgkaQAXSnJu0Q=
 
 estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
   version "4.2.0"
   resolved "http://10.252.156.164:4880/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
-
-estraverse@~1.3.0:
-  version "1.3.2"
-  resolved "http://10.252.156.164:4880/estraverse/-/estraverse-1.3.2.tgz#37c2b893ef13d723f276d878d60d8535152a6c42"
 
 esutils@^2.0.2:
   version "2.0.2"
@@ -2294,12 +2373,21 @@ external-editor@^1.1.0:
     spawn-sync "^1.0.15"
     tmp "^0.0.29"
 
-external-editor@^2.1.0:
+external-editor@^2.0.4, external-editor@^2.1.0:
   version "2.2.0"
   resolved "http://10.252.156.164:4880/external-editor/-/external-editor-2.2.0.tgz#045511cfd8d133f3846673d1047c154e214ad3d5"
   dependencies:
     chardet "^0.4.0"
     iconv-lite "^0.4.17"
+    tmp "^0.0.33"
+
+external-editor@^3.0.0:
+  version "3.0.3"
+  resolved "http://10.252.156.164:4880/external-editor/-/external-editor-3.0.3.tgz#5866db29a97826dbe4bf3afd24070ead9ea43a27"
+  integrity sha512-bn71H9+qWoOQKyZDo25mOMVpSmXROAsTJVVVYzrrtol3d4y+AsKjf4Iwl2Q+IuT0kFSQ1qo166UuIwqYq7mGnA==
+  dependencies:
+    chardet "^0.7.0"
+    iconv-lite "^0.4.24"
     tmp "^0.0.33"
 
 extglob@^2.0.4:
@@ -2367,6 +2455,13 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.4:
 faye-websocket@>=0.9.1:
   version "0.11.1"
   resolved "http://10.252.156.164:4880/faye-websocket/-/faye-websocket-0.11.1.tgz#f0efe18c4f56e4f40afc7e06c719fd5ee6188f38"
+  dependencies:
+    websocket-driver ">=0.5.1"
+
+faye-websocket@~0.9.1:
+  version "0.9.4"
+  resolved "http://10.252.156.164:4880/faye-websocket/-/faye-websocket-0.9.4.tgz#885934c79effb0409549e0c0a3801ed17a40cdad"
+  integrity sha1-iFk0x57/sECVSeDAo4Ae0XpAza0=
   dependencies:
     websocket-driver ">=0.5.1"
 
@@ -2461,20 +2556,18 @@ find-up@^2.0.0, find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
+find-up@^3.0.0:
+  version "3.0.0"
+  resolved "http://10.252.156.164:4880/find-up/-/find-up-3.0.0.tgz#49169f1d7993430646da61ecc5ae355c21c97b73"
+  integrity sha512-1yD6RmLI1XBfxugvORwlck6f75tYL+iR0jqwsOrOxMZyGYqUuDhJ0l4AXdO1iX/FTs9cBAMEk1gWSEx1kSbylg==
+  dependencies:
+    locate-path "^3.0.0"
+
 first-chunk-stream@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/first-chunk-stream/-/first-chunk-stream-2.0.0.tgz#1bdecdb8e083c0664b91945581577a43a9f31d70"
   dependencies:
     readable-stream "^2.0.2"
-
-fixpack@^2.3.1:
-  version "2.3.1"
-  resolved "http://10.252.156.164:4880/fixpack/-/fixpack-2.3.1.tgz#53f03d88aab7d5123259282f0088a9a3b19836c2"
-  dependencies:
-    alce "1.0.0"
-    colors "*"
-    extend-object "^1.0.0"
-    rc "^0.6.0"
 
 flat-cache@^1.2.1:
   version "1.3.0"
@@ -2489,32 +2582,21 @@ for-in@^1.0.2:
   version "1.0.2"
   resolved "http://10.252.156.164:4880/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
 
-force-language-services@43.0.4-0:
-  version "43.0.4-0"
-  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-43.0.4-0.tgz#2394b5a988c075d728f758e94580366a9af58078"
+force-language-services@44.4.0:
+  version "44.4.0"
+  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-44.4.0.tgz#1097e6c3f28669abac7684c5504873e4ee2648e9"
+  integrity sha1-EJfmw/KGaausdoTFUEhz5O4mSOk=
   dependencies:
     fs-extra "1.0.0"
     heroku-cli-util "6.0.11"
     mkdirp "0.5.1"
-    salesforce-alm "43.0.25"
+    salesforce-alm "44.3.0"
     yeoman-environment "1.6.3"
     yeoman-generator "0.24.1"
-
-forever-agent@~0.5.0:
-  version "0.5.2"
-  resolved "http://10.252.156.164:4880/forever-agent/-/forever-agent-0.5.2.tgz#6d0e09c4921f94a27f63d3b49c5feff1ea4c5130"
 
 forever-agent@~0.6.1:
   version "0.6.1"
   resolved "http://10.252.156.164:4880/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
-
-form-data@~0.1.0:
-  version "0.1.4"
-  resolved "http://10.252.156.164:4880/form-data/-/form-data-0.1.4.tgz#91abd788aba9702b1aabfa8bc01031a2ac9e3b12"
-  dependencies:
-    async "~0.9.0"
-    combined-stream "~0.0.4"
-    mime "~1.2.11"
 
 form-data@~2.1.1:
   version "2.1.4"
@@ -2598,6 +2680,15 @@ fs-extra@^6.0.1:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
+fs-extra@^7.0.0:
+  version "7.0.1"
+  resolved "http://10.252.156.164:4880/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
+  integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -2623,6 +2714,13 @@ gauge@~2.7.3:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
+
+gaze@~1.1.2:
+  version "1.1.3"
+  resolved "http://10.252.156.164:4880/gaze/-/gaze-1.1.3.tgz#c441733e13b927ac8c0ff0b4c3b033f28812924a"
+  integrity sha512-BRdNm8hbWzFzWHERTrejLqwHDfS4GibPoq5wjTPIoJHoBtKGPg3xAFfxmM+9ztbXelxcf2hwQcaz1PtmFeue8g==
+  dependencies:
+    globule "^1.0.0"
 
 generate-function@^2.0.0:
   version "2.0.0"
@@ -2728,16 +2826,6 @@ glob@7.1.1:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^5.0.10:
-  version "5.0.15"
-  resolved "http://10.252.156.164:4880/glob/-/glob-5.0.15.tgz#1bc936b9e02f4a603fcc222ecf7633d30b8b93b1"
-  dependencies:
-    inflight "^1.0.4"
-    inherits "2"
-    minimatch "2 || 3"
-    once "^1.3.0"
-    path-is-absolute "^1.0.0"
-
 glob@^6.0.1:
   version "6.0.4"
   resolved "http://10.252.156.164:4880/glob/-/glob-6.0.4.tgz#0f08860f6a155127b2fadd4f9ce24b1aab6e4d22"
@@ -2759,14 +2847,17 @@ glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@~4.3.0:
-  version "4.3.5"
-  resolved "http://10.252.156.164:4880/glob/-/glob-4.3.5.tgz#80fbb08ca540f238acce5d11d1e9bc41e75173d3"
+glob@~7.1.1:
+  version "7.1.3"
+  resolved "http://10.252.156.164:4880/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
+  integrity sha512-vcfuiIxogLV4DlGBHIUOwI0IbrJ8HWPc4MU7HzviGeNho/UJDfi6B5p3sHeWIQ0KGIU0Jpxi5ZHxemQfLkkAwQ==
   dependencies:
+    fs.realpath "^1.0.0"
     inflight "^1.0.4"
     inherits "2"
-    minimatch "^2.0.1"
+    minimatch "^3.0.4"
     once "^1.3.0"
+    path-is-absolute "^1.0.0"
 
 globals@^9.18.0, globals@^9.2.0, globals@^9.4.0:
   version "9.18.0"
@@ -2805,6 +2896,15 @@ globby@^8.0.0, globby@^8.0.1:
     ignore "^3.3.5"
     pify "^3.0.0"
     slash "^1.0.0"
+
+globule@^1.0.0:
+  version "1.2.1"
+  resolved "http://10.252.156.164:4880/globule/-/globule-1.2.1.tgz#5dffb1b191f22d20797a9369b49eab4e9839696d"
+  integrity sha512-g7QtgWF4uYSL5/dn71WxubOrS7JVGCnFPEnoeChJmBnyR9Mw8nGoEwOgJL/RC2Te0WhbsEUCejfH8SZNJ+adYQ==
+  dependencies:
+    glob "~7.1.1"
+    lodash "~4.17.10"
+    minimatch "~3.0.2"
 
 got@6.3.0:
   version "6.3.0"
@@ -3003,15 +3103,6 @@ has-values@^1.0.0:
     is-number "^3.0.0"
     kind-of "^4.0.0"
 
-hawk@1.1.1:
-  version "1.1.1"
-  resolved "http://10.252.156.164:4880/hawk/-/hawk-1.1.1.tgz#87cd491f9b46e4e2aeaca335416766885d2d1ed9"
-  dependencies:
-    boom "0.4.x"
-    cryptiles "0.2.x"
-    hoek "0.9.x"
-    sntp "0.2.x"
-
 hawk@~3.1.3:
   version "3.1.3"
   resolved "http://10.252.156.164:4880/hawk/-/hawk-3.1.3.tgz#078444bd7c1640b0fe540d2c9b73d59678e8e1c4"
@@ -3126,10 +3217,6 @@ heroku-client@^3.0.3:
     is-retry-allowed "^1.0.0"
     tunnel-agent "^0.6.0"
 
-hoek@0.9.x:
-  version "0.9.1"
-  resolved "http://10.252.156.164:4880/hoek/-/hoek-0.9.1.tgz#3d322462badf07716ea7eb85baf88079cddce505"
-
 hoek@2.x.x:
   version "2.16.3"
   resolved "http://10.252.156.164:4880/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
@@ -3179,9 +3266,10 @@ http-call@^4.0.6:
     tslib "^1.8.1"
     tunnel-agent "^0.6.0"
 
-http-call@^5.1.2:
-  version "5.1.4"
-  resolved "http://10.252.156.164:4880/http-call/-/http-call-5.1.4.tgz#fc37a1f6638ece82aba3d12eb6030f0889da850a"
+http-call@^5.2.2:
+  version "5.2.2"
+  resolved "http://10.252.156.164:4880/http-call/-/http-call-5.2.2.tgz#d8eb37eef701e566d44373ef19b22444ebb7c02e"
+  integrity sha512-DMEU+vvbrvt7n1BYPacbvtSwUmIgORP7HphTmKFqt1wBVeGi/+ADe7KkfyKAcnpa9HEoVaPWdfpOKy7fNeLdiw==
   dependencies:
     content-type "^1.0.4"
     debug "^3.1.0"
@@ -3206,14 +3294,6 @@ http-errors@~1.4.0:
 http-parser-js@>=0.4.0:
   version "0.4.13"
   resolved "http://10.252.156.164:4880/http-parser-js/-/http-parser-js-0.4.13.tgz#3bd6d6fde6e3172c9334c3b33b6c193d80fe1137"
-
-http-signature@~0.10.0:
-  version "0.10.1"
-  resolved "http://10.252.156.164:4880/http-signature/-/http-signature-0.10.1.tgz#4fbdac132559aa8323121e540779c0a012b27e66"
-  dependencies:
-    asn1 "0.1.11"
-    assert-plus "^0.1.5"
-    ctype "0.5.3"
 
 http-signature@~1.1.0:
   version "1.1.1"
@@ -3242,6 +3322,13 @@ iconv-lite@0.4.13:
 iconv-lite@^0.4.17:
   version "0.4.23"
   resolved "http://10.252.156.164:4880/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
+  dependencies:
+    safer-buffer ">= 2.1.2 < 3"
+
+iconv-lite@^0.4.24:
+  version "0.4.24"
+  resolved "http://10.252.156.164:4880/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
+  integrity sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
@@ -3308,19 +3395,6 @@ inquirer@^0.12.0:
     strip-ansi "^3.0.0"
     through "^2.3.6"
 
-inquirer@^0.8.5:
-  version "0.8.5"
-  resolved "http://10.252.156.164:4880/inquirer/-/inquirer-0.8.5.tgz#dbd740cf6ca3b731296a63ce6f6d961851f336df"
-  dependencies:
-    ansi-regex "^1.1.1"
-    chalk "^1.0.0"
-    cli-width "^1.0.1"
-    figures "^1.3.5"
-    lodash "^3.3.1"
-    readline2 "^0.1.1"
-    rx "^2.4.3"
-    through "^2.3.6"
-
 inquirer@^1.0.2:
   version "1.2.3"
   resolved "http://10.252.156.164:4880/inquirer/-/inquirer-1.2.3.tgz#4dec6f32f37ef7bb0b2ed3f1d1a5c3f545074918"
@@ -3354,6 +3428,45 @@ inquirer@^5.2.0:
     mute-stream "0.0.7"
     run-async "^2.2.0"
     rxjs "^5.5.2"
+    string-width "^2.1.0"
+    strip-ansi "^4.0.0"
+    through "^2.3.6"
+
+inquirer@^6.0.0:
+  version "6.2.1"
+  resolved "http://10.252.156.164:4880/inquirer/-/inquirer-6.2.1.tgz#9943fc4882161bdb0b0c9276769c75b32dbfcd52"
+  integrity sha512-088kl3DRT2dLU5riVMKKr1DlImd6X7smDhpXUCkJDCKvTEJeRiXh0G132HG9u5a+6Ylw9plFRY7RuTnwohYSpg==
+  dependencies:
+    ansi-escapes "^3.0.0"
+    chalk "^2.0.0"
+    cli-cursor "^2.1.0"
+    cli-width "^2.0.0"
+    external-editor "^3.0.0"
+    figures "^2.0.0"
+    lodash "^4.17.10"
+    mute-stream "0.0.7"
+    run-async "^2.2.0"
+    rxjs "^6.1.0"
+    string-width "^2.1.0"
+    strip-ansi "^5.0.0"
+    through "^2.3.6"
+
+inquirer@~3.3.0:
+  version "3.3.0"
+  resolved "http://10.252.156.164:4880/inquirer/-/inquirer-3.3.0.tgz#9dd2f2ad765dcab1ff0443b491442a20ba227dc9"
+  integrity sha512-h+xtnyk4EwKvFWHrUYsWErEVR+igKtLdchu+o0Z1RL7VU/jVMFbYir2bp6bAj8efFNxWqHX0dIss6fJQ+/+qeQ==
+  dependencies:
+    ansi-escapes "^3.0.0"
+    chalk "^2.0.0"
+    cli-cursor "^2.1.0"
+    cli-width "^2.0.0"
+    external-editor "^2.0.4"
+    figures "^2.0.0"
+    lodash "^4.3.0"
+    mute-stream "0.0.7"
+    run-async "^2.2.0"
+    rx-lite "^4.0.8"
+    rx-lite-aggregates "^4.0.8"
     string-width "^2.1.0"
     strip-ansi "^4.0.0"
     through "^2.3.6"
@@ -3720,6 +3833,13 @@ js-yaml@3.x, js-yaml@^3.5.1, js-yaml@^3.7.0:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+js2xmlparser@3.0.0:
+  version "3.0.0"
+  resolved "http://10.252.156.164:4880/js2xmlparser/-/js2xmlparser-3.0.0.tgz#3fb60eaa089c5440f9319f51760ccd07e2499733"
+  integrity sha1-P7YOqgicVED5MZ9RdgzNB+JJlzM=
+  dependencies:
+    xmlcreate "^1.0.1"
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "http://10.252.156.164:4880/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
@@ -3792,7 +3912,7 @@ json-stable-stringify@^1.0.0, json-stable-stringify@^1.0.1:
   dependencies:
     jsonify "~0.0.0"
 
-json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.0, json-stringify-safe@~5.0.1:
+json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "http://10.252.156.164:4880/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
@@ -3915,12 +4035,6 @@ lazystream@^1.0.0:
   dependencies:
     readable-stream "^2.0.5"
 
-lazystream@~0.1.0:
-  version "0.1.0"
-  resolved "http://10.252.156.164:4880/lazystream/-/lazystream-0.1.0.tgz#1b25d63c772a4c20f0a5ed0a9d77f484b6e16920"
-  dependencies:
-    readable-stream "~1.0.2"
-
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
   resolved "http://10.252.156.164:4880/levn/-/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"
@@ -3956,6 +4070,14 @@ locate-path@^2.0.0:
   resolved "http://10.252.156.164:4880/locate-path/-/locate-path-2.0.0.tgz#2b568b265eec944c6d9c0de9c3dbbbca0354cd8e"
   dependencies:
     p-locate "^2.0.0"
+    path-exists "^3.0.0"
+
+locate-path@^3.0.0:
+  version "3.0.0"
+  resolved "http://10.252.156.164:4880/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
+  integrity sha512-7AO748wWnIhNqAuaty2ZWHkQHRSNfPVIsPIfwEOWO22AmaoVrWavlOcMR5nzTLNYvp36X220/maaRsrec1G65A==
+  dependencies:
+    p-locate "^3.0.0"
     path-exists "^3.0.0"
 
 lodash._baseassign@^3.0.0:
@@ -4221,7 +4343,7 @@ lodash@4.17.4:
   version "4.17.4"
   resolved "http://10.252.156.164:4880/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-lodash@^3.2.0, lodash@^3.3.1:
+lodash@^3.2.0:
   version "3.10.1"
   resolved "http://10.252.156.164:4880/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
@@ -4229,9 +4351,10 @@ lodash@^4.0.0, lodash@^4.11.1, lodash@^4.13.1, lodash@^4.17.10, lodash@^4.17.2, 
   version "4.17.10"
   resolved "http://10.252.156.164:4880/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
-lodash@~3.2.0:
-  version "3.2.0"
-  resolved "http://10.252.156.164:4880/lodash/-/lodash-3.2.0.tgz#4bf50a3243f9aeb0bac41a55d3d5990675a462fb"
+lodash@^4.17.11, lodash@~4.17.10:
+  version "4.17.11"
+  resolved "http://10.252.156.164:4880/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
 log-chopper@^1.0.1:
   version "1.0.2"
@@ -4245,7 +4368,7 @@ log-symbols@^1.0.1:
   dependencies:
     chalk "^1.0.0"
 
-log-symbols@^2.1.0:
+log-symbols@^2.1.0, log-symbols@^2.2.0:
   version "2.2.0"
   resolved "http://10.252.156.164:4880/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
   dependencies:
@@ -4346,6 +4469,23 @@ mem-fs-editor@^4.0.0:
     through2 "^2.0.0"
     vinyl "^2.0.1"
 
+mem-fs-editor@^5.0.0:
+  version "5.1.0"
+  resolved "http://10.252.156.164:4880/mem-fs-editor/-/mem-fs-editor-5.1.0.tgz#51972241640be8567680a04f7adaffe5fc603667"
+  integrity sha512-2Yt2GCYEbcotYbIJagmow4gEtHDqzpq5XN94+yAx/NT5+bGqIjkXnm3KCUQfE6kRfScGp9IZknScoGRKu8L78w==
+  dependencies:
+    commondir "^1.0.1"
+    deep-extend "^0.6.0"
+    ejs "^2.5.9"
+    glob "^7.0.3"
+    globby "^8.0.1"
+    isbinaryfile "^3.0.2"
+    mkdirp "^0.5.0"
+    multimatch "^2.0.0"
+    rimraf "^2.2.8"
+    through2 "^2.0.0"
+    vinyl "^2.0.1"
+
 mem-fs@^1.1.0:
   version "1.1.3"
   resolved "http://10.252.156.164:4880/mem-fs/-/mem-fs-1.1.3.tgz#b8ae8d2e3fcb6f5d3f9165c12d4551a065d989cc"
@@ -4409,10 +4549,6 @@ mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.18, mime-types@~2.1.6, m
   dependencies:
     mime-db "~1.33.0"
 
-mime-types@~1.0.1:
-  version "1.0.2"
-  resolved "http://10.252.156.164:4880/mime-types/-/mime-types-1.0.2.tgz#995ae1392ab8affcbfcb2641dd054e943c0d5dce"
-
 mime@1.3.4:
   version "1.3.4"
   resolved "http://10.252.156.164:4880/mime/-/mime-1.3.4.tgz#115f9e3b6b3daf2959983cb38f149a2d40eb5d53"
@@ -4420,10 +4556,6 @@ mime@1.3.4:
 mime@1.3.6:
   version "1.3.6"
   resolved "http://10.252.156.164:4880/mime/-/mime-1.3.6.tgz#591d84d3653a6b0b4a3b9df8de5aa8108e72e5e0"
-
-mime@~1.2.11:
-  version "1.2.11"
-  resolved "http://10.252.156.164:4880/mime/-/mime-1.2.11.tgz#58203eed86e3a5ef17aed2b7d9ebd47f0a60dd10"
 
 mimic-fn@^1.0.0:
   version "1.2.0"
@@ -4433,17 +4565,11 @@ mimic-response@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/mimic-response/-/mimic-response-1.0.0.tgz#df3d3652a73fded6b9b0b24146e6fd052353458e"
 
-"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
+"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4, minimatch@~3.0.2:
   version "3.0.4"
   resolved "http://10.252.156.164:4880/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
     brace-expansion "^1.1.7"
-
-minimatch@^2.0.1:
-  version "2.0.10"
-  resolved "http://10.252.156.164:4880/minimatch/-/minimatch-2.0.10.tgz#8d087c39c6b38c001b97fca7ce6d0e1e80afbac7"
-  dependencies:
-    brace-expansion "^1.0.0"
 
 minimatch@~0.2.9:
   version "0.2.14"
@@ -4460,7 +4586,7 @@ minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "http://10.252.156.164:4880/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
 
-minimist@~0.0.1, minimist@~0.0.7:
+minimist@~0.0.1:
   version "0.0.10"
   resolved "http://10.252.156.164:4880/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
@@ -4517,6 +4643,11 @@ ms@^0.7.1:
   version "0.7.3"
   resolved "http://10.252.156.164:4880/ms/-/ms-0.7.3.tgz#708155a5e44e33f5fd0fc53e81d0d40a91be1fff"
 
+ms@^2.1.1:
+  version "2.1.1"
+  resolved "http://10.252.156.164:4880/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
+  integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
+
 multimatch@^2.0.0:
   version "2.1.0"
   resolved "http://10.252.156.164:4880/multimatch/-/multimatch-2.1.0.tgz#9c7906a22fb4c02919e2f5f75161b4cdbd4b2a2b"
@@ -4532,10 +4663,6 @@ multistream@^2.0.5:
   dependencies:
     inherits "^2.0.1"
     readable-stream "^2.0.5"
-
-mute-stream@0.0.4:
-  version "0.0.4"
-  resolved "http://10.252.156.164:4880/mute-stream/-/mute-stream-0.0.4.tgz#a9219960a6d5d5d046597aee51252c6655f7177e"
 
 mute-stream@0.0.5:
   version "0.0.5"
@@ -4637,10 +4764,6 @@ node-gyp@3.x:
     tar "^2.0.0"
     which "1"
 
-node-int64@~0.3.0:
-  version "0.3.3"
-  resolved "http://10.252.156.164:4880/node-int64/-/node-int64-0.3.3.tgz#2d6e6b2ece5de8588b43d88d1bc41b26cd1fa84d"
-
 node-status-codes@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/node-status-codes/-/node-status-codes-1.0.0.tgz#5ae5541d024645d32a58fcddc9ceecea7ae3ac2f"
@@ -4649,20 +4772,12 @@ node-status-codes@^2.0.0:
   version "2.0.1"
   resolved "http://10.252.156.164:4880/node-status-codes/-/node-status-codes-2.0.1.tgz#298067659cb68a2b4670abbefde02a3819981f5b"
 
-node-uuid@~1.4.0:
-  version "1.4.8"
-  resolved "http://10.252.156.164:4880/node-uuid/-/node-uuid-1.4.8.tgz#b040eb0923968afabf8d32fb1f17f1167fdab907"
-
 nomnom@1.6.x:
   version "1.6.2"
   resolved "http://10.252.156.164:4880/nomnom/-/nomnom-1.6.2.tgz#84a66a260174408fc5b77a18f888eccc44fb6971"
   dependencies:
     colors "0.5.x"
     underscore "~1.4.4"
-
-noop2@^2.0.0:
-  version "2.0.0"
-  resolved "http://10.252.156.164:4880/noop2/-/noop2-2.0.0.tgz#4b636015e9882b54783c02b412f699d8c5cd0a5b"
 
 "nopt@2 || 3", nopt@3.x, nopt@^3.0.0:
   version "3.0.6"
@@ -4685,11 +4800,10 @@ normalize-path@^2.0.0:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
-npm-install-package@^1.0.2:
-  version "1.1.0"
-  resolved "http://10.252.156.164:4880/npm-install-package/-/npm-install-package-1.1.0.tgz#f9fc1f84c2d31f6105631e0b5f5f280d1151d97e"
-  dependencies:
-    noop2 "^2.0.0"
+npm-install-package@~2.1.0:
+  version "2.1.0"
+  resolved "http://10.252.156.164:4880/npm-install-package/-/npm-install-package-2.1.0.tgz#d7efe3cfcd7ab00614b896ea53119dc9ab259125"
+  integrity sha1-1+/jz816sAYUuJbqUxGdyaslkSU=
 
 "npmlog@0 || 1 || 2 || 3 || 4":
   version "4.1.2"
@@ -4700,9 +4814,10 @@ npm-install-package@^1.0.2:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
-nps-utils@^1.5.0:
-  version "1.6.0"
-  resolved "http://10.252.156.164:4880/nps-utils/-/nps-utils-1.6.0.tgz#d88badb94fdf002e037d9718df5bc6cbf4c58bcf"
+nps-utils@^1.7.0:
+  version "1.7.0"
+  resolved "http://10.252.156.164:4880/nps-utils/-/nps-utils-1.7.0.tgz#88ef27925ee7cd916f15a25f1b1a6648e9b21a7d"
+  integrity sha512-wq/gUxTR3sgLYTLHlUKwMG2paUV3QdfwMj5aifWpQ60Vv9RQzA6pXDkwrAlMA8SNqoz8FwaGPc1X/7I+qjuYwg==
   dependencies:
     any-shell-escape "^0.1.1"
     common-tags "^1.4.0"
@@ -4724,10 +4839,6 @@ nth-check@~1.0.0:
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
-
-oauth-sign@~0.5.0:
-  version "0.5.0"
-  resolved "http://10.252.156.164:4880/oauth-sign/-/oauth-sign-0.5.0.tgz#d767f5169325620eab2e087ef0c472e773db6461"
 
 oauth-sign@~0.8.1, oauth-sign@~0.8.2:
   version "0.8.2"
@@ -4810,9 +4921,10 @@ opn@^4.0.0:
     object-assign "^4.0.1"
     pinkie-promise "^2.0.0"
 
-optimist@^0.6.1:
+optimist@^0.6.1, optimist@~0.6.1:
   version "0.6.1"
   resolved "http://10.252.156.164:4880/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
+  integrity sha1-2j6nRob6IaGaERwybpDrFaAZZoY=
   dependencies:
     minimist "~0.0.1"
     wordwrap "~0.0.2"
@@ -4865,11 +4977,25 @@ p-limit@^1.1.0:
   dependencies:
     p-try "^1.0.0"
 
+p-limit@^2.0.0:
+  version "2.0.0"
+  resolved "http://10.252.156.164:4880/p-limit/-/p-limit-2.0.0.tgz#e624ed54ee8c460a778b3c9f3670496ff8a57aec"
+  integrity sha512-fl5s52lI5ahKCernzzIyAP0QAZbGIovtVHGwpcu1Jr/EpzLVDI2myISHwGqK7m8uQFugVWSrbxH7XnhGtvEc+A==
+  dependencies:
+    p-try "^2.0.0"
+
 p-locate@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/p-locate/-/p-locate-2.0.0.tgz#20a0103b222a70c8fd39cc2e580680f3dde5ec43"
   dependencies:
     p-limit "^1.1.0"
+
+p-locate@^3.0.0:
+  version "3.0.0"
+  resolved "http://10.252.156.164:4880/p-locate/-/p-locate-3.0.0.tgz#322d69a05c0264b25997d9f40cd8a891ab0064a4"
+  integrity sha512-x+12w/To+4GFfgJhBEpiDcLozRJGegY+Ei7/z0tSLkMmxGZNybVMSfWj9aJn8Z5Fc7dBUNJOOVgPv2H7IwulSQ==
+  dependencies:
+    p-limit "^2.0.0"
 
 p-timeout@^1.1.1:
   version "1.2.1"
@@ -4880,6 +5006,11 @@ p-timeout@^1.1.1:
 p-try@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/p-try/-/p-try-1.0.0.tgz#cbc79cdbaf8fd4228e13f621f2b1a237c1b207b3"
+
+p-try@^2.0.0:
+  version "2.0.0"
+  resolved "http://10.252.156.164:4880/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
+  integrity sha512-hMp0onDKIajHfIkdRk3P4CdCmErkYAxxDtP3Wx/4nZ3aGlau2VKh3mZpcuFkH27WQkL/3WBCPOktzA9ZOAnMQQ==
 
 pad-component@0.0.1:
   version "0.0.1"
@@ -4906,9 +5037,17 @@ pascalcase@^0.1.1:
   version "0.1.1"
   resolved "http://10.252.156.164:4880/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
 
-password-prompt@^1.0.3, password-prompt@^1.0.4, password-prompt@^1.0.6:
+password-prompt@^1.0.3, password-prompt@^1.0.4:
   version "1.0.6"
   resolved "http://10.252.156.164:4880/password-prompt/-/password-prompt-1.0.6.tgz#d657a16c80ae3932f55f38a51fee9f872a8e9b17"
+  dependencies:
+    ansi-escapes "^3.1.0"
+    cross-spawn "^6.0.5"
+
+password-prompt@^1.0.7:
+  version "1.0.7"
+  resolved "http://10.252.156.164:4880/password-prompt/-/password-prompt-1.0.7.tgz#8e27748d3400bc9c9140d5ade705dfb7aeb7d91a"
+  integrity sha1-jid0jTQAvJyRQNWt5wXft6632Ro=
   dependencies:
     ansi-escapes "^3.1.0"
     cross-spawn "^6.0.5"
@@ -5049,6 +5188,11 @@ pretty-bytes@^4.0.2:
   version "4.0.2"
   resolved "http://10.252.156.164:4880/pretty-bytes/-/pretty-bytes-4.0.2.tgz#b2bf82e7350d65c6c33aa95aaa5a4f6327f61cd9"
 
+pretty-bytes@^5.1.0:
+  version "5.1.0"
+  resolved "http://10.252.156.164:4880/pretty-bytes/-/pretty-bytes-5.1.0.tgz#6237ecfbdc6525beaef4de722cc60a58ae0e6c6d"
+  integrity sha512-wa5+qGVg9Yt7PB6rYm3kXlKzgzgivYTLRandezh43jjRqgyDyP+9YxfJpJiLs9yKD1WeU8/OvtToWpW7255FtA==
+
 process-nextick-args@^2.0.0, process-nextick-args@~2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/process-nextick-args/-/process-nextick-args-2.0.0.tgz#a37d732f4271b4ab1ad070d35508e8290788ffaa"
@@ -5101,13 +5245,9 @@ punycode@^1.4.1:
   version "1.4.1"
   resolved "http://10.252.156.164:4880/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-q@^1.2.0:
+q@^1.2.0, q@~1.5.0:
   version "1.5.1"
   resolved "http://10.252.156.164:4880/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
-
-q@~1.3.0:
-  version "1.3.0"
-  resolved "http://10.252.156.164:4880/q/-/q-1.3.0.tgz#850d79f8cb831d92e103b46483e4e35d34640050"
 
 qs@4.0.0:
   version "4.0.0"
@@ -5116,10 +5256,6 @@ qs@4.0.0:
 qs@6.1.0:
   version "6.1.0"
   resolved "http://10.252.156.164:4880/qs/-/qs-6.1.0.tgz#ec1d1626b24278d99f0fdf4549e524e24eceeb26"
-
-qs@~2.3.1:
-  version "2.3.3"
-  resolved "http://10.252.156.164:4880/qs/-/qs-2.3.3.tgz#e9e85adbe75da0bbe4c8e0476a086290f863b404"
 
 qs@~6.3.0:
   version "6.3.2"
@@ -5149,14 +5285,15 @@ raw-body@~2.1.5:
     iconv-lite "0.4.13"
     unpipe "1.0.0"
 
-rc@^0.6.0:
-  version "0.6.0"
-  resolved "http://10.252.156.164:4880/rc/-/rc-0.6.0.tgz#e1c930059af831c85413fe275ae2f40f4e3c5371"
+rc@^1.2.8:
+  version "1.2.8"
+  resolved "http://10.252.156.164:4880/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
+  integrity sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==
   dependencies:
-    deep-extend "~0.2.5"
+    deep-extend "^0.6.0"
     ini "~1.3.0"
-    minimist "~0.0.7"
-    strip-json-comments "0.1.x"
+    minimist "^1.2.0"
+    strip-json-comments "~2.0.1"
 
 read-all-stream@^3.0.0:
   version "3.1.0"
@@ -5188,6 +5325,14 @@ read-pkg-up@^3.0.0:
   resolved "http://10.252.156.164:4880/read-pkg-up/-/read-pkg-up-3.0.0.tgz#3ed496685dba0f8fe118d0691dc51f4a1ff96f07"
   dependencies:
     find-up "^2.0.0"
+    read-pkg "^3.0.0"
+
+read-pkg-up@^4.0.0:
+  version "4.0.0"
+  resolved "http://10.252.156.164:4880/read-pkg-up/-/read-pkg-up-4.0.0.tgz#1b221c6088ba7799601c808f91161c66e58f8978"
+  integrity sha512-6etQSH7nJGsK0RbG/2TeDzZFa8shjQ1um+SwQQ5cwKy0dhSXdOncEhb1CPpvQG4h7FyOV6EB6YlV0yJvZQNAkA==
+  dependencies:
+    find-up "^3.0.0"
     read-pkg "^3.0.0"
 
 read-pkg@^1.0.0:
@@ -5227,25 +5372,9 @@ readable-stream@^2.0.0, readable-stream@^2.0.2, readable-stream@^2.0.5, readable
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-readable-stream@~1.0.2, readable-stream@~1.0.24, readable-stream@~1.0.26, readable-stream@~1.0.33:
-  version "1.0.34"
-  resolved "http://10.252.156.164:4880/readable-stream/-/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
-  dependencies:
-    core-util-is "~1.0.0"
-    inherits "~2.0.1"
-    isarray "0.0.1"
-    string_decoder "~0.10.x"
-
 readline-sync@1.4.4:
   version "1.4.4"
   resolved "http://10.252.156.164:4880/readline-sync/-/readline-sync-1.4.4.tgz#42b168024b2014a6ec1f165ab1b3e442dce22215"
-
-readline2@^0.1.1:
-  version "0.1.1"
-  resolved "http://10.252.156.164:4880/readline2/-/readline2-0.1.1.tgz#99443ba6e83b830ef3051bfd7dc241a82728d568"
-  dependencies:
-    mute-stream "0.0.4"
-    strip-ansi "^2.0.1"
 
 readline2@^1.0.1:
   version "1.0.1"
@@ -5331,27 +5460,6 @@ replace@0.3.0:
     minimatch "~0.2.9"
     nomnom "1.6.x"
 
-request@2.49.0:
-  version "2.49.0"
-  resolved "http://10.252.156.164:4880/request/-/request-2.49.0.tgz#0d4f6348dc3348059b553e4db60fd2478de662a7"
-  dependencies:
-    aws-sign2 "~0.5.0"
-    bl "~0.9.0"
-    caseless "~0.8.0"
-    combined-stream "~0.0.5"
-    forever-agent "~0.5.0"
-    form-data "~0.1.0"
-    hawk "1.1.1"
-    http-signature "~0.10.0"
-    json-stringify-safe "~5.0.0"
-    mime-types "~1.0.1"
-    node-uuid "~1.4.0"
-    oauth-sign "~0.5.0"
-    qs "~2.3.1"
-    stringstream "~0.0.4"
-    tough-cookie ">=0.12.0"
-    tunnel-agent "~0.4.0"
-
 request@2.79.0:
   version "2.79.0"
   resolved "http://10.252.156.164:4880/request/-/request-2.79.0.tgz#4dfe5bf6be8b8cdc37fcf93e04b65577722710de"
@@ -5377,7 +5485,7 @@ request@2.79.0:
     tunnel-agent "~0.4.1"
     uuid "^3.0.0"
 
-request@2.83.0:
+request@2.83.0, request@~2.83.0:
   version "2.83.0"
   resolved "http://10.252.156.164:4880/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:
@@ -5535,6 +5643,18 @@ rwlockfile@^1.4.10:
   dependencies:
     fs-extra "^5.0.0"
 
+rx-lite-aggregates@^4.0.8:
+  version "4.0.8"
+  resolved "http://10.252.156.164:4880/rx-lite-aggregates/-/rx-lite-aggregates-4.0.8.tgz#753b87a89a11c95467c4ac1626c4efc4e05c67be"
+  integrity sha1-dTuHqJoRyVRnxKwWJsTvxOBcZ74=
+  dependencies:
+    rx-lite "*"
+
+rx-lite@*, rx-lite@^4.0.8:
+  version "4.0.8"
+  resolved "http://10.252.156.164:4880/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
+  integrity sha1-Cx4Rr4vESDbwSmQH6S2kJGe3lEQ=
+
 rx-lite@^3.1.2:
   version "3.1.2"
   resolved "http://10.252.156.164:4880/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
@@ -5542,10 +5662,6 @@ rx-lite@^3.1.2:
 rx@2.3.24:
   version "2.3.24"
   resolved "http://10.252.156.164:4880/rx/-/rx-2.3.24.tgz#14f950a4217d7e35daa71bbcbe58eff68ea4b2b7"
-
-rx@^2.4.3:
-  version "2.5.3"
-  resolved "http://10.252.156.164:4880/rx/-/rx-2.5.3.tgz#21adc7d80f02002af50dae97fd9dbf248755f566"
 
 rx@^4.1.0:
   version "4.1.0"
@@ -5556,6 +5672,13 @@ rxjs@^5.5.2:
   resolved "http://10.252.156.164:4880/rxjs/-/rxjs-5.5.11.tgz#f733027ca43e3bec6b994473be4ab98ad43ced87"
   dependencies:
     symbol-observable "1.0.1"
+
+rxjs@^6.1.0:
+  version "6.3.3"
+  resolved "http://10.252.156.164:4880/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
+  integrity sha512-JTWmoY9tWCs7zvIk/CvRjhjGaOd+OVBM987mxFo+OW66cGpdKjZcpmc74ES1sB//7Kl/PAe8+wEakuhG4pcgOw==
+  dependencies:
+    tslib "^1.9.0"
 
 safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
@@ -5575,17 +5698,23 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "http://10.252.156.164:4880/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
-salesforce-alm@43.0.25:
-  version "43.0.25"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-43.0.25.tgz#a9edc33530d70da9acbce98117a4e4514c671763"
+salesforce-alm@44.3.0:
+  version "44.3.0"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-44.3.0.tgz#59b4923b4245d1a71f922e3ef6a83528d22e91e5"
+  integrity sha1-WbSSO0JF0acfki4+9qg1KNIukeU=
   dependencies:
-    "@salesforce/core" "0.16.14"
+    "@oclif/errors" "^1.2.0"
+    "@salesforce/core" "0.22.0"
+    "@salesforce/kit" "0.7.0"
+    "@salesforce/ts-types" "0.12.0"
     adm-zip "0.4.7"
+    antlr4 "4.7.1"
     archiver "1.0.1"
     bluebird "3.4.6"
     body-parser "1.15.0"
     bunyan-sfdx-no-dtrace "1.8.2"
     cli-spinner "0.2.5"
+    cli-ux "4.8.0"
     csv-parse "1.1.2"
     express "4.13.4"
     faye "1.1.2"
@@ -5593,6 +5722,7 @@ salesforce-alm@43.0.25:
     gitignore-parser "0.0.2"
     glob "7.0.3"
     heroku-cli-util "6.0.16"
+    js2xmlparser "3.0.0"
     jsen "0.6.4"
     jsforce "1.8.4"
     jsonwebtoken "7.0.0"
@@ -5610,28 +5740,34 @@ salesforce-alm@43.0.25:
     replace "0.3.0"
     request "2.79.0"
     selenium-standalone "6.6.0"
-    webdriverio "4.1.0"
+    webdriverio "4.12.0"
     xml2js "0.4.17"
-    xmldom-sfdx-encoding "0.1.28"
+    xmldom-sfdx-encoding "0.1.29"
 
-salesforce-alm@43.3.1-1:
-  version "43.3.1-1"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-43.3.1-1.tgz#a358c506e5160aed5032fbbdbb2fd2b64407caa5"
+salesforce-alm@44.9.0:
+  version "44.9.0"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-44.9.0.tgz#2a63615f8c562c6be3a84dad071cb16f64de54a0"
+  integrity sha1-KmNhX4xWLGvjqE2tBxyxb2TeVKA=
   dependencies:
-    "@salesforce/core" "0.16.16"
+    "@oclif/errors" "^1.2.0"
+    "@salesforce/core" "^0.24.8"
+    "@salesforce/kit" "^0.13.3"
+    "@salesforce/ts-types" "^0.19.3"
     adm-zip "0.4.7"
+    antlr4 "4.7.1"
     archiver "1.0.1"
     bluebird "3.4.6"
     body-parser "1.15.0"
     bunyan-sfdx-no-dtrace "1.8.2"
     cli-spinner "0.2.5"
+    cli-ux "4.8.0"
     csv-parse "1.1.2"
     express "4.13.4"
-    faye "1.1.2"
     fs-extra "4.0.1"
     gitignore-parser "0.0.2"
     glob "7.0.3"
     heroku-cli-util "6.0.16"
+    js2xmlparser "3.0.0"
     jsen "0.6.4"
     jsforce "1.8.4"
     jsonwebtoken "7.0.0"
@@ -5649,7 +5785,8 @@ salesforce-alm@43.3.1-1:
     replace "0.3.0"
     request "2.79.0"
     selenium-standalone "6.6.0"
-    webdriverio "4.1.0"
+    sfdx-faye "^1.0.8"
+    webdriverio "4.12.0"
     xml2js "0.4.17"
     xmldom-sfdx-encoding "0.1.29"
 
@@ -5664,12 +5801,13 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@43.4.1-2:
-  version "43.4.1-2"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-43.4.1-2.tgz#1c1b8a4104783dbfd7e337916b13c4b888f25f16"
+salesforcedx@44.9.0:
+  version "44.9.0"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-44.9.0.tgz#5db8e19cc03d617e68597673c020d900e1d6c45a"
+  integrity sha1-XbjhnMA9YX5oWXZzwCDZAOHWxFo=
   dependencies:
-    force-language-services "43.0.4-0"
-    salesforce-alm "43.3.1-1"
+    force-language-services "44.4.0"
+    salesforce-alm "44.9.0"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.3.0:
@@ -5709,6 +5847,11 @@ selenium-standalone@6.6.0:
 semver@5.4.1:
   version "5.4.1"
   resolved "http://10.252.156.164:4880/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
+
+semver@^5.6.0:
+  version "5.6.0"
+  resolved "http://10.252.156.164:4880/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
+  integrity sha512-RS9R6R35NYgQn++fkDWaOmqGoj4Ek9gGs+DPxNUZKuwE183xjJroKvyo1IzVFeXvUrvmALy6FWD5xrdJT25gMg==
 
 semver@~5.3.0:
   version "5.3.0"
@@ -5781,6 +5924,18 @@ set-value@^2.0.0:
     is-extendable "^0.1.1"
     is-plain-object "^2.0.3"
     split-string "^3.0.1"
+
+sfdx-faye@^1.0.8:
+  version "1.0.8"
+  resolved "http://10.252.156.164:4880/sfdx-faye/-/sfdx-faye-1.0.8.tgz#90059898802198ffd5ce035a2da0b9ad606069b4"
+  integrity sha512-m9FYUiIG2JdJaoG8EpU2wKC/b83vXKGIqvs/XoVe/kMbpnPZ3ZEYiBXlMOmjIt8j2C1FZ0Q8ZY72wIYoIT2bhA==
+  dependencies:
+    asap "~2.0.6"
+    csprng "~0.1.2"
+    faye-websocket "~0.9.1"
+    tough-cookie "~2.4.3"
+    tunnel-agent "~0.6.0"
+    uglifyjs-webpack-plugin "~0.4.6"
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -5879,12 +6034,6 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-sntp@0.2.x:
-  version "0.2.4"
-  resolved "http://10.252.156.164:4880/sntp/-/sntp-0.2.4.tgz#fb885f18b0f3aad189f824862536bceeec750900"
-  dependencies:
-    hoek "0.9.x"
-
 sntp@1.x.x:
   version "1.0.9"
   resolved "http://10.252.156.164:4880/sntp/-/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
@@ -5897,11 +6046,17 @@ sntp@2.x.x:
   dependencies:
     hoek "4.x.x"
 
-sort-pjson@^1.0.2:
-  version "1.0.2"
-  resolved "http://10.252.156.164:4880/sort-pjson/-/sort-pjson-1.0.2.tgz#1090b35b43cd1a13648ee7be4c52f926ecc4c6d8"
+sort-pjson@^1.0.3:
+  version "1.0.3"
+  resolved "http://10.252.156.164:4880/sort-pjson/-/sort-pjson-1.0.3.tgz#79435ab838db3700cc255278175c111b407b6bb5"
+  integrity sha512-h/xRX+8zuV9tbnbkRwmdNNyyJbjzVTh8YFpMgEgGU2umFDFg2EDfWKtA5YOfnBwT4YoZfJf6hrc0yuXLUvUDFA==
   dependencies:
-    fixpack "^2.3.1"
+    "@oclif/fixpack" "^2.3.0"
+
+source-list-map@^2.0.0:
+  version "2.0.1"
+  resolved "http://10.252.156.164:4880/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
+  integrity sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==
 
 source-map-resolve@^0.5.0, source-map-resolve@^0.5.1:
   version "0.5.2"
@@ -5946,9 +6101,10 @@ source-map@^0.5.3, source-map@^0.5.6, source-map@^0.5.7, source-map@~0.5.1:
   version "0.5.7"
   resolved "http://10.252.156.164:4880/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
-source-map@^0.6.0:
+source-map@^0.6.0, source-map@~0.6.1:
   version "0.6.1"
   resolved "http://10.252.156.164:4880/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
+  integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
 source-map@~0.2.0:
   version "0.2.0"
@@ -6087,12 +6243,6 @@ stringstream@~0.0.4, stringstream@~0.0.5:
   version "0.0.6"
   resolved "http://10.252.156.164:4880/stringstream/-/stringstream-0.0.6.tgz#7880225b0d4ad10e30927d167a1d6f2fd3b33a72"
 
-strip-ansi@^2.0.1:
-  version "2.0.1"
-  resolved "http://10.252.156.164:4880/strip-ansi/-/strip-ansi-2.0.1.tgz#df62c1aa94ed2f114e1d0f21fd1d50482b79a60e"
-  dependencies:
-    ansi-regex "^1.0.0"
-
 strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   version "3.0.1"
   resolved "http://10.252.156.164:4880/strip-ansi/-/strip-ansi-3.0.1.tgz#6a385fb8853d952d5ff05d0e8aaf94278dc63dcf"
@@ -6104,6 +6254,13 @@ strip-ansi@^4.0.0:
   resolved "http://10.252.156.164:4880/strip-ansi/-/strip-ansi-4.0.0.tgz#a8479022eb1ac368a871389b635262c505ee368f"
   dependencies:
     ansi-regex "^3.0.0"
+
+strip-ansi@^5.0.0:
+  version "5.0.0"
+  resolved "http://10.252.156.164:4880/strip-ansi/-/strip-ansi-5.0.0.tgz#f78f68b5d0866c20b2c9b8c61b5298508dc8756f"
+  integrity sha512-Uu7gQyZI7J7gn5qLn1Np3G9vcYGTVqB+lFTytnDJv83dd8T22aGH451P3jueT2/QemInJDfxHB5Tde5OzgG1Ow==
+  dependencies:
+    ansi-regex "^4.0.0"
 
 strip-bom-stream@^2.0.0:
   version "2.0.0"
@@ -6128,23 +6285,20 @@ strip-indent@^1.0.1:
   dependencies:
     get-stdin "^4.0.1"
 
-strip-json-comments@0.1.x:
-  version "0.1.3"
-  resolved "http://10.252.156.164:4880/strip-json-comments/-/strip-json-comments-0.1.3.tgz#164c64e370a8a3cc00c9e01b539e569823f0ee54"
-
 strip-json-comments@~1.0.1:
   version "1.0.4"
   resolved "http://10.252.156.164:4880/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
+
+strip-json-comments@~2.0.1:
+  version "2.0.1"
+  resolved "http://10.252.156.164:4880/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
+  integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
 
 supports-color@3.1.2:
   version "3.1.2"
   resolved "http://10.252.156.164:4880/supports-color/-/supports-color-3.1.2.tgz#72a262894d9d408b956ca05ff37b2ed8a6e2a2d5"
   dependencies:
     has-flag "^1.0.0"
-
-supports-color@^1.3.1:
-  version "1.3.1"
-  resolved "http://10.252.156.164:4880/supports-color/-/supports-color-1.3.1.tgz#15758df09d8ff3b4acc307539fabe27095e1042d"
 
 supports-color@^2.0.0:
   version "2.0.0"
@@ -6167,6 +6321,20 @@ supports-color@^5.0.0, supports-color@^5.1.0, supports-color@^5.3.0, supports-co
   resolved "http://10.252.156.164:4880/supports-color/-/supports-color-5.4.0.tgz#1c6b337402c2137605efe19f10fec390f6faab54"
   dependencies:
     has-flag "^3.0.0"
+
+supports-color@^5.5.0:
+  version "5.5.0"
+  resolved "http://10.252.156.164:4880/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
+  integrity sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==
+  dependencies:
+    has-flag "^3.0.0"
+
+supports-color@~5.0.0:
+  version "5.0.1"
+  resolved "http://10.252.156.164:4880/supports-color/-/supports-color-5.0.1.tgz#1c5331f22250c84202805b2f17adf16699f3a39a"
+  integrity sha512-7FQGOlSQ+AQxBNXJpVDj8efTA/FtyB5wcNE1omXXJ0cq6jm1jjDwuROlYDbnzHqdNPqliWFhcioCWSyav+xBnA==
+  dependencies:
+    has-flag "^2.0.0"
 
 supports-hyperlinks@^1.0.1:
   version "1.0.1"
@@ -6225,15 +6393,6 @@ tar-stream@^1.1.2, tar-stream@^1.5.0:
     fs-constants "^1.0.0"
     readable-stream "^2.3.0"
     to-buffer "^1.1.0"
-    xtend "^4.0.0"
-
-tar-stream@~1.1.0:
-  version "1.1.5"
-  resolved "http://10.252.156.164:4880/tar-stream/-/tar-stream-1.1.5.tgz#be9218c130c20029e107b0f967fb23de0579d13c"
-  dependencies:
-    bl "^0.9.0"
-    end-of-stream "^1.0.0"
-    readable-stream "~1.0.33"
     xtend "^4.0.0"
 
 tar@^2.0.0:
@@ -6338,7 +6497,7 @@ topo@1.x.x:
   dependencies:
     hoek "2.x.x"
 
-tough-cookie@, tough-cookie@*, tough-cookie@>=0.12.0:
+tough-cookie@, tough-cookie@*:
   version "2.4.2"
   resolved "http://10.252.156.164:4880/tough-cookie/-/tough-cookie-2.4.2.tgz#aa9133154518b494efab98a58247bfc38818c00c"
   dependencies:
@@ -6351,6 +6510,14 @@ tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   dependencies:
     punycode "^1.4.1"
 
+tough-cookie@~2.4.3:
+  version "2.4.3"
+  resolved "http://10.252.156.164:4880/tough-cookie/-/tough-cookie-2.4.3.tgz#53f36da3f47783b0925afa06ff9f3b165280f781"
+  integrity sha512-Q5srk/4vDM54WJsJio3XNn6K2sCG+CQ8G5Wz6bZhRZoAe/+TxjWB/GlFAnYEbkYVlON9FMk/fE3h2RLpPXo4lQ==
+  dependencies:
+    psl "^1.1.24"
+    punycode "^1.4.1"
+
 traverse@^0.6.6:
   version "0.6.6"
   resolved "http://10.252.156.164:4880/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
@@ -6358,6 +6525,11 @@ traverse@^0.6.6:
 tree-kill@^1.1.0:
   version "1.2.0"
   resolved "http://10.252.156.164:4880/tree-kill/-/tree-kill-1.2.0.tgz#5846786237b4239014f05db156b643212d4c6f36"
+
+treeify@^1.1.0:
+  version "1.1.0"
+  resolved "http://10.252.156.164:4880/treeify/-/treeify-1.1.0.tgz#4e31c6a463accd0943879f30667c4fdaff411bb8"
+  integrity sha512-1m4RA7xVAJrSGrrXGs0L3YTwyvBs2S8PbRHaLZAkFw7JR8oIFwYtysxlBZhYIa7xSyiYJKZ3iGrrk55cGA3i9A==
 
 trim-newlines@^1.0.0:
   version "1.0.0"
@@ -6386,15 +6558,17 @@ ts-node@^5.0.1:
     source-map-support "^0.5.3"
     yn "^2.0.0"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.2:
+tslib@^1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.2, tslib@^1.9.3:
   version "1.9.3"
   resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
+  integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
 
-tslint-microsoft-contrib@5.0.2:
-  version "5.0.2"
-  resolved "http://10.252.156.164:4880/tslint-microsoft-contrib/-/tslint-microsoft-contrib-5.0.2.tgz#ecc2a797f777a12f0066944cec0c81a9e7c59ee9"
+tslint-microsoft-contrib@5.2.0:
+  version "5.2.0"
+  resolved "http://10.252.156.164:4880/tslint-microsoft-contrib/-/tslint-microsoft-contrib-5.2.0.tgz#a0ef808691b8f8c6e7902a62cd06e9502a91dde2"
+  integrity sha512-gHVEIkTcMB9lS6UPEgEznV5ZmyhDs/aHyBS9E89S8aJiK1qLv22DmfCcda53S024T+WQkGAhLHUQF4Qn4nzCAA==
   dependencies:
-    tsutils "^2.12.1"
+    tsutils "^2.12.1 <2.29.0"
 
 tslint@5.10.0:
   version "5.10.0"
@@ -6413,9 +6587,10 @@ tslint@5.10.0:
     tslib "^1.8.0"
     tsutils "^2.12.1"
 
-tslint@5.9.1:
-  version "5.9.1"
-  resolved "http://10.252.156.164:4880/tslint/-/tslint-5.9.1.tgz#1255f87a3ff57eb0b0e1f0e610a8b4748046c9ae"
+tslint@5.11.0:
+  version "5.11.0"
+  resolved "http://10.252.156.164:4880/tslint/-/tslint-5.11.0.tgz#98f30c02eae3cde7006201e4c33cb08b48581eed"
+  integrity sha1-mPMMAurjzecAYgHkwzywi0hYHu0=
   dependencies:
     babel-code-frame "^6.22.0"
     builtin-modules "^1.1.1"
@@ -6428,7 +6603,7 @@ tslint@5.9.1:
     resolve "^1.3.2"
     semver "^5.3.0"
     tslib "^1.8.0"
-    tsutils "^2.12.1"
+    tsutils "^2.27.2"
 
 tsutils@^2.12.1:
   version "2.27.1"
@@ -6436,7 +6611,21 @@ tsutils@^2.12.1:
   dependencies:
     tslib "^1.8.1"
 
-tunnel-agent@, tunnel-agent@*, tunnel-agent@^0.6.0:
+"tsutils@^2.12.1 <2.29.0":
+  version "2.28.0"
+  resolved "http://10.252.156.164:4880/tsutils/-/tsutils-2.28.0.tgz#6bd71e160828f9d019b6f4e844742228f85169a1"
+  integrity sha512-bh5nAtW0tuhvOJnx1GLRn5ScraRLICGyJV5wJhtRWOLsxW70Kk5tZtpK3O/hW6LDnqKS9mlUMPZj9fEMJ0gxqA==
+  dependencies:
+    tslib "^1.8.1"
+
+tsutils@^2.27.2:
+  version "2.29.0"
+  resolved "http://10.252.156.164:4880/tsutils/-/tsutils-2.29.0.tgz#32b488501467acbedd4b85498673a0812aca0b99"
+  integrity sha512-g5JVHCIJwzfISaXpXE1qvNalca5Jwob6FjI4AoPlqMusJ6ftFE7IkkFoMhVLRgK+4Kx3gkzb8UZK5t5yTTvEmA==
+  dependencies:
+    tslib "^1.8.1"
+
+tunnel-agent@, tunnel-agent@*, tunnel-agent@^0.6.0, tunnel-agent@~0.6.0:
   version "0.6.0"
   resolved "http://10.252.156.164:4880/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
   dependencies:
@@ -6446,7 +6635,7 @@ tunnel-agent@0.4.2:
   version "0.4.2"
   resolved "http://10.252.156.164:4880/tunnel-agent/-/tunnel-agent-0.4.2.tgz#1104e3f36ac87125c287270067d582d18133bfee"
 
-tunnel-agent@^0.4.0, tunnel-agent@^0.4.3, tunnel-agent@~0.4.0, tunnel-agent@~0.4.1:
+tunnel-agent@^0.4.0, tunnel-agent@^0.4.3, tunnel-agent@~0.4.1:
   version "0.4.3"
   resolved "http://10.252.156.164:4880/tunnel-agent/-/tunnel-agent-0.4.3.tgz#6373db76909fe570e08d73583365ed828a74eeeb"
 
@@ -6479,9 +6668,10 @@ typescript@2.9.2:
   version "2.9.2"
   resolved "http://10.252.156.164:4880/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 
-uglify-js@^2.6:
+uglify-js@^2.6, uglify-js@^2.8.29:
   version "2.8.29"
   resolved "http://10.252.156.164:4880/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
+  integrity sha1-KcVzMUgFe7Th913zW3qcty5qWd0=
   dependencies:
     source-map "~0.5.1"
     yargs "~3.10.0"
@@ -6491,6 +6681,15 @@ uglify-js@^2.6:
 uglify-to-browserify@~1.0.0:
   version "1.0.2"
   resolved "http://10.252.156.164:4880/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
+
+uglifyjs-webpack-plugin@~0.4.6:
+  version "0.4.6"
+  resolved "http://10.252.156.164:4880/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-0.4.6.tgz#b951f4abb6bd617e66f63eb891498e391763e309"
+  integrity sha1-uVH0q7a9YX5m9j64kUmOORdj4wk=
+  dependencies:
+    source-map "^0.5.6"
+    uglify-js "^2.8.29"
+    webpack-sources "^1.0.1"
 
 underscore.string@^3.0.3:
   version "3.3.4"
@@ -6533,7 +6732,7 @@ untildify@^2.0.0:
   dependencies:
     os-homedir "^1.0.0"
 
-untildify@^3.0.2:
+untildify@^3.0.2, untildify@^3.0.3:
   version "3.0.3"
   resolved "http://10.252.156.164:4880/untildify/-/untildify-3.0.3.tgz#1e7b42b140bcfd922b22e70ca1265bfe3634c7c9"
 
@@ -6563,9 +6762,10 @@ url-to-options@^1.0.1:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/url-to-options/-/url-to-options-1.0.1.tgz#1505a03a289a48cbd7a434efbaeec5055f5633a9"
 
-url@~0.10.3:
-  version "0.10.3"
-  resolved "http://10.252.156.164:4880/url/-/url-0.10.3.tgz#021e4d9c7705f21bbf37d03ceb58767402774c64"
+url@~0.11.0:
+  version "0.11.0"
+  resolved "http://10.252.156.164:4880/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
+  integrity sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
@@ -6604,12 +6804,6 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
-
-validator@^4.5.0:
-  version "4.9.0"
-  resolved "http://10.252.156.164:4880/validator/-/validator-4.9.0.tgz#082ffce2a76148ff07a8e89e9c2ba43aaf12ec4c"
-  dependencies:
-    depd "1.1.0"
 
 vary@~1.0.1:
   version "1.0.1"
@@ -6653,34 +6847,45 @@ vinyl@^2.0.1:
     remove-trailing-separator "^1.0.1"
     replace-ext "^1.0.0"
 
-wdio-dot-reporter@0.0.4:
-  version "0.0.4"
-  resolved "http://10.252.156.164:4880/wdio-dot-reporter/-/wdio-dot-reporter-0.0.4.tgz#09af52904cfd1b0967e812bed0103f316e10aa59"
+wdio-dot-reporter@~0.0.8:
+  version "0.0.10"
+  resolved "http://10.252.156.164:4880/wdio-dot-reporter/-/wdio-dot-reporter-0.0.10.tgz#facfb7c9c5984149951f59cbc3cd0752101cf0e0"
+  integrity sha512-A0TCk2JdZEn3M1DSG9YYbNRcGdx/YRw19lTiRpgwzH4qqWkO/oRDZRmi3Snn4L2j54KKTfPalBhlOtc8fojVgg==
 
-webdriverio@4.1.0:
-  version "4.1.0"
-  resolved "http://10.252.156.164:4880/webdriverio/-/webdriverio-4.1.0.tgz#18e658acc8c0a9161caef6f4f3b37e3b1ac06e08"
+webdriverio@4.12.0:
+  version "4.12.0"
+  resolved "http://10.252.156.164:4880/webdriverio/-/webdriverio-4.12.0.tgz#e340def272183c8168a4dd0b382322f9d7bee10d"
+  integrity sha1-40De8nIYPIFopN0LOCMi+de+4Q0=
   dependencies:
-    archiver "~0.14.3"
-    babel-runtime "^5.8.25"
+    archiver "~2.1.0"
+    babel-runtime "^6.26.0"
     css-parse "~2.0.0"
     css-value "~0.0.1"
-    deepmerge "~0.2.7"
-    ejs "^2.3.1"
-    glob "^5.0.10"
-    inquirer "^0.8.5"
-    json-stringify-safe "^5.0.1"
-    mkdirp "^0.5.1"
-    npm-install-package "^1.0.2"
-    optimist "^0.6.1"
-    q "~1.3.0"
-    request "2.49.0"
+    deepmerge "~2.0.1"
+    ejs "~2.5.6"
+    gaze "~1.1.2"
+    glob "~7.1.1"
+    inquirer "~3.3.0"
+    json-stringify-safe "~5.0.1"
+    mkdirp "~0.5.1"
+    npm-install-package "~2.1.0"
+    optimist "~0.6.1"
+    q "~1.5.0"
+    request "~2.83.0"
     rgb2hex "~0.1.0"
-    supports-color "^1.3.1"
-    url "~0.10.3"
-    validator "^4.5.0"
-    wdio-dot-reporter "0.0.4"
+    safe-buffer "~5.1.1"
+    supports-color "~5.0.0"
+    url "~0.11.0"
+    wdio-dot-reporter "~0.0.8"
     wgxpath "~1.0.0"
+
+webpack-sources@^1.0.1:
+  version "1.3.0"
+  resolved "http://10.252.156.164:4880/webpack-sources/-/webpack-sources-1.3.0.tgz#2a28dcb9f1f45fe960d8f1493252b5ee6530fa85"
+  integrity sha512-OiVgSrbGu7NEnEvQJJgdSFPl2qWKkWq5lHMhgiToIiN9w34EBnjYzSYs+VbL5KoYiLNtFFa7BZIKxRED3I32pA==
+  dependencies:
+    source-list-map "^2.0.0"
+    source-map "~0.6.1"
 
 websocket-driver@>=0.5.1:
   version "0.7.0"
@@ -6715,6 +6920,13 @@ widest-line@^2.0.0:
   dependencies:
     string-width "^2.1.1"
 
+widest-line@^2.0.1:
+  version "2.0.1"
+  resolved "http://10.252.156.164:4880/widest-line/-/widest-line-2.0.1.tgz#7438764730ec7ef4381ce4df82fb98a53142a3fc"
+  integrity sha512-Ba5m9/Fa4Xt9eb2ELXt77JxVDV8w7qQrH0zS/TWSJdLyAwQjWoOzpzj5lwVftDz6n/EOu3tNACS84v509qwnJA==
+  dependencies:
+    string-width "^2.1.1"
+
 window-size@0.1.0:
   version "0.1.0"
   resolved "http://10.252.156.164:4880/window-size/-/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
@@ -6742,6 +6954,15 @@ wrap-ansi@^3.0.1:
   version "3.0.1"
   resolved "http://10.252.156.164:4880/wrap-ansi/-/wrap-ansi-3.0.1.tgz#288a04d87eda5c286e060dfe8f135ce8d007f8ba"
   dependencies:
+    string-width "^2.1.1"
+    strip-ansi "^4.0.0"
+
+wrap-ansi@^4.0.0:
+  version "4.0.0"
+  resolved "http://10.252.156.164:4880/wrap-ansi/-/wrap-ansi-4.0.0.tgz#b3570d7c70156159a2d42be5cc942e957f7b1131"
+  integrity sha512-uMTsj9rDb0/7kk1PbcbCcwvHUxp60fGDB/NNXpVa0Q+ic/e7y5+BwTxKfQ33VYgDppSwi/FBzpetYzo8s6tfbg==
+  dependencies:
+    ansi-styles "^3.2.0"
     string-width "^2.1.1"
     strip-ansi "^4.0.0"
 
@@ -6779,9 +7000,10 @@ xmlbuilder@~9.0.1:
   version "9.0.7"
   resolved "http://10.252.156.164:4880/xmlbuilder/-/xmlbuilder-9.0.7.tgz#132ee63d2ec5565c557e20f4c22df9aca686b10d"
 
-xmldom-sfdx-encoding@0.1.28:
-  version "0.1.28"
-  resolved "http://10.252.156.164:4880/xmldom-sfdx-encoding/-/xmldom-sfdx-encoding-0.1.28.tgz#c695c6df15c1ad177b6640123ea6b81c6716144d"
+xmlcreate@^1.0.1:
+  version "1.0.2"
+  resolved "http://10.252.156.164:4880/xmlcreate/-/xmlcreate-1.0.2.tgz#fa6bf762a60a413fb3dd8f4b03c5b269238d308f"
+  integrity sha1-+mv3YqYKQT+z3Y9LA8WyaSONMI8=
 
 xmldom-sfdx-encoding@0.1.29:
   version "0.1.29"
@@ -6876,25 +7098,26 @@ yeoman-environment@^2.0.0, yeoman-environment@^2.0.5:
     text-table "^0.2.0"
     untildify "^3.0.2"
 
-yeoman-environment@^2.2.0:
-  version "2.3.0"
-  resolved "http://10.252.156.164:4880/yeoman-environment/-/yeoman-environment-2.3.0.tgz#53ea899e50dd64c9510bc1b1c96a810582e42bdb"
+yeoman-environment@^2.3.3:
+  version "2.3.4"
+  resolved "http://10.252.156.164:4880/yeoman-environment/-/yeoman-environment-2.3.4.tgz#ae156147a1b85de939366e5438b00cb3eb54c3e9"
+  integrity sha512-KLxE5ft/74Qj7h3AsQZv8G6MEEHYJwmD5F99nfOVaep3rBzCtbrJKkdqWc7bDV141Nr8UZZsIXmzc3IcCm6E2w==
   dependencies:
-    chalk "^2.1.0"
+    chalk "^2.4.1"
     cross-spawn "^6.0.5"
     debug "^3.1.0"
-    diff "^3.3.1"
+    diff "^3.5.0"
     escape-string-regexp "^1.0.2"
     globby "^8.0.1"
     grouped-queue "^0.3.3"
-    inquirer "^5.2.0"
+    inquirer "^6.0.0"
     is-scoped "^1.0.0"
     lodash "^4.17.10"
-    log-symbols "^2.1.0"
+    log-symbols "^2.2.0"
     mem-fs "^1.1.0"
     strip-ansi "^4.0.0"
     text-table "^0.2.0"
-    untildify "^3.0.2"
+    untildify "^3.0.3"
 
 yeoman-generator@0.24.1:
   version "0.24.1"
@@ -6967,6 +7190,37 @@ yeoman-generator@^2.0.5:
     through2 "^2.0.0"
     yeoman-environment "^2.0.5"
 
+yeoman-generator@^3.1.1:
+  version "3.1.1"
+  resolved "http://10.252.156.164:4880/yeoman-generator/-/yeoman-generator-3.1.1.tgz#60cea712618f65ddefd9569a58bb71d2e38d377c"
+  integrity sha512-ur4+vzXQEkyJNV+uBf9wLIo8gcuwRJkPyYU8CbKoXjfaVDMF0hYjO242UKK9eVx5uL2IvZAG/tLS/g7QaFdn/A==
+  dependencies:
+    async "^2.6.0"
+    chalk "^2.3.0"
+    cli-table "^0.3.1"
+    cross-spawn "^6.0.5"
+    dargs "^6.0.0"
+    dateformat "^3.0.3"
+    debug "^3.1.0"
+    detect-conflict "^1.0.0"
+    error "^7.0.2"
+    find-up "^3.0.0"
+    github-username "^4.0.0"
+    istextorbinary "^2.2.1"
+    lodash "^4.17.10"
+    make-dir "^1.1.0"
+    mem-fs-editor "^5.0.0"
+    minimist "^1.2.0"
+    pretty-bytes "^5.1.0"
+    read-chunk "^2.1.0"
+    read-pkg-up "^4.0.0"
+    rimraf "^2.6.2"
+    run-async "^2.0.0"
+    shelljs "^0.8.0"
+    text-table "^0.2.0"
+    through2 "^2.0.0"
+    yeoman-environment "^2.0.5"
+
 yeoman-test@^1.0.0:
   version "1.7.2"
   resolved "http://10.252.156.164:4880/yeoman-test/-/yeoman-test-1.7.2.tgz#16e09918b61c5f4b9e9414c6819fa72da4a3d61a"
@@ -7004,7 +7258,7 @@ yosay@^2.0.2:
     taketalk "^1.0.0"
     wrap-ansi "^2.0.0"
 
-zip-stream@^1.0.0:
+zip-stream@^1.0.0, zip-stream@^1.2.0:
   version "1.2.0"
   resolved "http://10.252.156.164:4880/zip-stream/-/zip-stream-1.2.0.tgz#a8bc45f4c1b49699c6b90198baacaacdbcd4ba04"
   dependencies:
@@ -7012,11 +7266,3 @@ zip-stream@^1.0.0:
     compress-commons "^1.2.0"
     lodash "^4.8.0"
     readable-stream "^2.0.0"
-
-zip-stream@~0.5.0:
-  version "0.5.2"
-  resolved "http://10.252.156.164:4880/zip-stream/-/zip-stream-0.5.2.tgz#32dcbc506d0dab4d21372625bd7ebaac3c2fff56"
-  dependencies:
-    compress-commons "~0.2.0"
-    lodash "~3.2.0"
-    readable-stream "~1.0.26"

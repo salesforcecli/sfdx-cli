@@ -1,4 +1,4 @@
-import { AnyDictionary } from '@salesforce/core';
+import { Dictionary } from '@salesforce/ts-types';
 import * as cp from 'child_process';
 import { Config } from 'cli-engine-config';
 import * as Debug from 'debug';
@@ -8,7 +8,7 @@ import timedHook from './timedHook';
 
 const debug = Debug('sfdx:analytics');
 
-function run(config: Config, opts: AnyDictionary) {
+function run(config: Config, opts: Dictionary) {
     try {
         const start = Date.now();
         const command = opts.Command;

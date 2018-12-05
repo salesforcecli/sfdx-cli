@@ -1,7 +1,6 @@
 {
     "extends": "./node_modules/@salesforce/dev-config/tsconfig.json",
     "compilerOptions": {
-        "sourceRoot": "src",
         "outDir": "dist",
         "typeRoots": [
             "./node_modules/@types"

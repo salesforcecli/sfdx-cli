@@ -1,3 +1,4 @@
+import { NamedError } from '@salesforce/kit';
 import {
     ConfigContext,
     doInstallationCodeSigningVerification,
@@ -5,10 +6,10 @@ import {
     NpmName,
     VerificationConfig
 } from '@salesforce/sfdx-trust';
+import { Optional } from '@salesforce/ts-types';
 import { Config } from 'cli-engine-config';
 import { CLI } from 'cli-ux';
 import _ = require('lodash');
-import { NamedError } from '../../util/NamedError';
 import timedHook from '../timedHook';
 
 async function run(config: Config, {plugin, tag}: {plugin: string, tag: string}) {
@@ -32,7 +33,7 @@ async function run(config: Config, {plugin, tag}: {plugin: string, tag: string})
     vConfig.log = cliUx.log.bind(cliUx);
     vConfig.prompt = cliUx.prompt.bind(cliUx);
 
-    let namedError: NamedError | undefined;
+    let namedError: Optional<NamedError>;
     try {
         await doInstallationCodeSigningVerification(configContext, {plugin, tag}, vConfig);
     } catch (e) {

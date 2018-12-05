@@ -1,8 +1,8 @@
-import { AnyDictionary } from '@salesforce/core';
+import { Dictionary } from '@salesforce/ts-types';
 
 export interface ProcessLike {
     argv: string[];
-    env: AnyDictionary;
+    env: Dictionary<string>;
 }
 
 export function processCliFlags(process: ProcessLike): void {

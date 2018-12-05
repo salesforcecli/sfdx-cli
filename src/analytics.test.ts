@@ -1,4 +1,4 @@
-import { AnyDictionary } from '@salesforce/core';
+import { Dictionary } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import { Config } from 'cli-engine-config';
 import * as fs from 'fs-extra';
@@ -27,7 +27,7 @@ function analyticsJson() {
     };
 }
 
-function build(configOptions = {}, options: AnyDictionary = {}) {
+function build(configOptions = {}, options: Dictionary = {}) {
     const config: Config = {
         version: '1.2.3',
         platform: 'windows',

@@ -1,15 +1,15 @@
-import { AnyDictionary } from '@salesforce/core';
+import { Dictionary, Optional } from '@salesforce/ts-types';
 import { Config } from 'cli-engine-config';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
 interface AnalyticsJSONCommand {
     command: string;
-    version: string | undefined;
+    version: Optional<string>;
     plugin: string;
     plugin_version: string;
-    os: string | undefined;
-    shell: string | undefined;
+    os: Optional<string>;
+    shell: Optional<string>;
     language: string;
     valid: true;
     runtime: number;
@@ -32,7 +32,7 @@ export default class AnalyticsCommand {
         return path.join(this.config.cacheDir as string, 'analytics.json');
     }
 
-    public async record(plugin: AnyDictionary | undefined, commandId: string, runtime: number, status: number): Promise<void> {
+    public async record(plugin: Optional<Dictionary>, commandId: string, runtime: number, status: number): Promise<void> {
         if (!plugin) {
             return;
         }

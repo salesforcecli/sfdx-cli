@@ -1,8 +1,8 @@
+import { NamedError } from '@salesforce/kit';
 import { Command, InputFlags } from 'cli-engine-command';
 import { CLI as Ux } from 'cli-ux';
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { NamedError } from '../../util/NamedError';
 
 export default class Revert extends Command<InputFlags> {
     public static description = 'restores the CLI to the originally installed version, removing updates';

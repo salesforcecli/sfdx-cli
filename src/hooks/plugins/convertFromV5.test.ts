@@ -1,4 +1,4 @@
-import { AnyDictionary } from '@salesforce/core';
+import { Dictionary } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import hook = require('./convertFromV5');
 
@@ -6,7 +6,7 @@ import hook = require('./convertFromV5');
 
 describe('plugins:parse hook', () => {
     it('should map a namespaced module\'s commands and topics to a nested topic model', async () => {
-        const rootCommand: AnyDictionary = {
+        const rootCommand: Dictionary = {
             namespace: 'root'
         };
 
@@ -55,7 +55,7 @@ describe('plugins:parse hook', () => {
             command: 'command'
         };
 
-        const mod: AnyDictionary = {
+        const mod: Dictionary = {
             namespace: {
                 name: 'root'
             },
@@ -84,7 +84,7 @@ describe('plugins:parse hook', () => {
     });
 
     it('should not show flags in help usage', async () => {
-        const normalCommand: AnyDictionary = {
+        const normalCommand: Dictionary = {
             id: 'topic:command',
             topic: 'topic',
             command: 'command',
@@ -110,7 +110,7 @@ describe('plugins:parse hook', () => {
     });
 
     it('should not show usage in line help', async () => {
-        const normalCommand: AnyDictionary = {
+        const normalCommand: Dictionary = {
             topic: 'topic',
             command: 'command',
             usage: 'my usage'

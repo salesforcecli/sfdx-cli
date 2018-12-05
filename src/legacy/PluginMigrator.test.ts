@@ -1,5 +1,5 @@
-import { AnyJson, Dictionary } from '@salesforce/core';
-import { masquerade, Stub, StubbedType, stubInterface } from '@salesforce/ts-sinon';
+import { fromStub, Stub, StubbedType, stubInterface } from '@salesforce/ts-sinon';
+import { AnyJson, Dictionary } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import Lock from 'cli-engine/lib/lock';
 import { CLI as Ux } from 'cli-ux';
@@ -264,7 +264,7 @@ describe('plugin migrator', () => {
     function newMigrator() {
         return new PluginMigrator(
             config,
-            masquerade(ux),
+            fromStub(ux),
             userPluginsPjsonV5Path,
             userPluginsPjsonV6Path,
             lock
