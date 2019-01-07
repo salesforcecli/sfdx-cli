@@ -20,7 +20,7 @@
     "bin": "sfdx",
     "scope": "salesforce",
     "commands": "./dist/commands",
-    "node": "10.13.0",
+    "node": "10.15.0",
     "dirname": "sfdx",
     "hooks": {
       "plugins:preinstall": [
@@ -75,13 +75,13 @@
     "@oclif/plugin-update": "^1",
     "@oclif/plugin-warn-if-update-available": "^1",
     "@oclif/plugin-which": "^1",
-    "@salesforce/kit": "0.8.0",
-    "@salesforce/lazy-require": "0.0.5",
+    "@salesforce/kit": "^1.0.1",
+    "@salesforce/lazy-require": "0.1.10",
     "@salesforce/plugin-analytics": "0.3.0",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/require-analytics": "0.5.0",
     "@salesforce/sfdx-trust": "^2.0.0",
-    "@salesforce/ts-types": "0.15.0",
+    "@salesforce/ts-types": "^1.0.1",
     "debug": "^3",
     "request": "^2",
     "salesforcedx": "43.17.1-101",
@@ -111,7 +111,6 @@
     "source-map-support": "^0.5.2",
     "ts-node": "^6",
     "tslint": "^5",
-    "typescript": "^3",
     "xunit-file": "1.0.0"
   },
   "scripts": {
