@@ -324,21 +324,6 @@
     jsonwebtoken "7.0.0"
     mkdirp "0.5.1"
 
-"@salesforce/core@0.22.0":
-  version "0.22.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.22.0.tgz#9d51f0eae8ef61cb9dd8817703fe69dbbb5aca0c"
-  integrity sha1-nVHw6ujvYcud2IF3A/5p27taygw=
-  dependencies:
-    "@salesforce/kit" "0.4.0"
-    "@salesforce/ts-types" "0.11.0"
-    "@types/jsforce" "1.8.12"
-    bunyan-sfdx-no-dtrace "1.8.2"
-    debug "^3.1.0"
-    jsen "0.6.6"
-    jsforce "1.8.4"
-    jsonwebtoken "7.0.0"
-    mkdirp "0.5.1"
-
 "@salesforce/core@0.23.1":
   version "0.23.1"
   resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.23.1.tgz#851cf17c5d91f282b160586df23752b41f0b88f0"
@@ -6494,55 +6479,7 @@ safe-regex@^1.1.0:
   resolved "http://10.252.156.164:4880/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@44.4.1-0:
-  version "44.4.1-0"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-44.4.1-0.tgz#735a6c018b04890b28ac5a48466f56d0f4f4fb72"
-  integrity sha1-c1psAYsEiQsorFpIRm9W0PT0+3I=
-  dependencies:
-    "@oclif/errors" "^1.2.0"
-    "@salesforce/command" "0.2.5"
-    "@salesforce/core" "0.22.0"
-    "@salesforce/kit" "0.7.0"
-    "@salesforce/ts-types" "0.12.0"
-    adm-zip "0.4.7"
-    antlr4 "4.7.1"
-    archiver "1.0.1"
-    bluebird "3.4.6"
-    body-parser "1.15.0"
-    bunyan-sfdx-no-dtrace "1.8.2"
-    chalk "^2.4.1"
-    cli-spinner "0.2.5"
-    cli-ux "4.8.0"
-    csv-parse "1.1.2"
-    express "4.13.4"
-    faye "1.1.2"
-    fs-extra "4.0.1"
-    gitignore-parser "0.0.2"
-    glob "7.0.3"
-    heroku-cli-util "6.0.16"
-    js2xmlparser "3.0.0"
-    jsen "0.6.4"
-    jsforce "1.8.4"
-    jsonwebtoken "7.0.0"
-    klaw "2.1.0"
-    lodash "4.17.4"
-    mime "1.3.6"
-    mkdirp "0.5.1"
-    moment "2.13.0"
-    node-constants "0.0.2"
-    open "0.0.5"
-    optional-js "1.1.2"
-    pluralize "3.0.0"
-    process-promises "1.0.0"
-    readline-sync "1.4.4"
-    replace "0.3.0"
-    request "2.79.0"
-    selenium-standalone "6.6.0"
-    webdriverio "4.12.0"
-    xml2js "0.4.17"
-    xmldom-sfdx-encoding "0.1.29"
-
-salesforce-alm@oclif:
+salesforce-alm@44.6.1-101, salesforce-alm@oclif:
   version "44.6.1-101"
   resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-44.6.1-101.tgz#1cd6aca352215744d53e941d520d86ac4bccdd71"
   integrity sha1-HNaso1IhV0TVPpQdUg2GrEvM3XE=
@@ -6602,13 +6539,13 @@ salesforce-lightning-cli@1.5.2:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@43.17.1-101:
-  version "43.17.1-101"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-43.17.1-101.tgz#cc1ff6154c142de71c53297eb16754237983521b"
-  integrity sha1-zB/2FUwULeccUyl+sWdUI3mDUhs=
+salesforcedx@43.17.1-102:
+  version "43.17.1-102"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-43.17.1-102.tgz#e241dbce8f3629a7c11c3085d9771dcd97e78f98"
+  integrity sha1-4kHbzo82KafBHDCF2XcdzZfnj5g=
   dependencies:
     force-language-services "44.0.3-1"
-    salesforce-alm "44.4.1-0"
+    salesforce-alm "44.6.1-101"
     salesforce-lightning-cli "1.5.2"
 
 samsam@1.3.0:
