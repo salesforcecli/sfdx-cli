@@ -134,7 +134,7 @@
     "lint-with-style": "scripts/lint/sources_with_style",
     "postpack": "rm -f oclif.manifest.json npm-shrinkwrap.json",
     "prepack": "yarn clean && yarn compile && yarn lint && oclif-dev manifest && npm shrinkwrap",
-    "prepare": "yarn compile && yarn lint",
+    "prepare": "yarn compile && yarn lint && oclif-dev manifest",
     "release": "yarn release-all",
     "release-debug": "yarn release-all-debug",
     "release-all": "scripts/release/all",
