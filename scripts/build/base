@@ -26,6 +26,8 @@ fi
 
 (
     cd "${BASE_DIR}"
+    # Intall a tmp version of a newer npm than is installed globally on jenkins (for shrinkwrapping)
+    yarn install --no-save npm
     # Install packages
     yarn install --no-progress --production --non-interactive --pure-lockfile
 )
