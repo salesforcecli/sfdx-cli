@@ -16,6 +16,7 @@ cp "$ROOT_DIR/README.md" "${BASE_DIR}"
 cp "$ROOT_DIR/LICENSE" "${BASE_DIR}"
 cp "$ROOT_DIR/package.json" "${BASE_DIR}"
 cp "$ROOT_DIR/yarn.lock" "${BASE_DIR}"
+cp "$ROOT_DIR/oclif.manifest.json" "${BASE_DIR}"
 cp -r "$ROOT_DIR/dist" "${BASE_DIR}/dist"
 
 # Allow yarn autoclean to be disabled quickly in case it is found to be over-cleaning
