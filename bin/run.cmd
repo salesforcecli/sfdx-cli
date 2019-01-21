@@ -12,13 +12,13 @@ set SFDX_BINPATH="%~dp0%BIN_NAME%.cmd"
 set LATEST_BINPATH="%LOCALAPPDATA%\%BIN_NAME%\client\bin\%BIN_NAME%.cmd"
 if "%SFDX_INSTALLER%"=="true" (
     REM installer/update that shipped its own node binary
-    if /I "%LATEST_BINPATH%"=="%SFDX_BINPATH%" (
+    if /I %LATEST_BINPATH% == %SFDX_BINPATH% (
         REM latest version installed by the autoupdater
         "%~dp0node.exe" %DEV_SUSPEND% "%~dp0%BIN_NAME%.js" %*
-    ) else if exist "%LATEST_BINPATH%" (
+    ) else if exist %LATEST_BINPATH% (
         REM if an autoupdater version exists and this is not it, run that instead
         set SFDX_REDIRECTED=1
-        "%LATEST_BINPATH%" %*
+        %LATEST_BINPATH% %*
     ) else if exist "%~dp0..\client\bin\node.exe" (
         REM installer version
         "%~dp0..\client\bin\node.exe" %DEV_SUSPEND% "%~dp0..\client\bin\%BIN_NAME%.js" %*
