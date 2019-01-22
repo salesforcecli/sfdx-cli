@@ -84,7 +84,7 @@
     "@salesforce/sfdx-trust": "^2.0.0",
     "@salesforce/ts-types": "^1.0.1",
     "debug": "^3",
-    "request": "^2",
+    "http-call": "^5.2.3",
     "salesforcedx": "43.17.1-102",
     "tslib": "^1.9.3",
     "v8-compile-cache": "^2.0.2"

@@ -15,7 +15,7 @@ import {
 } from '@salesforce/ts-sinon';
 import { Optional } from '@salesforce/ts-types';
 import { expect } from 'chai';
-import * as Request from 'request';
+import { HTTP, HTTPRequestOptions } from 'http-call';
 import * as sinon from 'sinon';
 import { Env } from '../util/env';
 import hook from './updateReachability';
@@ -29,21 +29,20 @@ class SystemError extends Error {
 }
 
 describe('updateReachability preupdate hook', () => {
+    let httpClient: StubbedCallableType<typeof HTTP>;
     let sandbox: sinon.SinonSandbox;
     let context: Hook.Context;
     let config: IConfig;
     let options: Hooks['preupdate'] & { config: IConfig };
     let env: Env;
-    let pingErr: Optional<Error>;
-    let pingRes: Optional<Request.RequestResponse>;
-    let pingBody: Optional<string>;
-    let request: StubbedCallableType<typeof Request>;
+    let error: Optional<Error>;
+    let body: Optional<string>;
+    let statusCode: number;
     let warnings: string[];
     let errors: string[];
 
     beforeEach(() => {
         sandbox = sinon.createSandbox();
-
         config = stubInterface<IConfig>(sandbox, {
             dataDir: 'test',
             pjson: {
@@ -73,21 +72,19 @@ describe('updateReachability preupdate hook', () => {
         };
 
         env = new Env({});
-
-        pingRes = { statusCode: 200 } as Request.RequestResponse;
-        pingBody = JSON.stringify({
+        statusCode = 200;
+        error = undefined;
+        body = JSON.stringify({
             version: '6.36.1-102-e4be126f07',
             channel: 'test',
             sha256gz: 'deadbeef'
         });
-        pingErr = undefined;
-
-        request = stubCallable<typeof Request>(sandbox, ({
-            get(opts: object, cb: (err?: Error, res?: object, body?: string) => void) {
-                return cb(pingErr, pingRes, pingBody);
+        httpClient = stubCallable<typeof HTTP>(sandbox, ({
+            get: async (url: string, opts: HTTPRequestOptions) => {
+                if (error) throw error;
+                return { body, statusCode };
             }
         }));
-
         warnings = [];
         errors = [];
     });
@@ -98,29 +95,29 @@ describe('updateReachability preupdate hook', () => {
 
     it('should not test S3 host reachability when update is disabled', async () => {
         env.setAutoupdateDisabled(true, 'test disabled');
-        await hook.call(context, options, env, request);
+        await hook.call(context, options, env, httpClient);
         expect(warnings).to.deep.equal([]);
         expect(errors).to.deep.equal([]);
-        expect(request.get.calledOnce).to.be.false;
+        expect(httpClient.get.calledOnce).to.be.false;
     }).timeout(5000);
 
     it('should not warn about updating from a custom S3 host when not set', async () => {
-        await hook.call(context, options, env, request);
+        await hook.call(context, options, env, httpClient);
         expect(warnings).to.deep.equal([]);
         expect(errors).to.deep.equal([]);
     }).timeout(5000);
 
     it('should warn about updating from a custom S3 host and ask about SFM', async () => {
         env.setS3HostOverride('http://10.252.156.165:9000/sfdx/media/salesforce-cli');
-        await hook.call(context, options, env, request);
+        await hook.call(context, options, env, httpClient);
         expect(warnings).to.deep.equal(['Updating from SFDX_S3_HOST override. Are you on SFM?']);
         expect(errors).to.deep.equal([]);
     }).timeout(5000);
 
     it('should fail to update from an invalid channel', async () => {
-        pingRes = { statusCode: 403 } as Request.RequestResponse;
-        await hook.call(context, options, env, request);
-        expect(request.get.calledOnce).to.been.true;
+        statusCode = 403;
+        await hook.call(context, options, env, httpClient);
+        expect(httpClient.get.calledOnce).to.been.true;
         expect(warnings).to.deep.equal([]);
         expect(errors).to.deep.equal([
             'Channel "test" not found.'
@@ -128,9 +125,9 @@ describe('updateReachability preupdate hook', () => {
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with unexpected HTTP status codes', async () => {
-        pingRes = { statusCode: 404 } as Request.RequestResponse;
-        await hook.call(context, options, env, request);
-        expect(request.get.calledThrice).to.been.true;
+        statusCode = 404;
+        await hook.call(context, options, env, httpClient);
+        expect(httpClient.get.calledThrice).to.been.true;
         expect(warnings).to.deep.equal([
             'Attempting to contact update site...'
         ]);
@@ -140,11 +137,10 @@ describe('updateReachability preupdate hook', () => {
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with dns resolution errors', async () => {
-        pingRes = undefined;
-        pingBody = undefined;
-        pingErr = new SystemError('ENOTFOUND');
-        await hook.call(context, options, env, request);
-        expect(request.get.calledThrice).to.been.true;
+        body = undefined;
+        error = new SystemError('ENOTFOUND');
+        await hook.call(context, options, env, httpClient);
+        expect(httpClient.get.calledThrice).to.been.true;
         expect(warnings).to.deep.equal([
             'Attempting to contact update site...'
         ]);
@@ -154,11 +150,10 @@ describe('updateReachability preupdate hook', () => {
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with reachability errors', async () => {
-        pingRes = undefined;
-        pingBody = undefined;
-        pingErr = new SystemError('ENETUNREACH');
-        await hook.call(context, options, env, request);
-        expect(request.get.calledThrice).to.been.true;
+        body = undefined;
+        error = new SystemError('ENETUNREACH');
+        await hook.call(context, options, env, httpClient);
+        expect(httpClient.get.calledThrice).to.been.true;
         expect(warnings).to.deep.equal([
             'Attempting to contact update site...'
         ]);
@@ -168,11 +163,10 @@ describe('updateReachability preupdate hook', () => {
     }).timeout(5000);
 
     it('should test the S3 update site before updating, failing when 3 ping attempts fail with timeout errors', async () => {
-        pingRes = undefined;
-        pingBody = undefined;
-        pingErr = new SystemError('ETIMEDOUT');
-        await hook.call(context, options, env, request);
-        expect(request.get.calledThrice).to.been.true;
+        body = undefined;
+        error = new SystemError('ETIMEDOUT');
+        await hook.call(context, options, env, httpClient);
+        expect(httpClient.get.calledThrice).to.been.true;
         expect(warnings).to.deep.equal([
             'Attempting to contact update site...'
         ]);
@@ -182,8 +176,8 @@ describe('updateReachability preupdate hook', () => {
     }).timeout(5000);
 
     it('should error out with an invalid manifest', async () => {
-        pingBody = JSON.stringify({});
-        await hook.call(context, options, env, request);
+        body = JSON.stringify({});
+        await hook.call(context, options, env, httpClient);
         expect(errors).to.deep.equal([
             'Invalid manifest found on channel \'test\'.'
         ]);
