@@ -6,7 +6,7 @@
  */
 
 import { Hook } from '@oclif/config';
-import { NamedError, parseJsonMap, set, sleep } from '@salesforce/kit';
+import { NamedError, set, sleep } from '@salesforce/kit';
 import { JsonMap, Optional } from '@salesforce/ts-types';
 import * as Debug from 'debug';
 import { HTTP } from 'http-call';
@@ -70,7 +70,7 @@ async function fetchManifest(manifestUrl: string, httpClient: typeof HTTP): Prom
 }
 
 async function requestManifest(url: string, httpClient: typeof HTTP): Promise<JsonMap> {
-    const { body: body, statusCode: statusCode } = await httpClient.get<string>(url, { timeout: 4000 });
+    const { body, statusCode } = await httpClient.get<JsonMap>(url, { timeout: 4000 });
     if (statusCode === 403) {
         // S3 returns 403 rather than 404 when a manifest is not found
         throw new NamedError(
@@ -84,14 +84,14 @@ async function requestManifest(url: string, httpClient: typeof HTTP): Promise<Js
             `Unexpected GET response status ${statusCode}`
         );
     }
-    return parseJsonMap(body);
+    return body;
 }
 
 function validateManifest(context: Hook.Context, channel: string, manifest: JsonMap): void {
     if (!manifest.version || !manifest.channel || !manifest.sha256gz) {
         return context.error(`Invalid manifest found on channel '${channel}'.`);
     }
-    debug('update available %s', manifest);
+    debug('manifest available %s', JSON.stringify(manifest));
 }
 
 const hook: Hook.Preupdate = async function(options, env = envars, http =  HTTP) {

@@ -13,7 +13,7 @@ import {
     stubCallable,
     stubInterface
 } from '@salesforce/ts-sinon';
-import { Optional } from '@salesforce/ts-types';
+import { JsonMap, Optional } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import { HTTP, HTTPRequestOptions } from 'http-call';
 import * as sinon from 'sinon';
@@ -36,7 +36,7 @@ describe('updateReachability preupdate hook', () => {
     let options: Hooks['preupdate'] & { config: IConfig };
     let env: Env;
     let error: Optional<Error>;
-    let body: Optional<string>;
+    let body: Optional<JsonMap>;
     let statusCode: number;
     let warnings: string[];
     let errors: string[];
@@ -74,11 +74,11 @@ describe('updateReachability preupdate hook', () => {
         env = new Env({});
         statusCode = 200;
         error = undefined;
-        body = JSON.stringify({
+        body = {
             version: '6.36.1-102-e4be126f07',
             channel: 'test',
             sha256gz: 'deadbeef'
-        });
+        };
         httpClient = stubCallable<typeof HTTP>(sandbox, ({
             get: async (url: string, opts: HTTPRequestOptions) => {
                 if (error) throw error;
@@ -176,7 +176,7 @@ describe('updateReachability preupdate hook', () => {
     }).timeout(5000);
 
     it('should error out with an invalid manifest', async () => {
-        body = JSON.stringify({});
+        body = {};
         await hook.call(context, options, env, httpClient);
         expect(errors).to.deep.equal([
             'Invalid manifest found on channel \'test\'.'
