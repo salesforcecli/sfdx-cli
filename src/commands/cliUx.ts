@@ -1,4 +1,4 @@
-import { AnyJson } from '@salesforce/core';
+import { AnyJson } from '@salesforce/ts-types';
 import { CLI as CliUx } from 'cli-ux';
 
 export class Ux extends CliUx {

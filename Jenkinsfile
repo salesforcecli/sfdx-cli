@@ -37,7 +37,9 @@ def runTheJob(PLATFORM os) {
 
     step([$class: 'GitHubSetCommitStatusBuilder'])
 
-    runYarn();
+    withProxy() {
+        runYarn();
+    }
 
     if (jobMatches(/.*unit.*/) && os == PLATFORM.LINUX) {
         doUnitTests(os);
