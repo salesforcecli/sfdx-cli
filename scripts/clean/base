@@ -25,5 +25,8 @@ find node_modules -name test -type d | grep -v /salesforce-alm/ | grep -v /@sale
 # Module doc dirs, except in salesforce-alm, which includes production source code in such a dir
 find node_modules -name doc -type d | grep -v /salesforce-alm/ | xargs rm -rf
 
+# JS map files, except the ill-named `lodash.map` (it's a directory and we'll also filter out matches if found for good measure)
+find node_modules -name \*.map -type f | grep -v lodash.map | xargs rm -f
+
 # In case yarn autoclean is disabled, delete some known windows file path length offenders
 find node_modules -name .nyc_output -print0 | xargs rm -rf
