@@ -135,6 +135,14 @@ function ensure_no_unexpected_files() {
     done
 }
 
+function ensure_lodash_map() {
+    lodash_map="$BASE_DIR/node_modules/lodash.map"
+    if [[ ! -e "$lodash_map" ]]; then
+        stderr "$lodash_map is missing! Was yarn autoclean too aggressive?"
+        exit 1
+    fi
+}
+
 ensure_no_webdriverio_test
 ensure_no_heroku_cli_util_nyc
 scan_path_lengths
@@ -145,3 +153,4 @@ ensure_templates_forceignore
 ensure_no_dist_tests_or_maps
 ensure_no_unexpected_files
 ensure_plugin_generate_test_templates
+ensure_lodash_map

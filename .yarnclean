@@ -45,7 +45,6 @@ wercker.yml
 
 # misc
 *.gz
-*.map
 
 # exceptions
 
