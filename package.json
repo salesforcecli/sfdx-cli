@@ -146,6 +146,7 @@
     "release-windows": "scripts/release/installers/windows_docker",
     "release-windows-debug": "env SKIP_AWS=true yarn release-windows",
     "test": "scripts/test/all",
+    "trogdor": "yarn clean-all && yarn && yarn compile && yarn uts",
     "typings": "scripts/test/typings",
     "unit": "scripts/test/unit",
     "uts": "nyc mocha --require source-map-support/register --recursive \"dist/**/*.test.js\"",
