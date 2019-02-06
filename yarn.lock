@@ -122,6 +122,14 @@
     debug "^4.1.0"
     semver "^5.6.0"
 
+"@oclif/config@1.10.4":
+  version "1.10.4"
+  resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.10.4.tgz#7205c8ba4f90f02a73a3b016bbf4779bf33bc37d"
+  integrity sha512-anRUBTVhW5B0dRxogOtQPbIFIaqiABc8aQfEk4cBZBUBHF1YHWyxHxaKydi/APNuLX9xcdy2GzPXcBV/V1JIzw==
+  dependencies:
+    debug "^4.1.0"
+    tslib "^1.9.3"
+
 "@oclif/config@^1", "@oclif/config@^1.10.2", "@oclif/config@^1.6.28", "@oclif/config@^1.8.7", "@oclif/config@^1.9.0":
   version "1.12.2"
   resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.12.2.tgz#8a55c9840fe93f0f49e2c109a99778db371887b4"
