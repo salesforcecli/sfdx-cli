@@ -30,6 +30,9 @@
       "plugins:preinstall:verify:version": [
         "./dist/hooks/verifyPluginVersion.js"
       ],
+      "prerun": [
+        "./dist/hooks/usageDataCollection.js"
+      ],
       "preupdate": [
         "./dist/hooks/updateReachability.js"
       ],
