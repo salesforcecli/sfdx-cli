@@ -301,22 +301,6 @@
   dependencies:
     fancy-test "^1.4.3"
 
-"@salesforce/command@^0.2.5":
-  version "0.2.5"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-0.2.5.tgz#95857d52b84fb8c2f766339a7c94398519d43ff5"
-  integrity sha1-lYV9UrhPuML3ZjOafJQ5hRnUP/U=
-  dependencies:
-    "@oclif/command" "^1.5.0"
-    "@oclif/errors" "^1.2.0"
-    "@oclif/parser" "^3.6.0"
-    "@oclif/plugin-help" "^2.1.0"
-    "@oclif/test" "^1.2.0"
-    "@salesforce/core" "0.21.1"
-    "@salesforce/kit" "0.0.8"
-    "@salesforce/ts-types" "0.5.0"
-    chalk "^2.4.0"
-    cli-ux "^4.8.0"
-
 "@salesforce/command@^1", "@salesforce/command@^1.2.0":
   version "1.2.0"
   resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-1.2.0.tgz#1bfe9b35095a86861aa240d55a9bf712b810ac90"
@@ -332,21 +316,6 @@
     "@salesforce/ts-types" "^1.0.0"
     chalk "^2.4.0"
     cli-ux "^4.8.0"
-
-"@salesforce/core@0.21.1":
-  version "0.21.1"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-0.21.1.tgz#74639c0622ad7478d88c86f924ef830e15cb1ed0"
-  integrity sha1-dGOcBiKtdHjYjIb5JO+DDhXLHtA=
-  dependencies:
-    "@salesforce/kit" "0.4.0"
-    "@salesforce/ts-types" "0.11.0"
-    "@types/jsforce" "1.8.12"
-    bunyan-sfdx-no-dtrace "1.8.2"
-    debug "^3.1.0"
-    jsen "0.6.6"
-    jsforce "1.8.4"
-    jsonwebtoken "7.0.0"
-    mkdirp "0.5.1"
 
 "@salesforce/core@^1.0.0", "@salesforce/core@^1.1.1":
   version "1.2.2"
@@ -365,7 +334,7 @@
     mkdirp "0.5.1"
     sfdx-faye "^1.0.9"
 
-"@salesforce/dev-config@^1":
+"@salesforce/dev-config@1.4.4":
   version "1.4.4"
   resolved "http://10.252.156.164:4880/@salesforce%2fdev-config/-/dev-config-1.4.4.tgz#89f8283781c525491ed4ed8c4e38ea4b94621373"
   integrity sha512-XDyT4DqAJb+IvD6i1Ly3vuOptwsqSkvC0tnDRkGsVi0R+YinR1HU7dbaJtaw/wSDFW8Me5HKseBqcUN6tu1P3w==
@@ -373,20 +342,6 @@
     tslint "^5"
     tslint-microsoft-contrib "^5"
     typescript "3.1.6"
-
-"@salesforce/kit@0.0.8":
-  version "0.0.8"
-  resolved "http://10.252.156.164:4880/@salesforce%2fkit/-/kit-0.0.8.tgz#a3f881fc7df19f659c700125323c47a9d1db6a93"
-  integrity sha1-o/iB/H3xn2WccAElMjxHqdHbapM=
-  dependencies:
-    "@salesforce/ts-types" "0.5.0"
-
-"@salesforce/kit@0.4.0":
-  version "0.4.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fkit/-/kit-0.4.0.tgz#066c17f19e32b5d1e69a2b9c8cd347dfb15d6613"
-  integrity sha1-BmwX8Z4ytdHmmiucjNNH37FdZhM=
-  dependencies:
-    "@salesforce/ts-types" "0.11.0"
 
 "@salesforce/kit@^1", "@salesforce/kit@^1.0.0", "@salesforce/kit@^1.0.1":
   version "1.0.3"
@@ -404,16 +359,16 @@
     debug "^3.1.0"
     tslib "^1"
 
-"@salesforce/plugin-analytics@0.3.0":
-  version "0.3.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-0.3.0.tgz#b4763bec027b00022b59fa8b4e2a86a889c83dbd"
-  integrity sha1-tHY77AJ7AAIrWfqLTiqGqInIPb0=
+"@salesforce/plugin-analytics@0.4.0":
+  version "0.4.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-0.4.0.tgz#9fa606537d7085c017db86befabb0a7b10ca516a"
+  integrity sha1-n6YGU31whcAX24a++rsKexDKUWo=
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
-    "@salesforce/command" "^0.2.5"
-    "@salesforce/ts-types" "0.14.0"
+    "@salesforce/command" "^1"
+    "@salesforce/ts-types" "^1"
     debug "^4.1.0"
     fs-extra "^7.0.0"
     tslib "^1"
@@ -476,23 +431,6 @@
     sinon "5.0.7"
     tslib "^1.9.3"
 
-"@salesforce/ts-types@0.11.0":
-  version "0.11.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.11.0.tgz#09146c909863652652f99d2808b38ca60db24a01"
-  integrity sha1-CRRskJhjZSZS+Z0oCLOMpg2ySgE=
-
-"@salesforce/ts-types@0.14.0":
-  version "0.14.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.14.0.tgz#2cf07ba30378daa15862822185c9f21c953efb3d"
-  integrity sha1-LPB7owN42qFYYoIhhcnyHJU++z0=
-  dependencies:
-    tslib "^1.9.3"
-
-"@salesforce/ts-types@0.5.0":
-  version "0.5.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-0.5.0.tgz#6b36c6ec37230dab53540e2dcdfc862592d6ffc1"
-  integrity sha1-azbG7DcjDatTVA4tzfyGJZLW/8E=
-
 "@salesforce/ts-types@1.0.0":
   version "1.0.0"
   resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-1.0.0.tgz#f0329dd9f35d35b545339253bf6cdb1d381c3662"
@@ -507,7 +445,7 @@
   dependencies:
     tslib "^1"
 
-"@salesforce/ts-types@^1.0.0", "@salesforce/ts-types@^1.0.1", "@salesforce/ts-types@^1.1.1":
+"@salesforce/ts-types@^1", "@salesforce/ts-types@^1.0.0", "@salesforce/ts-types@^1.0.1", "@salesforce/ts-types@^1.1.1":
   version "1.1.1"
   resolved "http://10.252.156.164:4880/@salesforce%2fts-types/-/ts-types-1.1.1.tgz#7e61050ff6dc7ce6b73e6b1fdca53392fe17ab27"
   integrity sha512-w9+5wpCRmbxWV/WiYOVnY9Y13zXzbcfC5rabVC/1Lvd2Qp9mcRVHQyWZt+9668OYYTVNLqRjA+bq4wLtaS1CQw==
@@ -559,11 +497,6 @@
   resolved "http://10.252.156.164:4880/@types%2fdebug/-/debug-0.0.30.tgz#dc1e40f7af3b9c815013a7860e6252f6352a84df"
   integrity sha512-orGL5LXERPYsLov6CWs3Fh6203+dXzJkR7OnddIr2514Hsecwc8xRpzCapshBbKFImCsvS/mk6+FWiN5LyZJAQ==
 
-"@types/events@*":
-  version "3.0.0"
-  resolved "http://10.252.156.164:4880/@types%2fevents/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
-  integrity sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==
-
 "@types/form-data@*":
   version "2.2.1"
   resolved "http://10.252.156.164:4880/@types%2fform-data/-/form-data-2.2.1.tgz#ee2b3b8eaa11c0938289953606b745b738c54b1e"
@@ -577,13 +510,6 @@
   integrity sha512-Id1hnmfd+7G9K+jWz2syfMcpymx2mj6B1y4C72vAoYQzxOA79UhY/kNvOCyb9yYR1SoSaHyhwcYtWKKqUiLTZA==
   dependencies:
     "@types/node" "*"
-
-"@types/jsforce@1.8.12":
-  version "1.8.12"
-  resolved "http://10.252.156.164:4880/@types%2fjsforce/-/jsforce-1.8.12.tgz#ff7554feaf2a962513d7167a34975842930a8b6c"
-  integrity sha512-xHDW0ZlzH8E+BZCdYvA846tE36C/QfQpIpDEUo3kLjCk5+LFtK9BKgscpVlUeH4FB+3tpxg0Jsn70fXgTXxEuw==
-  dependencies:
-    "@types/events" "*"
 
 "@types/jsforce@1.9.2":
   version "1.9.2"
@@ -4149,26 +4075,6 @@ jsesc@^2.5.1:
   resolved "http://10.252.156.164:4880/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
-jsforce@1.8.4:
-  version "1.8.4"
-  resolved "http://10.252.156.164:4880/jsforce/-/jsforce-1.8.4.tgz#7c1a32cd799205e77706fa99229e4dd207030fc6"
-  integrity sha512-h0zFtgoVJeHGKV6z1TyCTzBbPdnbf8kFf29oxfPWz6E3g3LFSfbb8V3YktqWDi++nJx2jNepIq0y630YNDo65A==
-  dependencies:
-    co-prompt "^1.0.0"
-    coffeescript "^1.10.0"
-    commander "^2.9.0"
-    csv-parse "^1.1.1"
-    csv-stringify "^1.0.4"
-    faye "^1.2.0"
-    inherits "^2.0.1"
-    lodash "^4.11.1"
-    multistream "^2.0.5"
-    open "0.0.5"
-    promise "^7.1.1"
-    readable-stream "^2.1.0"
-    request "^2.72.0"
-    xml2js "^0.4.16"
-
 jsforce@1.8.5:
   version "1.8.5"
   resolved "http://10.252.156.164:4880/jsforce/-/jsforce-1.8.5.tgz#9d5b876e82147c5803ddada2186f0c0a49937e79"
@@ -5340,11 +5246,6 @@ onetime@^2.0.0:
   integrity sha1-BnQoIw/WdEOyeUsiu6UotoZ5YtQ=
   dependencies:
     mimic-fn "^1.0.0"
-
-open@0.0.5:
-  version "0.0.5"
-  resolved "http://10.252.156.164:4880/open/-/open-0.0.5.tgz#42c3e18ec95466b6bf0dc42f3a2945c3f0cad8fc"
-  integrity sha1-QsPhjslUZra/DcQvOilFw/DK2Pw=
 
 opn-cli@^3.1.0:
   version "3.1.0"

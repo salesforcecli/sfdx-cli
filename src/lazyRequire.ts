@@ -26,9 +26,7 @@ export function resetTypeCache(config: IConfig, create = LazyRequire.create): vo
 }
 
 function getOrCreate(config: IConfig, create: typeof LazyRequire.create): LazyRequire {
-    if (lazyRequire) {
-        return lazyRequire;
-    }
+    if (lazyRequire) return lazyRequire;
     const typeCacheFile = path.join(config.cacheDir, 'module-types.json');
     return lazyRequire = create(typeCacheFile);
 }

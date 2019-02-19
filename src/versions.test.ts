@@ -50,6 +50,10 @@ describe('versions', () => {
     });
 
     describe('compareVersions', () => {
+        it('should handle empty args', () => {
+            expect(compareVersions('', '')).to.equal(0);
+        });
+
         it('should return 0 when a and b are both 1.1.1', () => {
             expect(compareVersions('1.1.1', '1.1.1')).to.equal(0);
         });

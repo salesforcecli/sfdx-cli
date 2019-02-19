@@ -69,8 +69,8 @@
     }
   },
   "dependencies": {
-    "@oclif/config": "1.10.4",
     "@oclif/command": "^1",
+    "@oclif/config": "1.10.4",
     "@oclif/errors": "^1",
     "@oclif/plugin-commands": "^1",
     "@oclif/plugin-help": "^2",
@@ -81,7 +81,7 @@
     "@oclif/plugin-which": "^1",
     "@salesforce/kit": "^1.0.1",
     "@salesforce/lazy-require": "0.1.10",
-    "@salesforce/plugin-analytics": "0.3.0",
+    "@salesforce/plugin-analytics": "0.4.0",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/require-analytics": "0.5.0",
     "@salesforce/sfdx-trust": "^2.0.0",
@@ -94,7 +94,7 @@
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1",
-    "@salesforce/dev-config": "^1",
+    "@salesforce/dev-config": "1.4.4",
     "@salesforce/ts-sinon": "^0.2.0",
     "@types/chai": "^4",
     "@types/debug": "0.0.30",
@@ -114,7 +114,6 @@
     "sinon": "^5",
     "source-map-support": "^0.5.2",
     "ts-node": "^6",
-    "tslint": "^5",
     "xunit-file": "1.0.0"
   },
   "scripts": {
@@ -165,7 +164,7 @@
     "lines": 98,
     "statements": 98,
     "functions": 100,
-    "branches": 82,
+    "branches": 71,
     "reporter": [
       "lcov",
       "text"

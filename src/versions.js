@@ -45,7 +45,7 @@ function compareVersions(a, b) {
     const len = Math.min(partsA.length, partsB.length);
     let diff;
     for (let i = 0; i < len; i++) {
-        diff = (parseInt(partsA[i] || '0', 10)) - (parseInt(partsB[i] || '0', 10));
+        diff = (parseInt(partsA[i], 10)) - (parseInt(partsB[i], 10));
         if (diff) {
             return diff;
         }

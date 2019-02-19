@@ -44,9 +44,6 @@ async function canUpdate(context: Hook.Context, channel: string, manifestUrl: st
     }
 
     if (manifest) {
-        if (attempt >= 2) {
-            context.warn('Connected!');
-        }
         debug('S3 host is reachable (attempt %s)', attempt);
         validateManifest(context, channel, manifest);
         return;
