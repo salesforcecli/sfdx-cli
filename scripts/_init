@@ -31,6 +31,7 @@ function stdout() {
 function script () {
     name="$1"
     shift
+    execute_script="----------------- $name -----------------"
     "$ROOT_DIR/scripts/$name" "$@"
 }
 

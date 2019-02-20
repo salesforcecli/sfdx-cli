@@ -9,27 +9,26 @@ if [[ ! -e "$ROOT_DIR/dist" ]]; then
 fi
 
 # Setup workspace
-rm -rf "${BASE_DIR}"
-mkdir -p "${BASE_DIR}/node_modules"
-mkdir -p "${BASE_DIR}/bin"
-cp "$ROOT_DIR/README.md" "${BASE_DIR}"
-cp "$ROOT_DIR/LICENSE" "${BASE_DIR}"
-cp "$ROOT_DIR/package.json" "${BASE_DIR}"
-cp "$ROOT_DIR/yarn.lock" "${BASE_DIR}"
-cp "$ROOT_DIR/oclif.manifest.json" "${BASE_DIR}"
-cp -r "$ROOT_DIR/dist" "${BASE_DIR}/dist"
+rm -rf "$BASE_DIR"
+mkdir -p "$BASE_DIR/node_modules"
+mkdir -p "$BASE_DIR/bin"
+cp "$ROOT_DIR/README.md" "$BASE_DIR"
+cp "$ROOT_DIR/LICENSE" "$BASE_DIR"
+cp "$ROOT_DIR/package.json" "$BASE_DIR"
+cp "$ROOT_DIR/yarn.lock" "$BASE_DIR"
+cp -r "$ROOT_DIR/dist" "$BASE_DIR/dist"
 
 # Allow yarn autoclean to be disabled quickly in case it is found to be over-cleaning
 if [[ "${DISABLE_YARNCLEAN:-}" != "true" ]]; then
-    cp "$ROOT_DIR/.yarnclean" "${BASE_DIR}"
+    cp "$ROOT_DIR/.yarnclean" "$BASE_DIR"
 fi
 
 (
-    cd "${BASE_DIR}"
-    # Install packages
+    cd "$BASE_DIR"
     yarn install --no-progress --production --non-interactive --pure-lockfile
+    PATH="$ROOT_DIR/node_modules/.bin:$PATH" yarn oclif-artifacts
 )
 
 # Copy bin/run to bin/sfdx.js in the build, and inject build vars
-sed "s/\\/\\* @OVERRIDES@ \\*\\//version:'${VERSION}', channel:'${CHANNEL}'/" \
-    "$ROOT_DIR/bin/run" > "${BASE_DIR}/bin/$BIN_NAME.js"
+sed "s/\\/\\* @OVERRIDES@ \\*\\//version:'$VERSION', channel:'$CHANNEL'/" \
+    "$ROOT_DIR/bin/run" > "$BASE_DIR/bin/$BIN_NAME.js"
