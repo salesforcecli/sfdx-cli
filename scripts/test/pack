@@ -17,6 +17,7 @@ tar tf "$tarball" | while read -r f; do
         "$f" != "package/LICENSE" &&
         "$f" != "package/README.md" &&
         "$f" != "package/oclif.manifest.json" &&
+        "$f" != "package/npm-shrinkwrap.json" &&
         "$f" != "package/bin/"* &&
         "$f" != "package/dist/"*".js"
     ) || (
