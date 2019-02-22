@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.0.0-30",
+  "version": "7.0.0-31",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -88,7 +88,7 @@
     "@salesforce/ts-types": "^1.0.1",
     "debug": "^3",
     "http-call": "^5.2.3",
-    "salesforcedx": "45.8.1-6",
+    "salesforcedx": "45.8.1-7",
     "tslib": "^1.9.3",
     "v8-compile-cache": "^2.0.2"
   },
