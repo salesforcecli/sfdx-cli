@@ -69,7 +69,7 @@
     "@salesforce/ts-types": "0.19.3",
     "@salesforce/lazy-require": "0.0.4",
     "@salesforce/plugin-generator": "^1.0.1",
-    "@salesforce/sfdx-trust": "^2.0.1",
+    "@salesforce/sfdx-trust": "^2.1.0",
     "ansi-escapes": "3.0.0",
     "cli-engine": "4.7.6",
     "cli-engine-command": "9.0.7",
