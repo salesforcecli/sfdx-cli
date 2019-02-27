@@ -68,8 +68,8 @@
     }
   },
   "dependencies": {
+    "@oclif/config": "1.12.8",
     "@oclif/command": "^1",
-    "@oclif/config": "1.10.4",
     "@oclif/errors": "^1",
     "@oclif/plugin-commands": "^1",
     "@oclif/plugin-help": "^2",
