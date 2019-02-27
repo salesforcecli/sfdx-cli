@@ -104,6 +104,7 @@
     "@types/request": "2.0.3",
     "@types/sinon": "4.3.2",
     "chai": "^4",
+    "check-yarn-lock": "0.2.1",
     "eslint": "^3",
     "eslint-config-airbnb-base": "5.0.1",
     "eslint-plugin-import": "1.13.0",
@@ -158,6 +159,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "node_modules/.bin/check-yarn-lock",
       "pre-push": "yarn compile && yarn lint && yarn uts"
     }
   },
