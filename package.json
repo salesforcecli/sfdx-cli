@@ -8,7 +8,7 @@
     "sfdx": "bin/run"
   },
   "engines": {
-    "node": ">=8.4.0"
+    "node": ">=8.10.0"
   },
   "files": [
     "bin",
@@ -20,7 +20,7 @@
     "bin": "sfdx",
     "scope": "salesforce",
     "commands": "./dist/commands",
-    "node": "10.15.1",
+    "node": "10.15.2",
     "dirname": "sfdx",
     "hooks": {
       "plugins:preinstall": [
