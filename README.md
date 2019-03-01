@@ -34,3 +34,4 @@ Note that by default `yarn` will attempt to install the binary in a location tha
 ## Development
 
 If you are a Salesforce T&P employee, please see also the internal [developer documentation](./DEVELOPER.md).
+
