@@ -6,7 +6,7 @@
  */
 
 import { run as oclifRun } from '@oclif/command';
-import { Config } from '@oclif/config';
+import { Config, IConfig } from '@oclif/config';
 import * as Debug from 'debug';
 import * as os from 'os';
 import * as path from 'path';
@@ -20,13 +20,12 @@ export function create(version: string, channel: string, run = oclifRun, env = n
     const pjson = require(path.resolve(__dirname, '..', 'package.json'));
     const args = process.argv.slice(2);
 
-    debugCliInfo(version, channel, env);
-
     return {
         async run() {
             const config = new Config({ name: pjson.oclif.bin, root, version, channel });
             await config.load();
             configureAutoUpdate(env);
+            debugCliInfo(version, channel, env, config);
             if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
                 lazyRequire.start(config);
             }
@@ -72,10 +71,14 @@ export function configureAutoUpdate(envars: Env): void {
     }
 }
 
-function debugCliInfo(version: string, channel: string, env: Env) {
+function debugCliInfo(version: string, channel: string, env: Env, config: IConfig) {
     debug('node version:    %s', process.versions.node);
     debug('cli version:     %s', version);
     debug('cli channel:     %s', channel);
+    debug('cli bin path:    %s', config.bin);
+    debug('cli data dir:    %s', config.dataDir);
+    debug('cli config dir:  %s', config.configDir);
+    debug('cli cache dir:   %s', config.cacheDir);
     debug('os platform:     %s', os.platform());
     debug('os architecture: %s', os.arch());
     debug('os release:      %s', os.release());
