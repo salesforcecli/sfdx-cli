@@ -7,14 +7,20 @@
 
 import { run as oclifRun } from '@oclif/command';
 import { Config } from '@oclif/config';
+import * as Debug from 'debug';
+import * as os from 'os';
 import * as path from 'path';
 import * as lazyRequire from './lazyRequire';
 import { default as nodeEnv, Env } from './util/env';
+
+const debug = Debug('sfdx');
 
 export function create(version: string, channel: string, run = oclifRun, env = nodeEnv) {
     const root = path.resolve(__dirname, '..');
     const pjson = require(path.resolve(__dirname, '..', 'package.json'));
     const args = process.argv.slice(2);
+
+    debugCliInfo(version, channel, env);
 
     return {
         async run() {
@@ -64,4 +70,28 @@ export function configureAutoUpdate(envars: Env): void {
     if (envars.isAutoupdateDisabled()) {
         envars.setUpdateInstructions(UPDATE_DISABLED_NPM);
     }
+}
+
+function debugCliInfo(version: string, channel: string, env: Env) {
+    debug('node version:    %s', process.versions.node);
+    debug('cli version:     %s', version);
+    debug('cli channel:     %s', channel);
+    debug('os platform:     %s', os.platform());
+    debug('os architecture: %s', os.arch());
+    debug('os release:      %s', os.release());
+
+    [
+        'NODE_OPTIONS',
+        Env.DISABLE_AUTOUPDATE_LEGACY,
+        'SFDX_BINPATH',
+        'SFDX_COMPILE_CACHE',
+        Env.DISABLE_AUTOUPDATE_OCLIF,
+        Env.CLI_MODE,
+        Env.CLI_INSTALLER,
+        Env.LAZY_LOAD_MODULES,
+        'SFDX_NPM_REGISTRY',
+        'SFDX_REDIRECTED',
+        Env.S3_HOST,
+        Env.UPDATE_INSTRUCTIONS
+    ].forEach(key => debug('cli env:         %s=%s', key, env.getString(key)));
 }
