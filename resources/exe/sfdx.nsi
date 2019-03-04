@@ -39,6 +39,7 @@ Section "${TITLE} ${VERSION}"
                    "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\@BIN_NAME@" \
                    "Publisher" "Salesforce.com, inc."
+  RMDir /r "$LOCALAPPDATA\@BIN_NAME@\client"
 SectionEnd
 
 Section "Set PATH to ${TITLE}"
