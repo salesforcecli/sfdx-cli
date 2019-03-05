@@ -6,7 +6,7 @@
  */
 
 import { Hook } from '@oclif/config';
-import { NamedError, set, sleep } from '@salesforce/kit';
+import { NamedError, sleep } from '@salesforce/kit';
 import { JsonMap, Optional } from '@salesforce/ts-types';
 import * as Debug from 'debug';
 import { HTTP } from 'http-call';
@@ -91,16 +91,10 @@ function validateManifest(context: Hook.Context, channel: string, manifest: Json
     debug('manifest available %s', JSON.stringify(manifest));
 }
 
-const hook: Hook.Preupdate = async function(options, env = envars, http =  HTTP) {
+const hook: Hook.Preupdate = async function(options, env = envars, http = HTTP) {
     debug(`preupdate check with channel ${options.channel}`);
     try {
         const s3Host = env.getS3HostOverride();
-        if (s3Host) {
-            debug(`s3 host override: ${s3Host}`);
-            // Override config value if set via envar
-            set(this.config, 'pjson.oclif.update.s3.host', s3Host);
-        }
-
         if (!env.isAutoupdateDisabled()) {
             if (s3Host) {
                 // Warn that the updater is targeting something other than the public update site

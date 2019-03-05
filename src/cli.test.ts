@@ -8,10 +8,13 @@
 // tslint:disable:no-unused-expression
 
 import * as Config from '@oclif/config';
+import { stubInterface } from '@salesforce/ts-sinon';
+import { getString } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import {
     configureAutoUpdate,
+    configureUpdateSites,
     create,
     UPDATE_DISABLED_DEMO,
     UPDATE_DISABLED_INSTALLER,
@@ -44,11 +47,22 @@ describe('cli', () => {
         });
     });
 
-    describe('flags', () => {
+    describe('env', () => {
         let env: Env;
 
         beforeEach(() => {
             env = new Env({});
+        });
+
+        it('should set the s3 host in the oclif config if overridden in an envar', async () => {
+            const s3Host = 'http://example.com:9000/s3';
+            const npmRegistry = 'http://example.com:9000/npm';
+            const config = stubInterface<Config.IConfig>(sandbox);
+            env.setS3HostOverride(s3Host);
+            env.setNpmRegistryOverride(npmRegistry);
+            configureUpdateSites(config, env);
+            expect(getString(config, 'pjson.oclif.update.s3.host')).to.equal(s3Host);
+            expect(getString(config, 'pjson.oclif.warn-if-update-available.registry')).to.equal(npmRegistry);
         });
 
         it('should default to autoupdate disabled for local dev or npm installs', () => {

@@ -7,6 +7,7 @@
 
 import { run as oclifRun } from '@oclif/command';
 import { Config, IConfig } from '@oclif/config';
+import { set } from '@salesforce/kit';
 import * as Debug from 'debug';
 import * as os from 'os';
 import * as path from 'path';
@@ -24,6 +25,7 @@ export function create(version: string, channel: string, run = oclifRun, env = n
         async run() {
             const config = new Config({ name: pjson.oclif.bin, root, version, channel });
             await config.load();
+            configureUpdateSites(config, env);
             configureAutoUpdate(env);
             debugCliInfo(version, channel, env, config);
             if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
@@ -44,6 +46,22 @@ export const UPDATE_DISABLED_NPM =
 export const UPDATE_DISABLED_DEMO =
     'Manual and automatic CLI updates have been disabled in DEMO mode. ' +
     'To check for a new version, unset the environment variable SFDX_ENV.';
+
+export function configureUpdateSites(config: IConfig, env = nodeEnv) {
+    const s3Host = env.getS3HostOverride();
+    if (s3Host) {
+        debug(`s3 host overridden as ${s3Host}`);
+        // Override config value if set via envar
+        set(config, 'pjson.oclif.update.s3.host', s3Host);
+    }
+
+    const npmRegistry = env.getNpmRegistryOverride();
+    if (npmRegistry) {
+        debug(`npm registry overridden as ${npmRegistry}`);
+        // Override config value if set via envar
+        set(config, 'pjson.oclif.warn-if-update-available.registry', npmRegistry);
+    }
+}
 
 export function configureAutoUpdate(envars: Env): void {
     if (envars.isDemoMode()) {
@@ -92,7 +110,7 @@ function debugCliInfo(version: string, channel: string, env: Env, config: IConfi
         Env.CLI_MODE,
         Env.CLI_INSTALLER,
         Env.LAZY_LOAD_MODULES,
-        'SFDX_NPM_REGISTRY',
+        Env.NPM_REGISTRY,
         'SFDX_REDIRECTED',
         Env.S3_HOST,
         Env.UPDATE_INSTRUCTIONS

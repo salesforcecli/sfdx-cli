@@ -14,6 +14,7 @@ export class Env extends KitEnv {
     public static readonly DISABLE_AUTOUPDATE_OCLIF = 'SFDX_DISABLE_AUTOUPDATE';
     public static readonly UPDATE_INSTRUCTIONS = 'SFDX_UPDATE_INSTRUCTIONS';
     public static readonly S3_HOST = 'SFDX_S3_HOST';
+    public static readonly NPM_REGISTRY = 'SFDX_NPM_REGISTRY';
     public static readonly LAZY_LOAD_MODULES = 'SFDX_LAZY_LOAD_MODULES';
 
     public constructor(env = process.env) {
@@ -54,6 +55,14 @@ export class Env extends KitEnv {
 
     public setS3HostOverride(value: string) {
         return this.setString(Env.S3_HOST, value);
+    }
+
+    public getNpmRegistryOverride() {
+        return this.getString(Env.NPM_REGISTRY);
+    }
+
+    public setNpmRegistryOverride(value: string) {
+        return this.setString(Env.NPM_REGISTRY, value);
     }
 
     public isLazyRequireEnabled(): boolean {

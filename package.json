@@ -164,7 +164,7 @@
     "lines": 98,
     "statements": 98,
     "functions": 100,
-    "branches": 71,
+    "branches": 66,
     "reporter": [
       "lcov",
       "text"
