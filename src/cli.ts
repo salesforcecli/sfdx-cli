@@ -50,14 +50,12 @@ export const UPDATE_DISABLED_DEMO =
 export function configureUpdateSites(config: IConfig, env = nodeEnv) {
     const s3Host = env.getS3HostOverride();
     if (s3Host) {
-        debug(`s3 host overridden as ${s3Host}`);
         // Override config value if set via envar
         set(config, 'pjson.oclif.update.s3.host', s3Host);
     }
 
     const npmRegistry = env.getNpmRegistryOverride();
     if (npmRegistry) {
-        debug(`npm registry overridden as ${npmRegistry}`);
         // Override config value if set via envar
         set(config, 'pjson.oclif.warn-if-update-available.registry', npmRegistry);
     }

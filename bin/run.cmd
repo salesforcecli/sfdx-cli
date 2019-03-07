@@ -15,7 +15,7 @@ if "%SFDX_INSTALLER%"=="true" (
     set "UPDATED="
     REM if redirected from a v7 script
     IF "%SFDX_REDIRECTED%" == "1" set UPDATED=1
-    REM if redirected form a v6 script
+    REM if redirected from a v6 script, or first install of a v7 update
     IF /I %LATEST_BINPATH% == %SFDX_BINPATH% set UPDATED=1
     IF defined UPDATED (
         REM latest version installed by the autoupdater
