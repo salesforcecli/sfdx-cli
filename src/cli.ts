@@ -88,17 +88,21 @@ export function configureAutoUpdate(envars: Env): void {
 }
 
 function debugCliInfo(version: string, channel: string, env: Env, config: IConfig) {
-    debug('node version:    %s', process.versions.node);
-    debug('cli version:     %s', version);
-    debug('cli channel:     %s', channel);
-    debug('cli bin path:    %s', config.bin);
-    debug('cli data dir:    %s', config.dataDir);
-    debug('cli config dir:  %s', config.configDir);
-    debug('cli cache dir:   %s', config.cacheDir);
-    debug('os platform:     %s', os.platform());
-    debug('os architecture: %s', os.arch());
-    debug('os release:      %s', os.release());
+    const pad = 25;
+    debug('os platform:'.padStart(pad), os.platform());
+    debug('os architecture:'.padStart(pad), os.arch());
+    debug('os release:'.padStart(pad), os.release());
+    debug('os shell:'.padStart(pad), config.shell);
+    debug('node version:'.padStart(pad), process.versions.node);
+    debug('cli version:'.padStart(pad), version);
+    debug('cli channel:'.padStart(pad), channel);
+    debug('cli bin:'.padStart(pad), config.bin);
+    debug('cli data dir:'.padStart(pad), config.dataDir);
+    debug('cli config dir:'.padStart(pad), config.configDir);
+    debug('cli cache dir:'.padStart(pad), config.cacheDir);
 
+    debug('cli env:'.padStart(pad));
+    // TODO: maybe env.getKnown()?
     [
         'NODE_OPTIONS',
         Env.DISABLE_AUTOUPDATE_LEGACY,
@@ -112,5 +116,8 @@ function debugCliInfo(version: string, channel: string, env: Env, config: IConfi
         'SFDX_REDIRECTED',
         Env.S3_HOST,
         Env.UPDATE_INSTRUCTIONS
-    ].forEach(key => debug('cli env:         %s=%s', key, env.getString(key)));
+    ].forEach(key => debug('%s: %s', key.toString().padStart(pad - 1), env.getString(key) || ''));
+
+    debug('cli args:'.padStart(pad));
+    process.argv.forEach(arg => debug('  %s', arg));
 }
