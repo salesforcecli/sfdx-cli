@@ -88,22 +88,33 @@ export function configureAutoUpdate(envars: Env): void {
 }
 
 function debugCliInfo(version: string, channel: string, env: Env, config: IConfig) {
-    const pad = 25;
-    debug('os platform:'.padStart(pad), os.platform());
-    debug('os architecture:'.padStart(pad), os.arch());
-    debug('os release:'.padStart(pad), os.release());
-    debug('os shell:'.padStart(pad), config.shell);
-    debug('node version:'.padStart(pad), process.versions.node);
-    debug('cli version:'.padStart(pad), version);
-    debug('cli channel:'.padStart(pad), channel);
-    debug('cli bin:'.padStart(pad), config.bin);
-    debug('cli data dir:'.padStart(pad), config.dataDir);
-    debug('cli config dir:'.padStart(pad), config.configDir);
-    debug('cli cache dir:'.padStart(pad), config.cacheDir);
+    function debugSection(section: string, items: Array<[string, string]>) {
+        const pad = 25;
+        debug('%s:', section.padStart(pad));
+        items.forEach(([name, value]) => debug('%s: %s', name.padStart(pad), value));
+    }
 
-    debug('cli env:'.padStart(pad));
-    // TODO: maybe env.getKnown()?
-    [
+    debugSection('OS', [
+        ['platform', os.platform()],
+        ['architecture', os.arch()],
+        ['release', os.release()],
+        ['shell', config.shell]
+    ]);
+
+    debugSection('NODE', [
+        ['version', process.versions.node]
+    ]);
+
+    debugSection('CLI', [
+        ['version', version],
+        ['channel', channel],
+        ['bin', config.bin],
+        ['data', config.dataDir],
+        ['cache', config.cacheDir],
+        ['config', config.configDir]
+    ]);
+
+    debugSection('ENV', [
         'NODE_OPTIONS',
         Env.DISABLE_AUTOUPDATE_LEGACY,
         'SFDX_BINPATH',
@@ -116,8 +127,7 @@ function debugCliInfo(version: string, channel: string, env: Env, config: IConfi
         'SFDX_REDIRECTED',
         Env.S3_HOST,
         Env.UPDATE_INSTRUCTIONS
-    ].forEach(key => debug('%s: %s', key.toString().padStart(pad - 1), env.getString(key) || ''));
+    ].map((key): [string, string] => [key, env.getString(key, '<not set>')]));
 
-    debug('cli args:'.padStart(pad));
-    process.argv.forEach(arg => debug('  %s', arg));
+    debugSection('ARGS', process.argv.map((arg, i): [string, string] => [i.toString(), arg]));
 }
