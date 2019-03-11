@@ -96,6 +96,11 @@ function createManifest () {
     script "manifest.js" "$RELEASE_DIR/manifest.json" version="$VERSION" channel="$CHANNEL"
 }
 
+function createReleases () {
+    rm -f "$RELEASE_DIR/releases.json"
+    script "releases.js" "$RELEASE_DIR/releases.json" "$VERSION" "$CHANNEL"
+}
+
 function addToManifest () {
     SECTION="$1"
     FILE_KEY="$2"
