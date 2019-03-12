@@ -7,12 +7,11 @@ const fs = require('fs');
 const http = require('http');
 const { URL } = require('url');
 
-const s3Url = new URL(`${s3Endpoint}/${s3Bucket}/${s3Folder}/releases.json`);
-
 const file = process.argv[2];
 const s3Endpoint = process.argv[3];
 const s3Bucket = process.argv[4];
 const s3Folder = process.argv[5];
+const s3Url = new URL(`${s3Endpoint}/${s3Bucket}/${s3Folder}/releases.json`);
 const version = process.argv[6];
 const channel = process.argv[7];
 
