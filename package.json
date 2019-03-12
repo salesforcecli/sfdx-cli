@@ -65,8 +65,8 @@
     }
   },
   "dependencies": {
-    "@oclif/config": "1.12.8",
     "@oclif/command": "^1",
+    "@oclif/config": "1.12.8",
     "@oclif/errors": "^1",
     "@oclif/plugin-commands": "^1",
     "@oclif/plugin-help": "^2",
@@ -76,7 +76,7 @@
     "@oclif/plugin-warn-if-update-available": "1.7.0",
     "@oclif/plugin-which": "^1",
     "@salesforce/kit": "^1.0.1",
-    "@salesforce/lazy-require": "0.1.10",
+    "@salesforce/lazy-require": "0.1.12",
     "@salesforce/plugin-analytics": "0.4.0",
     "@salesforce/plugin-generator": "0.0.10",
     "@salesforce/require-analytics": "0.6.10",

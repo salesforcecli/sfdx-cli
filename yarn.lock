@@ -122,6 +122,16 @@
     debug "^4.1.1"
     semver "^5.6.0"
 
+"@oclif/command@^1.5.11":
+  version "1.5.11"
+  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.5.11.tgz#5f540b2eba234cfda9bd8102076ba99b9e821e85"
+  integrity sha512-jcdCmaShB7k7Lfr+rGvBeTzcCbprTF690n0dv/cB4PmXESfOx/5P4/scDR75mToht+VxOADI0aXMGQJz3T4uMg==
+  dependencies:
+    "@oclif/errors" "^1.2.2"
+    "@oclif/parser" "^3.7.2"
+    debug "^4.1.1"
+    semver "^5.6.0"
+
 "@oclif/config@1.12.8", "@oclif/config@^1", "@oclif/config@^1.12.0", "@oclif/config@^1.12.8", "@oclif/config@^1.6.28", "@oclif/config@^1.8.7", "@oclif/config@^1.9.0":
   version "1.12.8"
   resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.12.8.tgz#801469b9174ad0aaa26ab9132c68559fce0ac866"
@@ -310,6 +320,22 @@
     chalk "^2.4.0"
     cli-ux "^4.8.0"
 
+"@salesforce/command@^1.3.0":
+  version "1.3.1"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-1.3.1.tgz#852e866d707acafc5b39eb0da16cd7a6353b851e"
+  integrity sha512-NU+WJgpMd6idNiz4+TYpKDJpdTyEI5YYkYIgni6ncKiw4Y8+pQpLqBi1fDAsTaOx1yLrdZr7WAvZtDMQ9JTr5Q==
+  dependencies:
+    "@oclif/command" "^1.5.0"
+    "@oclif/errors" "^1.2.0"
+    "@oclif/parser" "^3.6.0"
+    "@oclif/plugin-help" "^2.1.0"
+    "@oclif/test" "^1.2.0"
+    "@salesforce/core" "^1.0.0"
+    "@salesforce/kit" "^1.0.0"
+    "@salesforce/ts-types" "^1.0.0"
+    chalk "^2.4.0"
+    cli-ux "^4.8.0"
+
 "@salesforce/core@^1.0.0", "@salesforce/core@^1.1.1":
   version "1.2.2"
   resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-1.2.2.tgz#b46e48877764ed98d02edef8cf3122fd00855232"
@@ -344,10 +370,10 @@
     "@salesforce/ts-types" "^1.1.1"
     tslib "^1"
 
-"@salesforce/lazy-require@0.1.10":
-  version "0.1.10"
-  resolved "http://10.252.156.164:4880/@salesforce%2flazy-require/-/lazy-require-0.1.10.tgz#dc4f8546e16c79965a8dda08d74a1230eaa3d3df"
-  integrity sha512-Auzj6bFCKO+V+M8AKShs5qZLqU+bc0axz55ZQCZGO1l0a877GLWCdnSPQ/YW0V9tbRbZUA4OOwLPjiBRsU3igw==
+"@salesforce/lazy-require@0.1.12":
+  version "0.1.12"
+  resolved "http://10.252.156.164:4880/@salesforce%2flazy-require/-/lazy-require-0.1.12.tgz#38ca64217b90f999a28af8741882c54ce01ab3f5"
+  integrity sha512-RcSbMTjKWlVGfrvGVDViGykeJW5pDM0vugDXOhbAd1+Tm5a6+BMQ+on9ZWdbY9I9WKNunrVvZlekKlcV0gpU/A==
   dependencies:
     debug "^3.1.0"
     tslib "^1"
@@ -1293,7 +1319,7 @@ capture-stack-trace@^1.0.0:
   resolved "http://10.252.156.164:4880/capture-stack-trace/-/capture-stack-trace-1.0.1.tgz#a6c0bbe1f38f3aa0b92238ecb6ff42c344d4135d"
   integrity sha512-mYQLZnx5Qt1JgB1WEiMCf2647plpGeQ2NMR/5L0HNZzGQo4fuSPnK+wjfPnKZV0aiJDgzmWqqkV/g7JD+DW0qw==
 
-cardinal@^0.7.1:
+cardinal@0.7.1, cardinal@^0.7.1:
   version "0.7.1"
   resolved "http://10.252.156.164:4880/cardinal/-/cardinal-0.7.1.tgz#2c270cdc751c86ceaafa08459c2bb38da2a2e297"
   integrity sha1-LCcM3HUchs6q+ghFnCuzjaKi4pc=
@@ -1326,7 +1352,7 @@ chai@^4:
     pathval "^1.1.0"
     type-detect "^4.0.5"
 
-chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
+chalk@1.1.3, chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
   resolved "http://10.252.156.164:4880/chalk/-/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
   integrity sha1-qBFcVeSnAv5NFQq9OHKCKn4J/Jg=
@@ -1447,7 +1473,7 @@ cli-columns@^3.1.2:
     string-width "^2.0.0"
     strip-ansi "^3.0.1"
 
-cli-cursor@^1.0.1:
+cli-cursor@1.0.2, cli-cursor@^1.0.1:
   version "1.0.2"
   resolved "http://10.252.156.164:4880/cli-cursor/-/cli-cursor-1.0.2.tgz#64da3f7d56a54412e59794bd62dc35295e8f2987"
   integrity sha1-ZNo/fValRBLll5S9Ytw1KV6PKYc=
@@ -1691,15 +1717,15 @@ colors@*, colors@^1.1.2:
   resolved "http://10.252.156.164:4880/colors/-/colors-1.3.3.tgz#39e005d546afe01e01f9c4ca8fa50f686a01205d"
   integrity sha512-mmGt/1pZqYRjMxB1axhTo16/snVZ5krrKkcmMeVKxzECMMXoCgnvTPp10QgHfcbQZw8Dq2jMNG6je4JlWU0gWg==
 
-colors@0.5.x:
-  version "0.5.1"
-  resolved "http://10.252.156.164:4880/colors/-/colors-0.5.1.tgz#7d0023eaeb154e8ee9fce75dcb923d0ed1667774"
-  integrity sha1-fQAj6usVTo7p/Oddy5I9DtFmd3Q=
-
 colors@1.0.3:
   version "1.0.3"
   resolved "http://10.252.156.164:4880/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
   integrity sha1-BDP0TYCWgP3rYO0mDxsMJi6CpAs=
+
+colors@1.2.4:
+  version "1.2.4"
+  resolved "http://10.252.156.164:4880/colors/-/colors-1.2.4.tgz#e0cb41d3e4b20806b3bfc27f4559f01b94bc2f7c"
+  integrity sha512-6Y+iBnWmXL+AWtlOp2Vr6R2w5MUlNJRwR0ShVFaAb1CqWzhPOpQg4L0jxD+xpw/Nc8QJwaq3KM79QUCriY8CWQ==
 
 columnify@~1.5.4:
   version "1.5.4"
@@ -1768,7 +1794,7 @@ concat-map@0.0.1:
   resolved "http://10.252.156.164:4880/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-concat-stream@^1.4.7, concat-stream@^1.5.0, concat-stream@^1.5.2:
+concat-stream@^1.4.6, concat-stream@^1.4.7, concat-stream@^1.5.0, concat-stream@^1.5.2:
   version "1.6.2"
   resolved "http://10.252.156.164:4880/concat-stream/-/concat-stream-1.6.2.tgz#904bdf194cd3122fc675c77fc4ac3d4ff0fd1a34"
   integrity sha512-27HBghJxjiZtIk3Ycvn/4kbJk/1uZuJFfuPEns6LaEvpvG1f0hTea8lilrouyo9mVc2GWdcEZ8OLoGmSADlrCw==
@@ -2322,6 +2348,14 @@ doctrine@1.2.x:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
+doctrine@^1.2.2:
+  version "1.5.0"
+  resolved "http://10.252.156.164:4880/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
+  integrity sha1-N53Ocw9hZvds76TmcHoVmwLFpvo=
+  dependencies:
+    esutils "^2.0.2"
+    isarray "^1.0.0"
+
 doctrine@^2.0.0:
   version "2.1.0"
   resolved "http://10.252.156.164:4880/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
@@ -2629,6 +2663,15 @@ eslint-config-airbnb-base@5.0.1:
   resolved "http://10.252.156.164:4880/eslint-config-airbnb-base/-/eslint-config-airbnb-base-5.0.1.tgz#3e3cdb02fa72bae1d23d51bf043a0beef4a6c9e9"
   integrity sha1-PjzbAvpyuuHSPVG/BDoL7vSmyek=
 
+eslint-friendly-formatter@^1.2.2:
+  version "1.2.2"
+  resolved "http://10.252.156.164:4880/eslint-friendly-formatter/-/eslint-friendly-formatter-1.2.2.tgz#e002ae6d90821cff53290c1de5ba6153cc940416"
+  integrity sha1-4AKubZCCHP9TKQwd5bphU8yUBBY=
+  dependencies:
+    chalk "^1.0.0"
+    extend "^3.0.0"
+    text-table "^0.2.0"
+
 eslint-import-resolver-node@^0.2.0:
   version "0.2.3"
   resolved "http://10.252.156.164:4880/eslint-import-resolver-node/-/eslint-import-resolver-node-0.2.3.tgz#5add8106e8c928db2cba232bcd9efa846e3da16c"
@@ -2657,6 +2700,45 @@ eslint-plugin-import@1.13.0:
     object-assign "^4.0.1"
     pkg-dir "^1.0.0"
     pkg-up "^1.0.0"
+
+eslint@^2.10.2:
+  version "2.13.1"
+  resolved "http://10.252.156.164:4880/eslint/-/eslint-2.13.1.tgz#e4cc8fa0f009fb829aaae23855a29360be1f6c11"
+  integrity sha1-5MyPoPAJ+4KaquI4VaKTYL4fbBE=
+  dependencies:
+    chalk "^1.1.3"
+    concat-stream "^1.4.6"
+    debug "^2.1.1"
+    doctrine "^1.2.2"
+    es6-map "^0.1.3"
+    escope "^3.6.0"
+    espree "^3.1.6"
+    estraverse "^4.2.0"
+    esutils "^2.0.2"
+    file-entry-cache "^1.1.1"
+    glob "^7.0.3"
+    globals "^9.2.0"
+    ignore "^3.1.2"
+    imurmurhash "^0.1.4"
+    inquirer "^0.12.0"
+    is-my-json-valid "^2.10.0"
+    is-resolvable "^1.0.0"
+    js-yaml "^3.5.1"
+    json-stable-stringify "^1.0.0"
+    levn "^0.3.0"
+    lodash "^4.0.0"
+    mkdirp "^0.5.0"
+    optionator "^0.8.1"
+    path-is-absolute "^1.0.0"
+    path-is-inside "^1.0.1"
+    pluralize "^1.2.1"
+    progress "^1.1.8"
+    require-uncached "^1.0.2"
+    shelljs "^0.6.0"
+    strip-json-comments "~1.0.1"
+    table "^3.7.8"
+    text-table "~0.2.0"
+    user-home "^2.0.0"
 
 eslint@^3:
   version "3.19.0"
@@ -2699,7 +2781,7 @@ eslint@^3:
     text-table "~0.2.0"
     user-home "^2.0.0"
 
-espree@^3.4.0:
+espree@^3.1.6, espree@^3.4.0:
   version "3.5.4"
   resolved "http://10.252.156.164:4880/espree/-/espree-3.5.4.tgz#b0f447187c8a8bed944b815a660bddf5deb5d1a7"
   integrity sha512-yAcIQxtmMiB/jL32dzEp2enBeidsB7xWPLNiw3IIkpVds1P+h7qF9YwJq1yUNzp2OKXgAprs4F61ih66UsoD1A==
@@ -3047,6 +3129,14 @@ figures@^2.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
+file-entry-cache@^1.1.1:
+  version "1.3.1"
+  resolved "http://10.252.156.164:4880/file-entry-cache/-/file-entry-cache-1.3.1.tgz#44c61ea607ae4be9c1402f41f44270cbfe334ff8"
+  integrity sha1-RMYepgeuS+nBQC9B9EJwy/4zT/g=
+  dependencies:
+    flat-cache "^1.2.1"
+    object-assign "^4.0.1"
+
 file-entry-cache@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/file-entry-cache/-/file-entry-cache-2.0.0.tgz#c392990c3e684783d838b8c84a45d8a048458361"
@@ -3164,10 +3254,10 @@ for-in@^1.0.2:
   resolved "http://10.252.156.164:4880/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
   integrity sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=
 
-force-language-services@45.8.1-11:
-  version "45.8.1-11"
-  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-45.8.1-11.tgz#cb3c13ef8bc7582968fa812ee5e75a9aaf165e18"
-  integrity sha512-FGPtTcV9W0sUaxLzgboaojCHze6YRRokhw81TiwoD1y/oQ0nR5jzBc/rc0qZSDRafwgLK+i0agBxMgDhK8N1gg==
+force-language-services@45.8.1-12:
+  version "45.8.1-12"
+  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-45.8.1-12.tgz#23d19a18a552274cfd5073f32e2415a873247c28"
+  integrity sha512-QVUdRnuN75LVrCC9DqElMdp60R04JBa02qBbhoSpmqSLH8LEwqHgzoH3Y8HQNPiO9yMhDgi4Rca242/pQm7b5A==
   dependencies:
     "@salesforce/command" "^1.2.0"
     "@salesforce/ts-types" "^1.1.1"
@@ -3393,6 +3483,11 @@ get-stdin@^6.0.0:
   resolved "http://10.252.156.164:4880/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
   integrity sha512-jp4tHawyV7+fkkSKyvjuLZswblUtz+SQKzSWnBbii16BuZksJlU1wuBYXY75r+duh/llF1ur6oNwi+2ZzjKZ7g==
 
+get-stream@^1.1.0:
+  version "1.1.0"
+  resolved "http://10.252.156.164:4880/get-stream/-/get-stream-1.1.0.tgz#554659093606c1b5284218be65f68385c9f0c18b"
+  integrity sha1-VUZZCTYGwbUoQhi+ZfaDhcnwwYs=
+
 get-stream@^3.0.0:
   version "3.0.0"
   resolved "http://10.252.156.164:4880/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
@@ -3525,7 +3620,7 @@ globals@^11.1.0:
   resolved "http://10.252.156.164:4880/globals/-/globals-11.11.0.tgz#dcf93757fa2de5486fbeed7118538adf789e9c2e"
   integrity sha512-WHq43gS+6ufNOEqlrDBxVEbb8ntfXrfAUU2ZOpCxrBdGKW3gyv8mCxAfIBD0DroPKGrJ2eSsXsLtY9MPntsyTw==
 
-globals@^9.14.0:
+globals@^9.14.0, globals@^9.2.0, globals@^9.4.0:
   version "9.18.0"
   resolved "http://10.252.156.164:4880/globals/-/globals-9.18.0.tgz#aa3896b3e69b487f17e31ed2143d69a8e30c2d8a"
   integrity sha512-S0nG3CLEQiY/ILxqtztTWH/3iRRdyBLw6KMDxnKMchrtbj2OFmehVh0WUCfW3DUrIgx/qFrJPICrq4Z4sTR9UQ==
@@ -3575,6 +3670,24 @@ globule@^1.0.0:
     glob "~7.1.1"
     lodash "~4.17.10"
     minimatch "~3.0.2"
+
+got@6.3.0:
+  version "6.3.0"
+  resolved "http://10.252.156.164:4880/got/-/got-6.3.0.tgz#4699e801063f58052b6d66208dc9670c67c18883"
+  integrity sha1-RpnoAQY/WAUrbWYgjclnDGfBiIM=
+  dependencies:
+    create-error-class "^3.0.0"
+    duplexer3 "^0.1.4"
+    get-stream "^1.1.0"
+    is-plain-obj "^1.0.0"
+    is-redirect "^1.0.0"
+    is-retry-allowed "^1.0.0"
+    is-stream "^1.0.0"
+    lowercase-keys "^1.0.0"
+    node-status-codes "^2.0.0"
+    timed-out "^2.0.0"
+    unzip-response "^1.0.0"
+    url-parse-lax "^1.0.0"
 
 got@^5.2.0:
   version "5.7.1"
@@ -3788,6 +3901,22 @@ he@1.1.1:
   resolved "http://10.252.156.164:4880/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
   integrity sha1-k0EP0hsAlzUVH4howvJx80J+I/0=
 
+heroku-cli-util@^5.8.1:
+  version "5.10.12"
+  resolved "http://10.252.156.164:4880/heroku-cli-util/-/heroku-cli-util-5.10.12.tgz#b9105e0cd0c21bbcb65e61f38233b5cfd56bc5fc"
+  integrity sha1-uRBeDNDCG7y2XmHzgjO1z9Vrxfw=
+  dependencies:
+    cardinal "0.7.1"
+    chalk "1.1.3"
+    cli-cursor "1.0.2"
+    co "4.6.0"
+    got "6.3.0"
+    heroku-client "2.4.3"
+    lodash "4.11.1"
+    opn "3.0.3"
+    supports-color "3.1.2"
+    tunnel-agent "0.4.2"
+
 heroku-cli-util@~6.0.11, heroku-cli-util@~6.0.16:
   version "6.0.16"
   resolved "http://10.252.156.164:4880/heroku-cli-util/-/heroku-cli-util-6.0.16.tgz#ba8a4cd4ec5c57bd7033a802bfa865ac351c226e"
@@ -3814,6 +3943,16 @@ heroku-cli-util@~6.0.11, heroku-cli-util@~6.0.16:
     opn "^3.0.3"
     supports-color "^3.1.2"
     tunnel-agent "^0.4.3"
+
+heroku-client@2.4.3:
+  version "2.4.3"
+  resolved "http://10.252.156.164:4880/heroku-client/-/heroku-client-2.4.3.tgz#c52fec7e37e7af0ac14f66ce63adf1af156e0747"
+  integrity sha1-xS/sfjfnrwrBT2bOY63xrxVuB0c=
+  dependencies:
+    inflection "^1.7.0"
+    path-proxy "^1.0"
+    q "^1.2.0"
+    tunnel-agent "^0.4.0"
 
 heroku-client@3.0.0-beta3:
   version "3.0.0-beta3"
@@ -3977,7 +4116,7 @@ ignore-walk@^3.0.1:
   dependencies:
     minimatch "^3.0.4"
 
-ignore@^3.2.0, ignore@^3.3.5:
+ignore@^3.1.2, ignore@^3.2.0, ignore@^3.3.5:
   version "3.3.10"
   resolved "http://10.252.156.164:4880/ignore/-/ignore-3.3.10.tgz#0a97fb876986e8081c631160f8f9f389157f0043"
   integrity sha512-Pgs951kaMm5GXP7MOvxERINe3gsaVjUWFm+UZPSq9xYriQAksyhg0csnS0KXSNRD5NmNdapXEpjxG49+AKh/ug==
@@ -4011,6 +4150,16 @@ indent-string@^3.2.0:
   version "3.2.0"
   resolved "http://10.252.156.164:4880/indent-string/-/indent-string-3.2.0.tgz#4a5fd6d27cc332f37e5419a504dbb837105c9289"
   integrity sha1-Sl/W0nzDMvN+VBmlBNu4NxBckok=
+
+inflection@^1.7.0:
+  version "1.12.0"
+  resolved "http://10.252.156.164:4880/inflection/-/inflection-1.12.0.tgz#a200935656d6f5f6bc4dc7502e1aecb703228416"
+  integrity sha1-ogCTVlbW9fa8TcdQLhrstwMihBY=
+
+inflection@~1.3.0:
+  version "1.3.8"
+  resolved "http://10.252.156.164:4880/inflection/-/inflection-1.3.8.tgz#cbd160da9f75b14c3cc63578d4f396784bf3014e"
+  integrity sha1-y9Fg2p91sUw8xjV41POWeEvzAU4=
 
 inflight@^1.0.4, inflight@~1.0.6:
   version "1.0.6"
@@ -4696,6 +4845,22 @@ jsonwebtoken@7.0.0:
     ms "^0.7.1"
     xtend "^4.0.1"
 
+jsonwebtoken@~8.5.0:
+  version "8.5.0"
+  resolved "http://10.252.156.164:4880/jsonwebtoken/-/jsonwebtoken-8.5.0.tgz#ebd0ca2a69797816e1c5af65b6c759787252947e"
+  integrity sha512-IqEycp0znWHNA11TpYi77bVgyBO/pGESDh7Ajhas+u0ttkGkKYIIAjniL4Bw5+oVejVF+SYkaI7XKfwCCyeTuA==
+  dependencies:
+    jws "^3.2.1"
+    lodash.includes "^4.3.0"
+    lodash.isboolean "^3.0.3"
+    lodash.isinteger "^4.0.4"
+    lodash.isnumber "^3.0.3"
+    lodash.isplainobject "^4.0.6"
+    lodash.isstring "^4.0.1"
+    lodash.once "^4.0.0"
+    ms "^2.1.1"
+    semver "^5.6.0"
+
 jsprim@^1.2.2:
   version "1.4.1"
   resolved "http://10.252.156.164:4880/jsprim/-/jsprim-1.4.1.tgz#313e66bc1e5cc06e438bc1b7499c2e5c56acb6a2"
@@ -4720,7 +4885,7 @@ jwa@^1.2.0:
     ecdsa-sig-formatter "1.0.11"
     safe-buffer "^5.0.1"
 
-jws@^3.0.0:
+jws@^3.0.0, jws@^3.2.1:
   version "3.2.1"
   resolved "http://10.252.156.164:4880/jws/-/jws-3.2.1.tgz#d79d4216a62c9afa0a3d5e8b5356d75abdeb2be5"
   integrity sha512-bGA2omSrFUkd72dhh05bIAN832znP4wOU3lfuXtRBuGTbsmNmDXMQg28f0Vsxaxgk4myF5YkKQpz6qeRpMgX9g==
@@ -5123,6 +5288,11 @@ lodash.identity@3.0.0:
   resolved "http://10.252.156.164:4880/lodash.identity/-/lodash.identity-3.0.0.tgz#ad7bc6a4e647d79c972e1b80feef7af156267876"
   integrity sha1-rXvGpOZH15yXLhuA/u968VYmeHY=
 
+lodash.includes@^4.3.0:
+  version "4.3.0"
+  resolved "http://10.252.156.164:4880/lodash.includes/-/lodash.includes-4.3.0.tgz#60bb98a87cb923c68ca1e51325483314849f553f"
+  integrity sha1-YLuYqHy5I8aMoeUTJUgzFISfVT8=
+
 lodash.isarguments@^3.0.0:
   version "3.1.0"
   resolved "http://10.252.156.164:4880/lodash.isarguments/-/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
@@ -5132,6 +5302,31 @@ lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "http://10.252.156.164:4880/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
   integrity sha1-eeTriMNqgSKvhvhEqpvNhRtfu1U=
+
+lodash.isboolean@^3.0.3:
+  version "3.0.3"
+  resolved "http://10.252.156.164:4880/lodash.isboolean/-/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
+  integrity sha1-bC4XHbKiV82WgC/UOwGyDV9YcPY=
+
+lodash.isinteger@^4.0.4:
+  version "4.0.4"
+  resolved "http://10.252.156.164:4880/lodash.isinteger/-/lodash.isinteger-4.0.4.tgz#619c0af3d03f8b04c31f5882840b77b11cd68343"
+  integrity sha1-YZwK89A/iwTDH1iChAt3sRzWg0M=
+
+lodash.isnumber@^3.0.3:
+  version "3.0.3"
+  resolved "http://10.252.156.164:4880/lodash.isnumber/-/lodash.isnumber-3.0.3.tgz#3ce76810c5928d03352301ac287317f11c0b1ffc"
+  integrity sha1-POdoEMWSjQM1IwGsKHMX8RwLH/w=
+
+lodash.isplainobject@^4.0.6:
+  version "4.0.6"
+  resolved "http://10.252.156.164:4880/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
+  integrity sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
+
+lodash.isstring@^4.0.1:
+  version "4.0.1"
+  resolved "http://10.252.156.164:4880/lodash.isstring/-/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
+  integrity sha1-1SfftUVuynzJu5XV2ur4i6VKVFE=
 
 lodash.keys@4.0.8:
   version "4.0.8"
@@ -5156,6 +5351,11 @@ lodash.noop@3.0.1:
   version "3.0.1"
   resolved "http://10.252.156.164:4880/lodash.noop/-/lodash.noop-3.0.1.tgz#38188f4d650a3a474258439b96ec45b32617133c"
   integrity sha1-OBiPTWUKOkdCWEObluxFsyYXEzw=
+
+lodash.once@^4.0.0:
+  version "4.1.1"
+  resolved "http://10.252.156.164:4880/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
+  integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
 
 lodash.partial@4.2.0:
   version "4.2.0"
@@ -5212,15 +5412,20 @@ lodash.without@~4.4.0:
   resolved "http://10.252.156.164:4880/lodash.without/-/lodash.without-4.4.0.tgz#3cd4574a00b67bae373a94b748772640507b7aac"
   integrity sha1-PNRXSgC2e643OpS3SHcmQFB7eqw=
 
-lodash@4.17.11, lodash@^4.0.0, lodash@^4.11.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.6.1, lodash@^4.8.0, lodash@~4.17.10:
-  version "4.17.11"
-  resolved "http://10.252.156.164:4880/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
-  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+lodash@4.11.1:
+  version "4.11.1"
+  resolved "http://10.252.156.164:4880/lodash/-/lodash-4.11.1.tgz#a32106eb8e2ec8e82c241611414773c9df15f8bc"
+  integrity sha1-oyEG644uyOgsJBYRQUdzyd8V+Lw=
 
 lodash@^3.2.0:
   version "3.10.1"
   resolved "http://10.252.156.164:4880/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
   integrity sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y=
+
+lodash@^4.0.0, lodash@^4.11.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.6.1, lodash@^4.8.0, lodash@~4.17.10, lodash@~4.17.11:
+  version "4.17.11"
+  resolved "http://10.252.156.164:4880/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
 log-chopper@^1.0.2:
   version "1.0.2"
@@ -5248,6 +5453,13 @@ lolex@^2.2.0, lolex@^2.3.2, lolex@^2.4.2:
   resolved "http://10.252.156.164:4880/lolex/-/lolex-2.7.5.tgz#113001d56bfc7e02d56e36291cc5c413d1aa0733"
   integrity sha512-l9x0+1offnKKIzYVjyXU2SiwhXDLekRzKyhnbyldPHvC7BvLPVpdNUNR2KeMAiCN2D/kLNttZgQD5WjSxuBx3Q==
 
+longjohn@^0.2.12:
+  version "0.2.12"
+  resolved "http://10.252.156.164:4880/longjohn/-/longjohn-0.2.12.tgz#7ca7446b083655c377e7512213dc754d52a64a7e"
+  integrity sha1-fKdEawg2VcN351EiE9x1TVKmSn4=
+  dependencies:
+    source-map-support "0.3.2 - 1.0.0"
+
 loud-rejection@^1.0.0:
   version "1.6.0"
   resolved "http://10.252.156.164:4880/loud-rejection/-/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
@@ -5260,11 +5472,6 @@ lowercase-keys@^1.0.0:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/lowercase-keys/-/lowercase-keys-1.0.1.tgz#6f9e30b47084d971a7c820ff15a6c5167b74c26f"
   integrity sha512-G2Lj61tXDnVFFOi8VZds+SoQjtQC3dgokKdDG2mTm1tx4m50NUHBOZSBwQQHyy0V12A0JTG4icfZQH+xPyh8VA==
-
-lru-cache@2:
-  version "2.7.3"
-  resolved "http://10.252.156.164:4880/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
-  integrity sha1-bUUk6LlV+V1PW1iFHOId1y+06VI=
 
 lru-cache@^4.0.1, lru-cache@^4.1.2, lru-cache@^4.1.3, lru-cache@^4.1.5:
   version "4.1.5"
@@ -5499,20 +5706,12 @@ mimic-response@^1.0.0:
   resolved "http://10.252.156.164:4880/mimic-response/-/mimic-response-1.0.1.tgz#4923538878eef42063cb8a3e3b0798781487ab1b"
   integrity sha512-j5EctnkH7amfV/q5Hgmoal1g2QHFJRraOtmx0JpIqkxhBhI/lJSl1nMpQ45hVarwNETOoWEimndZ4QK0RHxuxQ==
 
-"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.4, minimatch@~3.0.2:
+"minimatch@2 || 3", minimatch@3.0.4, minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.4, minimatch@~3.0.2:
   version "3.0.4"
   resolved "http://10.252.156.164:4880/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
   dependencies:
     brace-expansion "^1.1.7"
-
-minimatch@~0.2.9:
-  version "0.2.14"
-  resolved "http://10.252.156.164:4880/minimatch/-/minimatch-0.2.14.tgz#c74e780574f63c6f9a090e90efbe6ef53a6a756a"
-  integrity sha1-x054BXT2PG+aCQ6Q775u9TpqdWo=
-  dependencies:
-    lru-cache "2"
-    sigmund "~1.0.0"
 
 minimist@0.0.8:
   version "0.0.8"
@@ -5598,12 +5797,7 @@ mock-stdin@^0.3.1:
   resolved "http://10.252.156.164:4880/mock-stdin/-/mock-stdin-0.3.1.tgz#c657d9642d90786435c64ca5e99bbd4d09bd7dd3"
   integrity sha1-xlfZZC2QeGQ1xkyl6Zu9TQm9fdM=
 
-moment@2.23.0:
-  version "2.23.0"
-  resolved "http://10.252.156.164:4880/moment/-/moment-2.23.0.tgz#759ea491ac97d54bac5ad776996e2a58cc1bc225"
-  integrity sha512-3IE39bHVqFbWWaPOMHZF98Q9c3LDKGTmypMiTM2QygGXXElkFWIH7GxfmlwmY2vwa+wmNsoYZmG2iusf1ZjJoA==
-
-moment@2.x.x, moment@^2.10.6:
+moment@2.x.x, moment@^2.10.6, moment@~2.24.0:
   version "2.24.0"
   resolved "http://10.252.156.164:4880/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
@@ -5789,13 +5983,10 @@ node-status-codes@^1.0.0:
   resolved "http://10.252.156.164:4880/node-status-codes/-/node-status-codes-1.0.0.tgz#5ae5541d024645d32a58fcddc9ceecea7ae3ac2f"
   integrity sha1-WuVUHQJGRdMqWPzdyc7s6nrjrC8=
 
-nomnom@1.6.x:
-  version "1.6.2"
-  resolved "http://10.252.156.164:4880/nomnom/-/nomnom-1.6.2.tgz#84a66a260174408fc5b77a18f888eccc44fb6971"
-  integrity sha1-hKZqJgF0QI/Ft3oY+IjszET7aXE=
-  dependencies:
-    colors "0.5.x"
-    underscore "~1.4.4"
+node-status-codes@^2.0.0:
+  version "2.0.1"
+  resolved "http://10.252.156.164:4880/node-status-codes/-/node-status-codes-2.0.1.tgz#298067659cb68a2b4670abbefde02a3819981f5b"
+  integrity sha1-KYBnZZy2iitGcKu+/eAqOBmYH1s=
 
 "nopt@2 || 3", nopt@^3.0.0:
   version "3.0.6"
@@ -6205,19 +6396,19 @@ opn-cli@^3.1.0:
     opn "^4.0.0"
     temp-write "^2.1.0"
 
+opn@3.0.3, opn@^3.0.3:
+  version "3.0.3"
+  resolved "http://10.252.156.164:4880/opn/-/opn-3.0.3.tgz#b6d99e7399f78d65c3baaffef1fb288e9b85243a"
+  integrity sha1-ttmec5n3jWXDuq/+8fsojpuFJDo=
+  dependencies:
+    object-assign "^4.0.1"
+
 opn@5.4.0, opn@^5.3.0:
   version "5.4.0"
   resolved "http://10.252.156.164:4880/opn/-/opn-5.4.0.tgz#cb545e7aab78562beb11aa3bfabc7042e1761035"
   integrity sha512-YF9MNdVy/0qvJvDtunAOzFw9iasOQHpVthTCvGzxt61Il64AYSGdK+rYwld7NAfk9qJ7dt+hymBNSc9LNYS+Sw==
   dependencies:
     is-wsl "^1.1.0"
-
-opn@^3.0.3:
-  version "3.0.3"
-  resolved "http://10.252.156.164:4880/opn/-/opn-3.0.3.tgz#b6d99e7399f78d65c3baaffef1fb288e9b85243a"
-  integrity sha1-ttmec5n3jWXDuq/+8fsojpuFJDo=
-  dependencies:
-    object-assign "^4.0.1"
 
 opn@^4.0.0:
   version "4.0.2"
@@ -6495,6 +6686,13 @@ path-parse@^1.0.6:
   resolved "http://10.252.156.164:4880/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
   integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
 
+path-proxy@^1.0:
+  version "1.0.0"
+  resolved "http://10.252.156.164:4880/path-proxy/-/path-proxy-1.0.0.tgz#18e8a36859fc9d2f1a53b48dee138543c020de5e"
+  integrity sha1-GOijaFn8nS8aU7SN7hOFQ8Ag3l4=
+  dependencies:
+    inflection "~1.3.0"
+
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "http://10.252.156.164:4880/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
@@ -6771,7 +6969,7 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "http://10.252.156.164:4880/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-q@~1.5.0:
+q@^1.2.0, q@~1.5.0:
   version "1.5.1"
   resolved "http://10.252.156.164:4880/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
@@ -7148,14 +7346,14 @@ replace-ext@^1.0.0:
   resolved "http://10.252.156.164:4880/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
   integrity sha1-3mMSg3P8v3w8z6TeWkgMRaZ5WOs=
 
-replace@0.3.0:
-  version "0.3.0"
-  resolved "http://10.252.156.164:4880/replace/-/replace-0.3.0.tgz#60081721188658595ab6a794eb7fedcb4c8d39c7"
-  integrity sha1-YAgXIRiGWFlatqeU63/ty0yNOcc=
+replace@~1.1.0:
+  version "1.1.0"
+  resolved "http://10.252.156.164:4880/replace/-/replace-1.1.0.tgz#4cb04f138d14f37c47b9f2d214eb4a057bd94b22"
+  integrity sha512-0k9rtPG0MUDfJj77XtMCSJKOPdzSwVwM79ZQ6lZuFjqqXrQAMKIMp0g7/8GDAzeERxdktV/LzqbMtJ3yxB23lg==
   dependencies:
-    colors "0.5.x"
-    minimatch "~0.2.9"
-    nomnom "1.6.x"
+    colors "1.2.4"
+    minimatch "3.0.4"
+    yargs "12.0.5"
 
 request@2.88.0, request@^2.72.0, request@^2.87.0, request@^2.88.0:
   version "2.88.0"
@@ -7395,15 +7593,15 @@ safe-regex@^1.1.0:
   resolved "http://10.252.156.164:4880/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@45.8.1-11:
-  version "45.8.1-11"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-45.8.1-11.tgz#b9af812a9d017cc2c1c5f368c07d17de6250f0f9"
-  integrity sha512-EsTrlAd8hvJYluf3/dR+EpbzTOenZ3OJaJvW1kZeTwblioskp3MZ0IqiBES+CkBV5qdK+9robGzMhtRjsUxf/Q==
+salesforce-alm@45.8.1-12:
+  version "45.8.1-12"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-45.8.1-12.tgz#69e8b87bb76ebf99f926c56122880e77776c09b1"
+  integrity sha512-W28EIXy68ilXFejVR5sAV+3h34JYFGsIuBzQXX7yrFhwbH11U1A7hdrx6UNtufQ68es1a9Ryky7Gwhg6Kc5CNQ==
   dependencies:
     "@oclif/config" "^1.12.0"
     "@oclif/errors" "^1.2.0"
     "@oclif/plugin-help" "^2.1.6"
-    "@salesforce/command" "^1.2.0"
+    "@salesforce/command" "^1.3.0"
     "@salesforce/core" "^1.1.1"
     "@salesforce/kit" "^1.0.0"
     "@salesforce/ts-types" "1.0.0"
@@ -7424,19 +7622,20 @@ salesforce-alm@45.8.1-11:
     js2xmlparser "3.0.0"
     jsen "0.6.4"
     jsforce "1.8.5"
-    jsonwebtoken "7.0.0"
+    jsonwebtoken "~8.5.0"
     klaw "2.1.0"
-    lodash "4.17.11"
+    lodash "~4.17.11"
+    longjohn "^0.2.12"
     mime "1.6.0"
     mkdirp "0.5.1"
-    moment "2.23.0"
+    moment "~2.24.0"
     node-constants "0.0.2"
     opn "5.4.0"
     optional-js "1.1.2"
     pluralize "3.0.0"
     process-promises "1.0.0"
     readline-sync "1.4.4"
-    replace "0.3.0"
+    replace "~1.1.0"
     request "2.88.0"
     selenium-standalone "6.15.4"
     sfdx-faye "^1.0.8"
@@ -7444,13 +7643,28 @@ salesforce-alm@45.8.1-11:
     xml2js "0.4.17"
     xmldom-sfdx-encoding "0.1.29"
 
-salesforcedx@45.8.1-16:
-  version "45.8.1-16"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-45.8.1-16.tgz#7cd58bf34026e952f21a8c4f3f0f0fc9bd3b3523"
-  integrity sha512-nRR3Y0srg7lZDxrdFETAubA2qG6ULXm4AswnLCE375uu1XWzTG06z4jMz62wJLIxENkxuNxit/QA/fK2GaSPMQ==
+salesforce-lightning-cli@2.0.1:
+  version "2.0.1"
+  resolved "http://10.252.156.164:4880/salesforce-lightning-cli/-/salesforce-lightning-cli-2.0.1.tgz#3368c0d2769e48dbfc357e99c11b65b7b0b1be73"
+  integrity sha512-cT+bCZ0AIY0y0+U1liAvMpveTnxcrN9LJzAgXhdon3tyXhjSfttpiLS9KcEZ7eDlvh52wz/ewatQePjksBIKHQ==
   dependencies:
-    force-language-services "45.8.1-11"
-    salesforce-alm "45.8.1-11"
+    "@oclif/command" "^1.5.11"
+    "@salesforce/command" "^1.2.0"
+    eslint "^2.10.2"
+    eslint-friendly-formatter "^1.2.2"
+    glob "^7.0.3"
+    globals "^9.4.0"
+    heroku-cli-util "^5.8.1"
+    object-assign "^4.0.1"
+
+salesforcedx@45.8.1-19:
+  version "45.8.1-19"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-45.8.1-19.tgz#4f1c9aa8e1146a27ff4e04750ccbc016a030f19f"
+  integrity sha512-5l94etlpFD8NKx5Qk7iXmKg9EyGUg6Bvf0jxGlwK1CMrh5hgDhD/b28unsUE7vd1Lv7cQ3Ej6Veo7Cp+mvM2pw==
+  dependencies:
+    force-language-services "45.8.1-12"
+    salesforce-alm "45.8.1-12"
+    salesforce-lightning-cli "2.0.1"
 
 samsam@1.3.0:
   version "1.3.0"
@@ -7603,6 +7817,11 @@ shebang-regex@^1.0.0:
   resolved "http://10.252.156.164:4880/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
   integrity sha1-2kL0l0DAtC2yypcoVxyxkMmO/qM=
 
+shelljs@^0.6.0:
+  version "0.6.1"
+  resolved "http://10.252.156.164:4880/shelljs/-/shelljs-0.6.1.tgz#ec6211bed1920442088fe0f70b2837232ed2c8a8"
+  integrity sha1-7GIRvtGSBEIIj+D3Cyg3Iy7SyKg=
+
 shelljs@^0.7.0, shelljs@^0.7.5:
   version "0.7.8"
   resolved "http://10.252.156.164:4880/shelljs/-/shelljs-0.7.8.tgz#decbcf874b0d1e5fb72e14b164a9683048e9acb3"
@@ -7620,11 +7839,6 @@ shelljs@^0.8.0:
     glob "^7.0.0"
     interpret "^1.0.0"
     rechoir "^0.6.2"
-
-sigmund@~1.0.0:
-  version "1.0.1"
-  resolved "http://10.252.156.164:4880/sigmund/-/sigmund-1.0.1.tgz#3ff21f198cad2175f9f3b781853fd94d0d19b590"
-  integrity sha1-P/IfGYytIXX587eBhT/ZTQ0ZtZA=
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
@@ -7773,7 +7987,7 @@ source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@^0.5.2, source-map-support@^0.5.6:
+"source-map-support@0.3.2 - 1.0.0", source-map-support@^0.5.2, source-map-support@^0.5.6:
   version "0.5.10"
   resolved "http://10.252.156.164:4880/source-map-support/-/source-map-support-0.5.10.tgz#2214080bc9d51832511ee2bab96e3c2f9353120c"
   integrity sha512-YfQ3tQFTK/yzlGJuX8pTwa4tifQj4QS2Mj7UegOu8jAz59MqIiMGPXxQhVQiIMNzayuUSF/jEuVnfFF5JqybmQ==
@@ -8068,6 +8282,11 @@ strip-json-comments@0.1.x:
   resolved "http://10.252.156.164:4880/strip-json-comments/-/strip-json-comments-0.1.3.tgz#164c64e370a8a3cc00c9e01b539e569823f0ee54"
   integrity sha1-Fkxk43Coo8wAyeAbU55WmCPw7lQ=
 
+strip-json-comments@~1.0.1:
+  version "1.0.4"
+  resolved "http://10.252.156.164:4880/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
+  integrity sha1-HhX7ysl9Pumb8tc7TGVrCCu6+5E=
+
 strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "http://10.252.156.164:4880/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
@@ -8242,6 +8461,11 @@ through2@^2.0.0:
   version "2.3.8"
   resolved "http://10.252.156.164:4880/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
+
+timed-out@^2.0.0:
+  version "2.0.0"
+  resolved "http://10.252.156.164:4880/timed-out/-/timed-out-2.0.0.tgz#f38b0ae81d3747d628001f41dafc652ace671c0a"
+  integrity sha1-84sK6B03R9YoAB9B2vxlKs5nHAo=
 
 timed-out@^3.0.0:
   version "3.1.3"
@@ -8428,6 +8652,11 @@ tunnel-agent@*, tunnel-agent@^0.6.0, tunnel-agent@~0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
+tunnel-agent@0.4.2:
+  version "0.4.2"
+  resolved "http://10.252.156.164:4880/tunnel-agent/-/tunnel-agent-0.4.2.tgz#1104e3f36ac87125c287270067d582d18133bfee"
+  integrity sha1-EQTj82rIcSXChycAZ9WC0YEzv+4=
+
 tunnel-agent@^0.4.0, tunnel-agent@^0.4.3:
   version "0.4.3"
   resolved "http://10.252.156.164:4880/tunnel-agent/-/tunnel-agent-0.4.3.tgz#6373db76909fe570e08d73583365ed828a74eeeb"
@@ -8494,11 +8723,6 @@ underscore.string@^3.0.3:
     sprintf-js "^1.0.3"
     util-deprecate "^1.0.2"
 
-underscore@~1.4.4:
-  version "1.4.4"
-  resolved "http://10.252.156.164:4880/underscore/-/underscore-1.4.4.tgz#61a6a32010622afa07963bf325203cf12239d604"
-  integrity sha1-YaajIBBiKvoHljvzJSA88SI51gQ=
-
 union-value@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/union-value/-/union-value-1.0.0.tgz#5c71c34cb5bad5dcebe3ea0cd08207ba5aa1aea4"
@@ -8560,7 +8784,7 @@ untildify@^3.0.3:
   resolved "http://10.252.156.164:4880/untildify/-/untildify-3.0.3.tgz#1e7b42b140bcfd922b22e70ca1265bfe3634c7c9"
   integrity sha512-iSk/J8efr8uPT/Z4eSUywnqyrQU7DSdMfdqK4iWEaUVVmcP5JcnpRqmVMwcwcnmI1ATFNgC5V90u09tBynNFKA==
 
-unzip-response@^1.0.2:
+unzip-response@^1.0.0, unzip-response@^1.0.2:
   version "1.0.2"
   resolved "http://10.252.156.164:4880/unzip-response/-/unzip-response-1.0.2.tgz#b984f0877fc0a89c2c773cc1ef7b5b232b5b06fe"
   integrity sha1-uYTwh3/AqJwsdzzB73tbIytbBv4=
@@ -8968,6 +9192,24 @@ yargs-parser@^9.0.2:
   dependencies:
     camelcase "^4.1.0"
 
+yargs@12.0.5, yargs@^12.0.5:
+  version "12.0.5"
+  resolved "http://10.252.156.164:4880/yargs/-/yargs-12.0.5.tgz#05f5997b609647b64f66b81e3b4b10a368e7ad13"
+  integrity sha512-Lhz8TLaYnxq/2ObqHDql8dX8CJi97oHxrjUcYtzKbbykPtVW9WB+poxI+NM2UIzsMgNCZTIf0AQwsjK5yMAqZw==
+  dependencies:
+    cliui "^4.0.0"
+    decamelize "^1.2.0"
+    find-up "^3.0.0"
+    get-caller-file "^1.0.1"
+    os-locale "^3.0.0"
+    require-directory "^2.1.1"
+    require-main-filename "^1.0.1"
+    set-blocking "^2.0.0"
+    string-width "^2.0.0"
+    which-module "^2.0.0"
+    y18n "^3.2.1 || ^4.0.0"
+    yargs-parser "^11.1.1"
+
 yargs@^11.0.0:
   version "11.1.0"
   resolved "http://10.252.156.164:4880/yargs/-/yargs-11.1.0.tgz#90b869934ed6e871115ea2ff58b03f4724ed2d77"
@@ -8985,24 +9227,6 @@ yargs@^11.0.0:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^9.0.2"
-
-yargs@^12.0.5:
-  version "12.0.5"
-  resolved "http://10.252.156.164:4880/yargs/-/yargs-12.0.5.tgz#05f5997b609647b64f66b81e3b4b10a368e7ad13"
-  integrity sha512-Lhz8TLaYnxq/2ObqHDql8dX8CJi97oHxrjUcYtzKbbykPtVW9WB+poxI+NM2UIzsMgNCZTIf0AQwsjK5yMAqZw==
-  dependencies:
-    cliui "^4.0.0"
-    decamelize "^1.2.0"
-    find-up "^3.0.0"
-    get-caller-file "^1.0.1"
-    os-locale "^3.0.0"
-    require-directory "^2.1.1"
-    require-main-filename "^1.0.1"
-    set-blocking "^2.0.0"
-    string-width "^2.0.0"
-    which-module "^2.0.0"
-    y18n "^3.2.1 || ^4.0.0"
-    yargs-parser "^11.1.1"
 
 yarn@^1.13.0:
   version "1.13.0"
