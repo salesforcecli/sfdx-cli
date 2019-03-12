@@ -9,8 +9,6 @@ script "release/tarballs"
 
 # Generate root manifest with archive entries
 createManifest
-# Update releases with current version and channel
-createReleases
 for OS in "${OS_TARGETS[@]}"; do
     setos "$OS"
     IFS='|' read -ra ARCHS <<< "$(archs)"

@@ -15,8 +15,9 @@ const s3Url = new URL(`${s3Endpoint}/${s3Bucket}/${s3Folder}/releases.json`);
 const version = process.argv[6];
 const channel = process.argv[7];
 
-const maxEntries = 15;
-const maxAgeDays = 90;
+// roughly 6 months worth of release history
+const maxEntries = 30;
+const maxAgeDays = 120;
 
 if (!file || !s3Endpoint || !s3Bucket || !s3Folder || !version || !channel) {
   console.error('Usage: %s <out file> <endpoint> <bucket> <folder> <version> <channel>', process.argv[1]);

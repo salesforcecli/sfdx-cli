@@ -14,7 +14,6 @@ resetS3CacheDir
 
 cp "$RELEASE_DIR/manifest.json" "$RELEASE_VERSION_DIR/manifest.json"
 cp "$RELEASE_DIR/manifest.json" "$S3_CACHE_DIR/manifest.json"
-cp "$RELEASE_DIR/releases.json" "$S3_CACHE_DIR/releases.json"
 cp -r "$RELEASE_VERSION_DIR" "$S3_CACHE_DIR"
 
 s3upload "$LATEST_VERSION_CACHE_CONTROL" \
