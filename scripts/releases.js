@@ -7,24 +7,20 @@ const fs = require('fs');
 const http = require('http');
 const { URL } = require('url');
 
-const s3Endpoint = process.env.S3_ENDPOINT;
-if (!s3Endpoint) throw new Error('envar S3_ENDPOINT must be defined');
-const s3Bucket = process.env.S3_BUCKET;
-if (!s3Bucket) throw new Error('envar S3_BUCKET must be defined');
-const s3Folder = process.env.S3_FOLDER;
-if (!s3Folder) throw new Error('envar S3_FOLDER must be defined');
-
 const s3Url = new URL(`${s3Endpoint}/${s3Bucket}/${s3Folder}/releases.json`);
 
 const file = process.argv[2];
-const version = process.argv[3];
-const channel = process.argv[4];
+const s3Endpoint = process.argv[3];
+const s3Bucket = process.argv[4];
+const s3Folder = process.argv[5];
+const version = process.argv[6];
+const channel = process.argv[7];
 
 const maxEntries = 15;
 const maxAgeDays = 90;
 
-if (!file || !channel || !version) {
-  console.error('Usage: %s <out file> <version> <channel>', process.argv[1]);
+if (!file || !s3Endpoint || !s3Bucket || !s3Folder || !version || !channel) {
+  console.error('Usage: %s <out file> <endpoint> <bucket> <folder> <version> <channel>', process.argv[1]);
   process.exit(1);
 }
 
