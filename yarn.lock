@@ -304,9 +304,9 @@
     fancy-test "^1.4.3"
 
 "@salesforce/command@^1", "@salesforce/command@^1.2.0", "@salesforce/command@^1.3.0":
-  version "1.3.2"
-  resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-1.3.2.tgz#388adf183d8c1587b8fdb1f03133675bc9a0c9f1"
-  integrity sha512-8IMv5OUdtsJE1HoXHZ3erGOWhcXd9QjouqdICFu79Cic45pZKFyqvTexEKVmda1/vX+Wksf5M/2UVBJm0RlKWw==
+  version "1.3.3"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-1.3.3.tgz#d12e2d9df5aa4af5bf00b17408505df64eac6521"
+  integrity sha512-OSp0oOlMmXEgdef7QPc7LAVa8Zj5ZFsZGbZwjbPs05sLRF+Sqy1S9QiS3uoNiXOuJ8FPmGWR4Vh+sxs970j0cA==
   dependencies:
     "@oclif/command" "^1.5.0"
     "@oclif/errors" "^1.2.0"
@@ -6364,9 +6364,9 @@ p-try@^1.0.0:
   integrity sha1-y8ec26+P1CKOE/Yh8rGiN8GyB7M=
 
 p-try@^2.0.0:
-  version "2.0.0"
-  resolved "http://10.252.156.164:4880/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
-  integrity sha512-hMp0onDKIajHfIkdRk3P4CdCmErkYAxxDtP3Wx/4nZ3aGlau2VKh3mZpcuFkH27WQkL/3WBCPOktzA9ZOAnMQQ==
+  version "2.1.0"
+  resolved "http://10.252.156.164:4880/p-try/-/p-try-2.1.0.tgz#c1a0f1030e97de018bb2c718929d2af59463e505"
+  integrity sha512-H2RyIJ7+A3rjkwKC2l5GGtU4H1vkxKCAGsWasNVd0Set+6i4znxbWy6/j16YDPJDWxhsgZiKAstMEP8wCdSpjA==
 
 package-hash@^3.0.0:
   version "3.0.0"
