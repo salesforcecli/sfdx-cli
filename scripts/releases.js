@@ -71,6 +71,7 @@ function pruneChannels(json) {
   Object.keys(json).forEach(channel => {
     json[channel] = pruneByAge(json[channel]);
     json[channel] = pruneByLength(json[channel]);
+    json[channel] = pruneByUniqueness(json[channel]);
   });
 }
 
@@ -82,6 +83,16 @@ function pruneByAge(list) {
 function pruneByLength(list) {
   if (list.length >= maxEntries) list = list.slice(1);
   return list;
+}
+
+function pruneByUniqueness(list) {
+  const seen = {};
+  return list.reverse().filter(el => {
+    const version = el.main + '-' + el.hash;
+    if (seen[version]) return false;
+    seen[version] = true;
+    return true;
+  }).reverse();
 }
 
 updateReleases()
