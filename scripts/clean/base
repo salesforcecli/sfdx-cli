@@ -8,25 +8,59 @@ script "clean/test" "$BASE_DIR"
 
 cd "$BASE_DIR"
 
+function filter() {
+  (grep -v "$1" || true)
+}
+
 # Remove non-production cli tests and js map assets from dist
-find dist -name \*.test.js -print0 | xargs -0 rm
-find dist -name \*.js.map -print0 | xargs -0 rm
+find dist -name '*.test.js' -print0 \
+  | xargs -0 rm
+find dist -name '*.js.map' -print0 \
+  | xargs -0 rm
 
 # Remove yarn files
 rm -f .yarnclean
 rm -f yarn.lock
 
-# Module readmes and other markdown docs not found in template directories
-find node_modules -name \*.md | grep -v /templates/ | xargs rm
+# Module readmes and other markdown docs and config not found in template directories
+find node_modules -name '*.md' -type f \
+  | filter '/templates/' \
+  | xargs rm -f
+find node_modules -name '.gitignore' -type f \
+  | filter '/templates/' \
+  | xargs rm -f
+find node_modules -name '.eslintrc' -type f \
+  | filter '/templates/' \
+  | xargs rm -f
+find node_modules -name '.gitattributes' -type f \
+  | filter '/templates/' \
+  | xargs rm -f
+find node_modules -name 'appveyor.yml' -type f \
+  | filter '/templates/' \
+  | xargs rm -f
+find node_modules -name 'circle.yml' -type f \
+  | filter '/templates/' \
+  | xargs rm -f
 
 # Module test dirs, except in salesforce-alm, which includes production source code in such a dir
-find node_modules -name test -type d | grep -v /salesforce-alm/ | grep -v /@salesforce/plugin-generator/ | xargs rm -rf
+find node_modules -name 'test' -type d \
+  | filter '/command/' \
+  | filter '/lib/' \
+  | filter '/salesforce-alm/' \
+  | filter '/force-language-services/' \
+  | filter '/@salesforce/plugin-generator/' \
+  | xargs rm -rf
 
 # Module doc dirs, except in salesforce-alm, which includes production source code in such a dir
-find node_modules -name doc -type d | grep -v /salesforce-alm/ | xargs rm -rf
+find node_modules -name 'doc' -type d \
+  | filter '/salesforce-alm/' \
+  | xargs rm -rf
 
 # JS map files, except the ill-named `lodash.map` (it's a directory and we'll also filter out matches if found for good measure)
-find node_modules -name \*.map -type f | grep -v lodash.map | xargs rm -f
+find node_modules -name '*.map' -type f \
+  | filter 'lodash.map' \
+  | xargs rm -f
 
 # In case yarn autoclean is disabled, delete some known windows file path length offenders
-find node_modules -name .nyc_output -print0 | xargs rm -rf
+find node_modules -name '.nyc_output'  -print0 \
+  | xargs rm -rf
