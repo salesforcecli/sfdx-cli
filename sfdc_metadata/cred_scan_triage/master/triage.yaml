@@ -1,0 +1,4 @@
+false_positive: []
+mock_secret: []
+non_production_secret: []
+production_secret: []
