@@ -23,30 +23,30 @@ sfdx --dev-debug
 sfdx version
 sfdx help
 sfdx plugins --core
-#sfdx force -h
-#sfdx force
-#sfdx force:alias:list
-#
-#set +e
-#
-# # Verify command set contains the minimum expected set
-# IFS='' read -r -d '' VERIFY_SCRIPT <<EOF
-# const fs = require('fs');
-# const expected = JSON.parse(fs.readFileSync('$RESOURCES_DIR/smoke/expected-commands.json'));
-# const stdin = process.stdin;
-# const chunks = [];
-# stdin.resume();
-# stdin.setEncoding('utf8');
-# stdin.on('data', (chunk) => chunks.push(chunk));
-# stdin.on('end', () => {
-#     const cmds = {};
-#     JSON.parse(chunks.join()).result.forEach((cmd) => cmds[cmd.name] = true);
-#     console.log('Verifying that expected commands exist...');
-#     expected.forEach((cmd) => {
-#         console.log('Checking ', cmd);
-#         if (!cmds[cmd]) throw new Error('Missing command: ' + cmd);
-#     });
-# });
-# EOF
+sfdx force -h
+sfdx force
+sfdx force:alias:list
 
-# sfdx force:doc:commands:list --json | node -e "$VERIFY_SCRIPT"
+set +e
+
+# Verify command set contains the minimum expected set
+IFS='' read -r -d '' VERIFY_SCRIPT <<EOF
+const fs = require('fs');
+const expected = JSON.parse(fs.readFileSync('$RESOURCES_DIR/smoke/expected-commands.json'));
+const stdin = process.stdin;
+const chunks = [];
+stdin.resume();
+stdin.setEncoding('utf8');
+stdin.on('data', (chunk) => chunks.push(chunk));
+stdin.on('end', () => {
+    const cmds = {};
+    JSON.parse(chunks.join()).result.forEach((cmd) => cmds[cmd.name] = true);
+    console.log('Verifying that expected commands exist...');
+    expected.forEach((cmd) => {
+        console.log('Checking ', cmd);
+        if (!cmds[cmd]) throw new Error('Missing command: ' + cmd);
+    });
+});
+EOF
+
+sfdx force:doc:commands:list --json | node -e "$VERIFY_SCRIPT"
