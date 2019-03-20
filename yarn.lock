@@ -112,7 +112,7 @@
     supports-color "^5.4.0"
     tslib "^1"
 
-"@oclif/command@^1", "@oclif/command@^1.4.33", "@oclif/command@^1.5.0", "@oclif/command@^1.5.1", "@oclif/command@^1.5.10", "@oclif/command@^1.5.11", "@oclif/command@^1.5.3", "@oclif/command@^1.5.4", "@oclif/command@^1.5.8":
+"@oclif/command@^1", "@oclif/command@^1.5.0", "@oclif/command@^1.5.1", "@oclif/command@^1.5.10", "@oclif/command@^1.5.11", "@oclif/command@^1.5.3", "@oclif/command@^1.5.4", "@oclif/command@^1.5.8":
   version "1.5.12"
   resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.5.12.tgz#d4b5033c4e9d9f37e06857cf84cf0c8927e368b5"
   integrity sha512-D5/Kph9smL92X1z9WPmxFd9zDruFsCk4/LbfCaBmiO2Vyyt7Y9O6kI1YLsC3B0KC9wymSCTH14IK96rf9AFHfQ==
@@ -130,10 +130,18 @@
     debug "^4.1.1"
     tslib "^1.9.3"
 
-"@oclif/config@^1", "@oclif/config@^1.12.8", "@oclif/config@^1.6.28", "@oclif/config@^1.8.7", "@oclif/config@^1.9.0":
+"@oclif/config@^1", "@oclif/config@^1.12.8", "@oclif/config@^1.8.7", "@oclif/config@^1.9.0":
   version "1.12.10"
   resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.12.10.tgz#08ef278cfad981d618468c969c1a1c64f3a38c98"
   integrity sha512-AQYFA72ktXgmrY4hjRtBQRfKLDKXPG4WGSLUgWn0KencNuqnmbiKS6zfKXf1umfZ26zoDOEfCdqZjm3aNZnIaw==
+  dependencies:
+    debug "^4.1.1"
+    tslib "^1.9.3"
+
+"@oclif/config@^1.7.6":
+  version "1.12.11"
+  resolved "http://10.252.156.164:4880/@oclif%2fconfig/-/config-1.12.11.tgz#b7a7feb28bd4927957213de6a37cecc846367a84"
+  integrity sha512-j1NiPuVZr3C6jba5XeKlwc6DfPNoDUZERZvAvly2nvngAuVcl9/JhboCkyyS+Jrq8K+ymlZc4knZ8RVnMK8owg==
   dependencies:
     debug "^4.1.1"
     tslib "^1.9.3"
@@ -156,7 +164,7 @@
     qqjs "^0.3.10"
     tslib "^1.9.3"
 
-"@oclif/errors@^1", "@oclif/errors@^1.1.2", "@oclif/errors@^1.2.0", "@oclif/errors@^1.2.1", "@oclif/errors@^1.2.2":
+"@oclif/errors@^1", "@oclif/errors@^1.2.0", "@oclif/errors@^1.2.1", "@oclif/errors@^1.2.2":
   version "1.2.2"
   resolved "http://10.252.156.164:4880/@oclif%2ferrors/-/errors-1.2.2.tgz#9d8f269b15f13d70aa93316fed7bebc24688edc2"
   integrity sha512-Eq8BFuJUQcbAPVofDxwdE0bL14inIiwt5EaKRVY9ZDIG11jwdXZqiQEECJx0VfnLyUZdYfRd/znDI/MytdJoKg==
@@ -202,7 +210,7 @@
     lodash "^4.17.11"
     tslib "^1.9.3"
 
-"@oclif/plugin-help@^2", "@oclif/plugin-help@^2.0.5", "@oclif/plugin-help@^2.1.0", "@oclif/plugin-help@^2.1.6":
+"@oclif/plugin-help@^2", "@oclif/plugin-help@^2.1.0", "@oclif/plugin-help@^2.1.2", "@oclif/plugin-help@^2.1.6":
   version "2.1.6"
   resolved "http://10.252.156.164:4880/@oclif%2fplugin-help/-/plugin-help-2.1.6.tgz#ae14cbe2c5cd3eaf5f796d205ffbe66d3e369173"
   integrity sha512-M4kTERpPWNSM1Mga7K/zo9DWHLCVf2FRaIeXPoytmTPd+0kSvG3TR0Vc1bwx9/cxXoYyYGgEejwNlrfayr8FZw==
@@ -216,7 +224,7 @@
     widest-line "^2.0.1"
     wrap-ansi "^4.0.0"
 
-"@oclif/plugin-not-found@^1", "@oclif/plugin-not-found@^1.0.9":
+"@oclif/plugin-not-found@^1", "@oclif/plugin-not-found@^1.2.0":
   version "1.2.2"
   resolved "http://10.252.156.164:4880/@oclif%2fplugin-not-found/-/plugin-not-found-1.2.2.tgz#3e601f6e4264d7a0268cd03c152d90aa9c0cec6d"
   integrity sha512-SPlmiJFmTFltQT/owdzQwKgq6eq5AEKVwVK31JqbzK48bRWvEL1Ye60cgztXyZ4bpPn2Fl+KeL3FWFQX41qJuA==
@@ -266,7 +274,7 @@
     semver "^5.6.0"
     tar-fs "^1.16.3"
 
-"@oclif/plugin-warn-if-update-available@1.7.0", "@oclif/plugin-warn-if-update-available@^1.3.9":
+"@oclif/plugin-warn-if-update-available@1.7.0", "@oclif/plugin-warn-if-update-available@^1.5.3":
   version "1.7.0"
   resolved "http://10.252.156.164:4880/@oclif%2fplugin-warn-if-update-available/-/plugin-warn-if-update-available-1.7.0.tgz#5a72abe39ce0b831eb4ae81cb64eb4b9f3ea424a"
   integrity sha512-Nwyz3BJ8RhsfQ+OmFSsJSPIfn5YJqMrCzPh72Zgo2jqIjKIBWD8N9vTTe4kZlpeUUn77SyXFfwlBQbNCL5OEuQ==
@@ -303,7 +311,7 @@
   dependencies:
     fancy-test "^1.4.3"
 
-"@salesforce/command@^1", "@salesforce/command@^1.2.0", "@salesforce/command@^1.3.0":
+"@salesforce/command@^1", "@salesforce/command@^1.2.0":
   version "1.3.3"
   resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-1.3.3.tgz#d12e2d9df5aa4af5bf00b17408505df64eac6521"
   integrity sha512-OSp0oOlMmXEgdef7QPc7LAVa8Zj5ZFsZGbZwjbPs05sLRF+Sqy1S9QiS3uoNiXOuJ8FPmGWR4Vh+sxs970j0cA==
@@ -319,10 +327,43 @@
     chalk "^2.4.0"
     cli-ux "^4.8.0"
 
-"@salesforce/core@^1.0.0", "@salesforce/core@^1.1.1":
+"@salesforce/command@^1.3.3":
+  version "1.3.4"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-1.3.4.tgz#c76bd8c8acda4fcad05096ec4d904471e22ba34c"
+  integrity sha512-SkObOjm+CNpjLez69GLluGHmXuBAsO4f+oK23sFuc1lxYQV8FLPbnJpG2c+zqa+aJnueJXAFK8F8z3cUkLm2iw==
+  dependencies:
+    "@oclif/command" "^1.5.0"
+    "@oclif/errors" "^1.2.0"
+    "@oclif/parser" "^3.6.0"
+    "@oclif/plugin-help" "^2.1.0"
+    "@oclif/test" "^1.2.0"
+    "@salesforce/core" "^1.2.3"
+    "@salesforce/kit" "^1.0.0"
+    "@salesforce/ts-types" "^1.0.0"
+    chalk "^2.4.0"
+    cli-ux "^4.8.0"
+
+"@salesforce/core@^1.0.0":
   version "1.2.3"
   resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-1.2.3.tgz#a54397c24f807b2e876892a69d915b10693c5f22"
   integrity sha512-TRl0jxrBBnmb3Qiihc2fQ4sAEFPBD+IoudjuM1Bp10DUBXwfJrJW0zTl7XL7Q8/8sqltVWB7xw5rrpPvoOhbOQ==
+  dependencies:
+    "@salesforce/kit" "^1.0.0"
+    "@salesforce/ts-sinon" "^1.0.0"
+    "@salesforce/ts-types" "^1.0.0"
+    "@types/jsforce" "1.9.2"
+    bunyan-sfdx-no-dtrace "1.8.2"
+    debug "^3.1.0"
+    jsen "0.6.6"
+    jsforce "1.8.5"
+    jsonwebtoken "8.5.0"
+    mkdirp "0.5.1"
+    sfdx-faye "^1.0.9"
+
+"@salesforce/core@^1.2.3":
+  version "1.3.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcore/-/core-1.3.0.tgz#b0c035825d560222810235acb44510a5c1ab2004"
+  integrity sha512-IyL12JILRm4qQeJa4ao2tlX+JJ1ji53EH/JEd8QRpyPndm6rfJNVny42Be1cEwdgu1CAMIYfWXJ9rYgpE6Xppw==
   dependencies:
     "@salesforce/kit" "^1.0.0"
     "@salesforce/ts-sinon" "^1.0.0"
@@ -361,10 +402,10 @@
     debug "^3.1.0"
     tslib "^1"
 
-"@salesforce/plugin-analytics@0.4.0":
-  version "0.4.0"
-  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-0.4.0.tgz#9fa606537d7085c017db86befabb0a7b10ca516a"
-  integrity sha1-n6YGU31whcAX24a++rsKexDKUWo=
+"@salesforce/plugin-analytics@^1.0.0":
+  version "1.1.0"
+  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-1.1.0.tgz#7662599a015d2d243bbb0221468fe7070f3ff734"
+  integrity sha512-nhBJLLiyUsidF8XEfGjKt0dimeYWmojIHkMo7Wts0s5C0XC8JUcxblUyNADsuwdC6RckYJZjODWfyEEIADn6ww==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
@@ -375,25 +416,25 @@
     fs-extra "^7.0.0"
     tslib "^1"
 
-"@salesforce/plugin-generator@0.0.10":
-  version "0.0.10"
-  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-generator/-/plugin-generator-0.0.10.tgz#44a2ca60a1694a56ac834c1294f6c7d902951017"
-  integrity sha1-RKLKYKFpSlasg0wSlPbH2QKVEBc=
+"@salesforce/plugin-generator@^1.0.1":
+  version "1.0.1"
+  resolved "http://10.252.156.164:4880/@salesforce%2fplugin-generator/-/plugin-generator-1.0.1.tgz#0713cd376e97da2c00162576be2356b7e7e52b28"
+  integrity sha1-BxPNN26X2iwAFiV2viNWt+flKyg=
   dependencies:
-    "@oclif/command" "^1.4.33"
-    "@oclif/config" "^1.6.28"
-    "@oclif/errors" "^1.1.2"
-    "@oclif/plugin-help" "^2.0.5"
-    "@oclif/plugin-not-found" "^1.0.9"
-    "@oclif/plugin-warn-if-update-available" "^1.3.9"
-    debug "^3.1.0"
-    fixpack "^2.3.1"
-    lodash "^4.17.10"
-    nps-utils "^1.5.0"
-    sort-pjson "^1.0.2"
-    tslib "^1.9.2"
-    yeoman-environment "^2.2.0"
-    yeoman-generator "^2.0.5"
+    "@oclif/command" "^1.5.1"
+    "@oclif/config" "^1.7.6"
+    "@oclif/errors" "^1.2.1"
+    "@oclif/fixpack" "^2.3.0"
+    "@oclif/plugin-help" "^2.1.2"
+    "@oclif/plugin-not-found" "^1.2.0"
+    "@oclif/plugin-warn-if-update-available" "^1.5.3"
+    debug "^4.0.1"
+    lodash "^4.17.11"
+    nps-utils "^1.7.0"
+    sort-pjson "^1.0.3"
+    tslib "^1.9.3"
+    yeoman-environment "^2.3.3"
+    yeoman-generator "^3.1.1"
     yosay "^2.0.2"
 
 "@salesforce/require-analytics@0.6.10":
@@ -650,14 +691,6 @@ ajv@^6.5.5:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
-
-alce@1.0.0:
-  version "1.0.0"
-  resolved "http://10.252.156.164:4880/alce/-/alce-1.0.0.tgz#426184c98ee288d0eeac77fd63fed680b667cab6"
-  integrity sha1-QmGEyY7iiNDurHf9Y/7WgLZnyrY=
-  dependencies:
-    esprima "~1.0.4"
-    estraverse "~1.3.0"
 
 alce@1.2.0:
   version "1.2.0"
@@ -2039,6 +2072,11 @@ dargs@^5.1.0:
   resolved "http://10.252.156.164:4880/dargs/-/dargs-5.1.0.tgz#ec7ea50c78564cd36c9d5ec18f66329fade27829"
   integrity sha1-7H6lDHhWTNNsnV7Bj2Yyn63ieCk=
 
+dargs@^6.0.0:
+  version "6.0.0"
+  resolved "http://10.252.156.164:4880/dargs/-/dargs-6.0.0.tgz#da35d4633cd821de868f97d645f8d1f9b0353a24"
+  integrity sha512-6lJauzNaI7MiM8EHQWmGj+s3rP5/i1nYs8GAvKrLAx/9dpc9xS/4seFb1ioR39A+kcfu4v3jnEa/EE5qWYnitQ==
+
 dashdash@^1.12.0:
   version "1.14.1"
   resolved "http://10.252.156.164:4880/dashdash/-/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
@@ -2092,14 +2130,14 @@ debug@^3, debug@^3.1.0:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.0, debug@^4.1.0, debug@^4.1.1:
+debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
   version "4.1.1"
   resolved "http://10.252.156.164:4880/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
   integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
   dependencies:
     ms "^2.1.1"
 
-debuglog@*, debuglog@^1.0.1:
+debuglog@^1.0.1:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/debuglog/-/debuglog-1.0.1.tgz#aa24ffb9ac3df9a2351837cfb2d279360cd78492"
   integrity sha1-qiT/uaw9+aI1GDfPstJ5NgzXhJI=
@@ -2137,11 +2175,6 @@ deep-extend@^0.6.0:
   version "0.6.0"
   resolved "http://10.252.156.164:4880/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
   integrity sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==
-
-deep-extend@~0.2.5:
-  version "0.2.11"
-  resolved "http://10.252.156.164:4880/deep-extend/-/deep-extend-0.2.11.tgz#7a16ba69729132340506170494bc83f7076fe08f"
-  integrity sha1-eha6aXKRMjQFBhcElLyD9wdv4I8=
 
 deep-is@~0.1.3:
   version "0.1.3"
@@ -2714,11 +2747,6 @@ esprima@^4.0.0, esprima@~4.0.0:
   resolved "http://10.252.156.164:4880/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
 
-esprima@~1.0.4:
-  version "1.0.4"
-  resolved "http://10.252.156.164:4880/esprima/-/esprima-1.0.4.tgz#9f557e08fc3b4d26ece9dd34f8fbf476b62585ad"
-  integrity sha1-n1V+CPw7TSbs6d00+Pv0drYlha0=
-
 esquery@^1.0.0:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/esquery/-/esquery-1.0.1.tgz#406c51658b1f5991a5f9b62b1dc25b00e3e5c708"
@@ -2742,11 +2770,6 @@ estraverse@^4.0.0, estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
   version "4.2.0"
   resolved "http://10.252.156.164:4880/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
   integrity sha1-De4/7TH81GlhjOc0IJn8GvoL2xM=
-
-estraverse@~1.3.0:
-  version "1.3.2"
-  resolved "http://10.252.156.164:4880/estraverse/-/estraverse-1.3.2.tgz#37c2b893ef13d723f276d878d60d8535152a6c42"
-  integrity sha1-N8K4k+8T1yPydth41g2FNRUqbEI=
 
 esutils@^2.0.2:
   version "2.0.2"
@@ -3077,16 +3100,6 @@ first-chunk-stream@^2.0.0:
   dependencies:
     readable-stream "^2.0.2"
 
-fixpack@^2.3.1:
-  version "2.3.1"
-  resolved "http://10.252.156.164:4880/fixpack/-/fixpack-2.3.1.tgz#53f03d88aab7d5123259282f0088a9a3b19836c2"
-  integrity sha1-U/A9iKq31RIyWSgvAIipo7GYNsI=
-  dependencies:
-    alce "1.0.0"
-    colors "*"
-    extend-object "^1.0.0"
-    rc "^0.6.0"
-
 flat-cache@^1.2.1:
   version "1.3.4"
   resolved "http://10.252.156.164:4880/flat-cache/-/flat-cache-1.3.4.tgz#2c2ef77525cc2929007dfffa1dd314aa9c9dee6f"
@@ -3110,10 +3123,10 @@ for-in@^1.0.2:
   resolved "http://10.252.156.164:4880/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
   integrity sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=
 
-force-language-services@45.8.1-15:
-  version "45.8.1-15"
-  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-45.8.1-15.tgz#8a3e5b29fe6c67f2638333ab981aecd8f31db174"
-  integrity sha512-efiFQHmp0pcl9on9Vj/yu10kSnOHxqjQeAXUCMxopuZ+dXKD82B6bAkSXzM30LFLvOsaEde7E+pyYwHNcu2bWA==
+force-language-services@45.8.1-17:
+  version "45.8.1-17"
+  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-45.8.1-17.tgz#7aa562112a3e0c67737d1538f6d3322aced7e812"
+  integrity sha512-V+T4DC9T0LIB+ySTtinrQqx+Mjm/IphwK451ywHjBSDg18naRhT3SPBgD47GiAmd4Dwbo0CAcCvcJoIV8I5F6Q==
   dependencies:
     "@salesforce/command" "^1.2.0"
     "@salesforce/ts-types" "^1.1.1"
@@ -3965,7 +3978,7 @@ import-lazy@^2.1.0:
   resolved "http://10.252.156.164:4880/import-lazy/-/import-lazy-2.1.0.tgz#05698e3d45c88e8d7e9d92cb0584e77f096f3e43"
   integrity sha1-BWmOPUXIjo1+nZLLBYTnfwlvPkM=
 
-imurmurhash@*, imurmurhash@^0.1.4:
+imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "http://10.252.156.164:4880/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
@@ -4841,7 +4854,7 @@ libnpm@^2.0.1:
     read-package-json "^2.0.13"
     stringify-package "^1.0.0"
 
-libnpmaccess@*, libnpmaccess@^3.0.1:
+libnpmaccess@^3.0.1:
   version "3.0.1"
   resolved "http://10.252.156.164:4880/libnpmaccess/-/libnpmaccess-3.0.1.tgz#5b3a9de621f293d425191aa2e779102f84167fa8"
   integrity sha512-RlZ7PNarCBt+XbnP7R6PoVgOq9t+kou5rvhaInoNibhPO7eMlRfS0B8yjatgn2yaHIwWNyoJDolC/6Lc5L/IQA==
@@ -4870,7 +4883,7 @@ libnpmhook@^5.0.2:
     get-stream "^4.0.0"
     npm-registry-fetch "^3.8.0"
 
-libnpmorg@*, libnpmorg@^1.0.0:
+libnpmorg@^1.0.0:
   version "1.0.0"
   resolved "http://10.252.156.164:4880/libnpmorg/-/libnpmorg-1.0.0.tgz#979b868c48ba28c5820e3bb9d9e73c883c16a232"
   integrity sha512-o+4eVJBoDGMgRwh2lJY0a8pRV2c/tQM/SxlqXezjcAg26Qe9jigYVs+Xk0vvlYDWCDhP0g74J8UwWeAgsB7gGw==
@@ -4895,7 +4908,7 @@ libnpmpublish@^1.1.0:
     semver "^5.5.1"
     ssri "^6.0.1"
 
-libnpmsearch@*, libnpmsearch@^2.0.0:
+libnpmsearch@^2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/libnpmsearch/-/libnpmsearch-2.0.0.tgz#de05af47ada81554a5f64276a69599070d4a5685"
   integrity sha512-vd+JWbTGzOSfiOc+72MU6y7WqmBXn49egCCrIXp27iE/88bX8EpG64ST1blWQI1bSMUr9l1AKPMVsqa2tS5KWA==
@@ -4904,7 +4917,7 @@ libnpmsearch@*, libnpmsearch@^2.0.0:
     get-stream "^4.0.0"
     npm-registry-fetch "^3.8.0"
 
-libnpmteam@*, libnpmteam@^1.0.1:
+libnpmteam@^1.0.1:
   version "1.0.1"
   resolved "http://10.252.156.164:4880/libnpmteam/-/libnpmteam-1.0.1.tgz#ff704b1b6c06ea674b3b1101ac3e305f5114f213"
   integrity sha512-gDdrflKFCX7TNwOMX1snWojCoDE5LoRWcfOC0C/fqF7mBq8Uz9zWAX4B2RllYETNO7pBupBaSyBDkTAC15cAMg==
@@ -5008,11 +5021,6 @@ lodash._basecreate@^3.0.0:
   resolved "http://10.252.156.164:4880/lodash._basecreate/-/lodash._basecreate-3.0.3.tgz#1bc661614daa7fc311b7d03bf16806a0213cf821"
   integrity sha1-G8ZhYU2qf8MRt9A78WgGoCE8+CE=
 
-lodash._baseindexof@*:
-  version "3.1.0"
-  resolved "http://10.252.156.164:4880/lodash._baseindexof/-/lodash._baseindexof-3.1.0.tgz#fe52b53a1c6761e42618d654e4a25789ed61822c"
-  integrity sha1-/lK1OhxnYeQmGNZU5KJXie1hgiw=
-
 lodash._baseuniq@~4.6.0:
   version "4.6.0"
   resolved "http://10.252.156.164:4880/lodash._baseuniq/-/lodash._baseuniq-4.6.0.tgz#0ebb44e456814af7905c6212fa2c9b2d51b841e8"
@@ -5021,29 +5029,12 @@ lodash._baseuniq@~4.6.0:
     lodash._createset "~4.0.0"
     lodash._root "~3.0.0"
 
-lodash._bindcallback@*:
-  version "3.0.1"
-  resolved "http://10.252.156.164:4880/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
-  integrity sha1-5THCdkTPi1epnhftlbNcdIeJOS4=
-
-lodash._cacheindexof@*:
-  version "3.0.2"
-  resolved "http://10.252.156.164:4880/lodash._cacheindexof/-/lodash._cacheindexof-3.0.2.tgz#3dc69ac82498d2ee5e3ce56091bafd2adc7bde92"
-  integrity sha1-PcaayCSY0u5ePOVgkbr9Ktx73pI=
-
-lodash._createcache@*:
-  version "3.1.2"
-  resolved "http://10.252.156.164:4880/lodash._createcache/-/lodash._createcache-3.1.2.tgz#56d6a064017625e79ebca6b8018e17440bdcf093"
-  integrity sha1-VtagZAF2JeeevKa4AY4XRAvc8JM=
-  dependencies:
-    lodash._getnative "^3.0.0"
-
 lodash._createset@~4.0.0:
   version "4.0.3"
   resolved "http://10.252.156.164:4880/lodash._createset/-/lodash._createset-4.0.3.tgz#0f4659fbb09d75194fa9e2b88a6644d363c9fe26"
   integrity sha1-D0ZZ+7CddRlPqeK4imZE02PJ/iY=
 
-lodash._getnative@*, lodash._getnative@^3.0.0:
+lodash._getnative@^3.0.0:
   version "3.9.1"
   resolved "http://10.252.156.164:4880/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
   integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
@@ -5215,11 +5206,6 @@ lodash.repeat@4.0.4:
   version "4.0.4"
   resolved "http://10.252.156.164:4880/lodash.repeat/-/lodash.repeat-4.0.4.tgz#096849227f31a3d4dec8db479f0c9828c07052a9"
   integrity sha1-CWhJIn8xo9TeyNtHnwyYKMBwUqk=
-
-lodash.restparam@*:
-  version "3.6.1"
-  resolved "http://10.252.156.164:4880/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
-  integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
 
 lodash.result@4.5.0:
   version "4.5.0"
@@ -5431,6 +5417,23 @@ mem-fs-editor@^4.0.0:
     through2 "^2.0.0"
     vinyl "^2.0.1"
 
+mem-fs-editor@^5.0.0:
+  version "5.1.0"
+  resolved "http://10.252.156.164:4880/mem-fs-editor/-/mem-fs-editor-5.1.0.tgz#51972241640be8567680a04f7adaffe5fc603667"
+  integrity sha512-2Yt2GCYEbcotYbIJagmow4gEtHDqzpq5XN94+yAx/NT5+bGqIjkXnm3KCUQfE6kRfScGp9IZknScoGRKu8L78w==
+  dependencies:
+    commondir "^1.0.1"
+    deep-extend "^0.6.0"
+    ejs "^2.5.9"
+    glob "^7.0.3"
+    globby "^8.0.1"
+    isbinaryfile "^3.0.2"
+    mkdirp "^0.5.0"
+    multimatch "^2.0.0"
+    rimraf "^2.2.8"
+    through2 "^2.0.0"
+    vinyl "^2.0.1"
+
 mem-fs@^1.1.0:
   version "1.1.3"
   resolved "http://10.252.156.164:4880/mem-fs/-/mem-fs-1.1.3.tgz#b8ae8d2e3fcb6f5d3f9165c12d4551a065d989cc"
@@ -5552,7 +5555,7 @@ minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0:
   resolved "http://10.252.156.164:4880/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
   integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
 
-minimist@~0.0.1, minimist@~0.0.7:
+minimist@~0.0.1:
   version "0.0.10"
   resolved "http://10.252.156.164:4880/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
   integrity sha1-3j+YVD2/lggr5IrRoMfNqDYwHc8=
@@ -5915,7 +5918,7 @@ npm-pick-manifest@^2.2.3:
     npm-package-arg "^6.0.0"
     semver "^5.4.1"
 
-npm-profile@*, npm-profile@^4.0.1:
+npm-profile@^4.0.1:
   version "4.0.1"
   resolved "http://10.252.156.164:4880/npm-profile/-/npm-profile-4.0.1.tgz#d350f7a5e6b60691c7168fbb8392c3603583f5aa"
   integrity sha512-NQ1I/1Q7YRtHZXkcuU1/IyHeLy6pd+ScKg4+DQHdfsm769TGq6HPrkbuNJVJS4zwE+0mvvmeULzQdWn2L2EsVA==
@@ -6072,7 +6075,7 @@ npm@6.8.0:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
-nps-utils@^1.5.0:
+nps-utils@^1.7.0:
   version "1.7.0"
   resolved "http://10.252.156.164:4880/nps-utils/-/nps-utils-1.7.0.tgz#88ef27925ee7cd916f15a25f1b1a6648e9b21a7d"
   integrity sha512-wq/gUxTR3sgLYTLHlUKwMG2paUV3QdfwMj5aifWpQ60Vv9RQzA6pXDkwrAlMA8SNqoz8FwaGPc1X/7I+qjuYwg==
@@ -6644,6 +6647,11 @@ pretty-bytes@^4.0.2:
   resolved "http://10.252.156.164:4880/pretty-bytes/-/pretty-bytes-4.0.2.tgz#b2bf82e7350d65c6c33aa95aaa5a4f6327f61cd9"
   integrity sha1-sr+C5zUNZcbDOqlaqlpPYyf2HNk=
 
+pretty-bytes@^5.1.0:
+  version "5.1.0"
+  resolved "http://10.252.156.164:4880/pretty-bytes/-/pretty-bytes-5.1.0.tgz#6237ecfbdc6525beaef4de722cc60a58ae0e6c6d"
+  integrity sha512-wa5+qGVg9Yt7PB6rYm3kXlKzgzgivYTLRandezh43jjRqgyDyP+9YxfJpJiLs9yKD1WeU8/OvtToWpW7255FtA==
+
 process-nextick-args@^2.0.0, process-nextick-args@~2.0.0:
   version "2.0.0"
   resolved "http://10.252.156.164:4880/process-nextick-args/-/process-nextick-args-2.0.0.tgz#a37d732f4271b4ab1ad070d35508e8290788ffaa"
@@ -6827,16 +6835,6 @@ ramda@^0.24.1:
   resolved "http://10.252.156.164:4880/ramda/-/ramda-0.24.1.tgz#c3b7755197f35b8dc3502228262c4c91ddb6b857"
   integrity sha1-w7d1UZfzW43DUCIoJixMkd22uFc=
 
-rc@^0.6.0:
-  version "0.6.0"
-  resolved "http://10.252.156.164:4880/rc/-/rc-0.6.0.tgz#e1c930059af831c85413fe275ae2f40f4e3c5371"
-  integrity sha1-4ckwBZr4MchUE/4nWuL0D048U3E=
-  dependencies:
-    deep-extend "~0.2.5"
-    ini "~1.3.0"
-    minimist "~0.0.7"
-    strip-json-comments "0.1.x"
-
 rc@^1.0.1, rc@^1.1.6, rc@^1.2.8:
   version "1.2.8"
   resolved "http://10.252.156.164:4880/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
@@ -6867,6 +6865,14 @@ read-chunk@^2.1.0:
   dependencies:
     pify "^3.0.0"
     safe-buffer "^5.1.1"
+
+read-chunk@^3.0.0:
+  version "3.1.0"
+  resolved "http://10.252.156.164:4880/read-chunk/-/read-chunk-3.1.0.tgz#4aab805e68b1b2c72a2fe5aefa8284faf623b1c0"
+  integrity sha512-ZdiZJXXoZYE08SzZvTipHhI+ZW0FpzxmFtLI3vIeMuRN9ySbIZ+SZawKogqJ7dxW9fJ/W73BNtxu4Zu/bZp+Ng==
+  dependencies:
+    pify "^4.0.1"
+    with-open-file "^0.1.5"
 
 read-cmd-shim@^1.0.1, read-cmd-shim@~1.0.1:
   version "1.0.1"
@@ -6993,7 +6999,7 @@ readable-stream@1.1:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-readable-stream@^3.1.1:
+"readable-stream@2 || 3", readable-stream@^3.1.1:
   version "3.2.0"
   resolved "http://10.252.156.164:4880/readable-stream/-/readable-stream-3.2.0.tgz#de17f229864c120a9f56945756e4f32c4045245d"
   integrity sha512-RV20kLjdmpZuTF1INEb9IA3L68Nmi+Ri7ppZqo78wj//Pn62fCoJyV9zalccNzDD/OuJpMG4f+pfMl8+L6QdGw==
@@ -7012,7 +7018,7 @@ readable-stream@~1.1.10:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-readdir-scoped-modules@*, readdir-scoped-modules@^1.0.0:
+readdir-scoped-modules@^1.0.0:
   version "1.0.2"
   resolved "http://10.252.156.164:4880/readdir-scoped-modules/-/readdir-scoped-modules-1.0.2.tgz#9fafa37d286be5d92cbaebdee030dc9b5f406747"
   integrity sha1-n6+jfShr5dksuuve4DDcm19AZ0c=
@@ -7379,15 +7385,15 @@ safe-regex@^1.1.0:
   resolved "http://10.252.156.164:4880/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@45.8.1-17:
-  version "45.8.1-17"
-  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-45.8.1-17.tgz#b09371e9efe655e158c2e219257a055e425fd151"
-  integrity sha512-qNFYhv4xOh/Jb3PwCk1DNp//OXAWr+TiIzFBJ8jKB/ffONBak63Pv8/7aSTl8b6ACMYlHHup+8vp/uGrZdjDyA==
+salesforce-alm@45.8.1-22:
+  version "45.8.1-22"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-45.8.1-22.tgz#6a351fc30ac813c6a67bbdfb9c94977179479847"
+  integrity sha512-nf/XyhwOCdSwAHUBmrV3Z83fw5tYQ920Mewc2uWF4aqrJFy5fheAefxtriwirKmGJfaOkm+slplW8UPZjmlzsQ==
   dependencies:
     "@oclif/errors" "^1.2.0"
     "@oclif/plugin-help" "^2.1.6"
-    "@salesforce/command" "^1.3.0"
-    "@salesforce/core" "^1.1.1"
+    "@salesforce/command" "^1.3.3"
+    "@salesforce/core" "^1.2.3"
     "@salesforce/kit" "^1.0.0"
     "@salesforce/ts-types" "1.0.0"
     adm-zip "0.4.13"
@@ -7439,13 +7445,13 @@ salesforce-lightning-cli@2.0.1:
     heroku-cli-util "^5.8.1"
     object-assign "^4.0.1"
 
-salesforcedx@45.8.1-25:
-  version "45.8.1-25"
-  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-45.8.1-25.tgz#15ceaa7625e92a691209d5d7bba99e0e41a75549"
-  integrity sha512-XZxtxMfWKTPV4/Z/YY5TD0qRGbBpPK2H78bH+kvwQ+NNjGOu4sUzrCdvtX6cMOLsdIeE0O3MThD7jSodQcvMUA==
+salesforcedx@45.8.1-30:
+  version "45.8.1-30"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-45.8.1-30.tgz#daac2190f6ec35e18c3766d884f7985f5bdad5bb"
+  integrity sha512-Ux/udM7QDR/5iUCrD/HNdre+h4coQN4wWcgCnb6eRn24RXc/FsBjQoKrLmnd9iVT5KlHBVuCdwhKEhg5U2nKsQ==
   dependencies:
-    force-language-services "45.8.1-15"
-    salesforce-alm "45.8.1-17"
+    force-language-services "45.8.1-17"
+    salesforce-alm "45.8.1-22"
     salesforce-lightning-cli "2.0.1"
 
 samsam@1.3.0:
@@ -7704,7 +7710,7 @@ sort-keys@^2.0.0:
   dependencies:
     is-plain-obj "^1.0.0"
 
-sort-pjson@^1.0.2:
+sort-pjson@^1.0.3:
   version "1.0.3"
   resolved "http://10.252.156.164:4880/sort-pjson/-/sort-pjson-1.0.3.tgz#79435ab838db3700cc255278175c111b407b6bb5"
   integrity sha512-h/xRX+8zuV9tbnbkRwmdNNyyJbjzVTh8YFpMgEgGU2umFDFg2EDfWKtA5YOfnBwT4YoZfJf6hrc0yuXLUvUDFA==
@@ -8015,11 +8021,6 @@ strip-indent@^1.0.1:
   dependencies:
     get-stdin "^4.0.1"
 
-strip-json-comments@0.1.x:
-  version "0.1.3"
-  resolved "http://10.252.156.164:4880/strip-json-comments/-/strip-json-comments-0.1.3.tgz#164c64e370a8a3cc00c9e01b539e569823f0ee54"
-  integrity sha1-Fkxk43Coo8wAyeAbU55WmCPw7lQ=
-
 strip-json-comments@~1.0.1:
   version "1.0.4"
   resolved "http://10.252.156.164:4880/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
@@ -8195,6 +8196,13 @@ through2@^2.0.0:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
 
+through2@^3.0.0:
+  version "3.0.1"
+  resolved "http://10.252.156.164:4880/through2/-/through2-3.0.1.tgz#39276e713c3302edf9e388dd9c812dd3b825bd5a"
+  integrity sha512-M96dvTalPT3YbYLaKaCuwu+j06D/8Jfib0o/PxbVt6Amhv3dUAtW6rTV1jPgJSBG83I/e04Y6xkVdVhSRhi0ww==
+  dependencies:
+    readable-stream "2 || 3"
+
 "through@>=2.2.7 <3", through@^2.3.6:
   version "2.3.8"
   resolved "http://10.252.156.164:4880/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
@@ -8332,7 +8340,7 @@ ts-node@^6:
     source-map-support "^0.5.6"
     yn "^2.0.0"
 
-tslib@^1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.2, tslib@^1.9.3:
+tslib@^1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.9.3"
   resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
@@ -8748,6 +8756,15 @@ widest-line@^2.0.0, widest-line@^2.0.1:
   dependencies:
     string-width "^2.1.1"
 
+with-open-file@^0.1.5:
+  version "0.1.5"
+  resolved "http://10.252.156.164:4880/with-open-file/-/with-open-file-0.1.5.tgz#877239a04e56ec92ebb1f698809d03b93e07aabc"
+  integrity sha512-zY51cJCXG6qBilVuMceKNwU3rzjB/Ygt96BuSQ4+tXo3ewlxvj9ET99lpUHNzWfkYmsyfqKZEB9NJORmGZ1Ltw==
+  dependencies:
+    p-finally "^1.0.0"
+    p-try "^2.0.0"
+    pify "^3.0.0"
+
 wordwrap@~0.0.2:
   version "0.0.3"
   resolved "http://10.252.156.164:4880/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
@@ -8996,7 +9013,7 @@ yeoman-environment@^1.1.0:
     text-table "^0.2.0"
     untildify "^2.0.0"
 
-yeoman-environment@^2.0.5, yeoman-environment@^2.2.0, yeoman-environment@^2.3.0:
+yeoman-environment@^2.0.5, yeoman-environment@^2.3.0, yeoman-environment@^2.3.3:
   version "2.3.4"
   resolved "http://10.252.156.164:4880/yeoman-environment/-/yeoman-environment-2.3.4.tgz#ae156147a1b85de939366e5438b00cb3eb54c3e9"
   integrity sha512-KLxE5ft/74Qj7h3AsQZv8G6MEEHYJwmD5F99nfOVaep3rBzCtbrJKkdqWc7bDV141Nr8UZZsIXmzc3IcCm6E2w==
@@ -9088,6 +9105,37 @@ yeoman-generator@^2.0.5:
     shelljs "^0.8.0"
     text-table "^0.2.0"
     through2 "^2.0.0"
+    yeoman-environment "^2.0.5"
+
+yeoman-generator@^3.1.1:
+  version "3.2.0"
+  resolved "http://10.252.156.164:4880/yeoman-generator/-/yeoman-generator-3.2.0.tgz#02077d2d7ff28fedc1ed7dad7f9967fd7c3604cc"
+  integrity sha512-iR/qb2je3GdXtSfxgvOXxUW0Cp8+C6LaZaNlK2BAICzFNzwHtM10t/QBwz5Ea9nk6xVDQNj4Q889TjCXGuIv8w==
+  dependencies:
+    async "^2.6.0"
+    chalk "^2.3.0"
+    cli-table "^0.3.1"
+    cross-spawn "^6.0.5"
+    dargs "^6.0.0"
+    dateformat "^3.0.3"
+    debug "^4.1.0"
+    detect-conflict "^1.0.0"
+    error "^7.0.2"
+    find-up "^3.0.0"
+    github-username "^4.0.0"
+    istextorbinary "^2.2.1"
+    lodash "^4.17.10"
+    make-dir "^1.1.0"
+    mem-fs-editor "^5.0.0"
+    minimist "^1.2.0"
+    pretty-bytes "^5.1.0"
+    read-chunk "^3.0.0"
+    read-pkg-up "^4.0.0"
+    rimraf "^2.6.2"
+    run-async "^2.0.0"
+    shelljs "^0.8.0"
+    text-table "^0.2.0"
+    through2 "^3.0.0"
     yeoman-environment "^2.0.5"
 
 yeoman-test@^1.0.0:
