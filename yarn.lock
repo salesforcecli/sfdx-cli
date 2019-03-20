@@ -402,7 +402,7 @@
     debug "^3.1.0"
     tslib "^1"
 
-"@salesforce/plugin-analytics@^1.0.0":
+"@salesforce/plugin-analytics@^1.1.0":
   version "1.1.0"
   resolved "http://10.252.156.164:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-1.1.0.tgz#7662599a015d2d243bbb0221468fe7070f3ff734"
   integrity sha512-nhBJLLiyUsidF8XEfGjKt0dimeYWmojIHkMo7Wts0s5C0XC8JUcxblUyNADsuwdC6RckYJZjODWfyEEIADn6ww==
