@@ -21,12 +21,14 @@ const MIN_VERSION = '41.2.0';
  * if it is recognized as a force namespace plugin.
  */
 const hook: Hook.PluginsPreinstall = async function(options) {
-    const plugin = options.plugin;
-    if (FORCE_PLUGINS.includes(plugin.name) && isVersion(plugin.tag) && compareVersions(plugin.tag, MIN_VERSION) < 0) {
-        this.error(
-            `The ${plugin.name} plugin can only be installed using a specific version when ` +
-            `the version is greater than or equal to ${MIN_VERSION}.`
-        );
+    if (options.plugin && options.plugin.type === 'npm') {
+        const plugin = options.plugin;
+        if (FORCE_PLUGINS.includes(plugin.name) && isVersion(plugin.tag) && compareVersions(plugin.tag, MIN_VERSION) < 0) {
+            this.error(
+                `The ${plugin.name} plugin can only be installed using a specific version when ` +
+                `the version is greater than or equal to ${MIN_VERSION}.`
+            );
+        }
     }
 };
 

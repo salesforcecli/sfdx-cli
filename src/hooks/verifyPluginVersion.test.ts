@@ -57,7 +57,7 @@ describe('verifyPluginVersion preinstall hook', () => {
     async function testHook(tag: Nullable<string>) {
         await hook.call(context, {
             config: { version: '6.0.0' },
-            plugin: { name: 'salesforcedx', tag }
+            plugin: { name: 'salesforcedx', tag, type: 'npm' }
         });
     }
 });
