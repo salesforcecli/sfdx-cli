@@ -14,10 +14,10 @@ const FORCE_PLUGINS = [
     'force-language-services'
 ];
 
-const MIN_VERSION = '41.2.0';
+const MIN_VERSION = '45.8.0';
 
 /**
- * A v6 CLI plugin preinstall hook that checks that the plugin's version is v6-compatible,
+ * A CLI plugin preinstall hook that checks that the plugin's version is v7-compatible,
  * if it is recognized as a force namespace plugin.
  */
 const hook: Hook.PluginsPreinstall = async function(options) {
