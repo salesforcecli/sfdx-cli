@@ -30,7 +30,13 @@
         "./dist/hooks/verifyPluginVersion.js"
       ],
       "preupdate": [
+        "./dist/hooks/preupdate.js"
+      ],
+      "preupdate:reachability": [
         "./dist/hooks/updateReachability.js"
+      ],
+      "preupdate:migrate:plugins": [
+        "./dist/hooks/migratePlugins.js"
       ],
       "update": [
         "./dist/hooks/lazyRequire.js"
@@ -162,8 +168,8 @@
   "nyc": {
     "check-coverage": true,
     "lines": 98,
-    "statements": 98,
-    "functions": 100,
+    "statements": 97,
+    "functions": 97,
     "branches": 61,
     "reporter": [
       "lcov",

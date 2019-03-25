@@ -12,7 +12,7 @@ import * as Debug from 'debug';
 import { HTTP } from 'http-call';
 import { default as envars } from '../util/env';
 
-const debug = Debug('sfdx:preupdate');
+const debug = Debug('sfdx:preupdate:reachability');
 
 const MAX_ATTEMPTS = 3;
 const RETRY_MILLIS = 1000;
