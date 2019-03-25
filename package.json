@@ -80,7 +80,7 @@
     "@salesforce/plugin-analytics": "^1.1.2",
     "@salesforce/plugin-generator": "^1.0.1",
     "@salesforce/require-analytics": "0.6.10",
-    "@salesforce/sfdx-trust": "^3.0.1",
+    "@salesforce/sfdx-trust": "^3.0.2",
     "@salesforce/ts-types": "^1.0.1",
     "debug": "^3",
     "http-call": "^5.2.3",
