@@ -2,7 +2,6 @@ import { Hook } from '@oclif/config';
 import Help from '@oclif/plugin-help';
 import { renderList } from '@oclif/plugin-help/lib/list';
 import chalk from 'chalk';
-import * as indent from 'indent-string';
 
 const { bold } = chalk;
 
@@ -38,7 +37,7 @@ export const help: Hook<'init'> = async options => {
 
         const output = [[
             bold('COMMANDS'),
-            indent(commandsList, 2)
+            indent(commandsList)
         ].join('\n')
         ];
 
@@ -51,8 +50,8 @@ export const help: Hook<'init'> = async options => {
             output.push(
                 [
                     bold('TOPICS'),
-                    indent('Run help for each topic below to view subcommands\n', 2),
-                    indent(topicsList, 2)
+                    indent('Run help for each topic below to view subcommands\n'),
+                    indent(topicsList)
                 ].join('\n')
             );
         }
@@ -60,3 +59,7 @@ export const help: Hook<'init'> = async options => {
         return output.join('\n\n');
     };
 };
+
+function indent(str: string): string {
+    return str.replace(/^(?!\s*$)/mg, ' '.repeat(2));
+}

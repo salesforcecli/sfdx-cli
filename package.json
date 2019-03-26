@@ -94,7 +94,6 @@
     "chalk": "^2.4.2",
     "debug": "^3",
     "http-call": "^5.2.3",
-    "indent-string": "3.2.0",
     "salesforcedx": "45.8.1-40",
     "tslib": "^1.9.3",
     "v8-compile-cache": "^2.0.2"
@@ -106,7 +105,6 @@
     "@types/chai": "^4",
     "@types/debug": "0.0.30",
     "@types/fs-extra": "4.0.2",
-    "@types/indent-string": "3.2.0",
     "@types/mocha": "^5",
     "@types/node": "^10",
     "@types/request": "2.0.3",
