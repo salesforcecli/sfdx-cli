@@ -77,7 +77,7 @@ function ensure_templates() {
         stderr "$template_readme is missing! Was the *.md clean too aggressive?"
         exit 1
     fi
-    template_gitignore="$BASE_DIR/node_modules/force-language-services/dist/project/templates/.gitignore"
+    template_gitignore="$BASE_DIR/node_modules/force-language-services/dist/project/templates/gitignore"
     if [[ ! -e "$template_gitignore" ]]; then
         stderr "$template_gitignore is missing! Was the clean too aggressive?"
         exit 1
