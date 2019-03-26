@@ -6,12 +6,7 @@ else
     branch="$(git rev-parse --abbrev-ref HEAD)"
 
     if [[ "$branch" == "master" ]]; then
-        pjson_channel="$(node -p "try{require('./package.json').cli.channel}catch(e){}")"
-        if [[ "$pjson_channel" != "undefined" ]]; then
-            echo "$pjson_channel"
-        else
-            echo "$branch"
-        fi
+        echo "stable"
     else
         echo "$USER"
     fi

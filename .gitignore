@@ -21,3 +21,5 @@ checkstyle.xml
 /release/
 src/temp
 .nyc_output
+oclif.manifest.json
+npm-shrinkwrap.json

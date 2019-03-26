@@ -6,7 +6,7 @@ set -ex
 
 TEST_DIR="${1:-$ROOT_DIR}"
 
-script "test/typings"
 script "test/unit" "$TEST_DIR"
 script "test/coverage" "$TEST_DIR"
+script "clean/test" "$TEST_DIR"
 script "test/smoke"

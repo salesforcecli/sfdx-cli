@@ -1,58 +1,108 @@
-/* tslint:disable:no-unused-expression */
+/*
+ * Copyright (c) 2018, salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
 
+// tslint:disable:no-unused-expression
+
+import * as Config from '@oclif/config';
+import { stubInterface } from '@salesforce/ts-sinon';
+import { getString } from '@salesforce/ts-types';
 import { expect } from 'chai';
+import * as sinon from 'sinon';
 import {
     configureAutoUpdate,
+    configureUpdateSites,
+    create,
     UPDATE_DISABLED_DEMO,
     UPDATE_DISABLED_INSTALLER,
-    UPDATE_DISABLED_OTHER
+    UPDATE_DISABLED_NPM
 } from './cli';
 import { Env } from './util/env';
 
-describe('CLI flags', () => {
-    let env: Env;
+describe('cli', () => {
+    let sandbox: sinon.SinonSandbox;
 
     beforeEach(() => {
-        env = new Env({});
+        sandbox = sinon.createSandbox();
     });
 
-    it('should default to autoupdate disabled for local dev or npm installs', () => {
-        const config = configureAutoUpdate(env, {});
-
-        expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
-        expect(config.updateDisabled).to.equal(UPDATE_DISABLED_OTHER);
+    afterEach(() => {
+        sandbox.restore();
     });
 
-    it('should allow autoupdate to be explicitly enabled for local dev (for testing autoupdates)', () => {
-        env.setBoolean('SFDX_AUTOUPDATE_DISABLE', false);
-        const config = configureAutoUpdate(env, {});
-
-        expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.false;
-        expect(config.updateDisabled).to.be.undefined;
+    describe('create', () => {
+        it('should create a runnable CLI instance', async () => {
+            sandbox.stub(Config.Config.prototype, 'load').callsFake(() => { });
+            let config: Config.LoadOptions;
+            const exec = async (argv?: string[], opts?: Config.LoadOptions) => { config = opts; };
+            const env = new Env({ [Env.LAZY_LOAD_MODULES]: 'false' });
+            await create('test', 'test', exec, env).run();
+            expect(config).to.exist;
+            expect(config).to.have.property('options');
+            expect(config).to.have.nested.property('options.version').and.equal('test');
+            expect(config).to.have.nested.property('options.channel').and.equal('test');
+        });
     });
 
-    it('should default to autoupdate enabled for binary installs', () => {
-        env.setBoolean('SFDX_INSTALLER', true);
-        const config = configureAutoUpdate(env, {});
+    describe('env', () => {
+        let env: Env;
 
-        expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.false;
-        expect(config.updateDisabled).to.be.undefined;
-    });
+        beforeEach(() => {
+            env = new Env({});
+        });
 
-    it('should have autoupdate disabled for binary installs when SFDX_AUTOUPDATE_DISABLE is set to true', () => {
-        env.setBoolean('SFDX_INSTALLER', true);
-        env.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
-        const config = configureAutoUpdate(env, {});
+        it('should set the s3 host in the oclif config if overridden in an envar', async () => {
+            const s3Host = 'http://example.com:9000/s3';
+            const npmRegistry = 'http://example.com:9000/npm';
+            const config = stubInterface<Config.IConfig>(sandbox);
+            env.setS3HostOverride(s3Host);
+            env.setNpmRegistryOverride(npmRegistry);
+            configureUpdateSites(config, env);
+            expect(getString(config, 'pjson.oclif.update.s3.host')).to.equal(s3Host);
+            expect(getString(config, 'pjson.oclif.warn-if-update-available.registry')).to.equal(npmRegistry);
+        });
 
-        expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
-        expect(config.updateDisabled).to.equal(UPDATE_DISABLED_INSTALLER);
-    });
+        it('should default to autoupdate disabled for local dev or npm installs', () => {
+            configureAutoUpdate(env);
 
-    it('should have autoupdate disabled when in demo mode', () => {
-        env.setString('SFDX_ENV', 'DEMO');
-        const config = configureAutoUpdate(env, {});
+            expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
+            expect(env.getString(Env.UPDATE_INSTRUCTIONS)).to.equal(UPDATE_DISABLED_NPM);
+        });
 
-        expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
-        expect(config.updateDisabled).to.equal(UPDATE_DISABLED_DEMO);
+        it('should allow autoupdate to be explicitly enabled for local dev (for testing autoupdates)', () => {
+            env.setBoolean('SFDX_AUTOUPDATE_DISABLE', false);
+            configureAutoUpdate(env);
+
+            expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.false;
+            expect(env.getString(Env.UPDATE_INSTRUCTIONS)).to.be.undefined;
+        });
+
+        it('should default to autoupdate enabled for binary installs', () => {
+            env.setBoolean('SFDX_INSTALLER', true);
+            configureAutoUpdate(env);
+
+            expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.false;
+            expect(env.getString(Env.UPDATE_INSTRUCTIONS)).to.be.undefined;
+        });
+
+        it('should have autoupdate disabled for binary installs when SFDX_AUTOUPDATE_DISABLE is set to true', () => {
+            env.setBoolean('SFDX_INSTALLER', true);
+            env.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
+            configureAutoUpdate(env);
+
+            expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
+            expect(env.getString(Env.UPDATE_INSTRUCTIONS)).to.equal(UPDATE_DISABLED_INSTALLER);
+        });
+
+        it('should have autoupdate disabled when in demo mode', () => {
+            env.setString('SFDX_ENV', 'DEMO');
+            configureAutoUpdate(env);
+
+            expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
+            expect(env.getString(Env.UPDATE_INSTRUCTIONS)).to.equal(UPDATE_DISABLED_DEMO);
+        });
     });
 });

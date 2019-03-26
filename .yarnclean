@@ -7,7 +7,6 @@ powered-test
 docs
 website
 images
-assets
 
 # examples
 example
@@ -23,17 +22,12 @@ Gulpfile.js
 Gruntfile.js
 
 # configs
-appveyor.yml
-circle.yml
 codeship-services.yml
 codeship-steps.yml
 wercker.yml
 .tern-project
-.gitattributes
 .editorconfig
 .npmignore
-.gitignore
-.eslintrc
 .jshintrc
 .flowconfig
 .documentup.json

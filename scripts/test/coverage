@@ -7,4 +7,4 @@ set -ex
 TEST_DIR="${1:-$ROOT_DIR}"
 cd "$TEST_DIR"
 
-"$ROOT_DIR/node_modules/istanbul/lib/cli.js" report --report html json-summary
+"$ROOT_DIR/node_modules/.bin/nyc" report --report html json-summary

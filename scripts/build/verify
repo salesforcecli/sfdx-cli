@@ -27,20 +27,20 @@ function ensure_no_heroku_cli_util_nyc() {
 #
 # Check for potentially overflowing windows paths:
 # * assume a max practical windows username length of 64 characters (https://technet.microsoft.com/it-it/library/bb726984(en-us).aspx)
-# * add characters to account for the root sfdx client tmp untar path for a total of 138
-#   - e.g. C:\Users\1234567890123456789012345678901234567890123456789012345678901234\AppData\Local\sfdx\tmp\sfdx-cli-v7.xx.yy-abcdefghij-windows-x64\
-# * subtract those 138 characters from the max windows path length of 259 to yield the allowable length of 121 path characters
-# * considering that we currently have some dependencies in the built output that exceed 121 characters (up to 147)
-#   we will consider the maximum path length of 147, as the hard upper limit to our allowable path length;
-#   this leaves us a relatively comfortable maximum practical windows username length of 38 characters with a hard maximum path length of 147 characters
+# * add characters to account for the root sfdx client tmp untar path for a total of 135
+#   - e.g. C:\Users\<username>\AppData\Local\sfdx\tmp\sfdx-cli-v7.xx.yy-abcdef-windows-x64\
+# * subtract those 135 characters from the max windows path length of 259 to yield the allowable length of 124 path characters
+# * considering that we currently have some dependencies in the built output that exceed 124 characters (up to 139 in salesforce-lightning-cli)
+#   we will consider the maximum path length of 139, plus 5 as a buffer, as the hard upper limit to our allowable path length;
+#   this leaves us a relatively comfortable maximum windows username length of 48 characters with a hard maximum path length of 144 characters
 # * then scan the cleaned build output directory for paths exceding this threshold, and exit with an error if detected
 function scan_path_lengths() {
-    warnlen=121
-    maxlen=147
+    warnlen=124
+    maxlen=144
     cd "$BASE_DIR"
     warntest=$(find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) print "fail" }' | uniq)
     if [[ "$warntest" == "fail" ]]; then
-        stdout "WARN: Some paths could result in update errors for Windows users with usernames greater than 38 characters!"
+        stdout "WARN: Some paths could result in update errors for Windows users with usernames greater than 48 characters!"
         find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) printf("%-3s  %s\n", length($0), $0) }'
     fi
     maxtest=$(find node_modules | awk -v maxlen="$maxlen" '{ if (length($0) > maxlen) print "fail" }' | uniq)
@@ -63,18 +63,23 @@ function ensure_apex_test() {
 
 # We've accidentally over-cleaned the force:doc code in the past, so let's make sure we don't repeat that mistake
 function ensure_doc_commands() {
-    src_dir="$BASE_DIR/node_modules/salesforce-alm/dist/commands/doc"
+    src_dir="$BASE_DIR/node_modules/salesforce-alm/dist/commands/force/doc"
     if [[ ! -d "$src_dir" ]]; then
         stderr "$src_dir is missing! Was the doc clean too aggressive?"
         exit 1
     fi
 }
 
-# We delete *.md files from node_modules, except in `templates` dirs -- double check their preservation
-function ensure_templates_md() {
+# We delete *.md and config files from node_modules, except in `templates` dirs -- double check their preservation
+function ensure_templates() {
     template_readme="$BASE_DIR/node_modules/force-language-services/dist/project/templates/README.md"
     if [[ ! -e "$template_readme" ]]; then
         stderr "$template_readme is missing! Was the *.md clean too aggressive?"
+        exit 1
+    fi
+    template_gitignore="$BASE_DIR/node_modules/force-language-services/dist/project/templates/gitignore"
+    if [[ ! -e "$template_gitignore" ]]; then
+        stderr "$template_gitignore is missing! Was the clean too aggressive?"
         exit 1
     fi
 }
@@ -120,6 +125,7 @@ function ensure_no_unexpected_files() {
             "$f" != "$BASE_DIR/package.json" &&
             "$f" != "$BASE_DIR/LICENSE" &&
             "$f" != "$BASE_DIR/README.md" &&
+            "$f" != "$BASE_DIR/oclif.manifest.json" &&
             "$f" != "$BASE_DIR/bin/"* &&
             "$f" != "$BASE_DIR/dist/"*".js" &&
             "$f" != "$BASE_DIR/dist/builtins/package.json"
@@ -133,22 +139,13 @@ function ensure_no_unexpected_files() {
     done
 }
 
-function ensure_lodash_map() {
-    lodash_map="$BASE_DIR/node_modules/lodash.map"
-    if [[ ! -e "$lodash_map" ]]; then
-        stderr "$lodash_map is missing! Was yarn autoclean too aggressive?"
-        exit 1
-    fi
-}
-
 ensure_no_webdriverio_test
 ensure_no_heroku_cli_util_nyc
 scan_path_lengths
 ensure_apex_test
 ensure_doc_commands
-ensure_templates_md
+ensure_templates
 ensure_templates_forceignore
 ensure_no_dist_tests_or_maps
 ensure_no_unexpected_files
 ensure_plugin_generate_test_templates
-ensure_lodash_map

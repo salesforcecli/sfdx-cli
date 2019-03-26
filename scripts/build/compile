@@ -5,4 +5,3 @@ source ./scripts/_init
 set -ex
 
 tsc -p "$ROOT_DIR/tsconfig.json"
-cp "$ROOT_DIR/src/builtins/package.json" "$ROOT_DIR/dist/builtins"

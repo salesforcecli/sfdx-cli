@@ -7,16 +7,12 @@
         ],
         "baseUrl": "./",
         "strict": true,
-        "skipLibCheck": true,
         "declaration": false,
-        "allowJs": true
+        "allowJs": true,
+        "importHelpers": true
     },
     "include": [
         "src/**/*.ts",
-        "src/**/*.js",
-        "typings/**/*.d.ts"
-    ],
-    "exclude": [
-        "typings/**/*-tests.ts"
+        "src/**/*.js"
     ]
 }
