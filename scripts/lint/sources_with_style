@@ -4,5 +4,4 @@ source ./scripts/_init
 
 set -ex
 
-eslint bin/run src scripts
 tslint -p "$ROOT_DIR" -t checkstyle -o "$ROOT_DIR/checkstyle.xml"

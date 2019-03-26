@@ -31,6 +31,7 @@ function stdout() {
 function script () {
     name="$1"
     shift
+    execute_script="----------------- $name -----------------"
     "$ROOT_DIR/scripts/$name" "$@"
 }
 
@@ -59,7 +60,7 @@ function archs () {
     elif [[ "$OS" == "windows" ]]; then
         echo "x64|x86"
     elif [[ "$OS" == "linux" ]]; then
-        echo "x64|x86|arm"
+        echo "x64|arm"
     fi
 }
 
@@ -95,6 +96,11 @@ function createManifest () {
     script "manifest.js" "$RELEASE_DIR/manifest.json" version="$VERSION" channel="$CHANNEL"
 }
 
+function createReleases () {
+    rm -f "$RELEASE_DIR/releases.json"
+    script "releases.js" "$RELEASE_DIR/releases.json" "$S3_ENDPOINT" "$S3_BUCKET" "$S3_FOLDER" "$VERSION" "$CHANNEL"
+}
+
 function addToManifest () {
     SECTION="$1"
     FILE_KEY="$2"
@@ -125,20 +131,23 @@ RELEASE_APT_DIR="$RELEASE_DIR/apt"
 # Determine pkg and bin names
 PKG_NAME=$(node -p "require('$ROOT_DIR/package.json').name")
 PKG_DESC=$(node -p "require('$ROOT_DIR/package.json').description")
-BIN_NAME=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].bin")
+BIN_NAME=$(node -p "require('$ROOT_DIR/package.json').oclif.bin")
+
+# Determine node versions
+NODE_VERSION=$(node -p "require('./package.json').oclif.node || process.versions.node")
+NODE_REQUIRED=$(node -p "require('./package.json').engines.node || process.versions.node")
 
 # S3 configuration
-DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.folder")
+DEFAULT_S3_FOLDER=$(node -p "require('$ROOT_DIR/package.json').oclif.update.s3.folder")
 S3_FOLDER="${S3_FOLDER:-"$DEFAULT_S3_FOLDER"}"
 S3_CHANNEL_SUBFOLDER="$PKG_NAME/channels/$CHANNEL"
-DEFAULT_S3_BUCKET=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.bucket")
+DEFAULT_S3_BUCKET=$(node -p "require('$ROOT_DIR/package.json').oclif.update.s3.bucket")
 S3_BUCKET="${S3_BUCKET:-"$DEFAULT_S3_BUCKET"}"
 S3_BASE_UPLOAD_URL="s3://$S3_BUCKET/$S3_FOLDER"
 S3_CHANNEL_UPLOAD_URL="$S3_BASE_UPLOAD_URL/$S3_CHANNEL_SUBFOLDER"
-DEFAULT_S3_HOST=$(node -p "require('$ROOT_DIR/package.json')['cli-engine'].s3.host")
+DEFAULT_S3_HOST=$(node -p "require('$ROOT_DIR/package.json').oclif.update.s3.host")
 S3_HOST="${S3_HOST:-"$DEFAULT_S3_HOST"}"
-S3_HOST_SCHEME="${S3_HOST_SCHEME:-"https"}"
-S3_HOST_BASE_URL="$S3_HOST_SCHEME://$S3_HOST"
+S3_HOST_BASE_URL="$S3_HOST"
 S3_HOST_CHANNEL_BASE_URL="$S3_HOST_BASE_URL/$S3_CHANNEL_SUBFOLDER"
 S3_PROFILE_NAME="sfdx"
 S3_ENDPOINT="${S3_ENDPOINT:-AWS}"

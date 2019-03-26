@@ -8,9 +8,9 @@ export ARCH=x64
 source ./scripts/_init
 source ./scripts/_github
 
-# Require RELEASE_TAG to be in the form v6.*
-if [[ "$RELEASE_TAG" != "v6."* ]]; then
-    stderr "Expected RELEASE_TAG '$RELEASE_TAG' to match 'v6.*'"
+# Require RELEASE_TAG to be in the form v7.*
+if [[ "$RELEASE_TAG" != "v7."* ]]; then
+    stderr "Expected RELEASE_TAG '$RELEASE_TAG' to match 'v7.*'"
     exit 1
 fi
 

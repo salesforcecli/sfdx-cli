@@ -8,6 +8,15 @@ bg script "release/installers/darwin_mobileci"
 bg script "release/installers/windows_docker"
 wait_all
 
+resetS3CacheDir
+
+createReleases
+cp "$RELEASE_DIR/releases.json" "$S3_CACHE_DIR"
+s3upload "$UNVERSIONED_CACHE_CONTROL" \
+    "$S3_CACHE_DIR/releases.json" \
+    "$S3_BASE_UPLOAD_URL/" \
+    --content-type "application/json"
+
 if [[ "$CHANNEL" == "stable" ]]; then
     script "release/installers/downloads"
 

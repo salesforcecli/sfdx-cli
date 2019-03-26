@@ -1,4 +1,11 @@
-/* tslint:disable:no-unused-expression */
+/*
+ * Copyright (c) 2018, salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+// tslint:disable:no-unused-expression
 
 import { expect } from 'chai';
 import { Env } from './env';
@@ -7,49 +14,100 @@ describe('Env', () => {
     let env: Env;
 
     beforeEach(() => {
-        env = new Env({
-            FOO: 'BAR',
-            BOOL: 'true'
+        env = new Env({});
+    });
+
+    describe('isAutoupdateDisabled', () => {
+        it('should not report autoupdate disabled with no envar', () => {
+            expect(env.isAutoupdateDisabled()).to.be.false;
+        });
+
+        it('should report autoupdate disabled with legacy envar', () => {
+            env.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
+            expect(env.isAutoupdateDisabled()).to.be.true;
+        });
+
+        it('should report autoupdate disabled with oclif envar', () => {
+            env.setBoolean('SFDX_DISABLE_AUTOUPDATE', true);
+            expect(env.isAutoupdateDisabled()).to.be.true;
         });
     });
 
-    it('should get a string envar', () => {
-        expect(env.getString('FOO')).to.equal('BAR');
+    describe('isAutoupdateDisabledSet', () => {
+        it('should not report set with neither envar', () => {
+            expect(env.isAutoupdateDisabledSet()).to.be.false;
+        });
+
+        it('should report set with legacy envar', () => {
+            env.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
+            expect(env.isAutoupdateDisabledSet()).to.be.true;
+        });
+
+        it('should report set with oclif envar', () => {
+            env.setBoolean('SFDX_DISABLE_AUTOUPDATE', true);
+            expect(env.isAutoupdateDisabledSet()).to.be.true;
+        });
     });
 
-    it('should get a default string when asked for a non-existent string envar', () => {
-        expect(env.getString('FOO2', 'BAR')).to.equal('BAR');
+    describe('isAutoupdateDisabledSet', () => {
+        it('should set both autoupdate envars', () => {
+            env.setAutoupdateDisabled(true);
+            expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
+            expect(env.getBoolean('SFDX_DISABLE_AUTOUPDATE')).to.be.true;
+        });
     });
 
-    it('should set a string envar', () => {
-        env.setString('FOO2', 'BAR2');
-        expect(env.getString('FOO2')).to.equal('BAR2');
+    describe('setUpdateInstructions', () => {
+        it('should set update instructions', () => {
+            env.setUpdateInstructions('update at your own risk!');
+            expect(env.getString('SFDX_UPDATE_INSTRUCTIONS')).to.equal('update at your own risk!');
+        });
     });
 
-    it('should delete a string envar', () => {
-        env.unset('FOO');
-        expect(env.getString('FOO')).to.be.undefined;
+    describe('isDemoMode', () => {
+        it('should report if the cli is not in demo mode', () => {
+            expect(env.isDemoMode()).to.be.false;
+        });
+
+        it('should report if the cli is in demo mode', () => {
+            env.setString('SFDX_ENV', 'demo');
+            expect(env.isDemoMode()).to.be.true;
+        });
     });
 
-    it('should get a boolean envar', () => {
-        expect(env.getString('BOOL')).to.equal('true');
-        expect(env.getBoolean('BOOL')).to.be.true;
+    describe('isInstaller', () => {
+        it('should report if the cli is not running from an installer', () => {
+            expect(env.isInstaller()).to.be.false;
+        });
+
+        it('should report if the cli is running from an installer', () => {
+            env.setBoolean('SFDX_INSTALLER', true);
+            expect(env.isInstaller()).to.be.true;
+        });
     });
 
-    it('should get a default boolean when asked for a non-existent boolean envar', () => {
-        expect(env.getString('BOOL2', 'true')).to.equal('true');
-        expect(env.getBoolean('BOOL2', true)).to.be.true;
+    describe('getS3HostOverride', () => {
+        it('should return an S3 host override if set', () => {
+            env.setString('SFDX_S3_HOST', 'http://example.com');
+            expect(env.getS3HostOverride()).to.equal('http://example.com');
+        });
     });
 
-    it('should set a boolean envar', () => {
-        env.setBoolean('BOOL2', true);
-        expect(env.getString('BOOL2')).to.equal('true');
-        expect(env.getBoolean('BOOL2')).to.be.true;
+    describe('setS3HostOverride', () => {
+        it('should set an S3 host override', () => {
+            env.setS3HostOverride('http://example.com');
+            expect(env.getString('SFDX_S3_HOST')).to.equal('http://example.com');
+        });
     });
 
-    it('should delete a boolean envar', () => {
-        env.unset('BOOL');
-        expect(env.getString('BOOL')).to.be.undefined;
-        expect(env.getBoolean('BOOL')).to.be.false;
+    describe('isLazyRequireEnabled', () => {
+        it('should return false if lazy requires are not enabled', () => {
+            expect(env.isLazyRequireEnabled()).to.be.false;
+        });
+
+        it('should return true if lazy requires are enabled', () => {
+            env.setBoolean('SFDX_LAZY_LOAD_MODULES', true);
+            expect(env.isLazyRequireEnabled()).to.be.true;
+        });
     });
 });

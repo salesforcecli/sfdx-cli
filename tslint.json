@@ -3,7 +3,12 @@
     "jsRules": {
         "max-line-length": false,
         "no-console": false,
-        "quotemark": { "options":[ "single" ] },
+        "quotemark": { "options": [ "single" ] },
         "trailing-comma": false
+    },
+    "linterOptions": {
+        "exclude": [
+            "dist/**"
+        ]
     }
 }

@@ -1,12 +1,16 @@
+/*
+ * Copyright (c) 2018, salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
 // Note: Leave this file as ES5 js for compatibility with earlier Node.js versions
 /* eslint-disable no-console, no-process-exit, prefer-template */
 
 'use strict';
 
-const path = require('path');
-
-const root = path.join(__dirname, '..');
-const pjson = require(path.join(root, 'package.json'));
+const pjson = require('../package.json');
 
 /**
  * Determines whether or not a tag string is a semantic version.
@@ -19,7 +23,7 @@ function isVersion(tag) {
         return false;
     }
     // From https://github.com/sindresorhus/semver-regex
-    const SEMVER_REGEX = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z\-]+(?:\.[\da-z\-]+)*)?(?:\+[\da-z\-]+(?:\.[\da-z\-]+)*)?$/ig;
+    const SEMVER_REGEX = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-]+(?:\.[\da-z-]+)*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?$/ig;
     return SEMVER_REGEX.test(tag.toString());
 }
 
@@ -51,7 +55,7 @@ function compareVersions(a, b) {
     }
     let diff;
     for (let i = 0; i < len; i++) {
-        diff = (parseInt(partsA[i] || '0', 10)) - (parseInt(partsB[i] || '0', 10));
+        diff = (parseInt(partsA[i], 10)) - (parseInt(partsB[i], 10));
         if (diff) {
             return diff;
         }
@@ -64,10 +68,7 @@ module.exports.compareVersions = compareVersions;
 /**
  * Checks the current Node version for compatibility before launching the CLI.
  */
-function checkNodeVersion() {
-    const currentVersion = process.versions.node;
-    const requiredVersion = pjson.engines.node.slice(2); // chop '>=' prefix
-
+function checkNodeVersion(currentVersion = process.versions.node, requiredVersion = pjson.engines.node.slice(2)) {
     if (module.exports.compareVersions(currentVersion, requiredVersion) < 0) {
         console.error(
             'Unsupported Node.js version ' + currentVersion + ', ' +

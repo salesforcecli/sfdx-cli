@@ -1,7 +1,6 @@
 {
     "extends": "./node_modules/@salesforce/dev-config/tsconfig.json",
     "compilerOptions": {
-        "sourceRoot": "src",
         "outDir": "dist",
         "typeRoots": [
             "./node_modules/@types"
@@ -9,14 +8,11 @@
         "baseUrl": "./",
         "strict": true,
         "declaration": false,
-        "allowJs": true
+        "allowJs": true,
+        "importHelpers": true
     },
     "include": [
         "src/**/*.ts",
-        "src/**/*.js",
-        "typings/**/*.d.ts"
-    ],
-    "exclude": [
-        "typings/**/*-tests.ts"
+        "src/**/*.js"
     ]
 }

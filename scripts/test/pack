@@ -16,9 +16,9 @@ tar tf "$tarball" | while read -r f; do
         "$f" != "package/package.json" &&
         "$f" != "package/LICENSE" &&
         "$f" != "package/README.md" &&
+        "$f" != "package/oclif.manifest.json" &&
         "$f" != "package/bin/"* &&
-        "$f" != "package/dist/"*".js" &&
-        "$f" != "package/dist/builtins/package.json"
+        "$f" != "package/dist/"*".js"
     ) || (
         "$f" == "package/dist/"*".test.js"
     ) ]]; then

@@ -20,3 +20,6 @@ checkstyle.xml
 .sfdx
 /release/
 src/temp
+.nyc_output
+oclif.manifest.json
+npm-shrinkwrap.json
