@@ -61,9 +61,6 @@ find node_modules -name '*.map' -type f \
   | filter 'lodash.map' \
   | xargs rm -f
 
-# JS map files, except the ill-named `lodash.map` (it's a directory and we'll also filter out matches if found for good measure)
-find node_modules -name \*.map -type f | grep -v lodash.map | xargs rm -f
-
 # In case yarn autoclean is disabled, delete some known windows file path length offenders
 find node_modules -name '.nyc_output'  -print0 \
   | xargs rm -rf
