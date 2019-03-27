@@ -4,11 +4,12 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-
 import { Hook, IConfig } from '@oclif/config';
+import { set } from '@salesforce/kit';
 import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
 import { JsonMap, Nullable, Optional } from '@salesforce/ts-types';
 import { expect } from 'chai';
+import chalk from 'chalk';
 import * as Debug from 'debug';
 import { Stats } from 'fs';
 import * as sinon from 'sinon';
@@ -19,13 +20,19 @@ import { default as hook, FsLib } from './migratePlugins';
 const v6Json = {
   private: 'true',
   dependencies: {
-    oclif: 'latest',
+    oclif1: 'latest',
+    oclif2: 'latest',
+    oclif3: 'latest',
     other: 'latest'
   }
 };
 
-const oclifPluginJson = {
+const oclif1PluginJson = {
   version: '1.2.3',
+  oclif: { }
+};
+
+const oclif2PluginJson = {
   oclif: { }
 };
 
@@ -40,7 +47,17 @@ describe('migratePlugins preupdate hook', () => {
   let config: StubbedType<IConfig>;
   let context: StubbedType<Hook.Context>;
   let mockFs: StubbedType<FsLib>;
-  let warnings: Error[];
+  let warnings: string[];
+  let chalkEnabled: boolean;
+
+  before(() => {
+    chalkEnabled = chalk.enabled;
+    chalk.enabled = false;
+  });
+
+  after(() => {
+    chalk.enabled = chalkEnabled;
+  });
 
   beforeEach(() => {
     sandbox = sinon.createSandbox();
@@ -50,8 +67,8 @@ describe('migratePlugins preupdate hook', () => {
     });
 
     context = stubInterface<Hook.Context>(sandbox, {
-      warn: (err: Error) => {
-        trace('[WARNING] %s', err.message);
+      warn: (err: string) => {
+        trace('[WARNING] %s', err);
         warnings.push(err);
       },
       config
@@ -73,7 +90,8 @@ describe('migratePlugins preupdate hook', () => {
         if (p.endsWith('sfdx/plugins/package.json')) return cb(null);
         if (p.endsWith('sfdx/plugins/node_modules')) return cb(null);
         if (p.endsWith('sfdx/plugins/yarn.lock')) return cb(null);
-        if (p.endsWith('sfdx/plugins/node_modules/oclif/package.json')) return cb(null);
+        if (p.endsWith('sfdx/plugins/node_modules/oclif1/package.json')) return cb(null);
+        if (p.endsWith('sfdx/plugins/node_modules/oclif2/package.json')) return cb(null);
         if (p.endsWith('sfdx/plugins/node_modules/other/package.json')) return cb(null);
         cb(new Error('ENOENT: ' + p));
       },
@@ -93,7 +111,8 @@ describe('migratePlugins preupdate hook', () => {
         trace('readFile:', p);
         let json: Optional<JsonMap>;
         if (p.endsWith('sfdx/plugins/package.json')) json = v6Json;
-        if (p.endsWith('sfdx/plugins/node_modules/oclif/package.json')) json = oclifPluginJson;
+        if (p.endsWith('sfdx/plugins/node_modules/oclif1/package.json')) json = oclif1PluginJson;
+        if (p.endsWith('sfdx/plugins/node_modules/oclif2/package.json')) json = oclif2PluginJson;
         if (p.endsWith('sfdx/plugins/node_modules/other/package.json')) json = otherPluginJson;
         cb(json ? null : new Error('ENOENT: ' + p), json && Buffer.from(JSON.stringify(json)));
       },
@@ -115,22 +134,23 @@ describe('migratePlugins preupdate hook', () => {
 
     await testHook();
 
-    console.log();
-    expect(warnings.length).to.equal(1);
-    expect(warnings[0].message).to.equal('Plugin other@latest is incompatible and could not be migrated');
+    expect(warnings.length).to.equal(3);
+    expect(warnings[0]).to.equal('Plugin oclif2@latest lacks a version and could not be migrated');
+    expect(warnings[1]).to.equal('Plugin oclif3@latest not found and could not be migrated');
+    expect(warnings[2]).to.equal('Plugin other@latest is incompatible and could not be migrated');
     expect(v7Path).to.equal('/home/tester/.local/share/sfdx/package.json');
     expect(JSON.parse(v7PackageJson)).to.deep.equal({
       private: 'true',
       oclif: {
         schema: 1,
         plugins: [{
-          name: 'oclif',
+          name: 'oclif1',
           tag: 'latest',
           type: 'user'
         }]
       },
       dependencies: {
-        oclif: '^1.2.3'
+        oclif1: '^1.2.3'
       }
     });
   });
@@ -174,6 +194,45 @@ describe('migratePlugins preupdate hook', () => {
     expect(warnings.length).to.equal(0);
     expect(mockFs.unlink.calledOnce).to.be.true;
     expect(mockFs.unlink.getCall(0).args[0]).to.equal('/home/tester/.local/share/sfdx/plugins/package.json');
+  });
+
+  it('should suppress arbitrary ENOENT errors', async () => {
+    mockFs = stubInterface<FsLib>(sandbox, {
+      access: (p: string, cb: (err: Nullable<Error>) => void) => {
+        if (p.endsWith('sfdx/plugins/package.json')) return cb(null);
+        if (p.endsWith('sfdx/package.json')) return cb(null);
+        cb(new Error('ENOENT: ' + p));
+      },
+      lstat: (p: string, cb: (err: Nullable<Error>) => {}) => {
+        const err = new Error('ENOENT: ' + p);
+        set(err, 'code', 'ENOENT');
+        cb(err);
+      }
+    });
+
+    await testHook();
+
+    expect(mockFs.lstat.calledOnce).to.be.true;
+    expect(warnings.length).to.equal(0);
+  });
+
+  it('should warn on arbitrary non-ENOENT errors', async () => {
+    mockFs = stubInterface<FsLib>(sandbox, {
+      access: (p: string, cb: (err: Nullable<Error>) => void) => {
+        if (p.endsWith('sfdx/plugins/package.json')) return cb(null);
+        if (p.endsWith('sfdx/package.json')) return cb(null);
+        cb(new Error('ENOENT: ' + p));
+      },
+      lstat: (p: string, cb: (err: Nullable<Error>) => {}) => {
+        cb(new Error('DO NOT WANT: ' + p));
+      }
+    });
+
+    await testHook();
+
+    expect(mockFs.lstat.calledOnce).to.be.true;
+    expect(warnings.length).to.equal(1);
+    expect(warnings[0]).to.equal('DO NOT WANT: /home/tester/.local/share/sfdx/plugins/package.json');
   });
 
   async function testHook() {

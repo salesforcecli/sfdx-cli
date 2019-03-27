@@ -87,7 +87,7 @@
     "@salesforce/kit": "^1.0.1",
     "@salesforce/lazy-require": "0.1.12",
     "@salesforce/plugin-analytics": "^1.1.2",
-    "@salesforce/plugin-generator": "^1.0.1",
+    "@salesforce/plugin-generator": "^1.1.0",
     "@salesforce/require-analytics": "0.6.10",
     "@salesforce/sfdx-trust": "^3.0.2",
     "@salesforce/ts-types": "^1.0.1",
@@ -171,10 +171,10 @@
   },
   "nyc": {
     "check-coverage": true,
-    "lines": 98,
-    "statements": 97,
+    "lines": 99,
+    "statements": 99,
     "functions": 97,
-    "branches": 61,
+    "branches": 72,
     "reporter": [
       "lcov",
       "text"

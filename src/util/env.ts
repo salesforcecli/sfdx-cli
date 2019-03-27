@@ -21,6 +21,15 @@ export class Env extends KitEnv {
         super(env);
     }
 
+    public normalizeAutoupdateDisabled(): void {
+        // Ensure that the legacy envar always causes the oclif counterpart to be set
+        if (this.getBoolean(Env.DISABLE_AUTOUPDATE_LEGACY)) {
+            this.setBoolean(Env.DISABLE_AUTOUPDATE_OCLIF, true);
+        } else if (this.getBoolean(Env.DISABLE_AUTOUPDATE_OCLIF)) {
+            this.setBoolean(Env.DISABLE_AUTOUPDATE_LEGACY, true);
+        }
+    }
+
     public isAutoupdateDisabled(): boolean {
         return this.getBoolean(Env.DISABLE_AUTOUPDATE_LEGACY) || this.getBoolean(Env.DISABLE_AUTOUPDATE_OCLIF);
     }

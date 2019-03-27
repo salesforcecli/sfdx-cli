@@ -5,7 +5,7 @@ import chalk from 'chalk';
 
 const { bold } = chalk;
 
-export const help: Hook<'init'> = async options => {
+export const help: Hook.Init = async options => {
     Help.prototype.topics = function(topics) {
         if (!topics.length) return;
 

@@ -70,6 +70,7 @@ export function configureAutoUpdate(envars: Env): void {
     }
 
     if (envars.isInstaller()) {
+        envars.normalizeAutoupdateDisabled();
         if (envars.isAutoupdateDisabled()) {
             envars.setUpdateInstructions(UPDATE_DISABLED_INSTALLER);
         }

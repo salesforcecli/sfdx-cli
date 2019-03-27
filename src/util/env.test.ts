@@ -17,6 +17,20 @@ describe('Env', () => {
         env = new Env({});
     });
 
+    describe('normalizeAutoupdateDisabled', () => {
+        it('should set the oclif autoupdate disabled envar if the legacy one is set', () => {
+            env.setBoolean(Env.DISABLE_AUTOUPDATE_LEGACY, true);
+            env.normalizeAutoupdateDisabled();
+            expect(env.getBoolean(Env.DISABLE_AUTOUPDATE_OCLIF)).to.be.true;
+        });
+
+        it('should set the legacy autoupdate disabled envar if the oclif one is set', () => {
+            env.setBoolean(Env.DISABLE_AUTOUPDATE_OCLIF, true);
+            env.normalizeAutoupdateDisabled();
+            expect(env.getBoolean(Env.DISABLE_AUTOUPDATE_LEGACY)).to.be.true;
+        });
+    });
+
     describe('isAutoupdateDisabled', () => {
         it('should not report autoupdate disabled with no envar', () => {
             expect(env.isAutoupdateDisabled()).to.be.false;

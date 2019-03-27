@@ -7,6 +7,7 @@
 
 import { Hook } from '@oclif/config';
 import { AnyJson, definiteEntriesOf, Dictionary, JsonMap } from '@salesforce/ts-types';
+import chalk from 'chalk';
 import { cli } from 'cli-ux';
 import * as Debug from 'debug';
 import * as nodeFs from 'fs';
@@ -51,14 +52,16 @@ const hook: Hook.Preupdate = async function(options, fs: FsLib = nodeFs) {
     const v6Dir = path.join(options.config.dataDir, 'plugins');
     const v6Path = path.join(v6Dir, 'package.json');
     if (!(await pathExists(fs, v6Path))) {
-      return debug('no plugins needing migration found');
+      debug('no plugins needing migration found');
+      return;
     }
 
     const v7Dir = options.config.dataDir;
     const v7Path = path.join(v7Dir, 'package.json');
     if (await pathExists(fs, v7Path)) {
       debug('v7 config found, removing obsolete v6 config');
-      return await remove(fs, v6Path);
+      await remove(fs, v6Path);
+      return;
     }
 
     const v6PackageJson = await readJsonMap<V6PackageJson>(fs, v6Path);
@@ -90,7 +93,7 @@ const hook: Hook.Preupdate = async function(options, fs: FsLib = nodeFs) {
         v7PackageJson.oclif.plugins.push({ name, tag, type: 'user' });
         v7PackageJson.dependencies[name] = `^${pjson.version}`;
       } catch (err) {
-        this.warn(err);
+        this.warn(chalk.yellow(err.message));
       }
     }
 
@@ -102,12 +105,12 @@ const hook: Hook.Preupdate = async function(options, fs: FsLib = nodeFs) {
     debug('moved installed plugins and lockfile');
 
     await remove(fs, v6Dir);
-    await remove(fs, v6Path);
 
     cli.action.stop();
     debug('cleaned v6 plugin config');
   } catch (err) {
-    this.warn(err);
+    if (err.code !== 'ENOENT') return this.warn(chalk.yellow(err.message));
+    debug('file not found during migration: %s', err.message);
   }
 };
 
