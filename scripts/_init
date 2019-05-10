@@ -157,7 +157,7 @@ S3_CACHE_DIR="$TMP_DIR/s3"
 OS_TARGETS=(
     "darwin"
     "linux"
-    # "windows"
+    "windows"
 )
 
 if [[ ! -z "${OS:-}" ]]; then
