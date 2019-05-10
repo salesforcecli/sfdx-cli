@@ -2,47 +2,47 @@
 
 set -ex
 
-# source ./scripts/release/_init
+source ./scripts/release/_init
 
-# VERSIONED_X64_PATH="$RELEASE_DIR/$INSTALLER_BASE_NAME-x64.exe"
-# VERSIONED_X86_PATH="$RELEASE_DIR/$INSTALLER_BASE_NAME-x86.exe"
-# X64_PATH="$RELEASE_DIR/$PKG_NAME-x64.exe"
-# X86_PATH="$RELEASE_DIR/$PKG_NAME-x86.exe"
+VERSIONED_X64_PATH="$RELEASE_DIR/$INSTALLER_BASE_NAME-x64.exe"
+VERSIONED_X86_PATH="$RELEASE_DIR/$INSTALLER_BASE_NAME-x86.exe"
+X64_PATH="$RELEASE_DIR/$PKG_NAME-x64.exe"
+X86_PATH="$RELEASE_DIR/$PKG_NAME-x86.exe"
 
-# if [[ "${FORCE_BUILD:-}" == true || ! -e "$VERSIONED_X64_PATH" || ! -e "$VERSIONED_X86_PATH" ]]; then
-  #  script "build/installers/windows"
-# fi
+if [[ "${FORCE_BUILD:-}" == true || ! -e "$VERSIONED_X64_PATH" || ! -e "$VERSIONED_X86_PATH" ]]; then
+    script "build/installers/windows"
+fi
 
-# stdout "Releasing windows installers to $CHANNEL"
+stdout "Releasing windows installers to $CHANNEL"
 
-# resetS3CacheDir
+resetS3CacheDir
 
 # Versioned installers
 
-# cp "$VERSIONED_X64_PATH" "$S3_CACHE_DIR"
-# cp "$VERSIONED_X86_PATH" "$S3_CACHE_DIR"
+cp "$VERSIONED_X64_PATH" "$S3_CACHE_DIR"
+cp "$VERSIONED_X86_PATH" "$S3_CACHE_DIR"
 
-# s3upload "$VERSIONED_CACHE_CONTROL" \
-  #  "$S3_CACHE_DIR" \
-  #  "$S3_CHANNEL_UPLOAD_URL" \
-  #  --recursive
+s3upload "$VERSIONED_CACHE_CONTROL" \
+    "$S3_CACHE_DIR" \
+    "$S3_CHANNEL_UPLOAD_URL" \
+    --recursive
 
 # Unversioned installers
 
-# resetS3CacheDir
+resetS3CacheDir
 
-# cp "$X64_PATH" "$S3_CACHE_DIR"
-# cp "$X86_PATH" "$S3_CACHE_DIR"
+cp "$X64_PATH" "$S3_CACHE_DIR"
+cp "$X86_PATH" "$S3_CACHE_DIR"
 
-# s3upload "$UNVERSIONED_CACHE_CONTROL" \
-  #  "$S3_CACHE_DIR" \
-  #  "$S3_CHANNEL_UPLOAD_URL" \
-  #  --recursive
+s3upload "$UNVERSIONED_CACHE_CONTROL" \
+    "$S3_CACHE_DIR" \
+    "$S3_CHANNEL_UPLOAD_URL" \
+    --recursive
 
-# function addExeToManifest () {
-  #  ARCH="$1"
-  #  addToManifest "installers" "windows-${ARCH}" "$S3_HOST_CHANNEL_BASE_URL/${INSTALLER_BASE_NAME}-${ARCH}.exe" "$RELEASE_DIR/${INSTALLER_BASE_NAME}-${ARCH}.exe"
-# }
+function addExeToManifest () {
+    ARCH="$1"
+    addToManifest "installers" "windows-${ARCH}" "$S3_HOST_CHANNEL_BASE_URL/${INSTALLER_BASE_NAME}-${ARCH}.exe" "$RELEASE_DIR/${INSTALLER_BASE_NAME}-${ARCH}.exe"
+}
 
-# addExeToManifest "x64"
-# addExeToManifest "x86"
+addExeToManifest "x64"
+addExeToManifest "x86"
