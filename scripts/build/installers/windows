@@ -58,8 +58,8 @@ function build () {
             -pass "$WINDOWS_SIGNING_PASS" \
             -n "$PKG_DESC" \
             -i https://developer.salesforce.com/platform/dx/ \
-            -t http://timestamp.verisign.com/scripts/timstamp.dll
-            -p "$HTTP_PROXY"
+            -t http://timestamp.verisign.com/scripts/timstamp.dll \
+            -p "$HTTP_PROXY" \
             -in "$INSTALLER_BASE/installer.exe" \
             -out "$RELEASE_DIR/$PKG_NAME-$ARCH.exe"
         rm -f "/tmp/$BIN_NAME-windows-key"
