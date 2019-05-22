@@ -21,6 +21,9 @@ else
     )
 fi
 
+export HTTP_PROXY="$OPS_HTTP_PROXY"
+export HTTPS_PROXY="$OPS_HTTPS_PROXY"
+
 docker run \
     ${extra_args[@]+${extra_args[@]}} \
     --rm \
