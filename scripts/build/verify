@@ -76,8 +76,8 @@ function ensure_doc_commands() {
 function ensure_templates() {
     template_readme_standard="$BASE_DIR/node_modules/force-language-services/dist/project/templates/README.standard.md"
     ls -l "$BASE_DIR/node_modules/force-language-services/dist/project/templates/"
-    if [[ ! -e "template_readme_standard" ]]; then
-        stderr "template_readme_standard is missing! Was the *.md clean too aggressive?"
+    if [[ ! -e "$template_readme_standard" ]]; then
+        stderr "$template_readme_standard is missing! Was the *.md clean too aggressive?"
         exit 1
     fi
     template_gitignore="$BASE_DIR/node_modules/force-language-services/dist/project/templates/gitignore"
