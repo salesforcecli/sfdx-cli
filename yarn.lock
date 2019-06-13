@@ -52,10 +52,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.4.3", "@babel/parser@^7.4.4":
-  version "7.4.4"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@babel%2fparser/-/parser-7.4.4.tgz#5977129431b8fe33471730d255ce8654ae1250b6"
-  integrity sha512-5pCS4mOsL+ANsFZGdvNLybx4wtqAZJ0MJjMHxvzI3bvIsz6sQvzW8XX92EYIkiPtIvcfG3Aj+Ir5VNyjnZhP7w==
+"@babel/parser@^7.4.3", "@babel/parser@^7.4.4", "@babel/parser@^7.4.5":
+  version "7.4.5"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@babel%2fparser/-/parser-7.4.5.tgz#04af8d5d5a2b044a2a1bffacc1e5e6673544e872"
+  integrity sha512-9mUqkL1FF5T7f0WDFfAoDdiMVPWsdD1gZYzSnaXsxUCUqzuch/8of9G3VUSNiZmMBoRxT3neyVsqeiL/ZPcjew==
 
 "@babel/template@^7.1.0", "@babel/template@^7.4.0":
   version "7.4.4"
@@ -67,15 +67,15 @@
     "@babel/types" "^7.4.4"
 
 "@babel/traverse@^7.4.3":
-  version "7.4.4"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@babel%2ftraverse/-/traverse-7.4.4.tgz#0776f038f6d78361860b6823887d4f3937133fe8"
-  integrity sha512-Gw6qqkw/e6AGzlyj9KnkabJX7VcubqPtkUQVAwkc0wUMldr3A/hezNB3Rc5eIvId95iSGkGIOe5hh1kMKf951A==
+  version "7.4.5"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@babel%2ftraverse/-/traverse-7.4.5.tgz#4e92d1728fd2f1897dafdd321efbff92156c3216"
+  integrity sha512-Vc+qjynwkjRmIFGxy0KYoPj4FdVDxLej89kMHFsWScq999uX+pwcX4v9mWRjW0KcAYTPAuVQl2LKP1wEVLsp+A==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/generator" "^7.4.4"
     "@babel/helper-function-name" "^7.1.0"
     "@babel/helper-split-export-declaration" "^7.4.4"
-    "@babel/parser" "^7.4.4"
+    "@babel/parser" "^7.4.5"
     "@babel/types" "^7.4.4"
     debug "^4.1.0"
     globals "^11.1.0"
@@ -125,7 +125,7 @@
 
 "@oclif/command@^1", "@oclif/command@^1.5.0", "@oclif/command@^1.5.1", "@oclif/command@^1.5.10", "@oclif/command@^1.5.11", "@oclif/command@^1.5.12", "@oclif/command@^1.5.3", "@oclif/command@^1.5.4", "@oclif/command@^1.5.8":
   version "1.5.13"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fcommand/-/command-1.5.13.tgz#7047f3e5c3abb8a08fb88ba3bf00ea96ea9a1d77"
+  resolved "http://10.252.156.164:4880/@oclif%2fcommand/-/command-1.5.13.tgz#7047f3e5c3abb8a08fb88ba3bf00ea96ea9a1d77"
   integrity sha512-zkO8hRd5Sjl7a+GM9ZMNHLD8rneAPjFBFjkAwLPs/hEv72RnFeWSyW6eE1nDbKVzMyDUYmmWNQFp0lQuwhHCdA==
   dependencies:
     "@oclif/errors" "^1.2.2"
@@ -187,7 +187,7 @@
 
 "@oclif/parser@^3.6.0", "@oclif/parser@^3.7.3":
   version "3.8.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fparser/-/parser-3.8.0.tgz#397c73f92cf8ac82daa7448a916638a312775e3b"
+  resolved "http://10.252.156.164:4880/@oclif%2fparser/-/parser-3.8.0.tgz#397c73f92cf8ac82daa7448a916638a312775e3b"
   integrity sha512-w1fCz0bpg1ukbYKLxQn3cYQS9hiqNgmFhlqAqqfr1k0ijMhA/g8Z+7mshiFs1w7OsxxnKhmRxPn7EZR4EJcemA==
   dependencies:
     "@oclif/linewrap" "^1.0.0"
@@ -205,12 +205,25 @@
     lodash "^4.17.11"
     tslib "^1.9.3"
 
+"@oclif/plugin-help@^1":
+  version "1.2.11"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fplugin-help/-/plugin-help-1.2.11.tgz#e6413a6009519230bc4c7e7fe45d8e139939e657"
+  integrity sha512-tuzhvxxRtfLnWa96klngXBi5IwHt9S/twedCbQhl9dYIKTFMHI1BcOQcPra6ylct+M+b9jhEF5sjWLv78tB6tw==
+  dependencies:
+    "@oclif/command" "^1.4.29"
+    chalk "^2.4.1"
+    indent-string "^3.2.0"
+    lodash.template "^4.4.0"
+    string-width "^2.1.1"
+    widest-line "^2.0.0"
+    wrap-ansi "^3.0.1"
+
 "@oclif/plugin-help@^2", "@oclif/plugin-help@^2.1.0", "@oclif/plugin-help@^2.1.6":
   version "2.1.6"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fplugin-help/-/plugin-help-2.1.6.tgz#ae14cbe2c5cd3eaf5f796d205ffbe66d3e369173"
+  resolved "http://10.252.156.164:4880/@oclif%2fplugin-help/-/plugin-help-2.1.6.tgz#ae14cbe2c5cd3eaf5f796d205ffbe66d3e369173"
   integrity sha512-M4kTERpPWNSM1Mga7K/zo9DWHLCVf2FRaIeXPoytmTPd+0kSvG3TR0Vc1bwx9/cxXoYyYGgEejwNlrfayr8FZw==
   dependencies:
-    "@oclif/command" "^1.5.8"
+    "@oclif/command" "^1.5.13"
     chalk "^2.4.1"
     indent-string "^3.2.0"
     lodash.template "^4.4.0"
@@ -308,7 +321,7 @@
 
 "@salesforce/command@^1", "@salesforce/command@^1.2.0", "@salesforce/command@^1.3.4", "@salesforce/command@^1.4.2":
   version "1.5.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcommand/-/command-1.5.1.tgz#ba57ffcc4487207964e9f055e817bfa160a146e2"
+  resolved "http://10.252.156.164:4880/@salesforce%2fcommand/-/command-1.5.1.tgz#ba57ffcc4487207964e9f055e817bfa160a146e2"
   integrity sha512-XP4nxu41mamk+pINkspkYQBQxMCIHjdrFE3/xt2eCRjJY8mBVYtVyQp0jxaDny6nD3yfTGalb9s0JbQ54SlxiQ==
   dependencies:
     "@oclif/command" "^1.5.0"
@@ -408,10 +421,12 @@
 
 "@salesforce/sfdx-trust@^3.0.2":
   version "3.0.2"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-3.0.2.tgz#b2a685bc1de436d00a82b28b919a35a363b44c87"
+  resolved "http://10.252.156.164:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-3.0.2.tgz#b2a685bc1de436d00a82b28b919a35a363b44c87"
   integrity sha512-mNYDcvno0HStbh7Oi+1Rn99TeSUciJMKbzNvfRSHOHlKYJBaLMoHa4SttEXDcMNLuoIKVcNhffKzqI2uKeo/qQ==
   dependencies:
+    "@oclif/config" "^1"
     "@oclif/errors" "^1"
+    "@oclif/plugin-help" "^1"
     "@salesforce/command" "^1"
     "@salesforce/core" "^1.3.1"
     "@salesforce/kit" "^1"
@@ -529,29 +544,29 @@
 
 "@types/lodash@*":
   version "4.14.126"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2flodash/-/lodash-4.14.126.tgz#47cff3ea014aa083194f8ca3ec351136c3786613"
+  resolved "http://10.252.156.164:4880/@types%2flodash/-/lodash-4.14.126.tgz#47cff3ea014aa083194f8ca3ec351136c3786613"
   integrity sha512-HxQ+wQnBtnL0LszZrVdMqWIlzZNyKuMLUb6swQ3mo6ysPqpAu7gfnapCQIi0B+Mrf0fNLZh8AWgJs2njejVasg==
 
 "@types/mocha@*", "@types/mocha@^5":
   version "5.2.6"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2fmocha/-/mocha-5.2.6.tgz#b8622d50557dd155e9f2f634b7d68fd38de5e94b"
+  resolved "http://10.252.156.164:4880/@types%2fmocha/-/mocha-5.2.6.tgz#b8622d50557dd155e9f2f634b7d68fd38de5e94b"
   integrity sha512-1axi39YdtBI7z957vdqXI4Ac25e7YihYQtJa+Clnxg1zTJEaIRbndt71O3sP4GAMgiAm0pY26/b9BrY4MR/PMw==
 
 "@types/nock@*":
   version "10.0.2"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2fnock/-/nock-10.0.2.tgz#907c5cd44b02408608b1fada030c1fbe0a2cd9cd"
+  resolved "http://10.252.156.164:4880/@types%2fnock/-/nock-10.0.2.tgz#907c5cd44b02408608b1fada030c1fbe0a2cd9cd"
   integrity sha512-jOdoZ3zVLmPWZOoPJDoks+Zo6GsogdZuVBWs8/prWau993qno5PPtukVXKfc+WtS/ROgTPWpiru92z2K6KFYgQ==
   dependencies:
     "@types/node" "*"
 
 "@types/node@*":
   version "12.0.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2fnode/-/node-12.0.0.tgz#d11813b9c0ff8aaca29f04cbc12817f4c7d656e5"
+  resolved "http://10.252.156.164:4880/@types%2fnode/-/node-12.0.0.tgz#d11813b9c0ff8aaca29f04cbc12817f4c7d656e5"
   integrity sha512-Jrb/x3HT4PTJp6a4avhmJCDEVrPdqLfl3e8GGMbpkGGdwAV5UGlIs4vVEfsHHfylZVOKZWpOqmqFH8CbfOZ6kg==
 
 "@types/node@^10":
   version "10.14.6"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2fnode/-/node-10.14.6.tgz#9cbfcb62c50947217f4d88d4d274cc40c22625a9"
+  resolved "http://10.252.156.164:4880/@types%2fnode/-/node-10.14.6.tgz#9cbfcb62c50947217f4d88d4d274cc40c22625a9"
   integrity sha512-Fvm24+u85lGmV4hT5G++aht2C5I4Z4dYlWZIh62FAfFO/TfzXtPpoLI6I7AuBWkIFqZCnhFOoTT7RjjaIL5Fjg==
 
 "@types/request@2.0.3":
@@ -569,7 +584,7 @@
 
 "@types/sinon@*":
   version "7.0.11"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2fsinon/-/sinon-7.0.11.tgz#6f28f005a36e779b7db0f1359b9fb9eef72aae88"
+  resolved "http://10.252.156.164:4880/@types%2fsinon/-/sinon-7.0.11.tgz#6f28f005a36e779b7db0f1359b9fb9eef72aae88"
   integrity sha512-6ee09Ugx6GyEr0opUIakmxIWFNmqYPjkqa3/BuxCBokA0klsOLPgMD5K4q40lH7/yZVuJVzOfQpd7pipwjngkQ==
 
 "@types/sinon@4.3.2":
@@ -612,7 +627,14 @@ adm-zip@0.4.13:
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/adm-zip/-/adm-zip-0.4.13.tgz#597e2f8cc3672151e1307d3e95cddbc75672314a"
   integrity sha512-fERNJX8sOXfel6qCBCMPvZLzENBEhZTzKqg6vrOW5pvoEaQuJhRU4ndTAh6lHOxn1I6jnz2NHra56ZODM751uw==
 
-agent-base@4, agent-base@^4.1.0, agent-base@~4.2.1:
+agent-base@4, agent-base@^4.1.0:
+  version "4.3.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/agent-base/-/agent-base-4.3.0.tgz#8165f01c436009bccad0b1d122f05ed770efc6ee"
+  integrity sha512-salcGninV0nPrwpGNn4VTXBb1SOuXQBiqbrNXoeizJsHrsL6ERFM2Ne3JUSBWRE6aeNJI2ROP/WEEIDUiDe3cg==
+  dependencies:
+    es6-promisify "^5.0.0"
+
+agent-base@~4.2.1:
   version "4.2.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/agent-base/-/agent-base-4.2.1.tgz#d89e5999f797875674c07d87f260fc41e83e8ca9"
   integrity sha512-JVwXMr9nHYTUXsBFKUqhJwvlcYU/blreOEUkhNR2eXZIvwd+c+o5V4MgDPKWnMS/56awN3TRzIP+KoPn+roQtg==
@@ -1010,7 +1032,7 @@ bluebird@3.4.6:
 
 bluebird@^3.0.5, bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.3:
   version "3.5.4"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
+  resolved "http://10.252.156.164:4880/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
   integrity sha512-FG+nFEZChJrbQ9tIccIfZJBz3J7mLrAhxakAbnrJWn8d7aKOC+LWifa0G+p4ZqKp4y13T7juYvdhq9NzKdsrjw==
 
 boolbase@~1.0.0:
@@ -1191,7 +1213,7 @@ caching-transform@^3.0.1:
 
 call-limit@~1.1.0:
   version "1.1.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/call-limit/-/call-limit-1.1.0.tgz#6fd61b03f3da42a2cd0ec2b60f02bd0e71991fea"
+  resolved "http://10.252.156.164:4880/call-limit/-/call-limit-1.1.0.tgz#6fd61b03f3da42a2cd0ec2b60f02bd0e71991fea"
   integrity sha1-b9YbA/PaQqLNDsK2DwK9DnGZH+o=
 
 call-me-maybe@^1.0.1:
@@ -1576,7 +1598,7 @@ clone@^2.1.1:
 
 cloneable-readable@^1.0.0:
   version "1.1.2"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/cloneable-readable/-/cloneable-readable-1.1.2.tgz#d591dee4a8f8bc15da43ce97dceeba13d43e2a65"
+  resolved "http://10.252.156.164:4880/cloneable-readable/-/cloneable-readable-1.1.2.tgz#d591dee4a8f8bc15da43ce97dceeba13d43e2a65"
   integrity sha512-Bq6+4t+lbM8vhTs/Bef5c5AdEMtapp/iFb6+s4/Hh9MVTt8OLKH7ZOOZSCT+Ys7hsHvqv0GuMPJ1lnQJVHvxpg==
   dependencies:
     inherits "^2.0.1"
@@ -1658,7 +1680,7 @@ columnify@~1.5.4:
 
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.7"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/combined-stream/-/combined-stream-1.0.7.tgz#2d1d24317afb8abe95d6d2c0b07b57813539d828"
+  resolved "http://10.252.156.164:4880/combined-stream/-/combined-stream-1.0.7.tgz#2d1d24317afb8abe95d6d2c0b07b57813539d828"
   integrity sha512-brWl9y6vOB1xYPZcpZde3N9zDByXTosAeMDo4p1wzo6UMOX4vumB+TP1RZ76sfE6Md68Q0NJSrE/gbezd4Ul+w==
   dependencies:
     delayed-stream "~1.0.0"
@@ -1794,7 +1816,7 @@ copy-descriptor@^0.1.0:
 
 core-js@^2.4.0:
   version "2.6.5"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/core-js/-/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
+  resolved "http://10.252.156.164:4880/core-js/-/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
   integrity sha512-klh/kDpwX8hryYL14M9w/xei6vrv6sE8gTHDG7/T/+SEovB/G4ejwcfE/CBzO6Edsu+OETZMZ3wcX/EjUkrl5A==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
@@ -1804,12 +1826,12 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
 
 cosmiconfig@^5.0.7:
   version "5.2.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/cosmiconfig/-/cosmiconfig-5.2.0.tgz#45038e4d28a7fe787203aede9c25bca4a08b12c8"
+  resolved "http://10.252.156.164:4880/cosmiconfig/-/cosmiconfig-5.2.0.tgz#45038e4d28a7fe787203aede9c25bca4a08b12c8"
   integrity sha512-nxt+Nfc3JAqf4WIWd0jXLjTJZmsPLrA9DDc4nRw2KFJQJK7DNooqSXrNI7tzLG50CF8axczly5UV929tBmh/7g==
   dependencies:
     import-fresh "^2.0.0"
     is-directory "^0.3.1"
-    js-yaml "^3.13.0"
+    js-yaml "^3.13.1"
     parse-json "^4.0.0"
 
 cp-file@^3.1.0:
@@ -2414,7 +2436,7 @@ error@^7.0.2:
     string-template "~0.2.1"
     xtend "~4.0.0"
 
-es5-ext@^0.10.14, es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
+es5-ext@^0.10.35, es5-ext@^0.10.46, es5-ext@^0.10.9, es5-ext@~0.10.14:
   version "0.10.50"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/es5-ext/-/es5-ext-0.10.50.tgz#6d0e23a0abdb27018e5ac4fd09b412bc5517a778"
   integrity sha512-KMzZTPBkeQV/JcSQhI5/z6d9VWJ3EnQ194USTUwIYZ2ZbpN8+SGXQKt1h68EX44+qt+Fzr8DO17vnxrw7c3agw==
@@ -2428,7 +2450,7 @@ es6-error@^4.0.1:
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/es6-error/-/es6-error-4.1.1.tgz#9e3af407459deed47e9a91f9b885a84eb05c561d"
   integrity sha512-Um/+FxMr9CISWh0bi5Zv0iOD+4cFh5qLeks1qhAopKVAJw3drgKbKySikp7wGhDL0HPeaja0P5ULZrxLkniUVg==
 
-es6-iterator@^2.0.1, es6-iterator@~2.0.1, es6-iterator@~2.0.3:
+es6-iterator@^2.0.3, es6-iterator@~2.0.1, es6-iterator@~2.0.3:
   version "2.0.3"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/es6-iterator/-/es6-iterator-2.0.3.tgz#a7de889141a05a94b0854403b2d0a0fbfa98f3b7"
   integrity sha1-p96IkUGgWpSwhUQDstCg+/qY87c=
@@ -2451,7 +2473,7 @@ es6-map@^0.1.3:
 
 es6-promise@^4.0.3:
   version "4.2.6"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/es6-promise/-/es6-promise-4.2.6.tgz#b685edd8258886365ea62b57d30de28fadcd974f"
+  resolved "http://10.252.156.164:4880/es6-promise/-/es6-promise-4.2.6.tgz#b685edd8258886365ea62b57d30de28fadcd974f"
   integrity sha512-aRVgGdnmW2OiySVPUC9e6m+plolMAJKjZnQlCwNSuK5yQ0JN61DZSO1X1Ufd1foqWRAlig0rhduTCHe7sVtK5Q==
 
 es6-promisify@^5.0.0:
@@ -2482,12 +2504,12 @@ es6-symbol@3.1.1, es6-symbol@^3.1.1, es6-symbol@~3.1.1:
 
 es6-weak-map@^2.0.1:
   version "2.0.2"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/es6-weak-map/-/es6-weak-map-2.0.2.tgz#5e3ab32251ffd1538a1f8e5ffa1357772f92d96f"
+  resolved "http://10.252.156.164:4880/es6-weak-map/-/es6-weak-map-2.0.2.tgz#5e3ab32251ffd1538a1f8e5ffa1357772f92d96f"
   integrity sha1-XjqzIlH/0VOKH45f+hNXdy+S2W8=
   dependencies:
     d "1"
-    es5-ext "^0.10.14"
-    es6-iterator "^2.0.1"
+    es5-ext "^0.10.46"
+    es6-iterator "^2.0.3"
     es6-symbol "^3.1.1"
 
 escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
@@ -2860,7 +2882,7 @@ fast-deep-equal@^2.0.1:
 
 fast-glob@^2.0.2:
   version "2.2.6"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/fast-glob/-/fast-glob-2.2.6.tgz#a5d5b697ec8deda468d85a74035290a025a95295"
+  resolved "http://10.252.156.164:4880/fast-glob/-/fast-glob-2.2.6.tgz#a5d5b697ec8deda468d85a74035290a025a95295"
   integrity sha512-0BvMaZc1k9F+MeWWMe8pL6YltFzZYcJsYU7D4JyDA6PAczaXvxqQQ/z+mDF7/4Mw01DeUc+i3CTKajnkANkV4w==
   dependencies:
     "@mrmlnc/readdir-enhanced" "^2.2.1"
@@ -2882,7 +2904,7 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.4:
 
 faye-websocket@>=0.9.1:
   version "0.11.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/faye-websocket/-/faye-websocket-0.11.1.tgz#f0efe18c4f56e4f40afc7e06c719fd5ee6188f38"
+  resolved "http://10.252.156.164:4880/faye-websocket/-/faye-websocket-0.11.1.tgz#f0efe18c4f56e4f40afc7e06c719fd5ee6188f38"
   integrity sha1-8O/hjE9W5PQK/H4Gxxn9XuYYjzg=
   dependencies:
     websocket-driver ">=0.5.1"
@@ -3036,7 +3058,7 @@ for-in@^1.0.2:
 
 force-language-services@45.11.1-0:
   version "45.11.1-0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/force-language-services/-/force-language-services-45.11.1-0.tgz#436d64679fd54824122ad048471a66782152776b"
+  resolved "http://10.252.156.164:4880/force-language-services/-/force-language-services-45.11.1-0.tgz#436d64679fd54824122ad048471a66782152776b"
   integrity sha512-xz17UBTtdhI3BZZhg7SkltvzB1G2T1fKonxHtPwDlZv1f56DGMU9NLschOxGzCtHBH/HVizCZFiAxzfvyjEFFQ==
   dependencies:
     "@salesforce/command" "^1.2.0"
@@ -3135,7 +3157,7 @@ fs-extra@^7.0.0, fs-extra@^7.0.1:
 
 fs-minipass@^1.2.5:
   version "1.2.5"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/fs-minipass/-/fs-minipass-1.2.5.tgz#06c277218454ec288df77ada54a03b8702aacb9d"
+  resolved "http://10.252.156.164:4880/fs-minipass/-/fs-minipass-1.2.5.tgz#06c277218454ec288df77ada54a03b8702aacb9d"
   integrity sha512-JhBl0skXjUPCFH7x6x61gQxrKyXsxB5gcgePLZCwfyCGGsTISMoIeObbrvVeP6Xmyaudw4TT43qV2Gz+iyd2oQ==
   dependencies:
     minipass "^2.2.1"
@@ -3166,7 +3188,7 @@ fs.realpath@^1.0.0:
 
 fstream@^1.0.0, fstream@^1.0.2:
   version "1.0.11"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/fstream/-/fstream-1.0.11.tgz#5c1fb1f117477114f0632a0eb4b71b3cb0fd3171"
+  resolved "http://10.252.156.164:4880/fstream/-/fstream-1.0.11.tgz#5c1fb1f117477114f0632a0eb4b71b3cb0fd3171"
   integrity sha1-XB+x8RdHcRTwYyoOtLcbPLD9MXE=
   dependencies:
     graceful-fs "^4.1.2"
@@ -3816,7 +3838,7 @@ http-call@^5.1.2, http-call@^5.2.2, http-call@^5.2.3:
 
 http-parser-js@>=0.4.0:
   version "0.5.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/http-parser-js/-/http-parser-js-0.5.0.tgz#d65edbede84349d0dc30320815a15d39cc3cbbd8"
+  resolved "http://10.252.156.164:4880/http-parser-js/-/http-parser-js-0.5.0.tgz#d65edbede84349d0dc30320815a15d39cc3cbbd8"
   integrity sha512-cZdEF7r4gfRIq7ezX9J0T+kQmJNOub71dWbgAXVHDct80TKP4MCETtZQ31xyv38UwgzkWPYF/Xc0ge55dW9Z9w==
 
 http-proxy-agent@^2.1.0:
@@ -4453,7 +4475,7 @@ istanbul-lib-source-maps@^3.0.2:
 
 istanbul-reports@^2.1.1:
   version "2.2.5"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/istanbul-reports/-/istanbul-reports-2.2.5.tgz#7fd354847124b46861365ac41165a4dfe5f67ea5"
+  resolved "http://10.252.156.164:4880/istanbul-reports/-/istanbul-reports-2.2.5.tgz#7fd354847124b46861365ac41165a4dfe5f67ea5"
   integrity sha512-ilCSjE6f7elNIRxnSnIhnOpXdf3ryUT7Zkl+TaADItM638SWXjfNW40cujZCIjex4g4DTkzIy9kzwkaLruB50Q==
   dependencies:
     handlebars "^4.1.2"
@@ -4485,7 +4507,7 @@ js-tokens@^4.0.0:
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
 
-js-yaml@^3.13.0, js-yaml@^3.5.1:
+js-yaml@^3.13.1, js-yaml@^3.5.1:
   version "3.13.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
   integrity sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==
@@ -4866,7 +4888,7 @@ libnpmpublish@^1.1.0:
 
 libnpmsearch@*, libnpmsearch@^2.0.0:
   version "2.0.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/libnpmsearch/-/libnpmsearch-2.0.0.tgz#de05af47ada81554a5f64276a69599070d4a5685"
+  resolved "http://10.252.156.164:4880/libnpmsearch/-/libnpmsearch-2.0.0.tgz#de05af47ada81554a5f64276a69599070d4a5685"
   integrity sha512-vd+JWbTGzOSfiOc+72MU6y7WqmBXn49egCCrIXp27iE/88bX8EpG64ST1blWQI1bSMUr9l1AKPMVsqa2tS5KWA==
   dependencies:
     figgy-pudding "^3.5.1"
@@ -5211,10 +5233,15 @@ log-symbols@^2.2.0:
   dependencies:
     chalk "^2.0.1"
 
-lolex@^2.2.0, lolex@^2.3.2, lolex@^2.4.2:
+lolex@^2.2.0, lolex@^2.4.2:
   version "2.7.5"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/lolex/-/lolex-2.7.5.tgz#113001d56bfc7e02d56e36291cc5c413d1aa0733"
   integrity sha512-l9x0+1offnKKIzYVjyXU2SiwhXDLekRzKyhnbyldPHvC7BvLPVpdNUNR2KeMAiCN2D/kLNttZgQD5WjSxuBx3Q==
+
+lolex@^4.1.0:
+  version "4.1.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/lolex/-/lolex-4.1.0.tgz#ecdd7b86539391d8237947a3419aa8ac975f0fe1"
+  integrity sha512-BYxIEXiVq5lGIXeVHnsFzqa1TxN5acnKnPCdlZSpzm8viNEOhiigupA4vTQ9HEFQ6nLTQ9wQOgBknJgzUYQ9Aw==
 
 longjohn@^0.2.12:
   version "0.2.12"
@@ -5498,7 +5525,7 @@ minimist@~0.0.1:
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
   integrity sha1-3j+YVD2/lggr5IrRoMfNqDYwHc8=
 
-minipass@^2.2.1, minipass@^2.3.4, minipass@^2.3.5:
+minipass@^2.2.1, minipass@^2.3.5:
   version "2.3.5"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/minipass/-/minipass-2.3.5.tgz#cacebe492022497f656b0f0f51e2682a9ed2d848"
   integrity sha512-Gi1W4k059gyRbyVUZQ4mEqLm0YIUiGYfvxhF6SIlk3ui1WVxMTGfGdQ2SInh3PDrRTVvPKgULkpJtT4RH10+VA==
@@ -5506,7 +5533,7 @@ minipass@^2.2.1, minipass@^2.3.4, minipass@^2.3.5:
     safe-buffer "^5.1.2"
     yallist "^3.0.0"
 
-minizlib@^1.1.1:
+minizlib@^1.2.1:
   version "1.2.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/minizlib/-/minizlib-1.2.1.tgz#dd27ea6136243c7c880684e8672bb3a45fd9b614"
   integrity sha512-7+4oTUOWKg7AuL3vloEWekXY2/D20cevzsrNT2kGWm+39J9hGTCBv8VI5Pm5lXZ/o3/mdR4f8rflAPhnQb8mPA==
@@ -5590,7 +5617,7 @@ ms@2.0.0:
 
 ms@^2.0.0, ms@^2.1.1:
   version "2.1.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
+  resolved "http://10.252.156.164:4880/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
 multimatch@^2.0.0:
@@ -5642,7 +5669,7 @@ mv@~2:
 
 nan@^2.0.8:
   version "2.13.2"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/nan/-/nan-2.13.2.tgz#f51dc7ae66ba7d5d55e1e6d4d8092e802c9aefe7"
+  resolved "http://10.252.156.164:4880/nan/-/nan-2.13.2.tgz#f51dc7ae66ba7d5d55e1e6d4d8092e802c9aefe7"
   integrity sha512-TghvYc72wlMGMVMluVo9WRJc0mB8KxxF/gZ4YYFy7V2ZQX9l7rgbPg7vjS9mt6U5HXODVFVI2bOduCzwOMv/lw==
 
 nanomatch@^1.2.9:
@@ -5679,7 +5706,7 @@ ncp@2.0.0, ncp@~2.0.0:
 
 neo-async@^2.6.0:
   version "2.6.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
+  resolved "http://10.252.156.164:4880/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
 
 nested-error-stacks@^1.0.0, nested-error-stacks@^1.0.1:
@@ -5709,13 +5736,13 @@ nice-try@^1.0.4:
 
 nise@^1.2.0, nise@^1.3.3:
   version "1.4.10"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/nise/-/nise-1.4.10.tgz#ae46a09a26436fae91a38a60919356ae6db143b6"
+  resolved "http://10.252.156.164:4880/nise/-/nise-1.4.10.tgz#ae46a09a26436fae91a38a60919356ae6db143b6"
   integrity sha512-sa0RRbj53dovjc7wombHmVli9ZihXbXCQ2uH3TNm03DyvOSIQbxg+pbqDKrk2oxMK1rtLGVlKxcB9rrc6X5YjA==
   dependencies:
     "@sinonjs/formatio" "^3.1.0"
     "@sinonjs/text-encoding" "^0.7.1"
     just-extend "^4.0.2"
-    lolex "^2.3.2"
+    lolex "^4.1.0"
     path-to-regexp "^1.7.0"
 
 node-fetch-npm@^2.0.2:
@@ -6727,7 +6754,7 @@ pseudomap@^1.0.2:
 
 psl@^1.1.24, psl@^1.1.28:
   version "1.1.31"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/psl/-/psl-1.1.31.tgz#e9aa86d0101b5b105cbe93ac6b784cd547276184"
+  resolved "http://10.252.156.164:4880/psl/-/psl-1.1.31.tgz#e9aa86d0101b5b105cbe93ac6b784cd547276184"
   integrity sha512-/6pt4+C+T+wZUieKR620OpzN/LlnNKuWjy1iFLQ/UG35JqHlR/89MP1d96dUfkf6Dne3TuLQzOYEYshJ+Hx8mw==
 
 pump@^1.0.0:
@@ -6823,7 +6850,7 @@ query-string@^5.0.1:
 
 query-string@^6.2.0:
   version "6.5.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/query-string/-/query-string-6.5.0.tgz#2e1a70125af01f6f04573692d02c09302a1d8bfc"
+  resolved "http://10.252.156.164:4880/query-string/-/query-string-6.5.0.tgz#2e1a70125af01f6f04573692d02c09302a1d8bfc"
   integrity sha512-TYC4hDjZSvVxLMEucDMySkuAS9UIzSbAiYGyA9GWCjLKB8fQpviFbjd20fD7uejCDxZS+ftSdBKE6DS+xucJFg==
   dependencies:
     decode-uri-component "^0.2.0"
@@ -7011,7 +7038,7 @@ readable-stream@1.1:
 
 "readable-stream@2 || 3", readable-stream@^3.1.1:
   version "3.3.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/readable-stream/-/readable-stream-3.3.0.tgz#cb8011aad002eb717bf040291feba8569c986fb9"
+  resolved "http://10.252.156.164:4880/readable-stream/-/readable-stream-3.3.0.tgz#cb8011aad002eb717bf040291feba8569c986fb9"
   integrity sha512-EsI+s3k3XsW+fU8fQACLN59ky34AZ14LoeVZpYwmZvldCFo0r0gnelwF2TcMjLor/BTL5aDJVBMkss0dthToPw==
   dependencies:
     inherits "^2.0.3"
@@ -7228,7 +7255,7 @@ resolve-url@^0.2.1:
 
 resolve@^1.1.6, resolve@^1.10.0, resolve@^1.3.2:
   version "1.10.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/resolve/-/resolve-1.10.1.tgz#664842ac960795bbe758221cdccda61fb64b5f18"
+  resolved "http://10.252.156.164:4880/resolve/-/resolve-1.10.1.tgz#664842ac960795bbe758221cdccda61fb64b5f18"
   integrity sha512-KuIe4mf++td/eFb6wkaPbMDnP6kObCaEtIDuHOUED6MNUo4K670KZUHuuvYPZDxNF0WVLw49n06M2m2dXphEzA==
   dependencies:
     path-parse "^1.0.6"
@@ -7357,7 +7384,7 @@ rxjs@^6.4.0:
   dependencies:
     tslib "^1.9.0"
 
-safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
+safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
@@ -7381,7 +7408,7 @@ safe-regex@^1.1.0:
 
 salesforce-alm@45.17.1-0:
   version "45.17.1-0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforce-alm/-/salesforce-alm-45.17.1-0.tgz#30c37b877005ead8226c7fb64631a95c53e3609b"
+  resolved "http://10.252.156.164:4880/salesforce-alm/-/salesforce-alm-45.17.1-0.tgz#30c37b877005ead8226c7fb64631a95c53e3609b"
   integrity sha512-7w6QOEJQUDfeI310SVvDkVEox5wo9FmWP2PKOSCE1YffJwg5Fx0ePgPTXVYIkki0I6eegoQfi4EHW2jwBFFyxQ==
   dependencies:
     "@oclif/config" "^1.12.0"
@@ -7431,7 +7458,7 @@ salesforce-alm@45.17.1-0:
 
 salesforce-lightning-cli@2.0.1:
   version "2.0.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforce-lightning-cli/-/salesforce-lightning-cli-2.0.1.tgz#3368c0d2769e48dbfc357e99c11b65b7b0b1be73"
+  resolved "http://10.252.156.164:4880/salesforce-lightning-cli/-/salesforce-lightning-cli-2.0.1.tgz#3368c0d2769e48dbfc357e99c11b65b7b0b1be73"
   integrity sha512-cT+bCZ0AIY0y0+U1liAvMpveTnxcrN9LJzAgXhdon3tyXhjSfttpiLS9KcEZ7eDlvh52wz/ewatQePjksBIKHQ==
   dependencies:
     "@oclif/command" "^1.5.11"
@@ -7445,12 +7472,12 @@ salesforce-lightning-cli@2.0.1:
 
 salesforcedx@45.14.2-1:
   version "45.14.2-1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx/-/salesforcedx-45.14.2-1.tgz#c1b979c7bebc3f6abf1b7fad43e286da2b5eb042"
+  resolved "http://10.252.156.164:4880/salesforcedx/-/salesforcedx-45.14.2-1.tgz#c1b979c7bebc3f6abf1b7fad43e286da2b5eb042"
   integrity sha512-UNurTPUThJ0X+9f45OniKfo/KJbFOQcFzCx/BtDIMH3gJTHPWp8QrCnH6gQWjVoLm74WHP+mSupvCgjJWfMOFw==
   dependencies:
-    force-language-services "45.11.1-0"
-    salesforce-alm "45.17.1-0"
-    salesforce-lightning-cli "2.0.1"
+    force-language-services "45.11.1-1"
+    salesforce-alm "45.18.1-3"
+    salesforce-lightning-cli "2.0.2"
 
 samsam@1.3.0:
   version "1.3.0"
@@ -7505,7 +7532,7 @@ semver-diff@^2.0.0:
 
 semver@^6.0.0:
   version "6.0.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/semver/-/semver-6.0.0.tgz#05e359ee571e5ad7ed641a6eec1e547ba52dea65"
+  resolved "http://10.252.156.164:4880/semver/-/semver-6.0.0.tgz#05e359ee571e5ad7ed641a6eec1e547ba52dea65"
   integrity sha512-0UewU+9rFapKFnlbirLi3byoOuhrSsli/z/ihNnvM24vgF+8sNBiI1LZPBSH9wJKUwaUbw+s3hToDLCXkrghrQ==
 
 semver@~5.3.0:
@@ -8137,25 +8164,25 @@ tar-stream@1.6.2, tar-stream@^1.1.2, tar-stream@^1.5.0:
 
 tar@^2.0.0:
   version "2.2.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/tar/-/tar-2.2.1.tgz#8e4d2a256c0e2185c6b18ad694aec968b83cb1d1"
+  resolved "http://10.252.156.164:4880/tar/-/tar-2.2.1.tgz#8e4d2a256c0e2185c6b18ad694aec968b83cb1d1"
   integrity sha1-jk0qJWwOIYXGsYrWlK7JaLg8sdE=
   dependencies:
     block-stream "*"
-    fstream "^1.0.2"
+    fstream "^1.0.12"
     inherits "2"
 
 tar@^4.4.8:
   version "4.4.8"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/tar/-/tar-4.4.8.tgz#b19eec3fde2a96e64666df9fdb40c5ca1bc3747d"
+  resolved "http://10.252.156.164:4880/tar/-/tar-4.4.8.tgz#b19eec3fde2a96e64666df9fdb40c5ca1bc3747d"
   integrity sha512-LzHF64s5chPQQS0IYBn9IN5h3i98c12bo4NCO7e0sGM2llXQ3p2FGC5sdENN4cTW48O915Sh+x+EXx7XW96xYQ==
   dependencies:
     chownr "^1.1.1"
     fs-minipass "^1.2.5"
-    minipass "^2.3.4"
-    minizlib "^1.1.1"
+    minipass "^2.3.5"
+    minizlib "^1.2.1"
     mkdirp "^0.5.0"
     safe-buffer "^5.1.2"
-    yallist "^3.0.2"
+    yallist "^3.0.3"
 
 temp-write@^2.1.0:
   version "2.1.0"
@@ -8343,7 +8370,7 @@ ts-node@^6:
 
 tslib@^1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.9.3"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
+  resolved "http://10.252.156.164:4880/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
 
 tslint-microsoft-contrib@^5:
@@ -8355,7 +8382,7 @@ tslint-microsoft-contrib@^5:
 
 tslint@^5:
   version "5.16.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/tslint/-/tslint-5.16.0.tgz#ae61f9c5a98d295b9a4f4553b1b1e831c1984d67"
+  resolved "http://10.252.156.164:4880/tslint/-/tslint-5.16.0.tgz#ae61f9c5a98d295b9a4f4553b1b1e831c1984d67"
   integrity sha512-UxG2yNxJ5pgGwmMzPMYh/CCnCnh0HfPgtlVRDs1ykZklufFBL1ZoTlWFRz2NQjcoEiDoRp+JyT0lhBbbH/obyA==
   dependencies:
     "@babel/code-frame" "^7.0.0"
@@ -8364,7 +8391,7 @@ tslint@^5:
     commander "^2.12.1"
     diff "^3.2.0"
     glob "^7.1.1"
-    js-yaml "^3.13.0"
+    js-yaml "^3.13.1"
     minimatch "^3.0.4"
     mkdirp "^0.5.1"
     resolve "^1.3.2"
@@ -8437,7 +8464,7 @@ typescript@3.1.6:
 
 uglify-js@^3.1.4:
   version "3.5.11"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/uglify-js/-/uglify-js-3.5.11.tgz#833442c0aa29b3a7d34344c7c63adaa3f3504f6a"
+  resolved "http://10.252.156.164:4880/uglify-js/-/uglify-js-3.5.11.tgz#833442c0aa29b3a7d34344c7c63adaa3f3504f6a"
   integrity sha512-izPJg8RsSyqxbdnqX36ExpbH3K7tDBsAU/VfNv89VkMFy3z39zFjunQGsSHOlGlyIfGLGprGeosgQno3bo2/Kg==
   dependencies:
     commander "~2.20.0"
@@ -8480,7 +8507,7 @@ unique-filename@^1.1.1:
 
 unique-slug@^2.0.0:
   version "2.0.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/unique-slug/-/unique-slug-2.0.1.tgz#5e9edc6d1ce8fb264db18a507ef9bd8544451ca6"
+  resolved "http://10.252.156.164:4880/unique-slug/-/unique-slug-2.0.1.tgz#5e9edc6d1ce8fb264db18a507ef9bd8544451ca6"
   integrity sha512-n9cU6+gITaVu7VGj1Z8feKMmfAjEAQGhwD9fE3zvpRRa0wEIx8ODYkVGfSc94M2OX00tUFV8wH3zYbm1I8mxFg==
   dependencies:
     imurmurhash "^0.1.4"
@@ -8728,10 +8755,11 @@ webdriverio@4.14.2:
 
 websocket-driver@>=0.5.1:
   version "0.7.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/websocket-driver/-/websocket-driver-0.7.0.tgz#0caf9d2d755d93aee049d4bdd0d3fe2cca2a24eb"
+  resolved "http://10.252.156.164:4880/websocket-driver/-/websocket-driver-0.7.0.tgz#0caf9d2d755d93aee049d4bdd0d3fe2cca2a24eb"
   integrity sha1-DK+dLXVdk67gSdS90NP+LMoqJOs=
   dependencies:
-    http-parser-js ">=0.4.0"
+    http-parser-js ">=0.4.0 <0.4.11"
+    safe-buffer ">=5.1.0"
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
@@ -8804,6 +8832,14 @@ wrap-ansi@^2.0.0:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
 
+wrap-ansi@^3.0.1:
+  version "3.0.1"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/wrap-ansi/-/wrap-ansi-3.0.1.tgz#288a04d87eda5c286e060dfe8f135ce8d007f8ba"
+  integrity sha1-KIoE2H7aXChuBg3+jxNc6NAH+Lo=
+  dependencies:
+    string-width "^2.1.1"
+    strip-ansi "^4.0.0"
+
 wrap-ansi@^4.0.0:
   version "4.0.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/wrap-ansi/-/wrap-ansi-4.0.0.tgz#b3570d7c70156159a2d42be5cc942e957f7b1131"
@@ -8820,7 +8856,7 @@ wrappy@1:
 
 write-file-atomic@^2.0.0, write-file-atomic@^2.3.0, write-file-atomic@^2.4.2:
   version "2.4.2"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/write-file-atomic/-/write-file-atomic-2.4.2.tgz#a7181706dfba17855d221140a9c06e15fcdd87b9"
+  resolved "http://10.252.156.164:4880/write-file-atomic/-/write-file-atomic-2.4.2.tgz#a7181706dfba17855d221140a9c06e15fcdd87b9"
   integrity sha512-s0b6vB3xIVRLWywa6X9TOMA7k9zio0TMOsl9ZnDkliA/cfJlpHXAscj0gbHVJiTdIuAYpIyqS5GW91fqm6gG5g==
   dependencies:
     graceful-fs "^4.1.11"
@@ -8881,7 +8917,7 @@ xtend@^4.0.0, xtend@~4.0.0, xtend@~4.0.1:
 
 xunit-file@1.0.0:
   version "1.0.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/xunit-file/-/xunit-file-1.0.0.tgz#6cb35a024ee94b49b2507ee3878968c6baaec398"
+  resolved "http://10.252.156.164:4880/xunit-file/-/xunit-file-1.0.0.tgz#6cb35a024ee94b49b2507ee3878968c6baaec398"
   integrity sha1-bLNaAk7pS0myUH7jh4loxrquw5g=
   dependencies:
     dateformat "^1.0.12"
@@ -8902,7 +8938,7 @@ yallist@^2.1.2:
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
   integrity sha1-HBH5IY8HYImkfdUS+TxmmaaoHVI=
 
-yallist@^3.0.0, yallist@^3.0.2:
+yallist@^3.0.0, yallist@^3.0.2, yallist@^3.0.3:
   version "3.0.3"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/yallist/-/yallist-3.0.3.tgz#b4b049e314be545e3ce802236d6cd22cd91c3de9"
   integrity sha512-S+Zk8DEWE6oKpV+vI3qWkaK+jSbIK86pCwe2IF/xwIpQ8jEuxpw9NyaGjmp9+BoJv5FV2piqCDcoCtStppiq2A==

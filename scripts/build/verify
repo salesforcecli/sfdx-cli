@@ -71,8 +71,11 @@ function ensure_doc_commands() {
 }
 
 # We delete *.md and config files from node_modules, except in `templates` dirs -- double check their preservation
+# Update - The validation happens on just one markdown file. As of version 46.x FLS now has multiple MD files. So this
+# validation assumes that if one markdown file makes it the reset will.
 function ensure_templates() {
-    template_readme="$BASE_DIR/node_modules/force-language-services/dist/project/templates/README.md"
+    template_readme_standard="$BASE_DIR/node_modules/force-language-services/dist/project/templates/README.standard.md"
+    ls -l "$BASE_DIR/node_modules/force-language-services/dist/project/templates/"
     if [[ ! -e "$template_readme" ]]; then
         stderr "$template_readme is missing! Was the *.md clean too aggressive?"
         exit 1
