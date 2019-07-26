@@ -35,7 +35,7 @@ describe('cli', () => {
 
     describe('create', () => {
         it('should create a runnable CLI instance', async () => {
-            sandbox.stub(Config.Config.prototype, 'load').callsFake(() => { });
+            sandbox.stub(Config.Config.prototype, 'load').callsFake(() => Promise.resolve());
             let config: Config.LoadOptions;
             const exec = async (argv?: string[], opts?: Config.LoadOptions) => { config = opts; };
             const env = new Env({ [Env.LAZY_LOAD_MODULES]: 'false' });
