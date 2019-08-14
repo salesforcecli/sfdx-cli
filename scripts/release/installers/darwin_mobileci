@@ -25,6 +25,11 @@ triggerBuild() {
     stdout "Triggering remote darwin installer build of branch $GIT_BRANCH at $MOBILECI_BASE_URL"
 
     set +x
+    echo $NO_PROXY
+    echo $OPS_NO_PROXY
+    echo $HTTPS_PROXY
+    git config --list
+    curl --head https://sfdxcli.ci.data.com
     curl -vL "$MOBILECI_BASE_URL/job/macOS%20Installer%20(v7)/buildWithParameters?RELEASE_BRANCH=$GIT_BRANCH&token=$MOBILECI_MACOS_INSTALLER_TOKEN"
     set -x
 }
