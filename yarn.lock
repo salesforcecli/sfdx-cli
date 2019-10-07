@@ -156,10 +156,31 @@
     debug "^4.1.1"
     semver "^5.6.0"
 
+"@oclif/command@^1.4.31":
+  version "1.5.19"
+  resolved "http://10.233.136.136:4880/@oclif%2fcommand/-/command-1.5.19.tgz#13f472450eb83bd6c6871a164c03eadb5e1a07ed"
+  integrity sha512-6+iaCMh/JXJaB2QWikqvGE9//wLEVYYwZd5sud8aLoLKog1Q75naZh2vlGVtg5Mq/NqpqGQvdIjJb3Bm+64AUQ==
+  dependencies:
+    "@oclif/config" "^1"
+    "@oclif/errors" "^1.2.2"
+    "@oclif/parser" "^3.8.3"
+    "@oclif/plugin-help" "^2"
+    debug "^4.1.1"
+    semver "^5.6.0"
+
 "@oclif/config@^1", "@oclif/config@^1.12.11", "@oclif/config@^1.12.6", "@oclif/config@^1.12.8", "@oclif/config@^1.13.2", "@oclif/config@^1.8.7", "@oclif/config@^1.9.0", "@oclif/config@~1.13.2":
   version "1.13.2"
   resolved "https://registry.npmjs.org/@oclif/config/-/config-1.13.2.tgz#c1dc25296bf06c039fd5fb0b90e4132be2213b2a"
   integrity sha512-RUOKeuAaopo3zrA5hcgE0PT2lbAUT72+eJdqTlWyI9sbPrGHZgUwV+vrL6Qal7ywWYDkL0vrKd1YS4yXtKIDKw==
+  dependencies:
+    "@oclif/parser" "^3.8.0"
+    debug "^4.1.1"
+    tslib "^1.9.3"
+
+"@oclif/config@^1.6.22":
+  version "1.13.3"
+  resolved "http://10.233.136.136:4880/@oclif%2fconfig/-/config-1.13.3.tgz#1b13e18d0e4242ddbd9cbd100f0eec819aa2bf8c"
+  integrity sha512-qs5XvGRw+1M41abOKCjd0uoeHCgsMxa2MurD2g2K8CtQlzlMXl0rW5idVeimIg5208LLuxkfzQo8TKAhhRCWLg==
   dependencies:
     "@oclif/parser" "^3.8.0"
     debug "^4.1.1"
@@ -217,6 +238,20 @@
     "@oclif/linewrap" "^1.0.0"
     chalk "^2.4.2"
     tslib "^1.9.3"
+
+"@oclif/plugin-autocomplete@0.1.4":
+  version "0.1.4"
+  resolved "http://10.233.136.136:4880/@oclif%2fplugin-autocomplete/-/plugin-autocomplete-0.1.4.tgz#ae993f196ca0085a63e3141814eaf9dc6c178418"
+  integrity sha512-ZyxJyL6jSt9Df68Smeu14xhZZwELE9IB5twhie1/56rt62nG6TJB4CZhaMqRk+33MDfU3JyWxNbIDMNMESlGqg==
+  dependencies:
+    "@oclif/command" "^1.4.31"
+    "@oclif/config" "^1.6.22"
+    "@types/fs-extra" "^5.0.2"
+    chalk "^2.4.1"
+    cli-ux "^4.4.0"
+    debug "^3.1.0"
+    fs-extra "^6.0.1"
+    moment "^2.22.1"
 
 "@oclif/plugin-commands@~1.2.2":
   version "1.2.2"
@@ -574,6 +609,13 @@
   version "3.0.0"
   resolved "https://registry.npmjs.org/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
   integrity sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==
+
+"@types/fs-extra@^5.0.2":
+  version "5.1.0"
+  resolved "http://10.233.136.136:4880/@types%2ffs-extra/-/fs-extra-5.1.0.tgz#2a325ef97901504a3828718c390d34b8426a10a1"
+  integrity sha512-AInn5+UBFIK9FK5xc9yP5e3TQSPNNgjHByqYcj9g5elVBnDQcQL7PlO1CIRy2gWlbwK7UPYqi7vRvFA44dCmYQ==
+  dependencies:
+    "@types/node" "*"
 
 "@types/fs-extra@~4.0.9":
   version "4.0.9"
@@ -1589,7 +1631,7 @@ cli-table@^0.3.1:
   dependencies:
     colors "1.0.3"
 
-cli-ux@^4.8.0, cli-ux@^4.9.0, cli-ux@^4.9.1, cli-ux@^4.9.3:
+cli-ux@^4.4.0, cli-ux@^4.8.0, cli-ux@^4.9.0, cli-ux@^4.9.1, cli-ux@^4.9.3:
   version "4.9.3"
   resolved "https://registry.npmjs.org/cli-ux/-/cli-ux-4.9.3.tgz#4c3e070c1ea23eef010bbdb041192e0661be84ce"
   integrity sha512-/1owvF0SZ5Gn54cgrikJ0QskgTzeg30HGjkmjFoaHDJzAqFpuX1DBpFR8aLvsE1J5s9MgeYRENQK4BFwOag5VA==
@@ -5831,7 +5873,7 @@ mock-stdin@^0.3.1:
   resolved "https://registry.npmjs.org/mock-stdin/-/mock-stdin-0.3.1.tgz#c657d9642d90786435c64ca5e99bbd4d09bd7dd3"
   integrity sha1-xlfZZC2QeGQ1xkyl6Zu9TQm9fdM=
 
-moment@^2.10.6, moment@~2.24.0:
+moment@^2.10.6, moment@^2.22.1, moment@~2.24.0:
   version "2.24.0"
   resolved "https://registry.npmjs.org/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
