@@ -46,6 +46,7 @@
       ]
     },
     "plugins": [
+      "@oclif/plugin-autocomplete",
       "@oclif/plugin-commands",
       "@oclif/plugin-help",
       "@oclif/plugin-not-found",
@@ -77,6 +78,7 @@
     "@oclif/command": "~1.5.18",
     "@oclif/config": "~1.13.2",
     "@oclif/errors": "~1.2.2",
+    "@oclif/plugin-autocomplete": "0.1.4",
     "@oclif/plugin-commands": "~1.2.2",
     "@oclif/plugin-help": "~2.2.0",
     "@oclif/plugin-not-found": "~1.2.2",
