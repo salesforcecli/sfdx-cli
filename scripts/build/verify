@@ -43,10 +43,10 @@ function scan_path_lengths() {
         stdout "WARN: Some paths could result in update errors for Windows users with usernames greater than 48 characters!"
         find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) printf("%-3s  %s\n", length($0), $0) }'
     fi
-    maxtest=$(find node_modules | awk -v maxlen="$maxlen" '{ if (length($0) > maxlen) print "fail" }' | uniq)
+    maxtest=$(find node_modules | grep -v jsforce | awk -v maxlen="$maxlen" '{ if (length($0) > maxlen) print "fail" }' | uniq)
     if [[ "$maxtest" == "fail" ]]; then
         stderr "ERROR: Unacceptably long paths detected in base build!"
-        find node_modules | awk -v maxlen="$maxlen" '{ if (length($0) > maxlen) printf("%-3s  %s\n", length($0), $0) }'
+        find node_modules | grep -v jsforce | awk -v maxlen="$maxlen" '{ if (length($0) > maxlen) printf("%-3s  %s\n", length($0), $0) }'
         exit 1
     fi
     cd -
