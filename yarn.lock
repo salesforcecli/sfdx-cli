@@ -6482,9 +6482,9 @@ salesforce-lightning-cli@2.0.6, salesforce-lightning-cli@~2.0.6:
     # yeoman-environment "^2.4.0"
     # yeoman-generator "^4.0.1"
 
-salesforcedx@47.2.2:
-  version "47.2.2"
-  resolved "http://10.233.136.136:4880/salesforcedx/-/salesforcedx-47.2.2.tgz#14f5c8a7a22fa2146b17180e22c166d0d7ff7de2"
+salesforcedx@47.2.3:
+  version "47.2.3"
+  resolved "http://10.233.136.136:4880/salesforcedx/-/salesforcedx-47.2.3.tgz#14f5c8a7a22fa2146b17180e22c166d0d7ff7de2"
   dependencies:
     salesforce-alm "47.5.0"
     salesforce-lightning-cli "2.0.6"
