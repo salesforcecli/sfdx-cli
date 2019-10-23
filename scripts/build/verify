@@ -121,8 +121,6 @@ ensure_no_heroku_cli_util_nyc
 scan_path_lengths
 ensure_apex_test
 ensure_doc_commands
-ensure_templates
-ensure_templates_forceignore
 ensure_no_dist_tests_or_maps
 ensure_no_unexpected_files
 ensure_plugin_generate_test_templates
