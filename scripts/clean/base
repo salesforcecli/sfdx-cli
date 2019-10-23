@@ -51,7 +51,7 @@ find node_modules -name 'test' -type d \
   | filter '/command/' \
   | filter '/lib/' \
   | filter '/salesforce-alm/' \
-  | filter '/force-language-services/' \
+  | filter '/salesforcedx-templates/' \
   | filter '/@salesforce/plugin-generator/' \
   | xargs rm -rf
 
