@@ -31,9 +31,9 @@ rm -f yarn.lock
 find node_modules -name '*.md' -type f \
   | filter '/templates/' \
   | xargs rm -f
-# find node_modules -name '.gitignore' -type f \
-  # | filter '/templates/' \
-  # | xargs rm -f
+find node_modules -name '.gitignore' -type f \
+  | filter '/templates/' \
+  | xargs ls -l
 find node_modules -name '.eslintrc' -type f \
   | filter '/templates/' \
   | xargs rm -f

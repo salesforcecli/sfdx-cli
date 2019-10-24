@@ -28,6 +28,7 @@ wercker.yml
 .tern-project
 .editorconfig
 .npmignore
+.gitignore
 .jshintrc
 .flowconfig
 .documentup.json
