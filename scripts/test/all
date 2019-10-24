@@ -5,7 +5,9 @@ source ./scripts/_init
 set -ex
 
 TEST_DIR="${1:-$ROOT_DIR}"
+NODE_DIR="${ROOT_DIR}/node_modules/salesforcedx-templates/lib/templates/project/"
 
+cp "$NODE_DIR/.npmignore" "$NODE_DIR/.gitignore"
 script "test/unit" "$TEST_DIR"
 script "test/coverage" "$TEST_DIR"
 script "test/smoke"
