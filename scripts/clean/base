@@ -19,7 +19,7 @@ find dist -name '*.js.map' -print0 \
   | xargs -0 rm
 
 # Remove JSforceTestSuite from dist
-find node_modules -name JSforceTestSuite \
+find node_modules -name 'JSforceTestSuite' -type d \
   | xargs rm -rf
 
 # Remove yarn files
@@ -30,9 +30,9 @@ rm -f yarn.lock
 find node_modules -name '*.md' -type f \
   | filter '/templates/' \
   | xargs rm -f
-#find node_modules -name '.gitignore' -type f \
-  #| filter '/templates/' \
-  #| xargs rm -f
+# find node_modules -name '.gitignore' -type f \
+  # | filter '/templates/' \
+  # | xargs rm -f
 find node_modules -name '.eslintrc' -type f \
   | filter '/templates/' \
   | xargs rm -f
