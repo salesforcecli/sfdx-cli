@@ -20,6 +20,7 @@ find dist -name '*.js.map' -print0 \
 
 # Remove JSforceTestSuite from dist
 find node_modules -name 'JSforceTestSuite' -type d \
+  | filter '/templates/' \
   | xargs rm -rf
 
 # Remove yarn files
