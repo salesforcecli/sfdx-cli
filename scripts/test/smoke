@@ -4,6 +4,10 @@ source ./scripts/_init
 
 set -ex
 
+NODE_DIR="${ROOT_DIR}/node_modules/salesforcedx-templates/lib/templates/project/"
+
+cp "$NODE_DIR/.npmignore" "$NODE_DIR/.gitignore"
+
 if [[ ! -d "$TMP_DIR/base" ]]; then
     ./scripts/build/base
 fi
