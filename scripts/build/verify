@@ -36,7 +36,7 @@ function ensure_no_heroku_cli_util_nyc() {
 # * then scan the cleaned build output directory for paths exceding this threshold, and exit with an error if detected
 function scan_path_lengths() {
     warnlen=124
-    maxlen=144
+    maxlen=146
     cd "$BASE_DIR"
     warntest=$(find node_modules | awk -v warnlen="$warnlen" '{ if (length($0) > warnlen) print "fail" }' | uniq)
     if [[ "$warntest" == "fail" ]]; then
