@@ -23,6 +23,10 @@ find node_modules -name 'JSforceTestSuite' -type d \
   | filter '/templates/' \
   | xargs rm -rf
 
+# Remove yeoman-generator in salesforcedx-templates node_modules from dist
+# find node_modules -name 'yeoman-generator' -type d \
+# | xargs rm -rf
+
 # Remove yarn files
 rm -f .yarnclean
 rm -f yarn.lock
