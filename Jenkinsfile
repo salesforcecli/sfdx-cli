@@ -70,11 +70,6 @@ def doUnitTests(PLATFORM os) {
             "CHANNEL=stable"
         ])
         {
-            rc = sh returnStatus: true, script: 'yarn lint-with-style'
-            if (rc != 0)
-            {
-                currentBuild.result = 'Unstable'
-            }
             rc = sh returnStatus: true, script: 'scripts/build/common'
             if (rc != 0)
             {
@@ -85,12 +80,17 @@ def doUnitTests(PLATFORM os) {
             {
                 currentBuild.result = 'Unstable'
             }
+            rc = sh returnStatus: true, script: 'yarn lint-with-style'
+            if (rc != 0)
+            {
+                currentBuild.result = 'Unstable'
+            }
 
             switch(os) {
                 case PLATFORM.MAC:
                 case PLATFORM.LINUX:
-                    rc = sh returnStatus: true, script: 'npm run unit'
-                    rc = sh returnStatus: true, script: 'npm run coverage-report'
+                    rc = sh returnStatus: true, script: 'yarn unit'
+                    rc = sh returnStatus: true, script: 'yarn coverage-report'
                     rc = sh returnStatus: true, script: 'mv checkstyle.xml linux-checkstyle.xml; mv xunit.xml linux-unit-xunit.xml; rm -rf linuxunitcoverage; mv coverage linuxunitcoverage'
                     break
                 case PLATFORM.WINDOWS:
