@@ -143,7 +143,7 @@
     supports-color "^5.4.0"
     tslib "^1"
 
-"@oclif/command@1.5.19", "@oclif/command@^1", "@oclif/command@^1.4.29", "@oclif/command@^1.4.31", "@oclif/command@^1.5.1", "@oclif/command@^1.5.10", "@oclif/command@^1.5.12", "@oclif/command@^1.5.13", "@oclif/command@^1.5.16", "@oclif/command@^1.5.17", "@oclif/command@^1.5.3", "@oclif/command@^1.5.4", "@oclif/command@^1.5.8", "@oclif/command@~1.5.18":
+"@oclif/command@1.5.19", "@oclif/command@^1", "@oclif/command@^1.4.29", "@oclif/command@^1.4.31", "@oclif/command@^1.5.1", "@oclif/command@^1.5.10", "@oclif/command@^1.5.12", "@oclif/command@^1.5.13", "@oclif/command@^1.5.16", "@oclif/command@^1.5.17", "@oclif/command@^1.5.19", "@oclif/command@^1.5.3", "@oclif/command@^1.5.4", "@oclif/command@^1.5.8", "@oclif/command@~1.5.18":
   version "1.5.19"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fcommand/-/command-1.5.19.tgz#13f472450eb83bd6c6871a164c03eadb5e1a07ed"
   integrity sha512-6+iaCMh/JXJaB2QWikqvGE9//wLEVYYwZd5sud8aLoLKog1Q75naZh2vlGVtg5Mq/NqpqGQvdIjJb3Bm+64AUQ==
@@ -160,6 +160,16 @@
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fconfig/-/config-1.13.3.tgz#1b13e18d0e4242ddbd9cbd100f0eec819aa2bf8c"
   integrity sha512-qs5XvGRw+1M41abOKCjd0uoeHCgsMxa2MurD2g2K8CtQlzlMXl0rW5idVeimIg5208LLuxkfzQo8TKAhhRCWLg==
   dependencies:
+    "@oclif/parser" "^3.8.0"
+    debug "^4.1.1"
+    tslib "^1.9.3"
+
+"@oclif/config@^1.14.0":
+  version "1.14.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fconfig/-/config-1.14.0.tgz#0af93facd5c5087f804489f1603c4f3bc0c45014"
+  integrity sha512-KsOP/mx9lzTah+EtGqLUXN3PDL0J3zb9/dTneFyiUK2K6T7vFEGhV6OasmqTh4uMZHGYTGrNPV8x/Yw6qZNL6A==
+  dependencies:
+    "@oclif/errors" "^1.0.0"
     "@oclif/parser" "^3.8.0"
     debug "^4.1.1"
     tslib "^1.9.3"
@@ -182,7 +192,7 @@
     qqjs "^0.3.10"
     tslib "^1.9.3"
 
-"@oclif/errors@1.2.2", "@oclif/errors@^1", "@oclif/errors@^1.2.1", "@oclif/errors@^1.2.2", "@oclif/errors@~1.2.2":
+"@oclif/errors@1.2.2", "@oclif/errors@^1", "@oclif/errors@^1.0.0", "@oclif/errors@^1.2.1", "@oclif/errors@^1.2.2", "@oclif/errors@~1.2.2":
   version "1.2.2"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2ferrors/-/errors-1.2.2.tgz#9d8f269b15f13d70aa93316fed7bebc24688edc2"
   integrity sha512-Eq8BFuJUQcbAPVofDxwdE0bL14inIiwt5EaKRVY9ZDIG11jwdXZqiQEECJx0VfnLyUZdYfRd/znDI/MytdJoKg==
@@ -241,20 +251,6 @@
     lodash "^4.17.11"
     tslib "^1.9.3"
 
-"@oclif/plugin-help@2.2.1":
-  version "2.2.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fplugin-help/-/plugin-help-2.2.1.tgz#cb4d23e453b19340b07c48fb299948b7c74366d3"
-  integrity sha512-psEA3t41MSGBErLk6xCaAq2jKrRtx3Br+kHpd43vZeGEeZ7Gos4wgK0JAaHBbvhvUQskCHg8dzoqv4XEeTWeVQ==
-  dependencies:
-    "@oclif/command" "^1.5.13"
-    chalk "^2.4.1"
-    indent-string "^3.2.0"
-    lodash.template "^4.4.0"
-    string-width "^3.0.0"
-    strip-ansi "^5.0.0"
-    widest-line "^2.0.1"
-    wrap-ansi "^4.0.0"
-
 "@oclif/plugin-help@^1":
   version "1.2.11"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fplugin-help/-/plugin-help-1.2.11.tgz#e6413a6009519230bc4c7e7fe45d8e139939e657"
@@ -268,7 +264,7 @@
     widest-line "^2.0.0"
     wrap-ansi "^3.0.1"
 
-"@oclif/plugin-help@^2", "@oclif/plugin-help@^2.1.6", "@oclif/plugin-help@^2.2.0", "@oclif/plugin-help@~2.2.0":
+"@oclif/plugin-help@^2", "@oclif/plugin-help@^2.1.6", "@oclif/plugin-help@^2.2.0", "@oclif/plugin-help@^2.2.3", "@oclif/plugin-help@~2.2.0":
   version "2.2.3"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fplugin-help/-/plugin-help-2.2.3.tgz#b993041e92047f0e1762668aab04d6738ac06767"
   integrity sha512-bGHUdo5e7DjPJ0vTeRBMIrfqTRDBfyR5w0MP41u0n3r7YG5p14lvMmiCXxi6WDaP2Hw5nqx3PnkAIntCKZZN7g==
@@ -369,10 +365,26 @@
   dependencies:
     fancy-test "^1.4.3"
 
-"@salesforce/command@^2.0.0", "@salesforce/command@^2.1.3", "@salesforce/command@~2.1.0", "@salesforce/command@~2.1.3":
+"@salesforce/command@^2.0.0", "@salesforce/command@^2.1.3", "@salesforce/command@~2.1.0":
   version "2.1.4"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcommand/-/command-2.1.4.tgz#11efaf5a2d528c24e642d9fed18649377594d09e"
   integrity sha512-D/3k6Ucjw1Xk934fPjjI7UyVjgLId1Z8ZoV2UrTvjwk4HOgH/5fj8ZEwfVgMw9O6qOzTS4zFxBeoPCewzkukjA==
+  dependencies:
+    "@oclif/command" "^1.5.17"
+    "@oclif/errors" "^1.2.2"
+    "@oclif/parser" "^3.8.3"
+    "@oclif/plugin-help" "^2.2.0"
+    "@oclif/test" "^1.2.4"
+    "@salesforce/core" "^2.1.4"
+    "@salesforce/kit" "^1.2.0"
+    "@salesforce/ts-types" "^1.2.0"
+    chalk "^2.4.2"
+    cli-ux "^4.9.3"
+
+"@salesforce/command@^3.0.0", "@salesforce/command@~3.0.0":
+  version "3.0.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcommand/-/command-3.0.0.tgz#b0511a445387c83006a10cd8234d2fa88b7cf9b8"
+  integrity sha512-B3j8FmPPFt0H6gR12jjwNKAwx6GL8FFeVZgZilsijCm/W92ziLDMfDwBZap1L9tg1r2Is6RnGzuaLKDMx3kuRg==
   dependencies:
     "@oclif/command" "^1.5.17"
     "@oclif/errors" "^1.2.2"
@@ -402,6 +414,23 @@
     mkdirp "0.5.1"
     sfdx-faye "^1.0.9"
 
+"@salesforce/core@^2.2.0":
+  version "2.2.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcore/-/core-2.2.0.tgz#bd9dc306a1ba6764a9faba3c4fc08a90bdb4e229"
+  integrity sha512-306YK6KxvdfpMokInrbl3i/9Onc4tob67R/BP87ltRw1pEBoIdch0wa3nZCPYYS4RiObEo7uK5Ysq0+sTtU8DQ==
+  dependencies:
+    "@salesforce/kit" "^1.0.0"
+    "@salesforce/ts-sinon" "^1.0.0"
+    "@salesforce/ts-types" "^1.0.0"
+    "@types/jsforce" "1.9.2"
+    bunyan-sfdx-no-dtrace "1.8.2"
+    debug "^3.1.0"
+    jsen "0.6.6"
+    jsforce "1.9.3"
+    jsonwebtoken "8.5.0"
+    mkdirp "0.5.1"
+    sfdx-faye "^1.0.9"
+
 "@salesforce/dev-config@~1.5.0":
   version "1.5.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fdev-config/-/dev-config-1.5.0.tgz#6a7a63a4b2a9fb27811c456d3a3387d961f8b637"
@@ -411,7 +440,7 @@
     tslint-microsoft-contrib "^5.2.1"
     typescript "~3.1.6"
 
-"@salesforce/kit@^1", "@salesforce/kit@^1.0.0", "@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@~1.2.0":
+"@salesforce/kit@^1", "@salesforce/kit@^1.0.0", "@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@~1.2.0", "@salesforce/kit@~1.2.1":
   version "1.2.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fkit/-/kit-1.2.1.tgz#123f0edad6a934848db054f51d6524a1e8419043"
   integrity sha512-ytpDL5TO4QAPcMl1flXXADMeBzARtoOZekWTMdL2O8PVdJo5Wbo9TNpJk0u6SN7qcxZvdbb6RAJpprp4qN2TZw==
@@ -427,10 +456,10 @@
     debug "^3.2.6"
     tslib "^1.10.0"
 
-"@salesforce/plugin-analytics@~1.7.0":
-  version "1.7.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-1.7.0.tgz#778ba98ad38a562af45a3223fb3938690c6854e3"
-  integrity sha512-hzzBJYEl0i7VKiuDY41CLxtlcSBTEoYb13VYLutNpv04tDkBwyo4QTLf12rQhaQHpTBNrRg0YwvpFh3+mGPZwQ==
+"@salesforce/plugin-analytics@~1.7.1":
+  version "1.7.1"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-1.7.1.tgz#93fd879a4261393ce3849a7eea40ae5493d3a629"
+  integrity sha512-u/ILBFl0XEqd1eobbwrGA9Z/O9YojBgZmWVBVFtqYD+21E+7AZCPOEODsZSS0wurv2TSQaKAVP7zDoK/tk58kA==
   dependencies:
     "@oclif/command" "1.5.19"
     "@oclif/errors" "1.2.2"
@@ -472,6 +501,21 @@
   dependencies:
     tslib "^1.10.0"
 
+"@salesforce/sfdx-plugin-lwc-test@0.1.5":
+  version "0.1.5"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fsfdx-plugin-lwc-test/-/sfdx-plugin-lwc-test-0.1.5.tgz#4596b0e040172830e92514b8a787ff2a8d5d03bb"
+  integrity sha512-PjG7t1YtoCnBhB1GaHXQpyZoJgoybt/TksSuldHUmQEoeJ2zhxRG97qZK6SZkacvk7EOxQw9VXsM7+HDreMKnw==
+  dependencies:
+    "@oclif/command" "^1.5.19"
+    "@oclif/config" "1.13.3"
+    "@oclif/errors" "^1.2.2"
+    "@salesforce/command" "^3.0.0"
+    "@salesforce/core" "^2.2.0"
+    "@salesforce/kit" "^1.2.1"
+    semver-compare "^1.0.0"
+    signal-exit "^3.0.2"
+    tslib "^1.10.0"
+
 "@salesforce/sfdx-trust@~3.0.5":
   version "3.0.7"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-3.0.7.tgz#367404123ba210f4d084edf2dc54748927c25443"
@@ -485,14 +529,6 @@
     "@salesforce/kit" "^1"
     cli-ux "^5.3.3"
     mkdirp "0.5.1"
-
-"@salesforce/telemetry@~1.2.5":
-  version "1.2.5"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2ftelemetry/-/telemetry-1.2.5.tgz#9391795f2add343c28e802783f4b894e5f30a7d3"
-  integrity sha512-EQ/eD8mmP1zCjDOqz3G+rztrUN54HvdyC0b5wjlw8vIWyoPtNRy+XuEvU06GNPpSKSCtvrBuNIZJ1OhjKkzb+g==
-  dependencies:
-    "@salesforce/core" "^2.1.4"
-    applicationinsights "^1.4.0"
 
 "@salesforce/telemetry@~2.0.1":
   version "2.0.1"
@@ -512,7 +548,7 @@
     sinon "5.1.1"
     tslib "^1.10.0"
 
-"@salesforce/ts-types@^1.0.0", "@salesforce/ts-types@^1.2.0", "@salesforce/ts-types@^1.2.1", "@salesforce/ts-types@~1.2.0":
+"@salesforce/ts-types@^1.0.0", "@salesforce/ts-types@^1.2.0", "@salesforce/ts-types@^1.2.1", "@salesforce/ts-types@~1.2.0", "@salesforce/ts-types@~1.2.1":
   version "1.2.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fts-types/-/ts-types-1.2.1.tgz#1f738d0e7df55843e78d2726617b9fdd17291842"
   integrity sha512-kEpyfvTRfwQFpDc1rfb6aaQbl5SDIwCksgr8ftJaooGXDVWFK9llso9cwimee+KVqTeQ6Jf4tZclcPb8I6G6sg==
@@ -2591,7 +2627,7 @@ error@^7.0.2:
   dependencies:
     string-template "~0.2.1"
 
-es-abstract@^1.17.0-next.1, es-abstract@^1.17.2:
+es-abstract@^1.17.0-next.1:
   version "1.17.4"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/es-abstract/-/es-abstract-1.17.4.tgz#e3aedf19706b20e7c2594c35fc0d57605a79e184"
   integrity sha512-Ae3um/gb8F0mui/jPL+QiqmglkUsaQf7FwBEHYIFkztkneosu9imhqHpBzQ3h1vit8t5iQ74t6PEVvphBZiuiQ==
@@ -5330,7 +5366,7 @@ lodash.without@~4.4.0:
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/lodash.without/-/lodash.without-4.4.0.tgz#3cd4574a00b67bae373a94b748772640507b7aac"
   integrity sha1-PNRXSgC2e643OpS3SHcmQFB7eqw=
 
-lodash@4.17.15, lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.2, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.8.0, lodash@~4.17.10:
+lodash@4.17.15, lodash@^4.0.0, lodash@^4.13.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.2, lodash@^4.3.0, lodash@^4.5.1, lodash@^4.8.0, lodash@~4.17.10:
   version "4.17.15"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -6277,7 +6313,7 @@ object.assign@^4.1.0:
     has-symbols "^1.0.0"
     object-keys "^1.0.11"
 
-object.getownpropertydescriptors@^2.0.3, object.getownpropertydescriptors@^2.1.0:
+object.getownpropertydescriptors@^2.0.3:
   version "2.1.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/object.getownpropertydescriptors/-/object.getownpropertydescriptors-2.1.0.tgz#369bf1f9592d8ab89d712dced5cb81c7c5352649"
   integrity sha512-Z53Oah9A3TdLoblT7VKJaTDdXdT+lQO+cNpKVnya5JDe9uLvzu1YyY1yFDFrcxrlRgWrEFH0jJtD/IbuwjcEVg==
@@ -7179,10 +7215,10 @@ readdir-scoped-modules@^1.0.0, readdir-scoped-modules@^1.1.0:
     graceful-fs "^4.1.2"
     once "^1.3.0"
 
-readline-sync@1.4.10:
-  version "1.4.10"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/readline-sync/-/readline-sync-1.4.10.tgz#41df7fbb4b6312d673011594145705bf56d8873b"
-  integrity sha512-gNva8/6UAe8QYepIQH/jQ2qn91Qj0B9sYjMBBs3QOB8F2CXcKgLxQaJRP76sWVRQt+QU+8fAkCbCvjjMFu7Ycw==
+readline-sync@1.4.9:
+  version "1.4.9"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/readline-sync/-/readline-sync-1.4.9.tgz#3eda8e65f23cd2a17e61301b1f0003396af5ecda"
+  integrity sha1-PtqOZfI80qF+YTAbHwADOWr17No=
 
 readline2@^1.0.1:
   version "1.0.1"
@@ -7287,30 +7323,30 @@ replace-ext@^1.0.0:
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
   integrity sha1-3mMSg3P8v3w8z6TeWkgMRaZ5WOs=
 
-replace@1.1.1:
-  version "1.1.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/replace/-/replace-1.1.1.tgz#3d1b5e5896bd55c365a42a8d6e220b07a6f5d635"
-  integrity sha512-RTLcKzfKEc8YPX+WbxZ5nQK921qOCpmMGWuKFWHWf727o7Ap84ydbhv8A/ipANXXXxFxI2M2PW+FaEhDsdZCdQ==
+replace@1.1.0:
+  version "1.1.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/replace/-/replace-1.1.0.tgz#4cb04f138d14f37c47b9f2d214eb4a057bd94b22"
+  integrity sha512-0k9rtPG0MUDfJj77XtMCSJKOPdzSwVwM79ZQ6lZuFjqqXrQAMKIMp0g7/8GDAzeERxdktV/LzqbMtJ3yxB23lg==
   dependencies:
     colors "1.2.4"
     minimatch "3.0.4"
     yargs "12.0.5"
 
-request-promise-core@1.1.2:
-  version "1.1.2"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/request-promise-core/-/request-promise-core-1.1.2.tgz#339f6aababcafdb31c799ff158700336301d3346"
-  integrity sha512-UHYyq1MO8GsefGEt7EprS8UrXsm1TxEvFUX1IMTuSLU2Rh7fTIdFtl8xD7JiEYiWU2dl+NYAjCTksTehQUxPag==
+request-promise-core@1.1.1:
+  version "1.1.1"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/request-promise-core/-/request-promise-core-1.1.1.tgz#3eee00b2c5aa83239cfb04c5700da36f81cd08b6"
+  integrity sha1-Pu4AssWqgyOc+wTFcA2jb4HNCLY=
   dependencies:
-    lodash "^4.17.11"
+    lodash "^4.13.1"
 
-request-promise-native@1.0.7:
-  version "1.0.7"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/request-promise-native/-/request-promise-native-1.0.7.tgz#a49868a624bdea5069f1251d0a836e0d89aa2c59"
-  integrity sha512-rIMnbBdgNViL37nZ1b3L/VfPOpSi0TqVDQPAvO6U14lMzOLrt5nilxCQqtDKhZeDiW0/hkCXGoQjhgJd/tCh6w==
+request-promise-native@1.0.5:
+  version "1.0.5"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/request-promise-native/-/request-promise-native-1.0.5.tgz#5281770f68e0c9719e5163fd3fab482215f4fda5"
+  integrity sha1-UoF3D2jgyXGeUWP9P6tIIhX0/aU=
   dependencies:
-    request-promise-core "1.1.2"
-    stealthy-require "^1.1.1"
-    tough-cookie "^2.3.3"
+    request-promise-core "1.1.1"
+    stealthy-require "^1.1.0"
+    tough-cookie ">=2.3.3"
 
 request@2.88.0, request@^2.72.0, request@^2.83.0, request@^2.88.0:
   version "2.88.0"
@@ -7552,19 +7588,19 @@ safe-regex@^1.1.0:
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@47.16.0:
-  version "47.16.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforce-alm/-/salesforce-alm-47.16.0.tgz#55b43cd3a0d841910fdd15d9214c3995d2c92342"
-  integrity sha512-UhytjSX6QkYP/vaxf+jbTJstw7YOYeHlEo/JckvlGofPas8vRv1cO3oq3sHxMKvHO5URZctrUoCvn0gpzfwp7A==
+salesforce-alm@48.1.1:
+  version "48.1.1"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforce-alm/-/salesforce-alm-48.1.1.tgz#3d00e5f21a7481f4e191f197021b913dd89c7e30"
+  integrity sha512-0mi/yaS4Xa20Sa+fuwv8u4Yp7VMq/cZfdBRdhb6hehXaDAXQg/LQQyWIMtpluomLg1j/I9Ml3R3Bu1AdO/WI7A==
   dependencies:
-    "@oclif/config" "1.13.3"
-    "@oclif/errors" "1.2.2"
-    "@oclif/plugin-help" "2.2.1"
-    "@salesforce/command" "~2.1.3"
+    "@oclif/config" "^1.14.0"
+    "@oclif/errors" "^1.2.2"
+    "@oclif/plugin-help" "^2.2.3"
+    "@salesforce/command" "~3.0.0"
     "@salesforce/core" "~2.1.6"
-    "@salesforce/kit" "~1.2.0"
-    "@salesforce/telemetry" "~1.2.5"
-    "@salesforce/ts-types" "~1.2.0"
+    "@salesforce/kit" "~1.2.1"
+    "@salesforce/telemetry" "~2.0.1"
+    "@salesforce/ts-types" "~1.2.1"
     adm-zip "0.4.13"
     ansi-styles "3.2.1"
     antlr4 "4.7.2"
@@ -7594,17 +7630,32 @@ salesforce-alm@47.16.0:
     optional-js "1.3.1"
     pluralize "3.1.0"
     process-promises "1.0.0"
-    readline-sync "1.4.10"
-    replace "1.1.1"
+    readline-sync "1.4.9"
+    replace "1.1.0"
     request "2.88.0"
-    request-promise-native "1.0.7"
-    salesforce-lightning-cli "~2.0.6"
+    request-promise-native "1.0.5"
+    salesforce-lightning-cli "2.0.4"
     selenium-standalone "6.16.0"
     sfdx-faye "1.0.9"
     strip-ansi "5.2.0"
     webdriverio "4.14.4"
-    xml2js "0.4.22"
+    xml2js "0.4.19"
     xmldom-sfdx-encoding "0.1.29"
+
+salesforce-lightning-cli@2.0.4:
+  version "2.0.4"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforce-lightning-cli/-/salesforce-lightning-cli-2.0.4.tgz#2621c578f8e8955c1b1f71c35551871a3998c020"
+  integrity sha512-oO+zWkdHEa0AhBq730madkNyjWm2DUZjeOf6qnRhPV+6Zbcek0QCjd/ocjllZZXj2SUNKg12fzAD1WbF+N7Hgg==
+  dependencies:
+    "@oclif/command" "^1.5.16"
+    "@salesforce/command" "^2.0.0"
+    eslint "^6.0.1"
+    eslint-friendly-formatter "^4.0.1"
+    glob "^7.1.4"
+    globals "^11.12.0"
+    heroku-cli-util "~8.0.11"
+    object-assign "^4.1.1"
+    prettier "^1.18.2"
 
 salesforce-lightning-cli@3.0.0:
   version "3.0.0"
@@ -7622,25 +7673,10 @@ salesforce-lightning-cli@3.0.0:
     object-assign "^4.1.1"
     prettier "^1.18.2"
 
-salesforce-lightning-cli@~2.0.6:
-  version "2.0.6"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforce-lightning-cli/-/salesforce-lightning-cli-2.0.6.tgz#6c575addea86e77472342cc805702b523470df23"
-  integrity sha512-u92O+Tx1x6U02wZHNrrnPeH7TCnLsZPRcBI6T/Bc37mrrvA0pEQ0Cj8h59/5lCviknzbIKVqH+eKlesb8DhSVw==
-  dependencies:
-    "@oclif/command" "^1.5.16"
-    "@salesforce/command" "^2.0.0"
-    eslint "^6.0.1"
-    eslint-friendly-formatter "^4.0.1"
-    glob "^7.1.4"
-    globals "^11.12.0"
-    heroku-cli-util "~8.0.11"
-    object-assign "^4.1.1"
-    prettier "^1.18.2"
-
-salesforcedx-templates@47.19.0:
-  version "47.19.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx-templates/-/salesforcedx-templates-47.19.0.tgz#92319bc92fa76f2237b6623f070869d9ef9e5414"
-  integrity sha512-z/ZsA3whWu0u5dhshr2qTuOk1HplRMvEl744s1MQkgSRLB9FJuySbim7J71IzhPntl/bADmwWELEwCj/WtH4VQ==
+salesforcedx-templates@48.1.0:
+  version "48.1.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx-templates/-/salesforcedx-templates-48.1.0.tgz#fbb495d34e8159a1f6ea0901fc892f62d073607c"
+  integrity sha512-6I3I2d9CIup539JOS0uKPS2dHo8BCA0kTQUQUobgijdlLT7bj/TCllnXSdfh8V125/z2JV8Klezxsmj18+W5pQ==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
@@ -7654,14 +7690,15 @@ salesforcedx-templates@47.19.0:
     yeoman-environment "^2.4.0"
     yeoman-generator "^4.0.1"
 
-salesforcedx@47.18.0:
-  version "47.18.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx/-/salesforcedx-47.18.0.tgz#9b0247244b7a6060ec7785195bcb0a4841499f02"
-  integrity sha512-fcnfaEywxdLz0ezdCA+m2Gfl08Rz0WqrGbGedHl7JImKb/ysjfsi8BtdZ6qcgXRhRC0EKaQ7Y51jEft+eHQ9Iw==
+salesforcedx@48.1.5:
+  version "48.1.5"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx/-/salesforcedx-48.1.5.tgz#6d5e0f6d31204345294cde639f3a5913bd6d4431"
+  integrity sha512-pM2jsSX/KOTo3ollxvrzFWHdCVbmNoAf6jN/P5nXTnKwydpkKxxF52fx37VJC1vzTdnTsb6zoKeXYENrS1ukLQ==
   dependencies:
-    salesforce-alm "47.16.0"
+    "@salesforce/sfdx-plugin-lwc-test" "0.1.5"
+    salesforce-alm "48.1.1"
     salesforce-lightning-cli "3.0.0"
-    salesforcedx-templates "47.19.0"
+    salesforcedx-templates "48.1.0"
 
 samsam@1.3.0:
   version "1.3.0"
@@ -8071,7 +8108,7 @@ stdout-stderr@^0.1.9:
     debug "^3.1.0"
     strip-ansi "^4.0.0"
 
-stealthy-require@^1.1.1:
+stealthy-require@^1.1.0:
   version "1.1.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
   integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
@@ -8533,20 +8570,12 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-tough-cookie@*:
+tough-cookie@*, tough-cookie@>=2.3.3:
   version "3.0.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/tough-cookie/-/tough-cookie-3.0.1.tgz#9df4f57e739c26930a018184887f4adb7dca73b2"
   integrity sha512-yQyJ0u4pZsv9D4clxO69OEjLWYw+jbgspjTue4lTQZLfV0c5l1VmK2y1JK8E9ahdpltPOaAThPcp5nKPUgSnsg==
   dependencies:
     ip-regex "^2.1.0"
-    psl "^1.1.28"
-    punycode "^2.1.1"
-
-tough-cookie@^2.3.3:
-  version "2.5.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
-  integrity sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g==
-  dependencies:
     psl "^1.1.28"
     punycode "^2.1.1"
 
@@ -8856,16 +8885,6 @@ util-promisify@^2.1.0:
   dependencies:
     object.getownpropertydescriptors "^2.0.3"
 
-util.promisify@~1.0.0:
-  version "1.0.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/util.promisify/-/util.promisify-1.0.1.tgz#6baf7774b80eeb0f7520d8b81d07982a59abbaee"
-  integrity sha512-g9JpC/3He3bm38zsLupWryXHoEcS22YHthuPQSJdMy6KNrzIRzWqcsHzD/WUnqe45whVou4VIsPew37DoXWNrA==
-  dependencies:
-    define-properties "^1.1.3"
-    es-abstract "^1.17.2"
-    has-symbols "^1.0.1"
-    object.getownpropertydescriptors "^2.1.0"
-
 uuid@^2.0.1:
   version "2.0.3"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
@@ -9134,14 +9153,13 @@ xdg-basedir@^3.0.0:
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/xdg-basedir/-/xdg-basedir-3.0.0.tgz#496b2cc109eca8dbacfe2dc72b603c17c5870ad4"
   integrity sha1-SWsswQnsqNus/i3HK2A8F8WHCtQ=
 
-xml2js@0.4.22:
-  version "0.4.22"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/xml2js/-/xml2js-0.4.22.tgz#4fa2d846ec803237de86f30aa9b5f70b6600de02"
-  integrity sha512-MWTbxAQqclRSTnehWWe5nMKzI3VmJ8ltiJEco8akcC6j3miOhjjfzKum5sId+CWhfxdOs/1xauYr8/ZDBtQiRw==
+xml2js@0.4.19:
+  version "0.4.19"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/xml2js/-/xml2js-0.4.19.tgz#686c20f213209e94abf0d1bcf1efaa291c7827a7"
+  integrity sha512-esZnJZJOiJR9wWKMyuvSE1y6Dq5LCuJanqhxslH2bxM6duahNZ+HMpCLhBQGZkbX6xRf8x1Y2eJlgt2q3qo49Q==
   dependencies:
     sax ">=0.6.0"
-    util.promisify "~1.0.0"
-    xmlbuilder "~11.0.0"
+    xmlbuilder "~9.0.1"
 
 xml2js@^0.4.16:
   version "0.4.23"
@@ -9155,6 +9173,11 @@ xmlbuilder@~11.0.0:
   version "11.0.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/xmlbuilder/-/xmlbuilder-11.0.1.tgz#be9bae1c8a046e76b31127726347d0ad7002beb3"
   integrity sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
+
+xmlbuilder@~9.0.1:
+  version "9.0.7"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/xmlbuilder/-/xmlbuilder-9.0.7.tgz#132ee63d2ec5565c557e20f4c22df9aca686b10d"
+  integrity sha1-Ey7mPS7FVlxVfiD0wi35rKaGsQ0=
 
 xmlcreate@^1.0.1:
   version "1.0.2"
