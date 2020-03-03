@@ -27,7 +27,6 @@
   "force:data:soql:query",
   "force:data:tree:export",
   "force:data:tree:import",
-  "force:doc:commands:list",
   "force:lightning:app:create",
   "force:lightning:component:create",
   "force:lightning:event:create",
