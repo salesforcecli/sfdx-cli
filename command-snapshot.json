@@ -1,0 +1,1943 @@
+[
+    {
+        "command": "alt:auth:pass",
+        "flags": [
+            "json",
+            "loglevel",
+            "username",
+            "password",
+            "instanceurl",
+            "setdefaultusername",
+            "setalias"
+        ]
+    },
+    {
+        "command": "alt:org:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "companyname",
+            "email",
+            "username",
+            "mydomain",
+            "type",
+            "instanceurl",
+            "open",
+            "password"
+        ]
+    },
+    {
+        "command": "alt:org:signup",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "callbackurl",
+            "dontsaveorgconfig",
+            "setdefaultusername",
+            "setalias",
+            "jwtkeyfile",
+            "clientid",
+            "instanceurl",
+            "signupconfig",
+            "createuser",
+            "wait"
+        ]
+    },
+    {
+        "command": "alt:service:proxy",
+        "flags": [
+            "json",
+            "loglevel",
+            "targethost",
+            "localport"
+        ]
+    },
+    {
+        "command": "alt:setting:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "orgid",
+            "instanceurl"
+        ]
+    },
+    {
+        "command": "alt:sfdx:enable",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "orgid",
+            "instanceurl"
+        ]
+    },
+    {
+        "command": "autocomplete",
+        "flags": [
+            "refresh-cache"
+        ]
+    },
+    {
+        "command": "autocomplete:create",
+        "flags": []
+    },
+    {
+        "command": "autocomplete:script",
+        "flags": []
+    },
+    {
+        "command": "bt:cdp:apply",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "allpackageid",
+            "type",
+            "firstvulnerableversionid",
+            "firstsafeversionid",
+            "wait",
+            "customerfacingmessage",
+            "instances",
+            "verbose"
+        ]
+    },
+    {
+        "command": "bt:cdp:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "instances",
+            "verbose"
+        ]
+    },
+    {
+        "command": "bt:cdp:remove",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "allpackageid",
+            "firstvulnerableversionid",
+            "instances",
+            "verbose"
+        ]
+    },
+    {
+        "command": "bt:resource:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "instanceurl",
+            "verbose",
+            "wait"
+        ]
+    },
+    {
+        "command": "bt:setting:set",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "criteria",
+            "enable",
+            "disable",
+            "guid",
+            "headers",
+            "index",
+            "instances",
+            "instanceurl",
+            "name",
+            "orgids",
+            "setting",
+            "verbose",
+            "wait"
+        ]
+    },
+    {
+        "command": "bt:setting:status",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "requestid"
+        ]
+    },
+    {
+        "command": "ccfeature:p4cl",
+        "flags": [
+            "json",
+            "loglevel",
+            "feature",
+            "changelists",
+            "exclude",
+            "include"
+        ]
+    },
+    {
+        "command": "commands",
+        "flags": [
+            "help",
+            "json",
+            "hidden"
+        ]
+    },
+    {
+        "command": "deprecation:generate",
+        "flags": [
+            "outputdir",
+            "filename"
+        ]
+    },
+    {
+        "command": "deprecation:test",
+        "flags": [
+            "goldfile"
+        ]
+    },
+    {
+        "command": "force",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "force:alias:list",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "force:alias:set",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "force:analytics:template:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "outputdir",
+            "apiversion",
+            "templatename"
+        ]
+    },
+    {
+        "command": "force:apex:class:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "classname",
+            "template",
+            "outputdir",
+            "apiversion"
+        ]
+    },
+    {
+        "command": "force:apex:execute",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "apexcodefile"
+        ]
+    },
+    {
+        "command": "force:apex:log:get",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "color",
+            "logid",
+            "number"
+        ]
+    },
+    {
+        "command": "force:apex:log:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion"
+        ]
+    },
+    {
+        "command": "force:apex:log:tail",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "color",
+            "debuglevel",
+            "skiptraceflag"
+        ]
+    },
+    {
+        "command": "force:apex:test:report",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "testrunid",
+            "codecoverage",
+            "outputdir",
+            "wait",
+            "verbose",
+            "resultformat"
+        ]
+    },
+    {
+        "command": "force:apex:test:run",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "classnames",
+            "suitenames",
+            "tests",
+            "codecoverage",
+            "outputdir",
+            "testlevel",
+            "wait",
+            "precompilewait",
+            "synchronous",
+            "verbose",
+            "resultformat"
+        ]
+    },
+    {
+        "command": "force:apex:trigger:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "triggername",
+            "template",
+            "outputdir",
+            "apiversion",
+            "sobject",
+            "triggerevents"
+        ]
+    },
+    {
+        "command": "force:auth:device:login",
+        "flags": [
+            "json",
+            "loglevel",
+            "clientid",
+            "instanceurl",
+            "setdefaultdevhubusername",
+            "setdefaultusername",
+            "setalias"
+        ]
+    },
+    {
+        "command": "force:auth:jwt:grant",
+        "flags": [
+            "json",
+            "loglevel",
+            "username",
+            "jwtkeyfile",
+            "clientid",
+            "instanceurl",
+            "setdefaultdevhubusername",
+            "setdefaultusername",
+            "setalias",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "force:auth:list",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "force:auth:logout",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "all",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "force:auth:sfdxurl:store",
+        "flags": [
+            "json",
+            "loglevel",
+            "sfdxurlfile",
+            "setdefaultdevhubusername",
+            "setdefaultusername",
+            "setalias",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "force:auth:web:login",
+        "flags": [
+            "json",
+            "loglevel",
+            "clientid",
+            "instanceurl",
+            "setdefaultdevhubusername",
+            "setdefaultusername",
+            "setalias",
+            "disablemasking",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "force:community:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "name",
+            "templatename",
+            "urlpathprefix",
+            "description"
+        ]
+    },
+    {
+        "command": "force:community:publish",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "name"
+        ]
+    },
+    {
+        "command": "force:community:template:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion"
+        ]
+    },
+    {
+        "command": "force:config:get",
+        "flags": [
+            "json",
+            "loglevel",
+            "verbose"
+        ]
+    },
+    {
+        "command": "force:config:list",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "force:config:set",
+        "flags": [
+            "json",
+            "loglevel",
+            "global"
+        ]
+    },
+    {
+        "command": "force:data:bulk:delete",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sobjecttype",
+            "csvfile",
+            "wait"
+        ]
+    },
+    {
+        "command": "force:data:bulk:status",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "jobid",
+            "batchid"
+        ]
+    },
+    {
+        "command": "force:data:bulk:upsert",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sobjecttype",
+            "csvfile",
+            "externalid",
+            "wait"
+        ]
+    },
+    {
+        "command": "force:data:record:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sobjecttype",
+            "values",
+            "usetoolingapi",
+            "perflog"
+        ]
+    },
+    {
+        "command": "force:data:record:delete",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sobjecttype",
+            "sobjectid",
+            "where",
+            "usetoolingapi",
+            "perflog"
+        ]
+    },
+    {
+        "command": "force:data:record:get",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sobjecttype",
+            "sobjectid",
+            "where",
+            "usetoolingapi",
+            "perflog"
+        ]
+    },
+    {
+        "command": "force:data:record:update",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sobjecttype",
+            "sobjectid",
+            "where",
+            "values",
+            "usetoolingapi",
+            "perflog"
+        ]
+    },
+    {
+        "command": "force:data:soql:query",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "query",
+            "usetoolingapi",
+            "resultformat",
+            "perflog"
+        ]
+    },
+    {
+        "command": "force:data:tree:export",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "query",
+            "plan",
+            "prefix",
+            "outputdir"
+        ]
+    },
+    {
+        "command": "force:data:tree:import",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sobjecttreefiles",
+            "plan",
+            "contenttype",
+            "confighelp"
+        ]
+    },
+    {
+        "command": "force:doc:commands:display",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "force:doc:commands:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "usage"
+        ]
+    },
+    {
+        "command": "force:lightning:app:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "appname",
+            "template",
+            "outputdir",
+            "apiversion",
+            "internal"
+        ]
+    },
+    {
+        "command": "force:lightning:component:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "componentname",
+            "template",
+            "outputdir",
+            "apiversion",
+            "type",
+            "internal"
+        ]
+    },
+    {
+        "command": "force:lightning:event:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "eventname",
+            "template",
+            "outputdir",
+            "apiversion",
+            "internal"
+        ]
+    },
+    {
+        "command": "force:lightning:interface:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "interfacename",
+            "template",
+            "outputdir",
+            "apiversion",
+            "internal"
+        ]
+    },
+    {
+        "command": "force:lightning:lint",
+        "flags": [
+            "json",
+            "loglevel",
+            "ignore",
+            "files",
+            "config",
+            "verbose",
+            "exit"
+        ]
+    },
+    {
+        "command": "force:lightning:lwc:test:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "filepath"
+        ]
+    },
+    {
+        "command": "force:lightning:lwc:test:run",
+        "flags": [
+            "json",
+            "loglevel",
+            "debug",
+            "watch"
+        ]
+    },
+    {
+        "command": "force:lightning:lwc:test:setup",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "force:lightning:test:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "testname",
+            "template",
+            "outputdir",
+            "internal"
+        ]
+    },
+    {
+        "command": "force:lightning:test:install",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "releaseversion",
+            "packagetype"
+        ]
+    },
+    {
+        "command": "force:lightning:test:run",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "appname",
+            "outputdir",
+            "configfile",
+            "leavebrowseropen",
+            "timeout",
+            "resultformat"
+        ]
+    },
+    {
+        "command": "force:limits:api:display",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion"
+        ]
+    },
+    {
+        "command": "force:mdapi:convert",
+        "flags": [
+            "json",
+            "loglevel",
+            "rootdir",
+            "outputdir",
+            "manifest",
+            "metadata",
+            "metadatapath"
+        ]
+    },
+    {
+        "command": "force:mdapi:deploy",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "checkonly",
+            "deploydir",
+            "wait",
+            "testlevel",
+            "runtests",
+            "ignoreerrors",
+            "ignorewarnings",
+            "validateddeployrequestid",
+            "verbose",
+            "zipfile",
+            "singlepackage"
+        ]
+    },
+    {
+        "command": "force:mdapi:deploy:cancel",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "jobid"
+        ]
+    },
+    {
+        "command": "force:mdapi:deploy:report",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "jobid",
+            "verbose"
+        ]
+    },
+    {
+        "command": "force:mdapi:describemetadata",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "resultfile",
+            "filterknown"
+        ]
+    },
+    {
+        "command": "force:mdapi:listmetadata",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "resultfile",
+            "metadatatype",
+            "folder"
+        ]
+    },
+    {
+        "command": "force:mdapi:retrieve",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "retrievetargetdir",
+            "unpackaged",
+            "verbose",
+            "sourcedir",
+            "packagenames",
+            "singlepackage"
+        ]
+    },
+    {
+        "command": "force:mdapi:retrieve:report",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "retrievetargetdir",
+            "verbose",
+            "jobid"
+        ]
+    },
+    {
+        "command": "force:org:clone",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "type",
+            "definitionfile",
+            "definitionjson",
+            "setdefaultusername",
+            "setalias",
+            "wait"
+        ]
+    },
+    {
+        "command": "force:org:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "targetusername",
+            "apiversion",
+            "type",
+            "definitionfile",
+            "definitionjson",
+            "nonamespace",
+            "noancestors",
+            "clientid",
+            "setdefaultusername",
+            "setalias",
+            "env",
+            "wait",
+            "durationdays"
+        ]
+    },
+    {
+        "command": "force:org:delete",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "targetusername",
+            "apiversion",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "force:org:display",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "verbose"
+        ]
+    },
+    {
+        "command": "force:org:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "verbose",
+            "all",
+            "clean",
+            "noprompt",
+            "connectionstatus"
+        ]
+    },
+    {
+        "command": "force:org:open",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "path",
+            "urlonly"
+        ]
+    },
+    {
+        "command": "force:org:shape:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "definitionfile"
+        ]
+    },
+    {
+        "command": "force:org:shape:delete",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "force:org:shape:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "verbose"
+        ]
+    },
+    {
+        "command": "force:org:snapshot:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "sourceorg",
+            "snapshotname",
+            "description"
+        ]
+    },
+    {
+        "command": "force:org:snapshot:delete",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "snapshot"
+        ]
+    },
+    {
+        "command": "force:org:snapshot:get",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "snapshot"
+        ]
+    },
+    {
+        "command": "force:org:snapshot:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion"
+        ]
+    },
+    {
+        "command": "force:org:status",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sandboxname",
+            "setdefaultusername",
+            "setalias",
+            "wait"
+        ]
+    },
+    {
+        "command": "force:package1:version:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "packageid",
+            "name",
+            "description",
+            "version",
+            "managedreleased",
+            "releasenotesurl",
+            "postinstallurl",
+            "installationkey",
+            "wait"
+        ]
+    },
+    {
+        "command": "force:package1:version:create:get",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "requestid"
+        ]
+    },
+    {
+        "command": "force:package1:version:display",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "packageversionid"
+        ]
+    },
+    {
+        "command": "force:package1:version:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "packageid"
+        ]
+    },
+    {
+        "command": "force:package:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "name",
+            "packagetype",
+            "description",
+            "nonamespace",
+            "path"
+        ]
+    },
+    {
+        "command": "force:package:hammertest:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "packageversionid"
+        ]
+    },
+    {
+        "command": "force:package:hammertest:report",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "requestid",
+            "summary"
+        ]
+    },
+    {
+        "command": "force:package:hammertest:run",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "packageversionids",
+            "subscriberorgs",
+            "subscriberfile",
+            "scheduledrundatetime",
+            "preview",
+            "apextests",
+            "apextestinterface"
+        ]
+    },
+    {
+        "command": "force:package:install",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "installationkey",
+            "publishwait",
+            "noprompt",
+            "package",
+            "apexcompile",
+            "securitytype",
+            "upgradetype"
+        ]
+    },
+    {
+        "command": "force:package:install:report",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "requestid"
+        ]
+    },
+    {
+        "command": "force:package:installed:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion"
+        ]
+    },
+    {
+        "command": "force:package:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "verbose"
+        ]
+    },
+    {
+        "command": "force:package:uninstall",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "package"
+        ]
+    },
+    {
+        "command": "force:package:uninstall:report",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "requestid"
+        ]
+    },
+    {
+        "command": "force:package:update",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "package",
+            "name",
+            "description"
+        ]
+    },
+    {
+        "command": "force:package:version:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "package",
+            "path",
+            "definitionfile",
+            "branch",
+            "tag",
+            "installationkey",
+            "installationkeybypass",
+            "preserve",
+            "validateschema",
+            "wait",
+            "buildinstance",
+            "sourceorg",
+            "versionname",
+            "versionnumber",
+            "versiondescription",
+            "codecoverage",
+            "releasenotesurl",
+            "postinstallurl",
+            "postinstallscript",
+            "uninstallscript",
+            "skipvalidation"
+        ]
+    },
+    {
+        "command": "force:package:version:create:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "createdlastdays",
+            "status"
+        ]
+    },
+    {
+        "command": "force:package:version:create:report",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "packagecreaterequestid"
+        ]
+    },
+    {
+        "command": "force:package:version:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "createdlastdays",
+            "concise",
+            "modifiedlastdays",
+            "packages",
+            "released",
+            "orderby",
+            "verbose"
+        ]
+    },
+    {
+        "command": "force:package:version:promote",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "package",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "force:package:version:report",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "package",
+            "verbose"
+        ]
+    },
+    {
+        "command": "force:package:version:update",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "package",
+            "versionname",
+            "versiondescription",
+            "branch",
+            "tag",
+            "installationkey"
+        ]
+    },
+    {
+        "command": "force:project:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "projectname",
+            "template",
+            "outputdir",
+            "namespace",
+            "defaultpackagedir",
+            "manifest",
+            "loginurl"
+        ]
+    },
+    {
+        "command": "force:project:upgrade",
+        "flags": [
+            "json",
+            "loglevel",
+            "forceupgrade"
+        ]
+    },
+    {
+        "command": "force:schema:sobject:describe",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sobjecttype",
+            "usetoolingapi"
+        ]
+    },
+    {
+        "command": "force:schema:sobject:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sobjecttypecategory"
+        ]
+    },
+    {
+        "command": "force:source:convert",
+        "flags": [
+            "json",
+            "loglevel",
+            "rootdir",
+            "outputdir",
+            "packagename",
+            "manifest",
+            "sourcepath",
+            "metadata"
+        ]
+    },
+    {
+        "command": "force:source:delete",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "checkonly",
+            "noprompt",
+            "wait",
+            "sourcepath",
+            "metadata"
+        ]
+    },
+    {
+        "command": "force:source:deploy",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "checkonly",
+            "wait",
+            "testlevel",
+            "runtests",
+            "ignoreerrors",
+            "ignorewarnings",
+            "validateddeployrequestid",
+            "verbose",
+            "metadata",
+            "sourcepath",
+            "manifest"
+        ]
+    },
+    {
+        "command": "force:source:deploy:cancel",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "jobid"
+        ]
+    },
+    {
+        "command": "force:source:deploy:report",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "jobid"
+        ]
+    },
+    {
+        "command": "force:source:open",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "sourcefile",
+            "urlonly"
+        ]
+    },
+    {
+        "command": "force:source:pull",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "forceoverwrite"
+        ]
+    },
+    {
+        "command": "force:source:push",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "forceoverwrite",
+            "ignorewarnings",
+            "replacetokens",
+            "wait"
+        ]
+    },
+    {
+        "command": "force:source:retrieve",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "wait",
+            "manifest",
+            "metadata",
+            "packagenames",
+            "sourcepath",
+            "verbose"
+        ]
+    },
+    {
+        "command": "force:source:status",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "all",
+            "local",
+            "remote"
+        ]
+    },
+    {
+        "command": "force:user:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "targetusername",
+            "apiversion",
+            "definitionfile",
+            "setalias"
+        ]
+    },
+    {
+        "command": "force:user:display",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "targetusername",
+            "apiversion"
+        ]
+    },
+    {
+        "command": "force:user:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "targetusername",
+            "apiversion"
+        ]
+    },
+    {
+        "command": "force:user:password:generate",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "targetusername",
+            "apiversion",
+            "onbehalfof"
+        ]
+    },
+    {
+        "command": "force:user:permset:assign",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "permsetname",
+            "onbehalfof"
+        ]
+    },
+    {
+        "command": "force:visualforce:component:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "template",
+            "outputdir",
+            "componentname",
+            "apiversion",
+            "label"
+        ]
+    },
+    {
+        "command": "force:visualforce:page:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "template",
+            "outputdir",
+            "pagename",
+            "apiversion",
+            "label"
+        ]
+    },
+    {
+        "command": "hello:org",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "targetusername",
+            "apiversion",
+            "name",
+            "force"
+        ]
+    },
+    {
+        "command": "help",
+        "flags": [
+            "all"
+        ]
+    },
+    {
+        "command": "plugins",
+        "flags": [
+            "core"
+        ]
+    },
+    {
+        "command": "plugins:generate",
+        "flags": [
+            "defaults",
+            "force"
+        ]
+    },
+    {
+        "command": "plugins:install",
+        "flags": [
+            "help",
+            "verbose",
+            "force"
+        ]
+    },
+    {
+        "command": "plugins:link",
+        "flags": [
+            "help",
+            "verbose"
+        ]
+    },
+    {
+        "command": "plugins:trust:sign",
+        "flags": [
+            "json",
+            "loglevel",
+            "signatureurl",
+            "publickeyurl",
+            "privatekeypath"
+        ]
+    },
+    {
+        "command": "plugins:trust:verify",
+        "flags": [
+            "json",
+            "loglevel",
+            "npm",
+            "registry"
+        ]
+    },
+    {
+        "command": "plugins:uninstall",
+        "flags": [
+            "help",
+            "verbose"
+        ]
+    },
+    {
+        "command": "plugins:update",
+        "flags": [
+            "help",
+            "verbose"
+        ]
+    },
+    {
+        "command": "sfdxdevreadme",
+        "flags": [
+            "dir",
+            "multi"
+        ]
+    },
+    {
+        "command": "snapshot:compare",
+        "flags": [
+            "filepath"
+        ]
+    },
+    {
+        "command": "snapshot:generate",
+        "flags": [
+            "filepath"
+        ]
+    },
+    {
+        "command": "soma:git:branch:check",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "soma:git:pr:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "base",
+            "workid",
+            "subject"
+        ]
+    },
+    {
+        "command": "soma:git:pr:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "state",
+            "author",
+            "head"
+        ]
+    },
+    {
+        "command": "soma:git:pr:merge",
+        "flags": [
+            "json",
+            "loglevel",
+            "base",
+            "target",
+            "mergecommit",
+            "skipworkidverification"
+        ]
+    },
+    {
+        "command": "soma:git:pr:verify",
+        "flags": [
+            "json",
+            "loglevel",
+            "usehead"
+        ]
+    },
+    {
+        "command": "telemetry",
+        "flags": []
+    },
+    {
+        "command": "update",
+        "flags": [
+            "autoupdate"
+        ]
+    },
+    {
+        "command": "vpod:goldlab:available",
+        "flags": [
+            "json",
+            "loglevel",
+            "release",
+            "databaseid"
+        ]
+    },
+    {
+        "command": "vpod:goldlab:current",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "vpod:goldlab:dbs",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "vpod:goldlab:signoff",
+        "flags": [
+            "json",
+            "loglevel",
+            "release",
+            "databaseid"
+        ]
+    },
+    {
+        "command": "vpod:goldlab:spawn",
+        "flags": [
+            "json",
+            "loglevel",
+            "release",
+            "databaseid"
+        ]
+    },
+    {
+        "command": "vpod:goldlab:username",
+        "flags": [
+            "json",
+            "loglevel",
+            "username"
+        ]
+    },
+    {
+        "command": "vpod:lab:ecom:spawn",
+        "flags": [
+            "json",
+            "loglevel",
+            "usecase",
+            "isexternal",
+            "tomcatimagetag",
+            "customlabrequest"
+        ]
+    },
+    {
+        "command": "vpod:lab:extend",
+        "flags": [
+            "json",
+            "loglevel",
+            "id",
+            "hours"
+        ]
+    },
+    {
+        "command": "vpod:lab:get",
+        "flags": [
+            "json",
+            "loglevel",
+            "id",
+            "ip"
+        ]
+    },
+    {
+        "command": "vpod:lab:open",
+        "flags": [
+            "json",
+            "loglevel",
+            "id"
+        ]
+    },
+    {
+        "command": "vpod:lab:spawn",
+        "flags": [
+            "json",
+            "loglevel",
+            "usecase",
+            "releaselabel",
+            "changelist",
+            "isexternal",
+            "databaseid",
+            "customlabrequest"
+        ]
+    },
+    {
+        "command": "vpod:lab:state",
+        "flags": [
+            "json",
+            "loglevel",
+            "id",
+            "userid",
+            "isexternal",
+            "labstatus",
+            "monthssince"
+        ]
+    },
+    {
+        "command": "vpod:lab:terminate",
+        "flags": [
+            "json",
+            "loglevel",
+            "id"
+        ]
+    },
+    {
+        "command": "vpod:product:changelists",
+        "flags": [
+            "json",
+            "loglevel",
+            "databaseid",
+            "release"
+        ]
+    },
+    {
+        "command": "vpod:product:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "databaseid",
+            "releaselabel",
+            "changelist"
+        ]
+    },
+    {
+        "command": "vpod:product:name",
+        "flags": [
+            "json",
+            "loglevel",
+            "product"
+        ]
+    },
+    {
+        "command": "vpod:release:databases",
+        "flags": [
+            "json",
+            "loglevel",
+            "regioncode",
+            "release"
+        ]
+    },
+    {
+        "command": "vpod:release:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "regioncode"
+        ]
+    },
+    {
+        "command": "vpod:release:main",
+        "flags": [
+            "json",
+            "loglevel",
+            "regioncode"
+        ]
+    },
+    {
+        "command": "vpod:release:releaselabel",
+        "flags": [
+            "json",
+            "loglevel",
+            "regioncode"
+        ]
+    },
+    {
+        "command": "vpod:session:generatetoken",
+        "flags": [
+            "json",
+            "loglevel",
+            "save"
+        ]
+    },
+    {
+        "command": "vpod:token:save",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "vpod:token:show",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "vpod:usecases:list",
+        "flags": [
+            "json",
+            "loglevel",
+            "name",
+            "desc"
+        ]
+    },
+    {
+        "command": "vpod:userkey:add",
+        "flags": [
+            "json",
+            "loglevel",
+            "keyfile",
+            "key"
+        ]
+    },
+    {
+        "command": "vpod:userkey:delete",
+        "flags": [
+            "json",
+            "loglevel",
+            "sshkeyid"
+        ]
+    },
+    {
+        "command": "vpod:userkey:list",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "which",
+        "flags": []
+    }
+]

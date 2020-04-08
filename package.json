@@ -59,6 +59,9 @@
       "@salesforce/sfdx-trust",
       "salesforcedx"
     ],
+    "devPlugins":[      
+      "@oclif/plugin-command-snapshot"
+    ],
     "update": {
       "s3": {
         "bucket": "dfc-data-production",
@@ -102,6 +105,7 @@
   },
   "devDependencies": {
     "@oclif/dev-cli": "~1.22.0",
+    "@oclif/plugin-command-snapshot": "^1.0.0",
     "@salesforce/dev-config": "~1.5.0",
     "@salesforce/ts-sinon": "~1.1.0",
     "@types/chai": "~4.1.7",
@@ -146,7 +150,9 @@
     "lint-with-style": "scripts/lint/sources_with_style",
     "oclif-artifacts": "oclif-dev manifest",
     "postpack": "rm -f oclif.manifest.json",
+    "posttest": "yarn test:deprecation-policy ",
     "prepack": "yarn clean && yarn compile && yarn lint && yarn oclif-artifacts",
+    "test:deprecation-policy": "./bin/run snapshot:compare",
     "prepare": "yarn compile && yarn lint",
     "release": "yarn release-all",
     "release-debug": "yarn release-all-debug",
