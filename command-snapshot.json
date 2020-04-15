@@ -730,8 +730,7 @@
             "verbose",
             "all",
             "clean",
-            "noprompt",
-            "connectionstatus"
+            "noprompt"
         ]
     },
     {
