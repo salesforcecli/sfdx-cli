@@ -79,7 +79,7 @@
   },
   "dependencies": {
     "@oclif/command": "~1.5.18",
-    "@oclif/config": "~1.13.2",
+    "@oclif/config": "~1.15.1",
     "@oclif/errors": "~1.2.2",
     "@oclif/plugin-autocomplete": "^0.1.5",
     "@oclif/plugin-commands": "~1.2.2",

@@ -137,7 +137,7 @@
     debug "^4.1.1"
     semver "^5.6.0"
 
-"@oclif/config@1.13.3", "@oclif/config@^1", "@oclif/config@^1.12.12", "@oclif/config@^1.12.6", "@oclif/config@^1.12.8", "@oclif/config@^1.6.22", "@oclif/config@^1.8.7", "@oclif/config@^1.9.0", "@oclif/config@~1.13.2":
+"@oclif/config@1.13.3", "@oclif/config@^1", "@oclif/config@^1.12.12", "@oclif/config@^1.12.6", "@oclif/config@^1.12.8", "@oclif/config@^1.6.22", "@oclif/config@^1.8.7", "@oclif/config@^1.9.0":
   version "1.13.3"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fconfig/-/config-1.13.3.tgz#1b13e18d0e4242ddbd9cbd100f0eec819aa2bf8c"
   dependencies:
@@ -148,6 +148,16 @@
 "@oclif/config@^1.14.0":
   version "1.14.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fconfig/-/config-1.14.0.tgz#0af93facd5c5087f804489f1603c4f3bc0c45014"
+  dependencies:
+    "@oclif/errors" "^1.0.0"
+    "@oclif/parser" "^3.8.0"
+    debug "^4.1.1"
+    tslib "^1.9.3"
+
+"@oclif/config@~1.15.1":
+  version "1.15.1"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@oclif%2fconfig/-/config-1.15.1.tgz#39950c70811ab82d75bb3cdb33679ed0a4c21c57"
+  integrity sha512-GdyHpEZuWlfU8GSaZoiywtfVBsPcfYn1KuSLT1JTfvZGpPG6vShcGr24YZ3HG2jXUFlIuAqDcYlTzOrqOdTPNQ==
   dependencies:
     "@oclif/errors" "^1.0.0"
     "@oclif/parser" "^3.8.0"
@@ -340,6 +350,18 @@
   dependencies:
     fancy-test "^1.4.3"
 
+"@salesforce/bunyan@^2.0.0":
+  version "2.0.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fbunyan/-/bunyan-2.0.0.tgz#8dbe377f2cf7d35348a23260416fee15adba5f97"
+  integrity sha512-5hq+HWQSeymuygl3i9ehlQo3XWrlBE+A+QzmpDaoK37op4u9M+SBUbXfOW0IABOQCg+JmfQPocSMV74hRoqU9w==
+  dependencies:
+    dayjs "^1.8.16"
+    dayjs-plugin-utc "^0.1.2"
+  optionalDependencies:
+    dtrace-provider "~0.6"
+    mv "~2"
+    safe-json-stringify "~1"
+
 "@salesforce/command@^2.0.0", "@salesforce/command@^2.1.3", "@salesforce/command@~2.1.0":
   version "2.1.4"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcommand/-/command-2.1.4.tgz#11efaf5a2d528c24e642d9fed18649377594d09e"
@@ -386,7 +408,7 @@
     mkdirp "0.5.1"
     sfdx-faye "^1.0.9"
 
-"@salesforce/core@^2.2.0", "@salesforce/core@~2.2.0":
+"@salesforce/core@^2.2.0":
   version "2.2.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcore/-/core-2.2.0.tgz#bd9dc306a1ba6764a9faba3c4fc08a90bdb4e229"
   dependencies:
@@ -395,6 +417,23 @@
     "@salesforce/ts-types" "^1.0.0"
     "@types/jsforce" "1.9.2"
     bunyan-sfdx-no-dtrace "1.8.2"
+    debug "^3.1.0"
+    jsen "0.6.6"
+    jsforce "1.9.3"
+    jsonwebtoken "8.5.0"
+    mkdirp "0.5.1"
+    sfdx-faye "^1.0.9"
+
+"@salesforce/core@~2.3.1":
+  version "2.3.1"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcore/-/core-2.3.1.tgz#6146bc3827c2cbe2cdae722d4e93818939d58d18"
+  integrity sha512-IIurlIt8qSulfvEylG9Ncis2/wSHxAFwxT3Rtyt3P9+5UYNi0BhIEDakbZF12rofvQgSfNklaVbctdU2noW45w==
+  dependencies:
+    "@salesforce/bunyan" "^2.0.0"
+    "@salesforce/kit" "^1.0.0"
+    "@salesforce/ts-sinon" "^1.0.0"
+    "@salesforce/ts-types" "^1.0.0"
+    "@types/jsforce" "1.9.2"
     debug "^3.1.0"
     jsen "0.6.6"
     jsforce "1.9.3"
@@ -2040,6 +2079,16 @@ dateformat@^1.0.12:
 dateformat@^3.0.3:
   version "3.0.3"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
+
+dayjs-plugin-utc@^0.1.2:
+  version "0.1.2"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/dayjs-plugin-utc/-/dayjs-plugin-utc-0.1.2.tgz#48e552407024143922d6499a40f6c765f8c93d03"
+  integrity sha512-ExERH5o3oo6jFOdkvMP3gytTCQ9Ksi5PtylclJWghr7k7m3o2U5QrwtdiJkOxLOH4ghr0EKhpqGefzGz1VvVJg==
+
+dayjs@^1.8.16:
+  version "1.8.24"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/dayjs/-/dayjs-1.8.24.tgz#2ef8a2ab9425eaf3318fe78825be1c571027488d"
+  integrity sha512-bImQZbBv86zcOWOq6fLg7r4aqMx8fScdmykA7cSh+gH1Yh8AM0Dbw0gHYrsOrza6oBBnkK+/OaR+UAa9UsMrDw==
 
 debug@3.1.0:
   version "3.1.0"
@@ -6684,15 +6733,16 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
-salesforce-alm@48.8.0:
-  version "48.8.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforce-alm/-/salesforce-alm-48.8.0.tgz#7e56d3101a5413131000ed8ad7a0203e2f49274a"
+salesforce-alm@48.9.0:
+  version "48.9.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforce-alm/-/salesforce-alm-48.9.0.tgz#95069bbc829bb963f7ee9a545d03e774c7273a2e"
+  integrity sha512-R7BYMw00VORqED32F0jfYC8rPXbDJycZ102rEL0pfMjyceOOGEniXDnUhMXZV/VyL94LKgN15JtnQz/AADRseA==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
     "@oclif/plugin-help" "^2.2.3"
     "@salesforce/command" "~3.0.0"
-    "@salesforce/core" "~2.2.0"
+    "@salesforce/core" "~2.3.1"
     "@salesforce/kit" "~1.2.1"
     "@salesforce/telemetry" "~2.0.1"
     "@salesforce/ts-types" "~1.2.1"
@@ -6782,12 +6832,13 @@ salesforcedx-templates@48.8.0:
     yeoman-environment "^2.4.0"
     yeoman-generator "^4.0.1"
 
-salesforcedx@48.8.0:
-  version "48.8.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx/-/salesforcedx-48.8.0.tgz#563ae1a613e03f4a0f33bc09d2a7dd6ba013ab6a"
+salesforcedx@48.10.0:
+  version "48.10.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx/-/salesforcedx-48.10.0.tgz#54ef9a2964b185a445175fb1bcfd51936089ccc7"
+  integrity sha512-tZdRMYQSOYz+d2yxRRg9Z31w6JwIgmVj4g9FEZN2qpEuTFQWHhspss7tdibQhHfES9gDF6WBKprSmb0d+7Lxrg==
   dependencies:
     "@salesforce/sfdx-plugin-lwc-test" "0.1.5"
-    salesforce-alm "48.8.0"
+    salesforce-alm "48.9.0"
     salesforce-lightning-cli "3.0.0"
     salesforcedx-templates "48.8.0"
 
