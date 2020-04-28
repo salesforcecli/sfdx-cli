@@ -377,6 +377,22 @@
     chalk "^2.4.2"
     cli-ux "^4.9.3"
 
+"@salesforce/command@^2.2.0":
+  version "2.2.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcommand/-/command-2.2.0.tgz#316097f8defd300a93a3460dea3fe31e7d958254"
+  integrity sha512-woOcjp/ZUc+WQtWVuu0arFv3go90KeBDHrRldVq+8oL6SmksK/13c9OPPFANGWeD6KbsTMY7AfqNE/BdpEb1YA==
+  dependencies:
+    "@oclif/command" "^1.5.17"
+    "@oclif/errors" "^1.2.2"
+    "@oclif/parser" "^3.8.3"
+    "@oclif/plugin-help" "^2.2.0"
+    "@oclif/test" "^1.2.4"
+    "@salesforce/core" "^2.1.4"
+    "@salesforce/kit" "^1.2.0"
+    "@salesforce/ts-types" "^1.2.0"
+    chalk "^2.4.2"
+    cli-ux "^4.9.3"
+
 "@salesforce/command@^3.0.0", "@salesforce/command@~3.0.0":
   version "3.0.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcommand/-/command-3.0.0.tgz#b0511a445387c83006a10cd8234d2fa88b7cf9b8"
@@ -408,7 +424,7 @@
     mkdirp "0.5.1"
     sfdx-faye "^1.0.9"
 
-"@salesforce/core@^2.2.0":
+"@salesforce/core@^2.2.0", "@salesforce/core@~2.2.0":
   version "2.2.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcore/-/core-2.2.0.tgz#bd9dc306a1ba6764a9faba3c4fc08a90bdb4e229"
   dependencies:
@@ -424,10 +440,10 @@
     mkdirp "0.5.1"
     sfdx-faye "^1.0.9"
 
-"@salesforce/core@~2.3.1":
-  version "2.3.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcore/-/core-2.3.1.tgz#6146bc3827c2cbe2cdae722d4e93818939d58d18"
-  integrity sha512-IIurlIt8qSulfvEylG9Ncis2/wSHxAFwxT3Rtyt3P9+5UYNi0BhIEDakbZF12rofvQgSfNklaVbctdU2noW45w==
+"@salesforce/core@^2.3.0":
+  version "2.4.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@salesforce%2fcore/-/core-2.4.0.tgz#af53f62cd2367e21b7d81589be240718daa1b0b5"
+  integrity sha512-bEbyDEZ9l5cOlwvlglV+qm3QetGNyB635vC8sBQzUJAdckb/I3VKjerjgZHRNiB7ZUtTrHm76XsLmJadxbRIcw==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.0.0"
@@ -660,13 +676,6 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/inquirer@*":
-  version "6.5.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2finquirer/-/inquirer-6.5.0.tgz#b83b0bf30b88b8be7246d40e51d32fe9d10e09be"
-  dependencies:
-    "@types/through" "*"
-    rxjs "^6.4.0"
-
 "@types/jsforce@1.9.2":
   version "1.9.2"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2fjsforce/-/jsforce-1.9.2.tgz#a321866dcb7c9c4c57a1d794d54ec52e3f07ff0b"
@@ -716,26 +725,9 @@
   version "4.3.3"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2fsinon/-/sinon-4.3.3.tgz#97cbbfddc3282b5fd40c7abf80b99db426fd4237"
 
-"@types/through@*":
-  version "0.0.30"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2fthrough/-/through-0.0.30.tgz#e0e42ce77e897bd6aead6f6ea62aeb135b8a3895"
-  dependencies:
-    "@types/node" "*"
-
 "@types/tough-cookie@*":
   version "2.3.6"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2ftough-cookie/-/tough-cookie-2.3.6.tgz#c880579e087d7a0db13777ff8af689f4ffc7b0d5"
-
-"@types/yeoman-assert@^3.1.1":
-  version "3.1.1"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2fyeoman-assert/-/yeoman-assert-3.1.1.tgz#d1f683e5f6e6b15d36bfb216221a19bd7e9735c6"
-
-"@types/yeoman-generator@^3.1.3":
-  version "3.1.4"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/@types%2fyeoman-generator/-/yeoman-generator-3.1.4.tgz#21d6599515d41447eb84e2bc45033f1a640bbaf2"
-  dependencies:
-    "@types/inquirer" "*"
-    rxjs ">=6.4.0"
 
 JSONStream@^1.3.4, JSONStream@^1.3.5:
   version "1.3.5"
@@ -1993,6 +1985,15 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
+cross-spawn@^7.0.0:
+  version "7.0.2"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/cross-spawn/-/cross-spawn-7.0.2.tgz#d0d7dcfa74e89115c7619f4f721a94e1fdb716d6"
+  integrity sha512-PD6G8QG3S4FK/XCGFbEQrDqO2AnMMsy0meR7lerlIOHAAbkuavGU/pOqprrlvfTNjvowivTeBsjebAL0NSoMxw==
+  dependencies:
+    path-key "^3.1.0"
+    shebang-command "^2.0.0"
+    which "^2.0.1"
+
 crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
@@ -2739,6 +2740,21 @@ execa@^1.0.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
+execa@^4.0.0:
+  version "4.0.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/execa/-/execa-4.0.0.tgz#7f37d6ec17f09e6b8fc53288611695b6d12b9daf"
+  integrity sha512-JbDUxwV3BoT5ZVXQrSVbAiaXhXUkIwvbhPIwZ0N13kX+5yCzOhUNdocxB/UQRuYOHRYYwAxKYwJYc0T4D12pDA==
+  dependencies:
+    cross-spawn "^7.0.0"
+    get-stream "^5.0.0"
+    human-signals "^1.1.1"
+    is-stream "^2.0.0"
+    merge-stream "^2.0.0"
+    npm-run-path "^4.0.0"
+    onetime "^5.1.0"
+    signal-exit "^3.0.2"
+    strip-final-newline "^2.0.0"
+
 exit-hook@^1.0.0:
   version "1.1.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/exit-hook/-/exit-hook-1.1.1.tgz#f05ca233b48c05d54fff07765df8507e95c02ff8"
@@ -3229,9 +3245,10 @@ get-stream@^4.0.0, get-stream@^4.1.0:
   dependencies:
     pump "^3.0.0"
 
-get-stream@^5.1.0:
+get-stream@^5.0.0, get-stream@^5.1.0:
   version "5.1.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/get-stream/-/get-stream-5.1.0.tgz#01203cdc92597f9b909067c3e656cc1f4d3c4dc9"
+  integrity sha512-EXr1FOzrzTfGeL0gQdeFEvOMm2mzMOglyiOXSTpPC+iAjAKftbr3jpCMWynogwYnM+eSj9sHGc6wjIcDvYiygw==
   dependencies:
     pump "^3.0.0"
 
@@ -3489,6 +3506,13 @@ grouped-queue@^0.3.3:
   dependencies:
     lodash "^4.17.2"
 
+grouped-queue@^1.1.0:
+  version "1.1.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/grouped-queue/-/grouped-queue-1.1.0.tgz#63e3f9ca90af952269d1d40879e41221eacc74cb"
+  integrity sha512-rZOFKfCqLhsu5VqjBjEWiwrYqJR07KxIkH4mLZlNlGDfntbb4FbMyGFP14TlvRPrU9S3Hnn/sgxbC5ZeN0no3Q==
+  dependencies:
+    lodash "^4.17.15"
+
 growl@1.10.5:
   version "1.10.5"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/growl/-/growl-1.10.5.tgz#f2735dc2283674fa67478b10181059355c369e5e"
@@ -3694,6 +3718,11 @@ https-proxy-agent@^2.2.3:
     agent-base "^4.3.0"
     debug "^3.1.0"
 
+human-signals@^1.1.1:
+  version "1.1.1"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
+  integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
+
 humanize-ms@^1.2.1:
   version "1.2.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/humanize-ms/-/humanize-ms-1.2.1.tgz#c46e3159a293f6b896da29316d8b6fe8bb79bbed"
@@ -3875,6 +3904,25 @@ inquirer@^7.0.0:
     rxjs "^6.5.3"
     string-width "^4.1.0"
     strip-ansi "^5.1.0"
+    through "^2.3.6"
+
+inquirer@^7.1.0:
+  version "7.1.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/inquirer/-/inquirer-7.1.0.tgz#1298a01859883e17c7264b82870ae1034f92dd29"
+  integrity sha512-5fJMWEmikSYu0nv/flMc475MhGbB7TSPd/2IpFV4I4rMklboCH2rQjYY5kKiYGHqUF9gvaambupcJFFG9dvReg==
+  dependencies:
+    ansi-escapes "^4.2.1"
+    chalk "^3.0.0"
+    cli-cursor "^3.1.0"
+    cli-width "^2.0.0"
+    external-editor "^3.0.3"
+    figures "^3.0.0"
+    lodash "^4.17.15"
+    mute-stream "0.0.8"
+    run-async "^2.4.0"
+    rxjs "^6.5.3"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
     through "^2.3.6"
 
 inquirer@~3.3.0:
@@ -4980,6 +5028,11 @@ merge-source-map@^1.1.0:
   dependencies:
     source-map "^0.6.1"
 
+merge-stream@^2.0.0:
+  version "2.0.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
+  integrity sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==
+
 merge2@^1.2.3, merge2@^1.3.0:
   version "1.3.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/merge2/-/merge2-1.3.0.tgz#5b366ee83b2f1582c48f87e47cf1a9352103ca81"
@@ -5048,6 +5101,11 @@ minimist@0.0.8:
 minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
+
+minimist@^1.2.5:
+  version "1.2.5"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
+  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
 
 minimist@~0.0.1:
   version "0.0.10"
@@ -5419,6 +5477,13 @@ npm-run-path@^2.0.0:
 npm-run-path@^3.0.0:
   version "3.1.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/npm-run-path/-/npm-run-path-3.1.0.tgz#7f91be317f6a466efed3c9f2980ad8a4ee8b0fa5"
+  dependencies:
+    path-key "^3.0.0"
+
+npm-run-path@^4.0.0:
+  version "4.0.1"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/npm-run-path/-/npm-run-path-4.0.1.tgz#b7ecd1e5ed53da8e37a55e1c2269e0b97ed748ea"
+  integrity sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==
   dependencies:
     path-key "^3.0.0"
 
@@ -5969,7 +6034,7 @@ path-key@^2.0.0, path-key@^2.0.1:
   version "2.0.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/path-key/-/path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40"
 
-path-key@^3.0.0:
+path-key@^3.0.0, path-key@^3.1.0:
   version "3.1.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/path-key/-/path-key-3.1.1.tgz#581f6ade658cbba65a0d3380de7753295054f375"
 
@@ -6673,6 +6738,11 @@ run-async@^2.0.0, run-async@^2.2.0:
   dependencies:
     is-promise "^2.1.0"
 
+run-async@^2.4.0:
+  version "2.4.1"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
+  integrity sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==
+
 run-node@^1.0.0:
   version "1.0.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/run-node/-/run-node-1.0.0.tgz#46b50b946a2aa2d4947ae1d886e9856fd9cabe5e"
@@ -6705,7 +6775,7 @@ rx@2.3.24:
   version "2.3.24"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/rx/-/rx-2.3.24.tgz#14f950a4217d7e35daa71bbcbe58eff68ea4b2b7"
 
-rxjs@>=6.4.0, rxjs@^6.4.0, rxjs@^6.5.3:
+rxjs@^6.4.0, rxjs@^6.5.3:
   version "6.5.4"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/rxjs/-/rxjs-6.5.4.tgz#e0777fe0d184cec7872df147f303572d414e211c"
   dependencies:
@@ -6733,16 +6803,16 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
-salesforce-alm@48.9.0:
-  version "48.9.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforce-alm/-/salesforce-alm-48.9.0.tgz#95069bbc829bb963f7ee9a545d03e774c7273a2e"
-  integrity sha512-R7BYMw00VORqED32F0jfYC8rPXbDJycZ102rEL0pfMjyceOOGEniXDnUhMXZV/VyL94LKgN15JtnQz/AADRseA==
+salesforce-alm@48.10.0:
+  version "48.10.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforce-alm/-/salesforce-alm-48.10.0.tgz#f7a74670dd66e96692998b0af737716a72bccb7e"
+  integrity sha512-HBK60nLpRo8QOvxzXP83ATSxc//7b8ZwXHlWRdZYUnF6ThaYlc4eRSPjRsBCF2k3ZSuy4FkXqY01Z/JQ8FJUiQ==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
     "@oclif/plugin-help" "^2.2.3"
     "@salesforce/command" "~3.0.0"
-    "@salesforce/core" "~2.3.1"
+    "@salesforce/core" "~2.2.0"
     "@salesforce/kit" "~1.2.1"
     "@salesforce/telemetry" "~2.0.1"
     "@salesforce/ts-types" "~1.2.1"
@@ -6816,31 +6886,30 @@ salesforce-lightning-cli@3.0.0:
     object-assign "^4.1.1"
     prettier "^1.18.2"
 
-salesforcedx-templates@48.8.0:
-  version "48.8.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx-templates/-/salesforcedx-templates-48.8.0.tgz#c2df3c1306954006fc483dcc751b5399946493ef"
+salesforcedx-templates@48.10.0:
+  version "48.10.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx-templates/-/salesforcedx-templates-48.10.0.tgz#49ef6eb5612eab596a7cb57a6502d4656a6a9f97"
+  integrity sha512-bhprEDK1TX6ReMic4Tm3njezR4Nnh+xlj45FZXnK/T8ePBTq9DrWv8uKymWID8wOBmvhL3ahRtay5Tf8gyQBjg==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
-    "@salesforce/command" "^2.1.3"
-    "@salesforce/core" "^2.1.4"
-    "@types/yeoman-assert" "^3.1.1"
-    "@types/yeoman-generator" "^3.1.3"
+    "@salesforce/command" "^2.2.0"
+    "@salesforce/core" "^2.3.0"
     mkdirp "^0.5.1"
     tslib "^1"
-    yeoman-environment "^2.4.0"
-    yeoman-generator "^4.0.1"
+    yeoman-environment "^2.9.0"
+    yeoman-generator "4.0.1"
 
-salesforcedx@48.10.0:
-  version "48.10.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx/-/salesforcedx-48.10.0.tgz#54ef9a2964b185a445175fb1bcfd51936089ccc7"
-  integrity sha512-tZdRMYQSOYz+d2yxRRg9Z31w6JwIgmVj4g9FEZN2qpEuTFQWHhspss7tdibQhHfES9gDF6WBKprSmb0d+7Lxrg==
+salesforcedx@48.11.2:
+  version "48.11.2"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/salesforcedx/-/salesforcedx-48.11.2.tgz#f9ec4fef7e6285380d3adc708c8273592f8ece10"
+  integrity sha512-NgI9B5lTcRjQBq7SUa3xfBsTiJ7H6Yep5Jy9S6FrnhxblPfEYaJyyKxXstCaoZZHNdnBH90UW0VN4iXOAcxAow==
   dependencies:
     "@salesforce/sfdx-plugin-lwc-test" "0.1.5"
-    salesforce-alm "48.9.0"
+    salesforce-alm "48.10.0"
     salesforce-lightning-cli "3.0.0"
-    salesforcedx-templates "48.8.0"
+    salesforcedx-templates "48.10.0"
 
 samsam@1.3.0:
   version "1.3.0"
@@ -6890,6 +6959,11 @@ semver@^6.0.0, semver@^6.1.2, semver@^6.3.0:
   version "6.3.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
 
+semver@^7.1.3, semver@^7.2.1:
+  version "7.3.2"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/semver/-/semver-7.3.2.tgz#604962b052b81ed0786aae84389ffba70ffd3938"
+  integrity sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ==
+
 sequin@*:
   version "0.1.1"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/sequin/-/sequin-0.1.1.tgz#5c2d389d66a383734eaafbc45edeb2c1cb1be701"
@@ -6929,9 +7003,21 @@ shebang-command@^1.2.0:
   dependencies:
     shebang-regex "^1.0.0"
 
+shebang-command@^2.0.0:
+  version "2.0.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/shebang-command/-/shebang-command-2.0.0.tgz#ccd0af4f8835fbdc265b82461aaf0c36663f34ea"
+  integrity sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==
+  dependencies:
+    shebang-regex "^3.0.0"
+
 shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
+
+shebang-regex@^3.0.0:
+  version "3.0.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
+  integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
 shelljs@^0.7.5:
   version "0.7.8"
@@ -7352,6 +7438,11 @@ strip-bom@^4.0.0:
 strip-eof@^1.0.0:
   version "1.0.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/strip-eof/-/strip-eof-1.0.0.tgz#bb43ff5598a6eb05d89b59fcd129c983313606bf"
+
+strip-final-newline@^2.0.0:
+  version "2.0.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/strip-final-newline/-/strip-final-newline-2.0.0.tgz#89b852fb2fcbe936f6f4b3187afb0a12c1ab58ad"
+  integrity sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==
 
 strip-indent@^1.0.1:
   version "1.0.1"
@@ -8008,6 +8099,13 @@ which@^1.2.9, which@^1.3.0, which@^1.3.1:
   dependencies:
     isexe "^2.0.0"
 
+which@^2.0.1:
+  version "2.0.2"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/which/-/which-2.0.2.tgz#7c6a8dd0a636a0327e10b59c9286eee93f3f51b1"
+  integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
+  dependencies:
+    isexe "^2.0.0"
+
 wide-align@^1.1.0:
   version "1.1.3"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/wide-align/-/wide-align-1.1.3.tgz#ae074e6bdc0c14a431e804e624549c633b000457"
@@ -8227,7 +8325,7 @@ yauzl@^2.10.0:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.1.0"
 
-yeoman-environment@^2.0.5, yeoman-environment@^2.3.4, yeoman-environment@^2.4.0:
+yeoman-environment@^2.0.5, yeoman-environment@^2.3.4:
   version "2.7.0"
   resolved "http://platform-cli-registry.eng.sfdc.net:4880/yeoman-environment/-/yeoman-environment-2.7.0.tgz#d1b6679de883ce14a68b869c4b19d55a0d66f477"
   dependencies:
@@ -8246,6 +8344,61 @@ yeoman-environment@^2.0.5, yeoman-environment@^2.3.4, yeoman-environment@^2.4.0:
     strip-ansi "^4.0.0"
     text-table "^0.2.0"
     untildify "^3.0.3"
+
+yeoman-environment@^2.9.0, yeoman-environment@^2.9.5:
+  version "2.9.6"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/yeoman-environment/-/yeoman-environment-2.9.6.tgz#3defd8a1c66fd44df0c8ee9603ac44ecada0a370"
+  integrity sha512-olp9jFDfF35F6YbE2PvWw8idX+JUW9Wf5bY9OYntFdyl4YGnmxJVO6VokYwK+ZoC3asciyO7tteoxTyYG4AxXA==
+  dependencies:
+    chalk "^2.4.1"
+    debug "^3.1.0"
+    diff "^3.5.0"
+    escape-string-regexp "^1.0.2"
+    execa "^4.0.0"
+    globby "^8.0.1"
+    grouped-queue "^1.1.0"
+    inquirer "^7.1.0"
+    is-scoped "^1.0.0"
+    lodash "^4.17.10"
+    log-symbols "^2.2.0"
+    mem-fs "^1.1.0"
+    mem-fs-editor "^6.0.0"
+    semver "^7.1.3"
+    strip-ansi "^4.0.0"
+    text-table "^0.2.0"
+    untildify "^3.0.3"
+    yeoman-generator "^4.8.2"
+
+yeoman-generator@4.0.1:
+  version "4.0.1"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/yeoman-generator/-/yeoman-generator-4.0.1.tgz#6454056e451ebdfe4ac69927343ae37086bbecb0"
+  integrity sha512-QFSHcJHfDwqNdcr5RPSCPLnRzVpPuDWb6By2Uz77YByqBqvR/r9QGBucCl58hs5QJl4NFgLFgIHZoNDCJP1byA==
+  dependencies:
+    async "^2.6.2"
+    chalk "^2.4.2"
+    cli-table "^0.3.1"
+    cross-spawn "^6.0.5"
+    dargs "^6.1.0"
+    dateformat "^3.0.3"
+    debug "^4.1.1"
+    detect-conflict "^1.0.0"
+    error "^7.0.2"
+    find-up "^3.0.0"
+    github-username "^3.0.0"
+    istextorbinary "^2.5.1"
+    lodash "^4.17.11"
+    make-dir "^3.0.0"
+    mem-fs-editor "^6.0.0"
+    minimist "^1.2.0"
+    pretty-bytes "^5.2.0"
+    read-chunk "^3.2.0"
+    read-pkg-up "^5.0.0"
+    rimraf "^2.6.3"
+    run-async "^2.0.0"
+    shelljs "^0.8.3"
+    text-table "^0.2.0"
+    through2 "^3.0.1"
+    yeoman-environment "^2.3.4"
 
 yeoman-generator@^3.2.0:
   version "3.2.0"
@@ -8277,9 +8430,10 @@ yeoman-generator@^3.2.0:
     through2 "^3.0.0"
     yeoman-environment "^2.0.5"
 
-yeoman-generator@^4.0.1:
-  version "4.4.0"
-  resolved "http://platform-cli-registry.eng.sfdc.net:4880/yeoman-generator/-/yeoman-generator-4.4.0.tgz#182c992509d4b7512a6bbe17c0dfdf7e52953344"
+yeoman-generator@^4.8.2:
+  version "4.9.0"
+  resolved "http://platform-cli-registry.eng.sfdc.net:4880/yeoman-generator/-/yeoman-generator-4.9.0.tgz#823dabd4606148c87ea2cc8144508fe0945e939f"
+  integrity sha512-yAtwM+gpxZr1yJGmA8aQqQiI1KrkS6oBqtISy7CwijiXwQZy1SvBakcmaMmYQSp0NjlXW7zXNfo0PdBInmAFOA==
   dependencies:
     async "^2.6.2"
     chalk "^2.4.2"
@@ -8295,17 +8449,20 @@ yeoman-generator@^4.0.1:
     istextorbinary "^2.5.1"
     lodash "^4.17.11"
     make-dir "^3.0.0"
-    mem-fs-editor "^6.0.0"
-    minimist "^1.2.0"
+    minimist "^1.2.5"
     pretty-bytes "^5.2.0"
     read-chunk "^3.2.0"
     read-pkg-up "^5.0.0"
     rimraf "^2.6.3"
     run-async "^2.0.0"
+    semver "^7.2.1"
     shelljs "^0.8.3"
     text-table "^0.2.0"
     through2 "^3.0.1"
-    yeoman-environment "^2.3.4"
+  optionalDependencies:
+    grouped-queue "^1.1.0"
+    mem-fs-editor "^6.0.0"
+    yeoman-environment "^2.9.5"
 
 yn@^2.0.0:
   version "2.0.0"
