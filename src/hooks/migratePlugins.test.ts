@@ -4,7 +4,7 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { Hook, IConfig } from '@oclif/config';
+import { IConfig } from '@oclif/config';
 import { set } from '@salesforce/kit';
 import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
 import { JsonMap, Nullable, Optional } from '@salesforce/ts-types';
@@ -13,7 +13,7 @@ import chalk from 'chalk';
 import * as Debug from 'debug';
 import { Stats } from 'fs';
 import * as sinon from 'sinon';
-import { default as hook, FsLib } from './migratePlugins';
+import { default as hook, FsLib, MigratePluginsHookContext } from './migratePlugins';
 
 // tslint:disable:no-unused-expression
 
@@ -45,7 +45,7 @@ const trace = Debug('test:migrate:plugins');
 describe('migratePlugins preupdate hook', () => {
   let sandbox: sinon.SinonSandbox;
   let config: StubbedType<IConfig>;
-  let context: StubbedType<Hook.Context>;
+  let context: StubbedType<MigratePluginsHookContext>;
   let mockFs: StubbedType<FsLib>;
   let warnings: string[];
   let chalkEnabled: boolean;
@@ -64,14 +64,6 @@ describe('migratePlugins preupdate hook', () => {
 
     config = stubInterface<IConfig>(sandbox, {
       dataDir: '/home/tester/.local/share/sfdx'
-    });
-
-    context = stubInterface<Hook.Context>(sandbox, {
-      warn: (err: string) => {
-        trace('[WARNING] %s', err);
-        warnings.push(err);
-      },
-      config
     });
 
     warnings = [];
@@ -236,6 +228,14 @@ describe('migratePlugins preupdate hook', () => {
   });
 
   async function testHook() {
-    await hook.call(context, { config }, mockFs);
+    context = stubInterface<MigratePluginsHookContext>(sandbox, {
+      warn: (err: string) => {
+        trace('[WARNING] %s', err);
+        warnings.push(err);
+      },
+      config,
+      fs: mockFs
+    });
+    await hook.call(context, { config, channel: 'test' });
   }
 });

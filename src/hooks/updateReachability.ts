@@ -5,12 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { Hook } from '@oclif/config';
+import { Hook, IConfig } from '@oclif/config';
 import { NamedError, sleep } from '@salesforce/kit';
 import { JsonMap, Optional } from '@salesforce/ts-types';
 import * as Debug from 'debug';
 import { HTTP } from 'http-call';
-import { default as envars } from '../util/env';
+import { default as envars, Env } from '../util/env';
 
 const debug = Debug('sfdx:preupdate:reachability');
 
@@ -22,11 +22,14 @@ async function canUpdate(context: Hook.Context, channel: string, manifestUrl: st
         throw new NamedError('S3HostReachabilityError', 'S3 host is not reachable.');
     }
 
+    // Allow test to overwrite RETRY_MILLIS
+    const retryMS: number = (context as unknown as { retryMS: number }).retryMS || RETRY_MILLIS;
+
     if (attempt === 1) {
         debug('testing S3 host reachability... (attempt %s)', attempt);
     } else {
-        debug('re-testing S3 host reachability in %s milliseconds... (attempt %s)', RETRY_MILLIS, attempt);
-        await sleep(RETRY_MILLIS);
+        debug('re-testing S3 host reachability in %s milliseconds... (attempt %s)', retryMS, attempt);
+        await sleep(retryMS);
     }
 
     if (attempt === 2) {
@@ -91,8 +94,25 @@ function validateManifest(context: Hook.Context, channel: string, manifest: Json
     debug('manifest available %s', JSON.stringify(manifest));
 }
 
-const hook: Hook.Preupdate = async function(options, env = envars, http = HTTP) {
+export type UpdateReachabilityHookContext = Hook.Context & {
+    env: Env,
+    http: typeof HTTP
+};
+
+// Extend Hook.Preupdate to add http and env utility
+export type UpdateReachabilityHook = (this: UpdateReachabilityHookContext, options: {
+    channel: string;
+  } & {
+    config: IConfig;
+  }) => Promise<void>;
+
+const hook: UpdateReachabilityHook = async function(options) {
     debug(`preupdate check with channel ${options.channel}`);
+
+    // Allow test to overwrite env and http
+    const env = this.env || envars;
+    const http = this.http || HTTP;
+
     try {
         const s3Host = env.getS3HostOverride();
         if (!env.isAutoupdateDisabled()) {
