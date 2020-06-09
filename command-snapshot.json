@@ -226,6 +226,73 @@
         ]
     },
     {
+        "command": "force:cmdt:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "typename",
+            "label",
+            "plurallabel",
+            "visibility",
+            "outputdir"
+        ]
+    },
+    {
+        "command": "force:cmdt:field:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "fieldname",
+            "fieldtype",
+            "picklistvalues",
+            "decimalplaces",
+            "label",
+            "outputdir"
+        ]
+    },
+    {
+        "command": "force:cmdt:generate",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "devname",
+            "label",
+            "plurallabel",
+            "visibility",
+            "sobjectname",
+            "ignoreunsupported",
+            "typeoutputdir",
+            "recordsoutputdir"
+        ]
+    },
+    {
+        "command": "force:cmdt:record:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "typename",
+            "recordname",
+            "label",
+            "protected",
+            "inputdir",
+            "outputdir"
+        ]
+    },
+    {
+        "command": "force:cmdt:record:insert",
+        "flags": [
+            "json",
+            "loglevel",
+            "filepath",
+            "typename",
+            "inputdir",
+            "outputdir",
+            "namecolumn"
+        ]
+    },
+    {
         "command": "force:community:create",
         "flags": [
             "json",
