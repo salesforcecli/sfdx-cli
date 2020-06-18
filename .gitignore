@@ -23,3 +23,6 @@ src/temp
 .nyc_output
 oclif.manifest.json
 npm-shrinkwrap.json
+
+# For deprecation test to ignore user installed plugins
+Library

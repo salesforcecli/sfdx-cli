@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { Hook } from '@oclif/config';
+import { Hook, IConfig } from '@oclif/config';
 import { AnyJson, definiteEntriesOf, Dictionary, JsonMap } from '@salesforce/ts-types';
 import chalk from 'chalk';
 import { cli } from 'cli-ux';
@@ -47,7 +47,18 @@ export interface OclifPlugin extends JsonMap {
   type: string;
 }
 
-const hook: Hook.Preupdate = async function(options, fs: FsLib = nodeFs) {
+export type MigratePluginsHookContext = Hook.Context & { fs: FsLib };
+
+// Extend Hook.Preupdate to add fs utility
+export type MigratePluginsHook = (this: MigratePluginsHookContext, options: {
+  channel: string;
+} & {
+  config: IConfig;
+}) => Promise<void>;
+
+const hook: MigratePluginsHook = async function(options) {
+  const fs = this.fs || nodeFs;
+
   try {
     const v6Dir = path.join(options.config.dataDir, 'plugins');
     const v6Path = path.join(v6Dir, 'package.json');

@@ -1,0 +1,2 @@
+[2020-06-08T21:34:37.157Z] starting `sfdx update --autoupdate` from /srv/jenkins/workspace/SalesforceDXPublishing-Production/master/sfdx-cli-master/repo/bin/run snapshot:compare
+waiting until 2020-06-08T22:34:37.154Z to update

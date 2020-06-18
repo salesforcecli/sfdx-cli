@@ -5,9 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { Hook } from '@oclif/config';
+import { Hook, IConfig } from '@oclif/config';
 import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
-import { Nullable } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import hook from './verifyPluginVersion';
@@ -45,8 +44,6 @@ describe('verifyPluginVersion preinstall hook', () => {
 
     it('should allow the salesforcedx plugin with no tag to be installed', async () => {
         await testHook('');
-        await testHook(null);
-        await testHook(undefined);
     });
 
     it('should not allow the salesforcedx plugin with tag "41.1.0" to be installed', async () => {
@@ -54,9 +51,9 @@ describe('verifyPluginVersion preinstall hook', () => {
         expect(context.error.getCalls().some(call => call.args[0].includes('can only be installed'))).to.be.true;
     });
 
-    async function testHook(tag: Nullable<string>) {
+    async function testHook(tag: string) {
         await hook.call(context, {
-            config: { version: '6.0.0' },
+            config: stubInterface<IConfig>(sandbox, { version: '6.0.0' }),
             plugin: { name: 'salesforcedx', tag, type: 'npm' }
         });
     }
