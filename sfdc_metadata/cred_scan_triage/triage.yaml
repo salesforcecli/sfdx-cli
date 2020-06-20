@@ -1,0 +1,12 @@
+false_positive:
+- id: cli://SCRIPTS.md_32ae16c7d5072f6673ffaad734dac95b70ed9748
+  justification: 'string contains the text "pwd"'
+- id: cli://resources/smoke/expected-commands.json_d5fbb3771a2346d9f719c76de395537d40bfa4d5
+  justification: 'reference to a command named "password:generate"'
+- id: cli://resources/smoke/expected-commands.json_d5fbb3771a2346d9f719c76de395537d40bfa4d5
+  justification: 'reference to a command named "password:generate"'
+- id: cli://scripts/build/installers/windows_d93f0328d0229f8af2c885a6f7a210c8760bb257
+  justification: 'variable named, "PASS"'
+mock_secret: []
+non_production_secret: []
+production_secret: []
