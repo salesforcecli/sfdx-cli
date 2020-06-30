@@ -93,5 +93,10 @@
   "force:user:password:generate",
   "force:user:permset:assign",
   "force:visualforce:component:create",
-  "force:visualforce:page:create"
+  "force:visualforce:page:create",
+  "force:cmdt:create",
+  "force:cmdt:field:create",
+  "force:cmdt:generate",
+  "force:cmdt:record:create",
+  "force:cmdt:record:insert"
 ]
