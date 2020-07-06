@@ -20,7 +20,7 @@
     "bin": "sfdx",
     "scope": "salesforce",
     "commands": "./dist/commands",
-    "node": "10.20.1",
+    "node": "10.21.0",
     "dirname": "sfdx",
     "hooks": {
       "plugins:preinstall": [
