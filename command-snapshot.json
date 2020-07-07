@@ -18,7 +18,15 @@
         "flags": [
             "help",
             "json",
-            "hidden"
+            "hidden",
+            "columns",
+            "sort",
+            "filter",
+            "csv",
+            "output",
+            "extended",
+            "no-truncate",
+            "no-header"
         ]
     },
     {
