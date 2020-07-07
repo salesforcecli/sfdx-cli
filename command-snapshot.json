@@ -1359,6 +1359,27 @@
         ]
     },
     {
+        "command": "force:source:tracking:clear",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "force:source:tracking:reset",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "revision",
+            "noprompt"
+        ]
+    },
+    {
         "command": "force:user:create",
         "flags": [
             "json",
