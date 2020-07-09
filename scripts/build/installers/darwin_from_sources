@@ -25,4 +25,4 @@ export PKG_DESC
 export PKG_DIR
 export OSX_SIGNING_IDENTITY
 
-script "build/installers/darwin_package"
+# script "build/installers/darwin_package"
