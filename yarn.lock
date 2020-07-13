@@ -502,7 +502,7 @@
     chalk "^2.4.2"
     cli-ux "^4.9.3"
 
-"@salesforce/core@^2.1.4", "@salesforce/core@^2.1.6", "@salesforce/core@^2.2.0", "@salesforce/core@^2.3.0", "@salesforce/core@^2.6.0":
+"@salesforce/core@^2.1.4", "@salesforce/core@^2.1.6", "@salesforce/core@^2.2.0", "@salesforce/core@^2.3.0", "@salesforce/core@^2.6.0", "@salesforce/core@~2.7.0":
   version "2.7.0"
   resolved "http://10.233.136.136:4880/@salesforce%2fcore/-/core-2.7.0.tgz#191f265a2649aebaac1b79f74685fe38e3a5a4f3"
   integrity sha512-U9TxDzL5RdJmEoGls7supYtgs4exrWseCaF6oCcBgmYUDLEM8kRl9MoqG42LBtkoCPHdZ8LrBZ/+01iwtjbpOw==
@@ -519,22 +519,6 @@
     mkdirp "1.0.4"
     sfdx-faye "^1.0.9"
 
-"@salesforce/core@~2.4.0":
-  version "2.4.1"
-  resolved "http://10.233.136.136:4880/@salesforce%2fcore/-/core-2.4.1.tgz#d9f4351953ffaeb474814a4c34f6aedbc9f266cc"
-  integrity sha512-j8sJYIo4meaD/R0f5oOD6+GOYIQK3GVh+HwHyy4QMi8El3e9PIplLIWpYx6oJ+wdYmHOtLawXOXh/5adM0S4xg==
-  dependencies:
-    "@salesforce/bunyan" "^2.0.0"
-    "@salesforce/kit" "^1.0.0"
-    "@salesforce/ts-types" "^1.0.0"
-    "@types/jsforce" "1.9.2"
-    debug "^3.1.0"
-    jsen "0.6.6"
-    jsforce "1.9.3"
-    jsonwebtoken "8.5.0"
-    mkdirp "0.5.1"
-    sfdx-faye "^1.0.9"
-
 "@salesforce/dev-config@~1.5.0":
   version "1.5.0"
   resolved "http://10.233.136.136:4880/@salesforce%2fdev-config/-/dev-config-1.5.0.tgz#6a7a63a4b2a9fb27811c456d3a3387d961f8b637"
@@ -544,7 +528,7 @@
     tslint-microsoft-contrib "^5.2.1"
     typescript "~3.1.6"
 
-"@salesforce/kit@^1", "@salesforce/kit@^1.0.0", "@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@~1.2.0", "@salesforce/kit@~1.2.1":
+"@salesforce/kit@^1", "@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@~1.2.0", "@salesforce/kit@~1.2.1":
   version "1.2.3"
   resolved "http://10.233.136.136:4880/@salesforce%2fkit/-/kit-1.2.3.tgz#e31c10b22e47bf2125390b4bd62d6c02a39bf9a9"
   integrity sha512-Xr82W6Vk250VzzeGOjmTN7H0v8+UwadUe8hcwICMSdRjM6O4ccUgINHkmYkt6MOI83mZqMAZxPxu5QhtaunBEw==
@@ -560,7 +544,7 @@
     debug "^3.2.6"
     tslib "^1.10.0"
 
-"@salesforce/plugin-analytics@~1.12.0":
+"@salesforce/plugin-analytics@1.12.0", "@salesforce/plugin-analytics@~1.12.0":
   version "1.12.0"
   resolved "http://10.233.136.136:4880/@salesforce%2fplugin-analytics/-/plugin-analytics-1.12.0.tgz#185fa77aee71fb1e21c8d10cbb4994ba95122835"
   integrity sha512-dz9K5uYNhIUYCTqEJv9AwL68EGGGLNgqtDM1yaWbQEY7FV+4jk1tW4KfESCba1CLrI9hgUR2o28cljDzftVRlA==
@@ -577,7 +561,7 @@
     fs-extra "7.0.1"
     tslib "1.10.0"
 
-"@salesforce/plugin-custom-metadata@^1.0.4":
+"@salesforce/plugin-custom-metadata@1.0.4":
   version "1.0.4"
   resolved "http://10.233.136.136:4880/@salesforce%2fplugin-custom-metadata/-/plugin-custom-metadata-1.0.4.tgz#2a4695f342dd331dd6de16016ca137f91e8accf8"
   integrity sha512-M8+OddrjcQ+Du8bkmi97wT1Yio7X0AYYIbk9Hqnmxr2HGmxK/xVi3SU91aI4DFxqN8LHMsmsnmGYHZTp4/fYMQ==
@@ -623,10 +607,10 @@
   resolved "http://10.233.136.136:4880/@salesforce%2fschemas/-/schemas-1.0.1.tgz#d1db56759d2b22a7688e1821aec564e979237ad2"
   integrity sha512-78pP1GB/DbIS8nSWGL0GpQ27g02drrEo0vzYdRipGYAIXHMzlh1gqEsq0pOiIQlPm1MxWyEqbmf4GG5qSVsd0Q==
 
-"@salesforce/sfdx-plugin-lwc-test@0.1.5":
-  version "0.1.5"
-  resolved "http://10.233.136.136:4880/@salesforce%2fsfdx-plugin-lwc-test/-/sfdx-plugin-lwc-test-0.1.5.tgz#4596b0e040172830e92514b8a787ff2a8d5d03bb"
-  integrity sha512-PjG7t1YtoCnBhB1GaHXQpyZoJgoybt/TksSuldHUmQEoeJ2zhxRG97qZK6SZkacvk7EOxQw9VXsM7+HDreMKnw==
+"@salesforce/sfdx-plugin-lwc-test@0.1.7":
+  version "0.1.7"
+  resolved "http://10.233.136.136:4880/@salesforce%2fsfdx-plugin-lwc-test/-/sfdx-plugin-lwc-test-0.1.7.tgz#d2882dd8368a706fe780485f70bb6920fa6952a5"
+  integrity sha512-Cipsf/VimgyoOWWSlnaUKh58oCCZQ7wyGmvTfGY5QJkxUGVgUvXzIlTWEHi+oLzSMH7GZQDHU2KLWWq82rgd4A==
   dependencies:
     "@oclif/command" "^1.5.19"
     "@oclif/config" "1.13.3"
@@ -2568,7 +2552,7 @@ debug@^2.1.1, debug@^2.2.0, debug@^2.3.3:
   dependencies:
     ms "2.0.0"
 
-debuglog@*, debuglog@^1.0.1:
+debuglog@^1.0.1:
   version "1.0.1"
   resolved "http://10.233.136.136:4880/debuglog/-/debuglog-1.0.1.tgz#aa24ffb9ac3df9a2351837cfb2d279360cd78492"
   integrity sha1-qiT/uaw9+aI1GDfPstJ5NgzXhJI=
@@ -4557,7 +4541,7 @@ import-lazy@^2.1.0:
   resolved "http://10.233.136.136:4880/import-lazy/-/import-lazy-2.1.0.tgz#05698e3d45c88e8d7e9d92cb0584e77f096f3e43"
   integrity sha1-BWmOPUXIjo1+nZLLBYTnfwlvPkM=
 
-imurmurhash@*, imurmurhash@^0.1.4:
+imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "http://10.233.136.136:4880/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
@@ -5707,11 +5691,6 @@ lockfile@^1.0.4:
   dependencies:
     signal-exit "^3.0.2"
 
-lodash._baseindexof@*:
-  version "3.1.0"
-  resolved "http://10.233.136.136:4880/lodash._baseindexof/-/lodash._baseindexof-3.1.0.tgz#fe52b53a1c6761e42618d654e4a25789ed61822c"
-  integrity sha1-/lK1OhxnYeQmGNZU5KJXie1hgiw=
-
 lodash._baseuniq@~4.6.0:
   version "4.6.0"
   resolved "http://10.233.136.136:4880/lodash._baseuniq/-/lodash._baseuniq-4.6.0.tgz#0ebb44e456814af7905c6212fa2c9b2d51b841e8"
@@ -5720,32 +5699,10 @@ lodash._baseuniq@~4.6.0:
     lodash._createset "~4.0.0"
     lodash._root "~3.0.0"
 
-lodash._bindcallback@*:
-  version "3.0.1"
-  resolved "http://10.233.136.136:4880/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
-  integrity sha1-5THCdkTPi1epnhftlbNcdIeJOS4=
-
-lodash._cacheindexof@*:
-  version "3.0.2"
-  resolved "http://10.233.136.136:4880/lodash._cacheindexof/-/lodash._cacheindexof-3.0.2.tgz#3dc69ac82498d2ee5e3ce56091bafd2adc7bde92"
-  integrity sha1-PcaayCSY0u5ePOVgkbr9Ktx73pI=
-
-lodash._createcache@*:
-  version "3.1.2"
-  resolved "http://10.233.136.136:4880/lodash._createcache/-/lodash._createcache-3.1.2.tgz#56d6a064017625e79ebca6b8018e17440bdcf093"
-  integrity sha1-VtagZAF2JeeevKa4AY4XRAvc8JM=
-  dependencies:
-    lodash._getnative "^3.0.0"
-
 lodash._createset@~4.0.0:
   version "4.0.3"
   resolved "http://10.233.136.136:4880/lodash._createset/-/lodash._createset-4.0.3.tgz#0f4659fbb09d75194fa9e2b88a6644d363c9fe26"
   integrity sha1-D0ZZ+7CddRlPqeK4imZE02PJ/iY=
-
-lodash._getnative@*, lodash._getnative@^3.0.0:
-  version "3.9.1"
-  resolved "http://10.233.136.136:4880/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
-  integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
@@ -5826,11 +5783,6 @@ lodash.once@^4.0.0:
   version "4.1.1"
   resolved "http://10.233.136.136:4880/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
   integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
-
-lodash.restparam@*:
-  version "3.6.1"
-  resolved "http://10.233.136.136:4880/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
-  integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
 
 lodash.template@^4.4.0:
   version "4.5.0"
@@ -8253,17 +8205,18 @@ safe-regex@^1.1.0:
   resolved "http://10.233.136.136:4880/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@48.22.0:
-  version "48.22.0"
-  resolved "http://10.233.136.136:4880/salesforce-alm/-/salesforce-alm-48.22.0.tgz#3055237ee5d201df695a7de029e17474ce19c54d"
-  integrity sha512-oqI+c6AdjCMwld25R/l10+2TJwZCWXIiGXNujJa1HNW644/SPas6iD930aPrUDxL0qo0TA2mBnYHMWABH2tvRg==
+salesforce-alm@48.24.0:
+  version "48.24.0"
+  resolved "http://10.233.136.136:4880/salesforce-alm/-/salesforce-alm-48.24.0.tgz#55958a2b739aac2bbfa1d1ec1f16a1efd7a00c63"
+  integrity sha512-bdy0bCh/aDWdn45XtAkaPbb7eqm06ecRZjHFmaArG7gd1L61ll2op6LoueXxWzvnxWotAUqSK7YppaydRqhEnA==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
     "@oclif/plugin-help" "^2.2.3"
     "@salesforce/command" "~3.0.0"
-    "@salesforce/core" "~2.4.0"
+    "@salesforce/core" "~2.7.0"
     "@salesforce/kit" "~1.2.1"
+    "@salesforce/plugin-analytics" "1.12.0"
     "@salesforce/telemetry" "~2.0.1"
     "@salesforce/ts-types" "~1.2.1"
     adm-zip "0.4.13"
@@ -8355,14 +8308,14 @@ salesforcedx-templates@48.18.0:
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
 
-salesforcedx@48.21.1:
-  version "48.21.1"
-  resolved "http://10.233.136.136:4880/salesforcedx/-/salesforcedx-48.21.1.tgz#6796f5328cd063871ef23d0355bbdefde05eceb5"
-  integrity sha512-+jS/ywR4wJAuKCmCcSNwEXGvVRmm2Wc2xO8UoIh8my1pStlVkah1fgvSnKibjKKhlZ5CVWmDtrI1xWa1U9aZ3A==
+salesforcedx@48.22.4:
+  version "48.22.4"
+  resolved "http://10.233.136.136:4880/salesforcedx/-/salesforcedx-48.22.4.tgz#87066d4898ff2c018a1762ca566bdafce40a831f"
+  integrity sha512-Vnn4R9Ij6W/CmFBc2BHSOwcehSWYFXNYHjd7I8/iJMJPb5RZBUne6PAkcsx2ahxevoba5rvDT01KfRMcvkWKdQ==
   dependencies:
-    "@salesforce/plugin-custom-metadata" "^1.0.4"
-    "@salesforce/sfdx-plugin-lwc-test" "0.1.5"
-    salesforce-alm "48.22.0"
+    "@salesforce/plugin-custom-metadata" "1.0.4"
+    "@salesforce/sfdx-plugin-lwc-test" "0.1.7"
+    salesforce-alm "48.24.0"
     salesforce-lightning-cli "3.0.0"
     salesforcedx-templates "48.18.0"
 
