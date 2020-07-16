@@ -51,6 +51,16 @@
         ]
     },
     {
+        "command": "force:analytics:template:create",
+        "flags": [
+            "json",
+            "loglevel",
+            "outputdir",
+            "apiversion",
+            "templatename"
+        ]
+    },
+    {
         "command": "force:apex:class:create",
         "flags": [
             "json",
