@@ -951,6 +951,20 @@
         ]
     },
     {
+        "command": "force:package:convert",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetdevhubusername",
+            "apiversion",
+            "package",
+            "installationkey",
+            "installationkeybypass",
+            "wait",
+            "buildinstance"
+        ]
+    },
+    {
         "command": "force:package:create",
         "flags": [
             "json",
@@ -961,7 +975,8 @@
             "packagetype",
             "description",
             "nonamespace",
-            "path"
+            "path",
+            "orgdependent"
         ]
     },
     {
