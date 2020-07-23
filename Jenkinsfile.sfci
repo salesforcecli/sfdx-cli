@@ -115,7 +115,7 @@ nodeWithXcode(config) {
                     sh """
                     pkgbuild --root "${originalFile}" \
                         --identifier "com.salesforce.developer.cli" \
-                        --install-location "/usr/local/lib/bin" \
+                        --install-location "/usr/local/lib/sfdx" \
                         --version "${versionNumber}" \
                         --sign 'Developer ID Installer: salesforce.com (62J96EUJ9N)' \
                         --scripts "${installScriptDir}" \
