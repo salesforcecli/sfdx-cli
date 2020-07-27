@@ -30,7 +30,7 @@ triggerBuild() {
     echo $OPS_NO_PROXY
     echo $HTTPS_PROXY
     git config --list
-    curl --head https://sfdxci.dop.sfdc.net
+    # curl --head https://sfdxci.dop.sfdc.net
     # curl -vL "$MOBILECI_BASE_URL/job/macOS%20Installer%20(v7)/buildWithParameters?RELEASE_BRANCH=$GIT_BRANCH&token=$MOBILECI_MACOS_INSTALLER_TOKEN"
     set -x
 }
