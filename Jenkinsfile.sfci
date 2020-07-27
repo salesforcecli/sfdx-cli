@@ -1,0 +1,242 @@
+#!groovy
+@Library(['sfci-pipeline-sharedlib@master', 'mobe-pipeline@master']) _
+import com.salesforce.mobe.*
+import net.sfdc.dci.BuildUtils
+import net.sfdc.dci.ExecutionHandler
+import net.sfdc.dci.LogUtil
+import net.sfdc.dci.GitHubUtils
+
+env.SHARE_LIB_VERSION = 'v1'
+env.RELEASE_BRANCHES = ['master', 'v.*'] // these are regexp, not globs!
+def XCODE_VERSION = "11.5"
+Map config = [xcodeLookup: Xcode.V11_5]
+
+String buildDir = "build"
+String version = ''
+String pkgPath = ''
+String originalFileName = ''
+String pkgName = ''
+
+nodeWithXcode(config) {
+
+    stage('Initialize and Install Code and Deps') {
+        ExecutionHandler.getInstance(this, env.SHARE_LIB_VERSION)
+        withEnv(Stage.getDefaultEnv()) {
+            def autoDistributeToAppCenter = { false }
+            def autoDistributeToTestFlight = { false }
+            def extraParameters = []
+            Stage.runInit(this, XCODE_VERSION, BuildUtils.isPullRequestBuild(env), '', autoDistributeToAppCenter, autoDistributeToTestFlight, extraParameters)
+            Stage.runCheckoutSourceCode(this)
+        }
+    }
+
+    stage('Download Binary') {
+        withEnv(Stage.getDefaultEnv()) {
+           withCredentials([usernamePassword(credentialsId: 'sfci-git', usernameVariable: 'GIT_USERNAME_NOT_USED', passwordVariable: 'GIT_TOKEN')]) {
+             try {                   
+                sh("if [ ! -d ${buildDir} ]; then mkdir ${env.WORKSPACE}/build; fi")
+                                
+                version = sh (script: '''
+                  curl -s -u "${GIT_USERNAME}":"${GIT_TOKEN}" https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli/releases/latest | grep tag_name | cut -d '"' -f 4
+                  ''', returnStdout: true).trim()
+                                    
+                if (version.endsWith("Signed")) {
+                  currentBuild.result = 'ABORTED'
+                  error('Current Release is already signed')
+                }  
+                   
+                dir (buildDir) {
+                  sh '''
+                      NAME="darwin-x64.tar.xz"
+                      GH_REPO="https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli"
+                      AUTH="${GIT_USERNAME}:${GIT_TOKEN}"
+                      TAG=$(curl -s -u $AUTH $GH_REPO/releases/latest | grep tag_name | cut -d '"' -f 4)
+                      echo "tag is $TAG"
+                      response=$(curl -s -u $AUTH $GH_REPO/releases/tags/$TAG)
+                      eval $(echo "$response" | grep -C3 "name.:.\\+$NAME" | grep -w id | tr : = | tr -cd '[[:alnum:]]=')
+                      [ "$id" ] || { echo "Error: Failed to get asset id, response: $response" | awk 'length($0)<100' >&2; exit 1; }
+                      GH_ASSET_URL="$GH_REPO/releases/assets/$id"
+                      echo "downloading asset..." >&2
+                      curl -LJO  -H 'Accept: application/octet-stream' -H "Authorization: token ${GIT_TOKEN}" $GH_ASSET_URL
+                  '''
+                  originalFileName = sh (script: 'find . -name "*darwin-x64*"', returnStdout: true)                  
+                  echo "extracting asset ${originalFileName}"
+                  sh "tar -xJf ${originalFileName}"
+                  sh "rm ${originalFileName}"
+                  
+                  originalFileName = originalFileName.getAt(2..originalFileName.length() - 2)
+                  originalFileName = originalFileName.replaceAll('.tar.xz','')
+                  
+                  echo "originalFileName is now ${originalFileName}"
+                  
+                }
+              } catch (e) {
+                  LogUtil.info(this, "Failed while downloading binary", LogUtil.StepStatus.STARTED, System.currentTimeMillis(), LogUtil.LogType.LOG_ONLY)
+                  throw e
+              }  
+           }    
+        }
+    }
+
+    stage('Package and Notarize') {
+          CodeSigningAsset[] additionalCodeSigningAssets = [new CodeSigningAsset(AppleTeam.APPSTORE_62J96EUJ9N, CodeSigningType.MAC_INSTALLER_DISTRIBUTION, '2025-03-14')]
+          MacOSUtils.createKeychain(this, additionalCodeSigningAssets)
+            withEnv(Stage.getDefaultEnv()) {
+              withCredentials([usernamePassword(credentialsId: 'sfci-git', usernameVariable: 'GIT_USERNAME_NOT_USED', passwordVariable: 'GIT_TOKEN'),
+                usernamePassword(credentialsId: 'apple_id', passwordVariable: 'FASTLANE_PASSWORD', usernameVariable: 'FASTLANE_USER')]) {
+                  try {   
+
+                    dir (buildDir) {
+            
+                    echo 'Printing build directory path'
+                    sh 'pwd'
+          
+                    sh " mkdir ${env.WORKSPACE}/build/installScripts "
+                    
+                    pkgName = originalFileName.replaceAll('-darwin-x64','') + '.pkg'
+            
+                    pkgPath = "${env.WORKSPACE}/build/${pkgName}"  
+              
+                    echo "pkgPath is ${pkgPath}"   
+            
+                    String originalFile = "${env.WORKSPACE}/build/${originalFileName}"
+                    String installScriptDir = "${env.WORKSPACE}/build/installScripts"
+                    String repoScriptDir = "${env.WORKSPACE}/resources/darwin/scripts"
+            
+                    versionNumber = version.getAt(1..version.length() - 1)
+            
+                    echo "versionNumber is ${versionNumber}"   
+                        
+                    sh "cp ${repoScriptDir}/postinstall ${installScriptDir}"
+                    sh "cp ${repoScriptDir}/preinstall ${installScriptDir}" 
+            
+                    echo "------------------------- Step: Packaging -------------------------"
+            
+                    sh """
+                    pkgbuild --root "${originalFile}" \
+                        --identifier "com.salesforce.developer.cli" \
+                        --install-location "/usr/local/lib/sfdx" \
+                        --version "${versionNumber}" \
+                        --sign 'Developer ID Installer: salesforce.com (62J96EUJ9N)' \
+                        --scripts "${installScriptDir}" \
+                        "${pkgPath}" 
+                
+                    """
+            
+                    echo "------------------------- Step: Notarizing -------------------------"
+            
+            
+                    def xc_response = sh (script: """
+                    xcrun altool --notarize-app \
+                                                 --primary-bundle-id 'com.salesforce.developer.cli' \
+                                                 --username "${FASTLANE_USER}" \
+                                                 --password "${FASTLANE_PASSWORD}" \
+                                                 --asc-provider "salesforcecom" \
+                                                 --file "${pkgPath}"
+                      """, returnStdout: true)
+              
+                    def requestUUID = sh (script: """
+                      echo "${xc_response}" | awk '/RequestUUID/ { print \$NF; }' | sed 's/ //g' | tr -d '\n'
+                      """, returnStdout: true)              
+            
+                    def request_status = 'in progress'              
+           
+                    while(request_status == 'in progress') {                 
+                      sleep(45)
+              
+                      request_status = sh (script: """
+                        xcrun altool --notarization-info ${requestUUID}  --username ${FASTLANE_USER} --password ${FASTLANE_PASSWORD} | awk -F ': ' '/Status:/ { print \$2; }' | tr -d '\n'
+                        """, returnStdout: true)             
+                
+                        echo "------------------------- Notarization status: ${request_status} -------------------------"
+                        
+                        if (request_status == "" || request_status == null || request_status == 'invalid' ) {
+                          currentBuild.result = 'FAILURE'
+                          error('Something went wrong during notarization')                        
+                        }
+                
+                    }
+        
+            /*
+                   sh """
+            
+                    echo "------------------------- Step: Stapling -------------------------"
+            
+                    xcrun stapler staple -v "${pkgPath}"
+
+                    echo "Done!"
+
+                    """
+            */      
+            
+                 }
+               } catch (e) {
+                   LogUtil.info(this, "Failed while packaging or notarizing", LogUtil.StepStatus.STARTED, System.currentTimeMillis(), LogUtil.LogType.LOG_ONLY)
+                   throw e
+               }
+            }
+        }
+    }
+    
+    stage('Post and Archive') {
+        withEnv(Stage.getDefaultEnv()) {
+        
+        echo "------------------------- Step: Posting to Github -------------------------"
+        
+        String tag = version.trim() + "-Signed"  
+        
+        def assets = ["${pkgName}": "${pkgPath}"]
+        
+        createReleaseWithAssetsByTag(this, tag, false, assets)
+             
+        echo "------------------------- Step: Archiving -------------------------"
+             
+        archiveArtifacts(allowEmptyArchive: true, artifacts:"build/*pkg*")
+          
+        }
+      }
+    
+}
+
+    /**
+     * Post a binary file as an asset to a Github Release
+     *
+     * Uploads a binary with a name (originalFileName) to Github as an asset
+     * @param dsl: the Jenkins DSL object (Workflow object)
+     * @param tag: the git tag. Usually starts with a 'v'
+     * @param prerelease: sets the prerelease flag on Github
+     * @param assets: a map of the assets in the form of [name: path]
+     * @return
+     * @see https://developer.github.com/v3/repos/releases/#upload-a-release-asset
+     */
+    def createReleaseWithAssetsByTag(dsl, tag, prerelease, assets) {
+        def defaults = GitHubUtils.getDefaultGithubParams(dsl)
+
+        def releasesUrl = GitHubUtils.apiV3Repos(defaults.host, defaults.org, defaults.repo) + "/releases"
+        // Override the default content and accept types of application/json
+        // by specifying NOT_SET then providing them as custom headers
+        def customHeaders = GitHubUtils.previewCustomHeaders(dsl, defaults.credentialsId)
+        def releaseAttributes = [
+            'tag_name': tag,
+            'name': tag,
+            "prerelease": prerelease
+        ]
+        def myRelease = BuildUtils.doPost(dsl, releasesUrl, releaseAttributes, customHeaders, 'APPLICATION_JSON', 'APPLICATION_JSON')
+
+        def myReleaseContents = myRelease.get('content')
+        def contentType = 'application/zip'
+
+        assets.each {
+            // Determine PR for the branch
+            String uploadUrl = "https://${defaults.host}/api/uploads/repos/${defaults.org}/${defaults.repo}/releases/${myReleaseContents.get('id')}/assets?name=${it.key}"
+            // Jenkins' http_request cannot POST a binary file (only Strings), so let's invoke our old friend Curl:
+            dsl.withCredentials([usernameColonPassword(credentialsId: defaults.credentialsId, variable: 'GITCREDS')]) {
+                dsl.sh "curl --request POST \
+                                --basic --user ${GITCREDS} \
+                                ${uploadUrl} \
+                                -H 'Content-Type: ${contentType}' \
+                                --data-binary @${it.value}"
+            }
+        }
+      }
+

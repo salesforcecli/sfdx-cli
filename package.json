@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.66.3",
+  "version": "7.68.0",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -20,7 +20,7 @@
     "bin": "sfdx",
     "scope": "salesforce",
     "commands": "./dist/commands",
-    "node": "12.13.0",
+    "node": "12.18.3",
     "dirname": "sfdx",
     "hooks": {
       "plugins:preinstall": [
@@ -96,7 +96,7 @@
     "chalk": "~2.4.2",
     "debug": "~3.2.6",
     "http-call": "~5.2.4",
-    "salesforcedx": "49.3.0",
+    "salesforcedx": "49.4.1",
     "tslib": "~1.10.0",
     "v8-compile-cache": "~2.0.3"
   },
