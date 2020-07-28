@@ -37,7 +37,7 @@ triggerBuild() {
 
 pollGhAndCopyToS3() {
     ASSET_FILE_NAME="$VERSIONED_INSTALLER_NAME"
-    TAG="v$SHORT_VERSION"
+    TAG="v$SHORT_VERSION-Signed"
 
     stdout "Polling github release $TAG for $ASSET_FILE_NAME"
     ASSET_URL=$(ghPollForAssetUrl "$ASSET_FILE_NAME")
@@ -65,5 +65,5 @@ pollGhAndCopyToS3() {
 ghUploadAsset "$TXZ_PATH" "$VERSIONED_BASE.tar.xz"
 ghDeleteAssetIfExists "$RELEASE_JSON" "$VERSIONED_INSTALLER_NAME"
 triggerBuild
-# pollGhAndCopyToS3
-# addToManifest "installers" "${OS}-${ARCH}" "$S3_HOST_CHANNEL_BASE_URL/$VERSIONED_INSTALLER_NAME" "$RELEASE_DIR/$VERSIONED_INSTALLER_NAME"
+pollGhAndCopyToS3
+addToManifest "installers" "${OS}-${ARCH}" "$S3_HOST_CHANNEL_BASE_URL/$VERSIONED_INSTALLER_NAME" "$RELEASE_DIR/$VERSIONED_INSTALLER_NAME"
