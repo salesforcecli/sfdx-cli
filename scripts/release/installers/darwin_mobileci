@@ -30,6 +30,8 @@ triggerBuild() {
     echo $OPS_NO_PROXY
     echo $HTTPS_PROXY
     git config --list
+    # This is now handled by a webhook into the mobe team's Jenkins build server.  It is at the MOBILECI_BASE_URL.  The webhook is controlled from the
+    # git.soma.salesforce.com/salesforcedx/cli project. -JG 07/28/2020
     # curl --head https://sfdxci.dop.sfdc.net
     # curl -vL "$MOBILECI_BASE_URL/job/macOS%20Installer%20(v7)/buildWithParameters?RELEASE_BRANCH=$GIT_BRANCH&token=$MOBILECI_MACOS_INSTALLER_TOKEN"
     set -x

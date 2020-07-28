@@ -109,7 +109,7 @@ ghPollForAssetUrl() {
             stderr "$ASSET_FILE_NAME never uploaded to release $TAG after 15 minutes"
             exit 1
         fi
-        sleep 15
+        sleep 60  # Extending the sleep time to accommodate the new build process for the .pkg file -JG 07/28/2020
         attempts+=1
         ASSET_URL=$(ghQueryAssetUrl "$ASSET_FILE_NAME")
     done
