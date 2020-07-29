@@ -99,14 +99,14 @@ ghDownloadAsset() {
 
 ghPollForAssetUrl() {
     ASSET_FILE_NAME="$1"
-    TAG="v$SHORT_VERSION"
+    TAG="v$SHORT_VERSION-Signed"
 
     declare -i attempts
     attempts=0
     ASSET_URL=""
     until [[ "$ASSET_URL" != "" ]]; do
         if [[ $attempts -ge 60 ]]; then
-            stderr "$ASSET_FILE_NAME never uploaded to release $TAG after 15 minutes"
+            stderr "$ASSET_FILE_NAME never uploaded to release $TAG after 60 minutes"
             exit 1
         fi
         sleep 60  # Extending the sleep time to accommodate the new build process for the .pkg file -JG 07/28/2020
