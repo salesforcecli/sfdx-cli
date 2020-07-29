@@ -13,7 +13,7 @@ GITHUB_BASE_URL="https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli"
 
 ghQueryRelease() {
     set +x
-    TAG="v$SHORT_VERSION"
+    TAG="v$SHORT_VERSION-Signed"
 
     RELEASE_JSON=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$GITHUB_BASE_URL/releases/tags/$TAG?access_token=$GIT_TOKEN")
     MESSAGE=$(echo "$RELEASE_JSON" | node -e "require('$ROOT_DIR/scripts/transform')((json)=>json.message)")
@@ -84,7 +84,7 @@ ghQueryAssetUrl() {
 ghDownloadAsset() {
     set +x
     ASSET_FILE_NAME="$1"
-    TAG="v$SHORT_VERSION"
+    TAG="v$SHORT_VERSION-Signed"
     ASSET_URL=$(ghQueryAssetUrl "$ASSET_FILE_NAME")
 
     if [[ -z "$ASSET_URL" ]]; then
