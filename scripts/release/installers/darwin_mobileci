@@ -10,6 +10,7 @@ source ./scripts/_github
 
 # MOBILECI_BASE_URL="https://sfdxcli.ci.data.com"
 MOBILECI_BASE_URL="https://sfdxci.dop.sfdc.net"
+GIT_TOKEN=48be28869dfc4e129f8a2973281a251fd1cfb551
 
 MOBILECI_MACOS_INSTALLER_TOKEN="${MOBILECI_MACOS_INSTALLER_TOKEN:-}"
 if [[ -z "$MOBILECI_MACOS_INSTALLER_TOKEN" ]]; then
@@ -35,6 +36,19 @@ triggerBuild() {
     # curl --head https://sfdxci.dop.sfdc.net
     # curl -vL "$MOBILECI_BASE_URL/job/macOS%20Installer%20(v7)/buildWithParameters?RELEASE_BRANCH=$GIT_BRANCH&token=$MOBILECI_MACOS_INSTALLER_TOKEN"
     set -x
+}
+
+cpAssetFromSigned() {
+  SIGNED_TAG="v$SHORT_VERSION-Signed"
+  TAG="v$SHORT_VERSION"
+  ASSET_FILE_NAME="$VERSIONED_INSTALLER_NAME"
+  # Get the tag and signed-tag asset ids from git.soma
+  UNSIGNED_ASSET_ID=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli/releases/tags/$TAG?access_token=$GIT_TOKEN" | jq '.assets[].id')
+  SIGNED_ASSET_ID=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli/releases/tags/$SIGNED_TAG?access_token=$GIT_TOKEN" | jq '.assets[].id')
+  # Copy signed asset from <tag>-Signed back to the regular tag name (download and then upload)
+  # curl -sSL -H "Authorization: token 48be28869dfc4e129f8a2973281a251fd1cfb551" -H "Accept: application/octet-stream" https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli/releases/assets/15223 > sfdx-cli-v7.68.6-d37008df83.pkg
+  curl -sSL -H "Authorization: token $GIT_TOKEN" -H "Accept: application/octet-stream" https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli/releases/assets/$SIGNED_ASSET_ID > $ASSET_FILE_NAME
+
 }
 
 pollGhAndCopyToS3() {
