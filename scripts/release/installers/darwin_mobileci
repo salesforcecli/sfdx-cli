@@ -47,8 +47,10 @@ cpAssetFromSigned() {
   SIGNED_ASSET_ID=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli/releases/tags/$SIGNED_TAG?access_token=$GIT_TOKEN" | jq '.assets[].id')
   # Copy signed asset from <tag>-Signed back to the regular tag name (download and then upload)
   # curl -sSL -H "Authorization: token 48be28869dfc4e129f8a2973281a251fd1cfb551" -H "Accept: application/octet-stream" https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli/releases/assets/15223 > sfdx-cli-v7.68.6-d37008df83.pkg
-  curl -sSL -H "Authorization: token $GIT_TOKEN" -H "Accept: application/octet-stream" https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli/releases/assets/$SIGNED_ASSET_ID > $ASSET_FILE_NAME
-
+  # Copy the artifact to the Jenkins workspace from the latest asset
+  curl -sSL -H "Authorization: token $GIT_TOKEN" -H "Accept: application/octet-stream" "https://git.soma.salesforce.com/api/v3/repos/salesforcedx/cli/releases/assets/$SIGNED_ASSET_ID" > $ASSET_FILE_NAME
+  # Upload the artifact that was just moved to the Jenkins workspace to the release asset location
+  curl -X POST --data-binary "@$ASSET_FILE_NAME" -H "Content-type: application/octet-stream" -H "Authorization: token $GIT_TOKEN" "https://git.soma.salesforce.com/api/uploads/repos/salesforcedx/cli/releases/$UNSIGNED_ASSET_ID/assets?name=$ASSET_FILE_NAME"
 }
 
 pollGhAndCopyToS3() {
@@ -82,4 +84,5 @@ ghUploadAsset "$TXZ_PATH" "$VERSIONED_BASE.tar.xz"
 ghDeleteAssetIfExists "$RELEASE_JSON" "$VERSIONED_INSTALLER_NAME"
 triggerBuild
 pollGhAndCopyToS3
+cpAssetFromSigned
 addToManifest "installers" "${OS}-${ARCH}" "$S3_HOST_CHANNEL_BASE_URL/$VERSIONED_INSTALLER_NAME" "$RELEASE_DIR/$VERSIONED_INSTALLER_NAME"

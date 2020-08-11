@@ -25,6 +25,20 @@ ghQueryRelease() {
     set -x
 }
 
+ghQueryReleaseSigned() {
+    set +x
+    TAG="v$SHORT_VERSION-Signed"
+
+    RELEASE_JSON=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$GITHUB_BASE_URL/releases/tags/$TAG?access_token=$GIT_TOKEN")
+    MESSAGE=$(echo "$RELEASE_JSON" | node -e "require('$ROOT_DIR/scripts/transform')((json)=>json.message)")
+    if [[ "$MESSAGE" == "Not Found" ]]; then
+        RELEASE_JSON=$(curl -X POST -H "Content-Type: application/vnd.github.v3+json" -d "{\"tag_name\":\"$TAG\"}" "$GITHUB_BASE_URL/releases?name=$ASSET_FILE_NAME&access_token=$GIT_TOKEN")
+    fi
+
+    echo "$RELEASE_JSON"
+    set -x
+}
+
 ghAssetUrl() {
     set +x
     RELEASE_JSON="$1"
@@ -80,6 +94,13 @@ ghQueryAssetUrl() {
     set -x
     ghAssetUrl "$RELEASE_JSON" "$ASSET_FILE_NAME"
 }
+ghQueryAssetUrlSigned() {
+    set +x
+    ASSET_FILE_NAME="$1"
+    RELEASE_JSON=$(ghQueryReleaseSigned)
+    set -x
+    ghAssetUrl "$RELEASE_JSON" "$ASSET_FILE_NAME"
+}
 
 ghDownloadAsset() {
     set +x
@@ -111,7 +132,7 @@ ghPollForAssetUrl() {
         fi
         sleep 60  # Extending the sleep time to accommodate the new build process for the .pkg file -JG 07/28/2020
         attempts+=1
-        ASSET_URL=$(ghQueryAssetUrl "$ASSET_FILE_NAME")
+        ASSET_URL=$(ghQueryAssetUrlSigned "$ASSET_FILE_NAME")
     done
 
     echo "$ASSET_URL"

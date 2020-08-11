@@ -4,7 +4,7 @@ set -ex
 
 source ./scripts/release/_init
 
-# bg script "release/installers/darwin_mobileci" # Uncommented 06/18/2020 to build .gz and .zx files - recomment if issues arise - recommented 07/09/2020
+bg script "release/installers/darwin_mobileci" # Uncommented 06/18/2020 to build .gz and .zx files - recomment if issues arise - recommented 07/09/2020
 bg script "release/installers/windows_docker"
 wait_all
 
