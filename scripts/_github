@@ -32,7 +32,8 @@ ghQueryReleaseSigned() {
     RELEASE_JSON=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$GITHUB_BASE_URL/releases/tags/$TAG?access_token=$GIT_TOKEN")
     MESSAGE=$(echo "$RELEASE_JSON" | node -e "require('$ROOT_DIR/scripts/transform')((json)=>json.message)")
     if [[ "$MESSAGE" == "Not Found" ]]; then
-        RELEASE_JSON=$(curl -X POST -H "Content-Type: application/vnd.github.v3+json" -d "{\"tag_name\":\"$TAG\"}" "$GITHUB_BASE_URL/releases?name=$ASSET_FILE_NAME&access_token=$GIT_TOKEN")
+        # RELEASE_JSON=$(curl -X POST -H "Content-Type: application/vnd.github.v3+json" -d "{\"tag_name\":\"$TAG\"}" "$GITHUB_BASE_URL/releases?name=$ASSET_FILE_NAME&access_token=$GIT_TOKEN")
+        echo "The current signed artifact has not been uploaded yet."
     fi
 
     echo "$RELEASE_JSON"
