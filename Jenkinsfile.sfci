@@ -118,7 +118,7 @@ nodeWithXcode(config) {
                     pkgDestinationPath: pkgPath,
                     pkgName: pkgFinalName,
                     pkgScriptDirectory: "${installScriptDir}",
-                    pkgInstalLocation: '/usr/local/lib/sfdx',
+                    pkgInstallLocation: '/usr/local/lib/sfdx',
                     bundleId: 'com.salesforce.developer.cli',
                     signingIdentity: 'Developer ID Installer: salesforce.com (62J96EUJ9N)'
                 ]
