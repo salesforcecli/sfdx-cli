@@ -107,7 +107,7 @@ ghDownloadAsset() {
     set +x
     ASSET_FILE_NAME="$1"
     TAG="v$SHORT_VERSION-Signed"
-    ASSET_URL=$(ghQueryAssetUrl "$ASSET_FILE_NAME")
+    ASSET_URL=$(ghQueryAssetUrlSigned "$ASSET_FILE_NAME")
 
     if [[ -z "$ASSET_URL" ]]; then
         stderr "No appropriate asset download url found for $ASSET_FILE_NAME"
