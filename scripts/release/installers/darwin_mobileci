@@ -84,5 +84,5 @@ ghUploadAsset "$TXZ_PATH" "$VERSIONED_BASE.tar.xz"
 ghDeleteAssetIfExists "$RELEASE_JSON" "$VERSIONED_INSTALLER_NAME"
 triggerBuild
 pollGhAndCopyToS3
-cpAssetFromSigned
+# cpAssetFromSigned
 addToManifest "installers" "${OS}-${ARCH}" "$S3_HOST_CHANNEL_BASE_URL/$VERSIONED_INSTALLER_NAME" "$RELEASE_DIR/$VERSIONED_INSTALLER_NAME"
