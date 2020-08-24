@@ -23,7 +23,7 @@ find node_modules -name 'JSforceTestSuite' -type d \
   | filter '/templates/' \
   | xargs rm -rf
 
-# Remove yeoman-generator in salesforcedx-templates node_modules from dist
+# Remove yeoman-generator in @salesforce/plugin-templates node_modules from dist
 # find node_modules -name 'yeoman-generator' -type d \
 # | xargs rm -rf
 
@@ -56,7 +56,7 @@ find node_modules -name 'test' -type d \
   | filter '/command/' \
   | filter '/lib/' \
   | filter '/salesforce-alm/' \
-  | filter '/salesforcedx-templates/' \
+  | filter '/@salesforce/plugin-templates/' \
   | filter '/@salesforce/plugin-generator/' \
   | xargs rm -rf
 

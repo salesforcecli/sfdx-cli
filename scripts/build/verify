@@ -15,7 +15,7 @@ function ensure_no_webdriverio_test() {
 }
 
 function ensure_no_heroku_cli_util_nyc() {
-    test_dir="$BASE_DIR/node_modules/salesforcedx-templates/node_modules/salesforce-alm/node_modules/heroku-cli-util/.nyc_output"
+    test_dir="$BASE_DIR/node_modules/@salesforce/plugin-templates/node_modules/salesforce-alm/node_modules/heroku-cli-util/.nyc_output"
     if [[ -e "$test_dir" ]]; then
         stderr "$test_dir is present! Was the clean not aggressive enough?"
         exit 1
@@ -79,9 +79,9 @@ function ensure_plugin_generate_test_templates() {
     fi
 }
 
-# We've accidentally over-cleaned the salesforcedx-templates code in the past, so let's make sure we don't repeat that mistake
+# We've accidentally over-cleaned the @salesforce/plugin-templates code in the past, so let's make sure we don't repeat that mistake
 function ensure_templates_commands() {
-    src_dir="$BASE_DIR/node_modules/salesforcedx-templates"
+    src_dir="$BASE_DIR/node_modules/@salesforce/plugin-templates"
     if [[ ! -d "$src_dir" ]]; then
         stderr "$src_dir is missing! Was the doc clean too aggressive?"
         exit 1
