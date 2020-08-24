@@ -30,6 +30,37 @@
         ]
     },
     {
+        "command": "config:get",
+        "flags": [
+            "json",
+            "loglevel",
+            "verbose"
+        ]
+    },
+    {
+        "command": "config:list",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "config:set",
+        "flags": [
+            "json",
+            "loglevel",
+            "global"
+        ]
+    },
+    {
+        "command": "config:unset",
+        "flags": [
+            "json",
+            "loglevel",
+            "global"
+        ]
+    },
+    {
         "command": "force",
         "flags": [
             "json",
