@@ -1,5 +1,26 @@
 [
     {
+        "command": "alias:list",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "alias:set",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "alias:unset",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
         "command": "autocomplete",
         "flags": [
             "refresh-cache"

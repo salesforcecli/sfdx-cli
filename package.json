@@ -54,6 +54,7 @@
       "@salesforce/plugin-generator",
       "@salesforce/plugin-analytics",
       "@salesforce/plugin-config",
+      "@salesforce/plugin-alias",
       "@salesforce/sfdx-trust",
       "salesforcedx"
     ],
@@ -89,6 +90,7 @@
     "@oclif/plugin-which": "^1.0.3",
     "@salesforce/kit": "^1.2.0",
     "@salesforce/lazy-require": "^0.2.0",
+    "@salesforce/plugin-alias": "^1.1.0",
     "@salesforce/plugin-analytics": "^1.12.0",
     "@salesforce/plugin-config": "^1.1.6",
     "@salesforce/plugin-generator": "^1.1.0",
