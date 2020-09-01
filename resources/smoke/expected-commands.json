@@ -1,4 +1,7 @@
 [
+  "config:get",
+  "config:list",
+  "config:set",
   "force:alias:list",
   "force:alias:set",
   "force:apex:class:create",
@@ -14,9 +17,6 @@
   "force:auth:logout",
   "force:auth:sfdxurl:store",
   "force:auth:web:login",
-  "force:config:get",
-  "force:config:list",
-  "force:config:set",
   "force:data:bulk:delete",
   "force:data:bulk:status",
   "force:data:bulk:upsert",

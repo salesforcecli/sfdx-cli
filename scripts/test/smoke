@@ -40,7 +40,7 @@ stdin.setEncoding('utf8');
 stdin.on('data', (chunk) => chunks.push(chunk));
 stdin.on('end', () => {
     const cmds = {};
-    JSON.parse(chunks.join()).result.forEach((cmd) => cmds[cmd.name] = true);
+    JSON.parse(chunks.join()).forEach((cmd) => cmds[cmd.id] = true);
     console.log('Verifying that expected commands exist...');
     expected.forEach((cmd) => {
         console.log('Checking ', cmd);
@@ -49,4 +49,4 @@ stdin.on('end', () => {
 });
 EOF
 
-sfdx force:doc:commands:list --json | node -e "$VERIFY_SCRIPT"
+sfdx commands --output=json | node -e "$VERIFY_SCRIPT"

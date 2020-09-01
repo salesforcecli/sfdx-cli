@@ -134,13 +134,35 @@
         ]
     },
     {
+        "command": "force:apex:execute",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "apexcodefile"
+        ]
+    },
+    {
         "command": "force:apex:log:get",
         "flags": [
             "json",
             "loglevel",
             "targetusername",
             "apiversion",
-            "color",
+            "logid",
+            "number",
+            "outputdir"
+        ]
+    },
+    {
+        "command": "force:apex:log:get",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "outputdir",
             "logid",
             "number"
         ]
@@ -382,29 +404,6 @@
             "loglevel",
             "targetusername",
             "apiversion"
-        ]
-    },
-    {
-        "command": "force:config:get",
-        "flags": [
-            "json",
-            "loglevel",
-            "verbose"
-        ]
-    },
-    {
-        "command": "force:config:list",
-        "flags": [
-            "json",
-            "loglevel"
-        ]
-    },
-    {
-        "command": "force:config:set",
-        "flags": [
-            "json",
-            "loglevel",
-            "global"
         ]
     },
     {
@@ -1556,6 +1555,14 @@
         "flags": [
             "help",
             "verbose"
+        ]
+    },
+    {
+        "command": "plugins:trust:fingerprint",
+        "flags": [
+            "json",
+            "loglevel",
+            "publickeyurl"
         ]
     },
     {
