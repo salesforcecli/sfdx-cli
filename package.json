@@ -106,7 +106,7 @@
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.0",
-    "@oclif/plugin-command-snapshot": "^1.0.0",
+    "@oclif/plugin-command-snapshot": "^1.1.0",
     "@salesforce/dev-config": "~1.5.0",
     "@salesforce/ts-sinon": "~1.1.0",
     "@types/chai": "~4.1.7",

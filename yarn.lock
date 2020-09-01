@@ -258,17 +258,16 @@
     fs-extra "^6.0.1"
     moment "^2.22.1"
 
-"@oclif/plugin-command-snapshot@^1.0.0":
-  version "1.0.0"
-  resolved "http://10.233.136.136:4880/@oclif%2fplugin-command-snapshot/-/plugin-command-snapshot-1.0.0.tgz#3ea5988279f9c8c0832ca14b1dab6e66bcceb853"
-  integrity sha512-sWILIVuPWYi0z4oJS/W1/WSxvGDhQuMcyCIQIPkDJp5dnjdqeYxv5lvCjbUinFBC/nENeraMfDfIBp2gPWoIYQ==
+"@oclif/plugin-command-snapshot@^1.1.0":
+  version "1.1.0"
+  resolved "http://10.233.136.136:4880/@oclif%2fplugin-command-snapshot/-/plugin-command-snapshot-1.1.0.tgz#cedb336939b2a9c6b7c085c101d42ba18d910e2c"
+  integrity sha512-jwzqO1Cy1Cit3ojzDk/Z0qAFmlcVdE9yZtRFFZpeNwT+bT5K/gGxVJwdnch2g/d4r2kxfbOHes54h7I8VzXaIQ==
   dependencies:
-    "@oclif/command" "^1"
+    "@oclif/command" "^1.6.0"
     "@oclif/config" "^1"
-    "@types/fs-extra" "^8.1.0"
-    chalk "^3.0.0"
+    chalk "^4.0.0"
     sinon "^9.0.0"
-    tslib "^1"
+    tslib "^2"
 
 "@oclif/plugin-commands@^1.3.0":
   version "1.3.0"
@@ -799,13 +798,6 @@
   version "0.0.31"
   resolved "http://10.233.136.136:4880/@types%2fdebug/-/debug-0.0.31.tgz#bac8d8aab6a823e91deb7f79083b2a35fa638f33"
   integrity sha512-LS1MCPaQKqspg7FvexuhmDbWUhE2yIJ+4AgVIyObfc06/UKZ8REgxGNjZc82wPLWmbeOm7S+gSsLgo75TanG4A==
-
-"@types/fs-extra@^8.1.0":
-  version "8.1.1"
-  resolved "http://10.233.136.136:4880/@types%2ffs-extra/-/fs-extra-8.1.1.tgz#1e49f22d09aa46e19b51c0b013cb63d0d923a068"
-  integrity sha512-TcUlBem321DFQzBNuz8p0CLLKp0VvF/XH9E4KHNmgwyp4E3AfgI5cjiIVZWlbfThBop2qxFIh4+LeY6hVWWZ2w==
-  dependencies:
-    "@types/node" "*"
 
 "@types/fs-extra@~4.0.9":
   version "4.0.11"
@@ -2584,7 +2576,7 @@ debug@^2.1.1, debug@^2.2.0, debug@^2.3.3:
   dependencies:
     ms "2.0.0"
 
-debuglog@*, debuglog@^1.0.1:
+debuglog@^1.0.1:
   version "1.0.1"
   resolved "http://10.233.136.136:4880/debuglog/-/debuglog-1.0.1.tgz#aa24ffb9ac3df9a2351837cfb2d279360cd78492"
   integrity sha1-qiT/uaw9+aI1GDfPstJ5NgzXhJI=
@@ -4533,7 +4525,7 @@ import-lazy@^2.1.0:
   resolved "http://10.233.136.136:4880/import-lazy/-/import-lazy-2.1.0.tgz#05698e3d45c88e8d7e9d92cb0584e77f096f3e43"
   integrity sha1-BWmOPUXIjo1+nZLLBYTnfwlvPkM=
 
-imurmurhash@*, imurmurhash@^0.1.4:
+imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "http://10.233.136.136:4880/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
@@ -5648,11 +5640,6 @@ lockfile@^1.0.4:
   dependencies:
     signal-exit "^3.0.2"
 
-lodash._baseindexof@*:
-  version "3.1.0"
-  resolved "http://10.233.136.136:4880/lodash._baseindexof/-/lodash._baseindexof-3.1.0.tgz#fe52b53a1c6761e42618d654e4a25789ed61822c"
-  integrity sha1-/lK1OhxnYeQmGNZU5KJXie1hgiw=
-
 lodash._baseuniq@~4.6.0:
   version "4.6.0"
   resolved "http://10.233.136.136:4880/lodash._baseuniq/-/lodash._baseuniq-4.6.0.tgz#0ebb44e456814af7905c6212fa2c9b2d51b841e8"
@@ -5661,32 +5648,10 @@ lodash._baseuniq@~4.6.0:
     lodash._createset "~4.0.0"
     lodash._root "~3.0.0"
 
-lodash._bindcallback@*:
-  version "3.0.1"
-  resolved "http://10.233.136.136:4880/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
-  integrity sha1-5THCdkTPi1epnhftlbNcdIeJOS4=
-
-lodash._cacheindexof@*:
-  version "3.0.2"
-  resolved "http://10.233.136.136:4880/lodash._cacheindexof/-/lodash._cacheindexof-3.0.2.tgz#3dc69ac82498d2ee5e3ce56091bafd2adc7bde92"
-  integrity sha1-PcaayCSY0u5ePOVgkbr9Ktx73pI=
-
-lodash._createcache@*:
-  version "3.1.2"
-  resolved "http://10.233.136.136:4880/lodash._createcache/-/lodash._createcache-3.1.2.tgz#56d6a064017625e79ebca6b8018e17440bdcf093"
-  integrity sha1-VtagZAF2JeeevKa4AY4XRAvc8JM=
-  dependencies:
-    lodash._getnative "^3.0.0"
-
 lodash._createset@~4.0.0:
   version "4.0.3"
   resolved "http://10.233.136.136:4880/lodash._createset/-/lodash._createset-4.0.3.tgz#0f4659fbb09d75194fa9e2b88a6644d363c9fe26"
   integrity sha1-D0ZZ+7CddRlPqeK4imZE02PJ/iY=
-
-lodash._getnative@*, lodash._getnative@^3.0.0:
-  version "3.9.1"
-  resolved "http://10.233.136.136:4880/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
-  integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
@@ -5782,11 +5747,6 @@ lodash.once@^4.0.0:
   version "4.1.1"
   resolved "http://10.233.136.136:4880/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
   integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
-
-lodash.restparam@*:
-  version "3.6.1"
-  resolved "http://10.233.136.136:4880/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
-  integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
 
 lodash.template@^4.4.0:
   version "4.5.0"
@@ -9193,7 +9153,7 @@ tslib@^1, tslib@^1.10.0, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   resolved "http://10.233.136.136:4880/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
 
-tslib@^2.0.0:
+tslib@^2, tslib@^2.0.0:
   version "2.0.1"
   resolved "http://10.233.136.136:4880/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
   integrity sha512-SgIkNheinmEBgx1IUNirK0TUD4X9yjjBRTqqjggWCU3pUEqIk3/Uwl3yRixYKT6WjQuGiwDv4NomL3wqRCj+CQ==
