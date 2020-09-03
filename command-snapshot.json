@@ -141,36 +141,12 @@
     },
     {
         "command": "force:apex:execute",
-        "plugin": "salesforce-alm",
-        "flags": [
-            "apexcodefile",
-            "apiversion",
-            "json",
-            "loglevel",
-            "targetusername"
-        ]
-    },
-    {
-        "command": "force:apex:execute",
         "plugin": "@salesforce/plugin-apex",
         "flags": [
             "apexcodefile",
             "apiversion",
             "json",
             "loglevel",
-            "targetusername"
-        ]
-    },
-    {
-        "command": "force:apex:log:get",
-        "plugin": "salesforce-alm",
-        "flags": [
-            "apiversion",
-            "color",
-            "json",
-            "logid",
-            "loglevel",
-            "number",
             "targetusername"
         ]
     },

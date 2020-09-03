@@ -100,7 +100,7 @@
     "chalk": "^2.4.2",
     "debug": "^3.2.6",
     "http-call": "^5.2.4",
-    "salesforcedx": "49.9.1",
+    "salesforcedx": "49.9.2",
     "tslib": "^1.10.0",
     "v8-compile-cache": "^2.0.3"
   },
@@ -155,6 +155,7 @@
     "posttest": "yarn test:deprecation-policy ",
     "prepack": "yarn clean && yarn compile && yarn lint && yarn oclif-artifacts",
     "test:deprecation-policy": "HOME=./ ./bin/run snapshot:compare",
+    "snapshot-generate": "HOME=./ ./bin/run snapshot:generate",
     "prepare": "yarn compile && yarn lint",
     "release": "yarn release-all",
     "release-debug": "yarn release-all-debug",
