@@ -61,6 +61,15 @@ function ensure_apex_test() {
     fi
 }
 
+# We've accidentally over-cleaned the apex-node code in the past, so let's make sure we don't repeat that mistake
+function ensure_apex_node_test() {
+    src_dir="$BASE_DIR/node_modules/@salesforce/apex-node/lib/src/tests"
+    if [[ ! -d "$src_dir" ]]; then
+        stderr "$src_dir is missing! Was the test clean too aggressive?"
+        exit 1
+    fi
+}
+
 # We've accidentally over-cleaned the force:doc code in the past, so let's make sure we don't repeat that mistake
 function ensure_doc_commands() {
     src_dir="$BASE_DIR/node_modules/salesforce-alm/dist/commands/force/doc"
@@ -129,6 +138,7 @@ ensure_no_webdriverio_test
 ensure_no_heroku_cli_util_nyc
 scan_path_lengths
 ensure_apex_test
+ensure_apex_node_test
 ensure_doc_commands
 ensure_templates_commands
 ensure_no_dist_tests_or_maps

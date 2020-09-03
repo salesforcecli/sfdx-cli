@@ -54,12 +54,12 @@ find node_modules -name 'circle.yml' -type f \
 # Module test dirs, except in salesforce-alm, which includes production source code in such a dir
 find node_modules -name 'test' -type d \
   | filter '/command/' \
+  | filter '/commands/' \
   | filter '/lib/' \
+  | filter '/dist/' \
   | filter '/salesforce-alm/' \
   | filter '/@salesforce/plugin-templates/' \
   | filter '/@salesforce/plugin-generator/' \
-  | filter '/@salesforce/plugin-apex/' \
-  | filter '/@salesforce/apex-node/' \
   | xargs rm -rf
 
 # Module doc dirs, except in salesforce-alm, which includes production source code in such a dir

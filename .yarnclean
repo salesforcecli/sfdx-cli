@@ -1,6 +1,8 @@
 # test directories
 __tests__
+test
 tests
+
 powered-test
 
 # assets
@@ -45,3 +47,9 @@ wercker.yml
 
 !istanbul/lib/assets
 !istanbul-reports/lib/html/assets
+
+# Don't clear files in known source directories
+!**/lib/**/*
+!**/src/**/*
+!**/dist/**/*
+!**/templates/**/*
