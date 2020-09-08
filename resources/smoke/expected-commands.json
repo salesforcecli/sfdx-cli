@@ -1,9 +1,11 @@
 [
+  "alias:list",
+  "alias:set",
+  "alias:unset",
   "config:get",
   "config:list",
   "config:set",
-  "force:alias:list",
-  "force:alias:set",
+  "config:unset",
   "force:apex:class:create",
   "force:apex:execute",
   "force:apex:log:get",

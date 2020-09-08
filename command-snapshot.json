@@ -101,22 +101,6 @@
         ]
     },
     {
-        "command": "force:alias:list",
-        "plugin": "salesforce-alm",
-        "flags": [
-            "json",
-            "loglevel"
-        ]
-    },
-    {
-        "command": "force:alias:set",
-        "plugin": "salesforce-alm",
-        "flags": [
-            "json",
-            "loglevel"
-        ]
-    },
-    {
         "command": "force:analytics:template:create",
         "plugin": "@salesforce/plugin-templates",
         "flags": [
