@@ -95,7 +95,7 @@
     "@salesforce/plugin-config": "^1.1.6",
     "@salesforce/plugin-generator": "^1.1.0",
     "@salesforce/require-analytics": "^0.7.0",
-    "@salesforce/sfdx-trust": "^3.4.2",
+    "@salesforce/sfdx-trust": "^3.4.3",
     "@salesforce/ts-types": "^1.2.0",
     "chalk": "^2.4.2",
     "debug": "^3.2.6",

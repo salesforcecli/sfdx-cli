@@ -628,7 +628,7 @@
   resolved "http://10.233.136.136:4880/@salesforce%2fschemas/-/schemas-1.0.1.tgz#d1db56759d2b22a7688e1821aec564e979237ad2"
   integrity sha512-78pP1GB/DbIS8nSWGL0GpQ27g02drrEo0vzYdRipGYAIXHMzlh1gqEsq0pOiIQlPm1MxWyEqbmf4GG5qSVsd0Q==
 
-"@salesforce/sfdx-plugin-lwc-test@0.1.7":
+"@salesforce/sfdx-plugin-lwc-test@^0.1.7":
   version "0.1.7"
   resolved "http://10.233.136.136:4880/@salesforce%2fsfdx-plugin-lwc-test/-/sfdx-plugin-lwc-test-0.1.7.tgz#d2882dd8368a706fe780485f70bb6920fa6952a5"
   integrity sha512-Cipsf/VimgyoOWWSlnaUKh58oCCZQ7wyGmvTfGY5QJkxUGVgUvXzIlTWEHi+oLzSMH7GZQDHU2KLWWq82rgd4A==
@@ -643,16 +643,17 @@
     signal-exit "^3.0.2"
     tslib "^1.10.0"
 
-"@salesforce/sfdx-trust@^3.4.2":
-  version "3.4.2"
-  resolved "http://10.233.136.136:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-3.4.2.tgz#b4781e9fe3fc1a80ef9979e02a4b3989dc2af34c"
-  integrity sha512-0BNFd3k5ijuYVM4lmWY1DuVz9EaSXL8K+9EnAQpM9q9WzITYpSS17slVx40iBNMXzpfGCMvrGzBzYK9gnOCTPQ==
+"@salesforce/sfdx-trust@^3.4.3":
+  version "3.4.3"
+  resolved "http://10.233.136.136:4880/@salesforce%2fsfdx-trust/-/sfdx-trust-3.4.3.tgz#5d39e6371f1d8363e82b8dbfb59d67454832a2dd"
+  integrity sha512-deWWIRTtaMKmkxWkMf4xKnz0f6IvTrRAfoL13O3ajqMc9OXxh/Wvk/3V1FedNf/xkGyB1iojLYB69+r9EstSyg==
   dependencies:
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
     "@salesforce/command" "^3.0.0"
     "@salesforce/core" "^2.11.0"
     "@salesforce/kit" "^1"
+    chalk "^4.1.0"
     cli-ux "^5.3.3"
 
 "@salesforce/source-deploy-retrieve@^1.0.18":
@@ -8080,10 +8081,10 @@ safe-regex@^1.1.0:
   resolved "http://10.233.136.136:4880/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@49.10.0:
-  version "49.10.0"
-  resolved "http://10.233.136.136:4880/salesforce-alm/-/salesforce-alm-49.10.0.tgz#7e52a242cae73d98fca6319b4d72e98111c25a99"
-  integrity sha512-nibv2NJ6RzYxs65oH3DGbGVm23/q+fgE07mag8kWnidksUN1YxyRcSBN2NY7tFNRSnKTw5UQTX8+cqF4Xk+4lQ==
+salesforce-alm@49.11.0:
+  version "49.11.0"
+  resolved "http://10.233.136.136:4880/salesforce-alm/-/salesforce-alm-49.11.0.tgz#11a6ca8f47ff64dac251b73f2de114dfe2a66ab3"
+  integrity sha512-22ZLUIbh4mZZmZYlM9LxVIGa4FEWauC1mYNC7EL9aGOLZWBwrTh+6GknhRYCwli1TX+fCEY5HI4Vb+QJoLDkjw==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
@@ -8147,16 +8148,16 @@ salesforce-lightning-cli@3.0.0:
     object-assign "^4.1.1"
     prettier "^1.18.2"
 
-salesforcedx@49.9.2:
-  version "49.9.2"
-  resolved "http://10.233.136.136:4880/salesforcedx/-/salesforcedx-49.9.2.tgz#3f6217e808ba8c71d40691decbb3d6373a452bcf"
-  integrity sha512-NFLOshvYtbcB1V7DSqVZAqvLfcqe9O24sCu1qBuVqhiBg4G82JVYzvhEI5FIHgszavOFlnAixJnNniD8tcTr7Q==
+salesforcedx@49.10.0:
+  version "49.10.0"
+  resolved "http://10.233.136.136:4880/salesforcedx/-/salesforcedx-49.10.0.tgz#13fabe5ae2d5d70ee9c9a3008c22f698b52a136e"
+  integrity sha512-JkAjrH/TkuBrI+g1RJKZNoELysi+oO7uZ3PCOUyqCnOjwsEXDx34OmO8stPzmxDDwcegi2xG2CloY67Kl5EWPQ==
   dependencies:
     "@salesforce/plugin-apex" "0.0.9"
     "@salesforce/plugin-custom-metadata" "^1.0.8"
     "@salesforce/plugin-templates" "^49.4.0"
-    "@salesforce/sfdx-plugin-lwc-test" "0.1.7"
-    salesforce-alm "49.10.0"
+    "@salesforce/sfdx-plugin-lwc-test" "^0.1.7"
+    salesforce-alm "49.11.0"
     salesforce-lightning-cli "3.0.0"
 
 samsam@1.3.0:
