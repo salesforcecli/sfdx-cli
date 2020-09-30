@@ -18,14 +18,12 @@ package-lock.json
 coverage/
 checkstyle.xml
 .sfdx
+.cache
 /release/
 src/temp
 .nyc_output
 oclif.manifest.json
 npm-shrinkwrap.json
-
-# For deprecation test to ignore user installed plugins
-Library
-.cache
-
 .npmrc
+
+Library
