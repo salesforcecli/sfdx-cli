@@ -669,35 +669,6 @@
         ]
     },
     {
-        "command": "force:lightning:test:install",
-        "plugin": "salesforce-alm",
-        "flags": [
-            "apiversion",
-            "json",
-            "loglevel",
-            "packagetype",
-            "releaseversion",
-            "targetusername",
-            "wait"
-        ]
-    },
-    {
-        "command": "force:lightning:test:run",
-        "plugin": "salesforce-alm",
-        "flags": [
-            "apiversion",
-            "appname",
-            "configfile",
-            "json",
-            "leavebrowseropen",
-            "loglevel",
-            "outputdir",
-            "resultformat",
-            "targetusername",
-            "timeout"
-        ]
-    },
-    {
         "command": "force:limits:api:display",
         "plugin": "salesforce-alm",
         "flags": [
@@ -1071,6 +1042,7 @@
         "flags": [
             "apiversion",
             "description",
+            "errornotificationusername",
             "json",
             "loglevel",
             "name",
@@ -1079,6 +1051,19 @@
             "packagetype",
             "path",
             "targetdevhubusername"
+        ]
+    },
+    {
+        "command": "force:package:delete",
+        "plugin": "salesforce-alm",
+        "flags": [
+            "apiversion",
+            "json",
+            "loglevel",
+            "noprompt",
+            "package",
+            "targetdevhubusername",
+            "undelete"
         ]
     },
     {
@@ -1200,6 +1185,7 @@
         "flags": [
             "apiversion",
             "description",
+            "errornotificationusername",
             "json",
             "loglevel",
             "name",
@@ -1259,6 +1245,32 @@
             "loglevel",
             "packagecreaterequestid",
             "targetdevhubusername"
+        ]
+    },
+    {
+        "command": "force:package:version:delete",
+        "plugin": "salesforce-alm",
+        "flags": [
+            "apiversion",
+            "json",
+            "loglevel",
+            "noprompt",
+            "package",
+            "targetdevhubusername",
+            "undelete"
+        ]
+    },
+    {
+        "command": "force:package:version:displayancestry",
+        "plugin": "salesforce-alm",
+        "flags": [
+            "apiversion",
+            "dotcode",
+            "json",
+            "loglevel",
+            "package",
+            "targetdevhubusername",
+            "verbose"
         ]
     },
     {

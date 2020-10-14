@@ -35,8 +35,6 @@
   "force:lightning:interface:create",
   "force:lightning:lint",
   "force:lightning:test:create",
-  "force:lightning:test:install",
-  "force:lightning:test:run",
   "force:limits:api:display",
   "force:mdapi:convert",
   "force:mdapi:deploy",
