@@ -416,7 +416,7 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@salesforce/command@3.0.3", "@salesforce/command@^3.0.0", "@salesforce/command@^3.0.1":
+"@salesforce/command@3.0.3", "@salesforce/command@^3.0.0", "@salesforce/command@^3.0.1", "@salesforce/command@^3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-3.0.3.tgz#e750268bda094560992f1f494774d75f3644f6e3"
   integrity sha512-ntHH64Badr46/S3J1wT8GTQ5LBnxHkrXreby5t/IV+06ZaUQMQgpdaijKBAvTGI7jtLh5sG0gnXLt6+mGsDC6A==
@@ -512,7 +512,7 @@
     tslint-microsoft-contrib "^5.2.1"
     typescript "~3.1.6"
 
-"@salesforce/kit@^1", "@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@^1.3.2":
+"@salesforce/kit@^1", "@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@^1.3.2", "@salesforce/kit@^1.3.3":
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.3.3.tgz#eaea23b1be7aebb81f9f091c8f77c2733a8ae710"
   integrity sha512-Ed5lh8xyCwaXeB1Sovr9xbQZ1tpQg5vSeNvKROlJQRk4Gj3IBm73pKPPuNn+AeXN51lWr9my0ftLREtyig3FoA==
@@ -528,9 +528,9 @@
     debug "^3.2.6"
     tslib "^1.10.0"
 
-"@salesforce/plugin-alias@1.1.2":
+"@salesforce/plugin-alias@^1.1.2":
   version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-alias/-/plugin-alias-1.1.2.tgz#b326d130c5536d8c5f09bf881dbd422266849ead"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-alias/-/plugin-alias-1.1.2.tgz#b326d130c5536d8c5f09bf881dbd422266849ead"
   integrity sha512-49lLQnuPQaqPGiYbjSYJ7vIv/6xc+bzm/Dwsnh7Gl7DmxR6x8T7x1VIfP+3iqaxYedGDiL9ga0pc1VA6a6sZow==
   dependencies:
     "@oclif/config" "^1.17.0"
@@ -569,9 +569,21 @@
     chalk "^4.1.0"
     tslib "^1"
 
-"@salesforce/plugin-config@1.1.8":
+"@salesforce/plugin-auth@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-auth/-/plugin-auth-1.3.0.tgz#eb61641cc9b970b9d6ac2d69b05780f0745ec5e3"
+  integrity sha512-u07g/jr39ViuHato2NHHRZKOXIe2pHuKXb65n4vNYQh0HX0z0zHcst6ogtaAc13VdP5Lo6vFYJWn/aUZx26Gsw==
+  dependencies:
+    "@oclif/config" "^1.17.0"
+    "@salesforce/command" "^3.0.3"
+    "@salesforce/core" "^2.13.0"
+    "@salesforce/kit" "^1.3.3"
+    open "^7.3.0"
+    tslib "^1"
+
+"@salesforce/plugin-config@^1.1.8":
   version "1.1.8"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.1.8.tgz#3d0c0cb24e43aa96cc3c4f9540dbf0246890ac45"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-config/-/plugin-config-1.1.8.tgz#3d0c0cb24e43aa96cc3c4f9540dbf0246890ac45"
   integrity sha512-xJ6Q0RgIdeIoZDZu3X0jt8DMCzOqxNJ82Mkz1QK//khSLc/PUEAfopL9ESsqVyQUplTK5i3dafrSNTZus7mrkA==
   dependencies:
     "@oclif/config" "^1.17.0"
@@ -6841,9 +6853,9 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-open@^7.2.0:
+open@^7.2.0, open@^7.3.0:
   version "7.3.0"
-  resolved "https://registry.yarnpkg.com/open/-/open-7.3.0.tgz#45461fdee46444f3645b6e14eb3ca94b82e1be69"
+  resolved "https://registry.npmjs.org/open/-/open-7.3.0.tgz#45461fdee46444f3645b6e14eb3ca94b82e1be69"
   integrity sha512-mgLwQIx2F/ye9SmbrUkurZCnkoXyXyu9EbHtJZrICjVAJfyMArdHp3KkixGdZx1ZHFPNIwl0DDM1dFFqXbTLZw==
   dependencies:
     is-docker "^2.0.0"

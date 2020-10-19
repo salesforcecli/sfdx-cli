@@ -24,6 +24,84 @@
         ]
     },
     {
+        "command": "auth:device:login",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "json",
+            "loglevel",
+            "clientid",
+            "instanceurl",
+            "setdefaultdevhubusername",
+            "setdefaultusername",
+            "setalias",
+            "disablemasking"
+        ]
+    },
+    {
+        "command": "auth:jwt:grant",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "json",
+            "loglevel",
+            "username",
+            "jwtkeyfile",
+            "clientid",
+            "instanceurl",
+            "setdefaultdevhubusername",
+            "setdefaultusername",
+            "setalias",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "auth:list",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "auth:logout",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "json",
+            "loglevel",
+            "targetusername",
+            "apiversion",
+            "all",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "auth:sfdxurl:store",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "json",
+            "loglevel",
+            "sfdxurlfile",
+            "setdefaultdevhubusername",
+            "setdefaultusername",
+            "setalias",
+            "noprompt"
+        ]
+    },
+    {
+        "command": "auth:web:login",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "json",
+            "loglevel",
+            "clientid",
+            "instanceurl",
+            "setdefaultdevhubusername",
+            "setdefaultusername",
+            "setalias",
+            "disablemasking",
+            "noprompt"
+        ]
+    },
+    {
         "command": "autocomplete",
         "plugin": "@oclif/plugin-autocomplete",
         "flags": [
