@@ -581,14 +581,14 @@
     open "^7.3.0"
     tslib "^1"
 
-"@salesforce/plugin-config@^1.1.8":
-  version "1.1.8"
-  resolved "https://registry.npmjs.org/@salesforce/plugin-config/-/plugin-config-1.1.8.tgz#3d0c0cb24e43aa96cc3c4f9540dbf0246890ac45"
-  integrity sha512-xJ6Q0RgIdeIoZDZu3X0jt8DMCzOqxNJ82Mkz1QK//khSLc/PUEAfopL9ESsqVyQUplTK5i3dafrSNTZus7mrkA==
+"@salesforce/plugin-config@^1.1.9":
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.1.9.tgz#af79f16f13065c8fa0d89a5032e2ef9dc96c2e48"
+  integrity sha512-bkpmCXOFMS4QWyO3eF03p8GBsH9WJSZxvQg9f1ZVqRm6Dn046oIL4KIuSQwGUX/zEfaTouWOedYiRxG3qUth1w==
   dependencies:
     "@oclif/config" "^1.17.0"
     "@salesforce/command" "^3.0.1"
-    "@salesforce/core" "^2.11.0"
+    "@salesforce/core" "^2.13.0"
     tslib "^1"
 
 "@salesforce/plugin-custom-metadata@1.0.10":
@@ -8043,10 +8043,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@50.1.0:
-  version "50.1.0"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-50.1.0.tgz#4018733a0a3290d7604b2323d14516212c1974b1"
-  integrity sha512-FTSR1Jmtx9FOKgLvGMNqKxDJgyfSz9oAeMHvUg8WdH7NddoTHpzcEFMhfzzgeimIwMtjhseijjnjQx7gKuZw8g==
+salesforce-alm@50.1.1:
+  version "50.1.1"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-50.1.1.tgz#e0abfc09e04bc5025d7c5f5a644aca267daf67d9"
+  integrity sha512-LoAi53reiQc1sEs9STOoldEQ3OiiEwdTJlrsfX8wnPBPCtexox3r4DJS5boC8lvQSZsPpwArhPxiUzEVQK6ltg==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
@@ -8108,16 +8108,16 @@ salesforce-lightning-cli@3.0.0:
     object-assign "^4.1.1"
     prettier "^1.18.2"
 
-salesforcedx@50.1.0:
-  version "50.1.0"
-  resolved "https://registry.yarnpkg.com/salesforcedx/-/salesforcedx-50.1.0.tgz#1c43a1fab04457cddcd1ef02bb02add8b7df4fd6"
-  integrity sha512-h3GbD5ngvh7QzLfqTNhItgoDerKt46/LvtkOkx2JvISspC8AMLp+nloWavfjoxA0ydFTBIvV2oR04GDWZoC6Dw==
+salesforcedx@50.1.1:
+  version "50.1.1"
+  resolved "https://registry.yarnpkg.com/salesforcedx/-/salesforcedx-50.1.1.tgz#e9f44cebeb8fa1c54de4ddfe89dd5a03dcc736c9"
+  integrity sha512-GmMUwJZIQOzKAzX3C4Zk0WsseJYjM/7JAPT0TvlTNupBHe+dVxhIkc52wVp7BhqUMuEj73YSf6sChnDpLVQjCA==
   dependencies:
     "@salesforce/plugin-apex" "0.1.1"
     "@salesforce/plugin-custom-metadata" "1.0.10"
     "@salesforce/plugin-templates" "50.1.0"
     "@salesforce/sfdx-plugin-lwc-test" "0.1.7"
-    salesforce-alm "50.1.0"
+    salesforce-alm "50.1.1"
     salesforce-lightning-cli "3.0.0"
 
 samsam@1.3.0:
