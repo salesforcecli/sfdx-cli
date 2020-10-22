@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.77.0",
+  "version": "7.78.0",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bin": {
@@ -94,7 +94,7 @@
     "@salesforce/plugin-alias": "1.1.2",
     "@salesforce/plugin-analytics": "^1.12.1",
     "@salesforce/plugin-auth": "^1.3.0",
-    "@salesforce/plugin-config": "1.1.9",
+    "@salesforce/plugin-config": "1.1.10",
     "@salesforce/plugin-generator": "^1.1.0",
     "@salesforce/require-analytics": "^0.7.0",
     "@salesforce/sfdx-trust": "^3.4.3",
@@ -102,7 +102,7 @@
     "chalk": "^2.4.2",
     "debug": "^3.2.6",
     "http-call": "^5.2.4",
-    "salesforcedx": "50.2.0",
+    "salesforcedx": "50.3.0",
     "tslib": "^1.10.0",
     "v8-compile-cache": "^2.0.3"
   },
