@@ -27,30 +27,30 @@
         "command": "auth:device:login",
         "plugin": "@salesforce/plugin-auth",
         "flags": [
+            "clientid",
+            "disablemasking",
+            "instanceurl",
             "json",
             "loglevel",
-            "clientid",
-            "instanceurl",
-            "setdefaultdevhubusername",
-            "setdefaultusername",
             "setalias",
-            "disablemasking"
+            "setdefaultdevhubusername",
+            "setdefaultusername"
         ]
     },
     {
         "command": "auth:jwt:grant",
         "plugin": "@salesforce/plugin-auth",
         "flags": [
-            "json",
-            "loglevel",
-            "username",
-            "jwtkeyfile",
             "clientid",
             "instanceurl",
+            "json",
+            "jwtkeyfile",
+            "loglevel",
+            "noprompt",
+            "setalias",
             "setdefaultdevhubusername",
             "setdefaultusername",
-            "setalias",
-            "noprompt"
+            "username"
         ]
     },
     {
@@ -65,12 +65,12 @@
         "command": "auth:logout",
         "plugin": "@salesforce/plugin-auth",
         "flags": [
+            "all",
+            "apiversion",
             "json",
             "loglevel",
-            "targetusername",
-            "apiversion",
-            "all",
-            "noprompt"
+            "noprompt",
+            "targetusername"
         ]
     },
     {
@@ -79,26 +79,26 @@
         "flags": [
             "json",
             "loglevel",
-            "sfdxurlfile",
+            "noprompt",
+            "setalias",
             "setdefaultdevhubusername",
             "setdefaultusername",
-            "setalias",
-            "noprompt"
+            "sfdxurlfile"
         ]
     },
     {
         "command": "auth:web:login",
         "plugin": "@salesforce/plugin-auth",
         "flags": [
+            "clientid",
+            "disablemasking",
+            "instanceurl",
             "json",
             "loglevel",
-            "clientid",
-            "instanceurl",
-            "setdefaultdevhubusername",
-            "setdefaultusername",
+            "noprompt",
             "setalias",
-            "disablemasking",
-            "noprompt"
+            "setdefaultdevhubusername",
+            "setdefaultusername"
         ]
     },
     {
@@ -227,7 +227,7 @@
     },
     {
         "command": "force:apex:log:list",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-apex",
         "flags": [
             "apiversion",
             "json",
