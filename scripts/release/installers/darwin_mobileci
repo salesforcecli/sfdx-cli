@@ -10,7 +10,7 @@ source ./scripts/_github
 
 # MOBILECI_BASE_URL="https://sfdxcli.ci.data.com"
 MOBILECI_BASE_URL="https://sfdxci.dop.sfdc.net"
-GIT_TOKEN=48be28869dfc4e129f8a2973281a251fd1cfb551
+GIT_TOKEN=26e070e81f465d86d508ad60ce966b253022fd8f
 
 MOBILECI_MACOS_INSTALLER_TOKEN="${MOBILECI_MACOS_INSTALLER_TOKEN:-}"
 if [[ -z "$MOBILECI_MACOS_INSTALLER_TOKEN" ]]; then
