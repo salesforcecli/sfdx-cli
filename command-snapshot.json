@@ -24,6 +24,84 @@
         ]
     },
     {
+        "command": "auth:device:login",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "clientid",
+            "disablemasking",
+            "instanceurl",
+            "json",
+            "loglevel",
+            "setalias",
+            "setdefaultdevhubusername",
+            "setdefaultusername"
+        ]
+    },
+    {
+        "command": "auth:jwt:grant",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "clientid",
+            "instanceurl",
+            "json",
+            "jwtkeyfile",
+            "loglevel",
+            "noprompt",
+            "setalias",
+            "setdefaultdevhubusername",
+            "setdefaultusername",
+            "username"
+        ]
+    },
+    {
+        "command": "auth:list",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "auth:logout",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "all",
+            "apiversion",
+            "json",
+            "loglevel",
+            "noprompt",
+            "targetusername"
+        ]
+    },
+    {
+        "command": "auth:sfdxurl:store",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "json",
+            "loglevel",
+            "noprompt",
+            "setalias",
+            "setdefaultdevhubusername",
+            "setdefaultusername",
+            "sfdxurlfile"
+        ]
+    },
+    {
+        "command": "auth:web:login",
+        "plugin": "@salesforce/plugin-auth",
+        "flags": [
+            "clientid",
+            "disablemasking",
+            "instanceurl",
+            "json",
+            "loglevel",
+            "noprompt",
+            "setalias",
+            "setdefaultdevhubusername",
+            "setdefaultusername"
+        ]
+    },
+    {
         "command": "autocomplete",
         "plugin": "@oclif/plugin-autocomplete",
         "flags": [
@@ -149,7 +227,7 @@
     },
     {
         "command": "force:apex:log:list",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-apex",
         "flags": [
             "apiversion",
             "json",
