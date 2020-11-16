@@ -1434,7 +1434,7 @@
     },
     {
         "command": "force:schema:sobject:describe",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-schema",
         "flags": [
             "apiversion",
             "json",
@@ -1446,7 +1446,7 @@
     },
     {
         "command": "force:schema:sobject:list",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-schema",
         "flags": [
             "apiversion",
             "json",
