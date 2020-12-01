@@ -8079,10 +8079,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@50.6.0:
-  version "50.6.0"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-50.6.0.tgz#11f88fa3eb3652f5bf7e141a22d5cbca7e57cfc9"
-  integrity sha512-YsB6RYKG1Dj3/6Ealga9hPV/XP1PJ9qwa2C3dUbbhaLM3DCNzTAJGudlyC+hOSuSoAO2JPwnB4/qgpVJAjZXMQ==
+salesforce-alm@50.7.0:
+  version "50.7.0"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-50.7.0.tgz#d9d9d7bf9ccb897170751c4ade32d7a5d0065845"
+  integrity sha512-cO+kIGfu7/+6bOSuqwbtQUMDcvT/BMbP3AhVhOQrc5I40QFbh08OvsNm3ZPAZTQTIkZwQL5dK4whQpdmfRYVUQ==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
@@ -8144,17 +8144,17 @@ salesforce-lightning-cli@3.0.0:
     object-assign "^4.1.1"
     prettier "^1.18.2"
 
-salesforcedx@50.6.0:
-  version "50.6.0"
-  resolved "https://registry.yarnpkg.com/salesforcedx/-/salesforcedx-50.6.0.tgz#5955b5d45fcb8e8021249311d474a5c6b36a073e"
-  integrity sha512-lKkwX+0Jbmo6ipuAZBh9ElEOMNYp8qWlhYVEsfXzxECzkSLn8cZVJ+UDdPrREjn1cDaz9tiEKr9Wqj4QzhpnkA==
+salesforcedx@50.7.0:
+  version "50.7.0"
+  resolved "https://registry.yarnpkg.com/salesforcedx/-/salesforcedx-50.7.0.tgz#6af67c8bef0a41b66bd44f1538f7cf5ceeed4a82"
+  integrity sha512-EAzPT8YcVf7Z910ylbWGHvLU9O+YuXKa88foFjmhEDAZBLoLpEADLTnORSdtnEmzR1aBdtPclAIn3pnSpOmh3Q==
   dependencies:
     "@salesforce/plugin-apex" "0.1.4"
     "@salesforce/plugin-custom-metadata" "1.0.10"
     "@salesforce/plugin-schema" "^1.0.0"
     "@salesforce/plugin-templates" "50.1.0"
     "@salesforce/sfdx-plugin-lwc-test" "0.1.7"
-    salesforce-alm "50.6.0"
+    salesforce-alm "50.7.0"
     salesforce-lightning-cli "3.0.0"
 
 samsam@1.3.0:
