@@ -548,23 +548,6 @@
         ]
     },
     {
-        "command": "force:doc:commands:display",
-        "plugin": "salesforce-alm",
-        "flags": [
-            "json",
-            "loglevel"
-        ]
-    },
-    {
-        "command": "force:doc:commands:list",
-        "plugin": "salesforce-alm",
-        "flags": [
-            "json",
-            "loglevel",
-            "usage"
-        ]
-    },
-    {
         "command": "force:lightning:app:create",
         "plugin": "@salesforce/plugin-templates",
         "flags": [
@@ -671,7 +654,7 @@
     },
     {
         "command": "force:limits:api:display",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-limits",
         "flags": [
             "apiversion",
             "json",
@@ -1710,20 +1693,6 @@
         "flags": [
             "help",
             "verbose"
-        ]
-    },
-    {
-        "command": "snapshot:compare",
-        "plugin": "@oclif/plugin-command-snapshot",
-        "flags": [
-            "filepath"
-        ]
-    },
-    {
-        "command": "snapshot:generate",
-        "plugin": "@oclif/plugin-command-snapshot",
-        "flags": [
-            "filepath"
         ]
     },
     {
