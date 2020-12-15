@@ -1,0 +1,111 @@
+{
+  "name": "@salesforce/plugin-template",
+  "description": "A template repository for sfdx plugins",
+  "version": "1.0.0",
+  "author": "Salesforce",
+  "bugs": "https://github.com/forcedotcom/cli/issues",
+  "dependencies": {
+    "@oclif/config": "^1",
+    "@salesforce/command": "^3.0.3",
+    "@salesforce/core": "^2.6.0",
+    "tslib": "^1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@oclif/plugin-command-snapshot": "^2.0.0",
+    "@salesforce/dev-config": "^2.0.0",
+    "@salesforce/dev-scripts": "0.6.2",
+    "@salesforce/plugin-command-reference": "^1.2.3",
+    "@salesforce/prettier-config": "^0.0.1",
+    "@salesforce/ts-sinon": "1.1.3",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "chai": "^4.2.0",
+    "cz-conventional-changelog": "^3.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-salesforce": "^0.1.0",
+    "eslint-config-salesforce-license": "^0.1.0",
+    "eslint-config-salesforce-typescript": "^0.1.0",
+    "eslint-plugin-header": "^3.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsdoc": "^27.0.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "mocha": "^7.2.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "shx": "0.2.2",
+    "sinon": "^9.0.2",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "files": [
+    "/lib",
+    "/messages",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/salesforcecli/plugin-template",
+  "keywords": [
+    "force",
+    "salesforce",
+    "sfdx",
+    "salesforcedx",
+    "sfdx-plugin"
+  ],
+  "license": "BSD-3-Clause",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "sfdx",
+    "devPlugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-command-snapshot",
+      "@salesforce/plugin-command-reference"
+    ],
+    "topics": {
+      "hello": {
+        "description": "Commands to say hello."
+      }
+    }
+  },
+  "repository": "salesforcecli/plugin-template",
+  "scripts": {
+    "build": "sf-build",
+    "clean": "sf-clean",
+    "clean-all": "-clean all",
+    "clean:lib": "shx rm -rf lib && shx rm -rf coverage && shx rm -rf .nyc_output && shx rm -f oclif.manifest.json",
+    "compile": "sf-compile",
+    "docs": "sf-docs",
+    "format": "sf-format",
+    "lint": "sf-lint",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "yarn lint && yarn test:deprecation-policy && yarn test:command-reference",
+    "test:deprecation-policy": "./bin/run snapshot:compare",
+    "test:command-reference": "./bin/run commandreference:generate -p @salesforce/plugin-template --erroronwarnings",
+    "prepack": "sf-build",
+    "prepare": "sf-install",
+    "pretest": "sf-compile-test",
+    "test": "sf-test",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "sf-husky-pre-commit",
+      "commit-msg": "sf-husky-commit-msg",
+      "pre-push": "sf-husky-pre-push"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
