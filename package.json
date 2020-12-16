@@ -1,28 +1,77 @@
 {
-  "name": "@salesforce/plugin-template",
-  "description": "A template repository for sfdx plugins",
+  "name": "cli",
+  "description": "Salesforce CLI",
+  "license": "BSD-3-Clause",
+  "bin": {
+    "sfdx": "bin/run"
+  },
   "version": "1.0.0",
   "author": "Salesforce",
   "bugs": "https://github.com/forcedotcom/cli/issues",
+  "pinnedDependencies": [
+    "@oclif/plugin-autocomplete",
+    "@oclif/plugin-commands",
+    "@oclif/plugin-help",
+    "@oclif/plugin-not-found",
+    "@oclif/plugin-plugins",
+    "@oclif/plugin-update",
+    "@oclif/plugin-warn-if-update-available",
+    "@oclif/plugin-which",
+    "@salesforce/plugin-generator",
+    "@salesforce/plugin-analytics",
+    "@salesforce/plugin-config",
+    "@salesforce/plugin-alias",
+    "@salesforce/plugin-auth",
+    "@salesforce/sfdx-trust",
+    "salesforcedx"
+  ],
   "dependencies": {
-    "@oclif/config": "^1",
     "@salesforce/command": "^3.0.3",
     "@salesforce/core": "^2.6.0",
-    "tslib": "^1"
+    "@oclif/command": "^1.6.0",
+    "@oclif/config": "^1.15.1",
+    "@oclif/errors": "^1.2.2",
+    "@oclif/plugin-autocomplete": "^0.1.5",
+    "@oclif/plugin-commands": "^1.3.0",
+    "@oclif/plugin-help": "^3.0.0",
+    "@oclif/plugin-not-found": "^1.2.2",
+    "@oclif/plugin-plugins": "^1.9.4",
+    "@oclif/plugin-update": "^1.3.9",
+    "@oclif/plugin-warn-if-update-available": "^1.7.0",
+    "@oclif/plugin-which": "^1.0.3",
+    "@salesforce/kit": "^1.2.0",
+    "@salesforce/lazy-require": "^0.2.0",
+    "@salesforce/plugin-alias": "1.1.3",
+    "@salesforce/plugin-analytics": "^1.12.1",
+    "@salesforce/plugin-auth": "^1.3.0",
+    "@salesforce/plugin-config": "1.2.1",
+    "@salesforce/plugin-generator": "^1.1.0",
+    "@salesforce/require-analytics": "^0.7.0",
+    "@salesforce/sfdx-trust": "^3.4.3",
+    "@salesforce/ts-types": "^1.2.0",
+    "chalk": "^2.4.2",
+    "debug": "^3.2.6",
+    "http-call": "^5.2.4",
+    "salesforcedx": "50.9.1",
+    "tslib": "^1.10.0",
+    "v8-compile-cache": "^2.0.3"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1",
+    "@oclif/dev-cli": "^1.22.0",
     "@oclif/plugin-command-snapshot": "^2.0.0",
     "@salesforce/dev-config": "^2.0.0",
-    "@salesforce/dev-scripts": "0.6.2",
-    "@salesforce/plugin-command-reference": "^1.2.3",
+    "@salesforce/dev-scripts": "^0.6.2",
     "@salesforce/prettier-config": "^0.0.1",
-    "@salesforce/ts-sinon": "1.1.3",
+    "@salesforce/ts-sinon": "~1.1.0",
+    "@types/debug": "~0.0.31",
+    "@types/fs-extra": "~4.0.9",
+    "@types/request": "~2.48.2",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "chai": "^4.2.0",
-    "cz-conventional-changelog": "^3.2.0",
+    "check-yarn-lock": "~0.2.1",
     "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "~5.0.3",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-salesforce": "^0.1.0",
     "eslint-config-salesforce-license": "^0.1.0",
@@ -31,13 +80,13 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsdoc": "^27.0.3",
     "eslint-plugin-prettier": "^3.1.3",
+    "globby": "~8.0.2",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.2",
     "mocha": "^7.2.0",
+    "npm": "~6.10.2",
     "nyc": "^15.1.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
-    "shx": "0.2.2",
     "sinon": "^9.0.2",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.3"
@@ -53,9 +102,12 @@
   "files": [
     "/lib",
     "/messages",
-    "/oclif.manifest.json"
+    "/oclif.manifest.json",
+    "bin",
+    "dist/**/*.js",
+    "!dist/**/*.test.js"
   ],
-  "homepage": "https://github.com/salesforcecli/plugin-template",
+  "homepage": "https://github.com/salesforcecli/cli",
   "keywords": [
     "force",
     "salesforce",
@@ -63,40 +115,111 @@
     "salesforcedx",
     "sfdx-plugin"
   ],
-  "license": "BSD-3-Clause",
   "oclif": {
-    "commands": "./lib/commands",
     "bin": "sfdx",
-    "devPlugins": [
+    "scope": "salesforce",
+    "commands": "./dist/commands",
+    "node": "12.18.3",
+    "dirname": "sfdx",
+    "hooks": {
+      "plugins:preinstall": [
+        "./dist/hooks/pluginsPreinstall.js"
+      ],
+      "plugins:preinstall:verify:version": [
+        "./dist/hooks/verifyPluginVersion.js"
+      ],
+      "preupdate": [
+        "./dist/hooks/preupdate.js"
+      ],
+      "preupdate:reachability": [
+        "./dist/hooks/updateReachability.js"
+      ],
+      "preupdate:migrate:plugins": [
+        "./dist/hooks/migratePlugins.js"
+      ],
+      "update": [
+        "./dist/hooks/lazyRequire.js"
+      ]
+    },
+    "plugins": [
+      "@oclif/plugin-autocomplete",
+      "@oclif/plugin-commands",
       "@oclif/plugin-help",
-      "@oclif/plugin-command-snapshot",
-      "@salesforce/plugin-command-reference"
+      "@oclif/plugin-not-found",
+      "@oclif/plugin-plugins",
+      "@oclif/plugin-update",
+      "@oclif/plugin-warn-if-update-available",
+      "@oclif/plugin-which",
+      "@salesforce/plugin-generator",
+      "@salesforce/plugin-analytics",
+      "@salesforce/plugin-config",
+      "@salesforce/plugin-alias",
+      "@salesforce/plugin-auth",
+      "@salesforce/sfdx-trust",
+      "salesforcedx"
     ],
-    "topics": {
-      "hello": {
-        "description": "Commands to say hello."
+    "devPlugins": [
+      "@oclif/plugin-command-snapshot"
+    ],
+    "update": {
+      "s3": {
+        "bucket": "dfc-data-production",
+        "folder": "media/salesforce-cli",
+        "host": "https://developer.salesforce.com/media/salesforce-cli",
+        "templates": {
+          "target": {
+            "baseDir": "sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
+            "manifest": "sfdx-cli/channels/<%- channel %>/<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
+            "versioned": "sfdx-cli/channels/<%- channel %>/sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>.tar.<%- ext %>"
+          }
+        }
       }
     }
   },
   "repository": "salesforcecli/plugin-template",
   "scripts": {
     "build": "sf-build",
+    "build-mac": "yarn build-mac-from-archive",
+    "build-mac-from-archive": "scripts/build/installers/darwin_from_archive",
+    "build-mac-from-sources": "scripts/build/installers/darwin_from_sources",
+    "build-standalone": "scripts/build/standalone",
+    "build-windows": "scripts/build/installers/windows",
     "clean": "sf-clean",
-    "clean-all": "-clean all",
-    "clean:lib": "shx rm -rf lib && shx rm -rf coverage && shx rm -rf .nyc_output && shx rm -f oclif.manifest.json",
+    "clean-all": "sf-clean all",
+    "clean-build": "scripts/clean/build",
+    "clean-compile": "yarn clean-all && yarn install --pure-lockfile",
+    "clean-dist": "scripts/clean/dist",
+    "clean-test": "scripts/clean/test",
     "compile": "sf-compile",
+    "coverage-report": "scripts/test/coverage",
     "docs": "sf-docs",
     "format": "sf-format",
     "lint": "sf-lint",
-    "postpack": "shx rm -f oclif.manifest.json",
-    "posttest": "yarn lint && yarn test:deprecation-policy && yarn test:command-reference",
-    "test:deprecation-policy": "./bin/run snapshot:compare",
-    "test:command-reference": "./bin/run commandreference:generate -p @salesforce/plugin-template --erroronwarnings",
+    "lint-all": "scripts/lint/all",
+    "lint-with-style": "scripts/lint/sources_with_style",
+    "oclif-artifacts": "oclif-dev manifest",
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "yarn test:deprecation-policy ",
     "prepack": "sf-build",
-    "prepare": "sf-install",
+    "prepare": "yarn compile && yarn lint",
     "pretest": "sf-compile-test",
-    "test": "sf-test",
-    "version": "oclif-dev readme && git add README.md"
+    "release": "yarn release-all",
+    "release-all": "scripts/release/all",
+    "release-all-debug": "env SKIP_AWS=true yarn release-all",
+    "release-debug": "yarn release-all-debug",
+    "release-mac": "scripts/release/installers/darwin",
+    "release-mac-debug": "env SKIP_AWS=true yarn release-mac",
+    "release-standalone": "scripts/release/standalone",
+    "release-standalone-debug": "env SKIP_AWS=true yarn release-standalone",
+    "release-windows": "scripts/release/installers/windows_docker",
+    "release-windows-debug": "env SKIP_AWS=true yarn release-windows",
+    "snapshot-generate": "HOME=./ ./bin/run snapshot:generate",
+    "test:deprecation-policy": "HOME=./ ./bin/run snapshot:compare",
+    "trogdor": "yarn clean-all && yarn && yarn compile && yarn uts",
+    "typings": "scripts/test/typings",
+    "test": "scripts/test/unit",
+    "uts": "nyc mocha --require source-map-support/register --recursive \"test/**/*.test.ts\"",
+    "watch": "tsc -w -p tsconfig.json"
   },
   "husky": {
     "hooks": {

@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -ex
+
+source ./scripts/release/_init
+
+bg script "release/installers/darwin_mobileci" # Uncommented 06/18/2020 to build .gz and .zx files - recomment if issues arise - recommented 07/09/2020
+bg script "release/installers/windows_docker"
+wait_all
+
+resetS3CacheDir
+
+createReleases
+cp "$RELEASE_DIR/releases.json" "$S3_CACHE_DIR"
+s3upload "$UNVERSIONED_CACHE_CONTROL" \
+    "$S3_CACHE_DIR/releases.json" \
+    "$S3_BASE_UPLOAD_URL/" \
+    --content-type "application/json"
+
+if [[ "$CHANNEL" == "stable" ]]; then
+    script "release/installers/downloads"
+
+    resetS3CacheDir
+
+    cp "$RELEASE_DIR/manifest.json" "$S3_CACHE_DIR"
+    s3upload "$LATEST_VERSION_CACHE_CONTROL" \
+        "$S3_CACHE_DIR/manifest.json" \
+        "$S3_BASE_UPLOAD_URL/" \
+        --content-type "application/json"
+fi

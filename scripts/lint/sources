@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+eslint -p "$ROOT_DIR"

@@ -1,133 +1,44 @@
-# plugin-&lt;REPLACE ME&gt;
+# CLI for sfdx
 
-Change above to <REPLACE_ME> before finalizing
+This is the latest `sfdx` CLI application, based on the
+[oclif](https://oclif.io) CLI engine. By default it comes installed with the [salesforcedx](https://www.npmjs.com/package/salesforcedx) plugin, which contributes all commands from the `force` command namespace.
 
-&lt;REPLACE ME DESCRIPTION START&gt;
+## Releases
 
-This repository provides a template for creating a plugin for the Salesforce CLI. To convert this template to a working plugin:
+We publish the `latest` CLI on Thursdays. At the same time we also publish the `latest-rc` release candidate CLI. The release candidates contain changes that will likely be in the final official version for the next release.
 
-1. Clone this repo
-2. Delete the .git folder
-3. Replace filler values
-   a) Every instance of `<REPLACE_ME>` can be directly substitued for the name of the new plugin. However beware, things like github paths are for the salesforcecli Github organization
-   b) Search for case-matching `REPLACE` to find other filler values, such as for the plugin description
-4. Use `git init` to set up the desired git information
-5. Follow the getting started steps below until the `sfdx hello:org` commmand is functioning
+Run `sfdx version` to display the version of Salesforce CLI installed on your computer. Run `sfdx plugins --core` to display the versions of the installed plug-ins.
 
-&lt;REPLACE ME DESCRIPTION END&gt;
+Run `sfdx update` to update the CLI to the latest available version.
 
-## Learn about the plugin-template
+## Installation
 
-Salesforce CLI plugins are based on the [oclif plugin framework](<(https://oclif.io/docs/introduction.html)>). Read the [plugin developer guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_plugins.meta/sfdx_cli_plugins/cli_plugins_architecture_sf_cli.htm) to learn about Salesforce CLI plugin development.
+You can install this by either using an OS-specific installer [available here](https://developer.salesforce.com/tools/sfdxcli), by directly installing it with `npm` or `yarn` (see the instructions below), or if using macOS or linux by running the `install` script in a standalone installer (links to which can be found in the latest tarball [manifest](https://developer.salesforce.com/media/salesforce-cli/manifest.json)).
 
-This repository contains a lot of additional scripts and tools to help with general Salesforce node development and enforce coding standards. You should familiarize yourself with some of the [node developer packages](https://github.com/forcedotcom/sfdx-dev-packages/) used by Salesforce. There is also a default circleci config using the [release management orb](https://github.com/forcedotcom/npm-release-management-orb) standards.
+### Installing with `npm` or `yarn`
 
-Additionally, there are some additional tests that the Salesforce CLI will enforce if this plugin is ever bundled with the CLI. These test are included by default under the `posttest` script and it is recommended to keep these tests active in your plugin, regardless if you plan to have it bundled.
+To get started, you'll need to install `node` v8.4 or greater, though we recommend using the latest v12 (LTS) for the best experience. While this can be done using an installer from [nodejs.com](nodejs.com) or via an OS-specific package manager, we recommend using [nvm](https://github.com/creationix/nvm) to easily manage multiple `node` versions.
 
-# Everything past here is only a suggestion as to what should be in your specific plugin's description
+If using `nvm`, be sure that you've selected the appropriate version with something like `nvm use v10.x.y`, where `x` and `y` are specific to the version that you installed. If you want to use this version by default run `nvm alias default node` -- otherwise, when you restart your shell `nvm` will revert to whatever version configured prior to installing the latest.
 
-This plugin is bundled with the [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli). For more information on the CLI, read the [getting started guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm).
+### `npm`
 
-We always recommend using the latest version of these commands bundled with the CLI, however, you can install a specific version or tag if needed.
-
-## Install
+`npm` is installed automatically with Node.js. Install the CLI using `npm` as follows:
 
 ```bash
-sfdx plugins:install <REPLACE_ME>@x.y.z
+> npm install --global sfdx-cli
 ```
 
-## Issues
+### `yarn`
 
-Please report any issues at https://github.com/forcedotcom/cli/issues
+`yarn` is another popular Node.js package manager that can be used to install the CLI, but it needs to be [installed separately](https://yarnpkg.com/en/docs/install) from Node.js if you choose to use it.
 
-## Contributing
-
-1. Please read our [Code of Conduct](CODE_OF_CONDUCT.md)
-2. Create a new issue before starting your project so that we can keep track of
-   what you are trying to add/fix. That way, we can also offer suggestions or
-   let you know if there is already an effort in progress.
-3. Fork this repository.
-4. [Build the plugin locally](#build)
-5. Create a _topic_ branch in your fork. Note, this step is recommended but technically not required if contributing using a fork.
-6. Edit the code in your fork.
-7. Write appropriate tests for your changes. Try to achieve at least 95% code coverage on any new code. No pull request will be accepted without unit tests.
-8. Sign CLA (see [CLA](#cla) below).
-9. Send us a pull request when you are done. We'll review your code, suggest any needed changes, and merge it in.
-
-### CLA
-
-External contributors will be required to sign a Contributor's License
-Agreement. You can do so by going to https://cla.salesforce.com/sign-cla.
-
-### Build
-
-To build the plugin locally, make sure to have yarn installed and run the following commands:
+Note that by default `yarn` will attempt to install the binary in a location that may conflict with the location used by the installers, so you may additionally want to run the following command to avoid collision should you want to maintain two separate installations: `yarn config set prefix ~/.yarn` (macOS and Linux). Then, use the following:
 
 ```bash
-# Clone the repository
-git clone git@github.com:salesforcecli/plugin-<REPLACE_ME>
-
-# Install the dependencies and compile
-yarn install
-yarn build
+> yarn global add sfdx-cli
 ```
 
-To use your plugin, run using the local `./bin/run` or `./bin/run.cmd` file.
+## Development
 
-```bash
-# Run using local run file.
-./bin/run <REPLACE_ME>
-```
-
-There should be no differences when running via the Salesforce CLI or using the local run file. However, it can be useful to link the plugin to do some additional testing or run your commands from anywhere on your machine.
-
-```bash
-# Link your plugin to the sfdx cli
-sfdx plugins:link .
-# To verify
-sfdx plugins
-```
-
-## Commands
-
-<!-- commands -->
-
-- [`sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-helloorg--n-string--f--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
-
-## `sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
-
-print a greeting and your org IDs
-
-```
-USAGE
-  $ sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel
-  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
-
-OPTIONS
-  -f, --force                                                                       example boolean flag
-  -n, --name=name                                                                   name to print
-
-  -u, --targetusername=targetusername                                               username or alias for the target
-                                                                                    org; overrides default target org
-
-  -v, --targetdevhubusername=targetdevhubusername                                   username or alias for the dev hub
-                                                                                    org; overrides default dev hub org
-
-  --apiversion=apiversion                                                           override the api version used for
-                                                                                    api requests made by this command
-
-  --json                                                                            format output as json
-
-  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
-                                                                                    this command invocation
-
-EXAMPLES
-  $ sfdx hello:org --targetusername myOrg@example.com --targetdevhubusername devhub@org.com
-     Hello world! This is org: MyOrg and I will be around until Tue Mar 20 2018!
-     My hub org id is: 00Dxx000000001234
-
-  $ sfdx hello:org --name myname --targetusername myOrg@example.com
-     Hello myname! This is org: MyOrg and I will be around until Tue Mar 20 2018!
-```
-
-<!-- commandsstop -->
+If you are a Salesforce T&P employee, please see also the internal [developer documentation](./DEVELOPER.md).

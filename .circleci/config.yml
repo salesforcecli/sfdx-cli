@@ -7,19 +7,25 @@ workflows:
   version: 2
   test-and-release:
     jobs:
+      - release-management/pin-dependencies
       - release-management/validate-pr:
           filters:
             branches:
               ignore: master
       - release-management/test-package:
+          requires:
+            - release-management/pin-dependencies
           name: node-latest
           node_version: latest
       - release-management/test-package:
+          requires:
+            - release-management/pin-dependencies
           name: node-12
       - release-management/release-package:
           sign: true
           github-release: true
           requires:
+            - release-management/test-package
             - node-latest
           filters:
             branches:
