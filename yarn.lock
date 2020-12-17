@@ -906,13 +906,13 @@
     yosay "^2.0.2"
 
 "@salesforce/plugin-limits@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-limits/-/plugin-limits-1.0.1.tgz#09bf70e564be775eabd13d45e889ba636c250d46"
-  integrity sha512-tl6kb0FOjcjNcG2x+R3OGs2/rxNEWZ+VpifjeE+NxK6SAyR9WyAE5eEG4iUgvMxISFqyEeBTMcwr6ELwYeJRww==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-limits/-/plugin-limits-1.0.2.tgz#500ea771782fae18a04ea16b1741be20d32f07f1"
+  integrity sha512-15MQic9+zzZLf4luSSRZQdWbdtHWySjs/0etM9n75ll4+xk23OWi6mKlItQwfkXdJCyLmrjXwniIl2X3kfC38g==
   dependencies:
     "@oclif/config" "^1"
     "@salesforce/command" "^3.0.3"
-    "@salesforce/core" "^2.6.0"
+    "@salesforce/core" "^2.15.4"
     tslib "^1"
 
 "@salesforce/plugin-schema@^1.0.0":
@@ -1019,16 +1019,16 @@
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
 
-"@salesforce/ts-sinon@~1.1.0":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/ts-sinon/-/ts-sinon-1.1.3.tgz#e362bd8b19bcc674ee5d37f6806421116dae8b64"
-  integrity sha512-XWwX3wavhMfS5J4jbWSItQO9HQ6eNesSbLpAPYSQiCN/6xLtcN0ohFDUMm6bZae6TFTavczCRy6ACFMt+XtxJg==
+"@salesforce/ts-sinon@^1.1.0":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/ts-sinon/-/ts-sinon-1.2.3.tgz#9a65bcad7d7811dde7978f33b90f3ed3d13632a4"
+  integrity sha512-zWwNIeoGJM5o4Z6/Vq/Mr1FE0vrA0d0PV22jxljVifWTf0prVaWhVdoS28LFIVYbeT84Y6e5446uOUZqDN9yvg==
   dependencies:
-    "@salesforce/ts-types" "^1.3.0"
+    "@salesforce/ts-types" "^1.4.3"
     sinon "5.1.1"
     tslib "^1.10.0"
 
-"@salesforce/ts-types@^1.0.0", "@salesforce/ts-types@^1.2.0", "@salesforce/ts-types@^1.2.1", "@salesforce/ts-types@^1.2.2", "@salesforce/ts-types@^1.3.0", "@salesforce/ts-types@^1.4.3":
+"@salesforce/ts-types@^1.0.0", "@salesforce/ts-types@^1.2.0", "@salesforce/ts-types@^1.2.1", "@salesforce/ts-types@^1.2.2", "@salesforce/ts-types@^1.4.3":
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/@salesforce/ts-types/-/ts-types-1.4.3.tgz#941ceac6d72a2983ec03d5263b509f25bab574c3"
   integrity sha512-Fdx9KEBalwxBFkP0ZW9uIcndjFys9fm8ma9vItd3EwPZLJcAHWfBa5/y9uHLAvYHkKK8F8FYE0sRrVZ1cn48hw==
@@ -1117,7 +1117,7 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.14.tgz#44d2dd0b5de6185089375d976b4ec5caf6861193"
   integrity sha512-G+ITQPXkwTrslfG5L/BksmbLUA0M1iybEsmCWPqzSxsRRhJZimBKJkoMi8fr/CPygPTj4zO5pJH7I2/cm9M7SQ==
 
-"@types/debug@~0.0.31":
+"@types/debug@^0.0.31":
   version "0.0.31"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-0.0.31.tgz#bac8d8aab6a823e91deb7f79083b2a35fa638f33"
   integrity sha512-LS1MCPaQKqspg7FvexuhmDbWUhE2yIJ+4AgVIyObfc06/UKZ8REgxGNjZc82wPLWmbeOm7S+gSsLgo75TanG4A==
@@ -1127,7 +1127,7 @@
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
   integrity sha512-OCutwjDZ4aFS6PB1UZ988C4YgwlBHJd6wCeQqaLdmadZ/7e+w79+hbMUFC1QXDNCmdyoRfAFdm0RypzwR+Qpag==
 
-"@types/fs-extra@~4.0.9":
+"@types/fs-extra@^4.0.9":
   version "4.0.11"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-4.0.11.tgz#0df98664a5b27e9adfdb5164f9d0bd4751956882"
   integrity sha512-iHm/nBVmMR/VJQn/xCSwZ6C/qfm1Tgsh2IrCCinAsF+mlHDGpV+vLR/EA6xezBXpv0/amDOaqxa8f2TVxBQyog==
@@ -1218,7 +1218,7 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/request@~2.48.2":
+"@types/request@^2.48.2":
   version "2.48.5"
   resolved "https://registry.yarnpkg.com/@types/request/-/request-2.48.5.tgz#019b8536b402069f6d11bee1b2c03e7f232937a0"
   integrity sha512-/LO7xRVnL3DxJ1WkPGDQrp4VTV1reX9RkC85mJ+Qzykj2Bdw+mG15aAfDahc76HtknjzE16SX/Yddn6MxVbmGQ==
@@ -2870,9 +2870,9 @@ csprng@, csprng@*, csprng@~0.1.2:
     sequin "*"
 
 csv-parse@^4.10.1, csv-parse@^4.6.3, csv-parse@^4.6.5:
-  version "4.14.1"
-  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-4.14.1.tgz#b6b3736508fb94682fa6d450fe1755237221d291"
-  integrity sha512-4wmcO7QbWtDAncGFaBwlWFPhEN4Akr64IbM4zvDwEOFekI8blLc04Nw7XjQjtSNy+3AUAgBgtUa9nWo5Cq89Xg==
+  version "4.14.2"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-4.14.2.tgz#c1329cff95a99b8773a92c4e62f8bff114b34726"
+  integrity sha512-YE2xlTKtM035/94llhgsp9qFQxGi47EkQJ1pZ+mLT/98GpIsbjkMGAb7Rmu9hNxVfYFOLf10hP+rPVqnoccLgw==
 
 csv-stringify@^1.0.4:
   version "1.1.2"
@@ -3396,11 +3396,6 @@ escape-string-regexp@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
-
-eslint-config-airbnb-base@~5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-5.0.3.tgz#9714ac35ec2cd7fab0d44d148a9f91db2944074d"
-  integrity sha1-lxSsNews1/qw1E0Uip+R2ylEB00=
 
 eslint-config-prettier@^6.11.0:
   version "6.15.0"
@@ -9634,9 +9629,9 @@ typescript@^3.9.3:
   integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
 
 uglify-js@^3.1.4:
-  version "3.12.1"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.12.1.tgz#78307f539f7b9ca5557babb186ea78ad30cc0375"
-  integrity sha512-o8lHP20KjIiQe5b/67Rh68xEGRrc2SRsCuuoYclXXoC74AfSRGblU1HKzJWH3HxPZ+Ort85fWHpSX7KwBUC9CQ==
+  version "3.12.2"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.12.2.tgz#c7ae89da0ed1bb58999c7fce07190b347fdbdaba"
+  integrity sha512-rWYleAvfJPjduYCt+ELvzybNah/zIkRteGXIBO8X0lteRZPGladF61hFi8tU7qKTsF7u6DUQCtT9k00VlFOgkg==
 
 uid-number@0.0.6:
   version "0.0.6"

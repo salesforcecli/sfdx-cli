@@ -9,7 +9,7 @@ import { Hooks, IConfig } from '@oclif/config';
 import { StubbedCallableType, stubCallable, stubInterface } from '@salesforce/ts-sinon';
 import { JsonMap, Optional } from '@salesforce/ts-types';
 import { expect } from 'chai';
-import { HTTP } from 'http-call';
+import { HTTP, HTTPRequestOptions } from 'http-call';
 import * as sinon from 'sinon';
 import { Env } from '../../src/util/env';
 import hook, { UpdateReachabilityHookContext } from '../../src/hooks/updateReachability';
@@ -56,17 +56,20 @@ describe('updateReachability preupdate hook', () => {
     env = new Env({});
     statusCode = 200;
     error = undefined;
+
     body = {
       version: '6.36.1-102-e4be126f07',
       channel: 'test',
       sha256gz: 'deadbeef',
     };
+
     httpClient = stubCallable<typeof HTTP>(sandbox, {
-      get: async () => {
+      get: async (url: string, opts: HTTPRequestOptions) => {
         if (error) throw error;
         return { body, statusCode };
       },
     });
+
     warnings = [];
     errors = [];
   });
@@ -78,10 +81,10 @@ describe('updateReachability preupdate hook', () => {
   async function callHook() {
     context = stubInterface<UpdateReachabilityHookContext>(sandbox, {
       config,
-      warn(...args: unknown[]) {
+      warn(...args: string[]) {
         warnings.push(args.join(' '));
       },
-      error(...args: unknown[]) {
+      error(...args: string[]) {
         errors.push(args.join(' '));
       },
       env,
