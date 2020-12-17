@@ -6,10 +6,11 @@
  */
 
 import { Hook, IConfig } from '@oclif/config';
-import { NamedError, sleep } from '@salesforce/kit';
+import { sleep } from '@salesforce/kit';
 import { JsonMap, Optional } from '@salesforce/ts-types';
 import * as Debug from 'debug';
 import { HTTP } from 'http-call';
+import { SfdxError } from '@salesforce/core';
 import { default as envars, Env } from '../util/env';
 
 const debug = Debug('sfdx:preupdate:reachability');
@@ -21,10 +22,10 @@ async function requestManifest(url: string, httpClient: typeof HTTP): Promise<Js
   const { body, statusCode } = await httpClient.get<JsonMap>(url, { timeout: 4000 });
   if (statusCode === 403) {
     // S3 returns 403 rather than 404 when a manifest is not found
-    throw new NamedError('ManifestNotFoundError', `Manifest not found at ${url}`);
+    throw new SfdxError(`Manifest not found at ${url}`, 'ManifestNotFoundError');
   }
   if (statusCode !== 200) {
-    throw new NamedError('HttpGetUnexpectedStatusError', `Unexpected GET response status ${statusCode}`);
+    throw new SfdxError(`Unexpected GET response status ${statusCode}`, 'HttpGetUnexpectedStatusError');
   }
   return body;
 }
@@ -58,7 +59,7 @@ async function canUpdate(
   attempt = 1
 ): Promise<void> {
   if (attempt > MAX_ATTEMPTS) {
-    throw new NamedError('S3HostReachabilityError', 'S3 host is not reachable.');
+    throw new SfdxError('S3 host is not reachable.', 'S3HostReachabilityError');
   }
 
   // Allow test to overwrite RETRY_MILLIS

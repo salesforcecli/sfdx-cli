@@ -6,10 +6,10 @@
  */
 
 import { Hooks, IConfig } from '@oclif/config';
-import { StubbedCallableType, stubCallable, stubInterface } from '@salesforce/ts-sinon';
+import { StubbedCallableType, stubInterface } from '@salesforce/ts-sinon';
 import { JsonMap, Optional } from '@salesforce/ts-types';
 import { expect } from 'chai';
-import { HTTP, HTTPRequestOptions } from 'http-call';
+import { HTTP } from 'http-call';
 import * as sinon from 'sinon';
 import { Env } from '../../src/util/env';
 import hook, { UpdateReachabilityHookContext } from '../../src/hooks/updateReachability';
@@ -63,12 +63,14 @@ describe('updateReachability preupdate hook', () => {
       sha256gz: 'deadbeef',
     };
 
-    httpClient = stubCallable<typeof HTTP>(sandbox, {
-      get: async (url: string, opts: HTTPRequestOptions) => {
+    httpClient = {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      get: sandbox.stub(HTTP, 'get').callsFake(() => {
         if (error) throw error;
         return { body, statusCode };
-      },
-    });
+      }),
+    };
 
     warnings = [];
     errors = [];

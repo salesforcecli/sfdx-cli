@@ -916,9 +916,9 @@
     tslib "^1"
 
 "@salesforce/plugin-schema@^1.0.0":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-schema/-/plugin-schema-1.0.2.tgz#7995a6896e062f10cb69d0bba81f01efa98be5af"
-  integrity sha512-uLYSbL8SvSwMjNSqdDWOYFAqBNXO/b2ZeX3WZK3Qj0TvzbLb9xJt+kWFhOgbqt3epYv7Wb3rHDxbo/kWboqdVg==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-schema/-/plugin-schema-1.0.3.tgz#a7074dbec5470a744fea45c0c7092b16563b440a"
+  integrity sha512-4tjmIh1Lm5LtOxz1EqhTm2yDMCFu5y3Aa4WBj97kJLYfI1NTWsq9/P/eUicDmNitsJqwI/xA2gDe1z3JMUG2uw==
   dependencies:
     "@oclif/config" "^1"
     "@salesforce/command" "^3.0.3"
@@ -9600,9 +9600,9 @@ typedoc-default-themes@^0.10.2:
     lunr "^2.3.8"
 
 typedoc-plugin-external-module-name@~4.0.0:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/typedoc-plugin-external-module-name/-/typedoc-plugin-external-module-name-4.0.3.tgz#ba386317d97f7b5abe5bbd67cff46c3c57e56a42"
-  integrity sha512-2PjEN9kdmkB7NxN3DEax6yDIPjq7HV8qELQhkSRJGxJs/8G/ZwPPvXT0z6hUqtWVr6MeCjpAoYJFzHo04C14Aw==
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/typedoc-plugin-external-module-name/-/typedoc-plugin-external-module-name-4.0.4.tgz#335d7f8ea343d45d74bc667ac4824388360f1a1f"
+  integrity sha512-q0pbBtkJFm5Hm+a4XQeVbDZkS+vZLWs7xN3a6ODYTonx8jj6liTnxsJCTS0ZHvp7b+i3WV6KZ59DVrm1jzr+kA==
   dependencies:
     lodash "^4.1.2"
     semver "^7.1.1"
