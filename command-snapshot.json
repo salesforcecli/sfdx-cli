@@ -1527,7 +1527,7 @@
     },
     {
         "command": "force:user:create",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-user",
         "flags": [
             "apiversion",
             "definitionfile",
@@ -1540,7 +1540,7 @@
     },
     {
         "command": "force:user:display",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-user",
         "flags": [
             "apiversion",
             "json",
@@ -1551,7 +1551,7 @@
     },
     {
         "command": "force:user:list",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-user",
         "flags": [
             "apiversion",
             "json",
@@ -1562,7 +1562,7 @@
     },
     {
         "command": "force:user:password:generate",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-user",
         "flags": [
             "apiversion",
             "json",
@@ -1574,7 +1574,7 @@
     },
     {
         "command": "force:user:permset:assign",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-user",
         "flags": [
             "apiversion",
             "json",
@@ -1608,6 +1608,18 @@
             "outputdir",
             "pagename",
             "template"
+        ]
+    },
+    {
+        "command": "force:staticresource:create",
+        "plugin": "@salesforce/plugin-templates",
+        "flags": [
+            "apiversion",
+            "json",
+            "loglevel",
+            "outputdir",
+            "resourcename",
+            "contenttype"
         ]
     },
     {
@@ -1666,7 +1678,8 @@
             "loglevel",
             "privatekeypath",
             "publickeyurl",
-            "signatureurl"
+            "signatureurl",
+            "target"
         ]
     },
     {

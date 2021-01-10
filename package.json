@@ -102,7 +102,7 @@
     "chalk": "^2.4.2",
     "debug": "^3.2.6",
     "http-call": "^5.2.4",
-    "salesforcedx": "50.13.0",
+    "salesforcedx": "50.13.2",
     "tslib": "^1.10.0",
     "v8-compile-cache": "^2.0.3"
   },
