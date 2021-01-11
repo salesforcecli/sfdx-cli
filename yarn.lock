@@ -571,7 +571,7 @@
     chalk "^4.1.0"
     tslib "^1"
 
-"@salesforce/plugin-auth@^1.3.0":
+"@salesforce/plugin-auth@1.4.6":
   version "1.4.6"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.4.6.tgz#6f038204fd4c9acb559f842240e37027cbef8a50"
   integrity sha512-WpUS2MMoASOGTVQlb+hoNwaEBTpsd96K//lQQiNJooIxlVM9sJ849f371dKmH3GW7FZ1xX2+DRBczI141FPHkQ==
