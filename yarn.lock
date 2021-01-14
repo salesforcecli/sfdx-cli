@@ -8213,10 +8213,10 @@ salesforce-lightning-cli@3.0.0:
     object-assign "^4.1.1"
     prettier "^1.18.2"
 
-salesforcedx@50.13.2:
-  version "50.13.2"
-  resolved "https://registry.yarnpkg.com/salesforcedx/-/salesforcedx-50.13.2.tgz#d2e06140f5d10f8ed5fc047cc2ad2399817041d9"
-  integrity sha512-TgOiIiiFBwFjY0igAEuXQRBVsky8jH6hKcCLaaXy8yiEQnDmmxWlufy2tq8sk+0VUGNCOszpT+rMmdYZNLWwcw==
+salesforcedx@50.13.3:
+  version "50.13.3"
+  resolved "https://registry.yarnpkg.com/salesforcedx/-/salesforcedx-50.13.3.tgz#91ac493ec753898a7caf1fc36e5bb5f81054b1d8"
+  integrity sha512-Zrg4cwC65VOUkndV6UmZOlx5CXQ/Wd0zT6uTClPagksqECLRdyNNkMbgCnhjHwtu8/+5dBUXv1NBeTjFrx3jZA==
   dependencies:
     "@salesforce/plugin-apex" "0.1.4"
     "@salesforce/plugin-custom-metadata" "1.0.11"
