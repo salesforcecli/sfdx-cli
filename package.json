@@ -57,6 +57,7 @@
       "@salesforce/plugin-alias",
       "@salesforce/plugin-auth",
       "@salesforce/sfdx-trust",
+      "@salesforce/plugin-telemetry",
       "salesforcedx"
     ],
     "devPlugins": [
@@ -81,6 +82,7 @@
     "@salesforce/plugin-config",
     "@salesforce/plugin-alias",
     "@salesforce/plugin-auth",
+    "@salesforce/plugin-telemetry",
     "salesforcedx"
   ],
   "dependencies": {
@@ -104,6 +106,7 @@
     "@salesforce/plugin-generator": "^1.1.0",
     "@salesforce/require-analytics": "^0.7.0",
     "@salesforce/sfdx-trust": "^3.4.3",
+    "@salesforce/plugin-telemetry": "^1.0.1",
     "@salesforce/ts-types": "^1.2.0",
     "chalk": "^2.4.2",
     "debug": "^3.2.6",
