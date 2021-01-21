@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+script "build/common"
+
+function build_os () {
+    setos "$1"
+
+    script "build/workspace"
+    script "build/tarballs"
+}
+
+if [[ "${PARALLEL_OS_BUILDS:-}" == "true" ]]; then
+    for OS in "${OS_TARGETS[@]}"; do
+        bg build_os "$OS"
+    done
+    wait_all
+else
+    for OS in "${OS_TARGETS[@]}"; do
+        build_os "$OS"
+    done
+fi
+
+# Generate general version and manifest files
+cat << EOF > "$RELEASE_DIR/version"
+{
+    "channel": "${CHANNEL}",
+    "version": "${VERSION}"
+}
+EOF

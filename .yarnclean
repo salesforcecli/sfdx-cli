@@ -1,0 +1,55 @@
+# test directories
+__tests__
+test
+tests
+
+powered-test
+
+# assets
+docs
+website
+images
+
+# examples
+example
+examples
+
+# code coverage directories
+coverage
+.nyc_output
+
+# build scripts
+Makefile
+Gulpfile.js
+Gruntfile.js
+
+# configs
+codeship-services.yml
+codeship-steps.yml
+wercker.yml
+.tern-project
+.editorconfig
+.npmignore
+.gitignore
+.jshintrc
+.flowconfig
+.documentup.json
+.yarn-metadata.json
+.travis.yml
+
+# editors
+.idea
+
+# misc
+*.gz
+
+# exceptions
+
+!istanbul/lib/assets
+!istanbul-reports/lib/html/assets
+
+# Don't clear files in known source directories
+!**/lib/**/*
+!**/src/**/*
+!**/dist/**/*
+!**/templates/**/*

@@ -1,4 +1,25 @@
 # -- CLEAN
+dist/
+*.tgz
+*.sig
+npm-debug.log
+.npm
+xunit.xml
+tmp
+.aws/
+.nvm-node
+
+.history
+coverage/
+checkstyle.xml
+.sfdx
+.cache
+/release/
+src/temp
+oclif.manifest.json
+npm-shrinkwrap.json
+/Library/*
+
 
 # use yarn by default, so ignore npm
 package-lock.json

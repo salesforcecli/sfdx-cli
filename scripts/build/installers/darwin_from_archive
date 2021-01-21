@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -ex
+
+export OS=darwin
+export ARCH=x64
+
+source ./scripts/_init
+source ./scripts/_github
+
+# Require RELEASE_TAG to be in the form v7.*
+if [[ "$RELEASE_TAG" != "v7."* ]]; then
+    stderr "Expected RELEASE_TAG '$RELEASE_TAG' to match 'v7.*'"
+    exit 1
+fi
+
+# Require RELEASE_TAG to be on the current HEAD commit to ensure we are building with the correct resources
+if [[ "$RELEASE_TAG" != $(git tag -l --points-at HEAD "$RELEASE_TAG") ]]; then
+    stderr "Expected RELEASE_TAG '$RELEASE_TAG' to be on HEAD"
+    exit 1
+fi
+
+# Envar overrides of _init script values
+export SHORT_VERSION="${RELEASE_TAG:1}" # Remove leading `v`
+sha=$(git rev-parse --short=10 "$RELEASE_TAG^{commit}")
+export VERSION="$SHORT_VERSION-$sha"
+export INSTALLER_BASE_NAME="$PKG_NAME-v$VERSION"
+
+rm -rf "$TMP_DIR" "$RELEASE_DIR"
+mkdir -p "$TMP_DIR" "$RELEASE_DIR"
+cd "$TMP_DIR"
+
+ARCHIVE_FILE_NAME="$INSTALLER_BASE_NAME-darwin-x64.tar.xz"
+ghDownloadAsset "$ARCHIVE_FILE_NAME"
+tar xvf "$ARCHIVE_FILE_NAME"
+mv "$TMP_DIR/$INSTALLER_BASE_NAME-darwin-x64" "$WORKSPACE_DIR"
+
+export TMP_DIR
+export RELEASE_DIR
+export RESOURCES_DIR
+export BIN_NAME
+export PKG_NAME
+export PKG_DESC
+export PKG_DIR
+export OSX_SIGNING_IDENTITY
+
+# script "build/installers/darwin_package"
+
+# VERSIONED_INSTALLER_NAME="$INSTALLER_BASE_NAME.pkg"
+# ghUploadAsset "$RELEASE_DIR/$VERSIONED_INSTALLER_NAME" "$VERSIONED_INSTALLER_NAME"

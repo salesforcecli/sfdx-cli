@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -ex
+
+source ./scripts/release/_init
+
+resetS3CacheDir
+cd "$S3_CACHE_DIR"
+
+function prepDownload() {
+    FILE_KEY="$1"
+    SRC_FILE="$2"
+    DEST_FILE="$3"
+
+    cp "$RELEASE_DIR/$SRC_FILE" "$S3_CACHE_DIR/$DEST_FILE"
+    addToManifest "downloads" "$FILE_KEY" "$S3_HOST_BASE_URL/$DEST_FILE" "$RELEASE_DIR/$SRC_FILE"
+}
+
+# Copy new artifacts to root-level download artifacts with the legacy names
+prepDownload "darwin-x64"   "${PKG_NAME}.pkg"               "sfdx-osx.pkg" # Re-commented on 07/09/2020 to allow build to finish
+prepDownload "linux-x64"    "${PKG_NAME}-linux-x64.tar.xz"  "sfdx-linux-amd64.tar.xz"
+prepDownload "windows-x64"  "${PKG_NAME}-x64.exe"           "sfdx-windows-amd64.exe"
+prepDownload "windows-x86"  "${PKG_NAME}-x86.exe"           "sfdx-windows-386.exe"
+
+s3upload "$LATEST_VERSION_CACHE_CONTROL" \
+    "$S3_CACHE_DIR" \
+    "$S3_BASE_UPLOAD_URL" \
+    --recursive

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+if [[ ! -z "${NPM_REGISTRY:-}" ]]; then
+    yarn config set registry "$NPM_REGISTRY"
+    npm config set registry "$NPM_REGISTRY"
+fi
+yarn install --pure-lockfile --non-interactive

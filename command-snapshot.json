@@ -1,7 +1,1081 @@
 [
   {
-    "command": "hello:org",
-    "plugin": "@salesforce/plugin-template",
-    "flags": ["apiversion", "force", "json", "loglevel", "name", "targetdevhubusername", "targetusername"]
+    "command": "alias:list",
+    "plugin": "@salesforce/plugin-alias",
+    "flags": ["json", "loglevel"]
+  },
+  {
+    "command": "alias:set",
+    "plugin": "@salesforce/plugin-alias",
+    "flags": ["json", "loglevel"]
+  },
+  {
+    "command": "alias:unset",
+    "plugin": "@salesforce/plugin-alias",
+    "flags": ["json", "loglevel"]
+  },
+  {
+    "command": "auth:device:login",
+    "plugin": "@salesforce/plugin-auth",
+    "flags": [
+      "clientid",
+      "disablemasking",
+      "instanceurl",
+      "json",
+      "loglevel",
+      "setalias",
+      "setdefaultdevhubusername",
+      "setdefaultusername"
+    ]
+  },
+  {
+    "command": "auth:jwt:grant",
+    "plugin": "@salesforce/plugin-auth",
+    "flags": [
+      "clientid",
+      "instanceurl",
+      "json",
+      "jwtkeyfile",
+      "loglevel",
+      "noprompt",
+      "setalias",
+      "setdefaultdevhubusername",
+      "setdefaultusername",
+      "username"
+    ]
+  },
+  {
+    "command": "auth:list",
+    "plugin": "@salesforce/plugin-auth",
+    "flags": ["json", "loglevel"]
+  },
+  {
+    "command": "auth:logout",
+    "plugin": "@salesforce/plugin-auth",
+    "flags": ["all", "apiversion", "json", "loglevel", "noprompt", "targetusername"]
+  },
+  {
+    "command": "auth:sfdxurl:store",
+    "plugin": "@salesforce/plugin-auth",
+    "flags": [
+      "json",
+      "loglevel",
+      "noprompt",
+      "setalias",
+      "setdefaultdevhubusername",
+      "setdefaultusername",
+      "sfdxurlfile"
+    ]
+  },
+  {
+    "command": "auth:web:login",
+    "plugin": "@salesforce/plugin-auth",
+    "flags": [
+      "clientid",
+      "disablemasking",
+      "instanceurl",
+      "json",
+      "loglevel",
+      "noprompt",
+      "setalias",
+      "setdefaultdevhubusername",
+      "setdefaultusername"
+    ]
+  },
+  {
+    "command": "autocomplete",
+    "plugin": "@oclif/plugin-autocomplete",
+    "flags": ["refresh-cache"]
+  },
+  {
+    "command": "autocomplete:create",
+    "plugin": "@oclif/plugin-autocomplete",
+    "flags": []
+  },
+  {
+    "command": "autocomplete:script",
+    "plugin": "@oclif/plugin-autocomplete",
+    "flags": []
+  },
+  {
+    "command": "commands",
+    "plugin": "@oclif/plugin-commands",
+    "flags": [
+      "columns",
+      "csv",
+      "extended",
+      "filter",
+      "help",
+      "hidden",
+      "json",
+      "no-header",
+      "no-truncate",
+      "output",
+      "sort"
+    ]
+  },
+  {
+    "command": "config:get",
+    "plugin": "@salesforce/plugin-config",
+    "flags": ["json", "loglevel", "verbose"]
+  },
+  {
+    "command": "config:list",
+    "plugin": "@salesforce/plugin-config",
+    "flags": ["json", "loglevel"]
+  },
+  {
+    "command": "config:set",
+    "plugin": "@salesforce/plugin-config",
+    "flags": ["global", "json", "loglevel"]
+  },
+  {
+    "command": "config:unset",
+    "plugin": "@salesforce/plugin-config",
+    "flags": ["global", "json", "loglevel"]
+  },
+  {
+    "command": "force",
+    "plugin": "salesforce-alm",
+    "flags": ["json", "loglevel"]
+  },
+  {
+    "command": "force:analytics:template:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["apiversion", "json", "loglevel", "outputdir", "templatename"]
+  },
+  {
+    "command": "force:apex:class:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["apiversion", "classname", "json", "loglevel", "outputdir", "template"]
+  },
+  {
+    "command": "force:apex:execute",
+    "plugin": "@salesforce/plugin-apex",
+    "flags": ["apexcodefile", "apiversion", "json", "loglevel", "targetusername"]
+  },
+  {
+    "command": "force:apex:log:get",
+    "plugin": "@salesforce/plugin-apex",
+    "flags": ["apiversion", "json", "logid", "loglevel", "number", "outputdir", "targetusername"]
+  },
+  {
+    "command": "force:apex:log:list",
+    "plugin": "@salesforce/plugin-apex",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"]
+  },
+  {
+    "command": "force:apex:log:tail",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "color", "debuglevel", "json", "loglevel", "skiptraceflag", "targetusername"]
+  },
+  {
+    "command": "force:apex:test:report",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "codecoverage",
+      "json",
+      "loglevel",
+      "outputdir",
+      "resultformat",
+      "targetusername",
+      "testrunid",
+      "verbose",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:apex:test:run",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "classnames",
+      "codecoverage",
+      "json",
+      "loglevel",
+      "outputdir",
+      "precompilewait",
+      "resultformat",
+      "suitenames",
+      "synchronous",
+      "targetusername",
+      "testlevel",
+      "tests",
+      "verbose",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:apex:trigger:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["apiversion", "json", "loglevel", "outputdir", "sobject", "template", "triggerevents", "triggername"]
+  },
+  {
+    "command": "force:cmdt:create",
+    "plugin": "@salesforce/plugin-custom-metadata",
+    "flags": ["json", "label", "loglevel", "outputdir", "plurallabel", "typename", "visibility"]
+  },
+  {
+    "command": "force:cmdt:field:create",
+    "plugin": "@salesforce/plugin-custom-metadata",
+    "flags": ["decimalplaces", "fieldname", "fieldtype", "json", "label", "loglevel", "outputdir", "picklistvalues"]
+  },
+  {
+    "command": "force:cmdt:generate",
+    "plugin": "@salesforce/plugin-custom-metadata",
+    "flags": [
+      "apiversion",
+      "devname",
+      "ignoreunsupported",
+      "json",
+      "label",
+      "loglevel",
+      "plurallabel",
+      "recordsoutputdir",
+      "sobjectname",
+      "targetusername",
+      "typeoutputdir",
+      "visibility"
+    ]
+  },
+  {
+    "command": "force:cmdt:record:create",
+    "plugin": "@salesforce/plugin-custom-metadata",
+    "flags": ["inputdir", "json", "label", "loglevel", "outputdir", "protected", "recordname", "typename"]
+  },
+  {
+    "command": "force:cmdt:record:insert",
+    "plugin": "@salesforce/plugin-custom-metadata",
+    "flags": ["filepath", "inputdir", "json", "loglevel", "namecolumn", "outputdir", "typename"]
+  },
+  {
+    "command": "force:community:create",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "description",
+      "json",
+      "loglevel",
+      "name",
+      "targetusername",
+      "templatename",
+      "urlpathprefix"
+    ]
+  },
+  {
+    "command": "force:community:publish",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "name", "targetusername"]
+  },
+  {
+    "command": "force:community:template:list",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"]
+  },
+  {
+    "command": "force:data:bulk:delete",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "csvfile", "json", "loglevel", "sobjecttype", "targetusername", "wait"]
+  },
+  {
+    "command": "force:data:bulk:status",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "batchid", "jobid", "json", "loglevel", "targetusername"]
+  },
+  {
+    "command": "force:data:bulk:upsert",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "csvfile", "externalid", "json", "loglevel", "sobjecttype", "targetusername", "wait"]
+  },
+  {
+    "command": "force:data:record:create",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "perflog", "sobjecttype", "targetusername", "usetoolingapi", "values"]
+  },
+  {
+    "command": "force:data:record:delete",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "json",
+      "loglevel",
+      "perflog",
+      "sobjectid",
+      "sobjecttype",
+      "targetusername",
+      "usetoolingapi",
+      "where"
+    ]
+  },
+  {
+    "command": "force:data:record:get",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "json",
+      "loglevel",
+      "perflog",
+      "sobjectid",
+      "sobjecttype",
+      "targetusername",
+      "usetoolingapi",
+      "where"
+    ]
+  },
+  {
+    "command": "force:data:record:update",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "json",
+      "loglevel",
+      "perflog",
+      "sobjectid",
+      "sobjecttype",
+      "targetusername",
+      "usetoolingapi",
+      "values",
+      "where"
+    ]
+  },
+  {
+    "command": "force:data:soql:query",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "perflog", "query", "resultformat", "targetusername", "usetoolingapi"]
+  },
+  {
+    "command": "force:data:tree:export",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "outputdir", "plan", "prefix", "query", "targetusername"]
+  },
+  {
+    "command": "force:data:tree:import",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "confighelp",
+      "contenttype",
+      "json",
+      "loglevel",
+      "plan",
+      "sobjecttreefiles",
+      "targetusername"
+    ]
+  },
+  {
+    "command": "force:lightning:app:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["apiversion", "appname", "internal", "json", "loglevel", "outputdir", "template"]
+  },
+  {
+    "command": "force:lightning:component:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["apiversion", "componentname", "internal", "json", "loglevel", "outputdir", "template", "type"]
+  },
+  {
+    "command": "force:lightning:event:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["apiversion", "eventname", "internal", "json", "loglevel", "outputdir", "template"]
+  },
+  {
+    "command": "force:lightning:interface:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["apiversion", "interfacename", "internal", "json", "loglevel", "outputdir", "template"]
+  },
+  {
+    "command": "force:lightning:lint",
+    "plugin": "salesforcedx",
+    "flags": ["config", "exit", "files", "ignore", "json", "loglevel", "verbose"]
+  },
+  {
+    "command": "force:lightning:lwc:test:create",
+    "plugin": "@salesforce/sfdx-plugin-lwc-test",
+    "flags": ["filepath", "json", "loglevel"]
+  },
+  {
+    "command": "force:lightning:lwc:test:run",
+    "plugin": "@salesforce/sfdx-plugin-lwc-test",
+    "flags": ["debug", "json", "loglevel", "watch"]
+  },
+  {
+    "command": "force:lightning:lwc:test:setup",
+    "plugin": "@salesforce/sfdx-plugin-lwc-test",
+    "flags": ["json", "loglevel"]
+  },
+  {
+    "command": "force:lightning:test:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["internal", "json", "loglevel", "outputdir", "template", "testname"]
+  },
+  {
+    "command": "force:limits:api:display",
+    "plugin": "@salesforce/plugin-limits",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"]
+  },
+  {
+    "command": "force:mdapi:convert",
+    "plugin": "salesforce-alm",
+    "flags": ["json", "loglevel", "manifest", "metadata", "metadatapath", "outputdir", "rootdir"]
+  },
+  {
+    "command": "force:mdapi:deploy",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "checkonly",
+      "deploydir",
+      "ignoreerrors",
+      "ignorewarnings",
+      "json",
+      "loglevel",
+      "runtests",
+      "singlepackage",
+      "targetusername",
+      "testlevel",
+      "validateddeployrequestid",
+      "verbose",
+      "wait",
+      "zipfile"
+    ]
+  },
+  {
+    "command": "force:mdapi:deploy:cancel",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "wait"]
+  },
+  {
+    "command": "force:mdapi:deploy:report",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"]
+  },
+  {
+    "command": "force:mdapi:describemetadata",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "filterknown", "json", "loglevel", "resultfile", "targetusername"]
+  },
+  {
+    "command": "force:mdapi:listmetadata",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "folder", "json", "loglevel", "metadatatype", "resultfile", "targetusername"]
+  },
+  {
+    "command": "force:mdapi:retrieve",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "json",
+      "loglevel",
+      "packagenames",
+      "retrievetargetdir",
+      "singlepackage",
+      "sourcedir",
+      "targetusername",
+      "unpackaged",
+      "verbose",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:mdapi:retrieve:report",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "jobid", "json", "loglevel", "retrievetargetdir", "targetusername", "verbose", "wait"]
+  },
+  {
+    "command": "force:org:clone",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "definitionfile",
+      "definitionjson",
+      "json",
+      "loglevel",
+      "setalias",
+      "setdefaultusername",
+      "targetusername",
+      "type",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:org:create",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "clientid",
+      "definitionfile",
+      "definitionjson",
+      "durationdays",
+      "env",
+      "json",
+      "loglevel",
+      "noancestors",
+      "nonamespace",
+      "setalias",
+      "setdefaultusername",
+      "targetdevhubusername",
+      "targetusername",
+      "type",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:org:delete",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "noprompt", "targetdevhubusername", "targetusername"]
+  },
+  {
+    "command": "force:org:display",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "targetusername", "verbose"]
+  },
+  {
+    "command": "force:org:list",
+    "plugin": "salesforce-alm",
+    "flags": ["all", "clean", "json", "loglevel", "noprompt", "skipconnectionstatus", "verbose"]
+  },
+  {
+    "command": "force:org:open",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "path", "targetusername", "urlonly"]
+  },
+  {
+    "command": "force:org:shape:create",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "definitionfile", "json", "loglevel", "targetusername"]
+  },
+  {
+    "command": "force:org:shape:delete",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "noprompt", "targetusername"]
+  },
+  {
+    "command": "force:org:shape:list",
+    "plugin": "salesforce-alm",
+    "flags": ["json", "loglevel", "verbose"]
+  },
+  {
+    "command": "force:org:snapshot:create",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "description", "json", "loglevel", "snapshotname", "sourceorg", "targetdevhubusername"]
+  },
+  {
+    "command": "force:org:snapshot:delete",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "snapshot", "targetdevhubusername"]
+  },
+  {
+    "command": "force:org:snapshot:get",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "snapshot", "targetdevhubusername"]
+  },
+  {
+    "command": "force:org:snapshot:list",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "targetdevhubusername"]
+  },
+  {
+    "command": "force:org:status",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "json",
+      "loglevel",
+      "sandboxname",
+      "setalias",
+      "setdefaultusername",
+      "targetusername",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:package1:version:create",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "description",
+      "installationkey",
+      "json",
+      "loglevel",
+      "managedreleased",
+      "name",
+      "packageid",
+      "postinstallurl",
+      "releasenotesurl",
+      "targetusername",
+      "version",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:package1:version:create:get",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "requestid", "targetusername"]
+  },
+  {
+    "command": "force:package1:version:display",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "packageversionid", "targetusername"]
+  },
+  {
+    "command": "force:package1:version:list",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "packageid", "targetusername"]
+  },
+  {
+    "command": "force:package:convert",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "buildinstance",
+      "installationkey",
+      "installationkeybypass",
+      "json",
+      "loglevel",
+      "package",
+      "targetdevhubusername",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:package:create",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "description",
+      "errornotificationusername",
+      "json",
+      "loglevel",
+      "name",
+      "nonamespace",
+      "orgdependent",
+      "packagetype",
+      "path",
+      "targetdevhubusername"
+    ]
+  },
+  {
+    "command": "force:package:delete",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "noprompt", "package", "targetdevhubusername", "undelete"]
+  },
+  {
+    "command": "force:package:hammertest:list",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "packageversionid", "targetusername"]
+  },
+  {
+    "command": "force:package:hammertest:report",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "requestid", "summary", "targetusername"]
+  },
+  {
+    "command": "force:package:hammertest:run",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apextestinterface",
+      "apextests",
+      "apiversion",
+      "json",
+      "loglevel",
+      "packageversionids",
+      "preview",
+      "scheduledrundatetime",
+      "subscriberfile",
+      "subscriberorgs",
+      "targetusername"
+    ]
+  },
+  {
+    "command": "force:package:install",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apexcompile",
+      "apiversion",
+      "installationkey",
+      "json",
+      "loglevel",
+      "noprompt",
+      "package",
+      "publishwait",
+      "securitytype",
+      "targetusername",
+      "upgradetype",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:package:install:report",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "requestid", "targetusername"]
+  },
+  {
+    "command": "force:package:installed:list",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"]
+  },
+  {
+    "command": "force:package:list",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "targetdevhubusername", "verbose"]
+  },
+  {
+    "command": "force:package:uninstall",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "package", "targetusername", "wait"]
+  },
+  {
+    "command": "force:package:uninstall:report",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "requestid", "targetusername"]
+  },
+  {
+    "command": "force:package:update",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "description",
+      "errornotificationusername",
+      "json",
+      "loglevel",
+      "name",
+      "package",
+      "targetdevhubusername"
+    ]
+  },
+  {
+    "command": "force:package:version:create",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "branch",
+      "buildinstance",
+      "codecoverage",
+      "definitionfile",
+      "installationkey",
+      "installationkeybypass",
+      "json",
+      "loglevel",
+      "package",
+      "path",
+      "postinstallscript",
+      "postinstallurl",
+      "preserve",
+      "releasenotesurl",
+      "skipvalidation",
+      "sourceorg",
+      "tag",
+      "targetdevhubusername",
+      "uninstallscript",
+      "validateschema",
+      "versiondescription",
+      "versionname",
+      "versionnumber",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:package:version:create:list",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "createdlastdays", "json", "loglevel", "status", "targetdevhubusername"]
+  },
+  {
+    "command": "force:package:version:create:report",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "packagecreaterequestid", "targetdevhubusername"]
+  },
+  {
+    "command": "force:package:version:delete",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "noprompt", "package", "targetdevhubusername", "undelete"]
+  },
+  {
+    "command": "force:package:version:displayancestry",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "dotcode", "json", "loglevel", "package", "targetdevhubusername", "verbose"]
+  },
+  {
+    "command": "force:package:version:list",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "concise",
+      "createdlastdays",
+      "json",
+      "loglevel",
+      "modifiedlastdays",
+      "orderby",
+      "packages",
+      "released",
+      "targetdevhubusername",
+      "verbose"
+    ]
+  },
+  {
+    "command": "force:package:version:promote",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "noprompt", "package", "targetdevhubusername"]
+  },
+  {
+    "command": "force:package:version:report",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "package", "targetdevhubusername", "verbose"]
+  },
+  {
+    "command": "force:package:version:update",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "branch",
+      "installationkey",
+      "json",
+      "loglevel",
+      "package",
+      "tag",
+      "targetdevhubusername",
+      "versiondescription",
+      "versionname"
+    ]
+  },
+  {
+    "command": "force:project:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": [
+      "defaultpackagedir",
+      "json",
+      "loginurl",
+      "loglevel",
+      "manifest",
+      "namespace",
+      "outputdir",
+      "projectname",
+      "template"
+    ]
+  },
+  {
+    "command": "force:project:upgrade",
+    "plugin": "salesforce-alm",
+    "flags": ["forceupgrade", "json", "loglevel"]
+  },
+  {
+    "command": "force:schema:sobject:describe",
+    "plugin": "@salesforce/plugin-schema",
+    "flags": ["apiversion", "json", "loglevel", "sobjecttype", "targetusername", "usetoolingapi"]
+  },
+  {
+    "command": "force:schema:sobject:list",
+    "plugin": "@salesforce/plugin-schema",
+    "flags": ["apiversion", "json", "loglevel", "sobjecttypecategory", "targetusername"]
+  },
+  {
+    "command": "force:source:convert",
+    "plugin": "salesforce-alm",
+    "flags": ["json", "loglevel", "manifest", "metadata", "outputdir", "packagename", "rootdir", "sourcepath"]
+  },
+  {
+    "command": "force:source:delete",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "checkonly",
+      "json",
+      "loglevel",
+      "metadata",
+      "noprompt",
+      "sourcepath",
+      "targetusername",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:source:deploy",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "checkonly",
+      "ignoreerrors",
+      "ignorewarnings",
+      "json",
+      "loglevel",
+      "manifest",
+      "metadata",
+      "runtests",
+      "sourcepath",
+      "targetusername",
+      "testlevel",
+      "validateddeployrequestid",
+      "verbose",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:source:deploy:cancel",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "wait"]
+  },
+  {
+    "command": "force:source:deploy:report",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "wait"]
+  },
+  {
+    "command": "force:source:open",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "sourcefile", "targetusername", "urlonly"]
+  },
+  {
+    "command": "force:source:pull",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "forceoverwrite", "json", "loglevel", "targetusername", "wait"]
+  },
+  {
+    "command": "force:source:push",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "forceoverwrite",
+      "ignorewarnings",
+      "json",
+      "loglevel",
+      "replacetokens",
+      "targetusername",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:source:retrieve",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "json",
+      "loglevel",
+      "manifest",
+      "metadata",
+      "packagenames",
+      "sourcepath",
+      "targetusername",
+      "verbose",
+      "wait"
+    ]
+  },
+  {
+    "command": "force:source:status",
+    "plugin": "salesforce-alm",
+    "flags": ["all", "apiversion", "json", "local", "loglevel", "remote", "targetusername"]
+  },
+  {
+    "command": "force:source:tracking:clear",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "noprompt", "targetusername"]
+  },
+  {
+    "command": "force:source:tracking:reset",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "noprompt", "revision", "targetusername"]
+  },
+  {
+    "command": "force:staticresource:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["apiversion", "contenttype", "json", "loglevel", "outputdir", "resourcename"]
+  },
+  {
+    "command": "force:user:create",
+    "plugin": "@salesforce/plugin-user",
+    "flags": ["apiversion", "definitionfile", "json", "loglevel", "setalias", "targetdevhubusername", "targetusername"]
+  },
+  {
+    "command": "force:user:display",
+    "plugin": "@salesforce/plugin-user",
+    "flags": ["apiversion", "json", "loglevel", "targetdevhubusername", "targetusername"]
+  },
+  {
+    "command": "force:user:list",
+    "plugin": "@salesforce/plugin-user",
+    "flags": ["apiversion", "json", "loglevel", "targetdevhubusername", "targetusername"]
+  },
+  {
+    "command": "force:user:password:generate",
+    "plugin": "@salesforce/plugin-user",
+    "flags": ["apiversion", "json", "loglevel", "onbehalfof", "targetdevhubusername", "targetusername"]
+  },
+  {
+    "command": "force:user:permset:assign",
+    "plugin": "@salesforce/plugin-user",
+    "flags": ["apiversion", "json", "loglevel", "onbehalfof", "permsetname", "targetusername"]
+  },
+  {
+    "command": "force:visualforce:component:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["apiversion", "componentname", "json", "label", "loglevel", "outputdir", "template"]
+  },
+  {
+    "command": "force:visualforce:page:create",
+    "plugin": "@salesforce/plugin-templates",
+    "flags": ["apiversion", "json", "label", "loglevel", "outputdir", "pagename", "template"]
+  },
+  {
+    "command": "help",
+    "plugin": "@oclif/plugin-help",
+    "flags": ["all"]
+  },
+  {
+    "command": "plugins",
+    "plugin": "@oclif/plugin-plugins",
+    "flags": ["core"]
+  },
+  {
+    "command": "plugins:generate",
+    "plugin": "@salesforce/plugin-generator",
+    "flags": ["defaults", "force"]
+  },
+  {
+    "command": "plugins:install",
+    "plugin": "@oclif/plugin-plugins",
+    "flags": ["force", "help", "verbose"]
+  },
+  {
+    "command": "plugins:link",
+    "plugin": "@oclif/plugin-plugins",
+    "flags": ["help", "verbose"]
+  },
+  {
+    "command": "plugins:trust:fingerprint",
+    "plugin": "@salesforce/sfdx-trust",
+    "flags": ["json", "loglevel", "publickeyurl"]
+  },
+  {
+    "command": "plugins:trust:sign",
+    "plugin": "@salesforce/sfdx-trust",
+    "flags": ["json", "loglevel", "privatekeypath", "publickeyurl", "signatureurl", "target"]
+  },
+  {
+    "command": "plugins:trust:verify",
+    "plugin": "@salesforce/sfdx-trust",
+    "flags": ["json", "loglevel", "npm", "registry"]
+  },
+  {
+    "command": "plugins:uninstall",
+    "plugin": "@oclif/plugin-plugins",
+    "flags": ["help", "verbose"]
+  },
+  {
+    "command": "plugins:update",
+    "plugin": "@oclif/plugin-plugins",
+    "flags": ["help", "verbose"]
+  },
+  {
+    "command": "telemetry",
+    "plugin": "@salesforce/plugin-analytics",
+    "flags": []
+  },
+  {
+    "command": "update",
+    "plugin": "@oclif/plugin-update",
+    "flags": ["autoupdate"]
+  },
+  {
+    "command": "which",
+    "plugin": "@oclif/plugin-which",
+    "flags": []
   }
 ]
