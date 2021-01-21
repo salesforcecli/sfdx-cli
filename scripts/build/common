@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+#script "clean/all"
+
+mkdir -p "$TMP_DIR"
+mkdir -p "$RELEASE_DIR"
+mkdir -p "$RELEASE_VERSION_DIR"
+
+script "build/dist"
+script "lint/all"
+script "build/base"
+script "test/all" "$BASE_DIR"
+script "clean/base"
+script "build/verify"

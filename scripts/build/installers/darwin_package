@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+export OS=darwin
+export ARCH=x64
+
+source ./scripts/_init
+
+set -ex
+
+PKG_DIR="$WORKSPACE_DIR/installer"
+mkdir -p "$PKG_DIR"
+
+extra_args=()
+if [[ ! -z "${OSX_SIGNING_IDENTITY:-}" ]]; then
+    extra_args+=("--sign" "Developer ID Installer: $OSX_SIGNING_IDENTITY")
+    if [[ ! -z "${OSX_KEYCHAIN:-}" ]]; then
+        extra_args+=("--keychain" "$OSX_KEYCHAIN")
+    fi
+fi
+
+IDENTIFIER="com.salesforce.developer.cli"
+
+pkgbuild --root "$WORKSPACE_DIR" \
+    --identifier "$IDENTIFIER" \
+    --install-location "/usr/local/lib/$BIN_NAME" \
+    --version "$VERSION" \
+    --scripts "$RESOURCES_DIR/darwin/scripts" \
+    "$PKG_DIR/$PKG_NAME.pkg"
+
+sed "s/IDENTIFIER/$IDENTIFIER/g" "$RESOURCES_DIR/darwin/distribution.xml" |
+    sed "s/PKG_NAME/$PKG_NAME/g" |
+    sed "s/PKG_DESC/$PKG_DESC/g" |
+    sed "s/VERSION/$SHORT_VERSION/g" > "$TMP_DIR/$OS-$ARCH-distribution.xml"
+
+productbuild --distribution "$TMP_DIR/$OS-$ARCH-distribution.xml" \
+    --package-path "$PKG_DIR" \
+    "${extra_args[@]+${extra_args[@]}}" \
+    "$RELEASE_DIR/$PKG_NAME.pkg"
+
+if [[ ! -z "${OSX_SIGNING_IDENTITY:-}" ]]; then
+    if [[ "$(pkgutil --check-signature "$RELEASE_DIR/$PKG_NAME.pkg" | grep "$OSX_SIGNING_IDENTITY")" != *"$OSX_SIGNING_IDENTITY"* ]]; then
+        stderr "Failed to find valid '$OSX_SIGNING_IDENTITY' signature on built installer product '$RELEASE_DIR/$PKG_NAME.pkg'"
+        exit 1
+    fi
+fi
+
+cp "$RELEASE_DIR/$PKG_NAME.pkg" "$RELEASE_DIR/$INSTALLER_BASE_NAME.pkg"

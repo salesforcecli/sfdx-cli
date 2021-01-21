@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+TEST_DIR="${1:-$ROOT_DIR}"
+
+rm -rf \
+    "$TEST_DIR/*.tgz" \
+    "$TEST_DIR/*.sig" \
+    "$TEST_DIR/.nyc_output" \
+    "$TEST_DIR/coverage" \
+    "$TEST_DIR/xunit.xml" \
+    "$TEST_DIR/checkstyle.xml" \
+    "$TEST_DIR/yarn-error.log"

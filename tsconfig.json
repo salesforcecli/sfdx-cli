@@ -1,8 +1,13 @@
 {
-  "extends": "@salesforce/dev-config/tsconfig",
+  "extends": "./node_modules/@salesforce/dev-config/tsconfig.json",
   "compilerOptions": {
-    "outDir": "lib",
-    "rootDir": "src"
+    "outDir": "dist",
+    "typeRoots": ["./node_modules/@types"],
+    "baseUrl": "./",
+    "strict": true,
+    "declaration": false,
+    "allowJs": true,
+    "importHelpers": true
   },
-  "include": ["./src/**/*.ts"]
+  "include": ["src/**/*.ts", "src/**/*.js"]
 }

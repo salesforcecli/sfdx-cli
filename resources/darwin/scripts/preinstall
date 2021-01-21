@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -ex
+
+sudo rm -rf /usr/local/lib/sfdx
+sudo rm -rf /usr/local/sfdx
+sudo rm -rf /usr/local/bin/sfdx
