@@ -115,7 +115,7 @@ describe('updateReachability preupdate hook', () => {
   it('should warn about updating from a custom S3 host and ask about auth', async () => {
     env.setS3HostOverride('http://myprivates3.com/sfdx/media/salesforce-cli');
     await callHook();
-    expect(warnings).to.deep.equal(['Updating from SFDX_S3_HOST override']);
+    expect(warnings).to.deep.equal(['Updating from SFDX_S3_HOST override.']);
     expect(errors).to.deep.equal([]);
   }).timeout(5000);
 

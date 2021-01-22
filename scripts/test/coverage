@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+source ./scripts/_init
+
+set -ex
+
+TEST_DIR="${1:-$ROOT_DIR}"
+cd "$TEST_DIR"
+
+"$ROOT_DIR/node_modules/.bin/nyc" report --reporter html --reporter json --reporter json-summary
