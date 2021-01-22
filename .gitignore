@@ -19,7 +19,8 @@ src/temp
 oclif.manifest.json
 npm-shrinkwrap.json
 /Library/*
-
+# don't ignore any scripts
+!/scripts/
 
 # use yarn by default, so ignore npm
 package-lock.json
@@ -40,7 +41,6 @@ lib
 *checkstyle.xml
 *unitcoverage
 .nyc_output
-coverage
 
 # generated docs
 docs
@@ -54,3 +54,4 @@ node_modules
 # os specific files
 .DS_Store
 .idea
+
