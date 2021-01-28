@@ -3,6 +3,21 @@ version: 2.1
 orbs:
   release-management: salesforce/npm-release-management@4
 
+jobs:
+  pack-and-upload-tarballs: &pack-and-upload-tarballs
+    docker:
+      - image: node:latest
+    resource_class: xlarge
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: |
+          apt-get update
+          apt-get install -y p7zip-full
+      - run: yarn install
+      - run: yarn pack:tarballs
+      - run: yarn upload:tarballs
+
 workflows:
   version: 2.1
   test:
@@ -26,17 +41,23 @@ workflows:
           node_version: latest
           filters:
             branches:
-              only: main
+              only:
+                - main
+                - archives
       - release-management/test-package:
           name: node-14
           filters:
             branches:
-              only: main
+              only:
+                - main
+                - archives
       - release-management/test-package:
           name: node-12
           filters:
             branches:
-              only: main
+              only:
+                - main
+                - archives
       - approval:
           type: approval
           requires:
@@ -49,5 +70,16 @@ workflows:
             - release-management/pin-dependencies:
                 tag: latest-rc
           github-release: true
+          requires:
+            - approval
+          filters:
+            branches:
+              only:
+                - main
+      - pack-and-upload-tarballs:
+          filters:
+            branches:
+              only:
+                - archives
           requires:
             - approval
