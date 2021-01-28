@@ -37,7 +37,6 @@ workflows:
             - node-12
       - release-management/release-package:
           tag: latest-rc
-          dryrun: true
           sign: true
           pre-job-steps:
             - release-management/pin-dependencies:
