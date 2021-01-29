@@ -45,7 +45,6 @@ workflows:
             - node-12
       - release-management/release-package:
           tag: latest-rc
-          sign: true
           pre-job-steps:
             - release-management/pin-dependencies:
                 tag: latest-rc
