@@ -6,6 +6,7 @@ This is the latest `sfdx` CLI application, based on the
 ## Releases
 
 We publish the `latest` CLI on Thursdays. At the same time we also publish the `latest-rc` release candidate CLI. The release candidates contain changes that will likely be in the final official version for the next release.
+To Install the `latest-rc` version, run `npm install sfdx-cli@latest-rc`. We suggest having your CI/CD pipeline use the `latest-rc` in addition to the `latest` release tags.
 
 Run `sfdx version` to display the version of Salesforce CLI installed on your computer. Run `sfdx plugins --core` to display the versions of the installed plug-ins.
 
