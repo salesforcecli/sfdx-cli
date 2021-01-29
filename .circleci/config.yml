@@ -15,6 +15,8 @@ workflows:
           name: node-latest
           node_version: latest
       - release-management/test-package:
+          name: node-14
+      - release-management/test-package:
           name: node-12
 
   release:
@@ -22,6 +24,11 @@ workflows:
       - release-management/test-package:
           name: node-latest
           node_version: latest
+          filters:
+            branches:
+              only: main
+      - release-management/test-package:
+          name: node-14
           filters:
             branches:
               only: main
@@ -34,6 +41,7 @@ workflows:
           type: approval
           requires:
             - node-latest
+            - node-14
             - node-12
       - release-management/release-package:
           tag: latest-rc
