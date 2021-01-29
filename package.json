@@ -101,7 +101,7 @@
         "@salesforce/lazy-require": "^0.2.0",
         "@salesforce/plugin-alias": "1.1.5",
         "@salesforce/plugin-analytics": "^1.12.1",
-        "@salesforce/plugin-auth": "1.4.6",
+        "@salesforce/plugin-auth": "1.4.7",
         "@salesforce/plugin-config": "1.2.4",
         "@salesforce/plugin-generator": "^1.1.0",
         "@salesforce/require-analytics": "^0.7.0",
