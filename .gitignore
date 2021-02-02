@@ -1,27 +1,5 @@
 # -- CLEAN
-dist/
-*.tgz
-*.sig
-npm-debug.log
-.npm
-xunit.xml
-tmp
-.aws/
-.nvm-node
-
-.history
-coverage/
-checkstyle.xml
-.sfdx
-.cache
-/release/
-src/temp
-oclif.manifest.json
-npm-shrinkwrap.json
-/Library/*
-# don't ignore any scripts
-!/scripts/
-
+tmp/
 # use yarn by default, so ignore npm
 package-lock.json
 
@@ -41,9 +19,15 @@ lib
 *checkstyle.xml
 *unitcoverage
 .nyc_output
+coverage
 
 # generated docs
 docs
+
+# ignore sfdx-trust files
+*.tgz
+*.sig
+package.json.bak.
 
 # -- CLEAN ALL
 node_modules
@@ -54,4 +38,3 @@ node_modules
 # os specific files
 .DS_Store
 .idea
-
