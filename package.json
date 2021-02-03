@@ -119,7 +119,7 @@
         "@oclif/dev-cli": "^1.22.0",
         "@oclif/plugin-command-snapshot": "^2.0.0",
         "@salesforce/dev-config": "^2.0.0",
-        "@salesforce/dev-scripts": "^0.6.2",
+        "@salesforce/dev-scripts": "^0.7.0",
         "@salesforce/prettier-config": "^0.0.1",
         "@salesforce/ts-sinon": "~1.1.0",
         "@types/debug": "~0.0.31",
