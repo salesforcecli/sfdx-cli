@@ -98,7 +98,7 @@
         "@oclif/plugin-warn-if-update-available": "^1.7.0",
         "@oclif/plugin-which": "^1.0.3",
         "@salesforce/kit": "^1.2.0",
-        "@salesforce/lazy-require": "^0.2.0",
+        "@salesforce/lazy-require": "^0.4.0",
         "@salesforce/plugin-alias": "1.1.5",
         "@salesforce/plugin-analytics": "^1.12.1",
         "@salesforce/plugin-auth": "1.4.7",
