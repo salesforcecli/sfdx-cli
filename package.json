@@ -123,7 +123,7 @@
         "@salesforce/prettier-config": "^0.0.1",
         "@salesforce/ts-sinon": "~1.1.0",
         "@types/debug": "~0.0.31",
-        "@types/fs-extra": "~4.0.9",
+        "@types/fs-extra": "~9.0.6",
         "@types/request": "~2.48.2",
         "@typescript-eslint/eslint-plugin": "^2.30.0",
         "@typescript-eslint/parser": "^2.30.0",
