@@ -34,6 +34,8 @@ describe('lazyRequire', () => {
   });
 
   afterEach(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     delete mod.lazyRequire;
   });
 

@@ -10,6 +10,7 @@ import * as path from 'path';
 import { run as oclifRun } from '@oclif/command';
 import { Config, IConfig } from '@oclif/config';
 import { set } from '@salesforce/kit';
+import { AnyJson, get } from '@salesforce/ts-types';
 import * as Debug from 'debug';
 import * as lazyRequire from './lazyRequire';
 import { default as nodeEnv, Env } from './util/env';
@@ -116,19 +117,20 @@ function debugCliInfo(version: string, channel: string, env: Env, config: IConfi
   );
 }
 
-// this returns 'any' and even disabling no-explicit-any the compiler still complained, so remove return type
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function create(version: string, channel: string, run = oclifRun, env = nodeEnv) {
+export function create(
+  version: string,
+  channel: string,
+  run = oclifRun,
+  env = nodeEnv
+): { run: () => Promise<unknown> } {
   const root = path.resolve(__dirname, '..');
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const pjson = require(path.resolve(__dirname, '..', 'package.json'));
+  const pjson = require(path.resolve(__dirname, '..', 'package.json')) as AnyJson;
   const args = process.argv.slice(2);
 
   return {
-    // this returns 'any' and even disabling no-explicit-any the compiler still complained, so remove return type
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    async run() {
-      const config = new Config({ name: pjson.oclif.bin, root, version, channel });
+    async run(): Promise<unknown> {
+      const config = new Config({ name: get(pjson, 'oclif.bin') as string | undefined, root, version, channel });
       await config.load();
       configureUpdateSites(config, env);
       configureAutoUpdate(env);
@@ -136,7 +138,7 @@ export function create(version: string, channel: string, run = oclifRun, env = n
       if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
         lazyRequire.start(config);
       }
-      return await run(args, config);
+      return (await run(args, config)) as unknown;
     },
   };
 }

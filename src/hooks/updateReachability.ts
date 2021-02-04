@@ -7,7 +7,7 @@
 
 import { Hook, IConfig } from '@oclif/config';
 import { sleep } from '@salesforce/kit';
-import { JsonMap, Optional } from '@salesforce/ts-types';
+import { isInstance, JsonMap, Optional } from '@salesforce/ts-types';
 import * as Debug from 'debug';
 import { HTTP } from 'http-call';
 import { SfdxError } from '@salesforce/core';
@@ -37,7 +37,7 @@ async function fetchManifest(manifestUrl: string, httpClient: typeof HTTP): Prom
     debug('fetch succeeded', json);
     return json;
   } catch (err) {
-    if (err.name === 'ManifestNotFoundError') {
+    if (isInstance(err, Error) && err.name === 'ManifestNotFoundError') {
       throw err;
     }
     debug('fetch failed', err);
@@ -134,7 +134,11 @@ const hook: UpdateReachabilityHook = async function (options) {
       await canUpdate(this, options.channel, s3Url, http);
     }
   } catch (err) {
-    return this.error(err.message);
+    if (isInstance(err, Error)) {
+      return this.error(err.message);
+    } else {
+      this.error(`Unknown error ${err as string}`);
+    }
   }
 };
 

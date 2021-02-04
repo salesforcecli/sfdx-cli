@@ -8,7 +8,7 @@
 /* eslint-disable no-unused-expressions*/
 /* eslint-disable @typescript-eslint/require-await*/
 import { Hooks, IConfig } from '@oclif/config';
-import { StubbedCallableType, stubInterface } from '@salesforce/ts-sinon';
+import { StubbedType, stubInterface, stubMethod } from '@salesforce/ts-sinon';
 import { JsonMap, Optional } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import { HTTP } from 'http-call';
@@ -23,7 +23,7 @@ class SystemError extends Error {
 }
 
 describe('updateReachability preupdate hook', () => {
-  let httpClient: StubbedCallableType<typeof HTTP>;
+  let httpClient: StubbedType<typeof HTTP>;
   let sandbox: sinon.SinonSandbox;
   let context: UpdateReachabilityHookContext;
   let config: IConfig;
@@ -65,14 +65,12 @@ describe('updateReachability preupdate hook', () => {
       sha256gz: 'deadbeef',
     };
 
-    httpClient = {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-      // @ts-ignore
-      get: sandbox.stub(HTTP, 'get').callsFake(() => {
+    httpClient = stubInterface<typeof HTTP>(sandbox, {
+      get: stubMethod(sandbox, HTTP, 'get').callsFake(() => {
         if (error) throw error;
         return { body, statusCode };
       }),
-    };
+    });
 
     warnings = [];
     errors = [];
