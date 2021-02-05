@@ -13,6 +13,8 @@ lerna-debug.log
 
 # compile source
 lib
+dist
+release
 
 # test artifacts
 *xunit.xml
@@ -28,6 +30,9 @@ docs
 *.tgz
 *.sig
 package.json.bak.
+
+.sfdx
+Library
 
 # -- CLEAN ALL
 node_modules

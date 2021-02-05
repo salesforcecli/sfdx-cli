@@ -7,6 +7,7 @@
 
 import { Hook, IConfig } from '@oclif/config';
 import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
+import { getString } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import hook from './hooks/verifyPluginVersion';
@@ -54,6 +55,7 @@ describe('verifyPluginVersion preinstall hook', () => {
   it('should not allow the salesforcedx plugin with tag "41.1.0" to be installed', async () => {
     await testHook('41.1.0');
     // eslint-disable-next-line no-unused-expressions
-    expect(context.error.getCalls().some((call) => call.args[0].includes('can only be installed'))).to.be.true;
+    expect(context.error.getCalls().some((call) => getString(call, 'args[0]')?.includes('can only be installed'))).to.be
+      .true;
   });
 });
