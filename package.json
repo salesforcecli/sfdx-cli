@@ -32,12 +32,6 @@
       "preupdate": [
         "./dist/hooks/preupdate.js"
       ],
-      "preupdate:reachability": [
-        "./dist/hooks/updateReachability.js"
-      ],
-      "preupdate:migrate:plugins": [
-        "./dist/hooks/migratePlugins.js"
-      ],
       "update": [
         "./dist/hooks/lazyRequire.js"
       ]
@@ -109,7 +103,6 @@
     "@salesforce/plugin-telemetry": "1.1.1",
     "@salesforce/ts-types": "^1.5.0",
     "debug": "^4.3.1",
-    "http-call": "^5.3.0",
     "salesforcedx": "50.17.0",
     "tslib": "^2.1.0",
     "v8-compile-cache": "^2.2.0"
@@ -198,19 +191,5 @@
       "pre-commit": "sf-husky-pre-commit",
       "commit-msg": "sf-husky-commit-msg"
     }
-  },
-  "nyc": {
-    "check-coverage": true,
-    "lines": 99,
-    "statements": 99,
-    "functions": 97,
-    "branches": 72,
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "exclude": [
-      "dist/**/*.test.js"
-    ]
   }
 }
