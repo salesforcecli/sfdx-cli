@@ -7,7 +7,7 @@ This is the `sfdx` CLI application, based on Heroku's
 
 ### Requirements
 
-To get started, you'll need to install `node` v8.4 or greater, though we recommend using the latest v10 (LTS) for the best experience. While this can be done using an installer from [nodejs.com](nodejs.com) or via an OS-specific package manager, we recommend using [nvm](https://github.com/creationix/nvm) to easily manage multiple `node` versions.
+To get started, you'll need to install `node` v10 or greater, though we recommend using the active LTS for the best experience. While this can be done using an installer from [nodejs.com](nodejs.com) or via an OS-specific package manager, we recommend using [nvm](https://github.com/creationix/nvm) to easily manage multiple `node` versions.
 
 If using `nvm`, be sure that you've selected the appropriate version with something like `nvm use v10.x.y`, where `x` and `y` are specific to the version that you installed. If you want to use this version by default run `nvm alias default node` -- otherwise, when you restart your shell `nvm` will revert to whatever version configured prior to installing the latest.
 
