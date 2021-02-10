@@ -82,4 +82,4 @@ workflows:
               only:
                 - main
           requires:
-            - approval
+            - release-management/release-package
