@@ -10,7 +10,6 @@ import { Hook } from '@oclif/config';
 const hook: Hook.Preupdate = async function (options) {
   // Run individual hooks serially since oclif runs hooks in parallel, which causes UX problems in this case
   await this.config.runHook('preupdate:reachability', options);
-  await this.config.runHook('preupdate:migrate:plugins', options);
 };
 
 export default hook;
