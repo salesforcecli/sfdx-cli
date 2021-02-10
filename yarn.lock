@@ -1111,10 +1111,10 @@
   resolved "https://registry.yarnpkg.com/@salesforce/prettier-config/-/prettier-config-0.0.1.tgz#4ef70bca610ea981181fb030b25a27797b15cdff"
   integrity sha512-o43j1I6JliElZXmTL5q1ni2frSkO5o/kCjIp7nI56cWBHWeZaM81vXOmap8TESDzIrEok6tF5jLKyEv4+SOleQ==
 
-"@salesforce/require-analytics@^0.7.0":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/require-analytics/-/require-analytics-0.7.3.tgz#b967dfa2f9ddcaf0d68cbfbe65f37375bb92b8c0"
-  integrity sha512-gFX4jrz8HNCPRPhfuK5MVhQj+iw7hzJSFETg8oBP1a+4tkcvsQWynO9gJGIJtYW8F96HkOmqZQhkdLCG8CgGtg==
+"@salesforce/require-analytics@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/require-analytics/-/require-analytics-0.9.0.tgz#a3a64ac002ab513cf3276652a05f4e76b0cc2ffb"
+  integrity sha512-di1d4IL6jcl0n68j+HJbKs1hFN47kqpKnu72slGiqCN/aRQUFbAn73PvA9EnR9YmT5TmWlt0Sc6J5YFGM6662Q==
   dependencies:
     tslib "^1.10.0"
 
