@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.88.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.87.0...v7.88.0) (2021-02-10)
+
+
+### Features
+
+* remove s3 check for stability ([#34](https://github.com/salesforcecli/sfdx-cli/issues/34)) [skip-ci] ([f2bd13b](https://github.com/salesforcecli/sfdx-cli/commit/f2bd13bcaf5676ad018540156120988d23361211))
+
 ## [7.87.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.86.3...v7.87.0) (2021-02-05)
 
 
