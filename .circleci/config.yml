@@ -80,6 +80,6 @@ workflows:
           filters:
             branches:
               only:
-                - archives
+                - main
           requires:
             - approval
