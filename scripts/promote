@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -ex
+
+# load aws profile
+./scripts/_init
+
+# promote with flags
+yarn promote $@
+
+# invalidate channels cache
+aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DISTRIBUTION" --paths "media/saleforce-cli/sfdx/channels/*"

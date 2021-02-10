@@ -60,13 +60,14 @@
     "update": {
       "s3": {
         "bucket": "dfc-data-production",
-        "folder": "media/salesforce-cli",
-        "host": "https://developer.salesforce.com/media/salesforce-cli",
+        "folder": "media/salesforce-cli/sfdx",
+        "acl": " ",
+        "host": "https://developer.salesforce.com",
         "templates": {
           "target": {
             "baseDir": "sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
-            "manifest": "sfdx-cli/channels/<%- channel %>/<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
-            "versioned": "sfdx-cli/channels/<%- channel %>/sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>.tar.<%- ext %>"
+            "manifest": "media/salesforce-cli/sfdx-cli/channels/<%- channel %>/<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
+            "versioned": "media/salesforce-cli/sfdx-cli/channels/<%- channel %>/sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>.tar.<%- ext %>"
           }
         }
       }
@@ -88,7 +89,7 @@
     "@oclif/plugin-help": "^3.2.2",
     "@oclif/plugin-not-found": "^1.2.4",
     "@oclif/plugin-plugins": "^1.9.5",
-    "@oclif/plugin-update": "^1.3.10",
+    "@oclif/plugin-update": "1.4.0-1",
     "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "@oclif/plugin-which": "^1.0.3",
     "@salesforce/kit": "^1.4.0",
@@ -98,9 +99,9 @@
     "@salesforce/plugin-auth": "1.4.8",
     "@salesforce/plugin-config": "1.2.4",
     "@salesforce/plugin-generator": "^1.1.0",
+    "@salesforce/plugin-telemetry": "1.1.1",
     "@salesforce/require-analytics": "^0.7.0",
     "@salesforce/sfdx-trust": "^3.6.0",
-    "@salesforce/plugin-telemetry": "1.1.1",
     "@salesforce/ts-types": "^1.5.0",
     "debug": "^4.3.1",
     "salesforcedx": "50.17.0",
@@ -119,6 +120,7 @@
     "@types/request": "^2.48.5",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
+    "aws-sdk": "^2.836.0",
     "chai": "^4.2.0",
     "check-yarn-lock": "^0.2.1",
     "eslint": "^6.8.0",
@@ -136,6 +138,7 @@
     "mocha": "^7.2.0",
     "npm": "^7.5.2",
     "nyc": "^15.1.0",
+    "oclif": "oclif/oclif#publish-s3-keys-compiled",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "sinon": "^9.0.2",
@@ -149,6 +152,15 @@
     "build-mac-from-sources": "scripts/build/installers/darwin_from_sources",
     "build-standalone": "scripts/build/standalone",
     "build-windows": "scripts/build/installers/windows",
+    "pack:tarballs": "oclif pack:tarballs",
+    "pack:mac": "oclif pack:macos",
+    "pack:deb": "oclif pack:deb",
+    "pack:windows": "oclif pack:win",
+    "upload:tarballs": "oclif upload:tarballs",
+    "upload:mac": "oclif upload:macos",
+    "upload:deb": "oclif upload:deb",
+    "upload:windows": "oclif upload:win",
+    "promote": "oclif promote",
     "clean": "yarn clean-dist && yarn clean-test",
     "clean-all": "scripts/clean/all",
     "clean-build": "scripts/clean/build",
