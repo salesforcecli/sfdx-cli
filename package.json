@@ -88,7 +88,7 @@
     "@oclif/plugin-help": "^3.2.2",
     "@oclif/plugin-not-found": "^1.2.4",
     "@oclif/plugin-plugins": "^1.9.5",
-    "@oclif/plugin-update": "1.4.0-1",
+    "@oclif/plugin-update": "1.4.0-2",
     "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "@oclif/plugin-which": "^1.0.3",
     "@salesforce/kit": "^1.4.0",

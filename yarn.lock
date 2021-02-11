@@ -708,10 +708,10 @@
     tslib "^2.0.0"
     yarn "^1.21.1"
 
-"@oclif/plugin-update@1.4.0-1":
-  version "1.4.0-1"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-update/-/plugin-update-1.4.0-1.tgz#a31832707f55f52fc5efe2065ca4fd620023b6d7"
-  integrity sha512-5RJN+E9HDu5Pzsv8WlsKGLf151i0oXf+vDXPMlbbo3gtuzAgpNck9CiLAQETAazm9zAjlYWjDxkn8sG+dMbu8A==
+"@oclif/plugin-update@1.4.0-2":
+  version "1.4.0-2"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-update/-/plugin-update-1.4.0-2.tgz#3bf423a12abd2aca26a38b88c09daf87eb6a2278"
+  integrity sha512-pX6EFq7lKy8iVnCDcG+6BlQqQZxQYSaiz5VLpGBnrMbQ4mhCJeeVDP8+65vwoPX4qBK8o5DoOECZvZAe1Cazcw==
   dependencies:
     "@oclif/color" "^0.1.0"
     "@oclif/command" "^1.7.0"
