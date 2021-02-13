@@ -4,6 +4,40 @@ orbs:
   release-management: salesforce/npm-release-management@4
 
 jobs:
+  test-package: &test-package
+    parameters:
+      node_version:
+        description: version of node to run tests against
+        type: string
+        default: latest
+    executor:
+      name: release-management/default
+      tag: << parameters.node_version >>
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
+            - v1-npm-{{checksum ".circleci/config.yml"}}
+      - release-management/pin-dependencies:
+          tag: latest-rc
+      - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Build
+          command: yarn build
+      - save_cache:
+          key: v1-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
+          paths:
+            - ~/node_modules
+            - /usr/local/share/.cache/yarn
+            - /usr/local/share/.config/yarn
+      - release-management/verify-installed-plugin
+      - run:
+          name: Testing
+          command: yarn test
+
   pack-and-upload-tarballs: &pack-and-upload-tarballs
     docker:
       - image: node:latest
@@ -26,16 +60,16 @@ workflows:
           filters:
             branches:
               ignore: main
-      - release-management/test-package:
+      - test-package:
           name: node-latest
           node_version: latest
-      - release-management/test-package:
+      - test-package:
           name: node-14
           node_version: '14'
-      - release-management/test-package:
+      - test-package:
           name: node-12
           node_version: '12'
-      - release-management/test-package:
+      - test-package:
           name: node-10
           node_version: '10'
       - approval:
