@@ -20,7 +20,6 @@ jobs:
 
 workflows:
   version: 2.1
-  test:
   release:
     jobs:
       - release-management/validate-pr:
@@ -32,13 +31,13 @@ workflows:
           node_version: latest
       - release-management/test-package:
           name: node-14
-          node_version: 14
+          node_version: '14'
       - release-management/test-package:
           name: node-12
-          node_version: 12
+          node_version: '12'
       - release-management/test-package:
           name: node-10
-          node_version: 10
+          node_version: '10'
       - approval:
           type: approval
           requires:
