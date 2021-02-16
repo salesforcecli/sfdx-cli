@@ -95,7 +95,7 @@
     "@oclif/plugin-which": "^1.0.3",
     "@salesforce/kit": "^1.4.0",
     "@salesforce/lazy-require": "^0.4.0",
-    "@salesforce/plugin-alias": "1.1.5",
+    "@salesforce/plugin-alias": "1.1.7",
     "@salesforce/plugin-auth": "1.4.8",
     "@salesforce/plugin-config": "1.2.4",
     "@salesforce/plugin-generator": "^1.1.0",
@@ -104,7 +104,7 @@
     "@salesforce/sfdx-trust": "^3.6.0",
     "@salesforce/ts-types": "^1.5.0",
     "debug": "^4.3.1",
-    "salesforcedx": "51.0.1",
+    "salesforcedx": "51.0.2",
     "tslib": "^2.1.0",
     "v8-compile-cache": "^2.2.0"
   },
