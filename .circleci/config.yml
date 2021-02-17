@@ -76,6 +76,7 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
+      - run: ./scripts/macos/setup_keychain
       - run: yarn install
       - run: yarn pack:macos
       - run: yarn upload:macos

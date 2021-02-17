@@ -74,7 +74,8 @@
       }
     },
     "macos": {
-      "identifier": "com.salesforce.cli"
+      "identifier": "com.salesforce.cli",
+      "sign": "Developer ID Installer: Salesforce.com Inc"
     }
   },
   "pinnedDependencies": [

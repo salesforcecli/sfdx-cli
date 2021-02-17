@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+echo "$P12_CERTIFICATE" | base64 --decode > /tmp/Certificate.p12
+
+set -ex
+
+# add signing cert to keychain
+OSX_KEYCHAIN=$(pwd)/sfdx.db
+export OSX_KEYCHAIN
+security -v create-keychain -p heroku "$OSX_KEYCHAIN"
+security -v unlock-keychain -p heroku "$OSX_KEYCHAIN"
+security -v import /tmp/Certificate.p12 -A -P "${SFDX_DARWIN_SIGNING_PASS}" -k "$OSX_KEYCHAIN"
+security -v unlock-keychain -p heroku "$OSX_KEYCHAIN"
