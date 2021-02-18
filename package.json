@@ -72,6 +72,11 @@
           }
         }
       }
+    },
+    "windows": {
+      "name": "Salesforce CLI",
+      "keypath": "/tmp/sfdx-windows-key",
+      "homepage": "https://developer.salesforce.com"
     }
   },
   "pinnedDependencies": [
