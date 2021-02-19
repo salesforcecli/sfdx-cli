@@ -115,5 +115,3 @@ workflows:
             branches:
               only:
                 - main
-          requires:
-            - release-management/release-package
