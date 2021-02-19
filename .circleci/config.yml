@@ -11,8 +11,7 @@ jobs:
         type: string
         default: latest
     executor:
-      name: release-management/default
-      tag: << parameters.node_version >>
+      name: release-management/linux
     steps:
       - checkout
       - restore_cache:
