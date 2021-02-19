@@ -51,6 +51,15 @@ jobs:
       - run: yarn pack:tarballs
       - run: yarn upload:tarballs
 
+  promote-channels:
+    docker:
+      - image: node:latest
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: yarn install
+      - run: ./scripts/promote
+
 workflows:
   version: 2.1
   release:
@@ -95,6 +104,13 @@ workflows:
               only:
                 - main
       - pack-and-upload-tarballs:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - release-management/release-package
+      - promote-channels:
           filters:
             branches:
               only:

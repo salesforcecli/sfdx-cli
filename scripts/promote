@@ -2,11 +2,11 @@
 
 set -ex
 
-# load aws profile
-./scripts/_init
-
-# promote with flags
-yarn promote $@
-
-# invalidate channels cache
-aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DISTRIBUTION" --paths "media/saleforce-cli/sfdx/channels/*"
+# get updated channel files from last commit
+for channelfile in `git diff --name-only HEAD~1 HEAD | grep "^channels/*"`
+do
+  read -r _dir channel <<< $(echo $channelfile | tr "/" "\n")
+  read -r version sha <<< $(head -n 1 $channelfile | tr "-" "\n")
+  echo "Promoting $version-$sha to channel $channel"
+  yarn promote --version $version --sha $sha --channel $channel --max-age 300 --macos --win
+done
