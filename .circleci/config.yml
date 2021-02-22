@@ -82,19 +82,6 @@ jobs:
       - run: yarn install
       - run: ./scripts/promote
 
-  pack-and-upload-windows-installer:
-    <<: *pack-and-upload-tarballs
-    steps:
-      - checkout
-      - run: |
-          apt-get update
-          apt-get install -y p7zip-full \
-            osslsigncode \
-            nsis
-      - run: yarn install
-      - run: yarn pack:win
-      - run: yarn upload:win
-
 workflows:
   version: 2.1
   release:
