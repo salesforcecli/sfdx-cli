@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-echo "$SFDX_WINDOWS_KEY" | base64 --decode > /tmp/sfdx-windows-key

@@ -51,19 +51,6 @@ jobs:
       - run: yarn pack:tarballs
       - run: yarn upload:tarballs
 
-  pack-and-upload-windows-installer:
-    <<: *pack-and-upload-tarballs
-    steps:
-      - checkout
-      - run: |
-          apt-get update
-          apt-get install -y p7zip-full \
-            osslsigncode \
-            nsis
-      - run: yarn install
-      - run: yarn pack:win
-      - run: yarn upload:win
-  
   promote-stable-rc:
     docker:
       - image: node:latest
