@@ -77,7 +77,7 @@ jobs:
           apt-get update
           apt-get install -y p7zip-full \
             osslsigncode \
-            nsis 
+            nsis
       - run: yarn install
       - run: yarn pack:win
       - run: yarn upload:win
@@ -136,10 +136,9 @@ workflows:
           filters:
             branches:
               only:
-                - ci-win-build
-          #       - main
-          # requires:
-          #   - release-management/release-package
+                - main
+          requires:
+            - release-management/release-package
       - promote-stable-rc:
           filters:
             branches:
@@ -152,5 +151,3 @@ workflows:
             branches:
               only:
                 - main
-
-
