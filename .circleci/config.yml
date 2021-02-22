@@ -51,6 +51,24 @@ jobs:
       - run: yarn pack:tarballs
       - run: yarn upload:tarballs
 
+  promote-stable-rc:
+    docker:
+      - image: node:latest
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: yarn install
+      - run: ./scripts/promote-stable-rc
+
+  promote-channels:
+    docker:
+      - image: node:latest
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: yarn install
+      - run: ./scripts/promote
+
 workflows:
   version: 2.1
   release:
@@ -101,3 +119,15 @@ workflows:
                 - main
           requires:
             - release-management/release-package
+      - promote-stable-rc:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - pack-and-upload-tarballs
+      - promote-channels:
+          filters:
+            branches:
+              only:
+                - main
