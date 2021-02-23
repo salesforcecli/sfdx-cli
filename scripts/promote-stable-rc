@@ -3,7 +3,7 @@
 set -ex
 
 channel="stable-rc"
-read version <<< $(git describe --tags | tr -d "v")
+version=$(node -p -e "require('./package.json').version")
 sha=$(git rev-parse --short HEAD)
 echo "Promoting $version-$sha to channel $channel"
 yarn promote --version $version --sha $sha --channel $channel --max-age 300 --macos --win
