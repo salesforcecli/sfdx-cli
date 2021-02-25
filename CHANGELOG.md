@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.89.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.89.1...v7.89.2) (2021-02-25)
+
+
+### Bug Fixes
+
+* read version from package.json for promote-stable-rc ([#48](https://github.com/salesforcecli/sfdx-cli/issues/48)) ([6bd6555](https://github.com/salesforcecli/sfdx-cli/commit/6bd6555ebcd014ed38c8b89fd0c3771a5bf548ce))
+
 ### [7.89.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.88.4...v7.89.1) (2021-02-23)
 
 
