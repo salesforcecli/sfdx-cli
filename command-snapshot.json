@@ -431,6 +431,7 @@
       "loglevel",
       "runtests",
       "singlepackage",
+      "soapdeploy",
       "targetusername",
       "testlevel",
       "validateddeployrequestid",
@@ -542,7 +543,7 @@
   {
     "command": "force:org:shape:create",
     "plugin": "salesforce-alm",
-    "flags": ["apiversion", "definitionfile", "json", "loglevel", "targetusername"]
+    "flags": ["apiversion", "json", "loglevel", "targetusername"]
   },
   {
     "command": "force:org:shape:delete",
@@ -658,33 +659,6 @@
     "command": "force:package:delete",
     "plugin": "salesforce-alm",
     "flags": ["apiversion", "json", "loglevel", "noprompt", "package", "targetdevhubusername", "undelete"]
-  },
-  {
-    "command": "force:package:hammertest:list",
-    "plugin": "salesforce-alm",
-    "flags": ["apiversion", "json", "loglevel", "packageversionid", "targetusername"]
-  },
-  {
-    "command": "force:package:hammertest:report",
-    "plugin": "salesforce-alm",
-    "flags": ["apiversion", "json", "loglevel", "requestid", "summary", "targetusername"]
-  },
-  {
-    "command": "force:package:hammertest:run",
-    "plugin": "salesforce-alm",
-    "flags": [
-      "apextestinterface",
-      "apextests",
-      "apiversion",
-      "json",
-      "loglevel",
-      "packageversionids",
-      "preview",
-      "scheduledrundatetime",
-      "subscriberfile",
-      "subscriberorgs",
-      "targetusername"
-    ]
   },
   {
     "command": "force:package:install",
@@ -1027,6 +1001,11 @@
     "command": "plugins:generate",
     "plugin": "@salesforce/plugin-generator",
     "flags": ["defaults", "force"]
+  },
+  {
+    "command": "plugins:inspect",
+    "plugin": "@oclif/plugin-plugins",
+    "flags": ["help", "verbose"]
   },
   {
     "command": "plugins:install",
