@@ -99,7 +99,7 @@
     "@salesforce/kit": "^1.4.0",
     "@salesforce/lazy-require": "^0.4.0",
     "@salesforce/plugin-alias": "1.1.8",
-    "@salesforce/plugin-auth": "1.4.9",
+    "@salesforce/plugin-auth": "1.4.10",
     "@salesforce/plugin-config": "1.2.6",
     "@salesforce/plugin-generator": "^1.1.0",
     "@salesforce/plugin-telemetry": "1.1.1",
