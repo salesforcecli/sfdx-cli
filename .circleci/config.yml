@@ -90,6 +90,8 @@ jobs:
             osslsigncode \
             nsis
       - run: yarn install
+      - run: |
+          echo $WINDOWS_SIGNING_KEY > ./tmp/signing.key
       - run: yarn pack:win
       - run: yarn upload:win
 

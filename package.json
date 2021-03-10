@@ -75,6 +75,10 @@
     },
     "macos": {
       "identifier": "com.salesforce.cli"
+    },
+    "windows": {
+      "name": "Salesforce CLI",
+      "keypath": "./tmp/signing.key"
     }
   },
   "pinnedDependencies": [
