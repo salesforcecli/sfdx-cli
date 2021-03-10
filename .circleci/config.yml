@@ -91,7 +91,7 @@ jobs:
             nsis
       - run: yarn install
       - run: |
-          echo $WINDOWS_SIGNING_KEY > ./tmp/signing.key
+          echo $WINDOWS_SIGNING_KEY | base64 --decode > ./tmp/windows-signing.pfx
       - run: yarn pack:win
       - run: yarn upload:win
 
