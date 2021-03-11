@@ -7171,9 +7171,10 @@ object.values@^1.1.1:
     es-abstract "^1.18.0-next.2"
     has "^1.0.3"
 
-oclif@oclif/oclif#publish-s3-keys-compiled:
-  version "1.16.1"
-  resolved "https://codeload.github.com/oclif/oclif/tar.gz/f1893789414fae2c88ebd17f2c0fec1790cdf4e9"
+oclif@^1.16.2:
+  version "1.16.2"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-1.16.2.tgz#f45a0600d2b8c609274e87bd55ecaeee522ece14"
+  integrity sha512-Tiler8MAL6FmESE8mSzuY+Sfy+hU9Emc9bVKWb31SOiCSCSRc7hy2tprxaJg4Rg0uon9dtRO12cOlQ4eDkHbGw==
   dependencies:
     "@oclif/command" "^1.6"
     "@oclif/config" "^1.12.6"
