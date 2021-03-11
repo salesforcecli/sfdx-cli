@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-source ./scripts/_init
-
-set -ex
-
-script "lint/sources_with_style"
-script "lint/shell"
