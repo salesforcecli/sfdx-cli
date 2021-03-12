@@ -1,5 +1,7 @@
 # Building and releasing CLI installers
 
+TODO: Needs to be updated.
+
 Build and release of the CLI platform and standalone installers (which double as updater tarballs) are controlled by the use of the scripts in this directory.
 
 ## Directory overview
@@ -48,10 +50,6 @@ The most useful scripts can be run from `yarn`:
 - `yarn test`: Runs unit tests
 - `yarn unit`: Runs unit tests with coverage
 - `yarn watch`: Runs the TypeScript compiler in watch mode
-
-## Optional git pre-push hook
-
-It is recommended to copy the git `pre-push` hook found in `scripts/pre-push` to `.git/hooks/pre-push`. This script will run all lint and unit-test-with-coverage tasks, which can help detect errors earlier in development than when you go to create a PR.
 
 ## Local build requirements
 
