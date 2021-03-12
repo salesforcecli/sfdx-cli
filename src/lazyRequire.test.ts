@@ -8,7 +8,7 @@
 /* eslint-disable no-unused-expressions*/
 /* eslint-disable @typescript-eslint/require-await*/
 
-import { join } from 'path';
+import { join, sep } from 'path';
 import { IConfig } from '@oclif/config';
 import LazyRequire from '@salesforce/lazy-require';
 import { StubbedCallableType, StubbedType, stubCallable, stubInterface } from '@salesforce/ts-sinon';
@@ -44,7 +44,8 @@ describe('lazyRequire', () => {
   it('should cache instances of the lazy require class', () => {
     mod.start(config, create);
     expect(create.calledOnce).to.be.true;
-    expect(create.calledWith(join('test', 'module-types.json'))).to.be.true;
+    const callPath = `${sep}${join('test', 'module-types.json')}`;
+    expect(create.calledWith(callPath), callPath).to.be.true;
     expect(mod.lazyRequire).to.equal(mock);
     mod.start(config, create);
     expect(create.calledOnce).to.be.true;
