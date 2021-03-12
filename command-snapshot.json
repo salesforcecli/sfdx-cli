@@ -527,17 +527,17 @@
   },
   {
     "command": "force:org:display",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-org",
     "flags": ["apiversion", "json", "loglevel", "targetusername", "verbose"]
   },
   {
     "command": "force:org:list",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-org",
     "flags": ["all", "clean", "json", "loglevel", "noprompt", "skipconnectionstatus", "verbose"]
   },
   {
     "command": "force:org:open",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-org",
     "flags": ["apiversion", "json", "loglevel", "path", "targetusername", "urlonly"]
   },
   {
@@ -955,7 +955,16 @@
   {
     "command": "force:user:create",
     "plugin": "@salesforce/plugin-user",
-    "flags": ["apiversion", "definitionfile", "json", "loglevel", "setalias", "targetdevhubusername", "targetusername"]
+    "flags": [
+      "apiversion",
+      "definitionfile",
+      "json",
+      "loglevel",
+      "setalias",
+      "setuniqueusername",
+      "targetdevhubusername",
+      "targetusername"
+    ]
   },
   {
     "command": "force:user:display",

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-source ./scripts/_init
-
-set -ex
-
-script "clean/dist"
-script "clean/test"
-script "clean/build"

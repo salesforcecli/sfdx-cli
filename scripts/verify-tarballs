@@ -1,8 +1,20 @@
 #!/usr/bin/env bash
 
-source ./scripts/_init
-
 set -ex
+
+function stderr() {
+    set +x
+    echo "$@" 1>&2
+    set -x
+}
+
+function stdout() {
+    set +x
+    echo "$@"
+    set -x
+}
+
+BASE_DIR=tmp/sfdx
 
 # Pre-check for some known path length offenders
 
