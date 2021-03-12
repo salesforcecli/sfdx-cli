@@ -78,7 +78,7 @@
     },
     "windows": {
       "name": "Salesforce CLI",
-      "keypath": "./tmp/windows-signing.pfx"
+      "keypath": "/tmp/windows-signing.pfx"
     }
   },
   "pinnedDependencies": [
