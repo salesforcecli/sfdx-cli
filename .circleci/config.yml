@@ -14,8 +14,8 @@ jobs:
       - run: |
           apt-get update
           apt-get install -y p7zip-full
-      - run: yarn install
       - run: yarn pack:tarballs
+      - run: yarn pack:verify
       - run: yarn test-smoke-unix
 
   pack-and-upload-tarballs: &pack-and-upload-tarballs
@@ -28,19 +28,43 @@ jobs:
       - run: |
           apt-get update
           apt-get install -y p7zip-full
-      - run: yarn install
+      - restore_cache:
+          keys:
+            - v2-node-archives
       - run: yarn pack:tarballs
+      - save_cache:
+          key: v2-node-archives
+          paths:
+            - ~/tmp/cache
+            - ~/tmp/node
+      - run: yarn pack:verify
       - run: yarn test-smoke-unix
       - run: yarn upload:tarballs
 
-  promote-stable-rc:
+  promote-stable-rc-tarballs:
     docker:
       - image: node:latest
     working_directory: ~/project
     steps:
       - checkout
       - run: yarn install
-      - run: ./scripts/promote-stable-rc
+      - run: ./scripts/promote-stable-rc-tarballs
+  promote-stable-rc-mac:
+    docker:
+      - image: node:latest
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: yarn install
+      - run: ./scripts/promote-stable-rc-mac
+  promote-stable-rc-win:
+    docker:
+      - image: node:latest
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: yarn install
+      - run: ./scripts/promote-stable-rc-win
 
   promote-channels:
     docker:
@@ -74,7 +98,8 @@ jobs:
       - run: yarn install
       - run: |
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
-      - run: yarn pack:win
+          ls -la /tmp
+      - run: DEBUG=* yarn pack:win
       - run: yarn upload:win
 
 workflows:
@@ -149,13 +174,27 @@ workflows:
                 - main
           requires:
             - release-management/release-package
-      - promote-stable-rc:
+      - promote-stable-rc-tarballs:
           filters:
             branches:
               only:
                 - main
           requires:
             - pack-and-upload-tarballs
+      - promote-stable-rc-mac:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - pack-and-upload-macos-installer
+      - promote-stable-rc-win:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - pack-and-upload-windows-installer
       - promote-channels:
           filters:
             branches:
