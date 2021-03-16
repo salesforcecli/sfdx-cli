@@ -4,7 +4,7 @@ orbs:
   release-management: salesforce/npm-release-management@4
 
 jobs:
-  pack-tarballs: &pack-tarballs
+  test-pack-tarballs:
     docker:
       - image: node:latest
     resource_class: xlarge
@@ -28,17 +28,43 @@ jobs:
             - tmp/node
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
+
+  # Keep this as a seperate job from test-pack-tarballs.
+  # The persist_to_workspace takes a minute and a half, and is only needed
+  # for furture jobs ran on the main branch. Because you can't have filter
+  # criteria for steps, we duplicate the job so test-pack-tarballs runs on
+  # all branchs other than main (without persist) and pack-and-upload-tarballs
+  # only on main. There is no need to run test-pack-tarballs on main since it
+  # is done in this job.
+  pack-and-upload-tarballs: &pack-and-upload-tarballs
+    docker:
+      - image: node:latest
+    resource_class: xlarge
+    steps:
+      - checkout
+      - run: |
+          apt-get update
+          apt-get install -y p7zip-full
+      - restore_cache:
+          keys:
+            - v3-node-archives
+      - restore_cache:
+          keys:
+            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
+      - run: yarn install
+      - run: yarn pack:tarballs
+      - save_cache:
+          key: v3-node-{{ checksum "NODE_VERSION.md" }}
+          paths:
+            - tmp/cache
+            - tmp/node
+      - run: yarn pack:verify
+      - run: yarn test-smoke-unix
+      - run: yarn upload:tarballs
       - persist_to_workspace:
           root: .
           paths:
             - .
-
-  upload-tarballs:
-    <<: *pack-tarballs
-    steps:
-      - attach_workspace:
-          at: .
-      - run: yarn upload:tarballs
 
   pack-and-upload-macos-installer:
     macos:
@@ -51,7 +77,7 @@ jobs:
       - run: yarn upload:macos
 
   pack-and-upload-windows-installer:
-    <<: *pack-tarballs
+    <<: *pack-and-upload-tarballs
     steps:
       - attach_workspace:
           at: .
@@ -117,9 +143,12 @@ workflows:
       - release-management/test-package:
           name: node-12
           node_version: '12'
-      - pack-tarballs:
+      - test-pack-tarballs:
           requires:
             - node-14
+          filters:
+            branches:
+              ignore: main
       - approval:
           type: approval
           requires:
@@ -142,7 +171,7 @@ workflows:
             branches:
               only:
                 - main
-      - upload-tarballs:
+      - pack-and-upload-tarballs:
           filters:
             branches:
               only:
@@ -169,7 +198,7 @@ workflows:
               only:
                 - main
           requires:
-            - upload-tarballs
+            - pack-and-upload-tarballs
       - promote-stable-rc-mac:
           filters:
             branches:
