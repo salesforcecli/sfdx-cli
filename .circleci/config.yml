@@ -4,6 +4,12 @@ orbs:
   release-management: salesforce/npm-release-management@4
 
 jobs:
+  # There are two pack jobs:
+  # - test-pack-tarballs to run on every branch *other than main*
+  # - pack-and-upload-tarballs to run only on main
+  # The persise_to_workspace feature would allow use to have a
+  # pack-tarballs and an upload-tarballs job, but the perf gains
+  # is minimal since the workspace is almost a GB to attach.
   test-pack-tarballs:
     docker:
       - image: node:latest
@@ -29,13 +35,6 @@ jobs:
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
 
-  # Keep this as a seperate job from test-pack-tarballs.
-  # The persist_to_workspace takes a minute and a half, and is only needed
-  # for furture jobs ran on the main branch. Because you can't have filter
-  # criteria for steps, we duplicate the job so test-pack-tarballs runs on
-  # all branchs other than main (without persist) and pack-and-upload-tarballs
-  # only on main. There is no need to run test-pack-tarballs on main since it
-  # is done in this job.
   pack-and-upload-tarballs: &pack-and-upload-tarballs
     docker:
       - image: node:latest
@@ -206,14 +205,14 @@ workflows:
               only:
                 - main
           requires:
-            - pack-and-upload-tarballs
+            - release-management/release-package
       - pack-and-upload-windows-installer:
           filters:
             branches:
               only:
                 - main
           requires:
-            - pack-and-upload-tarballs
+            - release-management/release-package
       - promote-stable-rc-tarballs:
           filters:
             branches:
