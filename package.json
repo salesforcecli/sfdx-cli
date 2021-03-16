@@ -16,6 +16,7 @@
     "bin",
     "oclif.manifest.json",
     "dist/**/*.js",
+    "scripts/clean-for-tarballs",
     "!dist/**/*.test.js"
   ],
   "oclif": {
@@ -117,7 +118,6 @@
     "v8-compile-cache": "^2.2.0"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.26.0",
     "@oclif/plugin-command-snapshot": "^2.0.0",
     "@salesforce/dev-config": "^2.1.0",
     "@salesforce/dev-scripts": "^0.9.1",
@@ -146,7 +146,7 @@
     "mocha": "^8.3.0",
     "npm": "^7.5.2",
     "nyc": "^15.1.0",
-    "oclif": "^1.16.2",
+    "oclif": "^1.17.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "shelljs": "^0.8.4",
@@ -155,8 +155,6 @@
     "typescript": "^4.1.3"
   },
   "scripts": {
-    "XXpostpack:tarballs": "./scripts/verify-tarballs",
-    "XXprepack:tarballs": "./scripts/clean-for-tarballs",
     "build": "sf-build",
     "clean": "shx rm -rf dist tmp",
     "compile": "sf-compile",
@@ -166,15 +164,17 @@
     "oclif-artifacts": "oclif manifest",
     "pack:deb": "oclif pack:deb",
     "pack:macos": "oclif pack:macos",
+    "pretarball": "./scripts/clean-for-tarballs",
     "pack:tarballs": "oclif pack:tarballs",
+    "pack:verify": "./scripts/verify-tarballs",
     "pack:win": "oclif pack:win",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "yarn test:deprecation-policy ",
-    "prepack": "yarn clean && yarn compile && yarn lint && yarn oclif-artifacts",
+    "prepack": "yarn compile && yarn lint && yarn oclif-artifacts",
     "prepare": "yarn compile && yarn lint",
     "promote": "oclif promote",
     "snapshot-generate": "HOME=./ ./bin/run snapshot:generate",
-    "test": "nyc --report lcov --report cobertura mocha -t 240000 --require source-map-support/register --recursive \"dist/**/*.test.js\"",
+    "test": "mocha --recursive \"test/**/*.ts\" && nyc --report lcov --report cobertura mocha -t 240000 --require source-map-support/register --recursive \"dist/**/*.test.js\"",
     "test-smoke-unix": "./tmp/sfdx/bin/sfdx version && ./tmp/sfdx/bin/sfdx help && ./tmp/sfdx/bin/sfdx plugins --core",
     "test:deprecation-policy": "set HOME=./ ./bin/run snapshot:compare",
     "trogdor": "yarn clean-all && yarn && yarn compile && yarn uts",

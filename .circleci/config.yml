@@ -4,82 +4,127 @@ orbs:
   release-management: salesforce/npm-release-management@4
 
 jobs:
-  test-pack-tarballs: &test-pack-tarballs
+  test-pack-tarballs:
     docker:
       - image: node:latest
     resource_class: xlarge
-    working_directory: ~/project
     steps:
       - checkout
       - run: |
           apt-get update
           apt-get install -y p7zip-full
+      - restore_cache:
+          keys:
+            - v3-node-{{ checksum "NODE_VERSION.md" }}
+      - restore_cache:
+          keys:
+            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: yarn pack:tarballs
+      - save_cache:
+          key: v3-node-{{ checksum "NODE_VERSION.md" }}
+          paths:
+            - tmp/cache
+            - tmp/node
+      - run: yarn pack:verify
       - run: yarn test-smoke-unix
 
+  # Keep this as a seperate job from test-pack-tarballs.
+  # The persist_to_workspace takes a minute and a half, and is only needed
+  # for furture jobs ran on the main branch. Because you can't have filter
+  # criteria for steps, we duplicate the job so test-pack-tarballs runs on
+  # all branchs other than main (without persist) and pack-and-upload-tarballs
+  # only on main. There is no need to run test-pack-tarballs on main since it
+  # is done in this job.
   pack-and-upload-tarballs: &pack-and-upload-tarballs
     docker:
       - image: node:latest
     resource_class: xlarge
-    working_directory: ~/project
     steps:
       - checkout
       - run: |
           apt-get update
           apt-get install -y p7zip-full
+      - restore_cache:
+          keys:
+            - v3-node-{{ checksum "NODE_VERSION.md" }}
+      - restore_cache:
+          keys:
+            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: yarn pack:tarballs
+      - save_cache:
+          key: v3-node-{{ checksum "NODE_VERSION.md" }}
+          paths:
+            - tmp/cache
+            - tmp/node
+      - run: yarn pack:verify
       - run: yarn test-smoke-unix
       - run: yarn upload:tarballs
-
-  promote-stable-rc:
-    docker:
-      - image: node:latest
-    working_directory: ~/project
-    steps:
-      - checkout
-      - run: yarn install
-      - run: ./scripts/promote-stable-rc
-
-  promote-channels:
-    docker:
-      - image: node:latest
-    working_directory: ~/project
-    steps:
-      - checkout
-      - run: yarn install
-      - run: ./scripts/promote
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
 
   pack-and-upload-macos-installer:
     macos:
       xcode: 11.7.0
     resource_class: xlarge
-    working_directory: ~/project
     steps:
-      - checkout
-      - run: yarn install
+      - attach_workspace:
+          at: .
       - run: yarn pack:macos
       - run: yarn upload:macos
 
   pack-and-upload-windows-installer:
     <<: *pack-and-upload-tarballs
     steps:
-      - checkout
+      - attach_workspace:
+          at: .
       - run: |
           apt-get update
           apt-get install -y p7zip-full \
             osslsigncode \
             nsis
-      - run: yarn install
       - run: |
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
-      - run: yarn pack:win
+          ls -la /tmp
+      - run: DEBUG=* yarn pack:win
       - run: yarn upload:win
+
+  promote-stable-rc-tarballs:
+    docker:
+      - image: node:latest
+    steps:
+      - attach_workspace:
+          at: .
+      - run: ./scripts/promote-stable-rc-tarballs
+  promote-stable-rc-mac:
+    docker:
+      - image: node:latest
+    steps:
+      - attach_workspace:
+          at: .
+      - run: ./scripts/promote-stable-rc-mac
+  promote-stable-rc-win:
+    docker:
+      - image: node:latest
+    steps:
+      - attach_workspace:
+          at: .
+      - run: ./scripts/promote-stable-rc-win
+
+  promote-channels:
+    docker:
+      - image: node:latest
+    steps:
+      - attach_workspace:
+          at: .
+      - run: ./scripts/promote
 
 workflows:
   version: 2.1
-  release:
+  test-and-release:
     jobs:
       - release-management/validate-pr:
           filters:
@@ -99,13 +144,13 @@ workflows:
           name: node-12
           node_version: '12'
       - test-pack-tarballs:
-          # no point to pack if the test pass, and we only care to test the pack with the node version
+          # no point to pack if the test fail, and we only care to test the pack with the node version
           # we ship (specified in package.json.oclif.node)
           requires:
             - node-14
           filters:
             branches:
-              ignore: main # test the pack on PRs, but main will do pack-and-upload
+              ignore: main # test the pack on PRs, but main will do pack-and-upload-tarballs
       - approval:
           type: approval
           requires:
@@ -149,13 +194,27 @@ workflows:
                 - main
           requires:
             - release-management/release-package
-      - promote-stable-rc:
+      - promote-stable-rc-tarballs:
           filters:
             branches:
               only:
                 - main
           requires:
             - pack-and-upload-tarballs
+      - promote-stable-rc-mac:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - pack-and-upload-macos-installer
+      - promote-stable-rc-win:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - pack-and-upload-windows-installer
       - promote-channels:
           filters:
             branches:

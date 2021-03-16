@@ -123,10 +123,13 @@ function ensure_no_unexpected_files() {
             "$f" != "$BASE_DIR/package.json" &&
             "$f" != "$BASE_DIR/LICENSE.txt" &&
             "$f" != "$BASE_DIR/README.md" &&
+            "$f" != "$BASE_DIR/CHANGELOG.md" &&
+            "$f" != "$BASE_DIR/yarn.lock" &&
             "$f" != "$BASE_DIR/oclif.manifest.json" &&
             "$f" != "$BASE_DIR/bin/"* &&
             "$f" != "$BASE_DIR/dist/"*".js" &&
-            "$f" != "$BASE_DIR/dist/builtins/package.json"
+            "$f" != "$BASE_DIR/dist/builtins/package.json" &&
+            "$f" != "$BASE_DIR/scripts/clean-for-tarballs"
         ) || (
             "$f" == "$BASE_DIR/dist/"*".test.js"
         ) ]]; then

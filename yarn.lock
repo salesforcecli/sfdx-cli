@@ -579,7 +579,7 @@
     is-wsl "^2.1.1"
     tslib "^2.0.0"
 
-"@oclif/dev-cli@^1", "@oclif/dev-cli@^1.26.0":
+"@oclif/dev-cli@^1":
   version "1.26.0"
   resolved "https://registry.yarnpkg.com/@oclif/dev-cli/-/dev-cli-1.26.0.tgz#e3ec294b362c010ffc8948003d3770955c7951fd"
   integrity sha512-272udZP+bG4qahoAcpWcMTJKiA+V42kRMqQM7n4tgW35brYb2UP5kK+p08PpF8sgSfRTV8MoJVJG9ax5kY82PA==
@@ -7146,10 +7146,10 @@ object.values@^1.1.1:
     es-abstract "^1.18.0-next.2"
     has "^1.0.3"
 
-oclif@^1.16.2:
-  version "1.16.2"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-1.16.2.tgz#f45a0600d2b8c609274e87bd55ecaeee522ece14"
-  integrity sha512-Tiler8MAL6FmESE8mSzuY+Sfy+hU9Emc9bVKWb31SOiCSCSRc7hy2tprxaJg4Rg0uon9dtRO12cOlQ4eDkHbGw==
+oclif@^1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-1.17.0.tgz#e30410594d6bf304fe2d8b50755399020dcc000e"
+  integrity sha512-RXeelR4zBJCt3Q9zMbb01/W8NgXrxl2N1wvFhz/Ccs1uSfiQhzuHGsYPP+SQVjqfx9V3YMufu2qWJdZeq7A9ZA==
   dependencies:
     "@oclif/command" "^1.6"
     "@oclif/config" "^1.12.6"
