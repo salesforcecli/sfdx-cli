@@ -18,7 +18,7 @@ jobs:
             - v3-node-{{ checksum "NODE_VERSION.md" }}
       - restore_cache:
           keys:
-            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
+            - v3-npm-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: yarn pack:tarballs
       - save_cache:
@@ -50,7 +50,7 @@ jobs:
             - v3-node-{{ checksum "NODE_VERSION.md" }}
       - restore_cache:
           keys:
-            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
+            - v3-npm-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: yarn pack:tarballs
       - save_cache:
@@ -61,31 +61,39 @@ jobs:
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
       - run: yarn upload:tarballs
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
 
   pack-and-upload-macos-installer:
     macos:
       xcode: 11.7.0
     resource_class: xlarge
     steps:
-      - attach_workspace:
-          at: .
+      - checkout
+      - restore_cache:
+          keys:
+            - v3-node-{{ checksum "NODE_VERSION.md" }}
+      - restore_cache:
+          keys:
+            - v3-npm-{{checksum "yarn.lock"}}
+      - run: yarn install
       - run: yarn pack:macos
       - run: yarn upload:macos
 
   pack-and-upload-windows-installer:
     <<: *pack-and-upload-tarballs
     steps:
-      - attach_workspace:
-          at: .
+      - checkout
+      - restore_cache:
+          keys:
+            - v3-node-{{ checksum "NODE_VERSION.md" }}
+      - restore_cache:
+          keys:
+            - v3-npm-{{checksum "yarn.lock"}}
       - run: |
           apt-get update
           apt-get install -y p7zip-full \
             osslsigncode \
             nsis
+      - run: yarn install
       - run: |
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
           ls -la /tmp
@@ -96,30 +104,42 @@ jobs:
     docker:
       - image: node:latest
     steps:
-      - attach_workspace:
-          at: .
+      - checkout
+      - restore_cache:
+          keys:
+            - v3-npm-{{checksum "yarn.lock"}}
+      - run: yarn install
       - run: ./scripts/promote-stable-rc-tarballs
   promote-stable-rc-mac:
     docker:
       - image: node:latest
     steps:
-      - attach_workspace:
-          at: .
+      - checkout
+      - restore_cache:
+          keys:
+            - v3-npm-{{checksum "yarn.lock"}}
+      - run: yarn install
       - run: ./scripts/promote-stable-rc-mac
   promote-stable-rc-win:
     docker:
       - image: node:latest
     steps:
-      - attach_workspace:
-          at: .
+      - checkout
+      - restore_cache:
+          keys:
+            - v3-npm-{{checksum "yarn.lock"}}
+      - run: yarn install
       - run: ./scripts/promote-stable-rc-win
 
   promote-channels:
     docker:
       - image: node:latest
     steps:
-      - attach_workspace:
-          at: .
+      - checkout
+      - restore_cache:
+          keys:
+            - v3-npm-{{checksum "yarn.lock"}}
+      - run: yarn install
       - run: ./scripts/promote
 
 workflows:
@@ -186,14 +206,14 @@ workflows:
               only:
                 - main
           requires:
-            - release-management/release-package
+            - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
           filters:
             branches:
               only:
                 - main
           requires:
-            - release-management/release-package
+            - pack-and-upload-tarballs
       - promote-stable-rc-tarballs:
           filters:
             branches:
