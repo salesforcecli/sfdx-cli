@@ -144,11 +144,13 @@ workflows:
           name: node-12
           node_version: '12'
       - test-pack-tarballs:
+          # no point to pack if the test fail, and we only care to test the pack with the node version
+          # we ship (specified in package.json.oclif.node)
           requires:
             - node-14
           filters:
             branches:
-              ignore: main
+              ignore: main # test the pack on PRs, but main will do pack-and-upload-tarballs
       - approval:
           type: approval
           requires:
