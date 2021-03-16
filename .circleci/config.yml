@@ -14,6 +14,7 @@ jobs:
       - run: |
           apt-get update
           apt-get install -y p7zip-full
+      - run: yarn install
       - run: yarn pack:tarballs
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
@@ -31,6 +32,7 @@ jobs:
       - restore_cache:
           keys:
             - v2-node-archives
+      - run: yarn install
       - run: yarn pack:tarballs
       - save_cache:
           key: v2-node-archives
