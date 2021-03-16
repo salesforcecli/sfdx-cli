@@ -15,15 +15,17 @@ jobs:
           apt-get install -y p7zip-full
       - restore_cache:
           keys:
-            - v2-node-archives
+            - v3-node-archives
+      - restore_cache:
+          keys:
             - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: yarn pack:tarballs
       - save_cache:
-          key: v2-node-archives
+          key: v3-node-{{ checksum "NODE_VERSION.md" }}
           paths:
-            - ./tmp/cache
-            - ./tmp/node
+            - tmp/cache
+            - tmp/node
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
       - persist_to_workspace:
