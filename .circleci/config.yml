@@ -4,7 +4,7 @@ orbs:
   release-management: salesforce/npm-release-management@4
 
 jobs:
-  test-pack-tarballs: &test-pack-tarballs
+  pack-tarballs: &pack-tarballs
     docker:
       - image: node:latest
     resource_class: xlarge
@@ -23,34 +23,22 @@ jobs:
       - save_cache:
           key: v2-node-archives
           paths:
-            - ~/tmp/cache
-            - ~/tmp/node
+            - ~/project/tmp/cache
+            - ~/project/tmp/node
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - tmp
+            - node_modules
 
-  pack-and-upload-tarballs: &pack-and-upload-tarballs
-    docker:
-      - image: node:latest
-    resource_class: xlarge
-    working_directory: ~/project
+  upload-tarballs:
+    <<: *pack-tarballs
     steps:
       - checkout
-      - run: |
-          apt-get update
-          apt-get install -y p7zip-full
-      - restore_cache:
-          keys:
-            - v2-node-archives
-            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
-      - run: yarn install
-      - run: yarn pack:tarballs
-      - save_cache:
-          key: v2-node-archives
-          paths:
-            - ~/tmp/cache
-            - ~/tmp/node
-      - run: yarn pack:verify
-      - run: yarn test-smoke-unix
+      - attach_workspace:
+          at: ~/project
       - run: yarn upload:tarballs
 
   pack-and-upload-macos-installer:
@@ -60,21 +48,13 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v2-node-archives
-            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
-      - run: yarn install
+      - attach_workspace:
+          at: ~/project
       - run: yarn pack:macos
-      - save_cache:
-          key: v2-node-archives
-          paths:
-            - ~/tmp/cache
-            - ~/tmp/node
       - run: yarn upload:macos
 
   pack-and-upload-windows-installer:
-    <<: *pack-and-upload-tarballs
+    <<: *pack-tarballs
     steps:
       - checkout
       - run: |
@@ -82,20 +62,12 @@ jobs:
           apt-get install -y p7zip-full \
             osslsigncode \
             nsis
-      - restore_cache:
-          keys:
-            - v2-node-archives
-            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
-      - run: yarn install
+      - attach_workspace:
+          at: ~/project
       - run: |
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
           ls -la /tmp
       - run: DEBUG=* yarn pack:win
-      - save_cache:
-          key: v2-node-archives
-          paths:
-            - ~/tmp/cache
-            - ~/tmp/node
       - run: yarn upload:win
 
   promote-stable-rc-tarballs:
@@ -134,7 +106,7 @@ jobs:
 
 workflows:
   version: 2.1
-  release:
+  test-and-release:
     jobs:
       - release-management/validate-pr:
           filters:
@@ -153,14 +125,9 @@ workflows:
       - release-management/test-package:
           name: node-12
           node_version: '12'
-      - test-pack-tarballs:
-          # no point to pack if the test pass, and we only care to test the pack with the node version
-          # we ship (specified in package.json.oclif.node)
+      - pack-tarballs:
           requires:
             - node-14
-          filters:
-            branches:
-              ignore: main # test the pack on PRs, but main will do pack-and-upload
       - approval:
           type: approval
           requires:
@@ -183,13 +150,13 @@ workflows:
             branches:
               only:
                 - main
-      - pack-and-upload-tarballs:
-          filters:
-            branches:
-              only:
-                - main
+      - upload-tarballs:
+          # filters:
+          #  branches:
+          #    only:
+          #      - main
           requires:
-            - release-management/release-package
+            - pack-tarballs # release-management/release-package
       - pack-and-upload-macos-installer:
           filters:
             branches:
@@ -210,7 +177,7 @@ workflows:
               only:
                 - main
           requires:
-            - pack-and-upload-tarballs
+            - upload-tarballs
       - promote-stable-rc-mac:
           filters:
             branches:
