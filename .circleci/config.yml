@@ -14,8 +14,16 @@ jobs:
       - run: |
           apt-get update
           apt-get install -y p7zip-full
+      - restore_cache:
+          keys:
+            - v2-node-archives
       - run: yarn install
       - run: yarn pack:tarballs
+      - save_cache:
+          key: v2-node-archives
+          paths:
+            - ~/tmp/cache
+            - ~/tmp/node
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
 
@@ -42,6 +50,49 @@ jobs:
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
       - run: yarn upload:tarballs
+
+  pack-and-upload-macos-installer:
+    macos:
+      xcode: 11.7.0
+    resource_class: xlarge
+    working_directory: ~/project
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-node-archives
+      - run: yarn install
+      - run: yarn pack:macos
+      - save_cache:
+          key: v2-node-archives
+          paths:
+            - ~/tmp/cache
+            - ~/tmp/node
+      - run: yarn upload:macos
+
+  pack-and-upload-windows-installer:
+    <<: *pack-and-upload-tarballs
+    steps:
+      - checkout
+      - run: |
+          apt-get update
+          apt-get install -y p7zip-full \
+            osslsigncode \
+            nsis
+      - restore_cache:
+          keys:
+            - v2-node-archives
+      - run: yarn install
+      - run: |
+          echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
+          ls -la /tmp
+      - run: DEBUG=* yarn pack:win
+      - save_cache:
+          key: v2-node-archives
+          paths:
+            - ~/tmp/cache
+            - ~/tmp/node
+      - run: yarn upload:win
 
   promote-stable-rc-tarballs:
     docker:
@@ -76,33 +127,6 @@ jobs:
       - checkout
       - run: yarn install
       - run: ./scripts/promote
-
-  pack-and-upload-macos-installer:
-    macos:
-      xcode: 11.7.0
-    resource_class: xlarge
-    working_directory: ~/project
-    steps:
-      - checkout
-      - run: yarn install
-      - run: yarn pack:macos
-      - run: yarn upload:macos
-
-  pack-and-upload-windows-installer:
-    <<: *pack-and-upload-tarballs
-    steps:
-      - checkout
-      - run: |
-          apt-get update
-          apt-get install -y p7zip-full \
-            osslsigncode \
-            nsis
-      - run: yarn install
-      - run: |
-          echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
-          ls -la /tmp
-      - run: DEBUG=* yarn pack:win
-      - run: yarn upload:win
 
 workflows:
   version: 2.1
