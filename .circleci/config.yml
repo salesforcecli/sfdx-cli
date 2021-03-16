@@ -8,7 +8,6 @@ jobs:
     docker:
       - image: node:latest
     resource_class: xlarge
-    working_directory: ~/project
     steps:
       - checkout
       - run: |
@@ -23,47 +22,42 @@ jobs:
       - save_cache:
           key: v2-node-archives
           paths:
-            - ~/project/tmp/cache
-            - ~/project/tmp/node
+            - ./tmp/cache
+            - ./tmp/node
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
       - persist_to_workspace:
-          root: ~/project
+          root: .
           paths:
-            - tmp
-            - node_modules
+            - .
 
   upload-tarballs:
     <<: *pack-tarballs
     steps:
-      - checkout
       - attach_workspace:
-          at: ~/project
+          at: .
       - run: yarn upload:tarballs
 
   pack-and-upload-macos-installer:
     macos:
       xcode: 11.7.0
     resource_class: xlarge
-    working_directory: ~/project
     steps:
-      - checkout
       - attach_workspace:
-          at: ~/project
+          at: .
       - run: yarn pack:macos
       - run: yarn upload:macos
 
   pack-and-upload-windows-installer:
     <<: *pack-tarballs
     steps:
-      - checkout
+      - attach_workspace:
+          at: .
       - run: |
           apt-get update
           apt-get install -y p7zip-full \
             osslsigncode \
             nsis
-      - attach_workspace:
-          at: ~/project
       - run: |
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
           ls -la /tmp
@@ -73,35 +67,31 @@ jobs:
   promote-stable-rc-tarballs:
     docker:
       - image: node:latest
-    working_directory: ~/project
     steps:
-      - checkout
-      - run: yarn install
+      - attach_workspace:
+          at: .
       - run: ./scripts/promote-stable-rc-tarballs
   promote-stable-rc-mac:
     docker:
       - image: node:latest
-    working_directory: ~/project
     steps:
-      - checkout
-      - run: yarn install
+      - attach_workspace:
+          at: .
       - run: ./scripts/promote-stable-rc-mac
   promote-stable-rc-win:
     docker:
       - image: node:latest
-    working_directory: ~/project
     steps:
-      - checkout
-      - run: yarn install
+      - attach_workspace:
+          at: .
       - run: ./scripts/promote-stable-rc-win
 
   promote-channels:
     docker:
       - image: node:latest
-    working_directory: ~/project
     steps:
-      - checkout
-      - run: yarn install
+      - attach_workspace:
+          at: .
       - run: ./scripts/promote
 
 workflows:
