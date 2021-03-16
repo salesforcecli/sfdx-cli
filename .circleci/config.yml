@@ -17,6 +17,7 @@ jobs:
       - restore_cache:
           keys:
             - v2-node-archives
+            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: yarn pack:tarballs
       - save_cache:
@@ -40,6 +41,7 @@ jobs:
       - restore_cache:
           keys:
             - v2-node-archives
+            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: yarn pack:tarballs
       - save_cache:
@@ -61,6 +63,7 @@ jobs:
       - restore_cache:
           keys:
             - v2-node-archives
+            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: yarn pack:macos
       - save_cache:
@@ -82,6 +85,7 @@ jobs:
       - restore_cache:
           keys:
             - v2-node-archives
+            - v2-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: |
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
