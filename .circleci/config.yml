@@ -141,12 +141,12 @@ workflows:
               only:
                 - main
       - upload-tarballs:
-          # filters:
-          #  branches:
-          #    only:
-          #      - main
+          filters:
+            branches:
+              only:
+                - main
           requires:
-            - pack-tarballs # release-management/release-package
+            - release-management/release-package
       - pack-and-upload-macos-installer:
           filters:
             branches:
