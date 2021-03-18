@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Notify PR Open
+    - name: Notify slack pr open
       env: 
         SLACK_WEBHOOK_URL : ${{ secrets.CLI_TEAM_SLACK_WEBHOOK_URL }}
         PULL_REQUEST_NUMBER : ${{ github.event.pull_request.number }}
