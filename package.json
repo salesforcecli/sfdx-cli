@@ -113,7 +113,6 @@
     "@salesforce/ts-types": "^1.5.0",
     "debug": "^4.3.1",
     "salesforcedx": "51.4.0",
-    "shx": "^0.3.3",
     "tslib": "^2.1.0",
     "v8-compile-cache": "^2.2.0"
   },
@@ -150,6 +149,7 @@
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "shelljs": "^0.8.4",
+    "shx": "^0.3.3",
     "sinon": "^9.0.2",
     "ts-node": "^8.10.2",
     "typescript": "^4.1.3"
