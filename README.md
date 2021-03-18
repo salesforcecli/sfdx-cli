@@ -43,3 +43,5 @@ Note that by default `yarn` will attempt to install the binary in a location tha
 ## Development
 
 If you would like to contribute, please see also the internal [developer documentation](./DEVELOPER.md).
+
+TESTING
