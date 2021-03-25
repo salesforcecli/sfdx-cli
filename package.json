@@ -112,7 +112,7 @@
     "@salesforce/sfdx-trust": "^3.6.0",
     "@salesforce/ts-types": "^1.5.0",
     "debug": "^4.3.1",
-    "salesforcedx": "51.5.0",
+    "salesforcedx": "51.6.0",
     "tslib": "^2.1.0",
     "v8-compile-cache": "^2.2.0"
   },
