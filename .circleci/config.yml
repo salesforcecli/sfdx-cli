@@ -144,6 +144,12 @@ jobs:
   run-all-nuts:
     docker:
       - image: node:latest
+    parameters:
+      sfdx_version:
+        description: 'By default, the latest-rc version of the standalone CLI will be installed.'
+        default: 'latest-rc'
+        type: string
+
     steps:
       - checkout
       - restore_cache:
@@ -268,12 +274,20 @@ workflows:
               only:
                 - main
       - run-all-nuts:
+          # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
           filters:
             branches:
               only:
                 - main
 
   monitor-all-nuts:
+    # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
+    #
+    # Two env vars are used to control the amount of time this job will wait
+    # for any individual pipeline to complete
+    # NUTS_WAIT_TIME (default 900 seconds) - total time to wait for pipeline completion expressed in seconds
+    # NUTS_COMPLETION_RETRY_CNT (default 30) - number of times monitor will retry check for pipeline completion
+    # Wait interval between status checks is calculated as floor(NUTS_WAIT_TIME/NUTS_COMPLETION_RETRY_CNT)
     when: << pipeline.parameters.run-just-nuts >>
     jobs:
       - monitor-all-nuts:

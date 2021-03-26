@@ -4,6 +4,16 @@
  *
  * Script requires that the env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
  *
+ * Wait duration for pipeline completion can be controlled by env var NUTS_WAIT_TIME.
+ * The wait time is expressed in seconds and defaults to 900
+ *
+ * The script also considers the env var NUTS_COMPLETION_RETRY_CNT (default 30), which is the number of times the
+ * will check the status of a pipeline.
+ *
+ * The interval between checks is determined by dividing NUTS_WAIT_TIME by NUTS_COMPLETION_RETRY_CNT.
+ *
+ * Using default values for wait and retry, the interval is 900/30 or 30 seconds.
+ *
  * args:
  *   string representation of a jsoan array that contains the data for each pipeline/workflow to monitor
  */
@@ -24,13 +34,27 @@ const projectSlug = (org, repo) => {
   return `${orgSlug(org)}/${repo}`;
 };
 
+/**
+ * MonitorPluginNuts is responsible for monitoring the progress of the supplied
+ * circleci pipeline until completion or the job runtime exceeds wait time
+ */
 class MonitorPluginNuts {
   pipelineData = {};
   isComplete = false;
   status = 'initial state';
   justNuts = {};
+  nutsWaitInterval;
+  nutsCompletionRetryCnt;
   constructor(pipelineData) {
     this.pipelineData = pipelineData;
+    this.nutsCompletionRetryCnt = parseInt(process.env.NUTS_COMPLETION_RETRY_CNT ?? '30');
+    const totalWaitTime = parseInt(process.env.NUTS_WAIT_TIME ?? '900');
+    if (!this.nutsCompletionRetryCnt <= totalWaitTime) {
+      throw new Error(
+        `NUTS_WAIT_TIME ${totalWaitTime} must be greater than retry count ${this.nutsCompletionRetryCnt}`
+      );
+    }
+    this.nutsWaitInterval = Math.floor(parseInt(process.env.NUTS_WAIT_TIME ?? 900) / this.nutsCompletionRetryCnt);
   }
 
   getWorkflowUrl() {
@@ -61,6 +85,7 @@ class MonitorPluginNuts {
     const justNuts = response.items.find((item) => item.name === 'just-nuts');
     if (!justNuts) {
       this.isComplete = true;
+      this.status = 'success';
       return;
     }
     this.isComplete = notCompleteStatus.some((status) => justNuts.status !== status);
@@ -68,10 +93,9 @@ class MonitorPluginNuts {
   }
 
   async waitForCompletion() {
-    const retries = 30;
     let retryCnt = 0;
-    while (!this.isComplete && retryCnt++ <= retries) {
-      await sleep(Duration.seconds(30));
+    while (!this.isComplete && retryCnt++ <= this.nutsCompletionRetryCnt) {
+      await sleep(Duration.seconds(this.nutsWaitInterval));
       await this.checkWorkflowState();
     }
     if (retryCnt > retries && !this.isComplete) {
