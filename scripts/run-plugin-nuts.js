@@ -31,19 +31,19 @@ const manualRepoOverrides = {
 };
 
 const hasTestNuts = (module) => {
-  const results = execSync(`npm show ${module} scripts`);
+  const results = execSync(`npm show ${module.name}@${module.version} scripts`);
   return results.includes('test:nuts');
 };
 
-const getNpmDependencies = (module) => {
-  const results = execSync(`npm show ${module} dependencies --json`);
+const getNpmForModule = (module, sections) => {
+  const results = execSync(`npm show ${module.name}@${module.version} ${['dist-tags', ...sections].join(' ')} --json`);
   return JSON.parse(results);
 };
 
 const getOrgAndProject = (module) => {
-  const results = execSync(`npm show ${module} homepage`);
-  if (Reflect.ownKeys(manualRepoOverrides).includes(module)) {
-    return manualRepoOverrides[module];
+  const results = execSync(`npm show ${module.name} homepage`);
+  if (Reflect.ownKeys(manualRepoOverrides).includes(module.name)) {
+    return manualRepoOverrides[module.name];
   }
   const repoUrl = new URL(results.toString().trim());
   const [, org, repo] = repoUrl.pathname.split('/');
@@ -125,28 +125,28 @@ const circle = async (url, options = {}) => {
  * @param plugins
  * @returns {*}
  */
-const qualifyPluginsWithNonUnitTests = (plugins) => {
+const qualifyPluginsWithNonUnitTests = (modules) => {
   return (
-    plugins
-      // find plugins that may have NUT tests
-      .filter((plugin) => plugin === 'salesforcedx' || plugin.startsWith('@salesforce'))
-      // handle sub-aggregate plugins by fetching that plugins dependencies
-      .map((plugin) => {
-        if (plugin === 'salesforcedx') {
-          const dxDependencies = Reflect.ownKeys(getNpmDependencies(plugin));
-          return dxDependencies;
-        } else {
-          return plugin;
-        }
+    modules
+      .map((module) => {
+        const npmDetails = getNpmForModule(module, ['oclif.plugins', 'dependencies']);
+        const oclifPlugins = Reflect.get(npmDetails, 'oclif.plugins') ?? [];
+        // only what to consider modules that are plugin aggregators
+        const pluginsToQualify = (oclifPlugins.length
+          ? Object.entries(npmDetails.dependencies).filter(([name, version]) => oclifPlugins.includes(name))
+          : []
+        )
+          .map(([name, version]) => ({ name, version }))
+          .filter((module) => /^@*salesforce/.test(module.name));
+        // determine if current module should be include (has a nut test) and qualify all of current modules dependencies
+        return [...(hasTestNuts(module) ? [module] : []), ...qualifyPluginsWithNonUnitTests(pluginsToQualify)];
       })
       // flatten arrays
       .reduce((a, b) => {
         return a.concat(b);
       }, [])
-      // find plugins that have a script named 'test:nuts'
-      .filter((plugin) => hasTestNuts(plugin))
       // establish github org and repo name
-      .map((plugin) => Object.assign({}, { plugin, info: getOrgAndProject(plugin) }))
+      .map((module) => Object.assign({}, { ...module, info: getOrgAndProject(module) }))
   );
 };
 
@@ -162,19 +162,19 @@ if (/^[0-9]+\.[0-9]+\.[0-9]+?.*|latest(-rc)?/g.test(sfdxVersion)) {
   throw new Error(`Input sfdx-cli version '${sfdxVersion} is mot valid.`);
 }
 
-// load package.json
-const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json')));
-
-// find qualifying plugins
-const plugins = qualifyPluginsWithNonUnitTests(packageJson.oclif.plugins);
-
 // kickoff pipelines for just nuts
 (async () => {
+  // find qualifying plugins - starting with sfdx-cli
+  const sfdxCli = { name: 'sfdx-cli', version: sfdxVersion };
+  const modules = qualifyPluginsWithNonUnitTests([sfdxCli]);
+  console.log(modules);
+
   let nutPipelinesStarted = [];
-  for (const plugin of plugins) {
-    console.log(`launching Just NUTs for plugin ${JSON.stringify(plugin)}`);
-    const triggerResults = await triggerNutsForProject(sfdxVersion, plugin.org, plugin.repo);
-    nutPipelinesStarted.push({ org: plugin.org, repo: plugin.repo, ...triggerResults });
+  for (const module of modules) {
+    console.log(`launching Just NUTs for plugin ${JSON.stringify(module)}`);
+    const triggerResults = {};
+    // const triggerResults = await triggerNutsForProject(sfdxVersion, module.org, module.repo);
+    nutPipelinesStarted.push({ org: module.org, repo: module.repo, ...triggerResults });
   }
   // if any piplines were started, kickoff monitor
   if (nutPipelinesStarted.length) {
