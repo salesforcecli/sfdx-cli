@@ -156,7 +156,7 @@ jobs:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
       - run: yarn install
-      - run: ./scripts/run-plugin-nuts.js
+      - run: ./scripts/run-plugin-nuts.js <<parameters.sfdx_version>>
 
   monitor-all-nuts:
     docker:
