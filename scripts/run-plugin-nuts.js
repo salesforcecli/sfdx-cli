@@ -172,8 +172,7 @@ if (/^[0-9]+\.[0-9]+\.[0-9]+?.*|latest(-rc)?/g.test(sfdxVersion)) {
   let nutPipelinesStarted = [];
   for (const module of modules) {
     console.log(`launching Just NUTs for plugin ${JSON.stringify(module)}`);
-    const triggerResults = {};
-    // const triggerResults = await triggerNutsForProject(sfdxVersion, module.org, module.repo);
+    const triggerResults = await triggerNutsForProject(sfdxVersion, module.org, module.repo);
     nutPipelinesStarted.push({ org: module.org, repo: module.repo, ...triggerResults });
   }
   // if any piplines were started, kickoff monitor
