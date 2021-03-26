@@ -3,6 +3,14 @@ version: 2.1
 orbs:
   release-management: salesforce/npm-release-management@4
 
+parameters:
+  run-auto-workflows:
+    default: true
+    type: boolean
+  run-just-nuts:
+    default: false
+    type: boolean
+
 jobs:
   # There are two pack jobs:
   # - test-pack-tarballs to run on every branch *other than main*
@@ -133,9 +141,37 @@ jobs:
       - run: yarn install
       - run: ./scripts/promote
 
+  run-all-nuts:
+    docker:
+      - image: node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v3-npm-{{checksum "yarn.lock"}}
+      - run: yarn install
+      - run: ./scripts/run-plugin-nuts.js
+
+  monitor-all-nuts:
+    docker:
+      - image: node:latest
+    parameters:
+      nuts_job_data:
+        description: 'Parameter to pass the set of NUTs started across all plugins'
+        default: '[]'
+        type: string
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v3-npm-{{checksum "yarn.lock"}}
+      - run: yarn install
+      - run: ./scripts/monitor-plugin-nuts.js <<parameters.nuts_job_data>>
+
 workflows:
   version: 2.1
   test-and-release:
+    when: << pipeline.parameters.run-auto-workflows >>
     jobs:
       - release-management/validate-pr:
           filters:
@@ -231,3 +267,13 @@ workflows:
             branches:
               only:
                 - main
+      - run-all-nuts:
+          filters:
+            branches:
+              only:
+                - main
+
+  monitor-all-nuts:
+    when: << pipeline.parameters.run-just-nuts >>
+    jobs:
+      - monitor-all-nuts:
