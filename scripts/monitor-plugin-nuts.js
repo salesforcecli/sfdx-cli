@@ -2,9 +2,10 @@
 /**
  * Script to monitor previously launched just-nuts
  *
+ * Script requires that the env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
+ *
  * args:
  *   string representation of a jsoan array that contains the data for each pipeline/workflow to monitor
- *
  */
 
 const got = require('got');
@@ -70,7 +71,7 @@ class MonitorPluginNuts {
     const retries = 30;
     let retryCnt = 0;
     while (!this.isComplete && retryCnt++ <= retries) {
-      await sleep(Duration.seconds(5));
+      await sleep(Duration.seconds(30));
       await this.checkWorkflowState();
     }
     if (retryCnt > retries && !this.isComplete) {
@@ -97,20 +98,7 @@ if (!isArray(args)) {
   throw new Error('expecting input to be a JSON array');
 }
 
-args = [
-  {
-    org: 'salesforcecli',
-    repo: 'data',
-    id: 'c1be631e-32ba-4110-bbd5-43d56b50e33a',
-    state: 'created',
-    number: 0,
-    created_at: '2019-08-24T14:15:22Z',
-  },
-];
-
 const monitors = args.map((arg) => new MonitorPluginNuts(arg));
-
-let rc = 0;
 
 (async () => {
   console.log(`Begin monitoring of ${monitors.length} workflows`);
