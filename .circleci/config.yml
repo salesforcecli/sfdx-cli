@@ -277,3 +277,9 @@ workflows:
     when: << pipeline.parameters.run-just-nuts >>
     jobs:
       - monitor-all-nuts:
+          name: monitor-just-nuts
+          nuts_job_data: '[]'
+          filters:
+            branches:
+              only:
+                - main
