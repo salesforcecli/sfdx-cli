@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const execSync = require('child_process').execSync;
 const got = require('got');
+const { isArray } = require('@salesforce/ts-types');
 
 const circleciBaseUrl = 'https://circleci.com/api/v2/';
 
@@ -35,9 +36,17 @@ const hasTestNuts = (module) => {
   return results.includes('test:nuts');
 };
 
-const getNpmForModule = (module, sections) => {
-  const results = execSync(`npm show ${module.name}@${module.version} ${['dist-tags', ...sections].join(' ')} --json`);
-  return JSON.parse(results);
+const getNpmForModule = (timeCreated, module, sections) => {
+  const results = execSync(
+    `npm show ${module.name}@${module.version} ${['time', 'version', ...sections].join(' ')} --json`
+  );
+  let jsonResults = JSON.parse(results);
+  if (isArray(jsonResults)) {
+    jsonResults = jsonResults
+      .sort((a, b) => new Date(b.time[b.version]).getTime() - new Date(a.time[a.version]).getTime())
+      .find((result) => new Date(result.time[result.version]).getTime() <= timeCreated.getTime());
+  }
+  return jsonResults;
 };
 
 const getOrgAndProject = (module) => {
@@ -122,14 +131,18 @@ const circle = async (url, options = {}) => {
 
 /**
  * Examines a lit of plugins to determine which have NUT tests
- * @param plugins
  * @returns {*}
  */
-const qualifyPluginsWithNonUnitTests = (modules) => {
+const qualifyPluginsWithNonUnitTests = (timeCreated, modules) => {
   return (
     modules
       .map((module) => {
-        const npmDetails = getNpmForModule(module, ['oclif.plugins', 'dependencies']);
+        const npmDetails = getNpmForModule(timeCreated, module, ['oclif.plugins', 'dependencies']);
+        if (!npmDetails) {
+          return undefined;
+        }
+        // set version to exact qualifying versions
+        module.version = npmDetails.version;
         const oclifPlugins = Reflect.get(npmDetails, 'oclif.plugins') ?? [];
         // only what to consider modules that are plugin aggregators
         const pluginsToQualify = (oclifPlugins.length
@@ -139,8 +152,12 @@ const qualifyPluginsWithNonUnitTests = (modules) => {
           .map(([name, version]) => ({ name, version }))
           .filter((module) => /^@*salesforce/.test(module.name));
         // determine if current module should be include (has a nut test) and qualify all of current modules dependencies
-        return [...(hasTestNuts(module) ? [module] : []), ...qualifyPluginsWithNonUnitTests(pluginsToQualify)];
+        return [
+          ...(hasTestNuts(module) ? [module] : []),
+          ...qualifyPluginsWithNonUnitTests(timeCreated, pluginsToQualify),
+        ];
       })
+      .filter((module) => module)
       // flatten arrays
       .reduce((a, b) => {
         return a.concat(b);
@@ -166,8 +183,8 @@ if (/^[0-9]+\.[0-9]+\.[0-9]+?.*|latest(-rc)?/g.test(sfdxVersion)) {
 (async () => {
   // find qualifying plugins - starting with sfdx-cli
   const sfdxCli = { name: 'sfdx-cli', version: sfdxVersion };
-  const modules = qualifyPluginsWithNonUnitTests([sfdxCli]);
-  console.log(modules);
+  const timeCreated = new Date(getNpmForModule(undefined, sfdxCli, []).time[sfdxVersion]);
+  const modules = qualifyPluginsWithNonUnitTests(timeCreated, [sfdxCli]);
 
   let nutPipelinesStarted = [];
   for (const module of modules) {
