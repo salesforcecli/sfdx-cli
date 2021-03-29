@@ -69,21 +69,23 @@ const projectSlug = (org, repo) => {
 /**
  * Triggers the just-nuts workflow for the named org/repo/branch
  * @param sfdxVersion
- * @param org
- * @param repo
  * @param branch
  * @returns {Promise<*>}
  */
-const triggerNutsForProject = async (sfdxVersion, org, repo, branch = 'main') => {
+const triggerNutsForProject = async (sfdxVersion, module, branch = 'main') => {
   const body = {
     branch: branch,
     parameters: {
       'run-auto-workflows': false,
       'run-just-nuts': true,
       sfdx_version: sfdxVersion,
+      module_version: module.version,
     },
   };
-  return circle(`${circleciBaseUrl}project/${projectSlug(org, repo)}/pipeline`, { method: 'POST', json: body });
+  return circle(`${circleciBaseUrl}project/${projectSlug(module.org, module.repo)}/pipeline`, {
+    method: 'POST',
+    json: body,
+  });
 };
 
 /**
@@ -189,8 +191,8 @@ if (/^[0-9]+\.[0-9]+\.[0-9]+?.*|latest(-rc)?/g.test(sfdxVersion)) {
   let nutPipelinesStarted = [];
   for (const module of modules) {
     console.log(`launching Just NUTs for plugin ${JSON.stringify(module)}`);
-    const triggerResults = await triggerNutsForProject(sfdxVersion, module.org, module.repo);
-    nutPipelinesStarted.push({ org: module.org, repo: module.repo, ...triggerResults });
+    const triggerResults = await triggerNutsForProject(sfdxVersion, module);
+    nutPipelinesStarted.push({ org: module.org, repo: module.repo, version: moddule.version, ...triggerResults });
   }
   // if any piplines were started, kickoff monitor
   if (nutPipelinesStarted.length) {
