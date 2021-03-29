@@ -79,7 +79,7 @@ const triggerNutsForProject = async (sfdxVersion, module, branch = 'main') => {
       'run-auto-workflows': false,
       'run-just-nuts': true,
       sfdx_version: sfdxVersion,
-      module_version: module.version,
+      repo_tag: module.version,
     },
   };
   return circle(`${circleciBaseUrl}project/${projectSlug(module.org, module.repo)}/pipeline`, {
