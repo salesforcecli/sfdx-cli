@@ -133,6 +133,47 @@ jobs:
       - run: yarn install
       - run: ./scripts/promote
 
+  change-case-start:
+    docker:
+      - image: node:latest
+    steps:
+      - release-management/install-change-case-mgmt
+      - release-management/change-case-create
+
+  npm-promotions:
+    docker:
+      - image: node:latest
+    steps:
+      - run: |
+          CLI_RC_VERSION=$(npm show sfdx-cli --json | jq -r '.["dist-tags"] | .["latest-rc"]')
+          npm dist-tag add sfdx-cli@${CLI_RC_VERSION} latest
+      - run: |
+          DX_RC_VERSION=$(npm show salesforcedx --json | jq -r '.["dist-tags"] | .["latest-rc"]')
+          npm dist-tag add salesforcedx@${DX_RC_VERSION} latest
+
+  close-CTC:
+    docker:
+      - image: node:latest
+    steps:
+      - run:
+          when: on_fail
+          name: Close CTC case as Not Implemented
+          command: |
+            if [ -z "${SF_CHANGE_CASE_SFDX_AUTH_URL}" ] || [ -z "${SF_CHANGE_CASE_TEMPLATE_ID}" ] || [ -z "${SF_CHANGE_CASE_SCHEDULE_BUILD}" ]; then
+                echo "Environment not configured for CTC"
+            else
+                sfchangecase close --location "https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME" --status "Not Implemented"
+            fi
+      - run:
+          name: All Good! Close CTC case/implementations
+          when: on_success
+          command: |
+            if [ -z "${SF_CHANGE_CASE_SFDX_AUTH_URL}" ] || [ -z "${SF_CHANGE_CASE_TEMPLATE_ID}" ] || [ -z "${SF_CHANGE_CASE_SCHEDULE_BUILD}" ]; then
+                echo "Environment not configured for CTC"
+            else
+                sfchangecase close --location "https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+            fi
+
 workflows:
   version: 2.1
   test-and-release:
@@ -226,8 +267,41 @@ workflows:
                 - main
           requires:
             - pack-and-upload-windows-installer
-      - promote-channels:
+      # - promote-channels:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+
+  promote-to-latest:
+    triggers:
+      - schedule:
+          # Thursdays at 13:00 GMT
+          cron: 0 13 * * 4
           filters:
             branches:
               only:
                 - main
+    jobs:
+      # manual approval in CircleCI to begin the promote
+      - approval:
+          type: approval
+
+      # start the change case
+      - change-case-start:
+          requires:
+            - approval
+
+      # do the promotions in parallel
+      - npm-promotions:
+          requires:
+            - change-case-start
+      - promote-channels:
+          requires:
+            - change-case-start
+
+      # close change case
+      - close-CTC:
+          requires:
+            - npm-promotions
+            - promote-channels
