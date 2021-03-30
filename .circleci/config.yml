@@ -282,13 +282,13 @@ workflows:
           requires:
             - approval
 
-      # do the promotions in parallel
-      - npm-promotions:
-          requires:
-            - change-case-start
+      # we need to get the version/SHA from latest-rc before the npm promotion
       - promote-channels:
           requires:
             - change-case-start
+      - npm-promotions:
+          requires:
+            - promote-channels
 
       # close change case
       - close-CTC:
