@@ -13,9 +13,9 @@ do
     echo "SHA is empty, promoting tag v$version to channel $channel"
     git checkout v$version
     sha=$(git rev-parse --short HEAD)
-    yarn promote --version $version --sha $sha --channel $channel --max-age 300 --macos --win
+    # yarn promote --version $version --sha $sha --channel $channel --max-age 300 --macos --win
   else
     echo "Promoting $version-$sha to channel $channel"
-    yarn promote --version $version --sha $sha --channel $channel --max-age 300 --macos --win
+    # yarn promote --version $version --sha $sha --channel $channel --max-age 300 --macos --win
   fi
 done

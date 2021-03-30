@@ -144,12 +144,7 @@ jobs:
     docker:
       - image: node:latest
     steps:
-      - run: |
-          CLI_RC_VERSION=$(npm show sfdx-cli --json | jq -r '.["dist-tags"] | .["latest-rc"]')
-          npm dist-tag add sfdx-cli@${CLI_RC_VERSION} latest
-      - run: |
-          DX_RC_VERSION=$(npm show salesforcedx --json | jq -r '.["dist-tags"] | .["latest-rc"]')
-          npm dist-tag add salesforcedx@${DX_RC_VERSION} latest
+      - run: yarn promote-dist-tags
 
   close-CTC:
     docker:
@@ -267,11 +262,6 @@ workflows:
                 - main
           requires:
             - pack-and-upload-windows-installer
-      # - promote-channels:
-      #     filters:
-      #       branches:
-      #         only:
-      #           - main
 
   promote-to-latest:
     triggers:
