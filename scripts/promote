@@ -21,22 +21,3 @@ echo "yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL
 
 # promote it
 yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL --max-age 300 --macos --win
-
-# get updated channel files from last commit
-
-# for channelfile in `git diff --name-only HEAD~1 HEAD | grep "^channels/*"`
-# do
-#   read -r _dir channel <<< $(echo $channelfile | tr "/" " ")
-#   read -r version sha <<< $(head -n 1 $channelfile | tr "-" " ")
-
-#   if [ -z "$sha" ]
-#   then
-#     echo "SHA is empty, promoting tag v$version to channel $channel"
-#     git checkout v$version
-#     sha=$(git rev-parse --short HEAD)
-#     # yarn promote --version $version --sha $sha --channel $channel --max-age 300 --macos --win
-#   else
-#     echo "Promoting $version-$sha to channel $channel"
-#     # yarn promote --version $version --sha $sha --channel $channel --max-age 300 --macos --win
-#   fi
-# done
