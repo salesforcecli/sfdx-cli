@@ -22,6 +22,7 @@ const circleciBaseUrl = 'https://circleci.com/api/v2/';
  *     Identify if plugin supports script test:nuts i.e. "npm show @salesforce/plugin-auth scripts | grep test:nuts"
  *     Check if org/project is known in circleci
  *       Trigger test nuts workflow for plugin with required parameters
+ *
  */
 
 const manualRepoOverrides = {
