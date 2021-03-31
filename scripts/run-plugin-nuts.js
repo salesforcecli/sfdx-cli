@@ -59,7 +59,7 @@ const getOrgAndProject = (module) => {
   return { org, repo };
 };
 
-const orgSlug = (org, repo) => {
+const orgSlug = (org) => {
   return `github/${org}`;
 };
 const projectSlug = (org, repo) => {
@@ -82,7 +82,7 @@ const triggerNutsForProject = async (sfdxVersion, module, branch = 'main') => {
       repo_tag: module.version,
     },
   };
-  return circle(`${circleciBaseUrl}project/${projectSlug(module.org, module.repo)}/pipeline`, {
+  return await circle(`${circleciBaseUrl}project/${projectSlug(module.info.org, module.info.repo)}/pipeline`, {
     method: 'POST',
     json: body,
   });
@@ -103,7 +103,7 @@ const triggerNutsMonitor = async (jobData, branch = 'main') => {
       nuts_job_data: JSON.stringify(jobData),
     },
   };
-  return circle(`${circleciBaseUrl}project/${projectSlug('salesforcecli', 'sfdx-cli')}/pipeline`, {
+  return await circle(`${circleciBaseUrl}project/${projectSlug('salesforcecli', 'sfdx-cli')}/pipeline`, {
     method: 'POST',
     json: body,
   });
@@ -146,7 +146,6 @@ const qualifyPluginsWithNonUnitTests = (timeCreated, modules) => {
         // set version to exact qualifying versions
         module.version = npmDetails.version;
         const oclifPlugins = Reflect.get(npmDetails, 'oclif.plugins') ?? [];
-        // only what to consider modules that are plugin aggregators
         const pluginsToQualify = (oclifPlugins.length
           ? Object.entries(npmDetails.dependencies).filter(([name, version]) => oclifPlugins.includes(name))
           : []
@@ -192,7 +191,12 @@ if (/^[0-9]+\.[0-9]+\.[0-9]+?.*|latest(-rc)?/g.test(sfdxVersion)) {
   for (const module of modules) {
     console.log(`launching Just NUTs for plugin ${JSON.stringify(module)}`);
     const triggerResults = await triggerNutsForProject(sfdxVersion, module);
-    nutPipelinesStarted.push({ org: module.org, repo: module.repo, version: moddule.version, ...triggerResults });
+    nutPipelinesStarted.push({
+      org: module.info.org,
+      repo: module.info.repo,
+      version: module.version,
+      ...triggerResults,
+    });
   }
   // if any piplines were started, kickoff monitor
   if (nutPipelinesStarted.length) {
