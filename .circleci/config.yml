@@ -1,7 +1,7 @@
 ---
 version: 2.1
 orbs:
-  release-management: salesforce/npm-release-management@4
+  release-management: salesforce/npm-release-management@dev:a91c4a7
 
 parameters:
   run-auto-workflows:
@@ -146,8 +146,8 @@ jobs:
       - image: node:latest
     parameters:
       sfdx_version:
-        description: 'By default, the latest-rc version of the standalone CLI will be installed.'
-        default: 'latest-rc'
+        description: By default, the latest-rc version of the standalone CLI will be installed.
+        default: latest-rc
         type: string
 
     steps:
@@ -163,7 +163,7 @@ jobs:
       - image: node:latest
     parameters:
       nuts_job_data:
-        description: 'Parameter to pass the set of NUTs started across all plugins'
+        description: Parameter to pass the set of NUTs started across all plugins
         default: '[]'
         type: string
     steps:
