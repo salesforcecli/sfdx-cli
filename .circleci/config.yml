@@ -269,8 +269,8 @@ workflows:
   promote-to-latest:
     triggers:
       - schedule:
-          # Thursdays at 13:00 GMT
-          cron: 38 14 * * 4
+          # Thursdays
+          cron: 53 14 * * 4
           filters:
             branches:
               only:
@@ -282,6 +282,7 @@ workflows:
 
       # start the change case
       - change-case-start:
+          context: CLI_CTC
           requires:
             - approval
 
@@ -295,6 +296,7 @@ workflows:
 
       # close change case
       - close-CTC:
+          context: CLI_CTC
           requires:
             - npm-promotions
             - promote-channels
