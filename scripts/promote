@@ -5,8 +5,12 @@ set -ex
 # test channel
 CHANNEL=latest-ci-test
 
-# get RC version from npm before we promote it to latest!
-CLI_RC_VERSION=$(npm show sfdx-cli --json | jq -r '.["dist-tags"] | .["latest-rc"]')
+if [ -z "${S3_PROMOTE_OVERRIDE_VERSION}" ]; then
+  CLI_RC_VERSION=$S3_PROMOTE_OVERRIDE_VERSION
+else
+  # get RC version from npm before we promote it to latest!
+  CLI_RC_VERSION=$(npm show sfdx-cli --json | jq -r '.["dist-tags"] | .["latest-rc"]')
+fi
 echo "version to promote: $CLI_RC_VERSION"
 
 # figure out the sha from the release
