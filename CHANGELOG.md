@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.95.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.94.3...v7.95.0) (2021-04-01)
+
+
+### Bug Fixes
+
+* allow env override for version promote ([9d87838](https://github.com/salesforcecli/sfdx-cli/commit/9d87838ed6e17b32b598b2c10dff80866d477e59))
+* context and envs ([2708a61](https://github.com/salesforcecli/sfdx-cli/commit/2708a6188e4a101cd3a0fda0c518e34b25463043))
+* cron I hate TZ ([340180a](https://github.com/salesforcecli/sfdx-cli/commit/340180a35a869acce1d16a474e6943a49c54d9a6))
+* cron time ([16a7bde](https://github.com/salesforcecli/sfdx-cli/commit/16a7bde9c6113de1cc352b3c90bf581645804d0d))
+* jq for scripts ([9ad1793](https://github.com/salesforcecli/sfdx-cli/commit/9ad17933e1b2579b80e6c9960c6cafa08683188d))
+* jq/checkout on npm-promotions ([5e96507](https://github.com/salesforcecli/sfdx-cli/commit/5e96507b973dbc94ba1e601c989cb90fb00ca4e1))
+* try with sha override ([8cfc050](https://github.com/salesforcecli/sfdx-cli/commit/8cfc05096369c22f020d4c534815ba70bc1cddf8))
+
 ### [7.94.3](https://github.com/salesforcecli/sfdx-cli/compare/v7.94.2...v7.94.3) (2021-03-25)
 
 ### [7.94.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.94.1...v7.94.2) (2021-03-25)
