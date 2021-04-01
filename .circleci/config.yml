@@ -2,6 +2,7 @@
 version: 2.1
 orbs:
   release-management: salesforce/npm-release-management@4
+  jq: circleci/jq@2.2
 
 jobs:
   # There are two pack jobs:
@@ -116,6 +117,7 @@ jobs:
       - image: node:latest
     steps:
       - checkout
+      - jq/install
       - restore_cache:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
@@ -127,6 +129,7 @@ jobs:
       - image: node:latest
     steps:
       - checkout
+      - jq/install
       - restore_cache:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
@@ -267,7 +270,7 @@ workflows:
     triggers:
       - schedule:
           # Thursdays at 13:00 GMT
-          cron: 20 13 * * 4
+          cron: 55 13 * * 4
           filters:
             branches:
               only:
