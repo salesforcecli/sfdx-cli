@@ -279,6 +279,8 @@ workflows:
             branches:
               only:
                 - main
+          requires:
+            - promote-channels
 
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
