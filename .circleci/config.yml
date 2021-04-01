@@ -271,7 +271,7 @@ workflows:
     triggers:
       - schedule:
           # Thursdays
-          cron: 08 18 * * 4
+          cron: 27 15 * * 4
           filters:
             branches:
               only:
