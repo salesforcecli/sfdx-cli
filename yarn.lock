@@ -2802,6 +2802,11 @@ commander@^2.9.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
+comment-parser@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-1.1.2.tgz#e5317d7a2ec22b470dcb54a29b25426c30bf39d8"
+  integrity sha512-AOdq0i8ghZudnYv8RUnHrhTgafUGs61Rdz9jemU5x2lnZwAWyOq7vySo626K59e1fVKH1xSRorJwPVRLSWOoAQ==
+
 comment-parser@^0.7.5:
   version "0.7.6"
   resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-0.7.6.tgz#0e743a53c8e646c899a1323db31f6cd337b10f12"
@@ -3649,6 +3654,19 @@ eslint-plugin-jsdoc@^27.0.3:
     lodash "^4.17.15"
     regextras "^0.7.1"
     semver "^6.3.0"
+    spdx-expression-parse "^3.0.1"
+
+eslint-plugin-jsdoc@^32.3.0:
+  version "32.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-32.3.0.tgz#7c9fa5da8c72bd6ad7d97bbf8dee8bc29bec3f9e"
+  integrity sha512-zyx7kajDK+tqS1bHuY5sapkad8P8KT0vdd/lE55j47VPG2MeenSYuIY/M/Pvmzq5g0+3JB+P3BJGUXmHxtuKPQ==
+  dependencies:
+    comment-parser "1.1.2"
+    debug "^4.3.1"
+    jsdoctypeparser "^9.0.0"
+    lodash "^4.17.20"
+    regextras "^0.7.1"
+    semver "^7.3.4"
     spdx-expression-parse "^3.0.1"
 
 eslint-plugin-prefer-arrow@^1.2.1:
@@ -5591,6 +5609,11 @@ jsdoctypeparser@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/jsdoctypeparser/-/jsdoctypeparser-6.1.0.tgz#acfb936c26300d98f1405cb03e20b06748e512a8"
   integrity sha512-UCQBZ3xCUBv/PLfwKAJhp6jmGOSLFNKzrotXGNgbKhWvz27wPsCsVeP7gIcHPElQw2agBmynAitXqhxR58XAmA==
+
+jsdoctypeparser@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/jsdoctypeparser/-/jsdoctypeparser-9.0.0.tgz#8c97e2fb69315eb274b0f01377eaa5c940bd7b26"
+  integrity sha512-jrTA2jJIL6/DAEILBEh2/w9QxCuwmvNXIry39Ay/HVfhE3o2yVV0U44blYkqdHA/OKloJEqvJy0xU+GSdE2SIw==
 
 jsen@0.6.6, jsen@^0.6.6:
   version "0.6.6"
