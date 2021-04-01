@@ -1,3 +1,6 @@
+# get CI environment auth'd
+echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+
 CLI_RC_VERSION=$(npm show sfdx-cli --json | jq -r '.["dist-tags"] | .["latest-rc"]')
 npm dist-tag add sfdx-cli@${CLI_RC_VERSION} latest
 
