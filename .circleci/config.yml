@@ -267,7 +267,7 @@ workflows:
     triggers:
       - schedule:
           # Thursdays at 13:00 GMT
-          cron: 0 13 * * 4
+          cron: 20 13 * * 4
           filters:
             branches:
               only:
