@@ -117,7 +117,6 @@ jobs:
       - image: node:latest
     steps:
       - checkout
-      - jq/install
       - restore_cache:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
@@ -147,6 +146,8 @@ jobs:
     docker:
       - image: node:latest
     steps:
+      - checkout
+      - jq/install
       - run: yarn promote-dist-tags
 
   close-CTC:
@@ -270,7 +271,7 @@ workflows:
     triggers:
       - schedule:
           # Thursdays
-          cron: 08 15 * * 4
+          cron: 08 18 * * 4
           filters:
             branches:
               only:
