@@ -4,9 +4,6 @@ set -ex
 
 CHANNEL=latest
 
-# test channel
-# CHANNEL=latest-ci-test
-
 CLI_RC_VERSION=${S3_PROMOTE_OVERRIDE_VERSION}
 SHA_SHORT=${S3_PROMOTE_OVERRIDE_SHA}
 
