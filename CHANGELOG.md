@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.96.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.95.0...v7.96.0) (2021-04-05)
+
+
+### Bug Fixes
+
+* collapse latest-rc promote step into pack/upload ([c2c5c46](https://github.com/salesforcecli/sfdx-cli/commit/c2c5c461c7cfaccce6d233a691a512f6daa6b631))
+* remove targets from promote commands ([a141b3b](https://github.com/salesforcecli/sfdx-cli/commit/a141b3bbb383006c1b590def79e81cf47ccf5b66))
+
 ## [7.95.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.94.3...v7.95.0) (2021-04-01)
 
 
