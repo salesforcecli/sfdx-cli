@@ -315,7 +315,6 @@ workflows:
               only:
                 - main
           requires:
-            - promote-channels
             - release-management/release-package
 
   promote-to-latest:
