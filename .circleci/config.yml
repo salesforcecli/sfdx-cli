@@ -210,6 +210,7 @@ workflows:
                 - main
           requires:
             - release-management/release-package
+            - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
           filters:
             branches:
@@ -217,6 +218,7 @@ workflows:
                 - main
           requires:
             - release-management/release-package
+            - pack-and-upload-tarballs
 
   promote-to-latest:
     triggers:
