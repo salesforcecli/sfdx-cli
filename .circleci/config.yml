@@ -8,7 +8,7 @@ jobs:
   # There are two pack jobs:
   # - test-pack-tarballs to run on every branch *other than main*
   # - pack-and-upload-tarballs to run only on main
-  # The persise_to_workspace feature would allow use to have a
+  # The persist_to_workspace feature would allow use to have a
   # pack-tarballs and an upload-tarballs job, but the perf gains
   # is minimal since the workspace is almost a GB to attach.
   test-pack-tarballs:
@@ -61,6 +61,7 @@ jobs:
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
       - run: yarn upload:tarballs
+      - run: ./scripts/promote-stable-rc-tarballs
 
   pack-and-upload-macos-installer:
     macos:
@@ -70,6 +71,7 @@ jobs:
       - run: yarn install
       - run: yarn pack:macos
       - run: yarn upload:macos
+      - run: ./scripts/promote-stable-rc-mac
 
   pack-and-upload-windows-installer:
     <<: *pack-and-upload-tarballs
@@ -91,36 +93,6 @@ jobs:
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
       - run: yarn pack:win
       - run: yarn upload:win
-
-  promote-stable-rc-tarballs:
-    docker:
-      - image: node:latest
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v3-npm-{{checksum "yarn.lock"}}
-      - run: yarn install
-      - run: ./scripts/promote-stable-rc-tarballs
-  promote-stable-rc-mac:
-    docker:
-      - image: node:latest
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v3-npm-{{checksum "yarn.lock"}}
-      - run: yarn install
-      - run: ./scripts/promote-stable-rc-mac
-  promote-stable-rc-win:
-    docker:
-      - image: node:latest
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v3-npm-{{checksum "yarn.lock"}}
-      - run: yarn install
       - run: ./scripts/promote-stable-rc-win
 
   promote-channels:
@@ -245,27 +217,6 @@ workflows:
                 - main
           requires:
             - release-management/release-package
-      - promote-stable-rc-tarballs:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - pack-and-upload-tarballs
-      - promote-stable-rc-mac:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - pack-and-upload-macos-installer
-      - promote-stable-rc-win:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - pack-and-upload-windows-installer
 
   promote-to-latest:
     triggers:
