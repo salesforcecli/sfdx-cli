@@ -126,6 +126,7 @@ jobs:
     docker:
       - image: node:latest
     steps:
+      - release-management/install-change-case-mgmt
       - run:
           when: on_fail
           name: Close CTC case as Not Implemented
@@ -223,8 +224,8 @@ workflows:
   promote-to-latest:
     triggers:
       - schedule:
-          # Thursdays
-          cron: 27 15 * * 4
+          # Thursday morning
+          cron: 0 11 * * 4
           filters:
             branches:
               only:

@@ -1,5 +1,10 @@
-CLI_RC_VERSION=$(npm show sfdx-cli --json | jq -r '.["dist-tags"] | .["latest-rc"]')
+# get CI environment auth'd; local one-off use assumes you're already auth'd to npm
+if [ $NPM_TOKEN ]; then
+  echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+fi
+
+CLI_RC_VERSION=$(npm show sfdx-cli@latest-rc version)
 npm dist-tag add sfdx-cli@${CLI_RC_VERSION} latest
 
-DX_RC_VERSION=$(npm show salesforcedx --json | jq -r '.["dist-tags"] | .["latest-rc"]')
+DX_RC_VERSION=$(npm show salesforcedx@latest-rc version)
 npm dist-tag add salesforcedx@${DX_RC_VERSION} latest
