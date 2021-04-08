@@ -159,14 +159,14 @@ workflows:
           node_version: latest
       - release-management/test-package:
           name: node-14
-          node_version: '14'
+          node_version: "14"
       - release-management/test-package:
           name: node-14-windows
-          node_version: '14'
+          node_version: "14"
           os: windows
       - release-management/test-package:
           name: node-12
-          node_version: '12'
+          node_version: "12"
       - test-pack-tarballs:
           # no point to pack if the test fail, and we only care to test the pack with the node version
           # we ship (specified in package.json.oclif.node)
@@ -225,7 +225,8 @@ workflows:
     triggers:
       - schedule:
           # Thursday morning
-          cron: 0 11 * * 4
+          # cron: 0 11 * * 4
+          # cron: 28 16 * * 4
           filters:
             branches:
               only:

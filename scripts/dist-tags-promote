@@ -1,5 +1,6 @@
 # get CI environment auth'd; local one-off use assumes you're already auth'd to npm
 if [ $NPM_TOKEN ]; then
+  echo "saving npm token from environment to .npmrc
   echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
 fi
 
