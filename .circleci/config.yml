@@ -226,7 +226,7 @@ workflows:
       - schedule:
           # Thursday morning
           # cron: 0 11 * * 4
-          cron: 34 16 * * 4
+          cron: 40 16 * * 4
           filters:
             branches:
               only:
