@@ -120,6 +120,7 @@ jobs:
     steps:
       - checkout
       - jq/install
+      - run: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~.npmrc
       - run: yarn promote-dist-tags
 
   close-CTC:
@@ -226,7 +227,7 @@ workflows:
       - schedule:
           # Thursday morning
           # cron: 0 11 * * 4
-          cron: 40 16 * * 4
+          cron: 48 16 * * 4
           filters:
             branches:
               only:
