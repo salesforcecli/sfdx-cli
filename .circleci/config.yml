@@ -120,7 +120,7 @@ jobs:
     steps:
       - checkout
       - jq/install
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~.npmrc
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run: yarn promote-dist-tags
 
   close-CTC:
