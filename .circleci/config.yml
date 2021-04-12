@@ -16,7 +16,7 @@ jobs:
   # There are two pack jobs:
   # - test-pack-tarballs to run on every branch *other than main*
   # - pack-and-upload-tarballs to run only on main
-  # The persise_to_workspace feature would allow use to have a
+  # The persist_to_workspace feature would allow use to have a
   # pack-tarballs and an upload-tarballs job, but the perf gains
   # is minimal since the workspace is almost a GB to attach.
   test-pack-tarballs:
@@ -69,6 +69,7 @@ jobs:
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
       - run: yarn upload:tarballs
+      - run: ./scripts/promote-stable-rc-tarballs
 
   pack-and-upload-macos-installer:
     macos:
@@ -78,6 +79,7 @@ jobs:
       - run: yarn install
       - run: yarn pack:macos
       - run: yarn upload:macos
+      - run: ./scripts/promote-stable-rc-mac
 
   pack-and-upload-windows-installer:
     <<: *pack-and-upload-tarballs
@@ -99,36 +101,6 @@ jobs:
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
       - run: yarn pack:win
       - run: yarn upload:win
-
-  promote-stable-rc-tarballs:
-    docker:
-      - image: node:latest
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v3-npm-{{checksum "yarn.lock"}}
-      - run: yarn install
-      - run: ./scripts/promote-stable-rc-tarballs
-  promote-stable-rc-mac:
-    docker:
-      - image: node:latest
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v3-npm-{{checksum "yarn.lock"}}
-      - run: yarn install
-      - run: ./scripts/promote-stable-rc-mac
-  promote-stable-rc-win:
-    docker:
-      - image: node:latest
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v3-npm-{{checksum "yarn.lock"}}
-      - run: yarn install
       - run: ./scripts/promote-stable-rc-win
 
   promote-channels:
@@ -156,12 +128,14 @@ jobs:
     steps:
       - checkout
       - jq/install
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run: yarn promote-dist-tags
 
   close-CTC:
     docker:
       - image: node:latest
     steps:
+      - release-management/install-change-case-mgmt
       - run:
           when: on_fail
           name: Close CTC case as Not Implemented
@@ -228,14 +202,14 @@ workflows:
           node_version: latest
       - release-management/test-package:
           name: node-14
-          node_version: '14'
+          node_version: "14"
       - release-management/test-package:
           name: node-14-windows
-          node_version: '14'
+          node_version: "14"
           os: windows
       - release-management/test-package:
           name: node-12
-          node_version: '12'
+          node_version: "12"
       - test-pack-tarballs:
           # no point to pack if the test fail, and we only care to test the pack with the node version
           # we ship (specified in package.json.oclif.node)
@@ -280,6 +254,7 @@ workflows:
                 - main
           requires:
             - release-management/release-package
+            - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
           filters:
             branches:
@@ -287,27 +262,7 @@ workflows:
                 - main
           requires:
             - release-management/release-package
-      - promote-stable-rc-tarballs:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
             - pack-and-upload-tarballs
-      - promote-stable-rc-mac:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - pack-and-upload-macos-installer
-      - promote-stable-rc-win:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - pack-and-upload-windows-installer
       - run-all-nuts:
           # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
           filters:
@@ -320,8 +275,9 @@ workflows:
   promote-to-latest:
     triggers:
       - schedule:
-          # Thursdays
-          cron: 27 15 * * 4
+          # Thursday morning
+          # cron: 0 11 * * 4
+          cron: 43 17 * * 4
           filters:
             branches:
               only:
