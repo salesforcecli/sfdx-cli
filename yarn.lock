@@ -1159,10 +1159,10 @@
   resolved "https://registry.yarnpkg.com/@salesforce/prettier-config/-/prettier-config-0.0.2.tgz#ded39bf7cb75238edc9db6dd093649111350f8bc"
   integrity sha512-KExM355BLbxCW6siGBV7oUOotXvvVp0tAWERgzUkM2FcMb9fWrjwXDrIHc8V0UdDlA3UXtFltDWgN+Yqi+BA/g==
 
-"@salesforce/require-analytics@^0.7.0":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/require-analytics/-/require-analytics-0.7.3.tgz#b967dfa2f9ddcaf0d68cbfbe65f37375bb92b8c0"
-  integrity sha512-gFX4jrz8HNCPRPhfuK5MVhQj+iw7hzJSFETg8oBP1a+4tkcvsQWynO9gJGIJtYW8F96HkOmqZQhkdLCG8CgGtg==
+"@salesforce/require-analytics@^0.9.5":
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/@salesforce/require-analytics/-/require-analytics-0.9.5.tgz#b7c96ea10a4ff0ab3b0cf66e4f9698a03168763e"
+  integrity sha512-4YmwbxB8XIGG6lZTCSHhqTgq3EMC9UXLuWcln2wtoU4ayvCCtIJNu9EZkepVBIcbAPkgCKRgvD/k8Qpk2LTopw==
   dependencies:
     tslib "^1.10.0"
 
@@ -5034,11 +5034,6 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-husky@5.1.3:
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-5.1.3.tgz#1a0645a4fe3ffc006c4d0d8bd0bcb4c98787cc9d"
-  integrity sha512-fbNJ+Gz5wx2LIBtMweJNY1D7Uc8p1XERi5KNRMccwfQA+rXlxWNSdUxswo0gT8XqxywTIw7Ywm/F4v/O35RdMg==
-
 husky@^4.2.5:
   version "4.3.8"
   resolved "https://registry.yarnpkg.com/husky/-/husky-4.3.8.tgz#31144060be963fd6850e5cc8f019a1dfe194296d"
@@ -5054,6 +5049,11 @@ husky@^4.2.5:
     please-upgrade-node "^3.2.0"
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
+
+husky@^5.1.3:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-5.2.0.tgz#fc5e1c2300d34855d47de4753607d00943fc0802"
+  integrity sha512-AM8T/auHXRBxlrfPVLKP6jt49GCM2Zz47m8G3FOMsLmTv8Dj/fKVWE0Rh2d4Qrvmy131xEsdQnb3OXRib67PGg==
 
 hyperlinker@^1.0.0:
   version "1.0.0"

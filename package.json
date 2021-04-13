@@ -108,7 +108,7 @@
     "@salesforce/plugin-config": "1.2.8",
     "@salesforce/plugin-generator": "^1.1.0",
     "@salesforce/plugin-telemetry": "1.1.2",
-    "@salesforce/require-analytics": "^0.7.0",
+    "@salesforce/require-analytics": "^0.9.5",
     "@salesforce/sfdx-trust": "^3.6.0",
     "@salesforce/ts-types": "^1.5.0",
     "debug": "^4.3.1",
