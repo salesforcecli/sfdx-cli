@@ -83,6 +83,7 @@ class MonitorPluginNuts {
     const url = this.getWorkflowUrl();
     const response = await this.circle(url, {});
     const justNuts = response.items.find((item) => item.name === 'just-nuts');
+    // could not find 'just-nuts' in the workflow - stop monitoring the job
     if (!justNuts) {
       this.isComplete = true;
       this.status = 'success';
@@ -97,6 +98,8 @@ class MonitorPluginNuts {
     while (!this.isComplete && retryCnt++ <= this.nutsCompletionRetryCnt) {
       await sleep(Duration.seconds(this.nutsWaitInterval));
       await this.checkWorkflowState();
+      // display workflow state to give feedback that something is actually happening
+      this.displayWorkflowState();
     }
     if (retryCnt > retries && !this.isComplete) {
       this.status = 'monitor timed out';

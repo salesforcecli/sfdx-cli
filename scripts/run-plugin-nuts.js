@@ -37,6 +37,17 @@ const hasTestNuts = (module) => {
   return results.includes('test:nuts');
 };
 
+/**
+ * Get npm information for module
+ * @param timeCreated
+ * The timestamp for sfdx-cli version creation. This value is used to find the module's version by timestamp.
+ * A dependency whose version is specified with a '^' can have several versions published since sfdx-cli was
+ * published. This function examines the modules version timestamps to find the version that was current at
+ * time sfdx-cli was created.
+ * @param module
+ * @param sections
+ * @returns {any}
+ */
 const getNpmForModule = (timeCreated, module, sections) => {
   const results = execSync(
     `npm show ${module.name}@${module.version} ${['time', 'version', ...sections].join(' ')} --json`
@@ -140,6 +151,7 @@ const qualifyPluginsWithNonUnitTests = (timeCreated, modules) => {
   return (
     modules
       .map((module) => {
+        // get npm details for this module
         const npmDetails = getNpmForModule(timeCreated, module, ['oclif.plugins', 'dependencies']);
         if (!npmDetails) {
           return undefined;
@@ -147,11 +159,14 @@ const qualifyPluginsWithNonUnitTests = (timeCreated, modules) => {
         // set version to exact qualifying versions
         module.version = npmDetails.version;
         const oclifPlugins = Reflect.get(npmDetails, 'oclif.plugins') ?? [];
+        // we are only interested in oclif.plugins
         const pluginsToQualify = (oclifPlugins.length
-          ? Object.entries(npmDetails.dependencies).filter(([name, version]) => oclifPlugins.includes(name))
+          ? Object.entries(npmDetails.dependencies).filter(([name]) => oclifPlugins.includes(name))
           : []
         )
+          // convert array to object
           .map(([name, version]) => ({ name, version }))
+          // and only interested in salesforce modules
           .filter((module) => /^@*salesforce/.test(module.name));
         // determine if current module should be include (has a nut test) and qualify all of current modules dependencies
         return [
@@ -161,9 +176,7 @@ const qualifyPluginsWithNonUnitTests = (timeCreated, modules) => {
       })
       .filter((module) => module)
       // flatten arrays
-      .reduce((a, b) => {
-        return a.concat(b);
-      }, [])
+      .flat()
       // establish github org and repo name
       .map((module) => Object.assign({}, { ...module, info: getOrgAndProject(module) }))
   );
