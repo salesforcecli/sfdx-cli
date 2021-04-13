@@ -11,6 +11,10 @@ parameters:
   run-just-nuts:
     default: false
     type: boolean
+  nuts_job_data:
+    description: Parameter to pass the set of NUTs started across all plugins
+    default: '[]'
+    type: string
 
 jobs:
   # There are two pack jobs:
@@ -319,7 +323,7 @@ workflows:
     jobs:
       - monitor-all-nuts:
           name: monitor-just-nuts
-          nuts_job_data: '[]'
+          nuts_job_data: << pipeline.parameters.nuts_job_data >>
           filters:
             branches:
               only:

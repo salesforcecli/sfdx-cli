@@ -27,7 +27,7 @@ const circleciBaseUrl = 'https://circleci.com/api/v2/';
 
 const manualRepoOverrides = {
   'salesforce-alm': {
-    org: 'salesforce-cli',
+    org: 'salesforcecli',
     repo: 'toolbelt',
   },
 };
@@ -94,7 +94,8 @@ const triggerNutsForProject = async (sfdxVersion, module, branch = 'main') => {
       repo_tag: module.version,
     },
   };
-  return await circle(`${circleciBaseUrl}project/${projectSlug(module.info.org, module.info.repo)}/pipeline`, {
+  const pipelineUrl = `${circleciBaseUrl}project/${projectSlug(module.info.org, module.info.repo)}/pipeline`;
+  return await circle(pipelineUrl, {
     method: 'POST',
     json: body,
   });
