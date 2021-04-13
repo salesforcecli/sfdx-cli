@@ -113,7 +113,7 @@ const triggerNutsMonitor = async (jobData, branch = 'main') => {
     parameters: {
       'run-auto-workflows': false,
       'run-just-nuts': true,
-      nuts_job_data: JSON.stringify(jobData),
+      nuts_job_data: `"${JSON.stringify(jobData).replace(/"/g, '\\"')}"`,
     },
   };
   return await circle(`${circleciBaseUrl}project/${projectSlug('salesforcecli', 'sfdx-cli')}/pipeline`, {
