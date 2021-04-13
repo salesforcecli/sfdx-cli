@@ -49,7 +49,7 @@ class MonitorPluginNuts {
     this.pipelineData = pipelineData;
     this.nutsCompletionRetryCnt = parseInt(process.env.NUTS_COMPLETION_RETRY_CNT ?? '30');
     const totalWaitTime = parseInt(process.env.NUTS_WAIT_TIME ?? '900');
-    if (!this.nutsCompletionRetryCnt <= totalWaitTime) {
+    if (!(this.nutsCompletionRetryCnt <= totalWaitTime)) {
       throw new Error(
         `NUTS_WAIT_TIME ${totalWaitTime} must be greater than retry count ${this.nutsCompletionRetryCnt}`
       );
@@ -94,15 +94,22 @@ class MonitorPluginNuts {
   }
 
   async waitForCompletion() {
-    let retryCnt = 0;
-    while (!this.isComplete && retryCnt++ <= this.nutsCompletionRetryCnt) {
-      await sleep(Duration.seconds(this.nutsWaitInterval));
-      await this.checkWorkflowState();
-      // display workflow state to give feedback that something is actually happening
-      this.displayWorkflowState();
-    }
-    if (retryCnt > retries && !this.isComplete) {
-      this.status = 'monitor timed out';
+    try {
+      let retryCnt = 0;
+      while (!this.isComplete && retryCnt++ <= this.nutsCompletionRetryCnt) {
+        console.log(`sleeping ${Duration.seconds(this.nutsWaitInterval)}`);
+        await sleep(Duration.seconds(this.nutsWaitInterval));
+        await this.checkWorkflowState();
+        // display workflow state to give feedback that something is actually happening
+        this.displayWorkflowState();
+      }
+      if (retryCnt > retries && !this.isComplete) {
+        this.status = 'monitor timed out';
+        this.isComplete = true;
+      }
+    } catch(error) {
+      this.status = `exception occured while monitor job ${error}`;
+      this.isComplete = true;
     }
   }
   displayWorkflowState() {
