@@ -97,7 +97,6 @@ class MonitorPluginNuts {
     try {
       let retryCnt = 0;
       while (!this.isComplete && retryCnt++ <= this.nutsCompletionRetryCnt) {
-        console.log(`sleeping ${Duration.seconds(this.nutsWaitInterval)}`);
         await sleep(Duration.seconds(this.nutsWaitInterval));
         await this.checkWorkflowState();
         // display workflow state to give feedback that something is actually happening
