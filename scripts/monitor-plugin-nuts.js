@@ -74,23 +74,22 @@ class MonitorPluginNuts {
     try {
       return JSON.parse((await got(url, options)).body);
     } catch (error) {
-      console.log(error);
       throw new Error(error && error.response?.body ? error.response.body : error);
     }
   }
 
   async checkWorkflowState() {
     const url = this.getWorkflowUrl();
-    const response = await this.circle(url, {});
-    const justNuts = response.items.find((item) => item.name === 'just-nuts');
-    // could not find 'just-nuts' in the workflow - stop monitoring the job
-    if (!justNuts) {
-      this.isComplete = true;
-      this.status = 'success';
-      return;
-    }
-    this.isComplete = notCompleteStatus.some((status) => justNuts.status !== status);
-    this.justNuts = justNuts;
+      const response = await this.circle(url, {});
+      const justNuts = response.items.find((item) => item.name === 'just-nuts');
+      // could not find 'just-nuts' in the workflow - stop monitoring the job
+      if (!justNuts) {
+        this.isComplete = true;
+        this.status = 'success';
+        return;
+      }
+      this.isComplete = !notCompleteStatus.some((status) => justNuts.status === status);
+      this.justNuts = justNuts;
   }
 
   async waitForCompletion() {
@@ -112,7 +111,7 @@ class MonitorPluginNuts {
     }
   }
   displayWorkflowState() {
-    console.log(`Workflow: ${this.justNuts.name} Status: ${this.justNuts.status} URL: ${this.getCircleCiUrl()}`);
+    console.log(`Workflow: ${this.justNuts.name} Status: ${this.justNuts.status ?? this.status} URL: ${this.getCircleCiUrl()}`);
   }
 }
 
