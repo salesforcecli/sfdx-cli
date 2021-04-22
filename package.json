@@ -174,7 +174,7 @@
     "prepack": "yarn compile && yarn lint && yarn oclif-artifacts",
     "prepare": "yarn compile && yarn lint",
     "promote": "oclif promote",
-    "promote-dist-tags": "./scripts/dist-tags-promote",
+    "promote-dist-tags": "./scripts/promote-dist-tags",
     "snapshot-generate": "HOME=./ ./bin/run snapshot:generate",
     "test": "mocha --recursive \"test/**/*.ts\" && nyc --report lcov --report cobertura mocha -t 240000 --require source-map-support/register --recursive \"dist/**/*.test.js\"",
     "test-smoke-unix": "./tmp/sfdx/bin/sfdx version && ./tmp/sfdx/bin/sfdx help && ./tmp/sfdx/bin/sfdx plugins --core",
