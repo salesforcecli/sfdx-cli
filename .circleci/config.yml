@@ -280,7 +280,7 @@ workflows:
     triggers:
       - schedule:
           # Thursday morning
-          cron: 0 11 * * 4
+          cron: 0 14 * * 4
           filters:
             branches:
               only:
