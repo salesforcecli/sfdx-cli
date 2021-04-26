@@ -91,6 +91,7 @@ const triggerNutsForProject = async (sfdxVersion, module, branch = 'main') => {
       'run-auto-workflows': false,
       'run-just-nuts': true,
       sfdx_version: sfdxVersion,
+      npm_module_name: module.name,
       repo_tag: module.version,
     },
   };
