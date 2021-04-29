@@ -134,7 +134,6 @@ function ensure_no_unexpected_files() {
 ensure_no_webdriverio_test
 ensure_no_heroku_cli_util_nyc
 scan_path_lengths
-ensure_apex_test
 ensure_apex_node_test
 ensure_templates_commands
 ensure_no_dist_tests_or_maps
