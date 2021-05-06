@@ -117,7 +117,7 @@ jobs:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
       - run: yarn install
-      - run: ./scripts/promote
+      - run: ./scripts/promote-rc-to-latest
 
   change-case-start:
     docker:
