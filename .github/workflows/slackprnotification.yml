@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Notify slack pr open
       env:
-        SLACK_WEBHOOK_URL : ${{ secrets.CLI_TEAM_SLACK_WEBHOOK_URL }}
+        WEBHOOK_URL : ${{ secrets.CLI_TEAM_SLACK_WEBHOOK_URL }}
         PULL_REQUEST_AUTHOR_ICON_URL : ${{ github.event.pull_request.user.avatar_url }}
         PULL_REQUEST_AUTHOR_NAME : ${{ github.event.pull_request.user.login }}
         PULL_REQUEST_AUTHOR_PROFILE_URL: ${{ github.event.pull_request.user.html_url }}
