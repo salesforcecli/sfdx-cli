@@ -1,7 +1,7 @@
 # Salesforce CLI
 
 This is the latest `sfdx` CLI application, based on the
-[oclif](https://oclif.io) CLI engine. By default it comes installed with the [salesforcedx](https://www.npmjs.com/package/salesforcedx) plugin, which contributes all commands from the `force` command namespace.
+[oclif](https://oclif.io) CLI engine. By default it comes installed with various plugins.
 
 ## Releases
 

@@ -1,7 +1,7 @@
 # Salesforce CLI
 
-This is the `sfdx` CLI application, based on Heroku's
-[oclif](https://oclif.io). By default it comes installed with the `salesforcedx` plugin, which contributes all commands in the `force` namespace.
+This is the latest `sfdx` CLI application, based on the
+[oclif](https://oclif.io) CLI engine. By default it comes installed with various plugins.
 
 ## Installation and Development
 
@@ -37,9 +37,4 @@ The following flags are supported by the `bin/run.sh` script, which wraps the `b
 
 ### Developer notes
 
-- To manually install a specific version of the `salesforcedx` plugin you an run `npm install salesforcedx@<tag | x.y.z>`
 - If you are using a locally linked `cli-engine` and making changes, you may want to set up its compile watch with `yarn run watch`.
-
-## Build and release
-
-For more information about how to locally run or modify the build and release scripts, see the [SCRIPTS](SCRIPTS.md) document.
