@@ -1,28 +1,26 @@
 #!/usr/bin/env bash
-
+# this script will read from a stable-rc channel to get the sha/version.  You can override them with env vars.
+# make sure you want what's at that url (watch out for caching if you just promoted to stable-rc!)
 set -ex
 
 CHANNEL=stable
 
 CLI_RC_VERSION=${S3_PROMOTE_OVERRIDE_VERSION}
 SHA_SHORT=${S3_PROMOTE_OVERRIDE_SHA}
+MANIFEST_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-darwin-x64-buildmanifest"
 
 if [ -z "${S3_PROMOTE_OVERRIDE_VERSION}" ]; then
-  # get RC version from npm before we promote it to latest!
-  CLI_RC_VERSION=$(npm show sfdx-cli --json | jq -r '.["dist-tags"] | .["latest-rc"]')
+  CLI_RC_VERSION=$(curl -s $MANIFEST_URL | jq -cr '.version')
 fi
 echo "version to promote: $CLI_RC_VERSION"
 
 if [ -z "${S3_PROMOTE_OVERRIDE_SHA}" ]; then
-  # figure out the sha from the release
-  SHA=$(curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/salesforcecli/sfdx-cli/tags | jq -cr '.[] | select(.name=='\"v$CLI_RC_VERSION\"') | .commit | .sha')
-  echo "found matching sha of ${SHA}"
-  SHA_SHORT=$(git rev-parse --short=7 ${SHA})
+  SHA_SHORT=$(curl -s $MANIFEST_URL | jq -cr '.sha')
 fi
 echo "will use sha of ${SHA_SHORT}"
 
 echo "will run command"
 echo "yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL --max-age 300 --macos --win"
 
-# promote it
+# promote it (runs oclif promote)
 yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL --max-age 300 --macos --win
