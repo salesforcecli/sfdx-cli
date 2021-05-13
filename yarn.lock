@@ -974,10 +974,10 @@
     debug "^3.2.6"
     tslib "^1.10.0"
 
-"@salesforce/plugin-alias@1.1.9":
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-alias/-/plugin-alias-1.1.9.tgz#8e07bf64bfe4d2e4b04b06b53643978a6730ebb1"
-  integrity sha512-FeVcQXW7+tpc+qYKbiEp8ITUFj1np4zjyjEjD5DUtxEpwn52T09wKnaxrykXmidBy484fXMs57olhL+ME1TQvA==
+"@salesforce/plugin-alias@1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-alias/-/plugin-alias-1.1.10.tgz#b06b1093a76df19c784507f4f37190f42e55b46b"
+  integrity sha512-ps+5TQSdLnCV88yqSm6qMxljkyJUA9T1da+v6DEC+WfBKM3x9KTAMd9ydI0iyWvxH5kHgLNoCqSvi4372eWiNg==
   dependencies:
     "@oclif/config" "^1.17.0"
     "@salesforce/command" "^3.0.1"
@@ -999,17 +999,17 @@
     chalk "^4.1.0"
     tslib "^1"
 
-"@salesforce/plugin-auth@1.5.3":
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.5.3.tgz#0bb76020940617bfb8d4ceaf00f9ade8995732e1"
-  integrity sha512-kvQaNp+qVpgZY/SPfndAuCG5GhY+sjYZ81Na/pYaKEar4ekHFGY/7Eo2KldlDJHUZIxvkXVNuU7tzIcZhg7nfw==
+"@salesforce/plugin-auth@1.5.4":
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.5.4.tgz#d91b56998ab25ca19174ef215f3ef039227a4437"
+  integrity sha512-I0Q+GC9svFCJAEnAgY5LjedoaoFg4cqKDf0Y25l+PfhyZLpCoOeU5ZeQ/KocPEFlhgzK5G93CbUKNLw+aD136A==
   dependencies:
     "@oclif/config" "^1.17.0"
     "@salesforce/command" "^3.0.3"
     "@salesforce/core" "^2.20.4"
     "@salesforce/kit" "^1.3.3"
     chalk "^4.1.0"
-    open "^7.3.0"
+    open "^8.0.5"
     tslib "^2"
 
 "@salesforce/plugin-config@1.2.8":
@@ -1101,7 +1101,18 @@
     "@salesforce/core" "^2.14.0"
     tslib "^2"
 
-"@salesforce/plugin-telemetry@1.2.0", "@salesforce/plugin-telemetry@^1.1.2":
+"@salesforce/plugin-telemetry@1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.1.tgz#61d628058dcf2904c75f69f01cbcffc5802e04de"
+  integrity sha512-t8uW2qWPnGPvMvsfEOLB1EDRWVLwuj3F4Gn2y7bZwkQZFmHQ1j8xLyIFQt5gkHOw8l2Pwhbm+JG91jQIttIAaw==
+  dependencies:
+    "@oclif/config" "^1"
+    "@salesforce/command" "^3.0.3"
+    "@salesforce/core" "^2.6.0"
+    "@salesforce/telemetry" "^2.0.4"
+    tslib "^2"
+
+"@salesforce/plugin-telemetry@^1.1.2":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.0.tgz#6a98fd70dbfa4f3fa1a858654cdfe10b7577493d"
   integrity sha512-MGn1IDQkW6vUzQyxB/ENo9gk/U7jqNt4rGzDF/O9JvXVNNYzXJg/o904yCu87gQRu4rIojYsiIHGcsJOMGbxfg==
@@ -7354,13 +7365,22 @@ open@8.0.2:
     is-docker "^2.1.1"
     is-wsl "^2.2.0"
 
-open@^7.2.0, open@^7.3.0:
+open@^7.2.0:
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/open/-/open-7.4.2.tgz#b8147e26dcf3e426316c730089fd71edd29c2321"
   integrity sha512-MVHddDVweXZF3awtlAS+6pgKLlm/JgxZ90+/NBurBoQctVOOB/zDdVjcyPzQ+0laDGbsWgrRkflI65sQeOgT9Q==
   dependencies:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
+
+open@^8.0.5:
+  version "8.0.8"
+  resolved "https://registry.yarnpkg.com/open/-/open-8.0.8.tgz#0e286bb2df3c72e00cb2a0203d604abee002dbdc"
+  integrity sha512-3XmKIU8+H/TVr8wB8C4vj0z748+yBydSvtpzZVS6vQ1dKNHB6AiPbhaoG+89zb80717GPk9y/7OvK0R6FXkNmQ==
+  dependencies:
+    define-lazy-prop "^2.0.0"
+    is-docker "^2.1.1"
+    is-wsl "^2.2.0"
 
 opencollective-postinstall@^2.0.2:
   version "2.0.3"
