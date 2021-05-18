@@ -106,7 +106,7 @@
     "@salesforce/plugin-alias": "1.1.10",
     "@salesforce/plugin-auth": "1.5.4",
     "@salesforce/plugin-config": "1.2.8",
-    "@salesforce/plugin-generator": "^1.1.0",
+    "@salesforce/plugin-generator": "^1.1.7",
     "@salesforce/plugin-telemetry": "1.2.1",
     "@salesforce/require-analytics": "^0.9.5",
     "@salesforce/sfdx-trust": "^3.6.0",
