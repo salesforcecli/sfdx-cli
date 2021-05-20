@@ -50,7 +50,7 @@ jobs:
 
   pack-and-upload-tarballs: &pack-and-upload-tarballs
     docker:
-      - image: node:latest
+      - image: node:lts
     resource_class: xlarge
     steps:
       - checkout
