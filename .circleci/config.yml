@@ -25,7 +25,7 @@ jobs:
   # is minimal since the workspace is almost a GB to attach.
   test-pack-tarballs:
     docker:
-      - image: node:latest
+      - image: node:lts
     resource_class: xlarge
     steps:
       - checkout
@@ -50,7 +50,7 @@ jobs:
 
   pack-and-upload-tarballs: &pack-and-upload-tarballs
     docker:
-      - image: node:latest
+      - image: node:lts
     resource_class: xlarge
     steps:
       - checkout
