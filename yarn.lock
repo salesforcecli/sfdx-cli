@@ -7308,10 +7308,10 @@ object.values@^1.1.1:
     es-abstract "^1.18.0-next.2"
     has "^1.0.3"
 
-oclif@^1.17.1:
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-1.17.1.tgz#7f8170bb90ca51a5786ffaee9db5cf10b085d7de"
-  integrity sha512-l2SImZdQF0XJfZAON5jksNxbOq6/yNCV+sTcSyNNZSSLwCeRzwDFXraXxK576Bh7XZtjdkAGY2Ed1+EL1UQ3Tg==
+oclif@^1.18.0:
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-1.18.0.tgz#2d042ea50e7b8dfbef94f7c0f0693f42ef7cc47f"
+  integrity sha512-GLnwhESkPqM2cElRSZ9KwoUJ9OPiQEFaUM8xbBQDcygapuYcTIpcCj6hCsDhnLzSJj2DDgqDjmQlNeT29LUr0g==
   dependencies:
     "@oclif/command" "^1.6"
     "@oclif/config" "^1.12.6"
