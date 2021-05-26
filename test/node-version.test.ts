@@ -6,14 +6,16 @@
  */
 
 import { join } from 'path';
-import { readFileSync } from 'fs-extra';
+import { existsSync } from 'fs-extra';
 import { expect } from 'chai';
 
 describe('node version', () => {
-  it('in NODE_VERSION.md and package.oclif.node are the same', () => {
-    const packageJson = require(join(__dirname, '..', 'package.json'));
-    const markdown = readFileSync(join(__dirname, '..', 'NODE_VERSION.md'), 'utf8');
-    const markdownNodeVersion = /node=([0-9]+\.[0-9]+\.[0-9]+)/.exec(markdown);
-    expect(packageJson.oclif.node).to.equal(markdownNodeVersion && markdownNodeVersion[1]);
+  it('node version file does not exist', () => {
+    expect(existsSync(join(__dirname, '..', 'NODE_VERSION.md'))).to.be.false;
+  });
+  it('does not have oclif version in the old pjson location', () => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
+    const packageJson = require(join(__dirname, '..', 'package.json')) as { oclif: { node: string } };
+    expect(packageJson.oclif.node).to.be.undefined;
   });
 });
