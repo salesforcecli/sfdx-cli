@@ -1048,10 +1048,10 @@
     csv-parse "^4.14.1"
     tslib "^2"
 
-"@salesforce/plugin-generator@^1.1.0":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-generator/-/plugin-generator-1.1.5.tgz#6542ebb72f7a04c04b9f1cd7f5f15d8a026b552a"
-  integrity sha512-3+I2rZzvxsd85Ty8K7xkxOwpHiXxFmjxs7Aow+ccz8BMr2weSSoFCjC6TeVyWVcl+EPk28sCqD6p90ReX4Ty+A==
+"@salesforce/plugin-generator@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-generator/-/plugin-generator-1.1.7.tgz#aaf5b17b0a9723f76ce9c855742f293324c5cf78"
+  integrity sha512-+7k/luiLmzEJ1Qd/BoOIC4KaVDjx1CD0ugXVdyyciBtAtG1MlPJKPDYco7GA5oCDoBz/nASZz5wW3ga64bXTrQ==
   dependencies:
     "@oclif/command" "^1.5.8"
     "@oclif/config" "^1.12.6"
