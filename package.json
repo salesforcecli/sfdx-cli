@@ -61,6 +61,7 @@
     "update": {
       "s3": {
         "bucket": "dfc-data-production",
+        "indexVersionLimit": 20,
         "folder": "media/salesforce-cli/sfdx",
         "acl": " ",
         "host": "https://developer.salesforce.com",
