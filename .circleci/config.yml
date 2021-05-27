@@ -34,17 +34,9 @@ jobs:
           apt-get install -y p7zip-full
       - restore_cache:
           keys:
-            - v3-node-{{ checksum "NODE_VERSION.md" }}
-      - restore_cache:
-          keys:
             - v3-npm-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: yarn pack:tarballs
-      - save_cache:
-          key: v3-node-{{ checksum "NODE_VERSION.md" }}
-          paths:
-            - tmp/cache
-            - tmp/node
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
 
@@ -59,17 +51,9 @@ jobs:
           apt-get install -y p7zip-full
       - restore_cache:
           keys:
-            - v3-node-{{ checksum "NODE_VERSION.md" }}
-      - restore_cache:
-          keys:
             - v3-npm-{{checksum "yarn.lock"}}
       - run: yarn install
       - run: yarn pack:tarballs
-      - save_cache:
-          key: v3-node-{{ checksum "NODE_VERSION.md" }}
-          paths:
-            - tmp/cache
-            - tmp/node
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
       - run: yarn upload:tarballs
@@ -89,9 +73,6 @@ jobs:
     <<: *pack-and-upload-tarballs
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v3-node-{{ checksum "NODE_VERSION.md" }}
       - restore_cache:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}

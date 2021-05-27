@@ -23,7 +23,6 @@
     "bin": "sfdx",
     "scope": "salesforce",
     "commands": "./dist/commands",
-    "node": "14.15.4",
     "dirname": "sfdx",
     "hooks": {
       "plugins:preinstall": [
@@ -62,6 +61,7 @@
     "update": {
       "s3": {
         "bucket": "dfc-data-production",
+        "indexVersionLimit": 20,
         "folder": "media/salesforce-cli/sfdx",
         "acl": " ",
         "host": "https://developer.salesforce.com",
@@ -146,7 +146,7 @@
     "mocha": "^8.3.0",
     "npm": "^7.5.2",
     "nyc": "^15.1.0",
-    "oclif": "^1.17.1",
+    "oclif": "^1.18.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^3.1.0",
     "shelljs": "^0.8.4",

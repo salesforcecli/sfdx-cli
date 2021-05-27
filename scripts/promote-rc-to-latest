@@ -20,7 +20,7 @@ fi
 echo "will use sha of ${SHA_SHORT}"
 
 echo "will run command"
-echo "yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL --max-age 300 --macos --win"
+echo "yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL --max-age 300 --macos --win --indexes"
 
 # promote it (runs oclif promote)
-yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL --max-age 300 --macos --win
+yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL --max-age 300 --macos --win --indexes
