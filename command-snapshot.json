@@ -171,7 +171,7 @@
   },
   {
     "command": "force:apex:test:report",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-apex",
     "flags": [
       "apiversion",
       "codecoverage",
@@ -187,15 +187,15 @@
   },
   {
     "command": "force:apex:test:run",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-apex",
     "flags": [
       "apiversion",
       "classnames",
       "codecoverage",
+      "detailedcoverage",
       "json",
       "loglevel",
       "outputdir",
-      "precompilewait",
       "resultformat",
       "suitenames",
       "synchronous",
@@ -275,27 +275,27 @@
   },
   {
     "command": "force:data:bulk:delete",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-data",
     "flags": ["apiversion", "csvfile", "json", "loglevel", "sobjecttype", "targetusername", "wait"]
   },
   {
     "command": "force:data:bulk:status",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-data",
     "flags": ["apiversion", "batchid", "jobid", "json", "loglevel", "targetusername"]
   },
   {
     "command": "force:data:bulk:upsert",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-data",
     "flags": ["apiversion", "csvfile", "externalid", "json", "loglevel", "sobjecttype", "targetusername", "wait"]
   },
   {
     "command": "force:data:record:create",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-data",
     "flags": ["apiversion", "json", "loglevel", "perflog", "sobjecttype", "targetusername", "usetoolingapi", "values"]
   },
   {
     "command": "force:data:record:delete",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-data",
     "flags": [
       "apiversion",
       "json",
@@ -310,7 +310,7 @@
   },
   {
     "command": "force:data:record:get",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-data",
     "flags": [
       "apiversion",
       "json",
@@ -325,7 +325,7 @@
   },
   {
     "command": "force:data:record:update",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-data",
     "flags": [
       "apiversion",
       "json",
@@ -341,17 +341,17 @@
   },
   {
     "command": "force:data:soql:query",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-data",
     "flags": ["apiversion", "json", "loglevel", "perflog", "query", "resultformat", "targetusername", "usetoolingapi"]
   },
   {
     "command": "force:data:tree:export",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-data",
     "flags": ["apiversion", "json", "loglevel", "outputdir", "plan", "prefix", "query", "targetusername"]
   },
   {
     "command": "force:data:tree:import",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-data",
     "flags": [
       "apiversion",
       "confighelp",
@@ -412,6 +412,11 @@
     "command": "force:limits:api:display",
     "plugin": "@salesforce/plugin-limits",
     "flags": ["apiversion", "json", "loglevel", "targetusername"]
+  },
+  {
+    "command": "force:limits:recordcounts:display",
+    "plugin": "@salesforce/plugin-limits",
+    "flags": ["apiversion", "json", "loglevel", "sobjecttype", "targetusername"]
   },
   {
     "command": "force:mdapi:convert",
@@ -827,11 +832,6 @@
     ]
   },
   {
-    "command": "force:project:upgrade",
-    "plugin": "salesforce-alm",
-    "flags": ["forceupgrade", "json", "loglevel"]
-  },
-  {
     "command": "force:schema:sobject:describe",
     "plugin": "@salesforce/plugin-schema",
     "flags": ["apiversion", "json", "loglevel", "sobjecttype", "targetusername", "usetoolingapi"]
@@ -891,6 +891,11 @@
     "command": "force:source:deploy:report",
     "plugin": "salesforce-alm",
     "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "wait"]
+  },
+  {
+    "command": "force:source:ignored:list",
+    "plugin": "salesforce-alm",
+    "flags": ["json", "loglevel", "sourcepath"]
   },
   {
     "command": "force:source:open",
@@ -1059,7 +1064,7 @@
   {
     "command": "update",
     "plugin": "@oclif/plugin-update",
-    "flags": ["autoupdate"]
+    "flags": ["autoupdate", "from-local"]
   },
   {
     "command": "which",
