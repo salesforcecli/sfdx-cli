@@ -3639,9 +3639,9 @@ eslint-config-salesforce-typescript@^0.2.0:
   integrity sha512-IUjHP4Fo47QTEsYOS7LFp/SBxbEDanGWTvDuyzvaOg+ai+50rlyJsBbijA17oQCA0+FkkvRRu2FjpdV8m/ds1Q==
 
 eslint-config-salesforce@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-salesforce/-/eslint-config-salesforce-0.1.0.tgz#b1e4ab5b9278b854f3ba6674e89176836de51c41"
-  integrity sha512-yHCQ7XQsfd0bmcuPgsDFJ+L8PtSdc3yRfGfMR4JqU+7g1YgKK9bVICa7vqlGPHYet2c4Z3DBTh0IZQVe3PgQvg==
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/eslint-config-salesforce/-/eslint-config-salesforce-0.1.6.tgz#47d7846d340df99db25962978e414e03404e5c2a"
+  integrity sha512-QloeQzIka5Ruj6RfkfqeNPZoaR7wkz34AU/RABVdn/XBd23lk/l0/I/Hx3Rzx0G4dft/DBaHBL1JYllT0cWE1A==
 
 eslint-friendly-formatter@^4.0.1:
   version "4.0.1"
