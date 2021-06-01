@@ -3634,9 +3634,9 @@ eslint-config-salesforce-license@^0.1.0:
   integrity sha512-BH1tiDohVV3k4aVVVMomF9YSA8VLRdyB8Pmdjs9eaVKhCw84gktKbMIsPKPrCnqIECLNM5dagiZHNHaLopsqAA==
 
 eslint-config-salesforce-typescript@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-salesforce-typescript/-/eslint-config-salesforce-typescript-0.2.0.tgz#a680284de34a4943eec4ee95292433a9a4d829a5"
-  integrity sha512-IUjHP4Fo47QTEsYOS7LFp/SBxbEDanGWTvDuyzvaOg+ai+50rlyJsBbijA17oQCA0+FkkvRRu2FjpdV8m/ds1Q==
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/eslint-config-salesforce-typescript/-/eslint-config-salesforce-typescript-0.2.7.tgz#18c966f72928ce9b4e36552384d2ce90c5b711e3"
+  integrity sha512-v5gY1fSKbBOVoDznJW1wMIIyGH2x0HKKIsGtBpu4jla+z8VhH/UfTPv3yMa2a7HGfD7YnAW+XY6ksVlXqjpOeQ==
 
 eslint-config-salesforce@^0.1.0:
   version "0.1.0"
