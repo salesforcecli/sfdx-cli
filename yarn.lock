@@ -967,9 +967,9 @@
     tslib "^1.10.0"
 
 "@salesforce/lazy-require@^0.4.0":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@salesforce/lazy-require/-/lazy-require-0.4.5.tgz#43d7aa8441183f129c094941c82839b22fb2893e"
-  integrity sha512-dlodNyx2VX8ULaXZjQ+f/E1qz6rwfV/81VMcS5EopUP9NzmfxYjWQuzPCUFXXFmu4pnEqeTSHIhT1UIIWkwAQg==
+  version "0.4.12"
+  resolved "https://registry.yarnpkg.com/@salesforce/lazy-require/-/lazy-require-0.4.12.tgz#fc8af75ece5894be481ffbd8d420346fb71a62e7"
+  integrity sha512-LRSWy9XqUDlnDx7XQSWfU0xfOrXgm5M+QID9payUNkxNYnBHU7SQoEPzmVwa8YdVISX75b82f2yYTJD0gwoGEg==
   dependencies:
     debug "^3.2.6"
     tslib "^1.10.0"
