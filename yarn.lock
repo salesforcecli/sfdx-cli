@@ -904,20 +904,20 @@
     template-lib "^1.1.2"
     tslib "^2"
 
-"@salesforce/dev-config@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/dev-config/-/dev-config-2.1.0.tgz#78efdf5d660d7cb839d9cafa036f9882741dc6bc"
-  integrity sha512-I+zrptt8zI1jbP3TVA6g7i3quuh71tPky8gwCsXaQ2X9ea1xbeAslN4YjWfgqbY5SaxJhqP979oxFADlH+OehQ==
+"@salesforce/dev-config@^2.1.0", "@salesforce/dev-config@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/dev-config/-/dev-config-2.1.2.tgz#b4e206f860e87065d068bf8ba3994a032389ad81"
+  integrity sha512-1swy07rynHoTRk8lj6nuC0JceRBo300OuWnovQe2OMvLpQM5Dh1SUnv1SE8012PsrK9BC1WqGXp4BUyMo04x7w==
 
 "@salesforce/dev-scripts@^0.9.1":
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/dev-scripts/-/dev-scripts-0.9.1.tgz#69be3ceedc44b393f3507e2d502f99392a8abd31"
-  integrity sha512-+bge27zCy/ARHmDKzyjOVeA3rQ1Znic+Kr4+yQaftS6sM7plAgipAwt9Gm6slUoRvjlkYT7QaOmSk1ecUgEH6g==
+  version "0.9.11"
+  resolved "https://registry.yarnpkg.com/@salesforce/dev-scripts/-/dev-scripts-0.9.11.tgz#bc6f5db7ea47317a2cb792a45759daf642d685fd"
+  integrity sha512-JzzRqQ339FpZbR8wqtSiaOMlmJHz4XPaA66qbFD+AohXpmyX3PDxiTK0F6sAg1QiOnyzcRypLiycbd99NpP8lg==
   dependencies:
     "@commitlint/cli" "^9.1.1"
     "@commitlint/config-conventional" "^10.0.0"
     "@oclif/dev-cli" "^1"
-    "@salesforce/dev-config" "^2.1.0"
+    "@salesforce/dev-config" "^2.1.2"
     "@salesforce/prettier-config" "^0.0.2"
     "@types/chai" "^4.2.11"
     "@types/mocha" "^7.0.2"
@@ -928,9 +928,9 @@
     cosmiconfig "^6.0.0"
     eslint "^6.8.0"
     eslint-config-prettier "^6.11.0"
-    eslint-config-salesforce "^0.1.0"
-    eslint-config-salesforce-license "^0.1.0"
-    eslint-config-salesforce-typescript "^0.2.0"
+    eslint-config-salesforce "^0.1.6"
+    eslint-config-salesforce-license "^0.1.6"
+    eslint-config-salesforce-typescript "^0.2.7"
     eslint-plugin-header "^3.0.0"
     eslint-plugin-import "^2.20.2"
     eslint-plugin-jsdoc "^27.0.3"
@@ -3662,20 +3662,20 @@ eslint-config-prettier@^6.11.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-salesforce-license@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-salesforce-license/-/eslint-config-salesforce-license-0.1.0.tgz#2c821c28836650589d5f6e29d401720ee4b84dd3"
-  integrity sha512-BH1tiDohVV3k4aVVVMomF9YSA8VLRdyB8Pmdjs9eaVKhCw84gktKbMIsPKPrCnqIECLNM5dagiZHNHaLopsqAA==
+eslint-config-salesforce-license@^0.1.0, eslint-config-salesforce-license@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/eslint-config-salesforce-license/-/eslint-config-salesforce-license-0.1.6.tgz#75b475cf90f92e1dcb4340124466288915fed3f8"
+  integrity sha512-PH1nkm6MaouON4Ac4fgJh29oQiHlpU/G2xS45FAYeAWkh1up88j1UpjXt2ISNniQVvU4uqfVAOOaEb5X5hDqYw==
 
-eslint-config-salesforce-typescript@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-salesforce-typescript/-/eslint-config-salesforce-typescript-0.2.0.tgz#a680284de34a4943eec4ee95292433a9a4d829a5"
-  integrity sha512-IUjHP4Fo47QTEsYOS7LFp/SBxbEDanGWTvDuyzvaOg+ai+50rlyJsBbijA17oQCA0+FkkvRRu2FjpdV8m/ds1Q==
+eslint-config-salesforce-typescript@^0.2.0, eslint-config-salesforce-typescript@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/eslint-config-salesforce-typescript/-/eslint-config-salesforce-typescript-0.2.7.tgz#18c966f72928ce9b4e36552384d2ce90c5b711e3"
+  integrity sha512-v5gY1fSKbBOVoDznJW1wMIIyGH2x0HKKIsGtBpu4jla+z8VhH/UfTPv3yMa2a7HGfD7YnAW+XY6ksVlXqjpOeQ==
 
-eslint-config-salesforce@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-salesforce/-/eslint-config-salesforce-0.1.0.tgz#b1e4ab5b9278b854f3ba6674e89176836de51c41"
-  integrity sha512-yHCQ7XQsfd0bmcuPgsDFJ+L8PtSdc3yRfGfMR4JqU+7g1YgKK9bVICa7vqlGPHYet2c4Z3DBTh0IZQVe3PgQvg==
+eslint-config-salesforce@^0.1.0, eslint-config-salesforce@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/eslint-config-salesforce/-/eslint-config-salesforce-0.1.6.tgz#47d7846d340df99db25962978e414e03404e5c2a"
+  integrity sha512-QloeQzIka5Ruj6RfkfqeNPZoaR7wkz34AU/RABVdn/XBd23lk/l0/I/Hx3Rzx0G4dft/DBaHBL1JYllT0cWE1A==
 
 eslint-friendly-formatter@^4.0.1:
   version "4.0.1"
