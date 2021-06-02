@@ -909,7 +909,7 @@
   resolved "https://registry.yarnpkg.com/@salesforce/dev-config/-/dev-config-2.1.2.tgz#b4e206f860e87065d068bf8ba3994a032389ad81"
   integrity sha512-1swy07rynHoTRk8lj6nuC0JceRBo300OuWnovQe2OMvLpQM5Dh1SUnv1SE8012PsrK9BC1WqGXp4BUyMo04x7w==
 
-"@salesforce/dev-scripts@^0.9.1":
+"@salesforce/dev-scripts@^0.9.11":
   version "0.9.11"
   resolved "https://registry.yarnpkg.com/@salesforce/dev-scripts/-/dev-scripts-0.9.11.tgz#bc6f5db7ea47317a2cb792a45759daf642d685fd"
   integrity sha512-JzzRqQ339FpZbR8wqtSiaOMlmJHz4XPaA66qbFD+AohXpmyX3PDxiTK0F6sAg1QiOnyzcRypLiycbd99NpP8lg==
