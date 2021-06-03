@@ -5358,7 +5358,7 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-husky@^4.2.5:
+husky@^4.2.5, husky@^4.3.8:
   version "4.3.8"
   resolved "https://registry.yarnpkg.com/husky/-/husky-4.3.8.tgz#31144060be963fd6850e5cc8f019a1dfe194296d"
   integrity sha512-LCqqsB0PzJQ/AlCgfrfzRe3e3+NvmefAdKQhRYpxS4u6clblBoDdzzvHi8fmxKRzvMxPY/1WZWzomPZww0Anow==
@@ -5373,11 +5373,6 @@ husky@^4.2.5:
     please-upgrade-node "^3.2.0"
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
-
-husky@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-6.0.0.tgz#810f11869adf51604c32ea577edbc377d7f9319e"
-  integrity sha512-SQS2gDTB7tBN486QSoKPKQItZw97BMOd+Kdb6ghfpBc0yXyzrddI0oDV5MkDAbuB4X2mO3/nj60TRMcYxwzZeQ==
 
 hyperlinker@^1.0.0:
   version "1.0.0"
@@ -9176,23 +9171,6 @@ salesforce-lightning-cli@3.0.0:
     heroku-cli-util "~8.0.11"
     object-assign "^4.1.1"
     prettier "^1.18.2"
-
-salesforcedx@51.15.0:
-  version "51.15.0"
-  resolved "https://registry.yarnpkg.com/salesforcedx/-/salesforcedx-51.15.0.tgz#e4dafc99c34a1224df02f63e34afe84a5abae63f"
-  integrity sha512-KUAJ+Fsq/24GwrtFzq2ARojP5b9L3rXF19AuCnsgCJ15QvlyybGdv5d/EmxJNxTghSC929ZHFwz/Z52DhbusGw==
-  dependencies:
-    "@salesforce/plugin-apex" "0.2.1"
-    "@salesforce/plugin-custom-metadata" "1.0.12"
-    "@salesforce/plugin-data" "0.4.8"
-    "@salesforce/plugin-limits" "1.2.1"
-    "@salesforce/plugin-org" "1.6.6"
-    "@salesforce/plugin-schema" "1.0.7"
-    "@salesforce/plugin-templates" "51.4.0"
-    "@salesforce/plugin-user" "1.3.0"
-    "@salesforce/sfdx-plugin-lwc-test" "0.1.7"
-    salesforce-alm "51.6.26"
-    salesforce-lightning-cli "3.0.0"
 
 samsam@1.3.0:
   version "1.3.0"
