@@ -24,32 +24,30 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [7.96.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.96.0...v7.96.1) (2021-04-08)
 
-
 ### Bug Fixes
 
-* auth for npm ([fc2941b](https://github.com/salesforcecli/sfdx-cli/commit/fc2941b34831633ad43e6e86ab47cbf5545735ec))
-* dist tag retry ([c349b00](https://github.com/salesforcecli/sfdx-cli/commit/c349b00d5f2e51b6d2bd1c43f4c65be0c2e85210))
-* dist tag retry ([1256450](https://github.com/salesforcecli/sfdx-cli/commit/1256450e626d6e7001ca2c8e38031f62094b3696))
-* dist tag retry ([b0d058b](https://github.com/salesforcecli/sfdx-cli/commit/b0d058b35d3bc31610399b5d71418355e25c7916))
-* dist tag retry ([399a266](https://github.com/salesforcecli/sfdx-cli/commit/399a2660655083ab6880f9e36919c7c14dcf7d86))
-* dist tag retry ([4f14e00](https://github.com/salesforcecli/sfdx-cli/commit/4f14e0082ecca9a0e6a906c34c04749dd6d419f5))
-* dist tag retry ([8f063d0](https://github.com/salesforcecli/sfdx-cli/commit/8f063d0b38bfbc2fb47e8b3e819cbc22f43fb8c9))
-* dist tag retry ([840d36d](https://github.com/salesforcecli/sfdx-cli/commit/840d36d12449fe3f8806ea05200900ba95805621))
-* dist tag retry ([a3e2516](https://github.com/salesforcecli/sfdx-cli/commit/a3e25167733f886b8c2213c610d9ea04c8b8f73e))
-* npmrc if npm_token in env ([5981458](https://github.com/salesforcecli/sfdx-cli/commit/59814586084213633ed99b97c5148122ca423e66))
-* plus plugin for close case ([044b06f](https://github.com/salesforcecli/sfdx-cli/commit/044b06f41f9305802ae713260018fca7eb8cd91a))
-* promotes depend on tarballs ([13313e5](https://github.com/salesforcecli/sfdx-cli/commit/13313e5c344cd5cb5b8eb205a6921ff759251068))
-* ready for real use ([284fcaa](https://github.com/salesforcecli/sfdx-cli/commit/284fcaa3d61c7fcc5d442aff2f175c1dc5ef493b))
-* use stable channel, time change for retry ([afd490a](https://github.com/salesforcecli/sfdx-cli/commit/afd490aab6feed31a421e7dfcc90c008327e60bf))
-* use stable channel, time change for retry ([18605be](https://github.com/salesforcecli/sfdx-cli/commit/18605bed584bb06a091c41c5a0213856a9982dc9))
+- auth for npm ([fc2941b](https://github.com/salesforcecli/sfdx-cli/commit/fc2941b34831633ad43e6e86ab47cbf5545735ec))
+- dist tag retry ([c349b00](https://github.com/salesforcecli/sfdx-cli/commit/c349b00d5f2e51b6d2bd1c43f4c65be0c2e85210))
+- dist tag retry ([1256450](https://github.com/salesforcecli/sfdx-cli/commit/1256450e626d6e7001ca2c8e38031f62094b3696))
+- dist tag retry ([b0d058b](https://github.com/salesforcecli/sfdx-cli/commit/b0d058b35d3bc31610399b5d71418355e25c7916))
+- dist tag retry ([399a266](https://github.com/salesforcecli/sfdx-cli/commit/399a2660655083ab6880f9e36919c7c14dcf7d86))
+- dist tag retry ([4f14e00](https://github.com/salesforcecli/sfdx-cli/commit/4f14e0082ecca9a0e6a906c34c04749dd6d419f5))
+- dist tag retry ([8f063d0](https://github.com/salesforcecli/sfdx-cli/commit/8f063d0b38bfbc2fb47e8b3e819cbc22f43fb8c9))
+- dist tag retry ([840d36d](https://github.com/salesforcecli/sfdx-cli/commit/840d36d12449fe3f8806ea05200900ba95805621))
+- dist tag retry ([a3e2516](https://github.com/salesforcecli/sfdx-cli/commit/a3e25167733f886b8c2213c610d9ea04c8b8f73e))
+- npmrc if npm_token in env ([5981458](https://github.com/salesforcecli/sfdx-cli/commit/59814586084213633ed99b97c5148122ca423e66))
+- plus plugin for close case ([044b06f](https://github.com/salesforcecli/sfdx-cli/commit/044b06f41f9305802ae713260018fca7eb8cd91a))
+- promotes depend on tarballs ([13313e5](https://github.com/salesforcecli/sfdx-cli/commit/13313e5c344cd5cb5b8eb205a6921ff759251068))
+- ready for real use ([284fcaa](https://github.com/salesforcecli/sfdx-cli/commit/284fcaa3d61c7fcc5d442aff2f175c1dc5ef493b))
+- use stable channel, time change for retry ([afd490a](https://github.com/salesforcecli/sfdx-cli/commit/afd490aab6feed31a421e7dfcc90c008327e60bf))
+- use stable channel, time change for retry ([18605be](https://github.com/salesforcecli/sfdx-cli/commit/18605bed584bb06a091c41c5a0213856a9982dc9))
 
 ## [7.96.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.95.0...v7.96.0) (2021-04-05)
 
-
 ### Bug Fixes
 
-* collapse latest-rc promote step into pack/upload ([c2c5c46](https://github.com/salesforcecli/sfdx-cli/commit/c2c5c461c7cfaccce6d233a691a512f6daa6b631))
-* remove targets from promote commands ([a141b3b](https://github.com/salesforcecli/sfdx-cli/commit/a141b3bbb383006c1b590def79e81cf47ccf5b66))
+- collapse latest-rc promote step into pack/upload ([c2c5c46](https://github.com/salesforcecli/sfdx-cli/commit/c2c5c461c7cfaccce6d233a691a512f6daa6b631))
+- remove targets from promote commands ([a141b3b](https://github.com/salesforcecli/sfdx-cli/commit/a141b3bbb383006c1b590def79e81cf47ccf5b66))
 
 ## [7.95.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.94.3...v7.95.0) (2021-04-01)
 

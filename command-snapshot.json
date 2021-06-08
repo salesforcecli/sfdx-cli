@@ -385,7 +385,7 @@
   },
   {
     "command": "force:lightning:lint",
-    "plugin": "salesforcedx",
+    "plugin": "sfdx-cli",
     "flags": ["config", "exit", "files", "ignore", "json", "loglevel", "verbose"]
   },
   {

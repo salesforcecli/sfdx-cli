@@ -28,31 +28,31 @@ describe('verifyPluginVersion preinstall hook', () => {
   async function testHook(tag: string): Promise<void> {
     await hook.call(context, {
       config: stubInterface<IConfig>(sandbox, { version: '6.0.0' }),
-      plugin: { name: 'salesforcedx', tag, type: 'npm' },
+      plugin: { name: 'salesforce-alm', tag, type: 'npm' },
     });
   }
 
-  it('should allow the salesforcedx plugin with tag "41.2.0" to be installed', async () => {
+  it('should allow the salesforce-alm plugin with tag "41.2.0" to be installed', async () => {
     await testHook('41.2.0');
   });
 
-  it('should allow the salesforcedx plugin with tag "latest" to be installed', async () => {
+  it('should allow the salesforce-alm plugin with tag "latest" to be installed', async () => {
     await testHook('latest');
   });
 
-  it('should allow the salesforcedx plugin with tag "pre-release" to be installed', async () => {
+  it('should allow the salesforce-alm plugin with tag "pre-release" to be installed', async () => {
     await testHook('pre-release');
   });
 
-  it('should allow the salesforcedx plugin with tag "foo" to be installed', async () => {
+  it('should allow the salesforce-alm plugin with tag "foo" to be installed', async () => {
     await testHook('foo');
   });
 
-  it('should allow the salesforcedx plugin with no tag to be installed', async () => {
+  it('should allow the salesforce-alm plugin with no tag to be installed', async () => {
     await testHook('');
   });
 
-  it('should not allow the salesforcedx plugin with tag "41.1.0" to be installed', async () => {
+  it('should not allow the salesforce-alm plugin with tag "41.1.0" to be installed', async () => {
     await testHook('41.1.0');
     // eslint-disable-next-line no-unused-expressions
     expect(context.error.getCalls().some((call) => getString(call, 'args[0]')?.includes('can only be installed'))).to.be

@@ -8,7 +8,7 @@
 import { Hook } from '@oclif/config';
 import { compareVersions, isVersion } from '../versions';
 
-const FORCE_PLUGINS = ['salesforcedx', 'salesforce-alm', 'force-language-services'];
+const FORCE_PLUGINS = ['salesforce-alm', 'force-language-services'];
 
 const MIN_VERSION = '45.8.0';
 
