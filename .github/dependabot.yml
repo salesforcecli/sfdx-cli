@@ -11,3 +11,7 @@ updates:
       separator: "-"
     ignore:
       - dependency-name: "typescript"
+      - dependency-name: "sinon"
+      - dependency-name: "string-ansi"
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
