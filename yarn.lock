@@ -1512,6 +1512,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/jsforce@1.9.29":
+  version "1.9.29"
+  resolved "https://registry.yarnpkg.com/@types/jsforce/-/jsforce-1.9.29.tgz#aeebb21d55706c5232e08f066a241349f743e507"
+  integrity sha512-wG26GTIeRzBQ1GjeOfaM/ZVEP+/m1NpX0KUd/W3QGs8GvHAU6Am1nqm8F7zQDYEJ3p0PssNNbdhqdxJGcQsbxQ==
+  dependencies:
+    "@types/node" "*"
+
 "@types/json-schema@^7.0.3":
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.7.tgz#98a993516c859eb0d5c4c8f098317a9ea68db9ad"
@@ -1611,6 +1618,13 @@
   integrity sha512-PwP4UY33SeeVKodNE37ZlOsR9cReypbMJOhZ7BVE0lB+Hix3efCOxiJWiE5Ia+yL9Cn2Ch72EjFTRze8RZsNtg==
   dependencies:
     "@types/sinonjs__fake-timers" "*"
+
+"@types/sinon@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-10.0.0.tgz#eecc3847af03d45ffe53d55aaaaf6ecb28b5e584"
+  integrity sha512-jDZ55oCKxqlDmoTBBbBBEx+N8ZraUVhggMZ9T5t+6/Dh8/4NiOjSUfpLrPiEwxQDlAe3wpAkoXhWvE6LibtsMQ==
+  dependencies:
+    "@sinonjs/fake-timers" "^7.0.4"
 
 "@types/sinonjs__fake-timers@*":
   version "6.0.2"
