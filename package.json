@@ -126,7 +126,7 @@
     "@salesforce/plugin-auth": "1.6.1",
     "@salesforce/plugin-config": "1.2.8",
     "@salesforce/plugin-custom-metadata": "1.0.12",
-    "@salesforce/plugin-data": "0.4.8",
+    "@salesforce/plugin-data": "0.4.11",
     "@salesforce/plugin-generator": "^1.1.7",
     "@salesforce/plugin-limits": "1.2.1",
     "@salesforce/plugin-org": "1.6.6",
