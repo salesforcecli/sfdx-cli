@@ -139,7 +139,7 @@
     "@salesforce/sfdx-trust": "^3.6.0",
     "@salesforce/ts-types": "^1.5.0",
     "debug": "^4.3.1",
-    "salesforce-alm": "51.6.26",
+    "salesforce-alm": "51.7.1",
     "salesforce-lightning-cli": "3.0.0",
     "tslib": "^2.1.0",
     "v8-compile-cache": "^2.2.0"
