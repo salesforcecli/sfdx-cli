@@ -19,6 +19,13 @@ const MIN_VERSION = '45.8.0';
 const hook: Hook.PluginsPreinstall = function (options) {
   if (options.plugin && options.plugin.type === 'npm') {
     const plugin = options.plugin;
+    if (plugin.name === 'salesforcedx') {
+      this.error(
+        `The salesforcedx plugin is deprecated.
+Installing it manually via 'sfdx plugins:install salesforcedx' is no longer supported and can result in duplicate commands and outdated plugins.
+See https://github.com/forcedotcom/cli/issues/1016 for more information about this change.`
+      );
+    }
     if (FORCE_PLUGINS.includes(plugin.name) && isVersion(plugin.tag) && compareVersions(plugin.tag, MIN_VERSION) < 0) {
       this.error(
         `The ${plugin.name} plugin can only be installed using a specific version when ` +
