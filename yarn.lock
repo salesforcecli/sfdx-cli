@@ -1120,16 +1120,16 @@
     "@salesforce/core" "^2.15.4"
     tslib "^2"
 
-"@salesforce/plugin-org@1.6.6":
-  version "1.6.6"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-1.6.6.tgz#b6d053a73a739b8d67e0b6b875e6dd5ebf6b59fc"
-  integrity sha512-dUDmiV6ov4bBsrJDHgrf3DG9xRO+9zzpwJHuW/gnGhFAWyvm9ZQTVKepVHTsJzf3CtKNrFkBOKNwPXM8ur6A/w==
+"@salesforce/plugin-org@1.6.7":
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-1.6.7.tgz#101585bea973da9e870a95dd06649f0d8747f5d2"
+  integrity sha512-fK2Z0aldDYPFJ2uEFeI4TYXzbbfXFaRtYzo342Vygbc3IePlxQ1EB+cnWCIfTZE0OpdvI23HaMl0uB8a+FPB0g==
   dependencies:
     "@oclif/config" "^1"
     "@salesforce/command" "^3.0.3"
     "@salesforce/core" "^2.17.0"
     "@salesforce/kit" "^1.4.5"
-    open "8.0.2"
+    open "8.2.0"
     tslib "^2"
 
 "@salesforce/plugin-schema@1.0.7":
@@ -1153,17 +1153,17 @@
     "@salesforce/telemetry" "^2.0.4"
     tslib "^2"
 
-"@salesforce/plugin-templates@51.5.0":
-  version "51.5.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-51.5.0.tgz#5641716582c8cfb5746df00d48ce934d28950ad2"
-  integrity sha512-zpFl1gwco/s1EOPqBihXcEGZhBYKK6TLX1Mlrw5TaluEUGz4ikP1dB0w8siPElIQoO9Sl8WHGGYzMPcHquBbmQ==
+"@salesforce/plugin-templates@52.0.0":
+  version "52.0.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-52.0.0.tgz#d23e9493abb7234dbca65709e1f39dfab5884ba2"
+  integrity sha512-sDLLiLp9CnqjrLxJ4Op84jmca9Ewc6vV3Fyo3l05GELXjo9zOil9jBcz/damC3uw1Wb5v3cL2oc2cMk+MeQwSQ==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
     "@salesforce/command" "^2.2.0"
     "@salesforce/core" "2.23.2"
-    "@salesforce/templates" "51.5.0"
+    "@salesforce/templates" "52.0.0"
     tslib "^1"
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
@@ -1247,10 +1247,10 @@
     applicationinsights "^1.4.0"
     axios "^0.21.1"
 
-"@salesforce/templates@51.5.0":
-  version "51.5.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-51.5.0.tgz#0723dd50e4dc96e1ea1187edb053e0dfdff64c5f"
-  integrity sha512-1tnAbDoeZqGg8D+vt0TKInOBS89J5hcIyi6rdeq1dbD6FUsyf0l32dWGxNde84ZkzXJvQNQ0IdQZqdV0WssUpQ==
+"@salesforce/templates@52.0.0":
+  version "52.0.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-52.0.0.tgz#754639dcf11e80f08814ab28f0ef05a3aa9c680e"
+  integrity sha512-LFvuTd86wtsO8ul/FsfuioamTEjdQs6Zf2RUtmV9pI76y4mIWGNJCWIRmNsKACwgW8jyTI6jHSv9K9ikO/9EwQ==
   dependencies:
     "@salesforce/core" "2.23.2"
     mime-types "^2.1.27"
@@ -7553,10 +7553,10 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-open@8.0.2:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/open/-/open-8.0.2.tgz#8c3e95cce93ba2fc8d99968ee8bfefecdb50b84f"
-  integrity sha512-NV5QmWJrTaNBLHABJyrb+nd5dXI5zfea/suWawBhkHzAbVhLLiJdrqMgxMypGK9Eznp2Ltoh7SAVkQ3XAucX7Q==
+open@8.2.0, open@^8.0.5:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/open/-/open-8.2.0.tgz#d6a4788b00009a9d60df471ecb89842a15fdcfc1"
+  integrity sha512-O8uInONB4asyY3qUcEytpgwxQG3O0fJ/hlssoUHsBboOIRVZzT6Wq+Rwj5nffbeUhOdMjpXeISpDDzHCMRDuOQ==
   dependencies:
     define-lazy-prop "^2.0.0"
     is-docker "^2.1.1"
@@ -7569,15 +7569,6 @@ open@^7.2.0:
   dependencies:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
-
-open@^8.0.5:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/open/-/open-8.2.0.tgz#d6a4788b00009a9d60df471ecb89842a15fdcfc1"
-  integrity sha512-O8uInONB4asyY3qUcEytpgwxQG3O0fJ/hlssoUHsBboOIRVZzT6Wq+Rwj5nffbeUhOdMjpXeISpDDzHCMRDuOQ==
-  dependencies:
-    define-lazy-prop "^2.0.0"
-    is-docker "^2.1.1"
-    is-wsl "^2.2.0"
 
 opencollective-postinstall@^2.0.2:
   version "2.0.3"
@@ -8720,10 +8711,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.0.1:
-  version "52.0.1"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.0.1.tgz#b93332f246c16e8e62024ff2300d59cbedd9e71f"
-  integrity sha512-lDc+ELDH+WhPYK9OMMhE1EXbQGfiKOe+lq9p+x2CnghruRcMekqImZg4nz6Y+erPOZqxN5KrOCeflH2Ji6JiMQ==
+salesforce-alm@52.0.2:
+  version "52.0.2"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.0.2.tgz#f7b2c73a2a6d2cca4758aaa39435e96f0a6e6f7d"
+  integrity sha512-3RJMc9bdkrFPTXqnk/EnliWdMpVrnSpCAoxxfFte5h8HeouAyJ/YqQjEuc6mnSXwRPDthiQPXND2n7J6PLI7dA==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
