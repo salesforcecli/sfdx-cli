@@ -1,6 +1,2 @@
 CLI_RC_VERSION=$(npm show sfdx-cli@latest-rc version)
 npm dist-tag add sfdx-cli@${CLI_RC_VERSION} latest
-
-# remove after we stop publishing salesforcedx
-DX_RC_VERSION=$(npm show salesforcedx@latest-rc version)
-npm dist-tag add salesforcedx@${DX_RC_VERSION} latest
