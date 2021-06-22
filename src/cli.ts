@@ -12,6 +12,7 @@ import { Config, IConfig } from '@oclif/config';
 import { set } from '@salesforce/kit';
 import { AnyJson, get } from '@salesforce/ts-types';
 import * as Debug from 'debug';
+import { exec } from 'shelljs';
 import * as lazyRequire from './lazyRequire';
 import { default as nodeEnv, Env } from './util/env';
 
@@ -117,13 +118,50 @@ function debugCliInfo(version: string, channel: string, env: Env, config: IConfi
   );
 }
 
+class VersionObject {
+  public cliVersion: string;
+  public pluginVersions: string[];
+  public osVersion: string;
+
+  public constructor(cliVersion: string, pluginVersions: string[], osVersion: string) {
+    this.cliVersion = cliVersion;
+    this.pluginVersions = pluginVersions;
+    this.osVersion = osVersion;
+  }
+}
+
 class SfdxMain extends Main {
+  // Function which returns Version object which includes cli version, plugin versions, OS and its version.
+  protected getIssueVersionObject(): VersionObject {
+    const cliVersion = this.config.userAgent;
+    const pluginVersion: string = exec('sfdx plugins --core', {
+      silent: true,
+    }).toString();
+    const pluginVersions: string[] = pluginVersion.split('\n');
+    pluginVersions.pop();
+    const osVersion = `${os.type()} ${os.release()}`;
+    return new VersionObject(cliVersion, pluginVersions, osVersion);
+  }
+
   protected _version(): never {
-    const plugins = this.config.plugins.map((plugin) => `${plugin.name}@${plugin.version}-${plugin.type}`).join(', ');
-    // Make this pretty
-    this.log(`Your installed plugins: ${plugins}`);
-    this.log(this.config.userAgent);
-    // What ever else you want.
+    const options: Set<string> = new Set(this.argv);
+
+    // Checking if options has json or verbose
+    if (options.has('--verbose') || options.has('--json')) {
+      const versionObject: VersionObject = this.getIssueVersionObject();
+      if (options.has('--json')) {
+        this.log(`${JSON.stringify(versionObject, null, '\t')}`);
+      } else {
+        this.log(` CLI Version : \n\t${versionObject.cliVersion}`);
+        this.log('\n Plugin Version: ');
+        versionObject.pluginVersions.forEach((plugin) => {
+          this.log(`\t${plugin}`);
+        });
+        this.log(`\n OS and Version: \n\t${versionObject.osVersion}`);
+      }
+    } else {
+      this.log(this.config.userAgent);
+    }
     return this.exit(0);
   }
 }
