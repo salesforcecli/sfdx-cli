@@ -7,7 +7,7 @@
 
 import * as os from 'os';
 import * as path from 'path';
-import { run as oclifRun } from '@oclif/command';
+import { Main, run as oclifRun } from '@oclif/command';
 import { Config, IConfig } from '@oclif/config';
 import { set } from '@salesforce/kit';
 import { AnyJson, get } from '@salesforce/ts-types';
@@ -117,10 +117,21 @@ function debugCliInfo(version: string, channel: string, env: Env, config: IConfi
   );
 }
 
+class SfdxMain extends Main {
+  protected _version(): never {
+    const plugins = this.config.plugins.map((plugin) => `${plugin.name}@${plugin.version}-${plugin.type}`).join(', ');
+    // Make this pretty
+    this.log(`Your installed plugins: ${plugins}`);
+    this.log(this.config.userAgent);
+    // What ever else you want.
+    return this.exit(0);
+  }
+}
+
 export function create(
   version: string,
   channel: string,
-  run = oclifRun,
+  run: typeof oclifRun,
   env = nodeEnv
 ): { run: () => Promise<unknown> } {
   const root = path.resolve(__dirname, '..');
@@ -138,7 +149,8 @@ export function create(
       if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
         lazyRequire.start(config);
       }
-      return (await run(args, config)) as unknown;
+      // I think the run method is used in test.
+      return (run ? run(args, config) : await SfdxMain.run(args, config)) as unknown;
     },
   };
 }
