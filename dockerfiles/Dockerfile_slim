@@ -7,7 +7,6 @@ RUN apt-get update
 RUN curl -s https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64.tar.xz --output sfdx-linux-x64.tar.xz \
   && mkdir ~/sfdx \
   && tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1 \
-  && echo "PATH=~/sfdx/bin:$PATH" >> ~/.bashrc \
   && rm sfdx-linux-x64.tar.xz
 
 RUN apt-get install --assume-yes \
@@ -17,6 +16,7 @@ RUN apt-get autoremove --assume-yes \
   && apt-get clean --assume-yes \
   && rm -rf /var/lib/apt/lists/*
 
+ENV PATH="~/sfdx/bin:$PATH"
 ENV SFDX_CONTAINER_MODE true
 ENV DEBIAN_FRONTEND=dialog
 ENV SHELL /bin/bash
