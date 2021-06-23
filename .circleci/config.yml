@@ -16,6 +16,47 @@ parameters:
     default: '[]'
     type: string
 
+commands:
+  verify-slim-dependencies:
+    name: Verify Slim Dependencies
+    steps:
+      - command: |
+          SFDX_CLI_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'sfdx --version')"
+          JAVA_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'java --version | head -n 1')"
+          if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
+          then
+            echo "sfdx-cli installed -" $SFDX_CLI_VERSION
+          else
+            echo "The sfdx-cli installation could not be verified"
+            exit 1
+          fi
+          if [[ ((`echo $JAVA_VERSION | grep -c "openjdk"` > 0))]]
+          then
+            echo "Java installed -" $JAVA_VERSION
+          else
+            echo "The Java installation could not be verified"
+            exit 1
+          fi
+  verify-full-dependencies:
+    name: Verify Core Dependencies
+    steps:
+      - command: |
+          NODE_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'node -v')"
+          if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
+          then
+            echo "sfdx-cli installed -" $SFDX_CLI_VERSION
+          else
+            echo "The sfdx-cli installation could not be verified"
+            exit 1
+          fi
+          JQ_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'jq --version')"
+          if [[ ((`echo $JQ_VERSION | grep -c "jq"` > 0))]]
+           then
+             echo "jq installed -" $JQ_VERSION
+           else
+             echo "The jq installation could not be verified"
+             exit 1
+           fi
 jobs:
   # There are two pack jobs:
   # - test-pack-tarballs to run on every branch *other than main*
@@ -125,14 +166,25 @@ jobs:
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn promote-docker
 
-  docker-publish:
+  docker-publish-slim:
     docker:
       - image: node:latest
     steps:
       - checkout
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-      - run: yarn pack:docker
+      - run: yarn pack:docker:slim
+      - run: verify-slim-dependencies
+
+  docker-publish-full:
+    docker:
+      - image: node:latest
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - run: yarn pack:docker:full
+      - run: verify-full-dependencies
 
   close-CTC:
     docker:
@@ -266,7 +318,15 @@ workflows:
           requires:
             - release-management/release-package
             - pack-and-upload-tarballs
-      - docker-publish:
+      - docker-publish-slim:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - release-management/release-package
+            - pack-and-upload-tarballs
+      - docker-publish-full:
           filters:
             branches:
               only:

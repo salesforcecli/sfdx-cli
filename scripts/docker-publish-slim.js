@@ -43,31 +43,17 @@ const getDownloadUrl = async (version) => {
   dockerShared.validateDockerEnv();
 
   // If not in the env, read the package.json to get the version number we'll use for latest-rc
-  const SALESFORCE_CLI_VERSION = process.env['SALESFORCE_CLI_VERSION'] ?? (await fs.readJson('package.json')).version;
-  if (!SALESFORCE_CLI_VERSION) {
-    shell.echo('No Salesforce CLI version was available.');
-    shell.exit(-1);
-  }
-  shell.echo(`Using Salesforce CLI Version ${SALESFORCE_CLI_VERSION}`);
-
+  const SALESFORCE_CLI_VERSION = dockerShared.getCliVersion();
   const CLI_DOWNLOAD_URL = await getDownloadUrl(SALESFORCE_CLI_VERSION);
 
   // build from local dockerfiles
-  /* SLIM VERSION */
   shell.exec(
     `docker build --file ./dockerfiles/Dockerfile_slim --build-arg DOWNLOAD_URL=${CLI_DOWNLOAD_URL} --tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-slim --no-cache .`
-  );
-  /* FULL VERSION */
-  shell.exec(
-    `docker build --file ./dockerfiles/Dockerfile_full --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full --no-cache .`
   );
 
   if (process.env.NO_PUBLISH) return;
   // Push to the Docker Hub Registry
-  /* SLIM VERSION */
   shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-slim`);
-  /* FULL VERSION */
-  shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full`);
 
   // This normally defaults to latest-rc.  If you've supplied it in the environment, we're not tagging latest-rc.
   if (process.env['SALESFORCE_CLI_VERSION']) return;
@@ -76,8 +62,4 @@ const getDownloadUrl = async (version) => {
     `docker tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-slim ${DOCKER_HUB_REPOSITORY}:latest-rc-slim`
   );
   shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:latest-rc-slim`);
-  shell.exec(
-    `docker tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full ${DOCKER_HUB_REPOSITORY}:latest-rc-full`
-  );
-  shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:latest-rc-full`);
 })();

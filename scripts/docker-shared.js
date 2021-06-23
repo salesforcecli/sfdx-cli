@@ -2,6 +2,17 @@ const shell = require('shelljs');
 shell.set('-e');
 shell.set('+v');
 
+const getCliVersion = () => {
+  // If not in the env, read the package.json to get the version number we'll use for latest-rc
+  const SALESFORCE_CLI_VERSION = process.env['SALESFORCE_CLI_VERSION'] ?? (await fs.readJson('package.json')).version;
+  if (!SALESFORCE_CLI_VERSION) {
+    shell.echo('No Salesforce CLI version was available.');
+    shell.exit(-1);
+  }
+  shell.echo(`Using Salesforce CLI Version ${SALESFORCE_CLI_VERSION}`);
+  return SALESFORCE_CLI_VERSION;
+};
+
 const validateDockerEnv = () => {
   // Checks that you have the Docker CLI installed
   if (!shell.which('docker')) {
@@ -29,3 +40,4 @@ const validateDockerEnv = () => {
 
 module.exports.validateDockerEnv = validateDockerEnv;
 module.exports.repo = 'salesforce/salesforcedx';
+module.exports.getCliVersion = getCliVersion;
