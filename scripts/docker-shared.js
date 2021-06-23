@@ -1,8 +1,10 @@
 const shell = require('shelljs');
+const fs = require('fs-extra');
+
 shell.set('-e');
 shell.set('+v');
 
-const getCliVersion = () => {
+const getCliVersion = async () => {
   // If not in the env, read the package.json to get the version number we'll use for latest-rc
   const SALESFORCE_CLI_VERSION = process.env['SALESFORCE_CLI_VERSION'] ?? (await fs.readJson('package.json')).version;
   if (!SALESFORCE_CLI_VERSION) {

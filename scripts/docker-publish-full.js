@@ -18,7 +18,7 @@ const DOCKER_HUB_REPOSITORY = dockerShared.repo;
 
 (async () => {
   dockerShared.validateDockerEnv();
-  const SALESFORCE_CLI_VERSION = dockerShared.getCliVersion();
+  const SALESFORCE_CLI_VERSION = await dockerShared.getCliVersion();
 
   shell.exec(
     `docker build --file ./dockerfiles/Dockerfile_full --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full --no-cache .`

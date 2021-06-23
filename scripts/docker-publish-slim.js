@@ -9,7 +9,6 @@
  */
 const shell = require('shelljs');
 const got = require('got');
-const fs = require('fs-extra');
 const dockerShared = require('./docker-shared');
 
 shell.set('-e');
@@ -43,7 +42,7 @@ const getDownloadUrl = async (version) => {
   dockerShared.validateDockerEnv();
 
   // If not in the env, read the package.json to get the version number we'll use for latest-rc
-  const SALESFORCE_CLI_VERSION = dockerShared.getCliVersion();
+  const SALESFORCE_CLI_VERSION = await dockerShared.getCliVersion();
   const CLI_DOWNLOAD_URL = await getDownloadUrl(SALESFORCE_CLI_VERSION);
 
   // build from local dockerfiles
