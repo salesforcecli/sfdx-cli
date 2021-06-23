@@ -1,92 +1,83 @@
 #!/usr/bin/env node
 
+/**
+ * This should normally be run without any environment changes and will build, tag, and push 2 docker images for latest-rc
+ * Should you ever need to manually run this script, then
+ * 1. make sure you've logged into docker from its CLI `docker login`
+ * 3. provide the version, example: SALESFORCE_CLI_VERSION=7.100.0 ./scripts/docker-publish
+ * 4. you can add NO_PUBLISH=true if you want to only do local builds from the script
+ */
 const shell = require('shelljs');
+const got = require('got');
+const fs = require('fs-extra');
+const dockerShared = require('./docker-shared');
+
 shell.set('-e');
 shell.set('+v');
 
-// This needs to change when we are ready to publish
-const DOCKER_HUB_REPOSITORY = 'salesforce/salesforcedx';
+const DOCKER_HUB_REPOSITORY = dockerShared.repo;
 
-// Checks that you have the Docker CLI installed
-if (!shell.which('docker')) {
-  shell.echo('You do not have the Docker CLI installed.');
-  shell.exit(-1);
-}
-
-// Checks that you have logged into docker hub
-// Unfortunately I don't think there is a way to check what repositories you have access to
-const AUTH_REGEX = '"https://index.docker.io/v1/"';
-if (!new RegExp(AUTH_REGEX).test(shell.grep(AUTH_REGEX, '~/.docker/config.json').stdout)) {
-  shell.echo('You are not logged into Docker Hub. Try `docker login`.');
-  shell.exit(-1);
-}
-
-// Checks that there are no uncommitted changes
-const gitStatus = shell.exec(`git status --porcelain`).stdout.trim();
-if (gitStatus) {
-  shell.echo(
-    'You have git changes in the current branch. You should probably not be releasing until you have committed your changes.'
+// look in the versions file, and if not, try the latest-rc buildmanifest (which doesn't hit the versions file until it's promoted to latest)
+const getDownloadUrl = async (version) => {
+  let { body } = await got(
+    'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json',
+    { responseType: 'json' }
   );
-  shell.exit(-1);
-}
+  if (body[version]) {
+    console.log(`Found download URL ${body[version]} in versions file`);
+    return body[version];
+  }
 
-const SALESFORCE_CLI_VERSION = process.env['SALESFORCE_CLI_VERSION'];
-if (!SALESFORCE_CLI_VERSION) {
-  shell.echo(
-    'You need to specify the version that you want to publish using the SALESFORCE_CLI_VERSION environment variable.'
+  let rcResponse = await got(
+    'https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64-buildmanifest',
+    { responseType: 'json' }
   );
-  shell.exit(-1);
-}
+  if (rcResponse.body.version === version && rcResponse.body.xz) {
+    console.log(`Found download URL ${rcResponse.body.xz} in latest-rc build manifest`);
+    return rcResponse.body.xz;
+  }
+  throw new Error(`could not find version ${version}`);
+};
 
-const DOCKER_IMAGE_VERSION = process.env['DOCKER_IMAGE_VERSION']
-  ? process.env['DOCKER_IMAGE_VERSION']
-  : SALESFORCE_CLI_VERSION;
+(async () => {
+  dockerShared.validateDockerEnv();
 
-// Checks that a tag of the next version doesn't already exist
-const checkTags = shell.exec('git tag', { silent: true }).stdout;
-if (checkTags.includes(DOCKER_IMAGE_VERSION)) {
-  shell.echo(
-    `There is already a git tag called ${DOCKER_IMAGE_VERSION}. You should probably use a new tag since we want to keep tags immutable.`
+  // If not in the env, read the package.json to get the version number we'll use for latest-rc
+  const SALESFORCE_CLI_VERSION = process.env['SALESFORCE_CLI_VERSION'] ?? (await fs.readJson('package.json')).version;
+  if (!SALESFORCE_CLI_VERSION) {
+    shell.echo('No Salesforce CLI version was available.');
+    shell.exit(-1);
+  }
+  shell.echo(`Using Salesforce CLI Version ${SALESFORCE_CLI_VERSION}`);
+
+  const CLI_DOWNLOAD_URL = await getDownloadUrl(SALESFORCE_CLI_VERSION);
+
+  // build from local dockerfiles
+  /* SLIM VERSION */
+  shell.exec(
+    `docker build --file ./dockerfiles/Dockerfile_slim --build-arg DOWNLOAD_URL=${CLI_DOWNLOAD_URL} --tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-slim --no-cache .`
   );
-  process.exit(-1);
-}
+  /* FULL VERSION */
+  shell.exec(
+    `docker build --file ./dockerfiles/Dockerfile_full --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full --no-cache .`
+  );
 
-// Proceed to build using the right CLI version
+  if (process.env.NO_PUBLISH) return;
+  // Push to the Docker Hub Registry
+  /* SLIM VERSION */
+  shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-slim`);
+  /* FULL VERSION */
+  shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full`);
 
-/* SLIM VERSION */
-const slim_dockerBuildExitCode = shell.exec(
-  `docker build --file ./dockerfiles/Dockerfile_slim --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-slim --no-cache .`
-);
-/* FULL VERSION */
-const full_dockerBuildExitCode = shell.exec(
-  `docker build --file ./dockerfiles/Dockerfile_full --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full --no-cache .`
-);
-
-// Push to the Docker Hub Registry
-
-/* SLIM VERSION */
-const slim_dockerPushExitCode = shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-slim`);
-/* FULL VERSION */
-const full_dockerPushExitCode = shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full`);
-
-// If we are on the main branch, also update the latest tag on Dockerhub
-const currentBranch = shell.exec('git rev-parse --abbrev-ref HEAD', {
-  silent: true,
-}).stdout;
-if (/main/.test(currentBranch)) {
-  shell.echo('We are on the main branch. Proceeding to also tag latest-slim and latest-full builds');
-  shell.exec(`docker tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-slim ${DOCKER_HUB_REPOSITORY}:latest-slim`);
-  shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:latest-slim`);
-  shell.exec(`docker tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full ${DOCKER_HUB_REPOSITORY}:latest-full`);
-  shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:latest-full`);
-}
-
-// Create a git tag if we are publishing a specific version
-if (!/latest/.test(DOCKER_IMAGE_VERSION)) {
-  shell.exec(`echo ${DOCKER_IMAGE_VERSION} > version.txt`);
-  shell.exec(`git add version.txt`);
-  shell.exec(`git commit -a -m "Publish version: ${DOCKER_IMAGE_VERSION}"`);
-  shell.exec(`git push --set-upstream origin ${currentBranch}`);
-  shell.exec(`git tag ${DOCKER_IMAGE_VERSION}`);
-  shell.exec(`git push --tags`);
-}
+  // This normally defaults to latest-rc.  If you've supplied it in the environment, we're not tagging latest-rc.
+  if (process.env['SALESFORCE_CLI_VERSION']) return;
+  // tag the newly created version as latest-rc
+  shell.exec(
+    `docker tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-slim ${DOCKER_HUB_REPOSITORY}:latest-rc-slim`
+  );
+  shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:latest-rc-slim`);
+  shell.exec(
+    `docker tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full ${DOCKER_HUB_REPOSITORY}:latest-rc-full`
+  );
+  shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:latest-rc-full`);
+})();
