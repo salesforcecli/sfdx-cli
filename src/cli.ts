@@ -118,7 +118,7 @@ function debugCliInfo(version: string, channel: string, env: Env, config: IConfi
   );
 }
 
-interface VersionDetailI {
+interface VersionDetail {
   cliVersion: string;
   architecture: string;
   nodeVersion: string;
@@ -128,7 +128,7 @@ interface VersionDetailI {
 
 class SfdxMain extends Main {
   // Function which returns Version object which includes cli version, plugin versions, OS and its version.
-  protected getVersionDetail(): VersionDetailI {
+  protected getVersionDetail(): VersionDetail {
     const versions = this.config.userAgent.split(' ');
     const cliVersion: string = versions[0];
     const architecture: string = versions[1];
@@ -142,7 +142,7 @@ class SfdxMain extends Main {
     return { cliVersion, architecture, nodeVersion, pluginVersions, osVersion };
   }
 
-  protected printVersionDetails(versionDetails: VersionDetailI, isJson: boolean): void {
+  protected printVersionDetails(versionDetails: VersionDetail, isJson: boolean): void {
     if (isJson) {
       this.log(`${JSON.stringify(versionDetails, null, '\t')}`);
     } else {
