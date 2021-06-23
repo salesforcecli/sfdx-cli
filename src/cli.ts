@@ -122,17 +122,18 @@ interface VersionDetail {
   cliVersion: string;
   architecture: string;
   nodeVersion: string;
-  pluginVersions: string[];
-  osVersion: string;
+  pluginVersions?: string[];
+  osVersion?: string;
 }
 
 class SfdxMain extends Main {
   // Function which returns Version object which includes cli version, plugin versions, OS and its version.
-  protected getVersionDetail(): VersionDetail {
+  protected getVersionDetail(isVerbose: boolean): VersionDetail {
     const versions = this.config.userAgent.split(' ');
     const cliVersion: string = versions[0];
     const architecture: string = versions[1];
     const nodeVersion: string = versions[2];
+    if (!isVerbose) return { cliVersion, architecture, nodeVersion };
     const pluginVersion: string = exec('sfdx plugins --core', {
       silent: true,
     }).toString();
@@ -150,7 +151,7 @@ class SfdxMain extends Main {
       this.log(`\n Architecture: \n\t${versionDetails.architecture}`);
       this.log(`\n Node Version : \n\t${versionDetails.nodeVersion}`);
       this.log('\n Plugin Version: ');
-      versionDetails.pluginVersions.forEach((plugin) => {
+      versionDetails.pluginVersions?.forEach((plugin) => {
         this.log(`\t${plugin}`);
       });
       this.log(`\n OS and Version: \n\t${versionDetails.osVersion}`);
@@ -164,7 +165,7 @@ class SfdxMain extends Main {
     if (!options.has('--verbose') && !options.has('--json')) {
       this.log(this.config.userAgent);
     } else {
-      const versionDetails = this.getVersionDetail();
+      const versionDetails = this.getVersionDetail(options.has('--verbose'));
       this.printVersionDetails(versionDetails, options.has('--json'));
     }
     return this.exit(0);
