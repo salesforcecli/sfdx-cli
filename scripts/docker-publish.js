@@ -25,7 +25,7 @@ if (!new RegExp(AUTH_REGEX).test(shell.grep(AUTH_REGEX, '~/.docker/config.json')
 const gitStatus = shell.exec(`git status --porcelain`).stdout.trim();
 if (gitStatus) {
   shell.echo(
-    'You have git changes in the current branch. You should probably not be releasing until you have commited your changes.'
+    'You have git changes in the current branch. You should probably not be releasing until you have committed your changes.'
   );
   shell.exit(-1);
 }
