@@ -18,7 +18,6 @@ parameters:
 
 commands:
   verify-slim-dependencies:
-    name: Verify Slim Dependencies
     steps:
       - command: |
           SFDX_CLI_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'sfdx --version')"
@@ -38,7 +37,6 @@ commands:
             exit 1
           fi
   verify-full-dependencies:
-    name: Verify Core Dependencies
     steps:
       - command: |
           NODE_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'node -v')"
