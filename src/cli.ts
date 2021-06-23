@@ -118,49 +118,54 @@ function debugCliInfo(version: string, channel: string, env: Env, config: IConfi
   );
 }
 
-class VersionObject {
-  public cliVersion: string;
-  public pluginVersions: string[];
-  public osVersion: string;
-
-  public constructor(cliVersion: string, pluginVersions: string[], osVersion: string) {
-    this.cliVersion = cliVersion;
-    this.pluginVersions = pluginVersions;
-    this.osVersion = osVersion;
-  }
+interface VersionDetailI {
+  cliVersion: string;
+  architecture: string;
+  nodeVersion: string;
+  pluginVersions: string[];
+  osVersion: string;
 }
 
 class SfdxMain extends Main {
   // Function which returns Version object which includes cli version, plugin versions, OS and its version.
-  protected getIssueVersionObject(): VersionObject {
-    const cliVersion = this.config.userAgent;
+  protected getVersionDetail(): VersionDetailI {
+    const versions = this.config.userAgent.split(' ');
+    const cliVersion: string = versions[0];
+    const architecture: string = versions[1];
+    const nodeVersion: string = versions[2];
     const pluginVersion: string = exec('sfdx plugins --core', {
       silent: true,
     }).toString();
     const pluginVersions: string[] = pluginVersion.split('\n');
     pluginVersions.pop();
     const osVersion = `${os.type()} ${os.release()}`;
-    return new VersionObject(cliVersion, pluginVersions, osVersion);
+    return { cliVersion, architecture, nodeVersion, pluginVersions, osVersion };
+  }
+
+  protected printVersionDetails(versionDetails: VersionDetailI, isJson: boolean): void {
+    if (isJson) {
+      this.log(`${JSON.stringify(versionDetails, null, '\t')}`);
+    } else {
+      this.log(` CLI Version : \n\t${versionDetails.cliVersion}`);
+      this.log(`\n Architecture: \n\t${versionDetails.architecture}`);
+      this.log(`\n Node Version : \n\t${versionDetails.nodeVersion}`);
+      this.log('\n Plugin Version: ');
+      versionDetails.pluginVersions.forEach((plugin) => {
+        this.log(`\t${plugin}`);
+      });
+      this.log(`\n OS and Version: \n\t${versionDetails.osVersion}`);
+    }
   }
 
   protected _version(): never {
     const options: Set<string> = new Set(this.argv);
 
-    // Checking if options has json or verbose
-    if (options.has('--verbose') || options.has('--json')) {
-      const versionObject: VersionObject = this.getIssueVersionObject();
-      if (options.has('--json')) {
-        this.log(`${JSON.stringify(versionObject, null, '\t')}`);
-      } else {
-        this.log(` CLI Version : \n\t${versionObject.cliVersion}`);
-        this.log('\n Plugin Version: ');
-        versionObject.pluginVersions.forEach((plugin) => {
-          this.log(`\t${plugin}`);
-        });
-        this.log(`\n OS and Version: \n\t${versionObject.osVersion}`);
-      }
-    } else {
+    // Checking if options doesn't have --verbose and --json
+    if (!options.has('--verbose') && !options.has('--json')) {
       this.log(this.config.userAgent);
+    } else {
+      const versionDetails = this.getVersionDetail();
+      this.printVersionDetails(versionDetails, options.has('--json'));
     }
     return this.exit(0);
   }
