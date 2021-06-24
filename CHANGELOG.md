@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.108.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.107.0...v7.108.0) (2021-06-24)
+
+
+### Features
+
+* add more version information ([f9c2cb3](https://github.com/salesforcecli/sfdx-cli/commit/f9c2cb31186d2f026f124a972091a02f8f5b9780))
+* changing the interface name ([e00e2ca](https://github.com/salesforcecli/sfdx-cli/commit/e00e2cab0856567d47164c640a518177809d8fa9))
+* update --json command without --verbose ([00827c3](https://github.com/salesforcecli/sfdx-cli/commit/00827c3a5504df5ee6fce2471da008897bdb29b0))
+* updating version command ([e9dc75a](https://github.com/salesforcecli/sfdx-cli/commit/e9dc75ae68ba915c4ac26731a1929067c938e406))
+
 ## [7.107.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.106.3...v7.107.0) (2021-06-17)
 
 ### [7.106.3](https://github.com/salesforcecli/sfdx-cli/compare/v7.106.2...v7.106.3) (2021-06-10)
