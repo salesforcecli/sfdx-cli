@@ -260,22 +260,16 @@ workflows:
   promote-to-latest:
     triggers:
       - schedule:
-          # Thursday morning
-          cron: 0 14 * * 4
+          # Thursday mornings at 10a mountain
+          cron: 0 16 * * 4
           filters:
             branches:
               only:
                 - main
     jobs:
-      # manual approval in CircleCI to begin the promote
-      - approval:
-          type: approval
-
       # start the change case
       - change-case-start:
           context: CLI_CTC
-          requires:
-            - approval
 
       # we need to get the version/SHA from latest-rc before the npm promotion
       - promote-channels:
