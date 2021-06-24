@@ -14,13 +14,13 @@ Run `sfdx update` to update the CLI to the latest available version.
 
 ## Installation
 
-You can install this by either using an OS-specific installer [available here](https://developer.salesforce.com/tools/sfdxcli), by directly installing it with `npm` or `yarn` (see the instructions below), or if using macOS or linux by running the `install` script in a standalone installer (links to which can be found in the latest tarball [manifest](https://developer.salesforce.com/media/salesforce-cli/manifest.json)).
+You can install this by either using an OS-specific installer [available here](https://developer.salesforce.com/tools/sfdxcli), by directly installing it with `npm` or `yarn` (see the instructions below).
 
 ### Installing with `npm` or `yarn`
 
-To get started, you'll need to install `node` v8.4 or greater, though we recommend using the latest v12 (LTS) for the best experience. While this can be done using an installer from [nodejs.com](nodejs.com) or via an OS-specific package manager, we recommend using [nvm](https://github.com/creationix/nvm) to easily manage multiple `node` versions.
+To get started, you'll need to install `node` v12 or greater, though we recommend using the latest v14 (LTS) for the best experience. While this can be done using an installer from [nodejs.com](nodejs.com) or via an OS-specific package manager, we recommend using [nvm](https://github.com/creationix/nvm) to easily manage multiple `node` versions.
 
-If using `nvm`, be sure that you've selected the appropriate version with something like `nvm use v10.x.y`, where `x` and `y` are specific to the version that you installed. If you want to use this version by default run `nvm alias default node` -- otherwise, when you restart your shell `nvm` will revert to whatever version configured prior to installing the latest.
+If using `nvm`, be sure that you've selected the appropriate version with something like `nvm use v14.x.y`, where `x` and `y` are specific to the version that you installed. If you want to use this version by default run `nvm alias default node` -- otherwise, when you restart your shell `nvm` will revert to whatever version configured prior to installing the latest.
 
 ### `npm`
 
@@ -38,6 +38,28 @@ Note that by default `yarn` will attempt to install the binary in a location tha
 
 ```bash
 > yarn global add sfdx-cli
+```
+
+### Docker Images
+
+We provide versioned images on dockerhub. They come in 2 flavors
+
+1. `slim` is just the CLI installed using the installer for linux and openjdk11
+2. `full` includes other utilities and a full node/npm installation
+
+Example
+
+```bash
+# choose a tag to pull and run
+docker pull salesforce/salesforcedx:latest-rc-slim
+docker run -it salesforce/salesforcedx:latest-rc-slim
+
+# then run any sfdx command you like
+sfdx version
+
+# when done, type exit to leave the container
+exit
+
 ```
 
 ## Development
