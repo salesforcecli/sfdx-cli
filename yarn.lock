@@ -924,7 +924,7 @@
     mkdirp "1.0.4"
     sfdx-faye "^1.0.9"
 
-"@salesforce/core@^2.1.4", "@salesforce/core@^2.11.0", "@salesforce/core@^2.14.0", "@salesforce/core@^2.15.2", "@salesforce/core@^2.15.4", "@salesforce/core@^2.16.3", "@salesforce/core@^2.17.0", "@salesforce/core@^2.2.0", "@salesforce/core@^2.20.3", "@salesforce/core@^2.20.4", "@salesforce/core@^2.20.5", "@salesforce/core@^2.23.4", "@salesforce/core@^2.24.0":
+"@salesforce/core@^2.1.4", "@salesforce/core@^2.11.0", "@salesforce/core@^2.14.0", "@salesforce/core@^2.15.2", "@salesforce/core@^2.15.4", "@salesforce/core@^2.16.3", "@salesforce/core@^2.17.0", "@salesforce/core@^2.2.0", "@salesforce/core@^2.20.3", "@salesforce/core@^2.20.5", "@salesforce/core@^2.23.4", "@salesforce/core@^2.24.0":
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-2.24.0.tgz#b414731223fbd418e4db065959f73662dfd2a1bc"
   integrity sha512-bdN9RNeS/8msA8U+F/6GEEteGNeE/uwc/av9nFSL0u+jyzA9llKnqKcuuAKa8YKuS1WHYfWs4mDNXST1gj+c1A==
@@ -997,7 +997,7 @@
     typescript "^4.1.3"
     xunit-file "^1.0.0"
 
-"@salesforce/kit@^1", "@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@^1.3.2", "@salesforce/kit@^1.3.3", "@salesforce/kit@^1.4.5", "@salesforce/kit@^1.5.0", "@salesforce/kit@^1.5.13":
+"@salesforce/kit@^1", "@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@^1.3.2", "@salesforce/kit@^1.4.5", "@salesforce/kit@^1.5.0", "@salesforce/kit@^1.5.10", "@salesforce/kit@^1.5.13":
   version "1.5.14"
   resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.5.14.tgz#013853ffc53e10e7add2abfa266372b29fda8317"
   integrity sha512-vGzNltfWo7wtaDR0Drgf3nAMWsJ5ZheM4LODfFZeorsFk4Xj8J6hPJWuMcYUT07yCenECQalOjT0SU3p77QgYA==
@@ -1038,23 +1038,23 @@
     chalk "^4.1.0"
     tslib "^1"
 
-"@salesforce/plugin-auth@1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.6.1.tgz#2531bf777f492cc729cb74dad9706572f8d90df9"
-  integrity sha512-MJVpBdMZmYiXbPGXjTmNq5sHx7587saGywnVN7aQH+7nMXEQJrggeDn00BAOguU1rGGod+82P+YGb+rewzn7CA==
+"@salesforce/plugin-auth@1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.7.0.tgz#22896d44eaf6012b7b14cb932f8ea8c776a42f69"
+  integrity sha512-Ngh8lo5C/RI6x//LBOOfVXjQgZQ897D2dlwtAgAvTk3nQqWjBKYdG9a+iflSP9s1tyZFlOeLk9Wjf+Zwu6jlKw==
   dependencies:
     "@oclif/config" "^1.17.0"
-    "@salesforce/command" "^3.0.3"
-    "@salesforce/core" "^2.20.4"
-    "@salesforce/kit" "^1.3.3"
+    "@salesforce/command" "^3.1.3"
+    "@salesforce/core" "^2.23.4"
+    "@salesforce/kit" "^1.5.10"
     chalk "^4.1.0"
     open "^8.0.5"
     tslib "^2"
 
-"@salesforce/plugin-config@1.2.8":
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.2.8.tgz#cc2030cb7e9e3292b10fb3d7321e2a34afded6d8"
-  integrity sha512-1VhcX5aeVss7Rs2g1V6OMmc8u6/z5FT6oA3euk0FjGHcoZwsihkEgOqF/BowYg/jpyt7sot/HH+XUu43gs6dDw==
+"@salesforce/plugin-config@1.2.9":
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.2.9.tgz#0b1299aec6d185b76d5f88eee92a695a39bf50d5"
+  integrity sha512-/YXGBNKPC2RCqrUjfdEYLf7ZujRAQ7eYuQoyjqeTdAhRqHnPCpdZSSl2R35TPxK8+Ecs1H3a1Qbh4Evo7KP2uA==
   dependencies:
     "@oclif/config" "^1.17.0"
     "@salesforce/command" "^3.0.5"
@@ -1416,7 +1416,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/glob@^7.1.1":
+"@types/glob@*", "@types/glob@^7.1.1":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.3.tgz#e6ba80f36b7daad2c685acd9266382e68985c183"
   integrity sha512-SEYeGAIQIQX8NN6LDKprLjbrd5dARM5EXsd8GI/A5l0apYI1fGMWgPHSe4ZKL4eozlAyI+doUE9XbYS4xCkQ1w==
@@ -1537,6 +1537,14 @@
   version "7.3.6"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.3.6.tgz#e9831776f4512a7ba6da53e71c26e5fb67882d63"
   integrity sha512-0caWDWmpCp0uifxFh+FaqK3CuZ2SkRR/ZRxAV5+zNdC3QVUi6wyOJnefhPvtNt8NQWXB5OA93BUvZsXpWat2Xw==
+
+"@types/shelljs@^0.8.8":
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/@types/shelljs/-/shelljs-0.8.8.tgz#e439c69929b88a2c8123c1a55e09eb708315addf"
+  integrity sha512-lD3LWdg6j8r0VRBFahJVaxoW0SIcswxKaFUrmKl33RJVeeoNYQAz4uqCJ5Z6v4oIBOsC5GozX+I5SorIKiTcQA==
+  dependencies:
+    "@types/glob" "*"
+    "@types/node" "*"
 
 "@types/sinon@*":
   version "10.0.2"
