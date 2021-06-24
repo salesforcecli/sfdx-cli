@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# latest and rc should match after promote before RC build
+TAGS=$(npm view sfdx-cli --json | jq -cr '."dist-tags"')
+LATEST=$(echo $TAGS | jq -cr '.latest')
+echo $LATEST
+LATEST_RC=$(echo $TAGS | jq -cr '."latest-rc"')
+echo $LATEST_RC
+if [ LATEST != LATEST_RC ]; then
+  echo "latest and latest-rc do not match"
+  exit 1
+fi
