@@ -5,12 +5,9 @@ LICENSE
 package.json
 package-lock.json
 yarn.lock
-version.txt
-
 .git
 .circleci/
 .github/
 .vscode
 scripts/
 node_modules/
-docs/
