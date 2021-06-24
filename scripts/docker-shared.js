@@ -29,15 +29,6 @@ const validateDockerEnv = () => {
     shell.echo('You are not logged into Docker Hub. Try `docker login`.');
     shell.exit(-1);
   }
-
-  // Checks that there are no uncommitted changes
-  // const gitStatus = shell.exec(`git status --porcelain`).stdout.trim();
-  // if (gitStatus) {
-  //   shell.echo(
-  //     'You have git changes in the current branch. You should probably not be releasing until you have committed your changes.'
-  //   );
-  //   shell.exit(-1);
-  // }
 };
 
 module.exports.validateDockerEnv = validateDockerEnv;
