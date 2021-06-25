@@ -123,7 +123,7 @@ jobs:
     steps:
       - checkout
       - jq/install
-      - run: ./scripts/verify-npm-promote
+      - run: ./scripts/verify-promote
       - release-management/install-sf-release
       - run: sf-release cli:versions:inspect -c stable -l archive
 
