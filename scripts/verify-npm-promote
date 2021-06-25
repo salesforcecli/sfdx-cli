@@ -11,10 +11,25 @@ if [ $LATEST != $LATEST_RC ]; then
   exit 1
 fi
 
-# buildmanifest version for latest matches npm for latest
+# artifacts and npm should agree on latest
+buildmanifest version for latest matches npm for latest
 MANIFEST_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-darwin-x64-buildmanifest"
 MANIFEST_VERSION=$(curl -s $MANIFEST_URL | jq -cr '.version')
 if [ $LATEST != $MANIFEST_VERSION ]; then
   echo "latest in S3 and latest on npm do not match"
   exit 1
 fi
+
+# do an npm install, smoke, verify version, and uninstall
+npm install -g sfdx-cli --no-cache
+sfdx version
+sfdx help
+sfdx plugins --core
+NPM_CLI_VERSION=$(sfdx version --json | jq -cr '.cliVersion' | sed 's/sfdx-cli\///')
+if [ $LATEST != $NPM_CLI_VERSION ]; then
+  echo "npm did not install latest.  latest: $LATEST.  Npm install $NPM_CLI_VERSION"
+  exit 1
+fi
+npm uninstall -g sfdx-cli
+
+# install an older version from installer and then upgrade it to correct version of latest
