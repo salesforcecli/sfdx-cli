@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+# latest and rc should match after promote before RC build
+TAGS=$(npm view sfdx-cli --json | jq -cr '."dist-tags"')
+LATEST=$(echo $TAGS | jq -cr '.latest')
+echo $LATEST
+LATEST_RC=$(echo $TAGS | jq -cr '."latest-rc"')
+echo $LATEST_RC
+if [ $LATEST != $LATEST_RC ]; then
+  echo "latest and latest-rc do not match"
+  exit 1
+fi
+
+# artifacts and npm should agree on latest
+# buildmanifest version for latest matches npm for latest
+MANIFEST_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-darwin-x64-buildmanifest"
+MANIFEST_VERSION=$(curl -s $MANIFEST_URL | jq -cr '.version')
+if [ $LATEST != $MANIFEST_VERSION ]; then
+  echo "latest in S3 and latest on npm do not match"
+  exit 1
+fi
+
+# do an npm install, smoke, verify version, and uninstall
+npm install -g sfdx-cli --no-cache
+sfdx version
+sfdx help
+sfdx plugins --core
+NPM_CLI_VERSION=$(sfdx version --json | jq -cr '.cliVersion' | sed 's/sfdx-cli\///')
+if [ $LATEST != $NPM_CLI_VERSION ]; then
+  echo "npm did not install latest.  latest: $LATEST.  Npm install $NPM_CLI_VERSION"
+  exit 1
+fi
+npm uninstall -g sfdx-cli
+
+# versions file has latest at the top
+VERSIONS_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json"
+VERSION_CONTENT=$(curl -s $VERSIONS_URL | jq -cr)
+LATEST_VERSION=$(echo $VERSION_CONTENT | jq -r 'keys_unsorted[0]')
+if [ $LATEST_VERSION != $LATEST ]; then
+  echo "versions file does not have latest version at the top.  First entry is $LATEST_VERSION"
+  exit 1
+fi
+
+
+
+# install an older version from installer and then upgrade it to correct version of latest
+OLDER_VERSION_URL=$(echo $VERSION_CONTENT | jq 'to_entries[3]' | jq -r '.value')
+echo $OLDER_VERSION_URL
+
+# download, untar
+curl -s $OLDER_VERSION_URL --output sfdx-linux-x64.tar.xz && mkdir ~/sfdx  && tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1  && rm sfdx-linux-x64.tar.xz
+export PATH="~/sfdx/bin:$PATH"
+
+# smoke
+sfdx version
+sfdx help
+sfdx plugins --core
+sfdx update
+# verify version
+INSTALLED_VERSION=$(sfdx version --json | jq -cr '.cliVersion' | sed 's/sfdx-cli\///')
+if [ $LATEST != $INSTALLED_VERSION ]; then
+  echo "installer did not install latest.  latest: $LATEST.  Installer provided $INSTALLED_VERSION"
+  exit 1
+fi
+
