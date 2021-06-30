@@ -47,7 +47,7 @@ We provide versioned images on dockerhub. They come in 2 flavors
 1. `slim` is just the CLI installed using the installer for linux and openjdk11
 2. `full` includes other utilities and a full node/npm installation
 
-Example
+Interactive Example
 
 ```bash
 # choose a tag to pull and run
@@ -59,6 +59,16 @@ sfdx version
 
 # when done, type exit to leave the container
 exit
+
+```
+
+Remote Execution Example
+
+```bash
+# using the ID of a running container, execute some command like "sfdx version"
+docker exec -it 8b1e2696a243 bin/bash sfdx version
+
+
 
 ```
 
