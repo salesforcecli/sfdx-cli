@@ -151,6 +151,7 @@ jobs:
       - image: node:latest
     steps:
       - checkout
+      - jq/install
       - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
         # if you try to use yarn here, it will attempt to use the wrong registry and throw 401s
       - run: npm run promote-dist-tags
@@ -159,10 +160,19 @@ jobs:
     docker:
       - image: node:latest
     steps:
-      - checkout
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn promote-docker
+
+  promote-verify:
+    docker:
+      - image: node:latest
+    steps:
+      - checkout
+      - jq/install
+      - run: ./scripts/verify-promote
+      - release-management/install-sf-release
+      - run: sf-release cli:versions:inspect -c stable -l archive
 
   docker-publish-slim:
     docker:
@@ -355,7 +365,6 @@ workflows:
       - change-case-start:
           context: CLI_CTC
 
-      # we need to get the version/SHA from latest-rc before the npm promotion
       - promote-channels:
           requires:
             - change-case-start
@@ -364,13 +373,19 @@ workflows:
             - change-case-start
       - npm-promotions:
           requires:
-            - promote-channels
+            - change-case-start
       # close change case
       - close-CTC:
           context: CLI_CTC
           requires:
             - npm-promotions
             - promote-channels
+      # verify the npm tags and installers are on the right version
+      - promote-verify:
+          requires:
+            - npm-promotions
+            - promote-channels
+
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
     #
