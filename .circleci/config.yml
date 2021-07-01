@@ -158,8 +158,10 @@ jobs:
 
   docker-promotions:
     docker:
-      - image: node:latest
+      - image: cimg/node:lts
     steps:
+      - checkout
+      - run: yarn install
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn promote-docker
@@ -176,7 +178,7 @@ jobs:
 
   docker-publish-slim:
     docker:
-      - image: node:latest
+      - image: cimg/node:lts
     steps:
       - checkout
       - setup_remote_docker
@@ -186,7 +188,7 @@ jobs:
 
   docker-publish-full:
     docker:
-      - image: node:latest
+      - image: cimg/node:lts
     steps:
       - checkout
       - setup_remote_docker
