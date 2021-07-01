@@ -16,6 +16,45 @@ parameters:
     default: '[]'
     type: string
 
+commands:
+  verify-slim-dependencies:
+    steps:
+      - command: |
+          SFDX_CLI_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'sfdx --version')"
+          JAVA_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'java --version | head -n 1')"
+          if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
+          then
+            echo "sfdx-cli installed -" $SFDX_CLI_VERSION
+          else
+            echo "The sfdx-cli installation could not be verified"
+            exit 1
+          fi
+          if [[ ((`echo $JAVA_VERSION | grep -c "openjdk"` > 0))]]
+          then
+            echo "Java installed -" $JAVA_VERSION
+          else
+            echo "The Java installation could not be verified"
+            exit 1
+          fi
+  verify-full-dependencies:
+    steps:
+      - command: |
+          NODE_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'node -v')"
+          if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
+          then
+            echo "sfdx-cli installed -" $SFDX_CLI_VERSION
+          else
+            echo "The sfdx-cli installation could not be verified"
+            exit 1
+          fi
+          JQ_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'jq --version')"
+          if [[ ((`echo $JQ_VERSION | grep -c "jq"` > 0))]]
+           then
+             echo "jq installed -" $JQ_VERSION
+           else
+             echo "The jq installation could not be verified"
+             exit 1
+           fi
 jobs:
   # There are two pack jobs:
   # - test-pack-tarballs to run on every branch *other than main*
@@ -117,6 +156,14 @@ jobs:
         # if you try to use yarn here, it will attempt to use the wrong registry and throw 401s
       - run: npm run promote-dist-tags
 
+  docker-promotions:
+    docker:
+      - image: node:latest
+    steps:
+      - setup_remote_docker
+      - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - run: yarn promote-docker
+
   promote-verify:
     docker:
       - image: node:latest
@@ -126,6 +173,26 @@ jobs:
       - run: ./scripts/verify-promote
       - release-management/install-sf-release
       - run: sf-release cli:versions:inspect -c stable -l archive
+
+  docker-publish-slim:
+    docker:
+      - image: node:latest
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - run: yarn pack:docker:slim
+      - run: verify-slim-dependencies
+
+  docker-publish-full:
+    docker:
+      - image: node:latest
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - run: yarn pack:docker:full
+      - run: verify-full-dependencies
 
   close-CTC:
     docker:
@@ -259,6 +326,22 @@ workflows:
           requires:
             - release-management/release-package
             - pack-and-upload-tarballs
+      - docker-publish-slim:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - release-management/release-package
+            - pack-and-upload-tarballs
+      - docker-publish-full:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - release-management/release-package
+            - pack-and-upload-tarballs
       - run-all-nuts:
           # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
           filters:
@@ -282,21 +365,21 @@ workflows:
       - change-case-start:
           context: CLI_CTC
 
-      # we need to get the version/SHA from latest-rc before the npm promotion
       - promote-channels:
+          requires:
+            - change-case-start
+      - docker-promotions:
           requires:
             - change-case-start
       - npm-promotions:
           requires:
-            - promote-channels
-
+            - change-case-start
       # close change case
       - close-CTC:
           context: CLI_CTC
           requires:
             - npm-promotions
             - promote-channels
-
       # verify the npm tags and installers are on the right version
       - promote-verify:
           requires:

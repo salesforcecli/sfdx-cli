@@ -1,0 +1,25 @@
+FROM heroku/heroku:18
+
+ENV DEBIAN_FRONTEND=noninteractive
+ARG SALESFORCE_CLI_VERSION=latest-rc
+
+RUN echo '4781b162129b19bdb3a7010cab12d06fc7c89421ea3fda03346ed17f09ceacd6  ./nodejs.tar.gz' > node-file-lock.sha \
+  && curl -s -o nodejs.tar.gz https://nodejs.org/dist/v14.17.1/node-v14.17.1-linux-x64.tar.gz \
+  && shasum --check node-file-lock.sha
+RUN mkdir /usr/local/lib/nodejs \
+  && tar xf nodejs.tar.gz -C /usr/local/lib/nodejs/ --strip-components 1 \
+  && rm nodejs.tar.gz node-file-lock.sha
+
+ENV PATH=/usr/local/lib/nodejs/bin:$PATH
+RUN npm install --global sfdx-cli@${SALESFORCE_CLI_VERSION}
+
+RUN apt-get update && apt-get install --assume-yes openjdk-11-jdk-headless jq
+RUN apt-get autoremove --assume-yes \
+  && apt-get clean --assume-yes \
+  && rm -rf /var/lib/apt/lists/*
+
+
+
+ENV SFDX_CONTAINER_MODE true
+ENV DEBIAN_FRONTEND=dialog
+ENV SHELL /bin/bash
