@@ -1038,10 +1038,10 @@
     chalk "^4.1.0"
     tslib "^1"
 
-"@salesforce/plugin-auth@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.7.0.tgz#22896d44eaf6012b7b14cb932f8ea8c776a42f69"
-  integrity sha512-Ngh8lo5C/RI6x//LBOOfVXjQgZQ897D2dlwtAgAvTk3nQqWjBKYdG9a+iflSP9s1tyZFlOeLk9Wjf+Zwu6jlKw==
+"@salesforce/plugin-auth@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.7.1.tgz#a173e6cea6567cafc7aeb91cf84d3d4b0e42dc38"
+  integrity sha512-iXWkTliza2gCkEsuxqCMGK4a5n4YKfx2b2QUzW2x81jlWazUTmNBRZGuHqV1zLfvhtV24+7aESlIQ2tQhzyswg==
   dependencies:
     "@oclif/config" "^1.17.0"
     "@salesforce/command" "^3.1.3"
@@ -1051,10 +1051,10 @@
     open "^8.0.5"
     tslib "^2"
 
-"@salesforce/plugin-config@1.2.9":
-  version "1.2.9"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.2.9.tgz#0b1299aec6d185b76d5f88eee92a695a39bf50d5"
-  integrity sha512-/YXGBNKPC2RCqrUjfdEYLf7ZujRAQ7eYuQoyjqeTdAhRqHnPCpdZSSl2R35TPxK8+Ecs1H3a1Qbh4Evo7KP2uA==
+"@salesforce/plugin-config@1.2.12":
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.2.12.tgz#5fb838b93d9eb34d28902c6726d7994b39e8cdfb"
+  integrity sha512-f+dBsrgZLFCA+h+wKWMdUDaaCrgl93pdoLr1km6D9L19k5ie6MmFKpD9ZN2OhLG6zDhUMw3zwUaqrT8ZfH7rSA==
   dependencies:
     "@oclif/config" "^1.17.0"
     "@salesforce/command" "^3.0.5"
@@ -1153,17 +1153,17 @@
     "@salesforce/telemetry" "^2.0.4"
     tslib "^2"
 
-"@salesforce/plugin-templates@52.0.0":
-  version "52.0.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-52.0.0.tgz#d23e9493abb7234dbca65709e1f39dfab5884ba2"
-  integrity sha512-sDLLiLp9CnqjrLxJ4Op84jmca9Ewc6vV3Fyo3l05GELXjo9zOil9jBcz/damC3uw1Wb5v3cL2oc2cMk+MeQwSQ==
+"@salesforce/plugin-templates@52.1.0":
+  version "52.1.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-52.1.0.tgz#7e81ac9a8df62832dbb1227a1648fea0ac786fce"
+  integrity sha512-0xOlRMuQELBYpLv+v4QJB9gJWpg3tiS8Ie+lpQbbaCrryDrAbvw6N83LmdQ+e6ugJL9YOc8jZEyeBzYGV5yO0A==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
     "@salesforce/command" "^2.2.0"
     "@salesforce/core" "2.23.2"
-    "@salesforce/templates" "52.0.0"
+    "@salesforce/templates" "52.1.0"
     tslib "^1"
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
@@ -1247,10 +1247,10 @@
     applicationinsights "^1.4.0"
     axios "^0.21.1"
 
-"@salesforce/templates@52.0.0":
-  version "52.0.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-52.0.0.tgz#754639dcf11e80f08814ab28f0ef05a3aa9c680e"
-  integrity sha512-LFvuTd86wtsO8ul/FsfuioamTEjdQs6Zf2RUtmV9pI76y4mIWGNJCWIRmNsKACwgW8jyTI6jHSv9K9ikO/9EwQ==
+"@salesforce/templates@52.1.0":
+  version "52.1.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-52.1.0.tgz#d37377e93ccb5486136ac8aab976ffd3360fc3a2"
+  integrity sha512-hkjv9kjVNI47c51bIjRE1Ti2yD74uaQtSGUEi9bNJb/ifel+dvTfiIZI2A3gdqz/f1A30AgJIiiB8VWWWMQQrg==
   dependencies:
     "@salesforce/core" "2.23.2"
     mime-types "^2.1.27"
@@ -8719,10 +8719,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.0.2:
-  version "52.0.2"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.0.2.tgz#f7b2c73a2a6d2cca4758aaa39435e96f0a6e6f7d"
-  integrity sha512-3RJMc9bdkrFPTXqnk/EnliWdMpVrnSpCAoxxfFte5h8HeouAyJ/YqQjEuc6mnSXwRPDthiQPXND2n7J6PLI7dA==
+salesforce-alm@52.0.4:
+  version "52.0.4"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.0.4.tgz#b3388ea25ebaf9e3024fe429aa974228f334acd3"
+  integrity sha512-a85wzfqoVR36xjgbdbjYXGvAoVtem1WSDKbrc6ilcLLApvdk+SCPQZG16qwU6TUhsF3yBO7aVGEZacHBYlN8EA==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
