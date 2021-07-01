@@ -181,6 +181,8 @@ jobs:
       - image: cimg/node:lts
     steps:
       - checkout
+      # to get shelljs
+      - run: yarn install
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn pack:docker:slim
@@ -191,6 +193,8 @@ jobs:
       - image: cimg/node:lts
     steps:
       - checkout
+      # to get shelljs
+      - run: yarn install
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn pack:docker:full
