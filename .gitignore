@@ -25,6 +25,7 @@ coverage
 
 # generated docs
 docs
+oclif.manifest.json
 
 # ignore sfdx-trust files
 *.tgz
