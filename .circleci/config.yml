@@ -260,7 +260,7 @@ jobs:
       - run: ./scripts/monitor-plugin-nuts.js <<parameters.nuts_job_data>>
 
 workflows:
-  version: 2.1
+  version: 2
   test-and-release:
     when: << pipeline.parameters.run-auto-workflows >>
     jobs:

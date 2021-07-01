@@ -7,7 +7,8 @@
   "bugs": "https://github.com/forcedotcom/cli/issues",
   "homepage": "https://github.com/salesforcecli/sfdx-cli/",
   "bin": {
-    "sfdx": "bin/run"
+    "sfdx": "bin/run",
+    "sf": "node_modules/@salesforce/cli/bin/run"
   },
   "engines": {
     "node": ">=10"
@@ -16,7 +17,7 @@
     "bin",
     "oclif.manifest.json",
     "dist/**/*.js",
-    "scripts/clean-for-tarballs",
+    "scripts/include-sf.js",
     "!dist/**/*.test.js"
   ],
   "oclif": {
@@ -66,7 +67,8 @@
       "salesforce-alm"
     ],
     "devPlugins": [
-      "@oclif/plugin-command-snapshot"
+      "@oclif/plugin-command-snapshot",
+      "@salesforce/plugin-release-management"
     ],
     "update": {
       "s3": {
@@ -74,14 +76,7 @@
         "indexVersionLimit": 20,
         "folder": "media/salesforce-cli/sfdx",
         "acl": " ",
-        "host": "https://developer.salesforce.com",
-        "templates": {
-          "target": {
-            "baseDir": "sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
-            "manifest": "media/salesforce-cli/sfdx-cli/channels/<%- channel %>/<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>",
-            "versioned": "media/salesforce-cli/sfdx-cli/channels/<%- channel %>/sfdx-cli-v<%- version %>-<%- platform === 'win32' ? 'windows' : platform %>-<%- arch %>.tar.<%- ext %>"
-          }
-        }
+        "host": "https://developer.salesforce.com"
       }
     },
     "macos": {
@@ -93,6 +88,7 @@
     }
   },
   "pinnedDependencies": [
+    "@salesforce/cli",
     "@salesforce/plugin-alias",
     "@salesforce/plugin-apex",
     "@salesforce/plugin-auth",
@@ -121,6 +117,7 @@
     "@oclif/plugin-update": "1.4.0-3",
     "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "@oclif/plugin-which": "^1.0.3",
+    "@salesforce/cli": "ssh://git@github.com:salesforcecli/cli.git#mdonnalley/inclusion",
     "@salesforce/kit": "^1.5.13",
     "@salesforce/lazy-require": "^0.4.0",
     "@salesforce/plugin-alias": "1.1.10",
@@ -151,6 +148,7 @@
     "@oclif/plugin-command-snapshot": "^2.0.0",
     "@salesforce/dev-config": "^2.1.2",
     "@salesforce/dev-scripts": "^0.9.11",
+    "@salesforce/plugin-release-management": "^1.16.1",
     "@salesforce/prettier-config": "^0.0.2",
     "@salesforce/ts-sinon": "^1.3.12",
     "@types/debug": "^4.1.5",
@@ -180,7 +178,7 @@
     "mocha": "^8.4.0",
     "npm": "^7.15.1",
     "nyc": "^15.1.0",
-    "oclif": "^1.18.0",
+    "oclif": "^1.18.1",
     "prettier": "^2.3.0",
     "pretty-quick": "^3.1.0",
     "shelljs": "^0.8.4",
@@ -201,9 +199,9 @@
     "pack:docker:slim": "./scripts/docker-publish-slim.js",
     "pack:docker:full": "./scripts/docker-publish-full.js",
     "pack:macos": "oclif pack:macos",
-    "pretarball": "./scripts/clean-for-tarballs",
+    "pretarball": "sf-release cli:tarballs:prepare && ./scripts/include-sf.js",
     "pack:tarballs": "oclif pack:tarballs",
-    "pack:verify": "./scripts/verify-tarballs",
+    "pack:verify": "sf-release cli:tarballs:verify",
     "pack:win": "oclif pack:win",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "yarn test:deprecation-policy ",
