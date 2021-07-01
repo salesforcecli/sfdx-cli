@@ -1038,10 +1038,10 @@
     chalk "^4.1.0"
     tslib "^1"
 
-"@salesforce/plugin-auth@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.7.0.tgz#22896d44eaf6012b7b14cb932f8ea8c776a42f69"
-  integrity sha512-Ngh8lo5C/RI6x//LBOOfVXjQgZQ897D2dlwtAgAvTk3nQqWjBKYdG9a+iflSP9s1tyZFlOeLk9Wjf+Zwu6jlKw==
+"@salesforce/plugin-auth@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.7.1.tgz#a173e6cea6567cafc7aeb91cf84d3d4b0e42dc38"
+  integrity sha512-iXWkTliza2gCkEsuxqCMGK4a5n4YKfx2b2QUzW2x81jlWazUTmNBRZGuHqV1zLfvhtV24+7aESlIQ2tQhzyswg==
   dependencies:
     "@oclif/config" "^1.17.0"
     "@salesforce/command" "^3.1.3"
