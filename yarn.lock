@@ -8719,10 +8719,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.0.2:
-  version "52.0.2"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.0.2.tgz#f7b2c73a2a6d2cca4758aaa39435e96f0a6e6f7d"
-  integrity sha512-3RJMc9bdkrFPTXqnk/EnliWdMpVrnSpCAoxxfFte5h8HeouAyJ/YqQjEuc6mnSXwRPDthiQPXND2n7J6PLI7dA==
+salesforce-alm@52.0.4:
+  version "52.0.4"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.0.4.tgz#b3388ea25ebaf9e3024fe429aa974228f334acd3"
+  integrity sha512-a85wzfqoVR36xjgbdbjYXGvAoVtem1WSDKbrc6ilcLLApvdk+SCPQZG16qwU6TUhsF3yBO7aVGEZacHBYlN8EA==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
