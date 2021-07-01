@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.109.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.108.0...v7.109.0) (2021-07-01)
+
+
+### Features
+
+* build/promote scripts ([967ab6a](https://github.com/salesforcecli/sfdx-cli/commit/967ab6a9e2af6893e7635902e0399a7346fd73ac))
+* check npm promotions ([9a5ffa1](https://github.com/salesforcecli/sfdx-cli/commit/9a5ffa17e3a5ed34cfe3d6cf5f0f487e6b229431))
+* makes tarball download url an ARG ([e769295](https://github.com/salesforcecli/sfdx-cli/commit/e769295f299d983922efb5c7122502365cf4e151))
+* slim builds latest-rc from tarball ([11bafd9](https://github.com/salesforcecli/sfdx-cli/commit/11bafd9402b9606b122befbb9d26c03fb7fe7147))
+* use node14 ([48a4cbf](https://github.com/salesforcecli/sfdx-cli/commit/48a4cbf6e67544dd55ab9e438c0dcba1b8c72820))
+* yarn scripts and circle yml for docker ([7270d03](https://github.com/salesforcecli/sfdx-cli/commit/7270d03d2ab28cbaf705304ac8d46ba2fb9f6d8e))
+
+
+### Bug Fixes
+
+* validated circle config ([eb20bf3](https://github.com/salesforcecli/sfdx-cli/commit/eb20bf31a209db77a2e05db395531ecc58b201b7))
+
 ## [7.108.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.107.0...v7.108.0) (2021-06-24)
 
 
