@@ -124,7 +124,7 @@
     "@salesforce/plugin-alias": "1.1.10",
     "@salesforce/plugin-apex": "0.2.2",
     "@salesforce/plugin-auth": "1.7.0",
-    "@salesforce/plugin-config": "1.2.9",
+    "@salesforce/plugin-config": "1.2.11",
     "@salesforce/plugin-custom-metadata": "1.0.12",
     "@salesforce/plugin-data": "0.4.12",
     "@salesforce/plugin-generator": "^1.1.7",
