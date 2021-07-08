@@ -58,10 +58,10 @@ sfdx help
 sfdx plugins --core
 sfdx version
 
-verify version (will not run until the version it updates to has the --json (v108) option)
-INSTALLED_VERSION=$(sfdx version --json | jq -cr '.cliVersion' | sed 's/sfdx-cli\///')
-if [ $LATEST != $INSTALLED_VERSION ]; then
-  echo "installer did not install latest.  latest: $LATEST.  Installer provided $INSTALLED_VERSION"
-  exit 1
-fi
+# verify version (will not run until the version it updates from has the --json (v108) option)
+# INSTALLED_VERSION=$(sfdx version --json | jq -cr '.cliVersion' | sed 's/sfdx-cli\///')
+# if [ $LATEST != $INSTALLED_VERSION ]; then
+#   echo "installer did not install latest.  latest: $LATEST.  Installer provided $INSTALLED_VERSION"
+#   exit 1
+# fi
 
