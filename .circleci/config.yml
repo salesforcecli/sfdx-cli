@@ -186,7 +186,7 @@ jobs:
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn pack:docker:slim
-      - run: verify-slim-dependencies
+      - verify-slim-dependencies
 
   docker-publish-full:
     docker:
@@ -198,7 +198,7 @@ jobs:
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn pack:docker:full
-      - run: verify-full-dependencies
+      - verify-full-dependencies
 
   close-CTC:
     docker:
