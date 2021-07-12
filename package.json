@@ -36,7 +36,8 @@
         "./dist/hooks/preupdate.js"
       ],
       "update": [
-        "./dist/hooks/lazyRequire.js"
+        "./dist/hooks/lazyRequire.js",
+        "./dist/hooks/postupdate.js"
       ]
     },
     "plugins": [
@@ -141,6 +142,7 @@
     "debug": "^4.3.1",
     "salesforce-alm": "52.2.6",
     "salesforce-lightning-cli": "3.0.0",
+    "shelljs": "^0.8.4",
     "tslib": "^2.1.0",
     "v8-compile-cache": "^2.2.0"
   },
@@ -181,7 +183,6 @@
     "oclif": "^1.18.1",
     "prettier": "^2.3.0",
     "pretty-quick": "^3.1.0",
-    "shelljs": "^0.8.4",
     "shx": "^0.3.3",
     "sinon": "10.0.0",
     "ts-node": "^9.1.1",
