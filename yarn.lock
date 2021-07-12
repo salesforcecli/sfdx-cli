@@ -1414,18 +1414,7 @@
     "@salesforce/core" "^2.14.0"
     tslib "^2"
 
-"@salesforce/plugin-telemetry@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.npmjs.org/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.2.tgz#89883344db7c0348428eb2fbf323a87f93863a7f"
-  integrity sha512-NkHyrktBAgD7dYehYQTFYPHVoiH9WHmyP5sFBF+qvnfIPSDr0M6QS5iJQGtKiVd8S0qgRrMgAGiFUhT23V4O2Q==
-  dependencies:
-    "@oclif/config" "^1"
-    "@salesforce/command" "^3.0.3"
-    "@salesforce/core" "^2.24.0"
-    "@salesforce/telemetry" "^2.0.4"
-    tslib "^2"
-
-"@salesforce/plugin-telemetry@^1.2.2":
+"@salesforce/plugin-telemetry@1.2.3", "@salesforce/plugin-telemetry@^1.2.2":
   version "1.2.3"
   resolved "https://registry.npmjs.org/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.3.tgz#da392538da57ef53eb3ee33d6ef6469ea1a65ac9"
   integrity sha512-cBlNRjg96fGaZNP1+C03RSz+M09onLr0XDSVu5XdpIeLR0LeL4U+MxRleOSaew9g50ExFqaFdy/oO1WX4tBpDw==
