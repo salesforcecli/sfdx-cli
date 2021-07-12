@@ -1020,15 +1020,16 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@salesforce/cli@ssh://git@github.com:salesforcecli/cli.git#mdonnalley/inclusion":
-  version "0.0.10"
-  resolved "ssh://git@github.com:salesforcecli/cli.git#8ec344bfa9677d49238fe775bb3c0d5a5880b105"
+"@salesforce/cli@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.npmjs.org/@salesforce/cli/-/cli-0.0.11.tgz#68c88e9b7633b869f3550fb3130cfd8235180820"
+  integrity sha512-QCWCoGQE4X928HYXZGroysGzzc4pIMr3PNOKwuCdyBfkc1fjRVf3W25hha6VP0rn2B2mSGikvKWoM2UcjOhaQw==
   dependencies:
     "@oclif/core" "^0.5.21"
     "@oclif/plugin-help" "^3.2.2"
     "@oclif/plugin-not-found" "^2.1.1"
     "@oclif/plugin-plugins" "^1.10.1"
-    "@sf/env" "npm:@salesforce/plugin-env@0.0.8"
+    "@sf/env" "npm:@salesforce/plugin-env@0.0.9"
     "@sf/func" "npm:@salesforce/plugin-functions@0.2.18"
     "@sf/login" "npm:@salesforce/plugin-login@0.0.5"
     "@sf/proj-org" "npm:@salesforce/plugin-project-org@0.0.4"
@@ -1604,10 +1605,10 @@
   dependencies:
     tslib "^2.2.0"
 
-"@sf/env@npm:@salesforce/plugin-env@0.0.8":
-  version "0.0.8"
-  resolved "https://registry.npmjs.org/@salesforce/plugin-env/-/plugin-env-0.0.8.tgz#f47b6edd20456a302a981338d7e7df31e0a9f321"
-  integrity sha512-kMBPmshTbSFFCyptqJ+dOQztONq5qZurcJBRXMOT82u4t5sva9cKzTSOr8Fq2oRaUIXYtB3OxLVmcFW1CViAgA==
+"@sf/env@npm:@salesforce/plugin-env@0.0.9":
+  version "0.0.9"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-env/-/plugin-env-0.0.9.tgz#4d6dab8441bfab31238b1691351754aa5d630005"
+  integrity sha512-kPIwlAxObtRCcx3/C80wK4yKPxVyk5FwnVxh3yNwHyZZScO2eWsEXOuMQQNpRYUYx4Pv5hLdeEJHDkkrNAlGwQ==
   dependencies:
     "@oclif/core" "^0.5.21"
     "@salesforce/core" "^3.1.1-v3.2"
