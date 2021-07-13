@@ -150,7 +150,7 @@
     "@oclif/plugin-command-snapshot": "^2.0.0",
     "@salesforce/dev-config": "^2.1.2",
     "@salesforce/dev-scripts": "^0.9.11",
-    "@salesforce/plugin-release-management": "^1.16.1",
+    "@salesforce/plugin-release-management": "^1.16.5",
     "@salesforce/prettier-config": "^0.0.2",
     "@salesforce/ts-sinon": "^1.3.12",
     "@types/debug": "^4.1.5",

@@ -1417,10 +1417,10 @@
     cli-ux "^5.6.2"
     inquirer "^8.1.1"
 
-"@salesforce/plugin-release-management@^1.16.1":
-  version "1.16.1"
-  resolved "https://registry.npmjs.org/@salesforce/plugin-release-management/-/plugin-release-management-1.16.1.tgz#d36f586990b7c802242c1a998a261d0e45bcdac9"
-  integrity sha512-0figxeVIpmnLiWuWuq/H2YiAtFUsDExh3ZchOleHEELSxkOenZ2nI+02fJ8uwqpMPxsrnoa1dOfFg/6FSk5g/A==
+"@salesforce/plugin-release-management@^1.16.5":
+  version "1.16.5"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-release-management/-/plugin-release-management-1.16.5.tgz#8b4cb2c29560dce6aaffafc765f40e196364a22a"
+  integrity sha512-NtG4GlFEUphXSjG77gIrB4HwEIRKM5pnlmuETFSmpoFaAwZIgvXSvlRPMIBs35lNmmUOIaeR4j8VQNk8jDhhGw==
   dependencies:
     "@oclif/config" "^1"
     "@octokit/core" "^3.4.0"
