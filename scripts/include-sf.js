@@ -13,7 +13,7 @@ const sfCmd = path.join('bin', 'sf.cmd');
 const sfdxCmd = path.join('bin', 'sfdx.cmd');
 
 console.log(`---- Including SF ----`);
-
+console.log(`  Updating ${sfdxBin} with references to sf`);
 const binContents = fs
   .readFileSync(sfdxBin, 'UTF-8')
   .replace(/sfdx/g, 'sf')
