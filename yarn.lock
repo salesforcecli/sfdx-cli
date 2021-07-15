@@ -817,10 +817,10 @@
   dependencies:
     fancy-test "^1.4.3"
 
-"@salesforce/apex-node@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/apex-node/-/apex-node-0.2.2.tgz#c95782f0aa6989fbb44c2a4236903f95befb9eb0"
-  integrity sha512-SgGzobp5Iqb7J54+Ig8WHaLfFIP7NUlezOlj/TerQSvpCAqM0xgxt9hEW8YYTlQXmgd/QeNE+0TjAwhSA6rcxw==
+"@salesforce/apex-node@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/apex-node/-/apex-node-0.2.3.tgz#34873d6bb0bb770f93433961e116839038315049"
+  integrity sha512-LOE4RoY6aiYARsfwnPRuNJQ5PJcU+8DG4f/nkec4A2+09jLGBFH8mKA++LNWXH2h7shYSVoQtykX0qB0zy7cgQ==
   dependencies:
     "@salesforce/core" "2.23.2"
     faye "1.1.3"
@@ -1063,15 +1063,15 @@
     chalk "^4.1.0"
     tslib "^2"
 
-"@salesforce/plugin-apex@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-apex/-/plugin-apex-0.2.2.tgz#4e22bc14cae7bca274a685b086fb98ea72fcdc9f"
-  integrity sha512-0VkDoDRUDEX8nJPoDjIEwxB81Vofr4u5blzMPKVeOLOEJpR25i8GK1cWP18I24deZnIL+ggQgAUVr9jv9Tx6zg==
+"@salesforce/plugin-apex@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-apex/-/plugin-apex-0.2.3.tgz#6de7983967d54c41839004bbe588fe6ea478deb6"
+  integrity sha512-1r6bU9LVwRobdXOWxJuCKP/1PegolSWQgtGUFwH1RGijWMHqP99QUTSb6PTS96JQ/bZtPF8oX6AfQ6kpae8Taw==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
-    "@salesforce/apex-node" "0.2.2"
+    "@salesforce/apex-node" "0.2.3"
     "@salesforce/command" "3.1.0"
     "@salesforce/core" "2.23.2"
     chalk "^4.1.0"
@@ -1181,21 +1181,10 @@
     "@salesforce/core" "^2.14.0"
     tslib "^2"
 
-"@salesforce/plugin-telemetry@1.2.3":
+"@salesforce/plugin-telemetry@1.2.3", "@salesforce/plugin-telemetry@^1.2.3":
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.3.tgz#da392538da57ef53eb3ee33d6ef6469ea1a65ac9"
   integrity sha512-cBlNRjg96fGaZNP1+C03RSz+M09onLr0XDSVu5XdpIeLR0LeL4U+MxRleOSaew9g50ExFqaFdy/oO1WX4tBpDw==
-  dependencies:
-    "@oclif/config" "^1"
-    "@salesforce/command" "^3.0.3"
-    "@salesforce/core" "^2.24.0"
-    "@salesforce/telemetry" "^2.0.4"
-    tslib "^2"
-
-"@salesforce/plugin-telemetry@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.2.tgz#89883344db7c0348428eb2fbf323a87f93863a7f"
-  integrity sha512-NkHyrktBAgD7dYehYQTFYPHVoiH9WHmyP5sFBF+qvnfIPSDr0M6QS5iJQGtKiVd8S0qgRrMgAGiFUhT23V4O2Q==
   dependencies:
     "@oclif/config" "^1"
     "@salesforce/command" "^3.0.3"
@@ -8759,10 +8748,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.1.4:
-  version "52.1.4"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.1.4.tgz#ab4c632809e379ff4c48175e038f501a4110fc60"
-  integrity sha512-Da0+hh+UvuaLfwf0ua9TX+KQcGTjE+XRV4KTV6QIHO7NXW+yQ7A0WIM0gHBq1805CAhn1O3p04DSHqymnzTkxg==
+salesforce-alm@52.1.5:
+  version "52.1.5"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.1.5.tgz#275f42b06f1cd417a8ce1c4ad5338043effb5007"
+  integrity sha512-sUF2qgGIXzO7hPgd18azOHSPq//WY9mxM+WEX+Xherp+Z4Jqlnc5tmuVRx/TTWRED2xwSBibriuuqigrXKhj+A==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
@@ -8770,7 +8759,7 @@ salesforce-alm@52.1.4:
     "@salesforce/command" "^4.0.2"
     "@salesforce/core" "^2.25.0"
     "@salesforce/kit" "^1.5.13"
-    "@salesforce/plugin-telemetry" "^1.2.2"
+    "@salesforce/plugin-telemetry" "^1.2.3"
     "@salesforce/source-deploy-retrieve" "^3.1.1"
     "@salesforce/ts-types" "^1.5.17"
     adm-zip "^0.4.13"
