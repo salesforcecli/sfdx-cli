@@ -131,7 +131,7 @@ jobs:
 
   promote-channels:
     docker:
-      - image: node:latest
+      - image: node:lts
     steps:
       - checkout
       - jq/install
@@ -170,7 +170,7 @@ jobs:
 
   promote-verify:
     docker:
-      - image: node:latest
+      - image: node:lts
     steps:
       - checkout
       - jq/install
@@ -228,7 +228,7 @@ jobs:
 
   run-all-nuts:
     docker:
-      - image: node:latest
+      - image: node:lts
     parameters:
       sfdx_version:
         description: By default, the latest-rc version of the standalone CLI will be installed.
@@ -268,9 +268,9 @@ workflows:
           filters:
             branches:
               ignore: main
-      - release-management/test-package:
-          name: node-latest
-          node_version: latest
+      # - release-management/test-package:
+      #     name: node-latest
+      #     node_version: latest
       - release-management/test-package:
           name: node-14
           node_version: '14'
@@ -292,7 +292,7 @@ workflows:
       - approval:
           type: approval
           requires:
-            - node-latest
+            # - node-latest
             - node-14
             - node-12
           filters:

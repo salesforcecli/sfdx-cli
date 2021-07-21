@@ -740,10 +740,10 @@
     fast-levenshtein "^2.0.6"
     lodash "^4.17.13"
 
-"@oclif/plugin-plugins@^1.9.5":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-1.10.0.tgz#9cbf5373abdd38c764273cd409518ee16ccbace3"
-  integrity sha512-lfHNiuuCrCUtH9A912T/ztxRA9lS1lCZm+gcmVWksIJG/gwKH/fMn+GdLTbRzU2k6ojtMhBblYk1RWKxUEJuzA==
+"@oclif/plugin-plugins@^1.10.1":
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-1.10.1.tgz#13666d7c2f591a77f7a16334feee59f9eb216eb1"
+  integrity sha512-JDUA3NtOa4OlH8ofUBXQMTFlpEkSmeE9BxoQTD6+BeUvMgqFuZThENucRvCD00sywhCmDngmIYN59gKcXpGJeQ==
   dependencies:
     "@oclif/color" "^0.x"
     "@oclif/command" "^1.5.12"
@@ -8748,10 +8748,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.1.6:
-  version "52.1.6"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.1.6.tgz#583fe7205c77c95781ead4911114d39977001d32"
-  integrity sha512-GZIJ7AbB6m0u3JojkLvYgTDdnS2KIGzRfgOya+WoP9HP1Ph19FwuGng+qfzMGH1HLK1SR5fWWhmaX4/c5IlqBQ==
+salesforce-alm@52.1.7:
+  version "52.1.7"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.1.7.tgz#429152a46b712198631315c0700246e19f6aad02"
+  integrity sha512-SJfMtdArLuYnnsRL0T513sdp0FAxFga2JwOArt4qie19mYXh0mr5dhj99pJqI9eXH0hwFNYyRvWiFwSjoFgxrA==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
