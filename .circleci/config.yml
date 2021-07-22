@@ -359,40 +359,40 @@ workflows:
           requires:
             - release-management/release-package
 
-  promote-to-latest:
-    triggers:
-      - schedule:
-          # Thursday mornings at 10a mountain
-          cron: 0 16 * * 4
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      # start the change case
-      - change-case-start:
-          context: CLI_CTC
+  # promote-to-latest:
+  #   triggers:
+  #     - schedule:
+  #         # Thursday mornings at 10a mountain
+  #         cron: 0 16 * * 4
+  #         filters:
+  #           branches:
+  #             only:
+  #               - main
+  #   jobs:
+  #     # start the change case
+  #     - change-case-start:
+  #         context: CLI_CTC
 
-      - promote-channels:
-          requires:
-            - change-case-start
-      - docker-promotions:
-          requires:
-            - change-case-start
-      - npm-promotions:
-          requires:
-            - change-case-start
-      # close change case
-      - close-CTC:
-          context: CLI_CTC
-          requires:
-            - npm-promotions
-            - promote-channels
-      # verify the npm tags and installers are on the right version
-      - promote-verify:
-          requires:
-            - npm-promotions
-            - promote-channels
+  #     - promote-channels:
+  #         requires:
+  #           - change-case-start
+  #     - docker-promotions:
+  #         requires:
+  #           - change-case-start
+  #     - npm-promotions:
+  #         requires:
+  #           - change-case-start
+  #     # close change case
+  #     - close-CTC:
+  #         context: CLI_CTC
+  #         requires:
+  #           - npm-promotions
+  #           - promote-channels
+  #     # verify the npm tags and installers are on the right version
+  #     - promote-verify:
+  #         requires:
+  #           - npm-promotions
+  #           - promote-channels
 
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
