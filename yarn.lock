@@ -852,7 +852,7 @@
     fast-levenshtein "^3.0.0"
     lodash "^4.17.21"
 
-"@oclif/plugin-plugins@^1.10.1", "@oclif/plugin-plugins@^1.9.5":
+"@oclif/plugin-plugins@^1.10.1":
   version "1.10.1"
   resolved "https://registry.npmjs.org/@oclif/plugin-plugins/-/plugin-plugins-1.10.1.tgz#13666d7c2f591a77f7a16334feee59f9eb216eb1"
   integrity sha512-JDUA3NtOa4OlH8ofUBXQMTFlpEkSmeE9BxoQTD6+BeUvMgqFuZThENucRvCD00sywhCmDngmIYN59gKcXpGJeQ==
@@ -1000,10 +1000,10 @@
   dependencies:
     "@octokit/openapi-types" "^8.2.1"
 
-"@salesforce/apex-node@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.npmjs.org/@salesforce/apex-node/-/apex-node-0.2.2.tgz#c95782f0aa6989fbb44c2a4236903f95befb9eb0"
-  integrity sha512-SgGzobp5Iqb7J54+Ig8WHaLfFIP7NUlezOlj/TerQSvpCAqM0xgxt9hEW8YYTlQXmgd/QeNE+0TjAwhSA6rcxw==
+"@salesforce/apex-node@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.npmjs.org/@salesforce/apex-node/-/apex-node-0.2.3.tgz#34873d6bb0bb770f93433961e116839038315049"
+  integrity sha512-LOE4RoY6aiYARsfwnPRuNJQ5PJcU+8DG4f/nkec4A2+09jLGBFH8mKA++LNWXH2h7shYSVoQtykX0qB0zy7cgQ==
   dependencies:
     "@salesforce/core" "2.23.2"
     faye "1.1.3"
@@ -1108,6 +1108,26 @@
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.5.0"
     "@salesforce/schemas" "^1.0.1"
+    "@salesforce/ts-types" "^1.0.0"
+    "@types/graceful-fs" "^4.1.3"
+    "@types/jsforce" "1.9.23"
+    "@types/mkdirp" "1.0.0"
+    debug "^3.1.0"
+    graceful-fs "^4.2.4"
+    jsen "0.6.6"
+    jsforce "^1.10.0"
+    jsonwebtoken "8.5.0"
+    mkdirp "1.0.4"
+    sfdx-faye "^1.0.9"
+
+"@salesforce/core@2.25.1", "@salesforce/core@^2.1.4", "@salesforce/core@^2.11.0", "@salesforce/core@^2.14.0", "@salesforce/core@^2.15.2", "@salesforce/core@^2.15.4", "@salesforce/core@^2.16.3", "@salesforce/core@^2.17.0", "@salesforce/core@^2.2.0", "@salesforce/core@^2.20.10", "@salesforce/core@^2.20.3", "@salesforce/core@^2.23.2", "@salesforce/core@^2.23.4", "@salesforce/core@^2.24.0", "@salesforce/core@^2.25.0":
+  version "2.25.1"
+  resolved "https://registry.npmjs.org/@salesforce/core/-/core-2.25.1.tgz#2be78b4fc824bfb69537174a0440ba35d19d8fa4"
+  integrity sha512-kRo1Uce8sFFXNBEu3odJ4zsFkvja+s/cmj7ICI6EvCsgwMHSLCw4P7zhqAsOJnBUim3M2qb4p0HpVtkQ4Cz3Kg==
+  dependencies:
+    "@salesforce/bunyan" "^2.0.0"
+    "@salesforce/kit" "^1.5.0"
+    "@salesforce/schemas" "^1.0.1"
     "@salesforce/ts-types" "^1.5.13"
     "@types/graceful-fs" "^4.1.5"
     "@types/jsforce" "^1.9.29"
@@ -1121,10 +1141,10 @@
     sfdx-faye "^1.0.9"
     ts-retry-promise "^0.6.0"
 
-"@salesforce/core@2.25.1", "@salesforce/core@^2.1.4", "@salesforce/core@^2.11.0", "@salesforce/core@^2.14.0", "@salesforce/core@^2.15.2", "@salesforce/core@^2.15.4", "@salesforce/core@^2.16.3", "@salesforce/core@^2.17.0", "@salesforce/core@^2.2.0", "@salesforce/core@^2.20.10", "@salesforce/core@^2.20.3", "@salesforce/core@^2.23.2", "@salesforce/core@^2.23.4", "@salesforce/core@^2.24.0", "@salesforce/core@^2.25.0":
-  version "2.25.1"
-  resolved "https://registry.npmjs.org/@salesforce/core/-/core-2.25.1.tgz#2be78b4fc824bfb69537174a0440ba35d19d8fa4"
-  integrity sha512-kRo1Uce8sFFXNBEu3odJ4zsFkvja+s/cmj7ICI6EvCsgwMHSLCw4P7zhqAsOJnBUim3M2qb4p0HpVtkQ4Cz3Kg==
+"@salesforce/core@^2.26.0":
+  version "2.26.1"
+  resolved "https://registry.npmjs.org/@salesforce/core/-/core-2.26.1.tgz#00ecf0d989308786dcee648da231c528e6346c09"
+  integrity sha512-Ltswt8HWqIOS0NKZ7ggsYXD8X/nq/6uYO8REzj7g7HdZR+/GIrFUzRdJZ9ACjVGZpjkYLNN6E7ncyoy/Uudiww==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.5.0"
@@ -1287,10 +1307,10 @@
     chalk "^4.1.0"
     tslib "^2"
 
-"@salesforce/plugin-apex@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.npmjs.org/@salesforce/plugin-apex/-/plugin-apex-0.2.2.tgz#4e22bc14cae7bca274a685b086fb98ea72fcdc9f"
-  integrity sha512-0VkDoDRUDEX8nJPoDjIEwxB81Vofr4u5blzMPKVeOLOEJpR25i8GK1cWP18I24deZnIL+ggQgAUVr9jv9Tx6zg==
+"@salesforce/plugin-apex@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-apex/-/plugin-apex-0.2.3.tgz#6de7983967d54c41839004bbe588fe6ea478deb6"
+  integrity sha512-1r6bU9LVwRobdXOWxJuCKP/1PegolSWQgtGUFwH1RGijWMHqP99QUTSb6PTS96JQ/bZtPF8oX6AfQ6kpae8Taw==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
@@ -1497,10 +1517,10 @@
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
 
-"@salesforce/plugin-user@1.3.1":
-  version "1.3.1"
-  resolved "https://registry.npmjs.org/@salesforce/plugin-user/-/plugin-user-1.3.1.tgz#08bda7001a9d9fa1eb9a151a3a6fcc6d41916fd0"
-  integrity sha512-e/uopqUzDEuo9vtN8VA7A89U7ocwhAH6YKv69QrE5Ywz3C+8NBuPrVMNQTUF86vbtx/XZiiu7ChCIR7Gh6A4pw==
+"@salesforce/plugin-user@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-user/-/plugin-user-1.4.0.tgz#c5dad9f29c082a45ad8902ac23a630cfd5cb04fb"
+  integrity sha512-CsO1em/mTk+QFQr77aaXmjLVmqJNpr0skPuhXxAgBB7ATQcAqNCm6o01QDz2O1cq/5QbbU9xlxfjezOej2KpRw==
   dependencies:
     "@oclif/config" "^1.17.0"
     "@salesforce/command" "^4.0.4"
@@ -1598,7 +1618,7 @@
     sinon "^5.1.1"
     tslib "^2.2.0"
 
-"@salesforce/ts-types@^1.0.0", "@salesforce/ts-types@^1.2.0", "@salesforce/ts-types@^1.2.1", "@salesforce/ts-types@^1.2.2", "@salesforce/ts-types@^1.4.2", "@salesforce/ts-types@^1.4.3", "@salesforce/ts-types@^1.5.13", "@salesforce/ts-types@^1.5.17", "@salesforce/ts-types@^1.5.20":
+"@salesforce/ts-types@^1.2.0", "@salesforce/ts-types@^1.2.1", "@salesforce/ts-types@^1.2.2", "@salesforce/ts-types@^1.4.2", "@salesforce/ts-types@^1.4.3", "@salesforce/ts-types@^1.5.13", "@salesforce/ts-types@^1.5.17", "@salesforce/ts-types@^1.5.20":
   version "1.5.20"
   resolved "https://registry.npmjs.org/@salesforce/ts-types/-/ts-types-1.5.20.tgz#f6875a710ceca48223b240026a14af6d3b39882f"
   integrity sha512-Ov6um4CWd63EvkRavkHG0J/P9XYL55sdkDWPMr7+AIgqh5flHxDRz09/C4e9M94aX30rzJxW4TVX6EBf4Cu2BQ==
@@ -6871,7 +6891,7 @@ jsesc@^2.5.1:
   resolved "https://registry.npmjs.org/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
-jsforce@^1.10.0, jsforce@^1.10.1, jsforce@^1.9.3:
+jsforce@^1.10.1, jsforce@^1.9.3:
   version "1.10.1"
   resolved "https://registry.npmjs.org/jsforce/-/jsforce-1.10.1.tgz#ca1cf58d4439d94e1f84482d83081acd12c93269"
   integrity sha512-rv+UpBR9n/sWdgLhyPOJuKgT9ZKngypYf9XOHoXVRpSllvTFCjn+M3H81Nu1oYjPH9JKXVS8hL1dmmq8+kOAJg==
@@ -9698,11 +9718,6 @@ readdirp@~3.5.0:
   integrity sha512-cMhu7c/8rdhkHXWsY+osBhfSy0JikwpHK/5+imo+LpeasTF8ouErHrlYkwT0++njiyuDvc7OFY5T3ukvZ8qmFQ==
   dependencies:
     picomatch "^2.2.1"
-
-readline-sync@^1.4.9:
-  version "1.4.10"
-  resolved "https://registry.npmjs.org/readline-sync/-/readline-sync-1.4.10.tgz#41df7fbb4b6312d673011594145705bf56d8873b"
-  integrity sha512-gNva8/6UAe8QYepIQH/jQ2qn91Qj0B9sYjMBBs3QOB8F2CXcKgLxQaJRP76sWVRQt+QU+8fAkCbCvjjMFu7Ycw==
 
 rechoir@^0.6.2:
   version "0.6.2"
