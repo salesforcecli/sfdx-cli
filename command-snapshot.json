@@ -15,6 +15,19 @@
     "flags": ["json", "loglevel"]
   },
   {
+    "command": "auth:accesstoken:store",
+    "plugin": "@salesforce/plugin-auth",
+    "flags": [
+      "instanceurl",
+      "json",
+      "loglevel",
+      "noprompt",
+      "setalias",
+      "setdefaultdevhubusername",
+      "setdefaultusername"
+    ]
+  },
+  {
     "command": "auth:device:login",
     "plugin": "@salesforce/plugin-auth",
     "flags": [
@@ -286,7 +299,17 @@
   {
     "command": "force:data:bulk:upsert",
     "plugin": "@salesforce/plugin-data",
-    "flags": ["apiversion", "csvfile", "externalid", "json", "loglevel", "sobjecttype", "targetusername", "wait"]
+    "flags": [
+      "apiversion",
+      "csvfile",
+      "externalid",
+      "json",
+      "loglevel",
+      "serial",
+      "sobjecttype",
+      "targetusername",
+      "wait"
+    ]
   },
   {
     "command": "force:data:record:create",
@@ -843,7 +866,7 @@
   },
   {
     "command": "force:source:convert",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": ["json", "loglevel", "manifest", "metadata", "outputdir", "packagename", "rootdir", "sourcepath"]
   },
   {
@@ -863,7 +886,7 @@
   },
   {
     "command": "force:source:deploy",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": [
       "apiversion",
       "checkonly",
@@ -874,6 +897,7 @@
       "manifest",
       "metadata",
       "runtests",
+      "soapdeploy",
       "sourcepath",
       "targetusername",
       "testlevel",
@@ -884,13 +908,13 @@
   },
   {
     "command": "force:source:deploy:cancel",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "wait"]
   },
   {
     "command": "force:source:deploy:report",
-    "plugin": "salesforce-alm",
-    "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "wait"]
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"]
   },
   {
     "command": "force:source:ignored:list",
@@ -899,7 +923,7 @@
   },
   {
     "command": "force:source:open",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": ["apiversion", "json", "loglevel", "sourcefile", "targetusername", "urlonly"]
   },
   {
@@ -923,7 +947,7 @@
   },
   {
     "command": "force:source:retrieve",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": [
       "apiversion",
       "json",
@@ -984,7 +1008,16 @@
   {
     "command": "force:user:password:generate",
     "plugin": "@salesforce/plugin-user",
-    "flags": ["apiversion", "json", "loglevel", "onbehalfof", "targetdevhubusername", "targetusername"]
+    "flags": [
+      "apiversion",
+      "complexity",
+      "json",
+      "length",
+      "loglevel",
+      "onbehalfof",
+      "targetdevhubusername",
+      "targetusername"
+    ]
   },
   {
     "command": "force:user:permset:assign",
