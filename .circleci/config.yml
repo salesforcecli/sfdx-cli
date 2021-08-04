@@ -358,6 +358,7 @@ workflows:
                 - main
           requires:
             - release-management/release-package
+
   promote-to-latest:
     triggers:
       - schedule:
@@ -372,6 +373,7 @@ workflows:
       # start the change case
       - change-case-start:
           context: CLI_CTC
+
       - promote-channels:
           requires:
             - change-case-start
