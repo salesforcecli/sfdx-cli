@@ -21,8 +21,8 @@ commands:
     steps:
       - run:
           command: |
-            SFDX_CLI_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'sfdx --version')"
-            JAVA_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'java --version | head -n 1')"
+            SFDX_CLI_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bin/bash -c 'sfdx --version')"
+            JAVA_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bin/bash -c 'java --version | head -n 1')"
             if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
             then
               echo "sfdx-cli installed -" $SFDX_CLI_VERSION
@@ -41,7 +41,7 @@ commands:
     steps:
       - run:
           command: |
-            NODE_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'node -v')"
+            NODE_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bin/bash -c 'node -v')"
             if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
             then
               echo "sfdx-cli installed -" $SFDX_CLI_VERSION
@@ -49,7 +49,7 @@ commands:
               echo "The sfdx-cli installation could not be verified"
               exit 1
             fi
-            JQ_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'jq --version')"
+            JQ_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bin/bash -c 'jq --version')"
             if [[ ((`echo $JQ_VERSION | grep -c "jq"` > 0))]]
             then
               echo "jq installed -" $JQ_VERSION
@@ -364,7 +364,7 @@ workflows:
       - schedule:
           # Thursday mornings at 10a mountain
           cron: '22 18 * * 3'
-          #        cron: 0 16 * * 4
+          #        cron: '0 16 * * 4'
           filters:
             branches:
               only:
