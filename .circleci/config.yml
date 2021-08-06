@@ -21,8 +21,8 @@ commands:
     steps:
       - run:
           command: |
-            SFDX_CLI_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'sfdx --version')"
-            JAVA_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'java --version | head -n 1')"
+            SFDX_CLI_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bin/bash -c 'sfdx --version')"
+            JAVA_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bin/bash -c 'java --version | head -n 1')"
             if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
             then
               echo "sfdx-cli installed -" $SFDX_CLI_VERSION
@@ -363,8 +363,7 @@ workflows:
     triggers:
       - schedule:
           # Thursday mornings at 10a mountain
-          cron: '00 20 * * 4'
-          #        cron: 0 16 * * 4
+          cron: '0 16 * * 4'
           filters:
             branches:
               only:
