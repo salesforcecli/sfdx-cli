@@ -1318,22 +1318,6 @@
     chalk "^4.1.0"
     cli-ux "^5.3.3"
 
-"@salesforce/source-deploy-retrieve@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-4.0.1.tgz#82442eefb5a55837a86fc25b17830f4fe6712a8e"
-  integrity sha512-QKK64yLiSNlJS5dSLqpEZ3Tna0fjjG7lI+okRoIVYtIT6eP8qRRFpbGCmf+LCkjeL7wkv2DxElutIl+T4Yzm9g==
-  dependencies:
-    "@salesforce/core" "2.25.1"
-    "@salesforce/kit" "^1.5.0"
-    "@salesforce/ts-types" "^1.4.2"
-    archiver "^5.3.0"
-    fast-xml-parser "^3.17.4"
-    gitignore-parser "0.0.2"
-    ignore "^5.1.8"
-    mime "2.4.6"
-    unzipper "0.10.11"
-    xmldom-sfdx-encoding "^0.1.29"
-
 "@salesforce/source-deploy-retrieve@^4.0.2":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-4.0.2.tgz#2a272a1f6d8bb44513cfc296eab90d161357ed53"
@@ -8891,10 +8875,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.2.3:
-  version "52.2.3"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.2.3.tgz#f7241f8a0b9f6b18315cbd10d47b3027fe114981"
-  integrity sha512-jQAsN/rqz9a/QGO5ffius8xLD8OfP1J8F7KmpVcIHpl+y3rLyIKekPc0hRKy3mnJ/De+AumYqIZFUc/lSba8bw==
+salesforce-alm@52.2.4:
+  version "52.2.4"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.2.4.tgz#b36990142717a8983c97c9ebfb8fcf0cb9949cf1"
+  integrity sha512-bd/4PmNQHjy524RHeyeEBPVQ4ytCKTFccfPEG/xZHoBsd2xzuOT0Ux2ZDNRHbm5SQYfv/VJcI60CDyK5nkQqMA==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
@@ -8903,7 +8887,7 @@ salesforce-alm@52.2.3:
     "@salesforce/core" "^2.25.0"
     "@salesforce/kit" "^1.5.13"
     "@salesforce/plugin-telemetry" "^1.2.3"
-    "@salesforce/source-deploy-retrieve" "^4.0.1"
+    "@salesforce/source-deploy-retrieve" "^4.0.2"
     "@salesforce/ts-types" "^1.5.17"
     adm-zip "^0.4.13"
     ansi-styles "^3.2.1"
