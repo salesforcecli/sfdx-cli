@@ -817,10 +817,10 @@
   dependencies:
     fancy-test "^1.4.3"
 
-"@salesforce/apex-node@0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/apex-node/-/apex-node-0.2.3.tgz#34873d6bb0bb770f93433961e116839038315049"
-  integrity sha512-LOE4RoY6aiYARsfwnPRuNJQ5PJcU+8DG4f/nkec4A2+09jLGBFH8mKA++LNWXH2h7shYSVoQtykX0qB0zy7cgQ==
+"@salesforce/apex-node@0.2.7":
+  version "0.2.7"
+  resolved "https://registry.npmjs.org/@salesforce/apex-node/-/apex-node-0.2.7.tgz#da4e499911e496edb0d7d8062999839c97d3021f"
+  integrity sha512-/5Tcx1S4jhE0Ta41YDyciU9iCR0vyG8kTA6F+cXxXfnldL8iswLbw0naqDHYm8u/6aINIr1pG9nxkxGyjmA8JA==
   dependencies:
     "@salesforce/core" "2.23.2"
     faye "1.1.3"
@@ -1105,15 +1105,15 @@
     chalk "^4.1.0"
     tslib "^2"
 
-"@salesforce/plugin-apex@0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-apex/-/plugin-apex-0.2.3.tgz#6de7983967d54c41839004bbe588fe6ea478deb6"
-  integrity sha512-1r6bU9LVwRobdXOWxJuCKP/1PegolSWQgtGUFwH1RGijWMHqP99QUTSb6PTS96JQ/bZtPF8oX6AfQ6kpae8Taw==
+"@salesforce/plugin-apex@0.2.7":
+  version "0.2.7"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-apex/-/plugin-apex-0.2.7.tgz#28616b24af2663ae106b63018d17aedabbe38922"
+  integrity sha512-eWoffJCwj7cJFhnfee1fAK12EZbG0eHDwUpyu7EW86ijF4V6cESHXsiUEgsC18wrc6f1Nql5wceyJV8GW6KNAA==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
-    "@salesforce/apex-node" "0.2.3"
+    "@salesforce/apex-node" "0.2.7"
     "@salesforce/command" "3.1.0"
     "@salesforce/core" "2.23.2"
     chalk "^4.1.0"
@@ -1223,15 +1223,15 @@
     "@salesforce/core" "^2.14.0"
     tslib "^2"
 
-"@salesforce/plugin-source@1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.0.7.tgz#fec02210317c932bd6a5797ce865c7bff416edd3"
-  integrity sha512-J7e2JD/pQNQ+NpVegyUwnLsN63RQ4lA5dpAn0ySK8k/58J9qcE7ET4hPu5WDt2ssXwRHsQVoDi3q93+geURzRA==
+"@salesforce/plugin-source@1.0.9":
+  version "1.0.9"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-source/-/plugin-source-1.0.9.tgz#9817b79550918971582f69ce97e3a2747dec446d"
+  integrity sha512-L5/ZwBUYKEW/XinkSdhVRJ2yt8lHtG1+GuxyKvBS3CZxzysG3BuBnQw1iHaSGOkAMpvJ9t9NxA7OC0qEtKTVcA==
   dependencies:
     "@oclif/config" "^1"
     "@salesforce/command" "^4.0.4"
     "@salesforce/core" "^2.26.1"
-    "@salesforce/source-deploy-retrieve" "^4.0.2"
+    "@salesforce/source-deploy-retrieve" "^4.1.0"
     chalk "^4.1.1"
     cli-ux "^5.6.3"
     open "^8.2.1"
@@ -1318,10 +1318,10 @@
     chalk "^4.1.0"
     cli-ux "^5.3.3"
 
-"@salesforce/source-deploy-retrieve@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-4.0.2.tgz#2a272a1f6d8bb44513cfc296eab90d161357ed53"
-  integrity sha512-9qlSqrUCpMr7c9NoWAlFZRD7SEkrYCnoqT7A3T+CRvZeAaRB3cFRiveYRGNNnlAViqpYqgOI4lTNiBt3yTekQg==
+"@salesforce/source-deploy-retrieve@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-4.1.0.tgz#b28b8e1c9c810884315c564751e8854c4e1e16d3"
+  integrity sha512-dLdCNs8KZl2AlI5nxzqjPFTt/RiOQqlbIFsmsbnY/i0Vk15/Fqyxu1cBU0stV3+NxHYV/ijzz2jRVq87G7+jRg==
   dependencies:
     "@salesforce/core" "2.25.1"
     "@salesforce/kit" "^1.5.0"
@@ -6151,22 +6151,6 @@ jsonwebtoken@8.5.0:
     ms "^2.1.1"
     semver "^5.6.0"
 
-jsonwebtoken@^8.5.1:
-  version "8.5.1"
-  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.5.1.tgz#00e71e0b8df54c2121a1f26137df2280673bcc0d"
-  integrity sha512-XjwVfRS6jTMsqYs0EsuJ4LGxXV14zQybNd4L2r0UvbVnSF9Af8x7p5MzbJ90Ioz/9TI41/hTCvznF/loiSzn8w==
-  dependencies:
-    jws "^3.2.2"
-    lodash.includes "^4.3.0"
-    lodash.isboolean "^3.0.3"
-    lodash.isinteger "^4.0.4"
-    lodash.isnumber "^3.0.3"
-    lodash.isplainobject "^4.0.6"
-    lodash.isstring "^4.0.1"
-    lodash.once "^4.0.0"
-    ms "^2.1.1"
-    semver "^5.6.0"
-
 jsprim@^1.2.2:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/jsprim/-/jsprim-1.4.1.tgz#313e66bc1e5cc06e438bc1b7499c2e5c56acb6a2"
@@ -6201,7 +6185,7 @@ jwa@^1.4.1:
     ecdsa-sig-formatter "1.0.11"
     safe-buffer "^5.0.1"
 
-jws@^3.2.1, jws@^3.2.2:
+jws@^3.2.1:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/jws/-/jws-3.2.2.tgz#001099f3639468c9414000e99995fa52fb478304"
   integrity sha512-YHlZCB6lMTllWDtSPHz/ZXTsi8S00usEV6v1tjq8tOUZzw7DpSDWVXjXDre6ed1w/pd495ODpHZYSdkRTsa0HA==
@@ -8659,22 +8643,6 @@ replace@^1.1.0:
     minimatch "3.0.4"
     yargs "^15.3.1"
 
-request-promise-core@1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/request-promise-core/-/request-promise-core-1.1.4.tgz#3eedd4223208d419867b78ce815167d10593a22f"
-  integrity sha512-TTbAfBBRdWD7aNNOoVOBH4pN/KigV6LyapYNNlAPA8JwbovRti1E88m3sYAwsLi5ryhPKsE9APwnjFTgdUjTpw==
-  dependencies:
-    lodash "^4.17.19"
-
-request-promise-native@^1.0.5:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/request-promise-native/-/request-promise-native-1.0.9.tgz#e407120526a5efdc9a39b28a5679bf47b9d9dc28"
-  integrity sha512-wcW+sIUiWnKgNY0dqCpOZkUbF/I+YPi+f09JZIDa39Ec+q82CpSYniDp+ISgTTbKmnpJWASeJBPZmoxH84wt3g==
-  dependencies:
-    request-promise-core "1.1.4"
-    stealthy-require "^1.1.1"
-    tough-cookie "^2.3.3"
-
 request@^2.72.0, request@^2.88.0, request@^2.88.2:
   version "2.88.2"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.2.tgz#d73c918731cb5a87da047e207234146f664d12b3"
@@ -8875,10 +8843,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.2.4:
-  version "52.2.4"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.2.4.tgz#b36990142717a8983c97c9ebfb8fcf0cb9949cf1"
-  integrity sha512-bd/4PmNQHjy524RHeyeEBPVQ4ytCKTFccfPEG/xZHoBsd2xzuOT0Ux2ZDNRHbm5SQYfv/VJcI60CDyK5nkQqMA==
+salesforce-alm@52.2.5:
+  version "52.2.5"
+  resolved "https://registry.npmjs.org/salesforce-alm/-/salesforce-alm-52.2.5.tgz#4623c48732051653d6935346bd431e64d109a424"
+  integrity sha512-WHMOP/TqR3RZU4igegBrmHd68DAtzso747qqii735TCQQ79oON0I3hRAgpnhn2EON852ywf29D0lxo2FCOXmZw==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
@@ -8887,7 +8855,7 @@ salesforce-alm@52.2.4:
     "@salesforce/core" "^2.25.0"
     "@salesforce/kit" "^1.5.13"
     "@salesforce/plugin-telemetry" "^1.2.3"
-    "@salesforce/source-deploy-retrieve" "^4.0.2"
+    "@salesforce/source-deploy-retrieve" "^4.1.0"
     "@salesforce/ts-types" "^1.5.17"
     adm-zip "^0.4.13"
     ansi-styles "^3.2.1"
@@ -8904,7 +8872,6 @@ salesforce-alm@52.2.4:
     js2xmlparser "^3.0.0"
     jsen "^0.6.6"
     jsforce "^1.9.3"
-    jsonwebtoken "^8.5.1"
     klaw "^2.1.1"
     lodash "^4.17.19"
     mime "^1.6.0"
@@ -8914,8 +8881,6 @@ salesforce-alm@52.2.4:
     optional-js "^1.3.1"
     replace "^1.1.0"
     request "^2.88.0"
-    request-promise-native "^1.0.5"
-    sfdx-faye "^1.0.9"
     strip-ansi "^5.2.0"
     xml2js "0.4.19"
     xmldom-sfdx-encoding "^0.1.30"
@@ -9373,11 +9338,6 @@ stdout-stderr@^0.1.9:
     debug "^4.1.1"
     strip-ansi "^6.0.0"
 
-stealthy-require@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
-  integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
-
 strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
@@ -9823,14 +9783,6 @@ tough-cookie@, tough-cookie@*:
     punycode "^2.1.1"
     universalify "^0.1.2"
 
-tough-cookie@^2.3.3, tough-cookie@~2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
-  integrity sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g==
-  dependencies:
-    psl "^1.1.28"
-    punycode "^2.1.1"
-
 tough-cookie@~2.4.3:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.4.3.tgz#53f36da3f47783b0925afa06ff9f3b165280f781"
@@ -9838,6 +9790,14 @@ tough-cookie@~2.4.3:
   dependencies:
     psl "^1.1.24"
     punycode "^1.4.1"
+
+tough-cookie@~2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
+  integrity sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g==
+  dependencies:
+    psl "^1.1.28"
+    punycode "^2.1.1"
 
 "traverse@>=0.3.0 <0.4":
   version "0.3.9"
