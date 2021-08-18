@@ -5,7 +5,7 @@ ARG DOWNLOAD_URL=https://developer.salesforce.com/media/salesforce-cli/sfdx/chan
 RUN apt-get update
 # install cli from linux tarball with bundled node
 RUN curl -s $DOWNLOAD_URL --output sfdx-linux-x64.tar.xz \
-  && mkdir /usr/local/sfdx \
+  && mkdir -p /usr/local/sfdx \
   && tar xJf sfdx-linux-x64.tar.xz -C /usr/local/sfdx --strip-components 1 \
   && rm sfdx-linux-x64.tar.xz
 
