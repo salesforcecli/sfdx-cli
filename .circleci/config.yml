@@ -87,6 +87,7 @@ jobs:
     resource_class: xlarge
     steps:
       - checkout
+      - run: git fetch origin && git pull
       - run: |
           apt-get update
           apt-get install -y p7zip-full
@@ -105,6 +106,7 @@ jobs:
       xcode: 12.5.1
     steps:
       - checkout
+      - run: git fetch origin && git pull
       - run: yarn install
       - run: yarn pack:macos
       - run: yarn upload:macos
@@ -114,6 +116,7 @@ jobs:
     <<: *pack-and-upload-tarballs
     steps:
       - checkout
+      - run: git fetch origin && git pull
       - restore_cache:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
@@ -260,7 +263,7 @@ jobs:
       - run: ./scripts/monitor-plugin-nuts.js <<parameters.nuts_job_data>>
 
 workflows:
-  version: 2.1
+  version: 2
   test-and-release:
     when: << pipeline.parameters.run-auto-workflows >>
     jobs:
