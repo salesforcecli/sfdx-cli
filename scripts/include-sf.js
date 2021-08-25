@@ -4,7 +4,7 @@ const path = require('path');
 const shelljs = require('shelljs');
 const fs = require('fs');
 
-const sfUnixPath = path.resolve('node_modules/@salesforce/cli/bin/run');
+const sfUnixPath = 'node_modules/@salesforce/cli/bin/run';
 const sfBin = path.join('bin', 'sf');
 const sfdxBin = path.join('bin', 'sfdx');
 
