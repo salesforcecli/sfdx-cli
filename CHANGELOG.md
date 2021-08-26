@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.116.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.115.1...v7.116.0) (2021-08-26)
+
+
+### Bug Fixes
+
+* dont resolve sf path ([f7d7727](https://github.com/salesforcecli/sfdx-cli/commit/f7d7727fd0e8efcf0072350fde17e2efb2ef50bc))
+
 ### [7.115.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.115.0...v7.115.1) (2021-08-23)
 
 
