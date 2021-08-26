@@ -118,7 +118,7 @@
     "@oclif/plugin-update": "1.4.0-3",
     "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "@oclif/plugin-which": "^1.0.3",
-    "@salesforce/cli": "0.0.37",
+    "@salesforce/cli": "0.0.38",
     "@salesforce/kit": "^1.5.13",
     "@salesforce/lazy-require": "^0.4.0",
     "@salesforce/plugin-alias": "1.1.10",
