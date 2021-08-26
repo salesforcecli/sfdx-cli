@@ -138,6 +138,7 @@
     "@salesforce/require-analytics": "^0.9.16",
     "@salesforce/sfdx-plugin-lwc-test": "0.1.7",
     "@salesforce/sfdx-trust": "^3.6.0",
+    "@salesforce/source-deploy-retrieve": "^4.3.2",
     "@salesforce/ts-types": "^1.5.17",
     "debug": "^4.3.1",
     "salesforce-alm": "52.3.1",
