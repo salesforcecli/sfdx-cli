@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.116.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.116.1...v7.116.2) (2021-08-27)
+
+
+### Bug Fixes
+
+* force sdr and ts-types version ([4b48e8e](https://github.com/salesforcecli/sfdx-cli/commit/4b48e8e7bc6060dcaa6775fafde311dabd7d2f89))
+
 ### [7.116.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.116.0...v7.116.1) (2021-08-27)
 
 
