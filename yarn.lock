@@ -1554,7 +1554,7 @@
     chalk "^4.1.0"
     cli-ux "^5.3.3"
 
-"@salesforce/source-deploy-retrieve@^4.3.2", "@sf/sdr@npm:@salesforce/source-deploy-retrieve@4.3.2":
+"@salesforce/source-deploy-retrieve@4.3.2", "@salesforce/source-deploy-retrieve@^4.3.2", "@sf/sdr@npm:@salesforce/source-deploy-retrieve@4.3.2":
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-4.3.2.tgz#b4eb01d235a1d2ab16918e5d25df34886654e294"
   integrity sha512-xzLL7/YjMbrAXE3sAr4lbXQDTcFpGLDgnh2k9Bqf+Ns24/xgtm5avg65OlXpeLR1/A+WSAPv3tE9osIiR27yAg==
@@ -1600,14 +1600,7 @@
     sinon "^5.1.1"
     tslib "^2.2.0"
 
-"@salesforce/ts-types@^1.0.0", "@salesforce/ts-types@^1.2.0", "@salesforce/ts-types@^1.2.1", "@salesforce/ts-types@^1.2.2", "@salesforce/ts-types@^1.5.13", "@salesforce/ts-types@^1.5.17":
-  version "1.5.17"
-  resolved "https://registry.yarnpkg.com/@salesforce/ts-types/-/ts-types-1.5.17.tgz#d69e92dfa716638d84b244a2611be80fb7986024"
-  integrity sha512-zyF1+4EacGsIWtfntbq7PvxjB2XABz33RzKfOhot15JC4tFiQaSFPtNb8d6hj7BkQSjo2Zs3qEeLJwRFcpaEIQ==
-  dependencies:
-    tslib "^2.2.0"
-
-"@salesforce/ts-types@^1.4.2", "@salesforce/ts-types@^1.4.3", "@salesforce/ts-types@^1.5.20":
+"@salesforce/ts-types@1.5.20", "@salesforce/ts-types@^1.0.0", "@salesforce/ts-types@^1.2.0", "@salesforce/ts-types@^1.2.1", "@salesforce/ts-types@^1.2.2", "@salesforce/ts-types@^1.4.2", "@salesforce/ts-types@^1.4.3", "@salesforce/ts-types@^1.5.13", "@salesforce/ts-types@^1.5.17", "@salesforce/ts-types@^1.5.20":
   version "1.5.20"
   resolved "https://registry.yarnpkg.com/@salesforce/ts-types/-/ts-types-1.5.20.tgz#f6875a710ceca48223b240026a14af6d3b39882f"
   integrity sha512-Ov6um4CWd63EvkRavkHG0J/P9XYL55sdkDWPMr7+AIgqh5flHxDRz09/C4e9M94aX30rzJxW4TVX6EBf4Cu2BQ==
