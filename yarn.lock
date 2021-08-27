@@ -1833,17 +1833,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/jsforce@1.9.29":
-  version "1.9.29"
-  resolved "https://registry.yarnpkg.com/@types/jsforce/-/jsforce-1.9.29.tgz#aeebb21d55706c5232e08f066a241349f743e507"
-  integrity sha512-wG26GTIeRzBQ1GjeOfaM/ZVEP+/m1NpX0KUd/W3QGs8GvHAU6Am1nqm8F7zQDYEJ3p0PssNNbdhqdxJGcQsbxQ==
-  dependencies:
-    "@types/node" "*"
-
-"@types/jsforce@^1.9.29":
-  version "1.9.31"
-  resolved "https://registry.yarnpkg.com/@types/jsforce/-/jsforce-1.9.31.tgz#8e0da92769953c8412a47f8340f847b63e42a74d"
-  integrity sha512-RQoJcQTp3A30bn5de6GjOQvodZYZFXFFbchBnP6N94A/5zvYDCULrwe3dBD3eCsBqlD8baLej3a8LenI8JJ01g==
+"@types/jsforce@1.9.34", "@types/jsforce@^1.9.29":
+  version "1.9.34"
+  resolved "https://registry.yarnpkg.com/@types/jsforce/-/jsforce-1.9.34.tgz#d1aa3d92a921d85f8487b1d134b34788279d9d3a"
+  integrity sha512-Wc337FTkLbKjOUOqeYTP1QWpiy9/XGMHM+l0KQA+sL1HxTO3ohb0BHLQYAGYobeNx4umtdJBM6UWBV1o4JOUUA==
   dependencies:
     "@types/node" "*"
 
