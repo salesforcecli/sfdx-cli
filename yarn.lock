@@ -1141,7 +1141,7 @@
     sfdx-faye "^1.0.9"
     ts-retry-promise "^0.6.0"
 
-"@salesforce/core@^2.1.4", "@salesforce/core@^2.11.0", "@salesforce/core@^2.14.0", "@salesforce/core@^2.15.2", "@salesforce/core@^2.15.4", "@salesforce/core@^2.16.3", "@salesforce/core@^2.2.0", "@salesforce/core@^2.20.3", "@salesforce/core@^2.23.4", "@salesforce/core@^2.24.0":
+"@salesforce/core@^2.1.4", "@salesforce/core@^2.14.0", "@salesforce/core@^2.15.2", "@salesforce/core@^2.15.4", "@salesforce/core@^2.16.3", "@salesforce/core@^2.2.0", "@salesforce/core@^2.20.3", "@salesforce/core@^2.23.4", "@salesforce/core@^2.24.0":
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-2.24.0.tgz#b414731223fbd418e4db065959f73662dfd2a1bc"
   integrity sha512-bdN9RNeS/8msA8U+F/6GEEteGNeE/uwc/av9nFSL0u+jyzA9llKnqKcuuAKa8YKuS1WHYfWs4mDNXST1gj+c1A==
@@ -1267,7 +1267,7 @@
     typescript "^4.1.3"
     xunit-file "^1.0.0"
 
-"@salesforce/kit@^1", "@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@^1.4.5", "@salesforce/kit@^1.5.0", "@salesforce/kit@^1.5.10", "@salesforce/kit@^1.5.13":
+"@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@^1.4.5", "@salesforce/kit@^1.5.0", "@salesforce/kit@^1.5.10", "@salesforce/kit@^1.5.13":
   version "1.5.14"
   resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.5.14.tgz#013853ffc53e10e7add2abfa266372b29fda8317"
   integrity sha512-vGzNltfWo7wtaDR0Drgf3nAMWsJ5ZheM4LODfFZeorsFk4Xj8J6hPJWuMcYUT07yCenECQalOjT0SU3p77QgYA==
@@ -1499,6 +1499,16 @@
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
 
+"@salesforce/plugin-trust@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-trust/-/plugin-trust-1.0.4.tgz#8c4d9728794c46e329202890a6820f294d681fcf"
+  integrity sha512-twIhX8uc4v+9MEfhlmLXNUdyCQC4UgKmGxohOjDSxIXRaLqHvveb8a5TjCqjZxT54+7K0pd2u0u7AWf1mlQMvw==
+  dependencies:
+    "@oclif/config" "^1.17.0"
+    "@salesforce/command" "^3.0.5"
+    "@salesforce/core" "^2.15.2"
+    tslib "^2"
+
 "@salesforce/plugin-user@1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-user/-/plugin-user-1.4.0.tgz#c5dad9f29c082a45ad8902ac23a630cfd5cb04fb"
@@ -1540,19 +1550,6 @@
     semver-compare "^1.0.0"
     signal-exit "^3.0.2"
     tslib "^1.10.0"
-
-"@salesforce/sfdx-trust@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/sfdx-trust/-/sfdx-trust-3.6.0.tgz#d961bd3eaa641c511c5f214e49aa58fe69c9ce4c"
-  integrity sha512-lhUmoXpBfgi5rLdu2D8jR0vfqItgtBAkFt4DJz3kAnPclGzS9JKWt2a8KHRgnCoWXtMQaNRIhDfBwnLMaQYjsQ==
-  dependencies:
-    "@oclif/config" "^1"
-    "@oclif/errors" "^1"
-    "@salesforce/command" "^3.0.0"
-    "@salesforce/core" "^2.11.0"
-    "@salesforce/kit" "^1"
-    chalk "^4.1.0"
-    cli-ux "^5.3.3"
 
 "@salesforce/source-deploy-retrieve@4.3.2", "@salesforce/source-deploy-retrieve@^4.3.2", "@sf/sdr@npm:@salesforce/source-deploy-retrieve@4.3.2":
   version "4.3.2"
@@ -3193,7 +3190,7 @@ cli-ux@^5.1.0, cli-ux@^5.6.2, cli-ux@^5.6.3:
     supports-hyperlinks "^2.1.0"
     tslib "^2.0.0"
 
-cli-ux@^5.2.1, cli-ux@^5.3.3, cli-ux@^5.4.4, cli-ux@^5.4.5, cli-ux@^5.5.1:
+cli-ux@^5.2.1, cli-ux@^5.4.4, cli-ux@^5.4.5, cli-ux@^5.5.1:
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.5.1.tgz#99d28dae0c3ef7845fa2ea56e066a1d5fcceca9e"
   integrity sha512-t3DT1U1C3rArLGYLpKa3m9dr/8uKZRI8HRm/rXKL7UTjm4c+Yd9zHNWg1tP8uaJkUbhmvx5SQHwb3VWpPUVdHQ==
