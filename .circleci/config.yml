@@ -20,9 +20,13 @@ commands:
   verify-slim-dependencies:
     steps:
       - run:
+          name: Set TAG to current sfdx version
           command: |
-            SFDX_CLI_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'sfdx --version')"
-            JAVA_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'java --version | head -n 1')"
+            echo "export TAG=$(jq -r .version ./package.json)-slim" >> $BASH_ENV
+      - run:
+          command: |
+            SFDX_CLI_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
+            JAVA_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'java --version | head -n 1')"
             if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
             then
               echo "sfdx-cli installed -" $SFDX_CLI_VERSION
@@ -40,8 +44,12 @@ commands:
   verify-full-dependencies:
     steps:
       - run:
+          name: Set TAG to current sfdx version
           command: |
-            NODE_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'node -v')"
+            echo "export TAG=$(jq -r .version ./package.json)-full" >> $BASH_ENV
+      - run:
+          command: |
+            NODE_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'node -v')"
             if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
             then
               echo "sfdx-cli installed -" $SFDX_CLI_VERSION
@@ -49,7 +57,7 @@ commands:
               echo "The sfdx-cli installation could not be verified"
               exit 1
             fi
-            JQ_VERSION="$(docker run -it --rm $DOCKER_IMAGE:$TAG bash -c 'jq --version')"
+            JQ_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'jq --version')"
             if [[ ((`echo $JQ_VERSION | grep -c "jq"` > 0))]]
             then
               echo "jq installed -" $JQ_VERSION
@@ -203,7 +211,7 @@ jobs:
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn pack:docker:full
-      # - verify-full-dependencies
+      - verify-full-dependencies
 
   close-CTC:
     docker:
