@@ -6,6 +6,7 @@
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
   "homepage": "https://github.com/salesforcecli/sfdx-cli/",
+  "repository": "salesforcecli/sfdx-cli",
   "bin": {
     "sfdx": "bin/run",
     "sf": "node_modules/@salesforce/cli/bin/run"
