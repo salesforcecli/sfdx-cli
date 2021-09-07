@@ -2,34 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [7.116.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.116.1...v7.116.2) (2021-08-27)
+## [7.117.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.116.2...v7.117.0) (2021-09-02)
 
+### [7.116.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.116.1...v7.116.2) (2021-08-27)
 
 ### Bug Fixes
 
-* force sdr and ts-types version ([4b48e8e](https://github.com/salesforcecli/sfdx-cli/commit/4b48e8e7bc6060dcaa6775fafde311dabd7d2f89))
+- force sdr and ts-types version ([4b48e8e](https://github.com/salesforcecli/sfdx-cli/commit/4b48e8e7bc6060dcaa6775fafde311dabd7d2f89))
 
 ### [7.116.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.116.0...v7.116.1) (2021-08-27)
 
-
 ### Bug Fixes
 
-* sdr at top level to resolve ([03ee773](https://github.com/salesforcecli/sfdx-cli/commit/03ee7738d4811037cf1a2a2bb3d10a7382062aa8))
+- sdr at top level to resolve ([03ee773](https://github.com/salesforcecli/sfdx-cli/commit/03ee7738d4811037cf1a2a2bb3d10a7382062aa8))
 
 ## [7.116.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.115.1...v7.116.0) (2021-08-26)
 
-
 ### Bug Fixes
 
-* dont resolve sf path ([f7d7727](https://github.com/salesforcecli/sfdx-cli/commit/f7d7727fd0e8efcf0072350fde17e2efb2ef50bc))
+- dont resolve sf path ([f7d7727](https://github.com/salesforcecli/sfdx-cli/commit/f7d7727fd0e8efcf0072350fde17e2efb2ef50bc))
 
 ### [7.115.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.115.0...v7.115.1) (2021-08-23)
 
-
 ### Features
 
-* add update hook to install sf ([50cc886](https://github.com/salesforcecli/sfdx-cli/commit/50cc886b7394b39a6ecb03d120d5a6f169ab62e6))
-* include sf ([c343f3e](https://github.com/salesforcecli/sfdx-cli/commit/c343f3ec8baa8f489e836708f0b798aaa32e3149))
+- add update hook to install sf ([50cc886](https://github.com/salesforcecli/sfdx-cli/commit/50cc886b7394b39a6ecb03d120d5a6f169ab62e6))
+- include sf ([c343f3e](https://github.com/salesforcecli/sfdx-cli/commit/c343f3ec8baa8f489e836708f0b798aaa32e3149))
 
 ## [7.115.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.114.0...v7.115.0) (2021-08-21)
 
