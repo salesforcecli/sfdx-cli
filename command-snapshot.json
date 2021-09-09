@@ -1065,18 +1065,8 @@
     "flags": ["help", "verbose"]
   },
   {
-    "command": "plugins:trust:fingerprint",
-    "plugin": "@salesforce/sfdx-trust",
-    "flags": ["json", "loglevel", "publickeyurl"]
-  },
-  {
-    "command": "plugins:trust:sign",
-    "plugin": "@salesforce/sfdx-trust",
-    "flags": ["json", "loglevel", "privatekeypath", "publickeyurl", "signatureurl", "target"]
-  },
-  {
     "command": "plugins:trust:verify",
-    "plugin": "@salesforce/sfdx-trust",
+    "plugin": "@salesforce/plugin-trust",
     "flags": ["json", "loglevel", "npm", "registry"]
   },
   {
