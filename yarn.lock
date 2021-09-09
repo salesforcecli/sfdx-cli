@@ -1507,15 +1507,15 @@
     "@salesforce/core" "^2.14.0"
     tslib "^2"
 
-"@salesforce/plugin-source@1.0.14":
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.0.14.tgz#b4c6b533466784e78b7bd190c74d350bb22d2673"
-  integrity sha512-pIIMSfn1EHO2/Fh587Q/LN6VEy+IB5evu8s+GFt6xvAdtFaFzNdJRxL3IHYIMlbKN7marruEZjhe8wg7HQHHXw==
+"@salesforce/plugin-source@1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.0.15.tgz#b78ff71be3612b8da0c6e30810400fe0b2dc5a86"
+  integrity sha512-7ozz7+u1oM10VtwT87ixmuhBf0RTPbPXhiUvZqT8Tjn3bNTfszt235one5Ov+3PHH6TV959d12l1zzsLlcEO5Q==
   dependencies:
     "@oclif/config" "^1"
     "@salesforce/command" "^4.0.4"
     "@salesforce/core" "^2.26.1"
-    "@salesforce/source-deploy-retrieve" "^4.4.0"
+    "@salesforce/source-deploy-retrieve" "^4.4.1"
     chalk "^4.1.1"
     cli-ux "^5.6.3"
     open "^8.2.1"
@@ -1635,10 +1635,10 @@
     signal-exit "^3.0.2"
     tslib "^1.10.0"
 
-"@salesforce/source-deploy-retrieve@4.4.0", "@salesforce/source-deploy-retrieve@^4.3.2", "@salesforce/source-deploy-retrieve@^4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-4.4.0.tgz#15dcd7d372d8ddd7b5bb9a7b249c6c5e189e3b5a"
-  integrity sha512-uGZypmfPWmqvryp/6t/5Ik3vhxU9NTGI9jxxbMRSsP2AfR/9MdwUoI0b5ZqZpdosH5KvQQ/RCxbgKaMIU7LvZQ==
+"@salesforce/source-deploy-retrieve@4.4.1", "@salesforce/source-deploy-retrieve@^4.3.2", "@salesforce/source-deploy-retrieve@^4.4.1":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-4.4.1.tgz#892cc5918aa46553536cf15c461428a6a3a1a4b7"
+  integrity sha512-9oMVdHZIUr1yrKxLsBL1VTb3tFR94oWOrGaHMkYGKDQ1ruM9PPbm7bSMbTFY0uSnIGE6/hQeIHXYePlseRaJog==
   dependencies:
     "@salesforce/core" "2.25.1"
     "@salesforce/kit" "^1.5.0"
