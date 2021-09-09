@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+const cp = require('child_process');
+const path = require('path');
+
+function trimUntil(fsPath, part) {
+  const parts = fsPath.split(path.sep);
+  const partIndex = parts.findIndex((p) => part === p);
+  if (partIndex === -1) return fsPath;
+  return parts.slice(0, partIndex + 1).join(path.sep);
+}
+
+const modulePath = require.resolve('@salesforce/cli');
+const sfPath = path.join(trimUntil(modulePath, 'cli'), 'bin', 'run');
+cp.spawn(sfPath, process.argv.slice(2), { stdio: 'inherit', shell: true });

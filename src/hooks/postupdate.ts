@@ -30,38 +30,50 @@ function sendEvent(data: JsonMap): void {
  */
 // eslint-disable-next-line @typescript-eslint/require-await
 const hook = async function (): Promise<void> {
-  const sfdxVersion = exec('sfdx --version', { silent: true }).stdout;
-  const npmInstallation = which('npm').stdout;
-  if (!npmInstallation) {
+  const sfdxVersion = exec('sfdx --version', { silent: true })?.stdout || 'unknown';
+  try {
+    const npmInstallation = which('npm')?.stdout;
+    if (!npmInstallation) {
+      sendEvent({
+        eventName: 'POST_SFDX_UPDATE_SF_INSTALL_ERROR',
+        type: 'EVENT',
+        message: 'npm not installed on machine',
+        sfdxVersion,
+      });
+      return;
+    }
+
+    const installResult = exec('npm install -g @salesforce/cli', { silent: true });
+    if (installResult.code > 0) {
+      sendEvent({
+        eventName: 'POST_SFDX_UPDATE_SF_INSTALL_ERROR',
+        type: 'EVENT',
+        message: 'npm global install failed',
+        stackTrace: installResult.stderr?.replace(new RegExp(os.homedir(), 'g'), AppInsights.GDPR_HIDDEN),
+        sfdxVersion,
+      });
+      return;
+    }
+
+    const sfVersion = exec('sf --version', { silent: true }).stdout;
+    sendEvent({
+      eventName: 'POST_SFDX_UPDATE_SF_INSTALL_SUCCESS',
+      type: 'EVENT',
+      message: 'sf install succeeded',
+      sfVersion,
+      sfdxVersion,
+    });
+  } catch (error) {
+    const err = error as Error;
     sendEvent({
       eventName: 'POST_SFDX_UPDATE_SF_INSTALL_ERROR',
       type: 'EVENT',
-      message: 'npm not installed on machine',
+      message: err.message,
+      stackTrace: err?.stack?.replace(new RegExp(os.homedir(), 'g'), AppInsights.GDPR_HIDDEN),
       sfdxVersion,
     });
     return;
   }
-
-  const installResult = exec('npm install -g @salesforce/cli', { silent: true });
-  if (installResult.code > 0) {
-    sendEvent({
-      eventName: 'POST_SFDX_UPDATE_SF_INSTALL_ERROR',
-      type: 'EVENT',
-      message: 'npm global install failed',
-      stackTrace: installResult.stdout.replace(new RegExp(os.homedir(), 'g'), AppInsights.GDPR_HIDDEN),
-      sfdxVersion,
-    });
-    return;
-  }
-
-  const sfVersion = exec('sf --version', { silent: true }).stdout;
-  sendEvent({
-    eventName: 'POST_SFDX_UPDATE_SF_INSTALL_SUCCESS',
-    type: 'EVENT',
-    message: 'sf install succeeded',
-    sfVersion,
-    sfdxVersion,
-  });
 };
 
 export default hook;

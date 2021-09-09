@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.117.0",
+  "version": "7.118.0",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -9,7 +9,7 @@
   "repository": "salesforcecli/sfdx-cli",
   "bin": {
     "sfdx": "bin/run",
-    "sf": "node_modules/@salesforce/cli/bin/run"
+    "sf": "bin/run-sf"
   },
   "engines": {
     "node": ">=10"
@@ -119,20 +119,20 @@
     "@oclif/plugin-update": "1.4.0-3",
     "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "@oclif/plugin-which": "^1.0.3",
-    "@salesforce/cli": "0.0.38",
+    "@salesforce/cli": "0.0.39",
     "@salesforce/kit": "^1.5.13",
     "@salesforce/lazy-require": "^0.4.0",
     "@salesforce/plugin-alias": "1.1.10",
     "@salesforce/plugin-apex": "0.2.8",
     "@salesforce/plugin-auth": "1.7.1",
-    "@salesforce/plugin-config": "1.2.28",
+    "@salesforce/plugin-config": "1.2.34",
     "@salesforce/plugin-custom-metadata": "1.0.12",
     "@salesforce/plugin-data": "0.6.1",
     "@salesforce/plugin-generator": "^1.1.7",
     "@salesforce/plugin-limits": "1.2.1",
     "@salesforce/plugin-org": "1.7.0",
     "@salesforce/plugin-schema": "1.0.8",
-    "@salesforce/plugin-source": "1.0.12",
+    "@salesforce/plugin-source": "1.0.14",
     "@salesforce/plugin-telemetry": "1.2.3",
     "@salesforce/plugin-templates": "52.1.0",
     "@salesforce/plugin-trust": "^1.0.5",
@@ -141,7 +141,7 @@
     "@salesforce/sfdx-plugin-lwc-test": "0.1.7",
     "@salesforce/ts-types": "^1.5.17",
     "debug": "^4.3.1",
-    "salesforce-alm": "52.3.2",
+    "salesforce-alm": "52.3.3",
     "salesforce-lightning-cli": "3.0.0",
     "shelljs": "^0.8.4",
     "tslib": "^2.1.0",
@@ -190,7 +190,7 @@
     "typescript": "^4.1.3"
   },
   "resolutions": {
-    "@salesforce/source-deploy-retrieve": "4.3.5",
+    "@salesforce/source-deploy-retrieve": "4.4.0",
     "@salesforce/ts-types": "1.5.20"
   },
   "scripts": {
