@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.118.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.117.0...v7.118.0) (2021-09-09)
+
+
+### Bug Fixes
+
+* add missing env var for docker deps verification ([f26c97c](https://github.com/salesforcecli/sfdx-cli/commit/f26c97ca559d13607aa1d6620974a8035d003710))
+* add script to execute sf ([8e43bed](https://github.com/salesforcecli/sfdx-cli/commit/8e43bed2b6f70d38389eafd8a764bcc6ca6b26c9))
+* enable shell for spawned process ([634a924](https://github.com/salesforcecli/sfdx-cli/commit/634a924dd04806f60bc7daf53c0a14d571df1929))
+* handle non-existent npm executable ([2cca0ba](https://github.com/salesforcecli/sfdx-cli/commit/2cca0ba3169dda59fe9cdeed3f1b5f0af8d70ed2))
+* use absolute path to sf bin ([c799408](https://github.com/salesforcecli/sfdx-cli/commit/c799408d0d009a2fc8127f580e97736bb06132e2))
+
 ## [7.117.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.116.2...v7.117.0) (2021-09-02)
 
 ### [7.116.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.116.1...v7.116.2) (2021-08-27)
