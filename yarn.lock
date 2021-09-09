@@ -865,10 +865,10 @@
     tslib "^2.0.0"
     yarn "^1.21.1"
 
-"@oclif/plugin-update@1.4.0-3":
-  version "1.4.0-3"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-update/-/plugin-update-1.4.0-3.tgz#728cedeba150260bff4ba390350cbaadf6db4689"
-  integrity sha512-omYQQ7TusLIMG+p+W4RhkOe7OdtaKbuURuKJLgr/Xxs2rXwlD4D2IKvjVyk7qEbpRIPeo7VgahUd0i3Hv4CrhA==
+"@oclif/plugin-update@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-update/-/plugin-update-1.5.0.tgz#a9e0092a9b7ae01e54708938e2a424903f5079ef"
+  integrity sha512-GsWK1CMeBBO8YknThoOZulj3xE+ZgZAXW1ouNJALXcs3mbROzszLDGjXV3RM6ffbJpnWLiMIqSFNOE8d+vGcgQ==
   dependencies:
     "@oclif/color" "^0.1.0"
     "@oclif/command" "^1.7.0"
@@ -883,7 +883,7 @@
     http-call "^5.3.0"
     lodash "^4.17.21"
     log-chopper "^1.0.2"
-    semver "^7.3.4"
+    semver "^7.3.5"
     tar-fs "^2.1.1"
 
 "@oclif/plugin-warn-if-update-available@^1.5.4", "@oclif/plugin-warn-if-update-available@^1.7.0":
@@ -2030,12 +2030,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/semver@^7.3.4":
-  version "7.3.6"
-  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.3.6.tgz#e9831776f4512a7ba6da53e71c26e5fb67882d63"
-  integrity sha512-0caWDWmpCp0uifxFh+FaqK3CuZ2SkRR/ZRxAV5+zNdC3QVUi6wyOJnefhPvtNt8NQWXB5OA93BUvZsXpWat2Xw==
-
-"@types/semver@^7.3.6":
+"@types/semver@^7.3.4", "@types/semver@^7.3.6":
   version "7.3.8"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.3.8.tgz#508a27995498d7586dcecd77c25e289bfaf90c59"
   integrity sha512-D/2EJvAlCEtYFEYmmlGwbGXuK886HzyCc3nZX/tkFTQdEU8jZDAgiv08P162yB17y4ZXZoq7yFAnW4GDBb9Now==
@@ -3326,7 +3321,7 @@ cli-ux@^4.9.0, cli-ux@^4.9.1, cli-ux@^4.9.3:
     treeify "^1.1.0"
     tslib "^1.9.3"
 
-cli-ux@^5.1.0, cli-ux@^5.6.2, cli-ux@^5.6.3:
+cli-ux@^5.1.0, cli-ux@^5.2.1, cli-ux@^5.4.4, cli-ux@^5.4.5, cli-ux@^5.5.1, cli-ux@^5.6.2, cli-ux@^5.6.3:
   version "5.6.3"
   resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.6.3.tgz#eecdb2e0261171f2b28f2be6b18c490291c3a287"
   integrity sha512-/oDU4v8BiDjX2OKcSunGH0iGDiEtj2rZaGyqNuv9IT4CgcSMyVWAMfn0+rEHaOc4n9ka78B0wo1+N1QX89f7mw==
@@ -3355,38 +3350,6 @@ cli-ux@^5.1.0, cli-ux@^5.6.2, cli-ux@^5.6.3:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
     supports-color "^8.1.0"
-    supports-hyperlinks "^2.1.0"
-    tslib "^2.0.0"
-
-cli-ux@^5.2.1, cli-ux@^5.4.4, cli-ux@^5.4.5, cli-ux@^5.5.1:
-  version "5.5.1"
-  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.5.1.tgz#99d28dae0c3ef7845fa2ea56e066a1d5fcceca9e"
-  integrity sha512-t3DT1U1C3rArLGYLpKa3m9dr/8uKZRI8HRm/rXKL7UTjm4c+Yd9zHNWg1tP8uaJkUbhmvx5SQHwb3VWpPUVdHQ==
-  dependencies:
-    "@oclif/command" "^1.6.0"
-    "@oclif/errors" "^1.2.1"
-    "@oclif/linewrap" "^1.0.0"
-    "@oclif/screen" "^1.0.3"
-    ansi-escapes "^4.3.0"
-    ansi-styles "^4.2.0"
-    cardinal "^2.1.1"
-    chalk "^4.1.0"
-    clean-stack "^3.0.0"
-    cli-progress "^3.4.0"
-    extract-stack "^2.0.0"
-    fs-extra "^8.1"
-    hyperlinker "^1.0.0"
-    indent-string "^4.0.0"
-    is-wsl "^2.2.0"
-    js-yaml "^3.13.1"
-    lodash "^4.17.11"
-    natural-orderby "^2.0.1"
-    object-treeify "^1.1.4"
-    password-prompt "^1.1.2"
-    semver "^7.3.2"
-    string-width "^4.2.0"
-    strip-ansi "^6.0.0"
-    supports-color "^7.1.0"
     supports-hyperlinks "^2.1.0"
     tslib "^2.0.0"
 
