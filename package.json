@@ -9,7 +9,7 @@
   "repository": "salesforcecli/sfdx-cli",
   "bin": {
     "sfdx": "bin/run",
-    "sf": "node_modules/@salesforce/cli/bin/run"
+    "sf": "bin/run-sf"
   },
   "engines": {
     "node": ">=10"
