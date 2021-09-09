@@ -12,4 +12,4 @@ function trimUntil(fsPath, part) {
 
 const modulePath = require.resolve('@salesforce/cli');
 const sfPath = path.join(trimUntil(modulePath, 'cli'), 'bin', 'run');
-cp.spawn(sfPath, process.argv.slice(2), { stdio: 'inherit' });
+cp.spawn(sfPath, process.argv.slice(2), { stdio: 'inherit', shell: true });
