@@ -24,6 +24,7 @@ commands:
           command: |
             echo "export TAG=$(jq -r .version ./package.json)-slim" >> $BASH_ENV
       - run:
+          name: Verify slim dependencies
           command: |
             SFDX_CLI_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
             JAVA_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'java --version | head -n 1')"
@@ -48,8 +49,11 @@ commands:
           command: |
             echo "export TAG=$(jq -r .version ./package.json)-full" >> $BASH_ENV
       - run:
+          name: Verify full dependencies
           command: |
             NODE_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'node -v')"
+            SFDX_CLI_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
+            JQ_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'jq --version')"
             if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
             then
               echo "sfdx-cli installed -" $SFDX_CLI_VERSION
@@ -57,7 +61,13 @@ commands:
               echo "The sfdx-cli installation could not be verified"
               exit 1
             fi
-            JQ_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'jq --version')"
+            if [[ ((`echo $NODE_VERSION | grep -c "v"` > 0))]]
+            then
+              echo "node installed -" $NODE_VERSION
+            else
+              echo "The node installation could not be verified"
+              exit 1
+            fi
             if [[ ((`echo $JQ_VERSION | grep -c "jq"` > 0))]]
             then
               echo "jq installed -" $JQ_VERSION
