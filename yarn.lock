@@ -1325,15 +1325,7 @@
     typescript "^4.1.3"
     xunit-file "^1.0.0"
 
-"@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@^1.4.5", "@salesforce/kit@^1.5.0", "@salesforce/kit@^1.5.10", "@salesforce/kit@^1.5.13":
-  version "1.5.14"
-  resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.5.14.tgz#013853ffc53e10e7add2abfa266372b29fda8317"
-  integrity sha512-vGzNltfWo7wtaDR0Drgf3nAMWsJ5ZheM4LODfFZeorsFk4Xj8J6hPJWuMcYUT07yCenECQalOjT0SU3p77QgYA==
-  dependencies:
-    "@salesforce/ts-types" "^1.5.13"
-    tslib "^2.2.0"
-
-"@salesforce/kit@^1.3.3", "@salesforce/kit@^1.5.8":
+"@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@^1.3.3", "@salesforce/kit@^1.4.5", "@salesforce/kit@^1.5.0", "@salesforce/kit@^1.5.10", "@salesforce/kit@^1.5.13", "@salesforce/kit@^1.5.8":
   version "1.5.17"
   resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.5.17.tgz#4fd9c50ba2e072c50d319654f86f86808c544795"
   integrity sha512-Uuh+v7WPSo+L21moVprl+jbDTl3ndmcJM5et/vFLZW4ur6CCJCJSoReM9ttF1qZuQskyCyhVZo6/aMZrVUe+rQ==
@@ -11015,12 +11007,7 @@ tslib@^1, tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2, tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
-  integrity sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==
-
-tslib@^2.0.1, tslib@^2.3.0:
+tslib@^2, tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.2.0, tslib@^2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
