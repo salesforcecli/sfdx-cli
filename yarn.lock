@@ -1299,9 +1299,9 @@
   integrity sha512-1swy07rynHoTRk8lj6nuC0JceRBo300OuWnovQe2OMvLpQM5Dh1SUnv1SE8012PsrK9BC1WqGXp4BUyMo04x7w==
 
 "@salesforce/dev-scripts@^0.9.11":
-  version "0.9.15"
-  resolved "https://registry.yarnpkg.com/@salesforce/dev-scripts/-/dev-scripts-0.9.15.tgz#91dda26142d5a61e5d0bc7601c62b1a4b3832475"
-  integrity sha512-uoWzMN/aU1IaRtJ1RjImzh7SxPTXYRhxXLN6QJCDE5G+zkpQ9yfKLqThu4M+j5SbkAMrqAK7drv5LauZi9Vh4A==
+  version "0.9.18"
+  resolved "https://registry.yarnpkg.com/@salesforce/dev-scripts/-/dev-scripts-0.9.18.tgz#a76a7d283980c39813394b1550d0cef20e26857e"
+  integrity sha512-roIa2A+o6DMvRQeAI7u5UfTZY+fdan1IyJUa+3ishcBG160Nt4hWJS9DZgXmRWY/BAuXXcnzQ7YS6Aaa2Vr73w==
   dependencies:
     "@commitlint/cli" "^12.1.4"
     "@commitlint/config-conventional" "^10.0.0"
@@ -1311,7 +1311,7 @@
     "@types/chai" "^4.2.11"
     "@types/mocha" "^8.2.2"
     "@types/node" "^15.6.1"
-    "@types/sinon" "^9.0.4"
+    "@types/sinon" "10.0.0"
     chai "^4.2.0"
     chalk "^4.0.0"
     cosmiconfig "^7.0.0"
@@ -2065,18 +2065,6 @@
   integrity sha512-jDZ55oCKxqlDmoTBBbBBEx+N8ZraUVhggMZ9T5t+6/Dh8/4NiOjSUfpLrPiEwxQDlAe3wpAkoXhWvE6LibtsMQ==
   dependencies:
     "@sinonjs/fake-timers" "^7.0.4"
-
-"@types/sinon@^9.0.4":
-  version "9.0.11"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-9.0.11.tgz#7af202dda5253a847b511c929d8b6dda170562eb"
-  integrity sha512-PwP4UY33SeeVKodNE37ZlOsR9cReypbMJOhZ7BVE0lB+Hix3efCOxiJWiE5Ia+yL9Cn2Ch72EjFTRze8RZsNtg==
-  dependencies:
-    "@types/sinonjs__fake-timers" "*"
-
-"@types/sinonjs__fake-timers@*":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@types/sinonjs__fake-timers/-/sinonjs__fake-timers-6.0.2.tgz#3a84cf5ec3249439015e14049bd3161419bf9eae"
-  integrity sha512-dIPoZ3g5gcx9zZEszaxLSVTvMReD3xxyyDnQUjA6IYDG9Ba2AV0otMPs+77sG9ojB4Qr2N2Vk5RnKeuA0X/0bg==
 
 "@types/tough-cookie@*":
   version "4.0.0"
