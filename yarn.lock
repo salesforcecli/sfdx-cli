@@ -1592,9 +1592,9 @@
   integrity sha512-KExM355BLbxCW6siGBV7oUOotXvvVp0tAWERgzUkM2FcMb9fWrjwXDrIHc8V0UdDlA3UXtFltDWgN+Yqi+BA/g==
 
 "@salesforce/require-analytics@^0.9.16":
-  version "0.9.16"
-  resolved "https://registry.yarnpkg.com/@salesforce/require-analytics/-/require-analytics-0.9.16.tgz#75ed0f66425849003988d95208cced2d6b83b7c7"
-  integrity sha512-7uQkYldn///Z6kIOncrO6MAorY43yQEDjpWRuozbHg+PBKv/KwGYgmZyEoKJWyYhtxsD9mM8PiFKRJxpUtQJ9g==
+  version "0.9.19"
+  resolved "https://registry.yarnpkg.com/@salesforce/require-analytics/-/require-analytics-0.9.19.tgz#e5932ed41356fa161d461baec0625dba77865421"
+  integrity sha512-sBRceBN8cySpR2frHWBETl7dKlQsjZVpQySD28Q4V20HvOeeNhO0JaTzw66muG+rC2TJap2vscuve4eVShe1kw==
   dependencies:
     tslib "^2.2.0"
 
