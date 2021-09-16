@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.118.1",
+  "version": "7.119.0",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -119,7 +119,7 @@
     "@oclif/plugin-update": "1.5.0",
     "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "@oclif/plugin-which": "^1.0.3",
-    "@salesforce/cli": "0.0.39",
+    "@salesforce/cli": "0.0.43",
     "@salesforce/kit": "^1.5.13",
     "@salesforce/lazy-require": "^0.4.0",
     "@salesforce/plugin-alias": "1.1.10",
@@ -132,8 +132,8 @@
     "@salesforce/plugin-limits": "1.2.1",
     "@salesforce/plugin-org": "1.7.0",
     "@salesforce/plugin-schema": "1.0.8",
-    "@salesforce/plugin-source": "1.0.15",
-    "@salesforce/plugin-telemetry": "1.2.3",
+    "@salesforce/plugin-source": "1.0.16",
+    "@salesforce/plugin-telemetry": "1.2.4",
     "@salesforce/plugin-templates": "52.1.0",
     "@salesforce/plugin-trust": "^1.0.5",
     "@salesforce/plugin-user": "1.4.0",
@@ -190,7 +190,7 @@
     "typescript": "^4.1.3"
   },
   "resolutions": {
-    "@salesforce/source-deploy-retrieve": "4.4.1",
+    "@salesforce/source-deploy-retrieve": "4.4.3",
     "@salesforce/ts-types": "1.5.20"
   },
   "scripts": {
