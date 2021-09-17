@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.119.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.118.1...v7.119.0) (2021-09-17)
+
+
+### Bug Fixes
+
+* verify node installation in full image ([#266](https://github.com/salesforcecli/sfdx-cli/issues/266)) ([36578e2](https://github.com/salesforcecli/sfdx-cli/commit/36578e28f4bbfdc013f94ad2b69b62e7d02bf3fe))
+
 ### [7.118.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.118.0...v7.118.1) (2021-09-10)
 
 ## [7.118.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.117.0...v7.118.0) (2021-09-09)
