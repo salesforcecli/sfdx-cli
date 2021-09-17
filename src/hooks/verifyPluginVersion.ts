@@ -9,7 +9,7 @@ import { Hook } from '@oclif/config';
 import { compareVersions, isVersion } from '../versions';
 
 const FORCE_PLUGINS = ['salesforce-alm', 'force-language-services'];
-
+const BANNED_PLUGINS = ['sfdx-cli'];
 const MIN_VERSION = '45.8.0';
 
 /**
@@ -25,6 +25,9 @@ const hook: Hook.PluginsPreinstall = function (options) {
 Installing it manually via 'sfdx plugins:install salesforcedx' is no longer supported and can result in duplicate commands and outdated plugins.
 See https://github.com/forcedotcom/cli/issues/1016 for more information about this change.`
       );
+    }
+    if (BANNED_PLUGINS.includes(plugin.name)) {
+      this.error(`Installing ${plugin.name} is not allowed.`);
     }
     if (FORCE_PLUGINS.includes(plugin.name) && isVersion(plugin.tag) && compareVersions(plugin.tag, MIN_VERSION) < 0) {
       this.error(
