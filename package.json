@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.119.0",
+  "version": "7.119.1",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -141,7 +141,7 @@
     "@salesforce/sfdx-plugin-lwc-test": "0.1.7",
     "@salesforce/ts-types": "^1.5.17",
     "debug": "^4.3.1",
-    "salesforce-alm": "52.3.3",
+    "salesforce-alm": "52.3.4",
     "salesforce-lightning-cli": "3.0.0",
     "shelljs": "^0.8.4",
     "tslib": "^2.1.0",

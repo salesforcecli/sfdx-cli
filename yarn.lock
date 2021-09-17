@@ -1505,7 +1505,7 @@
     open "^8.2.1"
     tslib "^2"
 
-"@salesforce/plugin-telemetry@1.2.4":
+"@salesforce/plugin-telemetry@1.2.4", "@salesforce/plugin-telemetry@^1.2.3":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.4.tgz#93fc92c19578d44afa13eef2d3cd4e3639898a4d"
   integrity sha512-Hx3AgcHNpaEKtbs39N0dWwEK8SpTUxZcsukogMcsOpHWcBs73NCCUzLVN4Jpx/l2JxlZuEfmX53YoZmDysezoA==
@@ -1514,17 +1514,6 @@
     "@salesforce/command" "^4.1.1"
     "@salesforce/core" "^2.27.2"
     "@salesforce/telemetry" "^2.0.5"
-    tslib "^2"
-
-"@salesforce/plugin-telemetry@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.3.tgz#da392538da57ef53eb3ee33d6ef6469ea1a65ac9"
-  integrity sha512-cBlNRjg96fGaZNP1+C03RSz+M09onLr0XDSVu5XdpIeLR0LeL4U+MxRleOSaew9g50ExFqaFdy/oO1WX4tBpDw==
-  dependencies:
-    "@oclif/config" "^1"
-    "@salesforce/command" "^3.0.3"
-    "@salesforce/core" "^2.24.0"
-    "@salesforce/telemetry" "^2.0.4"
     tslib "^2"
 
 "@salesforce/plugin-templates@52.1.0":
@@ -1625,7 +1614,7 @@
     unzipper "0.10.11"
     xmldom-sfdx-encoding "^0.1.29"
 
-"@salesforce/telemetry@^2.0.4", "@salesforce/telemetry@^2.0.5":
+"@salesforce/telemetry@^2.0.5":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@salesforce/telemetry/-/telemetry-2.0.5.tgz#29475bf832b132dd2f5946a4f1f9d28c439aca2d"
   integrity sha512-5bTY299mo4c3sWWlrarEAPjUgDa0ez5x67Pg3pDL7goNeoE22F4pwGDn/BcxL2lUHj1h5yZfLPorwudxfiRhTA==
@@ -9829,10 +9818,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.3.3:
-  version "52.3.3"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.3.3.tgz#f3742994c535131ef44429094639ed30fd8be9c6"
-  integrity sha512-I45L1ygGkR2e51z1A/HEVBZkgj7eHLpJueggT8o+ERDyDY/usULzjcFrRhW4odhHUrfddXRYgW+kKOfU9G82Tw==
+salesforce-alm@52.3.4:
+  version "52.3.4"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.3.4.tgz#52190828baf840992e5a374b207b409a3fc03928"
+  integrity sha512-V9W1UAswATZAhJGunUpGFzEWIjC2MRtZukGJeYo4pzdGGR5hy/d3ks9oMF7XBn/6qfL47swC0mfzwgx5wgiwvQ==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
