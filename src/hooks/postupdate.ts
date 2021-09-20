@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import * as os from 'os';
+import * as path from 'path';
 import { exec, which } from 'shelljs';
 import { TelemetryGlobal } from '@salesforce/plugin-telemetry/lib/telemetryGlobal';
 import { AppInsights } from '@salesforce/telemetry/lib/appInsights';
@@ -32,6 +33,27 @@ function suggestAlternatives(): void {
 }
 
 /**
+ * Return true if any part of the sf executable path contains a string that is known
+ * to be part of an npm path.
+ */
+function isNpmInstall(sfPath: string): boolean {
+  const nodePathParts = ['node', 'nodejs', '.nvm', '.asdf', 'node_modules', 'npm', '.npm'];
+  const sfPathParts = sfPath.split(path.sep);
+  return sfPathParts.filter((p) => nodePathParts.includes(p)).length > 0;
+}
+
+/**
+ * We want to skip the sf installation if there's an existing installation that is NOT
+ * from npm. In other words, if the user has already installed sf with the installer,
+ * we do not want to overwrite it.
+ */
+function isBinaryInstall(): boolean {
+  const existingSf = which('sf')?.stdout;
+  if (existingSf) return !isNpmInstall(existingSf);
+  return false;
+}
+
+/**
  * In order to install sf for users who use the installers, we've added
  * this hook which will install sf via npm after sfdx update completes.
  *
@@ -43,9 +65,18 @@ function suggestAlternatives(): void {
  */
 // eslint-disable-next-line @typescript-eslint/require-await
 const hook = async function (): Promise<void> {
-  const sfdxVersion = exec('sfdx --version', { silent: true })?.stdout || 'unknown';
-  cli.action.start('sfdx-cli: Installing sf');
   let succcess = false;
+
+  const sfdxVersion = exec('sfdx --version', { silent: true })?.stdout || 'unknown';
+
+  // Skip the install if there's an existing sf that was installed by an installer
+  if (isBinaryInstall()) {
+    succcess = true;
+    return;
+  }
+
+  cli.action.start('sfdx-cli: Installing sf');
+
   try {
     const npmInstallation = which('npm')?.stdout;
     if (!npmInstallation) {
