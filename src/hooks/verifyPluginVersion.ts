@@ -9,7 +9,12 @@ import { Hook } from '@oclif/config';
 import { compareVersions, isVersion } from '../versions';
 
 const FORCE_PLUGINS = ['salesforce-alm', 'force-language-services'];
-const BANNED_PLUGINS = ['sfdx-cli'];
+const BANNED_PLUGINS: Record<string, string> = {
+  salesforcedx: `The salesforcedx plugin is deprecated.
+    Installing it manually via 'sfdx plugins:install salesforcedx' is no longer supported and can result in duplicate commands and outdated plugins.
+    See https://github.com/forcedotcom/cli/issues/1016 for more information about this change.`,
+  'sfdx-cli': 'Installing sfdx-cli is not allowed.',
+};
 const MIN_VERSION = '45.8.0';
 
 /**
@@ -19,15 +24,8 @@ const MIN_VERSION = '45.8.0';
 const hook: Hook.PluginsPreinstall = function (options) {
   if (options.plugin && options.plugin.type === 'npm') {
     const plugin = options.plugin;
-    if (plugin.name === 'salesforcedx') {
-      this.error(
-        `The salesforcedx plugin is deprecated.
-Installing it manually via 'sfdx plugins:install salesforcedx' is no longer supported and can result in duplicate commands and outdated plugins.
-See https://github.com/forcedotcom/cli/issues/1016 for more information about this change.`
-      );
-    }
-    if (BANNED_PLUGINS.includes(plugin.name)) {
-      this.error(`Installing ${plugin.name} is not allowed.`);
+    if (Object.keys(BANNED_PLUGINS).includes(plugin.name)) {
+      this.error(BANNED_PLUGINS[plugin.name]);
     }
     if (FORCE_PLUGINS.includes(plugin.name) && isVersion(plugin.tag) && compareVersions(plugin.tag, MIN_VERSION) < 0) {
       this.error(
