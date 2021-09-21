@@ -10,7 +10,7 @@ import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
 import { getString } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import hook from './hooks/verifyPluginVersion';
+import hook, { BANNED_PLUGINS } from './hooks/verifyPluginVersion';
 
 describe('verifyPluginVersion preinstall hook', () => {
   let sandbox: sinon.SinonSandbox;
@@ -69,6 +69,7 @@ describe('verifyPluginVersion preinstall hook', () => {
   it('should not allow installation of sfdx-cli as a plugin regardless of the tag', async () => {
     await testHook('sfdx-cli', '');
     // eslint-disable-next-line no-unused-expressions
-    expect(context.error.getCalls().some((call) => getString(call, 'args[0]')?.includes('is not allowed'))).to.be.true;
+    expect(context.error.getCalls().some((call) => getString(call, 'args[0]')?.includes(BANNED_PLUGINS['sfdx-cli']))).to
+      .be.true;
   });
 });

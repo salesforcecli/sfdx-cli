@@ -9,7 +9,7 @@ import { Hook } from '@oclif/config';
 import { compareVersions, isVersion } from '../versions';
 
 const FORCE_PLUGINS = ['salesforce-alm', 'force-language-services'];
-const BANNED_PLUGINS: Record<string, string> = {
+export const BANNED_PLUGINS: Record<string, string> = {
   salesforcedx: `The salesforcedx plugin is deprecated.
     Installing it manually via 'sfdx plugins:install salesforcedx' is no longer supported and can result in duplicate commands and outdated plugins.
     See https://github.com/forcedotcom/cli/issues/1016 for more information about this change.`,
