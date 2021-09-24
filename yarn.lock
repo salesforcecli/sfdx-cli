@@ -1531,10 +1531,10 @@
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
 
-"@salesforce/plugin-trust@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-trust/-/plugin-trust-1.0.5.tgz#755d956905dc9b6b22eb9c1146918a193b288ffa"
-  integrity sha512-mVhoN7aTrlDc8+R/WCDydSnJg99zMfbhozgjkzAV14DEFQaqNmFOLioi/x9Fu2261kA58l55KnJ2N4G7DEVnuw==
+"@salesforce/plugin-trust@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-trust/-/plugin-trust-1.0.8.tgz#5a06ea20ec2cf7ec6ca7e88f260c18a17f63f253"
+  integrity sha512-93ltX1yVf8XYYL7Db1sp/J5EOElwJS1K1/D1q5CVfj7lzZfJeAAZ2HceMislYL5UWwB2Xa/lG+X3tL7c7Aaa4g==
   dependencies:
     "@oclif/config" "^1.17.0"
     "@salesforce/command" "^3.0.5"

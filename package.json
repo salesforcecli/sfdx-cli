@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.119.1",
+  "version": "7.119.2",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -135,7 +135,7 @@
     "@salesforce/plugin-source": "1.0.16",
     "@salesforce/plugin-telemetry": "1.2.4",
     "@salesforce/plugin-templates": "52.1.0",
-    "@salesforce/plugin-trust": "^1.0.5",
+    "@salesforce/plugin-trust": "^1.0.8",
     "@salesforce/plugin-user": "1.4.0",
     "@salesforce/require-analytics": "^0.9.16",
     "@salesforce/sfdx-plugin-lwc-test": "0.1.7",
