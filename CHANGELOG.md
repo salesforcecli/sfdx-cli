@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.120.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.119.3...v7.120.0) (2021-09-29)
+
+
+### Bug Fixes
+
+* update @salesforce/templates to latest ([78b79d1](https://github.com/salesforcecli/sfdx-cli/commit/78b79d1d789402b402a932ab044995d1bc448171))
+* use absolute path to sf ([#276](https://github.com/salesforcecli/sfdx-cli/issues/276)) ([fdd76c1](https://github.com/salesforcecli/sfdx-cli/commit/fdd76c166e384086e05041845a7641fc4d47d45d))
+
 ### [7.119.3](https://github.com/salesforcecli/sfdx-cli/compare/v7.119.2...v7.119.3) (2021-09-24)
 
 ### [7.119.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.119.1...v7.119.2) (2021-09-24)
