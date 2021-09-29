@@ -1439,10 +1439,10 @@
     "@salesforce/core" "^2.15.4"
     tslib "^2"
 
-"@salesforce/plugin-org@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.npmjs.org/@salesforce/plugin-org/-/plugin-org-1.7.0.tgz#bf89f4819a143cbcee8f1d3fcb8b1fda13c8c66e"
-  integrity sha512-sFm/5rR7iQfmAYL04elm59qf9L5tXYmyQR5pXHdGEni3J+beC2txLctQlCHcPGqm3f9Yv5P5aq7mDwW8RgXDUQ==
+"@salesforce/plugin-org@1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-1.8.0.tgz#82d47651cab0ac951c6d59afe9c5ebfb1c00fa40"
+  integrity sha512-OUIsPIM48P9PKNIzoZu3FI5Ez9D/Y3QNzT3oLNpWkpHs1K59Wqo9BHAVwmRi7Z/bTYgBsegcDsWzkAlxfXsoag==
   dependencies:
     "@oclif/config" "^1"
     "@salesforce/command" "^3.0.3"
@@ -1491,10 +1491,10 @@
     "@salesforce/core" "^2.14.0"
     tslib "^2"
 
-"@salesforce/plugin-source@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.1.0.tgz#54d0ed47a354896789615f4e90677589d9af5dfb"
-  integrity sha512-trP8zFT2ujVzKZEN/jnOAS/sf5VH4hnAEbd63yYoAdYRYBO8pb9UdxeDJE3XBjvc4Q1GGJV5V0KOm3yRtehQ3A==
+"@salesforce/plugin-source@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.2.0.tgz#b14858abb8c0e396594d807fb7d929f906ffdef8"
+  integrity sha512-rUqMAF/BmCISYm1ZomY29OZlWtNTM1sK1YAwaf2W5qvun/ABMCGYyQ/6Tb3EGUc9Bh5NVWK8eAJX6iiipk6GTw==
   dependencies:
     "@oclif/config" "^1"
     "@salesforce/command" "^4.0.4"
@@ -1516,17 +1516,17 @@
     "@salesforce/telemetry" "^2.0.5"
     tslib "^2"
 
-"@salesforce/plugin-templates@52.1.0":
-  version "52.1.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-52.1.0.tgz#7e81ac9a8df62832dbb1227a1648fea0ac786fce"
-  integrity sha512-0xOlRMuQELBYpLv+v4QJB9gJWpg3tiS8Ie+lpQbbaCrryDrAbvw6N83LmdQ+e6ugJL9YOc8jZEyeBzYGV5yO0A==
+"@salesforce/plugin-templates@52.2.0":
+  version "52.2.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-52.2.0.tgz#ade2053f4a314369aaa8a743627f9ab3109aa51c"
+  integrity sha512-t67ccJ46591h2FIqD4o4c2Zl1p72xbpTGenZLlruqK+MhnDxSqQl2H6vIVTog2QY/aH6xAq19oRSF6/KdNHkMQ==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
     "@salesforce/command" "^2.2.0"
     "@salesforce/core" "2.23.2"
-    "@salesforce/templates" "52.1.0"
+    "@salesforce/templates" "52.2.0"
     tslib "^1"
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
@@ -1544,10 +1544,10 @@
     shelljs "^0.8.4"
     tslib "^2"
 
-"@salesforce/plugin-user@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-user/-/plugin-user-1.4.0.tgz#c5dad9f29c082a45ad8902ac23a630cfd5cb04fb"
-  integrity sha512-CsO1em/mTk+QFQr77aaXmjLVmqJNpr0skPuhXxAgBB7ATQcAqNCm6o01QDz2O1cq/5QbbU9xlxfjezOej2KpRw==
+"@salesforce/plugin-user@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-user/-/plugin-user-1.5.0.tgz#0c9a363b6f9be1648aa802ec378ab162a415399a"
+  integrity sha512-d8tvJw7fPSgwRb3Scrl3FxAeH1MOmslCsN1xIM2VMsOeRkZ5id7RKaFRehjh2iC+McFCR1Y6T7WUHFVmQBNKIg==
   dependencies:
     "@oclif/config" "^1.17.0"
     "@salesforce/command" "^4.0.4"
@@ -1623,13 +1623,15 @@
     applicationinsights "^1.4.0"
     axios "^0.21.1"
 
-"@salesforce/templates@52.1.0":
-  version "52.1.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-52.1.0.tgz#d37377e93ccb5486136ac8aab976ffd3360fc3a2"
-  integrity sha512-hkjv9kjVNI47c51bIjRE1Ti2yD74uaQtSGUEi9bNJb/ifel+dvTfiIZI2A3gdqz/f1A30AgJIiiB8VWWWMQQrg==
+"@salesforce/templates@52.2.0":
+  version "52.2.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-52.2.0.tgz#95a664c820d1c09db7438389326447aaa0cda1c5"
+  integrity sha512-NNhgAYCr5Azj6nIUFgXF3AP2qsp6QCe4Fh9UERpzIQTTj4PMESMFL0pyHV7/VX+7WUoeYRH7b2c8INpE1CxXRQ==
   dependencies:
     "@salesforce/core" "2.23.2"
+    got "^11.8.2"
     mime-types "^2.1.27"
+    tar "^6.1.10"
     tslib "^1"
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
@@ -10678,7 +10680,7 @@ tar-stream@^2.1.4, tar-stream@^2.2.0:
     inherits "^2.0.3"
     readable-stream "^3.1.1"
 
-tar@^6.0.2, tar@^6.1.0, tar@^6.1.11:
+tar@^6.0.2, tar@^6.1.0, tar@^6.1.10, tar@^6.1.11:
   version "6.1.11"
   resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.11.tgz#6760a38f003afa1b2ffd0ffe9e9abbd0eab3d621"
   integrity sha512-an/KZQzQUkZCkuoAA64hM92X0Urb6VpRhAFllDzz44U2mcD5scmT3zBc4VgVpkugF580+DQn8eAFSyoQt0tznA==
