@@ -18,7 +18,7 @@ const binContents = fs
   .readFileSync(sfdxBin, 'UTF-8')
   .replace(/sfdx/g, 'sf')
   .replace(/SFDX/g, 'SF')
-  .replace(/\$DIR\/run/g, sfUnixPath);
+  .replace(/\$DIR\/run/g, `$(dirname $DIR)/${sfUnixPath}`);
 
 console.log(`  Writing ${sfBin}`);
 fs.writeFileSync(sfBin, binContents);
