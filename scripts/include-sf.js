@@ -4,10 +4,15 @@ const path = require('path');
 const shelljs = require('shelljs');
 const fs = require('fs');
 
-const sfGlobalPath = path.join(shelljs.exec('npm list -g --depth 0 | head -1'), 'node_modules', '@salesforce', 'cli');
+try {
+  const sfGlobalPath = path.join(shelljs.exec('npm list -g --depth 0 | head -1').stdout, 'node_modules', '@salesforce', 'cli');
 
-// Copy sf to the bin/cli dir of sfdx
-shelljs.mv('-f', sfGlobalPath, path.join(process.cwd(), 'bin', 'sf-cli'));
+  // Copy sf to the bin/cli dir of sfdx
+  shelljs.mv('-f', sfGlobalPath, path.join(process.cwd(), 'bin', 'sf-cli'));
+} catch (e) {
+  console.error('Error: can\'t find the global sf install.')  
+  throw e;
+}
 
 const sfUnixPath = 'bin/sf-cli/bin/run';
 const sfBin = path.join('bin', 'sf');
