@@ -5,16 +5,23 @@ const shelljs = require('shelljs');
 const fs = require('fs');
 
 try {
-  const sfGlobalPath = path.join(shelljs.exec('npm list -g --depth 0 | head -1').stdout, 'node_modules', '@salesforce', 'cli');
+  const sfGlobalPath = path.join(
+    shelljs.exec('npm list -g --depth 0 | head -1').stdout,
+    'node_modules',
+    '@salesforce',
+    'cli'
+  );
 
   // Copy sf to the bin/cli dir of sfdx
-  shelljs.mv('-f', sfGlobalPath, path.join(process.cwd(), 'bin', 'sf-cli'));
+  const sfpath = path.join(process.cwd(), 'sf-cli');
+  shelljs.mkdir('-p', sfpath);
+  shelljs.mv('-f', sfGlobalPath, 'sf-cli');
 } catch (e) {
-  console.error('Error: can\'t find the global sf install.')  
+  console.error("Error: can't find the global sf install.");
   throw e;
 }
 
-const sfUnixPath = 'bin/sf-cli/bin/run';
+const sfUnixPath = 'sf-cli/bin/run';
 const sfBin = path.join('bin', 'sf');
 const sfdxBin = path.join('bin', 'sfdx');
 
@@ -24,13 +31,13 @@ const binContents = fs
   .readFileSync(sfdxBin, 'UTF-8')
   .replace(/sfdx/g, 'sf')
   .replace(/SFDX/g, 'SF')
-  .replace(/\$DIR\/run/g, `$(dirname $DIR)/${sfUnixPath}`);
+  .replace(/\$DIR\/run/g, sfUnixPath);
 
 console.log(`  Writing ${sfBin}`);
 fs.writeFileSync(sfBin, binContents);
 shelljs.chmod('+x', sfBin);
 
-const sfWinPath = 'bin\\sf-cli\\bin\\run';
+const sfWinPath = 'sf-cli\\bin\\run';
 const sfCmd = path.join('bin', 'sf.cmd');
 const sfdxCmd = path.join('bin', 'sfdx.cmd');
 
