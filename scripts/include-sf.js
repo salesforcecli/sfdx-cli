@@ -5,7 +5,7 @@ const shelljs = require('shelljs');
 const fs = require('fs');
 
 try {
-  const npmGlobalBin = shelljs.exec('npm list -g --depth 0 | head -1').stdout;
+  const npmGlobalBin = shelljs.exec('npm list -g --depth 0 | head -1').stdout.trim();
   console.log(npmGlobalBin);
 
   const sfGlobalPath = path.join(npmGlobalBin, 'node_modules', '@salesforce', 'cli');
