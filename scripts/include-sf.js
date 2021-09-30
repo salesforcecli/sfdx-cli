@@ -6,19 +6,13 @@ const fs = require('fs');
 
 try {
   const npmGlobalBin = shelljs.exec('npm list -g --depth 0 | head -1').stdout.trim();
-  console.log(npmGlobalBin);
-
   const sfGlobalPath = path.join(npmGlobalBin, 'node_modules', '@salesforce', 'cli');
 
   // Copy sf to the bin/cli dir of sfdx
-  const sfpath = path.join(process.cwd(), 'sf-cli');
+  const sfpath = path.join(process.cwd(), 'bin', 'sf-cli');
+  // const mkdirRes = shelljs.mkdir('-p', sfpath);
 
-  const mkdirRes = shelljs.mkdir('-p', sfpath);
-  console.log(mkdirRes);
-
-  const mvRes = shelljs.mv('-f', sfGlobalPath, 'sf-cli');
-  console.log(mvRes);
-
+  const mvRes = shelljs.mv('-f', sfGlobalPath, sfpath);
   if (mvRes.code !== 0) {
     throw mvRes.stderr;
   }
@@ -26,7 +20,7 @@ try {
   throw e;
 }
 
-const sfUnixPath = 'sf-cli/bin/run';
+const sfUnixPath = 'bin/sf-cli/bin/run';
 const sfBin = path.join('bin', 'sf');
 const sfdxBin = path.join('bin', 'sfdx');
 
@@ -36,13 +30,13 @@ const binContents = fs
   .readFileSync(sfdxBin, 'UTF-8')
   .replace(/sfdx/g, 'sf')
   .replace(/SFDX/g, 'SF')
-  .replace(/\$DIR\/run/g, sfUnixPath);
+  .replace(/\$DIR\/run/g, `$(dirname $DIR)/${sfUnixPath}`);
 
 console.log(`  Writing ${sfBin}`);
 fs.writeFileSync(sfBin, binContents);
 shelljs.chmod('+x', sfBin);
 
-const sfWinPath = 'sf-cli\\bin\\run.cmd';
+const sfWinPath = 'bin\\sf-cli\\bin\\run.cmd';
 const sfCmd = path.join('bin', 'sf.cmd');
 const sfdxCmd = path.join('bin', 'sfdx.cmd');
 
