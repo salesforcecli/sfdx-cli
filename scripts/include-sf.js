@@ -8,7 +8,7 @@ const npmGlobalBin = shelljs.exec('npm list -g --depth 0 | head -1').stdout.trim
 const sfGlobalPath = path.join(npmGlobalBin, 'node_modules', '@salesforce', 'cli');
 
 // Copy globally installed sf to sf-cli/ at root of sfdx
-shelljs.mv('-f', sfGlobalPath, 'sf-cli');
+shelljs.mv('-f', sfGlobalPath, path.join('..', 'sf-cli'));
 
 const sfUnixPath = 'sf-cli/bin/run';
 const sfBin = path.join('bin', 'sf');
