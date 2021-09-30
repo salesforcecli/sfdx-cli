@@ -1279,27 +1279,6 @@
     mkdirp "1.0.4"
     sfdx-faye "^1.0.9"
 
-"@salesforce/core@2.25.1", "@salesforce/core@^2.25.0":
-  version "2.25.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-2.25.1.tgz#2be78b4fc824bfb69537174a0440ba35d19d8fa4"
-  integrity sha512-kRo1Uce8sFFXNBEu3odJ4zsFkvja+s/cmj7ICI6EvCsgwMHSLCw4P7zhqAsOJnBUim3M2qb4p0HpVtkQ4Cz3Kg==
-  dependencies:
-    "@salesforce/bunyan" "^2.0.0"
-    "@salesforce/kit" "^1.5.0"
-    "@salesforce/schemas" "^1.0.1"
-    "@salesforce/ts-types" "^1.5.13"
-    "@types/graceful-fs" "^4.1.5"
-    "@types/jsforce" "^1.9.29"
-    "@types/mkdirp" "^1.0.1"
-    debug "^3.1.0"
-    graceful-fs "^4.2.4"
-    jsen "0.6.6"
-    jsforce "^1.10.1"
-    jsonwebtoken "8.5.0"
-    mkdirp "1.0.4"
-    sfdx-faye "^1.0.9"
-    ts-retry-promise "^0.6.0"
-
 "@salesforce/core@2.28.0", "@salesforce/core@^2.20.10":
   version "2.28.0"
   resolved "https://registry.npmjs.org/@salesforce/core/-/core-2.28.0.tgz#2fb3d7be0dfac8505332f558b7dd4274afd34901"
@@ -1364,6 +1343,27 @@
   version "2.27.2"
   resolved "https://registry.npmjs.org/@salesforce/core/-/core-2.27.2.tgz#a5933310e3b10ef46ad8129a30190c229fe074ee"
   integrity sha512-0BeORSY0Zv+9ACNMVZm7eqcT7QH9WtfObHSWyeYnhl1D5iCnZHMyk+AVql8urddNtL5WTquuens62jdYCniVew==
+  dependencies:
+    "@salesforce/bunyan" "^2.0.0"
+    "@salesforce/kit" "^1.5.0"
+    "@salesforce/schemas" "^1.0.1"
+    "@salesforce/ts-types" "^1.5.13"
+    "@types/graceful-fs" "^4.1.5"
+    "@types/jsforce" "^1.9.29"
+    "@types/mkdirp" "^1.0.1"
+    debug "^3.1.0"
+    graceful-fs "^4.2.4"
+    jsen "0.6.6"
+    jsforce "^1.10.1"
+    jsonwebtoken "8.5.0"
+    mkdirp "1.0.4"
+    sfdx-faye "^1.0.9"
+    ts-retry-promise "^0.6.0"
+
+"@salesforce/core@^2.25.0":
+  version "2.25.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-2.25.1.tgz#2be78b4fc824bfb69537174a0440ba35d19d8fa4"
+  integrity sha512-kRo1Uce8sFFXNBEu3odJ4zsFkvja+s/cmj7ICI6EvCsgwMHSLCw4P7zhqAsOJnBUim3M2qb4p0HpVtkQ4Cz3Kg==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.5.0"
@@ -1752,12 +1752,12 @@
     signal-exit "^3.0.2"
     tslib "^1.10.0"
 
-"@salesforce/source-deploy-retrieve@4.4.6", "@salesforce/source-deploy-retrieve@^4.3.2", "@salesforce/source-deploy-retrieve@^4.4.6":
-  version "4.4.6"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-4.4.6.tgz#a0105165d22d17fc0ac2a886782618afa444cf13"
-  integrity sha512-r82GFgejyOz7RzdSbc1NhnRV+TVG4UREt1+PKDcXMimXtcYSEHwIK4tNUfPAGe6vyxImTr8DSF2vv5KWNGRV4w==
+"@salesforce/source-deploy-retrieve@4.5.1", "@salesforce/source-deploy-retrieve@^4.3.2", "@salesforce/source-deploy-retrieve@^4.4.6":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-4.5.1.tgz#8d4896691116e4c560adf826f4ce535a4fabdcb2"
+  integrity sha512-ExrKXXAXpd3l2RQB6GIGkjPP1jNH9CDWowPfdzrnR8heFmlftOsYyF5lGotXDkotQRuLNjbaqg7ZMDE3y+gUOQ==
   dependencies:
-    "@salesforce/core" "2.25.1"
+    "@salesforce/core" "2.28.0"
     "@salesforce/kit" "^1.5.0"
     "@salesforce/ts-types" "^1.4.2"
     archiver "^5.3.0"
@@ -10505,10 +10505,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.3.5:
-  version "52.3.5"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.3.5.tgz#846e5f6a3de34c0a7c11dcbbaff684f1be09f121"
-  integrity sha512-wob+YIOgsNkqjAOUQ+A9bOWjsktqp0tIlP4IZUZ7FbDfftDwW5/WnWmQDlJOEDZ5+13Ej/SFqSmeoBFv2EMh8A==
+salesforce-alm@52.4.0:
+  version "52.4.0"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.4.0.tgz#599ab6dd5a144fe4dd7b0dcf2a6d57a671cc3148"
+  integrity sha512-kKqa3tbvWxsVYeYUV8M4dJdjSPgkUS5OpQQc5MCc3WF25FcgZP1YlL3zhqCpsace7MyvxWR2nqwNRj/7d6/ihg==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
