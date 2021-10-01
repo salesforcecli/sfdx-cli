@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.121.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.1...v7.121.2) (2021-10-01)
+
+
+### Bug Fixes
+
+* add resolution for templates ([#296](https://github.com/salesforcecli/sfdx-cli/issues/296)) ([c2dd61e](https://github.com/salesforcecli/sfdx-cli/commit/c2dd61e41842c191bca9af5deaccc5c658a6abee))
+
 ### [7.121.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.0...v7.121.1) (2021-10-01)
 
 
