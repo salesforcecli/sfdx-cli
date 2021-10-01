@@ -1174,10 +1174,10 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@salesforce/cli@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@salesforce/cli/-/cli-1.0.1.tgz#ec9d974a94f97af03ea86cc7ef9dbb9505ac0acd"
-  integrity sha512-XHhu1g4OQ7A8HobSYNN5tU1KHdxYs0M6V8rz9IdftyOIrvuRM7kUy2VQecFjfZxSfvXajdIzedSxQSiyljB72w==
+"@salesforce/cli@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/cli/-/cli-1.0.2.tgz#bc5a4aa35e51c66d31d37c896417d3435b27264d"
+  integrity sha512-BC7m7TCkxLnSupMS3KayrGlv0josrGKs/OdokCkB7KVeZM9Fli24rvs1ofUf6Dh+BabV8yij0lZb8iWHfHoeeA==
   dependencies:
     "@oclif/core" "^1.0.0"
     "@oclif/plugin-help" "^5.1.1"
@@ -1192,7 +1192,6 @@
     "@sf/functions" "npm:@salesforce/plugin-functions@1.0.2"
     "@sf/gen" "npm:@salesforce/plugin-generate@1.0.1"
     "@sf/login" "npm:@salesforce/plugin-login@1.0.0"
-    inquirer "https://github.com/salesforcecli/Inquirer.js/tarball/github_release"
     tslib "^2.3.0"
 
 "@salesforce/command@3.1.3", "@salesforce/command@^3.0.0", "@salesforce/command@^3.0.1", "@salesforce/command@^3.0.3", "@salesforce/command@^3.0.5", "@salesforce/command@^3.1.3":
@@ -6717,7 +6716,7 @@ inquirer@^7.0.0, inquirer@^7.1.0:
     strip-ansi "^6.0.0"
     through "^2.3.6"
 
-inquirer@^8.0.0, "inquirer@https://github.com/salesforcecli/Inquirer.js/tarball/github_release":
+inquirer@^8.0.0:
   version "8.1.5"
   resolved "https://github.com/salesforcecli/Inquirer.js/tarball/github_release#4000d262d3c20b2541683cc53fa50d4af82992a1"
   dependencies:
