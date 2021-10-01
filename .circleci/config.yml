@@ -322,9 +322,6 @@ workflows:
                 - main
       - release-management/release-package:
           tag: latest-rc
-          pre-job-steps:
-            - release-management/pin-dependencies:
-                tag: latest-rc
           github-release: true
           requires:
             - approval
