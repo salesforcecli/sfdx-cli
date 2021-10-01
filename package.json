@@ -134,7 +134,7 @@
     "@salesforce/plugin-schema": "1.0.8",
     "@salesforce/plugin-source": "1.2.0",
     "@salesforce/plugin-telemetry": "1.2.4",
-    "@salesforce/plugin-templates": "52.2.0",
+    "@salesforce/plugin-templates": "52.3.0",
     "@salesforce/plugin-trust": "^1.0.8",
     "@salesforce/plugin-user": "1.5.0",
     "@salesforce/require-analytics": "^0.9.16",

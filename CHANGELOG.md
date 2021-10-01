@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.121.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.0...v7.121.1) (2021-10-01)
+
+
+### Bug Fixes
+
+* update sf dep to 1.0.2 ([#295](https://github.com/salesforcecli/sfdx-cli/issues/295)) ([2e13de2](https://github.com/salesforcecli/sfdx-cli/commit/2e13de29201b37686d474c0c1aee261eb9e2639b))
+
 ## [7.121.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.120.0...v7.121.0) (2021-09-30)
 
 ## [7.120.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.119.3...v7.120.0) (2021-09-29)
