@@ -192,7 +192,8 @@
   "resolutions": {
     "@salesforce/source-deploy-retrieve": "4.5.1",
     "@salesforce/ts-types": "1.5.20",
-    "@salesforce/plugin-telemetry": "1.2.4"
+    "@salesforce/plugin-telemetry": "1.2.4",
+    "@salesforce/templates": "52.3.0"
   },
   "scripts": {
     "build": "sf-build",
