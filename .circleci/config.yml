@@ -293,20 +293,20 @@ workflows:
       #     name: node-latest
       #     node_version: latest
       - release-management/test-package:
-          name: node-14
-          node_version: '14'
+          name: node-lts
+          node_version: 'lts'
       - release-management/test-package:
-          name: node-14-windows
-          node_version: '14'
+          name: node-lts-windows
+          node_version: 'lts'
           os: windows
       - release-management/test-package:
-          name: node-12
-          node_version: '12'
+          name: node-maintenance
+          node_version: 'maintenance'
       - test-pack-tarballs:
           # no point to pack if the test fail, and we only care to test the pack with the node version
           # we ship (specified in package.json.oclif.node)
           requires:
-            - node-14
+            - node-lts
           filters:
             branches:
               ignore: main # test the pack on PRs, but main will do pack-and-upload-tarballs
@@ -314,8 +314,8 @@ workflows:
           type: approval
           requires:
             # - node-latest
-            - node-14
-            - node-12
+            - node-lts
+            - node-maintenance
           filters:
             branches:
               only:
