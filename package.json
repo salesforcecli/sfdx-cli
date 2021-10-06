@@ -219,7 +219,7 @@
     "promote-dist-tags": "./scripts/promote-dist-tags",
     "promote-docker": "./scripts/docker-promote.js",
     "snapshot-generate": "HOME=./ ./bin/run snapshot:generate",
-    "test": "mocha --recursive \"test/**/*.ts\" && nyc --report lcov --report cobertura mocha -t 240000 --require source-map-support/register --recursive \"dist/**/*.test.js\"",
+    "test": "mocha --recursive \"test/**/*.ts\" && nyc --report lcov --report cobertura mocha -t 240000 --require source-map-support/register --recursive \"test/**/*.ts\"",
     "test-smoke-unix": "./tmp/sfdx/bin/sfdx version && ./tmp/sfdx/bin/sfdx help && ./tmp/sfdx/bin/sfdx plugins --core",
     "test:deprecation-policy": "set HOME=./ ./bin/run snapshot:compare",
     "trogdor": "yarn clean-all && yarn && yarn compile && yarn uts",
