@@ -1256,10 +1256,10 @@
     open "8.2.1"
     tslib "^2"
 
-"@salesforce/plugin-release-management@^2.1.0":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-2.2.2.tgz#80546abeba02fd329a981b37dd5393bc76b9db27"
-  integrity sha512-MxfCuGmw4sX5SiouBF7eAsy1AuLG8soWc5cahcJNUWhriVZ5CUgRnLd5juK8TEGW6wDfrlW+cXrhNBo1HM5v2Q==
+"@salesforce/plugin-release-management@dev":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-2.2.3.tgz#d011e2d8bc51db5839a0184fd8e04469144db0ac"
+  integrity sha512-bcLckqL5aJcMU4MmKiq3Azg7jXVBNepn0LvYH11e5jUE3GNyAP+q1gIbM7fQcheMSPhxK7aZ2nszrDISPLbhpg==
   dependencies:
     "@oclif/config" "^1"
     "@octokit/core" "^3.4.0"
@@ -1269,7 +1269,7 @@
     "@salesforce/plugin-trust" "^1.0.7"
     "@salesforce/ts-types" "^1.4.3"
     "@types/semver" "^7.3.6"
-    "@types/sinon" "10.0.2"
+    "@types/sinon" "10.0.4"
     agent-base "^6.0.2"
     aws-sdk "^2.920.0"
     chalk "^4.1.0"
@@ -1737,13 +1737,6 @@
   integrity sha512-jDZ55oCKxqlDmoTBBbBBEx+N8ZraUVhggMZ9T5t+6/Dh8/4NiOjSUfpLrPiEwxQDlAe3wpAkoXhWvE6LibtsMQ==
   dependencies:
     "@sinonjs/fake-timers" "^7.0.4"
-
-"@types/sinon@10.0.2":
-  version "10.0.2"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-10.0.2.tgz#f360d2f189c0fd433d14aeb97b9d705d7e4cc0e4"
-  integrity sha512-BHn8Bpkapj8Wdfxvh2jWIUoaYB/9/XhsL0oOvBfRagJtKlSl9NWPcFOz2lRukI9szwGxFtYZCTejJSqsGDbdmw==
-  dependencies:
-    "@sinonjs/fake-timers" "^7.1.0"
 
 "@types/tough-cookie@*":
   version "4.0.0"
