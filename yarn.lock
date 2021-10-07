@@ -950,10 +950,10 @@
   dependencies:
     "@octokit/openapi-types" "^9.5.0"
 
-"@salesforce/apex-node@0.2.9":
-  version "0.2.9"
-  resolved "https://registry.npmjs.org/@salesforce/apex-node/-/apex-node-0.2.9.tgz#248023dab80223e3f54b1563b7b10f770ff54839"
-  integrity sha512-fO/AF3/RdzN2FH3cviJPQxAd6nOJd5+4SeXwmjkjNbI0pE0tEJHZfJBC6a5b0Ogo511xXp70LA8z+3EhJjW/tQ==
+"@salesforce/apex-node@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/apex-node/-/apex-node-0.3.0.tgz#6290839f1b9dbc85d39c5265520c0b74bd75694e"
+  integrity sha512-zORlUJN/mzS5J/8gDme8+o6WiVK3q661J0JGbv5Dhoj4Ekk6TrXLxmah4GibnVVyUd+lQPPJlYIANHoU0wGYQg==
   dependencies:
     "@salesforce/core" "2.28.0"
     faye "1.1.3"
@@ -1149,15 +1149,15 @@
     chalk "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-apex@0.2.9":
-  version "0.2.9"
-  resolved "https://registry.npmjs.org/@salesforce/plugin-apex/-/plugin-apex-0.2.9.tgz#b9032fece33d221f56a18b04b8b58b515bd80870"
-  integrity sha512-7lNVpz/dO7DWkxNq3p75cFZ2mGq57nw6ZDTWOzEQcOXMsetH6mc9j+u0+0N1ButLcq1kIbA9LvH4Li9/ZNS6Qw==
+"@salesforce/plugin-apex@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-apex/-/plugin-apex-0.3.0.tgz#34a60c62f57145847c828c2382af7faf6d495147"
+  integrity sha512-XJctV4hFMXxXI2QUaEdN3W4ArZcgmlqqFGgrpADnf5p1KweTjJ6ToVZeZ8Oml8eJiwKrjQBifKPW7ry56KkM0w==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
-    "@salesforce/apex-node" "0.2.9"
+    "@salesforce/apex-node" "0.3.0"
     "@salesforce/command" "3.1.3"
     "@salesforce/core" "2.28.0"
     chalk "^4.1.0"
@@ -9399,10 +9399,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.6.0:
-  version "52.6.0"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.6.0.tgz#089bf4b200100bdab6193a4edfc79d08a635587f"
-  integrity sha512-zNUXRHzu9ixTZQSu0jpupO72HIuNHk//MbmQulrvhhlDY6uqQoVw+Br5VJevcSgKJxiJWxJRk/gF3ldEukPlOw==
+salesforce-alm@52.5.1:
+  version "52.5.1"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.5.1.tgz#550b51dfcfb345c1f18fbcb7141a41d5218443b6"
+  integrity sha512-kAKfXBkws6OAk++N06g6J+tZXYIlsaCeB3pMCK3QLoKM6Z/4iJ1EFu0IZVm1PU6SOXds4+2zN5euT0UdOQnxnQ==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
