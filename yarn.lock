@@ -1498,18 +1498,7 @@
     open "^8.2.1"
     tslib "^2"
 
-"@salesforce/plugin-telemetry@1.2.4", "@salesforce/plugin-telemetry@^1.2.5":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.4.tgz#93fc92c19578d44afa13eef2d3cd4e3639898a4d"
-  integrity sha512-Hx3AgcHNpaEKtbs39N0dWwEK8SpTUxZcsukogMcsOpHWcBs73NCCUzLVN4Jpx/l2JxlZuEfmX53YoZmDysezoA==
-  dependencies:
-    "@oclif/config" "^1"
-    "@salesforce/command" "^4.1.1"
-    "@salesforce/core" "^2.27.2"
-    "@salesforce/telemetry" "^2.0.5"
-    tslib "^2"
-
-"@salesforce/plugin-telemetry@1.2.5":
+"@salesforce/plugin-telemetry@1.2.4", "@salesforce/plugin-telemetry@1.2.5", "@salesforce/plugin-telemetry@^1.2.5":
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.5.tgz#f2f987e13ccd6355e26303373858ec2ca86a966d"
   integrity sha512-xLI7XF7i5PfElCNHDjSgkVrpT8Skb4NVnU/mxpX61uBBgPyCZky2tM+x1jQXrGstTm2fEnCeXTfal4UK/N1eHQ==
