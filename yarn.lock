@@ -10422,10 +10422,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.5.1:
-  version "52.5.1"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.5.1.tgz#550b51dfcfb345c1f18fbcb7141a41d5218443b6"
-  integrity sha512-kAKfXBkws6OAk++N06g6J+tZXYIlsaCeB3pMCK3QLoKM6Z/4iJ1EFu0IZVm1PU6SOXds4+2zN5euT0UdOQnxnQ==
+salesforce-alm@52.6.0:
+  version "52.6.0"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.6.0.tgz#089bf4b200100bdab6193a4edfc79d08a635587f"
+  integrity sha512-zNUXRHzu9ixTZQSu0jpupO72HIuNHk//MbmQulrvhhlDY6uqQoVw+Br5VJevcSgKJxiJWxJRk/gF3ldEukPlOw==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
