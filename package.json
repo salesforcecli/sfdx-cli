@@ -123,7 +123,7 @@
     "@salesforce/kit": "^1.5.13",
     "@salesforce/lazy-require": "^0.4.0",
     "@salesforce/plugin-alias": "1.1.21",
-    "@salesforce/plugin-apex": "0.2.9",
+    "@salesforce/plugin-apex": "0.3.0",
     "@salesforce/plugin-auth": "1.7.2",
     "@salesforce/plugin-config": "1.2.40",
     "@salesforce/plugin-custom-metadata": "1.0.12",
