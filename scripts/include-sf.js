@@ -4,7 +4,7 @@ const path = require('path');
 const shelljs = require('shelljs');
 const fs = require('fs');
 
-const npmGlobalBin = path.dirname(shelljs.which('sf'));
+const npmGlobalBin = path.dirname(shelljs.which('sf').stdout.trim());
 const sfGlobalPath = path.join(npmGlobalBin, 'node_modules', '@salesforce', 'cli');
 
 // Copy globally installed sf to sf-cli/ at root of sfdx
