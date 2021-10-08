@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.121.5",
+  "version": "7.121.7",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -130,7 +130,7 @@
     "@salesforce/plugin-org": "1.8.1",
     "@salesforce/plugin-schema": "1.0.8",
     "@salesforce/plugin-source": "1.2.2",
-    "@salesforce/plugin-telemetry": "1.2.5",
+    "@salesforce/plugin-telemetry": "1.2.6",
     "@salesforce/plugin-templates": "52.3.0",
     "@salesforce/plugin-trust": "^1.0.8",
     "@salesforce/plugin-user": "1.5.0",
@@ -138,7 +138,7 @@
     "@salesforce/sfdx-plugin-lwc-test": "0.1.7",
     "@salesforce/ts-types": "^1.5.17",
     "debug": "^4.3.1",
-    "salesforce-alm": "52.6.0",
+    "salesforce-alm": "52.5.0",
     "salesforce-lightning-cli": "3.0.0",
     "shelljs": "^0.8.4",
     "tslib": "^2.1.0",
@@ -189,7 +189,7 @@
   "resolutions": {
     "@salesforce/source-deploy-retrieve": "4.5.6",
     "@salesforce/ts-types": "1.5.20",
-    "@salesforce/plugin-telemetry": "1.2.5",
+    "@salesforce/plugin-telemetry": "1.2.6",
     "@salesforce/templates": "52.3.0"
   },
   "scripts": {
