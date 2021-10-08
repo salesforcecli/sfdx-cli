@@ -1311,10 +1311,10 @@
     open "^8.2.1"
     tslib "^2"
 
-"@salesforce/plugin-telemetry@1.2.5", "@salesforce/plugin-telemetry@^1.2.5":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.5.tgz#f2f987e13ccd6355e26303373858ec2ca86a966d"
-  integrity sha512-xLI7XF7i5PfElCNHDjSgkVrpT8Skb4NVnU/mxpX61uBBgPyCZky2tM+x1jQXrGstTm2fEnCeXTfal4UK/N1eHQ==
+"@salesforce/plugin-telemetry@1.2.6", "@salesforce/plugin-telemetry@^1.2.3":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.6.tgz#7d52a5ebd1f9230df08117e7c5940f864390dcfb"
+  integrity sha512-Fcisjeg7P9fmWQR0LKAleLHaLOcQ7d6zSVS8BR+WA2bLYa2K9aTW+lej9Zp1Z2VpsU7t94JVfuKlbtdoICMMPA==
   dependencies:
     "@oclif/config" "^1"
     "@salesforce/command" "^4.1.1"
@@ -9399,10 +9399,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.6.0:
-  version "52.6.0"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.6.0.tgz#089bf4b200100bdab6193a4edfc79d08a635587f"
-  integrity sha512-zNUXRHzu9ixTZQSu0jpupO72HIuNHk//MbmQulrvhhlDY6uqQoVw+Br5VJevcSgKJxiJWxJRk/gF3ldEukPlOw==
+salesforce-alm@52.5.0:
+  version "52.5.0"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.5.0.tgz#39b8800f4391b837ccb30f165780e9136d76646d"
+  integrity sha512-BU1TD8wUIHC+mK1GT9RqyZuixLYpHxSQN055cgLW0khxlOk9D169lH2aDu3ZRzLcbXpJQZykcQiLNMdtS5HpTg==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
@@ -9410,7 +9410,7 @@ salesforce-alm@52.6.0:
     "@salesforce/command" "^4.1.3"
     "@salesforce/core" "^2.28.0"
     "@salesforce/kit" "^1.5.13"
-    "@salesforce/plugin-telemetry" "^1.2.5"
+    "@salesforce/plugin-telemetry" "^1.2.3"
     "@salesforce/source-deploy-retrieve" "^4.3.2"
     "@salesforce/source-tracking" "^0.2.1"
     "@salesforce/ts-types" "^1.5.17"

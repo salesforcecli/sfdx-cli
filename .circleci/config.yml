@@ -322,9 +322,6 @@ workflows:
                 - main
       - release-management/release-package:
           tag: latest-rc
-          pre-job-steps:
-            - release-management/pin-dependencies:
-                tag: latest-rc
           github-release: true
           requires:
             - approval
@@ -384,7 +381,7 @@ workflows:
     triggers:
       - schedule:
           # Thursday mornings at 10am mountain
-          cron: '30 18 * * 4'
+          cron: '30 4 * * 5'
           filters:
             branches:
               only:
