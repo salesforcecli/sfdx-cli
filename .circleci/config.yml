@@ -381,7 +381,7 @@ workflows:
     triggers:
       - schedule:
           # Thursday mornings at 10am mountain
-          cron: '30 4 * * 5'
+          cron: '00 16 * * 4'
           filters:
             branches:
               only:
