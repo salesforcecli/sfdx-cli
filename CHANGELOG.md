@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.122.0-dev.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.8...v7.122.0-dev.0) (2021-10-08)
+
+
+### Features
+
+* use npm postinstall script to install sf ([97791ad](https://github.com/salesforcecli/sfdx-cli/commit/97791ad51347c72c85227e01f058f4d47757f8c7))
+
+
+### Bug Fixes
+
+* add some more debugging output ([3923b1f](https://github.com/salesforcecli/sfdx-cli/commit/3923b1fec3f83506d7aeaf2ef4205f488f21781b))
+* create path before moving sf to it ([7764405](https://github.com/salesforcecli/sfdx-cli/commit/7764405e31e506e6c2d81bb09d05e13f780ffd1a))
+* don't get sf root from pwd() ([85f6e18](https://github.com/salesforcecli/sfdx-cli/commit/85f6e18ef9aa0e31f7c22451d4a3a455a3640db3))
+* make sure sf gets copied to `sfdx` root ([a4b7443](https://github.com/salesforcecli/sfdx-cli/commit/a4b7443c8a65903dec77f7937db02601332bde74))
+* put sf back in bin folder ([e78ad00](https://github.com/salesforcecli/sfdx-cli/commit/e78ad0071624f9f9debc65a55cdfca3250677264))
+* remove newline from path ([a02d568](https://github.com/salesforcecli/sfdx-cli/commit/a02d568a1dac46225dbe641f40b4867221d3e453))
+* revert previous "fix" ([041ee7a](https://github.com/salesforcecli/sfdx-cli/commit/041ee7a84e28c06f1d5aecbe5c9f594f02e2f9a9))
+* shelljs.exec whoopsies ([b408631](https://github.com/salesforcecli/sfdx-cli/commit/b4086315f645ec4e9942095a07de2c01534d833d))
+
 ### [7.121.8](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.7...v7.121.8) (2021-10-08)
 
 ### [7.121.7](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.6...v7.121.7) (2021-10-07)
