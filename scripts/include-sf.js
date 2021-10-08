@@ -4,8 +4,8 @@ const path = require('path');
 const shelljs = require('shelljs');
 const fs = require('fs');
 
-const npmGlobalBin = shelljs.exec('npm list -g --depth 0 | head -1').stdout.trim();
-const sfGlobalPath = path.join(npmGlobalBin, 'node_modules', '@salesforce', 'cli');
+const npmGlobalInstallPath = shelljs.exec('npm list -g --depth 0 | head -1').stdout.trim();
+const sfGlobalPath = path.join(npmGlobalInstallPath, 'node_modules', '@salesforce', 'cli');
 
 console.log(`---- Including SF ----`);
 console.log(`   Moving sf from ${sfGlobalPath} to ./sf-cli`);
