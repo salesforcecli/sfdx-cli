@@ -221,7 +221,6 @@
     "test": "mocha --recursive \"test/**/*.ts\" && nyc --report lcov --report cobertura mocha -t 240000 --require source-map-support/register --recursive \"dist/**/*.test.js\"",
     "test-smoke-unix": "./tmp/sfdx/bin/sfdx version && ./tmp/sfdx/bin/sfdx help && ./tmp/sfdx/bin/sfdx plugins --core",
     "test:deprecation-policy": "set HOME=./ ./bin/run snapshot:compare",
-    "test": "mocha --recursive \"test/**/*.ts\" && nyc --report lcov --report cobertura mocha -t 240000 --require source-map-support/register --recursive \"dist/**/*.test.js\"",
     "trogdor": "yarn clean-all && yarn && yarn compile && yarn uts",
     "upload:deb": "oclif upload:deb",
     "upload:macos": "oclif upload:macos",
