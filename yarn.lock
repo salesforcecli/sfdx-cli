@@ -1256,10 +1256,10 @@
     open "8.2.1"
     tslib "^2"
 
-"@salesforce/plugin-release-management@dev":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-2.2.3.tgz#d011e2d8bc51db5839a0184fd8e04469144db0ac"
-  integrity sha512-bcLckqL5aJcMU4MmKiq3Azg7jXVBNepn0LvYH11e5jUE3GNyAP+q1gIbM7fQcheMSPhxK7aZ2nszrDISPLbhpg==
+"@salesforce/plugin-release-management@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-2.2.4.tgz#8939f175775bd5aa31f16e28d5ba4c793d3ea1e7"
+  integrity sha512-A5UbCUs1z4D5Aye20kEX4e0ufEm1xX8z4tku+ig58LM5m5W4wkwPh+NZ7ldT6qWSAII3dQzeFvkggyV/Sojt9g==
   dependencies:
     "@oclif/config" "^1"
     "@octokit/core" "^3.4.0"
@@ -1430,7 +1430,7 @@
     applicationinsights "^1.4.0"
     axios "^0.21.1"
 
-"@salesforce/templates@52.4.0", "@salesforce/templates@^52.0.0", "@salesforce/templates@^52.2.0":
+"@salesforce/templates@52.4.0":
   version "52.4.0"
   resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-52.4.0.tgz#adc00af36fb8ecdf2a454ee6f5a83ccbf92f8539"
   integrity sha512-E3po85LHosjJOwQSgsV87lj5gBgzOK2J9t4Ibi7ZiDbFnX4fA5X2FMiFldqnjHD6kHfDcEmmkISWlB6wJJ319A==
