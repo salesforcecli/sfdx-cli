@@ -265,16 +265,7 @@
   {
     "command": "force:community:create",
     "plugin": "salesforce-alm",
-    "flags": [
-      "apiversion",
-      "description",
-      "json",
-      "loglevel",
-      "name",
-      "targetusername",
-      "templatename",
-      "urlpathprefix"
-    ]
+    "flags": ["apiversion", "description", "json", "loglevel", "name", "targetusername", "templatename"]
   },
   {
     "command": "force:community:publish",
