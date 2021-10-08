@@ -321,14 +321,16 @@ workflows:
               only:
                 - main
       - release-management/release-package:
-          tag: latest-rc
-          github-release: true
+          tag: dev
+          github-release: false
+          prerelease: true
           requires:
-            - approval
+            - node-lts
+            - node-maintenance
           filters:
             branches:
               only:
-                - main
+                - dev
       - pack-and-upload-tarballs:
           filters:
             branches:
