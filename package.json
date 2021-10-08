@@ -130,7 +130,7 @@
     "@salesforce/plugin-org": "1.8.1",
     "@salesforce/plugin-schema": "1.0.8",
     "@salesforce/plugin-source": "1.2.2",
-    "@salesforce/plugin-telemetry": "1.2.5",
+    "@salesforce/plugin-telemetry": "1.2.6",
     "@salesforce/plugin-templates": "52.3.0",
     "@salesforce/plugin-trust": "^1.0.8",
     "@salesforce/plugin-user": "1.5.0",
