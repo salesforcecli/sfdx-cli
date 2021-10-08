@@ -179,7 +179,7 @@
   },
   {
     "command": "force:apex:log:tail",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-apex",
     "flags": ["apiversion", "color", "debuglevel", "json", "loglevel", "skiptraceflag", "targetusername"]
   },
   {
@@ -540,6 +540,7 @@
       "loglevel",
       "noancestors",
       "nonamespace",
+      "retry",
       "setalias",
       "setdefaultusername",
       "targetdevhubusername",
@@ -765,7 +766,6 @@
       "preserve",
       "releasenotesurl",
       "skipvalidation",
-      "sourceorg",
       "tag",
       "targetdevhubusername",
       "uninstallscript",
@@ -871,7 +871,7 @@
   },
   {
     "command": "force:source:delete",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": [
       "apiversion",
       "checkonly",
@@ -881,6 +881,8 @@
       "noprompt",
       "sourcepath",
       "targetusername",
+      "testlevel",
+      "verbose",
       "wait"
     ]
   },
@@ -920,6 +922,11 @@
     "command": "force:source:ignored:list",
     "plugin": "salesforce-alm",
     "flags": ["json", "loglevel", "sourcepath"]
+  },
+  {
+    "command": "force:source:manifest:create",
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["apiversion", "json", "loglevel", "manifestname", "manifesttype", "metadata", "outputdir", "sourcepath"]
   },
   {
     "command": "force:source:open",
