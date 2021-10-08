@@ -1498,7 +1498,7 @@
     open "^8.2.1"
     tslib "^2"
 
-"@salesforce/plugin-telemetry@1.2.6", "@salesforce/plugin-telemetry@^1.2.3":
+"@salesforce/plugin-telemetry@1.2.6", "@salesforce/plugin-telemetry@^1.2.5":
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-telemetry/-/plugin-telemetry-1.2.6.tgz#7d52a5ebd1f9230df08117e7c5940f864390dcfb"
   integrity sha512-Fcisjeg7P9fmWQR0LKAleLHaLOcQ7d6zSVS8BR+WA2bLYa2K9aTW+lej9Zp1Z2VpsU7t94JVfuKlbtdoICMMPA==
@@ -1509,17 +1509,17 @@
     "@salesforce/telemetry" "^2.0.5"
     tslib "^2"
 
-"@salesforce/plugin-templates@52.3.0":
-  version "52.3.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-52.3.0.tgz#3f37e954e3e62e9d56e681812fc71a339975e371"
-  integrity sha512-ScjkqY4o+uxo4rXUNGfdIQg4bBBxFI25SBpC7VdNwoGFAq5AZRE2nfz1doQYqKXVzKJZiZIhGgYLWzEBmJb/Tg==
+"@salesforce/plugin-templates@52.4.0":
+  version "52.4.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-52.4.0.tgz#7c129c9c9f5e1f3f2b07766d5a49c9e93887d397"
+  integrity sha512-pCRqiQ4L32/7Tyra0ulyRo4T1k0AHbvthExLFRN6dvZ5BanpneuKhkTel2lgVToGOdLR6OPOpk0naT64NmbNFQ==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
     "@salesforce/command" "^2.2.0"
     "@salesforce/core" "2.28.0"
-    "@salesforce/templates" "52.3.0"
+    "@salesforce/templates" "52.4.0"
     tslib "^1"
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
@@ -1641,10 +1641,10 @@
     applicationinsights "^1.4.0"
     axios "^0.21.1"
 
-"@salesforce/templates@52.3.0", "@salesforce/templates@^52.0.0", "@salesforce/templates@^52.2.0":
-  version "52.3.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-52.3.0.tgz#acf25f2dce4ad0e09a642cb3d1451e6ecf7998f3"
-  integrity sha512-mFfWvuecpmSmHVHv2NFFWc9LCc5T2YZ2yNoHoaUABjGtw/e+9QhHc5llEzOv2k1lGappjrLJ4XtZmoygVoevzg==
+"@salesforce/templates@52.4.0", "@salesforce/templates@^52.0.0", "@salesforce/templates@^52.2.0":
+  version "52.4.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-52.4.0.tgz#adc00af36fb8ecdf2a454ee6f5a83ccbf92f8539"
+  integrity sha512-E3po85LHosjJOwQSgsV87lj5gBgzOK2J9t4Ibi7ZiDbFnX4fA5X2FMiFldqnjHD6kHfDcEmmkISWlB6wJJ319A==
   dependencies:
     "@salesforce/core" "2.28.0"
     got "^11.8.2"
@@ -10423,10 +10423,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@52.5.0:
-  version "52.5.0"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.5.0.tgz#39b8800f4391b837ccb30f165780e9136d76646d"
-  integrity sha512-BU1TD8wUIHC+mK1GT9RqyZuixLYpHxSQN055cgLW0khxlOk9D169lH2aDu3ZRzLcbXpJQZykcQiLNMdtS5HpTg==
+salesforce-alm@52.6.0:
+  version "52.6.0"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-52.6.0.tgz#089bf4b200100bdab6193a4edfc79d08a635587f"
+  integrity sha512-zNUXRHzu9ixTZQSu0jpupO72HIuNHk//MbmQulrvhhlDY6uqQoVw+Br5VJevcSgKJxiJWxJRk/gF3ldEukPlOw==
   dependencies:
     "@oclif/config" "^1.14.0"
     "@oclif/errors" "^1.2.2"
@@ -10434,7 +10434,7 @@ salesforce-alm@52.5.0:
     "@salesforce/command" "^4.1.3"
     "@salesforce/core" "^2.28.0"
     "@salesforce/kit" "^1.5.13"
-    "@salesforce/plugin-telemetry" "^1.2.3"
+    "@salesforce/plugin-telemetry" "^1.2.5"
     "@salesforce/source-deploy-retrieve" "^4.3.2"
     "@salesforce/source-tracking" "^0.2.1"
     "@salesforce/ts-types" "^1.5.17"
