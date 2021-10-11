@@ -219,8 +219,8 @@
     "promote-dist-tags": "./scripts/promote-dist-tags",
     "promote-docker": "./scripts/docker-promote.js",
     "snapshot-generate": "HOME=./ ./bin/run snapshot:generate",
+    "test": "nyc mocha --recursive \"test/**/*.test.ts\" --report lcov --report cobertura -t 240000 --require source-map-support/register",
     "snapshot-compare": "HOME=./ ./bin/run snapshot:compare",
-    "test": "mocha --recursive \"test/**/*.ts\" && nyc --report lcov --report cobertura mocha -t 240000 --require source-map-support/register --recursive \"dist/**/*.test.js\"",
     "test-smoke-unix": "./tmp/sfdx/bin/sfdx version && ./tmp/sfdx/bin/sfdx help && ./tmp/sfdx/bin/sfdx plugins --core",
     "test:deprecation-policy": "set HOME=./ ./bin/run snapshot:compare",
     "trogdor": "yarn clean-all && yarn && yarn compile && yarn uts",
@@ -228,7 +228,7 @@
     "upload:macos": "oclif upload:macos",
     "upload:tarballs": "oclif upload:tarballs",
     "upload:win": "oclif upload:win",
-    "uts": "nyc mocha --require source-map-support/register --recursive \"dist/**/*.test.js\"",
+    "uts": "nyc mocha --require source-map-support/register --recursive \"test/**/*.test.ts\"",
     "watch": "tsc -w -p tsconfig.json"
   },
   "husky": {

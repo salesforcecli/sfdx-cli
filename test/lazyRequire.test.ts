@@ -14,7 +14,7 @@ import LazyRequire from '@salesforce/lazy-require';
 import { StubbedCallableType, StubbedType, stubCallable, stubInterface } from '@salesforce/ts-sinon';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import * as mod from './lazyRequire';
+import * as mod from '../src/lazyRequire';
 
 describe('lazyRequire', () => {
   let sandbox: sinon.SinonSandbox;

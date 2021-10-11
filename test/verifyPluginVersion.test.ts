@@ -10,7 +10,7 @@ import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
 import { getString } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import hook, { BANNED_PLUGINS } from './hooks/verifyPluginVersion';
+import hook, { BANNED_PLUGINS } from '../src/hooks/verifyPluginVersion';
 
 describe('verifyPluginVersion preinstall hook', () => {
   let sandbox: sinon.SinonSandbox;

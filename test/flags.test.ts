@@ -6,7 +6,7 @@
  */
 
 import { expect } from 'chai';
-import { preprocessCliFlags, ProcessLike } from './flags';
+import { preprocessCliFlags, ProcessLike } from '../src/flags';
 
 describe('CLI flags', () => {
   it('should pass through args it does not recognize', () => {
