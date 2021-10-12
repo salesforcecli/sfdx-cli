@@ -185,17 +185,7 @@
   {
     "command": "force:apex:test:report",
     "plugin": "@salesforce/plugin-apex",
-    "flags": [
-      "codecoverage",
-      "json",
-      "loglevel",
-      "outputdir",
-      "resultformat",
-      "targetusername",
-      "testrunid",
-      "verbose",
-      "wait"
-    ]
+    "flags": ["outputdir", "resultformat", "targetusername", "testrunid", "verbose", "wait"]
   },
   {
     "command": "force:apex:test:run",
