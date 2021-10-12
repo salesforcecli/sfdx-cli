@@ -186,7 +186,6 @@
     "command": "force:apex:test:report",
     "plugin": "@salesforce/plugin-apex",
     "flags": [
-      "apiversion",
       "codecoverage",
       "json",
       "loglevel",
