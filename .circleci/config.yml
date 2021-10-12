@@ -76,6 +76,14 @@ commands:
               exit 1
             fi
 jobs:
+  build-latest-rc:
+    docker:
+      - image: node:lts
+    steps:
+      - checkout
+      - release-management/install-sf-release
+      - run: sf-release cli:latestrc:build
+
   # There are two pack jobs:
   # - test-pack-tarballs to run on every branch *other than main*
   # - pack-and-upload-tarballs to run only on main
@@ -411,6 +419,18 @@ workflows:
           requires:
             - npm-promotions
             - promote-channels
+
+  build-latest-rc:
+    triggers:
+      - schedule:
+          # Thursday mornings at 10:30am mountain
+          cron: '30 16 * * 4'
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - build-latest-rc
 
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
