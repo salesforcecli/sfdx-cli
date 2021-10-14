@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   release-management: salesforce/npm-release-management@4
   jq: circleci/jq@2.2
+  slack: circleci/slack@4.4
 
 parameters:
   run-auto-workflows:
@@ -88,6 +89,7 @@ jobs:
     resource_class: xlarge
     steps:
       - checkout
+      - run: exit 1
       - run: |
           apt-get update
           apt-get install -y p7zip-full
@@ -98,6 +100,10 @@ jobs:
       - run: yarn pack:tarballs
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
+      - slack/notify:
+          channel: cli-team-alerts
+          event: fail
+          template: basic_fail_1
 
   pack-and-upload-tarballs: &pack-and-upload-tarballs
     docker:
