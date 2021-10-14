@@ -80,7 +80,7 @@ jobs:
   # There are two pack jobs:
   # - test-pack-tarballs to run on every branch *other than main*
   # - pack-and-upload-tarballs to run only on main
-  # The persist_to_workspace feature would allow use to have a
+  # The persist_to_workspace feature would allow us to have a
   # pack-tarballs and an upload-tarballs job, but the perf gains
   # is minimal since the workspace is almost a GB to attach.
   test-pack-tarballs:
@@ -119,6 +119,9 @@ jobs:
       - run: yarn test-smoke-unix
       - run: yarn upload:tarballs
       - run: ./scripts/promote-stable-rc-tarballs
+      - slack/status:
+          channel: 'cli-team-alerts'
+          fail_only: true
 
   pack-and-upload-macos-installer:
     macos:
@@ -199,6 +202,13 @@ jobs:
       - run: ./scripts/verify-promote
       - release-management/install-sf-release
       - run: sf-release cli:versions:inspect -c stable -l archive
+      - slack/notify:
+          channel: 'cli-team-notifications'
+          color: '#9bcd9b'
+          message: 'sfdx-cli latest has been published'
+      - slack/status:
+          channel: 'cli-team-alerts'
+          fail_only: true
 
   docker-publish-slim:
     docker:
@@ -377,13 +387,6 @@ workflows:
                 - main
           requires:
             - release-management/release-package
-      - slack/status:
-          channel: 'cli-team-alerts'
-          fail_only: true
-      - slack/notify:
-          channel: 'cli-team-notifications'
-          color: '#9bcd9b'
-          message: 'sfdx-cli latest has been published'
 
   promote-to-latest:
     triggers:
@@ -419,13 +422,6 @@ workflows:
           requires:
             - npm-promotions
             - promote-channels
-      - slack/status:
-          channel: 'cli-team-alerts'
-          fail_only: true
-      - slack/notify:
-          channel: 'cli-team-notifications'
-          color: '#9bcd9b'
-          message: 'sfdx-cli latest-rc has been promoted to latest'
 
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
