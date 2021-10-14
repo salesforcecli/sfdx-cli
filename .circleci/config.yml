@@ -189,7 +189,7 @@ jobs:
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn promote-docker
     environment:
-      NPM_CONFIG_PREFIX: "~/.npm-global"
+      NPM_CONFIG_PREFIX: '~/.npm-global'
 
   promote-verify:
     docker:
@@ -212,6 +212,8 @@ jobs:
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn pack:docker:slim
       - verify-slim-dependencies
+    environment:
+      NPM_CONFIG_PREFIX: '~/.npm-global'
 
   docker-publish-full:
     docker:
@@ -224,6 +226,8 @@ jobs:
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn pack:docker:full
       - verify-full-dependencies
+    environment:
+      NPM_CONFIG_PREFIX: '~/.npm-global'
 
   close-CTC:
     docker:
