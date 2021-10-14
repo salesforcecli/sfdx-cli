@@ -4,15 +4,17 @@ const path = require('path');
 const shelljs = require('shelljs');
 const fs = require('fs');
 
-const sfUnixPath = 'node_modules/@salesforce/cli/bin/run';
+const npmGlobalInstallPath = shelljs.exec('npm list -g --depth 0 | head -1').stdout.trim();
+const sfGlobalPath = path.join(npmGlobalInstallPath, 'node_modules', '@salesforce', 'cli');
+
+console.log(`---- Including SF ----`);
+console.log(`   Moving sf from ${sfGlobalPath} to ./sf-cli`);
+shelljs.mv('-f', sfGlobalPath, 'sf-cli');
+
+const sfUnixPath = 'sf-cli/bin/run';
 const sfBin = path.join('bin', 'sf');
 const sfdxBin = path.join('bin', 'sfdx');
 
-const sfWinPath = 'node_modules\\@salesforce\\cli\\bin\\run';
-const sfCmd = path.join('bin', 'sf.cmd');
-const sfdxCmd = path.join('bin', 'sfdx.cmd');
-
-console.log(`---- Including SF ----`);
 console.log(`  Updating ${sfdxBin} with references to sf`);
 const binContents = fs
   .readFileSync(sfdxBin, 'UTF-8')
@@ -24,7 +26,11 @@ console.log(`  Writing ${sfBin}`);
 fs.writeFileSync(sfBin, binContents);
 shelljs.chmod('+x', sfBin);
 
-console.log(`  Updating ${sfCmd} with references to sf`);
+const sfWinPath = 'sf-cli\\bin\\run.cmd';
+const sfCmd = path.join('bin', 'sf.cmd');
+const sfdxCmd = path.join('bin', 'sfdx.cmd');
+
+console.log(`  Updating ${sfdxCmd} with references to sf`);
 const cmdContents = fs
   .readFileSync(sfdxCmd, 'UTF-8')
   .replace(/sfdx/g, 'sf')
