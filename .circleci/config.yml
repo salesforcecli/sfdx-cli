@@ -188,6 +188,8 @@ jobs:
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn promote-docker
+    environment:
+      NPM_CONFIG_PREFIX: "~/.npm-global"
 
   promote-verify:
     docker:
