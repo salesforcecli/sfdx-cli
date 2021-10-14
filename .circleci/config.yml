@@ -89,7 +89,6 @@ jobs:
     resource_class: xlarge
     steps:
       - checkout
-      - run: exit 1
       - run: |
           apt-get update
           apt-get install -y p7zip-full
@@ -100,9 +99,6 @@ jobs:
       - run: yarn pack:tarballs
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
-      - slack/status:
-          channel: 'cli-team-alerts'
-          fail_only: true
 
   pack-and-upload-tarballs: &pack-and-upload-tarballs
     docker:
@@ -381,6 +377,13 @@ workflows:
                 - main
           requires:
             - release-management/release-package
+      - slack/status:
+          channel: 'cli-team-alerts'
+          fail_only: true
+      - slack/notify:
+          channel: 'cli-team-notifications'
+          color: '#9bcd9b'
+          message: 'sfdx-cli latest has been published'
 
   promote-to-latest:
     triggers:
@@ -416,6 +419,13 @@ workflows:
           requires:
             - npm-promotions
             - promote-channels
+      - slack/status:
+          channel: 'cli-team-alerts'
+          fail_only: true
+      - slack/notify:
+          channel: 'cli-team-notifications'
+          color: '#9bcd9b'
+          message: 'sfdx-cli latest-rc has been promoted to latest'
 
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
