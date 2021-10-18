@@ -205,7 +205,7 @@ jobs:
       - slack/notify:
           channel: 'cli-team-notifications'
           color: '#9bcd9b'
-          message: 'sfdx-cli latest has been published'
+          message: '`sfdx-cli` (version X.XXX.X) has been promoted to latest. :tada2: Release notes: https://github.com/forcedotcom/cli/blob/master/releasenotes/README.md'
       - slack/status:
           channel: 'cli-team-alerts'
           fail_only: true
