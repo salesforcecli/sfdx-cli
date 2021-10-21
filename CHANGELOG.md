@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.123.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.123.0...v7.123.1) (2021-10-21)
+
+
+### Bug Fixes
+
+* ignore scripts when running yarn install ([c301f72](https://github.com/salesforcecli/sfdx-cli/commit/c301f728110e454497bf36b953f7f575e47871ee))
+* quotes ([d46ec0a](https://github.com/salesforcecli/sfdx-cli/commit/d46ec0a692adcdd49660e5b0634949ce6cf399a6))
+
 ## [7.123.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.122.1...v7.123.0) (2021-10-14)
 
 
