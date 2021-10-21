@@ -898,6 +898,8 @@
       "loglevel",
       "manifest",
       "metadata",
+      "postdestructivechanges",
+      "predestructivechanges",
       "runtests",
       "soapdeploy",
       "sourcepath",
