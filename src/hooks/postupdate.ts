@@ -39,7 +39,7 @@ function suggestAlternatives(): void {
 function isNpmInstall(sfPath: string): boolean {
   const nodePathParts = ['node', 'nodejs', '.nvm', '.asdf', 'node_modules', 'npm', '.npm'];
   const sfPathParts = sfPath.split(path.sep);
-  return sfPathParts.filter((p) => nodePathParts.includes(p)).length > 0;
+  return sfPathParts.filter((p) => nodePathParts.includes(p.toLowerCase())).length > 0;
 }
 
 /**
