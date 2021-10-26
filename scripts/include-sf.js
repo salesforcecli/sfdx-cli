@@ -4,7 +4,7 @@ const path = require('path');
 const shelljs = require('shelljs');
 const fs = require('fs');
 
-const npmShow = JSON.parse(shelljs.exec('npm show @salesforce/cli@latest-rc dist-tags --json'));
+const npmShow = JSON.parse(shelljs.exec('npm show @salesforce/cli dist-tags --json'));
 // make sure latest-rc tag exists, if not fallback to latest
 const tag = npmShow['latest-rc'] ? 'latest-rc' : 'latest';
 console.log(`---- Installing  @salesforce/cli@${tag} ----`);
