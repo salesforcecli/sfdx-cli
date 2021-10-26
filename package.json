@@ -207,7 +207,6 @@
     "pack:tarballs": "oclif pack:tarballs",
     "pack:verify": "sf-release cli:tarballs:verify",
     "pack:win": "oclif pack:win",
-    "postinstall": "npm install @salesforce/cli -g",
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "yarn test:deprecation-policy ",
     "prepack": "yarn compile && yarn lint && yarn oclif-artifacts",

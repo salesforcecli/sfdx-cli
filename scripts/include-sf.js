@@ -4,6 +4,12 @@ const path = require('path');
 const shelljs = require('shelljs');
 const fs = require('fs');
 
+const npmShow = JSON.parse(shelljs.exec('npm show @salesforce/cli@latest-rc dist-tags --json'));
+// make sure latest-rc tag exists, if not fallback to latest
+const tag = npmShow['latest-rc'] ? 'latest-rc' : 'latest';
+console.log(`---- Installing  @salesforce/cli@${tag} ----`);
+shelljs.exec(`npm install @salesforce/cli@${tag} -g`);
+
 const npmGlobalInstallPath = shelljs.exec('npm list -g --depth 0 | head -1').stdout.trim();
 const sfGlobalPath = path.join(npmGlobalInstallPath, 'node_modules', '@salesforce', 'cli');
 
