@@ -126,7 +126,7 @@ jobs:
       - run: yarn pack:verify
       - run: yarn test-smoke-unix
       - run: yarn upload:tarballs
-      - run: ./scripts/promote-stable-rc-tarballs
+      # - run: ./scripts/promote-stable-rc-tarballs
       - slack/status:
           channel: 'cli-team-alerts'
           fail_only: true
@@ -140,7 +140,7 @@ jobs:
       - run: yarn install
       - run: yarn pack:macos
       - run: yarn upload:macos
-      - run: ./scripts/promote-stable-rc-mac
+      # - run: ./scripts/promote-stable-rc-mac
 
   pack-and-upload-windows-installer:
     <<: *pack-and-upload-tarballs
@@ -160,7 +160,7 @@ jobs:
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
       - run: yarn pack:win
       - run: yarn upload:win
-      - run: ./scripts/promote-stable-rc-win
+      # - run: ./scripts/promote-stable-rc-win
 
   promote-channels:
     docker:
@@ -338,7 +338,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - dev
       - release-management/release-package:
           tag: dev
           github-release: false
@@ -353,14 +353,14 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - dev
           requires:
             - release-management/release-package
       - pack-and-upload-macos-installer:
           filters:
             branches:
               only:
-                - main
+                - dev
           requires:
             - release-management/release-package
             - pack-and-upload-tarballs
@@ -368,7 +368,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - dev
           requires:
             - release-management/release-package
             - pack-and-upload-tarballs
