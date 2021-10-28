@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.126.0-dev.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.124.0...v7.126.0-dev.0) (2021-10-28)
+
+
+### Bug Fixes
+
+* install sf separately ([52ba0c8](https://github.com/salesforcecli/sfdx-cli/commit/52ba0c8a5ec917166b072d6904196ccce40bda48))
+* postupdate hook ([1c74cd1](https://github.com/salesforcecli/sfdx-cli/commit/1c74cd17e00c9d78e11becfda354efd938bca462))
+* test new installer packaging ([83160bd](https://github.com/salesforcecli/sfdx-cli/commit/83160bd87b601548668a20951a832be597db96eb))
+* test new installers with sf included ([afcf758](https://github.com/salesforcecli/sfdx-cli/commit/afcf758bade1569b5d3161a01020566b26d9ebbc))
+
 ## [7.124.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.123.1...v7.124.0) (2021-10-21)
 
 ### [7.123.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.123.0...v7.123.1) (2021-10-21)
