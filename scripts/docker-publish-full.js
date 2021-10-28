@@ -19,9 +19,15 @@ const DOCKER_HUB_REPOSITORY = dockerShared.repo;
 (async () => {
   dockerShared.validateDockerEnv();
   const SALESFORCE_CLI_VERSION = await dockerShared.getCliVersion();
+  const SF_CLI_VERSION = process.env.SF_CLI_VERSION ?? 'latest-rc';
 
   shell.exec(
-    `docker build --file ./dockerfiles/Dockerfile_full --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full --no-cache .`
+    `docker build \
+      --file ./dockerfiles/Dockerfile_full \
+      --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} \
+      --build-arg SF_CLI_VERSION=${SF_CLI_VERSION} \
+      --tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full \
+      --no-cache .`
   );
 
   if (process.env.NO_PUBLISH) return;
