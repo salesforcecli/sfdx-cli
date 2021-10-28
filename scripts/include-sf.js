@@ -26,7 +26,7 @@ console.log(`  Writing ${sfBin}`);
 fs.writeFileSync(sfBin, binContents);
 shelljs.chmod('+x', sfBin);
 
-const sfWinPath = 'sf-cli\\bin\\run.cmd';
+const sfWinPath = 'sf-cli\\bin\\run';
 const sfCmd = path.join('bin', 'sf.cmd');
 const sfdxCmd = path.join('bin', 'sfdx.cmd');
 
