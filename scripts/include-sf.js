@@ -14,8 +14,8 @@ const npmGlobalInstallPath = shelljs.exec('npm list -g --depth 0 | head -1').std
 const sfGlobalPath = path.join(npmGlobalInstallPath, 'node_modules', '@salesforce', 'cli');
 
 console.log(`---- Including SF ----`);
-console.log(`   Moving sf from ${sfGlobalPath} to ./sf-cli`);
-shelljs.mv('-f', sfGlobalPath, 'sf-cli');
+console.log(`Moving sf from ${sfGlobalPath} to ./sf`);
+shelljs.mv('-f', sfGlobalPath, 'sf');
 
 const sfUnixPath = 'sf/bin/run';
 const sfBin = path.join('bin', 'sf');
