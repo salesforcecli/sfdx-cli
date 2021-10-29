@@ -136,7 +136,7 @@ jobs:
       xcode: 12.5.1
     steps:
       - checkout
-      - run: git fetch origin && git pull
+      # - run: git fetch origin && git pull
       - run: yarn install
       - run: yarn pack:macos
       - run: yarn upload:macos
@@ -146,7 +146,7 @@ jobs:
     <<: *pack-and-upload-tarballs
     steps:
       - checkout
-      - run: git fetch origin && git pull
+      # - run: git fetch origin && git pull
       - restore_cache:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
@@ -328,7 +328,7 @@ workflows:
             - node-lts
           filters:
             branches:
-              ignore: main # test the pack on PRs, but main will do pack-and-upload-tarballs
+              ignore: dev # test the pack on PRs, but main will do pack-and-upload-tarballs
       - approval:
           type: approval
           requires:
@@ -339,30 +339,30 @@ workflows:
             branches:
               only:
                 - dev
-      - release-management/release-package:
-          tag: dev
-          github-release: false
-          prerelease: true
-          requires:
-            - approval
-          filters:
-            branches:
-              only:
-                - dev
+      # - release-management/release-package:
+      #     tag: dev
+      #     github-release: false
+      #     prerelease: true
+      #     requires:
+      #       - approval
+      #     filters:
+      #       branches:
+      #         only:
+      #           - dev
       - pack-and-upload-tarballs:
           filters:
             branches:
               only:
                 - dev
           requires:
-            - release-management/release-package
+            - approval
       - pack-and-upload-macos-installer:
           filters:
             branches:
               only:
                 - dev
           requires:
-            - release-management/release-package
+            - approval
             - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
           filters:
@@ -370,32 +370,32 @@ workflows:
               only:
                 - dev
           requires:
-            - release-management/release-package
+            - approval
             - pack-and-upload-tarballs
-      - docker-publish-slim:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
+            # - docker-publish-slim:
+            #     filters:
+            #       branches:
+            #         only:
+            #           - main
+            #     requires:
+            #       - release-management/release-package
             - pack-and-upload-tarballs
-      - docker-publish-full:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
+            # - docker-publish-full:
+            #     filters:
+            #       branches:
+            #         only:
+            #           - main
+            #     requires:
+            #       - release-management/release-package
             - pack-and-upload-tarballs
-      - run-all-nuts:
-          # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
+      # - run-all-nuts:
+      #     # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+      #     requires:
+      #       - release-management/release-package
 
   promote-to-latest:
     triggers:
