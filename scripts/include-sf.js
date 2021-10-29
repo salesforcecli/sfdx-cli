@@ -17,7 +17,7 @@ console.log(`---- Including SF ----`);
 console.log(`   Moving sf from ${sfGlobalPath} to ./sf-cli`);
 shelljs.mv('-f', sfGlobalPath, 'sf-cli');
 
-const sfUnixPath = 'sf-cli/bin/run';
+const sfUnixPath = 'sf/bin/run';
 const sfBin = path.join('bin', 'sf');
 const sfdxBin = path.join('bin', 'sfdx');
 
@@ -32,7 +32,7 @@ console.log(`  Writing ${sfBin}`);
 fs.writeFileSync(sfBin, binContents);
 shelljs.chmod('+x', sfBin);
 
-const sfWinPath = 'sf-cli\\bin\\run';
+const sfWinPath = 'sf\\bin\\run';
 const sfCmd = path.join('bin', 'sf.cmd');
 const sfdxCmd = path.join('bin', 'sfdx.cmd');
 
