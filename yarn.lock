@@ -1347,20 +1347,7 @@
     yeoman-environment "2.4.0"
     yeoman-generator "4.0.1"
 
-"@salesforce/plugin-trust@^1.0.7", "@salesforce/plugin-trust@^1.0.8":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-trust/-/plugin-trust-1.0.10.tgz#d479a8e238cf7508c1db15f379c177ad8b171b8f"
-  integrity sha512-/XY9tRbxofy8k+1l9rIPspaUEEI+VInMZ7p/+Tl3yyONd74yCBHdz9wVb59PAkUI/G460reI8Vt/M29QyoxSXQ==
-  dependencies:
-    "@oclif/config" "^1.17.0"
-    "@salesforce/command" "^3.0.5"
-    "@salesforce/core" "^2.23.2"
-    npm "^7.21.0"
-    npm-run-path "^4.0.1"
-    shelljs "^0.8.4"
-    tslib "^2"
-
-"@salesforce/plugin-trust@^1.0.9":
+"@salesforce/plugin-trust@^1.0.8", "@salesforce/plugin-trust@^1.0.9":
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-trust/-/plugin-trust-1.0.10.tgz#d479a8e238cf7508c1db15f379c177ad8b171b8f"
   integrity sha512-/XY9tRbxofy8k+1l9rIPspaUEEI+VInMZ7p/+Tl3yyONd74yCBHdz9wVb59PAkUI/G460reI8Vt/M29QyoxSXQ==
@@ -8239,9 +8226,9 @@ oclif@^1.18.1:
     yosay "^2.0.2"
 
 oclif@dev:
-  version "2.0.0-dev.0"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.0.0-dev.0.tgz#f659d589f0fb750b3679327a8620c3f4238d78c1"
-  integrity sha512-Dq3veOAmw6Lse5XlUKBCnNLKDbtDUEFxFUr7lugOBqoiqwW0beQpQ51Kwi5Ery6tq3PR5IvD7F/LNfuaUVfIQQ==
+  version "2.0.0-dev.1"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.0.0-dev.1.tgz#81ec00c611d65de4580ee1e8a5ab2c95b67ed03a"
+  integrity sha512-zY7RWQJkhuYlfMMbuLa9jXA1tGJpG3+aEZXrh4oqC+cQbfpLcGs9w3J2a7GV1KJ7+uwgVFwS4x1gTI1KTeeJLg==
   dependencies:
     "@oclif/core" "^1.0.0"
     "@oclif/fixpack" "^2.3.0"
