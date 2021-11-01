@@ -350,6 +350,7 @@ workflows:
               only:
                 - dev
           requires:
+            - approval
             - release-management/release-package
       - pack-and-upload-macos-installer:
           filters:
