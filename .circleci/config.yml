@@ -322,7 +322,7 @@ workflows:
           # no point to pack if the test fail, and we only care to test the pack with the node version
           # we ship (specified in package.json.oclif.node)
           requires:
-            - node-lts
+            - release-management/test-package
           filters:
             branches:
               ignore: dev # test the pack on PRs, but main will do pack-and-upload-tarballs
