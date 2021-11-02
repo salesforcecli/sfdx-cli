@@ -64,13 +64,13 @@ const hook = async function (): Promise<void> {
       sfdxExec = sfExec = path.join(dataDirBin, 'sfdx.cmd');
       sfExec = path.join(dataDirBin, 'sf.cmd');
     } else {
-      dataDirBin = path.join(process.env.HOME as string, pjson.oclif.dirname, 'client', 'bin');
+      dataDirBin = path.join(process.env.HOME as string, '.local', 'share', pjson.oclif.dirname, 'client', 'bin');
       sfdxExec = path.join(dataDirBin, 'sfdx');
       sfExec = path.join(dataDirBin, 'sf');
     }
 
     writeFileSync(sfExec, readFileSync(sfdxExec, { encoding: 'utf-8' }).replace(/sfdx/g, 'sf').replace(/SFDX/g, 'SF'));
-    chmod('+x', path.join(dataDirBin, sfExec));
+    chmod('+x', dataDirBin, sfExec);
 
     success = true;
   } catch (error) {
