@@ -1207,9 +1207,9 @@
     tslib "^2"
 
 "@salesforce/plugin-generator@^1.1.7":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-generator/-/plugin-generator-1.2.0.tgz#52ec9a181f8d2d8130faae0bc622b78b685e722f"
-  integrity sha512-GP6GelvfVMlKULKSa/KXWTkx/+DX+Yh0qE9KenThPEQn2WJB/f/Y3/4KwIlUV1YoXjmkr5nTHasrPt4aAnyy+Q==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-generator/-/plugin-generator-1.2.1.tgz#f7c6e314b487f5ea9420a59ee3cef9c99c581c47"
+  integrity sha512-2ML5fk6FyPSrGQi3Y0CXmfSn8+nDojDgLo/ZQHeu+ONfWWfmS2u2W5Wthas8WFs1scQObFja8ZQwS7MCAL4yTw==
   dependencies:
     "@oclif/command" "^1.8.0"
     "@oclif/config" "^1.17.0"
