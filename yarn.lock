@@ -8251,14 +8251,12 @@ object.values@^1.1.3, object.values@^1.1.5:
     define-properties "^1.1.3"
     es-abstract "^1.19.1"
 
-oclif@^1.18.1:
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-1.18.1.tgz#07f7244932652967728ae58038a6652b51b43934"
-  integrity sha512-bX9lwpEBHcWhUldHOCstS08JOo69lQfS3qCeimJRGdXKflewarwEWZiWG2vTJi30KuwT0YyObCAJO7Ux1XI9ew==
+oclif@2.0.0-main.9:
+  version "2.0.0-main.9"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.0.0-main.9.tgz#6d44d2686f73334f3e25a5a88cae313b2948c35b"
+  integrity sha512-UUehcbCLhsvtlS+RA7GvzB1pBADbpHatRrapY7PPAih+T31QQxIGi7IyiNQXO1Yq7iAS03NQQdniBpmRGaALsw==
   dependencies:
-    "@oclif/command" "^1.6"
-    "@oclif/config" "^1.12.6"
-    "@oclif/errors" "^1.2.2"
+    "@oclif/core" "^1.0.0"
     "@oclif/fixpack" "^2.3.0"
     "@oclif/plugin-help" "^3"
     "@oclif/plugin-not-found" "^1.2.2"
@@ -8278,12 +8276,14 @@ oclif@^1.18.1:
     yeoman-generator "3"
     yosay "^2.0.2"
 
-oclif@dev:
-  version "2.0.0-dev.1"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.0.0-dev.1.tgz#81ec00c611d65de4580ee1e8a5ab2c95b67ed03a"
-  integrity sha512-zY7RWQJkhuYlfMMbuLa9jXA1tGJpG3+aEZXrh4oqC+cQbfpLcGs9w3J2a7GV1KJ7+uwgVFwS4x1gTI1KTeeJLg==
+oclif@^1.18.1:
+  version "1.18.1"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-1.18.1.tgz#07f7244932652967728ae58038a6652b51b43934"
+  integrity sha512-bX9lwpEBHcWhUldHOCstS08JOo69lQfS3qCeimJRGdXKflewarwEWZiWG2vTJi30KuwT0YyObCAJO7Ux1XI9ew==
   dependencies:
-    "@oclif/core" "^1.0.0"
+    "@oclif/command" "^1.6"
+    "@oclif/config" "^1.12.6"
+    "@oclif/errors" "^1.2.2"
     "@oclif/fixpack" "^2.3.0"
     "@oclif/plugin-help" "^3"
     "@oclif/plugin-not-found" "^1.2.2"
