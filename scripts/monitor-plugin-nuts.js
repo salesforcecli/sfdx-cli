@@ -27,13 +27,6 @@ const notCompleteStatus = ['running', 'on_hold'];
 // circleci
 const circleciBaseUrl = 'https://circleci.com/api/v2/';
 
-const orgSlug = (org, repo) => {
-  return `github/${org}`;
-};
-const projectSlug = (org, repo) => {
-  return `${orgSlug(org)}/${repo}`;
-};
-
 /**
  * MonitorPluginNuts is responsible for monitoring the progress of the supplied
  * circleci pipeline until completion or the job runtime exceeds wait time
@@ -43,9 +36,14 @@ class MonitorPluginNuts {
   isComplete = false;
   status = 'initial state';
   justNuts = {};
+  circleToken;
   nutsWaitInterval;
   nutsCompletionRetryCnt;
   constructor(pipelineData) {
+    this.circleToken = process.env.CIRCLECI_API_TOKEN;
+    if (!this.circleToken) {
+      throw new Error('CIRCLECI_API_TOKEN is required to be set to a valid CircleCI API Token.');
+    }
     this.pipelineData = pipelineData;
     this.nutsCompletionRetryCnt = parseInt(process.env.NUTS_COMPLETION_RETRY_CNT ?? '30');
     const totalWaitTime = parseInt(process.env.NUTS_WAIT_TIME ?? '900');
@@ -68,7 +66,7 @@ class MonitorPluginNuts {
   async circle(url, options = {}) {
     const defaultOptions = {
       method: 'GET',
-      headers: { 'Circle-Token': process.env.CIRCLE_TOKEN, responseType: 'json', resolveBodyOnly: true },
+      headers: { 'Circle-Token': this.circleToken, responseType: 'json', resolveBodyOnly: true },
     };
     options = Object.assign(defaultOptions, { ...options });
     try {
@@ -80,16 +78,16 @@ class MonitorPluginNuts {
 
   async checkWorkflowState() {
     const url = this.getWorkflowUrl();
-      const response = await this.circle(url, {});
-      const justNuts = response.items.find((item) => item.name === 'just-nuts');
-      // could not find 'just-nuts' in the workflow - stop monitoring the job
-      if (!justNuts) {
-        this.isComplete = true;
-        this.status = 'success';
-        return;
-      }
-      this.isComplete = !notCompleteStatus.some((status) => justNuts.status === status);
-      this.justNuts = justNuts;
+    const response = await this.circle(url, {});
+    const justNuts = response.items.find((item) => item.name === 'just-nuts');
+    // could not find 'just-nuts' in the workflow - stop monitoring the job
+    if (!justNuts) {
+      this.isComplete = true;
+      this.status = 'success';
+      return;
+    }
+    this.isComplete = !notCompleteStatus.some((status) => justNuts.status === status);
+    this.justNuts = justNuts;
   }
 
   async waitForCompletion() {
@@ -105,13 +103,15 @@ class MonitorPluginNuts {
         this.status = 'monitor timed out';
         this.isComplete = true;
       }
-    } catch(error) {
+    } catch (error) {
       this.status = `exception occured while monitor job ${error}`;
       this.isComplete = true;
     }
   }
   displayWorkflowState() {
-    console.log(`Workflow: ${this.justNuts.name} Status: ${this.justNuts.status ?? this.status} URL: ${this.getCircleCiUrl()}`);
+    console.log(
+      `Workflow: ${this.justNuts.name} Status: ${this.justNuts.status ?? this.status} URL: ${this.getCircleCiUrl()}`
+    );
   }
 }
 
