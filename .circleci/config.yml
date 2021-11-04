@@ -349,7 +349,6 @@ workflows:
               only:
                 - main
           requires:
-            - approval
             - release-management/release-package
       - pack-and-upload-macos-installer:
           filters:
@@ -357,7 +356,6 @@ workflows:
               only:
                 - main
           requires:
-            - approval
             - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
           filters:
@@ -365,7 +363,6 @@ workflows:
               only:
                 - main
           requires:
-            - approval
             - pack-and-upload-tarballs
       - docker-publish-slim:
           filters:
