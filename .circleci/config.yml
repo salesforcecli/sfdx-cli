@@ -308,33 +308,28 @@ workflows:
           filters:
             branches:
               ignore: main
-      # - release-management/test-package:
-      #     name: node-latest
-      #     node_version: latest
       - release-management/test-package:
-          name: node-lts
-          node_version: 'lts'
-      - release-management/test-package:
-          name: node-lts-windows
-          node_version: 'lts'
-          os: windows
-      - release-management/test-package:
-          name: node-maintenance
-          node_version: 'maintenance'
+          matrix:
+            parameters:
+              os:
+                - linux
+                - windows
+              node_version:
+                - latest
+                - lts
+                - maintenance
       - test-pack-tarballs:
           # no point to pack if the test fail, and we only care to test the pack with the node version
           # we ship (specified in package.json.oclif.node)
           requires:
-            - node-lts
+            - release-management/test-package
           filters:
             branches:
               ignore: main # test the pack on PRs, but main will do pack-and-upload-tarballs
       - approval:
           type: approval
           requires:
-            # - node-latest
-            - node-lts
-            - node-maintenance
+            - release-management/test-package
           filters:
             branches:
               only:
@@ -361,7 +356,6 @@ workflows:
               only:
                 - main
           requires:
-            - release-management/release-package
             - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
           filters:
@@ -369,7 +363,6 @@ workflows:
               only:
                 - main
           requires:
-            - release-management/release-package
             - pack-and-upload-tarballs
       - docker-publish-slim:
           filters:
