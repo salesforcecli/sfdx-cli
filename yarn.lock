@@ -1413,10 +1413,17 @@
     signal-exit "^3.0.2"
     tslib "^1.10.0"
 
+<<<<<<< HEAD
 "@salesforce/source-deploy-retrieve@5.4.1", "@salesforce/source-deploy-retrieve@^5.0.1", "@salesforce/source-deploy-retrieve@^5.1.1", "@salesforce/source-deploy-retrieve@^5.4.0":
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-5.4.1.tgz#3dfd8d0fabc82649112d7e485425756a389ad8df"
   integrity sha512-cR4UPWRegdUN/YawFCzdoYhzhzXs1ziiMis7IqeFB97Sf+Xq63oRgBlqe2LEJCcSDHDabczHtDwGWvX906UP0w==
+=======
+"@salesforce/source-deploy-retrieve@5.4.0", "@salesforce/source-deploy-retrieve@^5.0.1", "@salesforce/source-deploy-retrieve@^5.1.1", "@salesforce/source-deploy-retrieve@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-5.4.0.tgz#35064c9aacc98eed644e29c20dfbd54666e90888"
+  integrity sha512-EMVoAAizRc1QgXezniZs9sDX8i45vR5tIiof0L0//G6r17Aa8OvfX55I/QzPw0cBYHmorJY+0kYDjocLDb3qsg==
+>>>>>>> d23da966ade2233d2b1fd5b3bb10430b92449f91
   dependencies:
     "@salesforce/core" "2.28.0"
     "@salesforce/kit" "^1.5.0"
