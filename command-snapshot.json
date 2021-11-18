@@ -724,7 +724,7 @@
     },
     {
         "command": "force:mdapi:deploy:cancel",
-        "plugin": "salesforce-alm",
+        "plugin": "@salesforce/plugin-source",
         "flags": [
             "apiversion",
             "jobid",
