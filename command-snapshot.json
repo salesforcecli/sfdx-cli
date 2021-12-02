@@ -556,7 +556,7 @@
   },
   {
     "command": "force:org:delete",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-org",
     "flags": ["apiversion", "json", "loglevel", "noprompt", "targetdevhubusername", "targetusername"]
   },
   {
@@ -1064,6 +1064,11 @@
     "flags": ["apiversion", "json", "loglevel", "onbehalfof", "permsetname", "targetusername"]
   },
   {
+    "command": "force:user:permsetlicense:assign",
+    "plugin": "@salesforce/plugin-user",
+    "flags": ["apiversion", "json", "loglevel", "name", "onbehalfof", "targetusername"]
+  },
+  {
     "command": "force:visualforce:component:create",
     "plugin": "@salesforce/plugin-templates",
     "flags": ["apiversion", "componentname", "json", "label", "loglevel", "outputdir", "template"]
@@ -1077,6 +1082,11 @@
     "command": "help",
     "plugin": "@oclif/plugin-help",
     "flags": ["all"]
+  },
+  {
+    "command": "info:releasenotes:display",
+    "plugin": "@salesforce/plugin-info",
+    "flags": ["hook", "json", "loglevel", "version"]
   },
   {
     "command": "plugins",
