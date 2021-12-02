@@ -1264,6 +1264,22 @@
     yeoman-generator "4.0.1"
     yosay "^2.0.2"
 
+"@salesforce/plugin-info@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-info/-/plugin-info-1.1.2.tgz#0bae81388907f6f548f5d428c423f100f4f6401d"
+  integrity sha512-H4UZE6SH+WVjrLfjPvnDURFXEcwoztxVfuCwjp1BbPE9/tLEkc1RWy0KgHkQYOCLhrNAXQM0GDs++awnHPBGqQ==
+  dependencies:
+    "@oclif/config" "^1"
+    "@salesforce/command" "^4.1.5"
+    "@salesforce/core" "^2.29.0"
+    "@salesforce/kit" "^1.5.17"
+    got "^11.8.2"
+    marked "^4.0.1"
+    marked-terminal "^4.2.0"
+    semver "^7.3.5"
+    sinon-chai "^3.7.0"
+    tslib "^2"
+
 "@salesforce/plugin-limits@1.2.3":
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-limits/-/plugin-limits-1.2.3.tgz#0a03ea755d7e016bdbb9e2785857e7fe74ace2f1"
@@ -1958,7 +1974,7 @@ ansi-escapes@^3.1.0, ansi-escapes@^3.2.0:
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-3.2.0.tgz#8780b98ff9dbf5638152d1f1fe5c1d7b4442976b"
   integrity sha512-cBhpre4ma+U0T1oM5fXg7Dy1Jw7zzwv7lt/GoCpr+hDQJoYnKVPLL4dCvSEFMmQurOQvSrwT7SL/DAlhBI97RQ==
 
-ansi-escapes@^4.2.1, ansi-escapes@^4.3.0:
+ansi-escapes@^4.2.1, ansi-escapes@^4.3.0, ansi-escapes@^4.3.1:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-4.3.2.tgz#6b2291d1db7d98b6521d5f1efa42d0f3a9feb65e"
   integrity sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==
@@ -7276,10 +7292,27 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+marked-terminal@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/marked-terminal/-/marked-terminal-4.2.0.tgz#593734a53cf9a4bb01ea961aa579bd21889ce502"
+  integrity sha512-DQfNRV9svZf0Dm9Cf5x5xaVJ1+XjxQW6XjFJ5HFkVyK52SDpj5PCBzS5X5r2w9nHr3mlB0T5201UMLue9fmhUw==
+  dependencies:
+    ansi-escapes "^4.3.1"
+    cardinal "^2.1.1"
+    chalk "^4.1.0"
+    cli-table3 "^0.6.0"
+    node-emoji "^1.10.0"
+    supports-hyperlinks "^2.1.0"
+
 marked@^1.1.1:
   version "1.2.9"
   resolved "https://registry.yarnpkg.com/marked/-/marked-1.2.9.tgz#53786f8b05d4c01a2a5a76b7d1ec9943d29d72dc"
   integrity sha512-H8lIX2SvyitGX+TRdtS06m1jHMijKN/XjfH6Ooii9fvxMlh8QdqBfBDkGUpMWH2kQNrtixjzYUa3SH8ROTgRRw==
+
+marked@^4.0.1:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-4.0.4.tgz#d7cb16adaa474291307c521824c5716d32b95c36"
+  integrity sha512-d8v7SensuOj+gxi0TGbqb2WtS60ycZfZuqtmAB9yz0JLotKerTob/47Qk9oLCDmn5G1dcdn3d5ydR+ih9dvS0A==
 
 mem-fs-editor@^5.0.0:
   version "5.1.0"
@@ -7837,6 +7870,13 @@ nock@^13.0.0:
     json-stringify-safe "^5.0.1"
     lodash.set "^4.3.2"
     propagate "^2.0.0"
+
+node-emoji@^1.10.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/node-emoji/-/node-emoji-1.11.0.tgz#69a0150e6946e2f115e9d7ea4df7971e2628301c"
+  integrity sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==
+  dependencies:
+    lodash "^4.17.21"
 
 node-fetch@^2.6.0, node-fetch@^2.6.1:
   version "2.6.1"
@@ -9782,6 +9822,11 @@ simple-get@^3.0.2:
     decompress-response "^4.2.0"
     once "^1.3.1"
     simple-concat "^1.0.0"
+
+sinon-chai@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/sinon-chai/-/sinon-chai-3.7.0.tgz#cfb7dec1c50990ed18c153f1840721cf13139783"
+  integrity sha512-mf5NURdUaSdnatJx3uhoBOrY9dtL19fiOtAdT1Azxg3+lNJFiuN0uzaU3xX1LeAfL17kHQhTAJgpsfhbMJMY2g==
 
 sinon@10.0.0:
   version "10.0.0"
