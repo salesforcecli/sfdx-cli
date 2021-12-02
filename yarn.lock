@@ -1153,11 +1153,12 @@
     xunit-file "^1.0.0"
 
 "@salesforce/kit@^1.2.0", "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@^1.5.0", "@salesforce/kit@^1.5.13", "@salesforce/kit@^1.5.17":
-  version "1.5.17"
-  resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.5.17.tgz#4fd9c50ba2e072c50d319654f86f86808c544795"
-  integrity sha512-Uuh+v7WPSo+L21moVprl+jbDTl3ndmcJM5et/vFLZW4ur6CCJCJSoReM9ttF1qZuQskyCyhVZo6/aMZrVUe+rQ==
+  version "1.5.19"
+  resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.5.19.tgz#1afc88d99badeb2cb814bb35d5c61fcf86af0e81"
+  integrity sha512-craDgEe2YCX1aiCArmuV7zhuE19jT+/GBmTKdgBXt7VOo63pMbHv92Z6rIOfF6TcyGh5un0IyAv+csaaWHfRyw==
   dependencies:
     "@salesforce/ts-types" "^1.5.20"
+    shx "^0.3.3"
     tslib "^2.2.0"
 
 "@salesforce/lazy-require@^0.4.0":
