@@ -442,6 +442,11 @@
     "flags": ["apiversion", "json", "loglevel", "sobjecttype", "targetusername"]
   },
   {
+    "command": "force:mdapi:beta:convert",
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["json", "loglevel", "manifest", "metadata", "metadatapath", "outputdir", "rootdir"]
+  },
+  {
     "command": "force:mdapi:convert",
     "plugin": "salesforce-alm",
     "flags": ["json", "loglevel", "manifest", "metadata", "metadatapath", "outputdir", "rootdir"]
@@ -470,7 +475,7 @@
   },
   {
     "command": "force:mdapi:deploy:cancel",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "wait"]
   },
   {
@@ -480,12 +485,12 @@
   },
   {
     "command": "force:mdapi:describemetadata",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": ["apiversion", "filterknown", "json", "loglevel", "resultfile", "targetusername"]
   },
   {
     "command": "force:mdapi:listmetadata",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": ["apiversion", "folder", "json", "loglevel", "metadatatype", "resultfile", "targetusername"]
   },
   {
@@ -551,7 +556,7 @@
   },
   {
     "command": "force:org:delete",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-org",
     "flags": ["apiversion", "json", "loglevel", "noprompt", "targetdevhubusername", "targetusername"]
   },
   {
@@ -1059,6 +1064,11 @@
     "flags": ["apiversion", "json", "loglevel", "onbehalfof", "permsetname", "targetusername"]
   },
   {
+    "command": "force:user:permsetlicense:assign",
+    "plugin": "@salesforce/plugin-user",
+    "flags": ["apiversion", "json", "loglevel", "name", "onbehalfof", "targetusername"]
+  },
+  {
     "command": "force:visualforce:component:create",
     "plugin": "@salesforce/plugin-templates",
     "flags": ["apiversion", "componentname", "json", "label", "loglevel", "outputdir", "template"]
@@ -1072,6 +1082,11 @@
     "command": "help",
     "plugin": "@oclif/plugin-help",
     "flags": ["all"]
+  },
+  {
+    "command": "info:releasenotes:display",
+    "plugin": "@salesforce/plugin-info",
+    "flags": ["hook", "json", "loglevel", "version"]
   },
   {
     "command": "plugins",

@@ -2,13 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [7.125.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.124.0...v7.125.0) (2021-10-28)
+## [7.130.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.129.0...v7.130.0) (2021-12-03)
 
+### Features
+
+- add plugin-info ([a23ae84](https://github.com/salesforcecli/sfdx-cli/commit/a23ae846f9b151b7f4c7c659de73f0bc6cec8c1f))
+
+## [7.129.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.128.0...v7.129.0) (2021-11-19)
+
+## [7.128.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.127.0...v7.128.0) (2021-11-18)
+
+## [7.127.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.126.0...v7.127.0) (2021-11-11)
+
+## [7.126.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.125.0...v7.126.0) (2021-11-04)
 
 ### Bug Fixes
 
-* install sf separately ([52ba0c8](https://github.com/salesforcecli/sfdx-cli/commit/52ba0c8a5ec917166b072d6904196ccce40bda48))
-* postupdate hook ([1c74cd1](https://github.com/salesforcecli/sfdx-cli/commit/1c74cd17e00c9d78e11becfda354efd938bca462))
+- dir paths ([47dc692](https://github.com/salesforcecli/sfdx-cli/commit/47dc692413400edc286983f842093260f79e8858))
+- don't change dataDir for bundled sf ([fbeaf1f](https://github.com/salesforcecli/sfdx-cli/commit/fbeaf1f1d4b5c6eb0add562bc13b90c57cd70547))
+- oclif manifest command ([1494ade](https://github.com/salesforcecli/sfdx-cli/commit/1494adec7b9f4c6a4f750743ab8d08d34ab1e741))
+- postupdate hook doesn't use npm anymore ([d1f4e21](https://github.com/salesforcecli/sfdx-cli/commit/d1f4e21dd6670f24650074670551ed92565cd2c9))
+- sf install path for tarballs ([a851ec3](https://github.com/salesforcecli/sfdx-cli/commit/a851ec32af698ce57fa55c397968dea2f130e0c5))
+- test new installer packaging ([83160bd](https://github.com/salesforcecli/sfdx-cli/commit/83160bd87b601548668a20951a832be597db96eb))
+- test new installers ([bf2620a](https://github.com/salesforcecli/sfdx-cli/commit/bf2620a3f3ea19a9ddfb821f84ca072e81c8abe8))
+- test new installers with sf included ([afcf758](https://github.com/salesforcecli/sfdx-cli/commit/afcf758bade1569b5d3161a01020566b26d9ebbc))
+- test new installers? ([403e7ff](https://github.com/salesforcecli/sfdx-cli/commit/403e7ff593a2a54d6d84c11cd78ccccf0d35286c))
+- update release management plugin ([1e68acc](https://github.com/salesforcecli/sfdx-cli/commit/1e68acc5262092070591aad194603bc69012d1c3))
+- whoops ([34c1f8f](https://github.com/salesforcecli/sfdx-cli/commit/34c1f8f7e58e29896086bf7aa9e175359b23f6e4))
+- whoops, actually change sf install path for tarballs ([cb32ed3](https://github.com/salesforcecli/sfdx-cli/commit/cb32ed311039ce2ee5c9e28e59321dc5bb8980a4))
+
+## [7.125.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.124.0...v7.125.0) (2021-10-28)
+
+### Bug Fixes
+
+- install sf separately ([52ba0c8](https://github.com/salesforcecli/sfdx-cli/commit/52ba0c8a5ec917166b072d6904196ccce40bda48))
+- postupdate hook ([1c74cd1](https://github.com/salesforcecli/sfdx-cli/commit/1c74cd17e00c9d78e11becfda354efd938bca462))
 
 ## [7.124.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.123.1...v7.124.0) (2021-10-21)
 
