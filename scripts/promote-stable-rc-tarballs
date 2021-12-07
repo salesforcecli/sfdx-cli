@@ -2,7 +2,7 @@
 
 set -ex
 
-channel="plugin-info"
+channel="dev"
 version=$(node -p -e "require('./package.json').version")
 sha=$(git rev-parse --short HEAD)
 echo "Promoting $version-$sha to channel $channel"

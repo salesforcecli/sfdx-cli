@@ -114,7 +114,7 @@ jobs:
     resource_class: xlarge
     steps:
       - checkout
-      - run: git fetch origin && git pull
+      # - run: git fetch origin && git pull
       - run: |
           apt-get update
           apt-get install -y p7zip-full
@@ -136,17 +136,17 @@ jobs:
       xcode: 12.5.1
     steps:
       - checkout
-      - run: git fetch origin && git pull
+      # - run: git fetch origin && git pull
       - run: yarn install
       - run: yarn pack:macos
       - run: yarn upload:macos
-      # - run: ./scripts/promote-stable-rc-mac
+      - run: ./scripts/promote-stable-rc-mac
 
   pack-and-upload-windows-installer:
     <<: *pack-and-upload-tarballs
     steps:
       - checkout
-      - run: git fetch origin && git pull
+      # - run: git fetch origin && git pull
       - restore_cache:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
@@ -160,7 +160,7 @@ jobs:
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
       - run: yarn pack:win
       - run: yarn upload:win
-      # - run: ./scripts/promote-stable-rc-win
+      - run: ./scripts/promote-stable-rc-win
 
   promote-channels:
     docker:
@@ -337,13 +337,13 @@ workflows:
       - release-management/release-package:
           tag: dev
           prerelease: true
-          github-release: true # Should I set this to false?
+          github-release: false
           requires:
-            - approval # Assuming I could disable this to skip approval step
+            - approval
           filters:
             branches:
               only:
-                - ew/plugin-info-hooks-DISABLED # Do you know if the '/' is going to be a problem?
+                - ew/plugin-info-hooks-DISABLED
       - pack-and-upload-tarballs:
           filters:
             branches:
@@ -365,30 +365,30 @@ workflows:
                 - ew/plugin-info-hooks-DISABLED
           requires:
             - pack-and-upload-tarballs
-      - docker-publish-slim:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
-            - pack-and-upload-tarballs
-      - docker-publish-full:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
-            - pack-and-upload-tarballs
-      - run-all-nuts:
-          # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
+      # - docker-publish-slim:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+      #     requires:
+      #       - release-management/release-package
+      #       - pack-and-upload-tarballs
+      # - docker-publish-full:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+      #     requires:
+      #       - release-management/release-package
+      #       - pack-and-upload-tarballs
+      # - run-all-nuts:
+      #     # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+      #     requires:
+      #       - release-management/release-package
 
   promote-to-latest:
     triggers:
