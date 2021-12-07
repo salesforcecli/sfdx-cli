@@ -333,7 +333,7 @@ workflows:
           filters:
             branches:
               only:
-                - ew/plugin-info-hooks-DISABLED
+                - ew/plugin-info-hooks
       - release-management/release-package:
           tag: dev
           prerelease: true
@@ -343,26 +343,26 @@ workflows:
           filters:
             branches:
               only:
-                - ew/plugin-info-hooks-DISABLED
+                - ew/plugin-info-hooks
       - pack-and-upload-tarballs:
           filters:
             branches:
               only:
-                - ew/plugin-info-hooks-DISABLED
+                - ew/plugin-info-hooks
           requires:
             - release-management/release-package
       - pack-and-upload-macos-installer:
           filters:
             branches:
               only:
-                - ew/plugin-info-hooks-DISABLED
+                - ew/plugin-info-hooks
           requires:
             - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
           filters:
             branches:
               only:
-                - ew/plugin-info-hooks-DISABLED
+                - ew/plugin-info-hooks
           requires:
             - pack-and-upload-tarballs
       # - docker-publish-slim:
