@@ -140,7 +140,7 @@ jobs:
       - run: yarn install
       - run: yarn pack:macos
       - run: yarn upload:macos
-      - run: ./scripts/promote-stable-rc-mac
+      # - run: ./scripts/promote-stable-rc-mac
 
   pack-and-upload-windows-installer:
     <<: *pack-and-upload-tarballs
@@ -160,7 +160,7 @@ jobs:
           echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
       - run: yarn pack:win
       - run: yarn upload:win
-      - run: ./scripts/promote-stable-rc-win
+      # - run: ./scripts/promote-stable-rc-win
 
   promote-channels:
     docker:
@@ -172,7 +172,7 @@ jobs:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
       - run: yarn install
-      - run: ./scripts/promote-rc-to-latest
+      # - run: ./scripts/promote-rc-to-latest # I dont think i need to disable this one, just to be safe.
 
   change-case-start:
     docker:
@@ -333,35 +333,36 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - ew/plugin-info-hooks-DISABLED
       - release-management/release-package:
-          tag: latest-rc
-          github-release: true
+          tag: dev
+          prerelease: true
+          github-release: true # Should I set this to false?
           requires:
-            - approval
+            - approval # Assuming I could disable this to skip approval step
           filters:
             branches:
               only:
-                - main
+                - ew/plugin-info-hooks-DISABLED # Do you know if the '/' is going to be a problem?
       - pack-and-upload-tarballs:
           filters:
             branches:
               only:
-                - main
+                - ew/plugin-info-hooks-DISABLED
           requires:
             - release-management/release-package
       - pack-and-upload-macos-installer:
           filters:
             branches:
               only:
-                - main
+                - ew/plugin-info-hooks-DISABLED
           requires:
             - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
           filters:
             branches:
               only:
-                - main
+                - ew/plugin-info-hooks-DISABLED
           requires:
             - pack-and-upload-tarballs
       - docker-publish-slim:

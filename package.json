@@ -37,7 +37,8 @@
       ],
       "update": [
         "./dist/hooks/lazyRequire.js",
-        "./dist/hooks/postupdate.js"
+        "./dist/hooks/postupdate.js",
+        "./dist/hooks/displayReleaseNotes.js"
       ]
     },
     "plugins": [
@@ -217,7 +218,7 @@
     "pack:tarballs": "oclif pack:tarballs",
     "pack:verify": "sf-release cli:tarballs:verify",
     "pack:win": "oclif pack:win --additional-cli sf",
-    "postinstall": "npm install @salesforce/cli -g",
+    "postinstall": "sfdx whatsnew --hook && npm install @salesforce/cli -g",
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "yarn test:deprecation-policy ",
     "prepack": "yarn compile && yarn lint && yarn oclif-artifacts",
