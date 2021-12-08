@@ -1,7 +1,5 @@
 var shell = require('shelljs');
 
-shell.set('+v');
-
 try {
   var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 
