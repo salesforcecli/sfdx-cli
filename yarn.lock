@@ -1183,10 +1183,10 @@
     open "^8.2.1"
     tslib "^2"
 
-"@salesforce/plugin-config@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.3.0.tgz#f3d97de59fcfa9267d81603a4951a45ae7344faf"
-  integrity sha512-BoqZSNOTRsga0G4Pw7ZlATtOG/jNyGBevcQNCiYV3HIlbKPpdA18icnwI+45VG2iShfdZsuB29bcnEqHRMBpUg==
+"@salesforce/plugin-config@1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.3.2.tgz#301cc1c1fef9ceef0587a0c77490ea3f75916e7a"
+  integrity sha512-njDjLVfbhztATvwse9gDmiBdRFJ8VTXzoaQea7HFvGDS47t9KrQ62ndnpoaqEd0A8i+AcE/elJr+2Ae5PiqSuQ==
   dependencies:
     "@oclif/config" "^1.18.1"
     "@salesforce/command" "^4.2.0"
