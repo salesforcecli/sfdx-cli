@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.129.0-dev.4",
+  "version": "7.129.0-dev.5",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -218,7 +218,7 @@
     "pack:tarballs": "oclif pack:tarballs",
     "pack:verify": "sf-release cli:tarballs:verify",
     "pack:win": "oclif pack:win --additional-cli sf",
-    "postinstall": "./scripts/post-install-release-notes.js",
+    "postinstall": "node ./scripts/post-install-release-notes.js",
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "yarn test:deprecation-policy ",
     "prepack": "yarn compile && yarn lint && yarn oclif-artifacts",
