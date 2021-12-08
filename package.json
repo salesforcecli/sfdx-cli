@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.129.0-dev.12",
+  "version": "7.129.0-dev.13",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -86,7 +86,7 @@
     "info": {
       "releasenotes": {
         "distTagUrl": "https://registry.npmjs.org/-/package/sfdx-cli/dist-tags",
-        "releaseNotesPath": "https://github.com/forcedotcom/cli/tree/main/releasenotes/sfdx",
+        "releaseNotesPath": "https://github.com/iowillhoit/cli/tree/main/releasenotes/sfdx",
         "releaseNotesFilename": "README.md"
       }
     },
