@@ -9,5 +9,5 @@ var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 try {
   execSync(`${__dirname}/../bin/${executable} whatsnew --hook`, { stdio: 'inherit' });
 } catch (e) {
-  return;
+  process.exit(0);
 }
