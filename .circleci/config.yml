@@ -82,6 +82,7 @@ jobs:
       - image: node:lts
     steps:
       - checkout
+      - release-management/configure-github
       - release-management/install-sf-release
       - run: sf-release cli:latestrc:build
 
