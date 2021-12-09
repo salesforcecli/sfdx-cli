@@ -1,11 +1,13 @@
-var shell = require('shelljs');
+#!/usr/bin/env node
+
+const execSync = require('child_process').execSync;
 
 if (process.env.SFDX_HIDE_RELEASE_NOTES === 'true') return;
 
-try {
-  var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
+var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 
-  shell.exec(`${__dirname}/../bin/${executable} whatsnew --hook`);
-} catch (err) {
+try {
+  execSync(`${__dirname}/../bin/${executable} whatsnew --hook`, { stdio: 'inherit' });
+} catch (e) {
   return;
 }
