@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.129.0-dev.13](https://github.com/salesforcecli/sfdx-cli/compare/v7.129.0-dev.12...v7.129.0-dev.13) (2021-12-08)
+
+
+### Bug Fixes
+
+* fork and env var ([880f47a](https://github.com/salesforcecli/sfdx-cli/commit/880f47a193c74dc59590cc42acecd58d2e76773e))
+
 ## [7.129.0-dev.12](https://github.com/salesforcecli/sfdx-cli/compare/v7.129.0...v7.129.0-dev.12) (2021-12-08)
 
 ### Features
