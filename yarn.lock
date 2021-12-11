@@ -634,6 +634,17 @@
     supports-color "^5.4.0"
     tslib "^1"
 
+"@oclif/color@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@oclif/color/-/color-1.0.0.tgz#a95a7d6a0731be6eb7a63cca476a787c62290aff"
+  integrity sha512-jSvPCTa3OfwzGUsgGAO6AXam//UMBSIBCHGs6i3iGr+NQoMrBf6kx4UzwED0RzSCTc6nlqCzdhnCD18RSP7VAA==
+  dependencies:
+    ansi-styles "^4.2.1"
+    chalk "^4.1.0"
+    strip-ansi "^6.0.0"
+    supports-color "^8.1.1"
+    tslib "^2"
+
 "@oclif/command@1.8.11", "@oclif/command@^1", "@oclif/command@^1.5.13", "@oclif/command@^1.5.16", "@oclif/command@^1.5.17", "@oclif/command@^1.5.19", "@oclif/command@^1.5.4", "@oclif/command@^1.6.0", "@oclif/command@^1.6.1", "@oclif/command@^1.7.0", "@oclif/command@^1.8.0", "@oclif/command@^1.8.1", "@oclif/command@^1.8.6", "@oclif/command@^1.8.9":
   version "1.8.11"
   resolved "https://registry.yarnpkg.com/@oclif/command/-/command-1.8.11.tgz#926919fe8ddb7ab778fef8a8f2951c975f35e0c2"
@@ -667,15 +678,15 @@
     is-wsl "^2.1.1"
     tslib "^2.0.0"
 
-"@oclif/core@^1.0.0", "@oclif/core@^1.0.5":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.0.7.tgz#3f3b38774aecc7c09902beb9f424735149b6b3ba"
-  integrity sha512-bIaf3zM9YSo8SJq/fN8dfHjmDmZ6QmC3UCWpoykvl7UH2Prt5aCfdAJH/y3HrXVgWPYi+ByrXdzje1Mwgnq4dQ==
+"@oclif/core@1.0.10", "@oclif/core@^1.0.10", "@oclif/core@^1.0.8":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.0.10.tgz#5fd01d572e44d372b7279ee0f49b4860e14b6e4e"
+  integrity sha512-L+IcNU3NoYxwz5hmHfcUlOJ3dpgHRsIj1kAmI9CKEJHq5gBVKlP44Ot179Jke1jKRKX2g9N42izbmlh0SNpkkw==
   dependencies:
     "@oclif/linewrap" "^1.0.0"
     chalk "^4.1.2"
     clean-stack "^3.0.1"
-    cli-ux "^6.0.3"
+    cli-ux "6.0.5"
     debug "^4.3.3"
     fs-extra "^9.1.0"
     get-package-type "^0.1.0"
@@ -798,6 +809,13 @@
     widest-line "^3.1.0"
     wrap-ansi "^6.2.0"
 
+"@oclif/plugin-help@5.1.9":
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-5.1.9.tgz#1365fd76d5382a1a217e6b5c247251211c300d7b"
+  integrity sha512-CDMu5zPEkszr9cPzk75XRn/P4ly6xzCbfVr2i1isu2B5+2JZGMYuJM+JCXUauCCx4d2Gb3JTSszP+nfkjaxGkg==
+  dependencies:
+    "@oclif/core" "^1.0.10"
+
 "@oclif/plugin-help@^2.2.0", "@oclif/plugin-help@^2.2.3":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-2.2.3.tgz#b993041e92047f0e1762668aab04d6738ac06767"
@@ -812,7 +830,7 @@
     widest-line "^2.0.1"
     wrap-ansi "^4.0.0"
 
-"@oclif/plugin-help@^3", "@oclif/plugin-help@^3.2.10", "@oclif/plugin-help@^3.2.14", "@oclif/plugin-help@^3.2.2":
+"@oclif/plugin-help@^3.2.10", "@oclif/plugin-help@^3.2.14", "@oclif/plugin-help@^3.2.2":
   version "3.2.15"
   resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-3.2.15.tgz#b3a4a8b5677ff4128d785d4dae57bdd21e741c86"
   integrity sha512-Qx+sUSR62xbZlYaFpaxyv8jgTpmTUdOwKfhGGhl1uRZ2L8+eqKsMzmPXhb4miRfUbvxAQGfPAm8+jkX3ASxPvw==
@@ -836,6 +854,17 @@
     "@oclif/color" "^0.1.2"
     "@oclif/command" "1.8.11"
     cli-ux "5.6.6"
+    fast-levenshtein "^3.0.0"
+    lodash "^4.17.21"
+
+"@oclif/plugin-not-found@^2.2.2":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-not-found/-/plugin-not-found-2.2.3.tgz#146748c75e9a23417b26ce06adba978d7513e27c"
+  integrity sha512-HZ1ZlRqOdxoxjnM36T0wfzvmSFT2iO9HrYjSU0ZHuGhCwvgIK5PDjxZu1j44SStfYGSKcIcj08Uz1fRUvgQa9Q==
+  dependencies:
+    "@oclif/color" "^1.0.0"
+    "@oclif/core" "1.0.10"
+    cli-ux "6.0.6"
     fast-levenshtein "^3.0.0"
     lodash "^4.17.21"
 
@@ -894,6 +923,19 @@
     lodash "^4.17.21"
     semver "^7.3.2"
 
+"@oclif/plugin-warn-if-update-available@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-warn-if-update-available/-/plugin-warn-if-update-available-2.0.2.tgz#ab30956495483fd2eb55ce8c3549c74f260d23fd"
+  integrity sha512-lg4eesMxjCTaz6PgwC1j7VuyW6tzYWO85eSCz6pwjxmCCW8T6bHxLiIHO3TXTfYJTj1YVUL1fOFVc1Gelc0neQ==
+  dependencies:
+    "@oclif/core" "^1.0.8"
+    chalk "^4.1.0"
+    debug "^4.1.0"
+    fs-extra "^9.0.1"
+    http-call "^5.2.2"
+    lodash "^4.17.21"
+    semver "^7.3.2"
+
 "@oclif/plugin-which@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@oclif/plugin-which/-/plugin-which-1.0.3.tgz#46f20d7cff92c40b08bb3fc54aeb407a493af903"
@@ -904,7 +946,7 @@
     cli-ux "^4.9.1"
     tslib "^1.9.3"
 
-"@oclif/screen@^1.0.3", "@oclif/screen@^1.0.4":
+"@oclif/screen@^1.0.3", "@oclif/screen@^1.0.4", "@oclif/screen@^1.0.4 ":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@oclif/screen/-/screen-1.0.4.tgz#b740f68609dfae8aa71c3a6cab15d816407ba493"
   integrity sha512-60CHpq+eqnTxLZQ4PGHYNwUX572hgpMHGPtTWMjdTMsAvlm69lZV/4ly6O3sAYkomo4NggGcomrDpBe34rxUqw==
@@ -2011,7 +2053,7 @@ ansi-styles@^3.0.0, ansi-styles@^3.2.0, ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-ansi-styles@^4.0.0, ansi-styles@^4.1.0, ansi-styles@^4.2.0, ansi-styles@^4.3.0:
+ansi-styles@^4.0.0, ansi-styles@^4.1.0, ansi-styles@^4.2.0, ansi-styles@^4.2.1, ansi-styles@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-4.3.0.tgz#edd803628ae71c04c85ae7a0906edad34b648937"
   integrity sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==
@@ -2951,6 +2993,68 @@ cli-ux@5.6.6, cli-ux@^5.2.1, cli-ux@^5.4.4, cli-ux@^5.4.5, cli-ux@^5.5.1, cli-ux
     supports-hyperlinks "^2.1.0"
     tslib "^2.0.0"
 
+cli-ux@6.0.5:
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-6.0.5.tgz#5461dffb6c29e4a727e071f8b74bbebcc6b7be08"
+  integrity sha512-q2pvzDiXMNISMqCBh0P2dkofQ/8OiWlEAjl6MDNk5oUZ6p54Fnk1rOaXxohYm+YkLX5YNUonGOrwkvuiwVreIg==
+  dependencies:
+    "@oclif/core" "^1.0.8"
+    "@oclif/linewrap" "^1.0.0"
+    "@oclif/screen" "^1.0.4 "
+    ansi-escapes "^4.3.0"
+    ansi-styles "^4.2.0"
+    cardinal "^2.1.1"
+    chalk "^4.1.0"
+    clean-stack "^3.0.0"
+    cli-progress "^3.9.1"
+    extract-stack "^2.0.0"
+    fs-extra "^8.1"
+    hyperlinker "^1.0.0"
+    indent-string "^4.0.0"
+    is-wsl "^2.2.0"
+    js-yaml "^3.13.1"
+    lodash "^4.17.21"
+    natural-orderby "^2.0.1"
+    object-treeify "^1.1.4"
+    password-prompt "^1.1.2"
+    semver "^7.3.2"
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    supports-color "^8.1.0"
+    supports-hyperlinks "^2.1.0"
+    tslib "^2.0.0"
+
+cli-ux@6.0.6:
+  version "6.0.6"
+  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-6.0.6.tgz#00536bf6038f195b0a1a2589f61ce5e625e75870"
+  integrity sha512-CvL4qmV78VhnbyHTswGjpDSQtU+oj3hT9DP9L6yMOwiTiNv0nMjMEV/8zou4CSqO6PtZ2A8qnlZDgAc07Js+aw==
+  dependencies:
+    "@oclif/core" "1.0.10"
+    "@oclif/linewrap" "^1.0.0"
+    "@oclif/screen" "^1.0.4 "
+    ansi-escapes "^4.3.0"
+    ansi-styles "^4.2.0"
+    cardinal "^2.1.1"
+    chalk "^4.1.0"
+    clean-stack "^3.0.0"
+    cli-progress "^3.9.1"
+    extract-stack "^2.0.0"
+    fs-extra "^8.1"
+    hyperlinker "^1.0.0"
+    indent-string "^4.0.0"
+    is-wsl "^2.2.0"
+    js-yaml "^3.13.1"
+    lodash "^4.17.21"
+    natural-orderby "^2.0.1"
+    object-treeify "^1.1.4"
+    password-prompt "^1.1.2"
+    semver "^7.3.2"
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    supports-color "^8.1.0"
+    supports-hyperlinks "^2.1.0"
+    tslib "^2.0.0"
+
 cli-ux@^4.9.1, cli-ux@^4.9.3:
   version "4.9.3"
   resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-4.9.3.tgz#4c3e070c1ea23eef010bbdb041192e0661be84ce"
@@ -2977,37 +3081,6 @@ cli-ux@^4.9.1, cli-ux@^4.9.3:
     supports-hyperlinks "^1.0.1"
     treeify "^1.1.0"
     tslib "^1.9.3"
-
-cli-ux@^6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-6.0.3.tgz#11de25d7db31669c231899d39da3e75d1471bc85"
-  integrity sha512-XAzXgDDpFZZlDifxbP82ZICeY9KTnYE+xMKcxH2lPJzi/JEPoqG0OxnrS06kcJrSKsxyGAlh7rVaIeW9afKhcA==
-  dependencies:
-    "@oclif/core" "^1.0.5"
-    "@oclif/linewrap" "^1.0.0"
-    "@oclif/screen" "^1.0.3"
-    ansi-escapes "^4.3.0"
-    ansi-styles "^4.2.0"
-    cardinal "^2.1.1"
-    chalk "^4.1.0"
-    clean-stack "^3.0.0"
-    cli-progress "^3.9.1"
-    extract-stack "^2.0.0"
-    fs-extra "^8.1"
-    hyperlinker "^1.0.0"
-    indent-string "^4.0.0"
-    is-wsl "^2.2.0"
-    js-yaml "^3.13.1"
-    lodash "^4.17.21"
-    natural-orderby "^2.0.1"
-    object-treeify "^1.1.4"
-    password-prompt "^1.1.2"
-    semver "^7.3.2"
-    string-width "^4.2.0"
-    strip-ansi "^6.0.0"
-    supports-color "^8.1.0"
-    supports-hyperlinks "^2.1.0"
-    tslib "^2.0.0"
 
 cli-width@^2.0.0:
   version "2.2.1"
@@ -8166,17 +8239,17 @@ object.values@^1.1.4, object.values@^1.1.5:
     define-properties "^1.1.3"
     es-abstract "^1.19.1"
 
-oclif@2.0.0-main.9:
-  version "2.0.0-main.9"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.0.0-main.9.tgz#6d44d2686f73334f3e25a5a88cae313b2948c35b"
-  integrity sha512-UUehcbCLhsvtlS+RA7GvzB1pBADbpHatRrapY7PPAih+T31QQxIGi7IyiNQXO1Yq7iAS03NQQdniBpmRGaALsw==
+oclif@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.0.1.tgz#0def8f7e98ba5645413e46a0c2ae8656c6ad7b37"
+  integrity sha512-9CzlF5VB7s3dTClBS/QaI2YD1/r/gYhmtQ2qbhhsAShpxbyItRtv46DlqCwCfx/5+amDVNfsRpslFFkWmfKz0g==
   dependencies:
-    "@oclif/core" "^1.0.0"
+    "@oclif/core" "1.0.10"
     "@oclif/fixpack" "^2.3.0"
-    "@oclif/plugin-help" "^3"
-    "@oclif/plugin-not-found" "^1.2.2"
-    "@oclif/plugin-warn-if-update-available" "^1.5.4"
-    cli-ux "^5.2.1"
+    "@oclif/plugin-help" "5.1.9"
+    "@oclif/plugin-not-found" "^2.2.2"
+    "@oclif/plugin-warn-if-update-available" "^2.0.2"
+    cli-ux "6.0.6"
     debug "^4.1.1"
     find-yarn-workspace-root "^2.0.0"
     fs-extra "^8.1"
@@ -8185,6 +8258,7 @@ oclif@2.0.0-main.9:
     normalize-package-data "^3.0.0"
     nps-utils "^1.7.0"
     qqjs "^0.3.10"
+    semver "^7.3.5"
     sort-pjson "^1.0.3"
     tslib "^2.0.0"
     yeoman-environment "^2.3.4"
@@ -10192,7 +10266,7 @@ strnum@^1.0.4:
   resolved "https://registry.yarnpkg.com/strnum/-/strnum-1.0.4.tgz#e97e36a7d6ba9f93d0d6b496b2ed0678d422832b"
   integrity sha512-lMzNMfDpaQOLt4B2mEbfzYS0+T7dvCXeojnlGf6f1AygvWDMcWyXYaLbyICfjVu29sErR8fnRagQfBW/N/hGgw==
 
-supports-color@8.1.1, supports-color@^8.1.0:
+supports-color@8.1.1, supports-color@^8.1.0, supports-color@^8.1.1:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-8.1.1.tgz#cd6fc17e28500cff56c1b86c0a7fd4a54a73005c"
   integrity sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==
