@@ -6,9 +6,10 @@ var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 
 var cmd = spawn(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], {
   stdio: ['ignore', 'inherit', 'pipe'],
+  timeout: 10000,
 });
 
-// Try a timeout on spawn
+// try windowsHide?
 
 // cmd.stdin.on('data', (data) => {
 //   console.log('STDIN:', data);
@@ -32,10 +33,10 @@ cmd.stderr.on('data', (error) => {
 // });
 
 // // 'exit' fires whether or not the stream are finished
-// cmd.on('exit', (code) => {
-//   console.log('Exit Code from exit:', code);
-//   process.exit(0);
-// });
+cmd.on('exit', (code) => {
+  console.log('Exit Code from exit:', code);
+  process.exit(0);
+});
 
 // ---------------------------------------
 
