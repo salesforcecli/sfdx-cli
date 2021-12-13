@@ -1,23 +1,20 @@
 #!/usr/bin/env node
 
-// const execSync = require('child_process').execSync;
-const spawnSync = require('child_process').spawnSync;
+const execSync = require('child_process').execSync;
 
 if (process.env.SFDX_HIDE_RELEASE_NOTES === 'true') return;
 
 var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 
 try {
-  spawnSync(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], { stdio: 'inherit' });
+  execSync(`${__dirname}/../bin/${executable} whatsnew --hook`, { stdio: 'inherit' });
 } catch (e) {
+  console.log('ERROR_CAUGHT');
   process.exit(0);
+  console.log('AFTER_EXIT');
 }
 
-// try {
-//   execSync(`${__dirname}/../bin/${executable} whatsnew --hook`, { stdio: 'inherit' });
-// } catch (e) {
-//   process.exit(0);
-// }
+// Below would exit correctly, but did not have colored output
 
 // var shell = require('shelljs');
 
