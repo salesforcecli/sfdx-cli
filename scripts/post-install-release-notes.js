@@ -5,7 +5,19 @@ const { spawn } = require('child_process');
 var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 
 var cmd = spawn(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], {
-  stdio: ['ignore', 'inherit', 'ignore'],
+  stdio: 'ignore',
+});
+
+// var cmd = spawn(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], {
+//   stdio: ['pipe', 'inherit', 'pipe'],
+// });
+
+cmd.on('error', (error) => {
+  console.log('Error incoming:', error);
+});
+
+cmd.on('data', (data) => {
+  console.log('Data incoming:', data);
 });
 
 cmd.on('close', (code) => {
