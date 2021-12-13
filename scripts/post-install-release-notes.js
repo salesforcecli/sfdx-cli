@@ -22,20 +22,20 @@ var cmd = spawn(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], {
 cmd.stderr.on('data', (error) => {
   console.log('STDERR:');
   console.log(error.toString());
-  // process.exit(0);
-});
-
-// 'close' would only ever fire when the streams are all terminated
-cmd.on('close', (code) => {
-  console.log('Exit Code from close:', code);
   process.exit(0);
 });
 
-// 'exit' fires whether or not the stream are finished
-cmd.on('exit', (code) => {
-  console.log('Exit Code from exit:', code);
-  process.exit(0);
-});
+// // 'close' would only ever fire when the streams are all terminated
+// cmd.on('close', (code) => {
+//   console.log('Exit Code from close:', code);
+//   process.exit(0);
+// });
+
+// // 'exit' fires whether or not the stream are finished
+// cmd.on('exit', (code) => {
+//   console.log('Exit Code from exit:', code);
+//   process.exit(0);
+// });
 
 // ---------------------------------------
 
