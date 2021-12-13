@@ -4,7 +4,9 @@ const { spawn } = require('child_process');
 
 var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 
-var cmd = spawn(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], { stdio: ['pipe', 'inherit', 'pipe'] });
+var cmd = spawn(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], {
+  stdio: ['ignore', 'inherit', 'ignore'],
+});
 
 cmd.on('close', (code) => {
   console.log('Exit Code from close:', code);
