@@ -7,6 +7,7 @@ var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 var cmd = spawn(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], {
   stdio: ['ignore', 'inherit', 'pipe'],
   timeout: 10000,
+  windowsHide: false,
 });
 
 // try windowsHide?
