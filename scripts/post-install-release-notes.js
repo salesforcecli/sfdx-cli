@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-const execSync = require('child_process').execSync;
+const execFileSync = require('child_process').execFileSync;
 
 if (process.env.SFDX_HIDE_RELEASE_NOTES === 'true') return;
 
 var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 
 try {
-  execSync(`${__dirname}/../bin/${executable} whatsnew --hook`, { stdio: 'inherit' });
+  execFileSync(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], { stdio: 'inherit' });
 } catch (e) {
   console.log('ERROR_CAUGHT');
   process.exit(0);
