@@ -5,29 +5,36 @@ const { spawn } = require('child_process');
 var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 
 var cmd = spawn(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], {
-  stdio: 'ignore',
+  stdio: ['ignore', 'inherit', 'pipe'],
 });
 
-// var cmd = spawn(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], {
-//   stdio: ['pipe', 'inherit', 'pipe'],
+// Try a timeout on spawn
+
+// cmd.stdin.on('data', (data) => {
+//   console.log('STDIN:', data);
 // });
 
-cmd.on('error', (error) => {
-  console.log('Error incoming:', error);
+// cmd.stdout.on('data', (data) => {
+//   console.log('STDOUT:');
+//   console.log(data.toString());
+// });
+
+cmd.stderr.on('data', (error) => {
+  console.log('STDERR:');
+  console.log(error.toString());
+  // process.exit(0);
 });
 
-cmd.on('data', (data) => {
-  console.log('Data incoming:', data);
-});
-
+// 'close' would only ever fire when the streams are all terminated
 cmd.on('close', (code) => {
   console.log('Exit Code from close:', code);
-  // process.exit(0);
+  process.exit(0);
 });
 
+// 'exit' fires whether or not the stream are finished
 cmd.on('exit', (code) => {
   console.log('Exit Code from exit:', code);
-  // process.exit(0);
+  process.exit(0);
 });
 
 // ---------------------------------------
