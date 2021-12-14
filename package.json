@@ -97,6 +97,17 @@
     }
   },
   "pinnedDependencies": [
+    "@oclif/command",
+    "@oclif/config",
+    "@oclif/errors",
+    "@oclif/plugin-autocomplete",
+    "@oclif/plugin-commands",
+    "@oclif/plugin-help",
+    "@oclif/plugin-not-found",
+    "@oclif/plugin-plugins",
+    "@oclif/plugin-update",
+    "@oclif/plugin-warn-if-update-available",
+    "@oclif/plugin-which",
     "@salesforce/plugin-alias",
     "@salesforce/plugin-apex",
     "@salesforce/plugin-auth",
