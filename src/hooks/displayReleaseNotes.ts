@@ -12,6 +12,14 @@ import { cli } from 'cli-ux';
 
 if (process.env.SFDX_HIDE_RELEASE_NOTES === 'true') process.exit(0);
 
+const logAndExit = (msg: Error): void => {
+  cli.log('NOTE: This error can be ignored in CI and may be silenced in the future');
+  cli.log('- Set the SFDX_HIDE_RELEASE_NOTES env var to "true" to skip this script\n');
+  cli.log(msg.toString());
+
+  process.exit(0);
+};
+
 const hook: Hook.Update = () => {
   // NOTE: This is `sfdx.cmd` here and not `run.cmd` because it gets renamed here:
   // https://github.com/salesforcecli/sfdx-cli/blob/4428505ab69aa6e21214dba96557e2ce396a82e0/src/hooks/postupdate.ts#L62
@@ -23,10 +31,11 @@ const hook: Hook.Update = () => {
   });
 
   cmd.stderr.on('data', (error: Error) => {
-    cli.log('NOTE: This error can be ignored in CI and may be silenced in the future');
-    cli.log('- Set the SFDX_HIDE_RELEASE_NOTES env var to "true" to skip this script\n');
-    cli.log(error.toString());
-    process.exit(0);
+    logAndExit(error);
+  });
+
+  cmd.on('error', (error: Error) => {
+    logAndExit(error);
   });
 
   // 'exit' fires whether or not the stream are finished
