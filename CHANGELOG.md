@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.129.0-dev.17](https://github.com/salesforcecli/sfdx-cli/compare/v7.129.0-dev.16...v7.129.0-dev.17) (2021-12-14)
+
+
+### Bug Fixes
+
+* bump ([6051e41](https://github.com/salesforcecli/sfdx-cli/commit/6051e41e10e6e7eea41f7baddb232910a76a377d))
+* windows update hook tweaks ([4fd04c1](https://github.com/salesforcecli/sfdx-cli/commit/4fd04c1ab8862ecd4d797ffd818b9380643cb7dc))
+
 ## [7.129.0-dev.16](https://github.com/salesforcecli/sfdx-cli/compare/v7.129.0-dev.15...v7.129.0-dev.16) (2021-12-14)
 
 
