@@ -173,7 +173,7 @@ jobs:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
       - run: yarn install
-      # - run: ./scripts/promote-rc-to-latest # I dont think i need to disable this one, just to be safe.
+      # - run: ./scripts/promote-rc-to-latest # I dont think i need to disable this one, just to be safe
 
   change-case-start:
     docker:
