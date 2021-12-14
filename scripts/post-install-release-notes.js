@@ -13,12 +13,12 @@ var cmd = spawn(`${__dirname}/../bin/${executable}`, ['whatsnew', '--hook'], {
 
 cmd.stderr.on('data', (error) => {
   console.log('NOTE: This error can be ignored in CI and may be silenced in the future');
+  console.log('- Set the SFDX_HIDE_RELEASE_NOTES env var to "true" to skip this script\n');
   console.log(error.toString());
   process.exit(0);
 });
 
 // 'exit' fires whether or not the stream are finished
 cmd.on('exit', (code) => {
-  console.log('Exit Code from exit:', code);
   process.exit(0);
 });
