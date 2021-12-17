@@ -13,6 +13,11 @@ const logAndExit = (msg) => {
   process.exit(0);
 };
 
+/*
+ * NOTE: Please read "Notes about the hook scripts" in this PR before making changes:
+ * https://github.com/salesforcecli/sfdx-cli/pull/407
+ */
+
 var executable = process.platform === 'win32' ? 'run.cmd' : 'run';
 
 var cmd = spawn(join(__dirname, '..', 'bin', executable), ['whatsnew', '--hook'], {

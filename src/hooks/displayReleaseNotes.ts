@@ -20,6 +20,11 @@ const logAndExit = (msg: Error): void => {
   process.exit(0);
 };
 
+/*
+ * NOTE: Please read "Notes about the hook scripts" in this PR before making changes:
+ * https://github.com/salesforcecli/sfdx-cli/pull/407
+ */
+
 const hook: Hook.Update = () => {
   // NOTE: This is `sfdx.cmd` here and not `run.cmd` because it gets renamed here:
   // https://github.com/salesforcecli/sfdx-cli/blob/4428505ab69aa6e21214dba96557e2ce396a82e0/src/hooks/postupdate.ts#L62
