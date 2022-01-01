@@ -131,7 +131,7 @@
     "@salesforce/plugin-alias": "1.2.0",
     "@salesforce/plugin-apex": "0.7.0",
     "@salesforce/plugin-auth": "1.8.0",
-    "@salesforce/plugin-config": "1.3.2",
+    "@salesforce/plugin-config": "1.3.3",
     "@salesforce/plugin-custom-metadata": "1.0.12",
     "@salesforce/plugin-data": "0.6.6",
     "@salesforce/plugin-generator": "^1.1.7",

@@ -1097,7 +1097,7 @@
     chalk "^2.4.2"
     cli-ux "^4.9.3"
 
-"@salesforce/core@2.31.0", "@salesforce/core@^2.1.4", "@salesforce/core@^2.2.0", "@salesforce/core@^2.23.4", "@salesforce/core@^2.29.0", "@salesforce/core@^2.31.0":
+"@salesforce/core@2.31.0":
   version "2.31.0"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-2.31.0.tgz#cdeaa9968060afb52f40c12bf5a4f9844a2a1909"
   integrity sha512-ROEjX/M0ZHpGlmRfNUoDKsE4ppOZUU5Hcl3XHr2pCO7F505imAmhKg8I+XfGSxXyj4bL/kftkNTK5xFffJ+6mw==
@@ -1141,7 +1141,7 @@
     semver "^7.3.5"
     ts-retry-promise "^0.6.0"
 
-"@salesforce/core@2.33.1":
+"@salesforce/core@2.33.1", "@salesforce/core@^2.1.4", "@salesforce/core@^2.2.0", "@salesforce/core@^2.23.4", "@salesforce/core@^2.29.0", "@salesforce/core@^2.31.0":
   version "2.33.1"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-2.33.1.tgz#23c22953174ad0e809b2f1c7b2881b5ba8a89d9c"
   integrity sha512-jKVFYEvlV+loBoau5heBOVXmzsPO+RbYh6SPybJK6xF7khQmzu7+WAQbikY2eY8VaXcded2kka8L/FKuD/LKBg==
@@ -1264,10 +1264,10 @@
     open "^8.2.1"
     tslib "^2"
 
-"@salesforce/plugin-config@1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.3.2.tgz#301cc1c1fef9ceef0587a0c77490ea3f75916e7a"
-  integrity sha512-njDjLVfbhztATvwse9gDmiBdRFJ8VTXzoaQea7HFvGDS47t9KrQ62ndnpoaqEd0A8i+AcE/elJr+2Ae5PiqSuQ==
+"@salesforce/plugin-config@1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.3.3.tgz#4a34ef8e2cef5dc91de1e6f347b2ff488c4cced9"
+  integrity sha512-MRu/4Q5W83VvwIDOgTjQMbj16gYzT4zhUZjAX6McZK3FSbR/lOoYUgTiiBXt2ubUejFzSLJBjnrnDvBLMNvF8g==
   dependencies:
     "@oclif/config" "^1.18.1"
     "@salesforce/command" "^4.2.0"
