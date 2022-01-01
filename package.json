@@ -148,7 +148,7 @@
     "@salesforce/sfdx-plugin-lwc-test": "0.1.7",
     "@salesforce/ts-types": "^1.5.17",
     "debug": "^4.3.1",
-    "salesforce-alm": "53.7.0",
+    "salesforce-alm": "53.7.2",
     "salesforce-lightning-cli": "3.0.0",
     "shelljs": "^0.8.4",
     "tslib": "^2.1.0",
