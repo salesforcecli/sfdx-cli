@@ -645,7 +645,7 @@
     supports-color "^8.1.1"
     tslib "^2"
 
-"@oclif/command@1.8.11", "@oclif/command@^1", "@oclif/command@^1.5.13", "@oclif/command@^1.5.16", "@oclif/command@^1.5.17", "@oclif/command@^1.5.19", "@oclif/command@^1.5.4", "@oclif/command@^1.6.0", "@oclif/command@^1.6.1", "@oclif/command@^1.7.0", "@oclif/command@^1.8.0", "@oclif/command@^1.8.1", "@oclif/command@^1.8.6", "@oclif/command@^1.8.9":
+"@oclif/command@1.8.11":
   version "1.8.11"
   resolved "https://registry.yarnpkg.com/@oclif/command/-/command-1.8.11.tgz#926919fe8ddb7ab778fef8a8f2951c975f35e0c2"
   integrity sha512-2fGLMvi6J5+oNxTaZfdWPMWY8oW15rYj0V8yLzmZBAEjfzjLqLIzJE9IlNccN1zwRqRHc1bcISSRDdxJ56IS/Q==
@@ -654,6 +654,18 @@
     "@oclif/errors" "^1.3.5"
     "@oclif/parser" "^3.8.6"
     "@oclif/plugin-help" "3.2.14"
+    debug "^4.1.1"
+    semver "^7.3.2"
+
+"@oclif/command@^1", "@oclif/command@^1.5.13", "@oclif/command@^1.5.16", "@oclif/command@^1.5.17", "@oclif/command@^1.5.19", "@oclif/command@^1.5.4", "@oclif/command@^1.6.0", "@oclif/command@^1.6.1", "@oclif/command@^1.7.0", "@oclif/command@^1.8.0", "@oclif/command@^1.8.1", "@oclif/command@^1.8.15", "@oclif/command@^1.8.6", "@oclif/command@^1.8.9":
+  version "1.8.16"
+  resolved "https://registry.yarnpkg.com/@oclif/command/-/command-1.8.16.tgz#bea46f81b2061b47e1cda318a0b923e62ca4cc0c"
+  integrity sha512-rmVKYEsKzurfRU0xJz+iHelbi1LGlihIWZ7Qvmb/CBz1EkhL7nOkW4SVXmG2dA5Ce0si2gr88i6q4eBOMRNJ1w==
+  dependencies:
+    "@oclif/config" "^1.18.2"
+    "@oclif/errors" "^1.3.5"
+    "@oclif/help" "^1.0.1"
+    "@oclif/parser" "^3.8.6"
     debug "^4.1.1"
     semver "^7.3.2"
 
@@ -740,6 +752,21 @@
     colors "*"
     extend-object "^1.0.0"
     rc "^1.2.8"
+
+"@oclif/help@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@oclif/help/-/help-1.0.1.tgz#fd96a3dd9fb2314479e6c8584c91b63754a7dff5"
+  integrity sha512-8rsl4RHL5+vBUAKBL6PFI3mj58hjPCp2VYyXD4TAa7IMStikFfOH2gtWmqLzIlxAED2EpD0dfYwo9JJxYsH7Aw==
+  dependencies:
+    "@oclif/config" "1.18.2"
+    "@oclif/errors" "1.3.5"
+    chalk "^4.1.2"
+    indent-string "^4.0.0"
+    lodash "^4.17.21"
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    widest-line "^3.1.0"
+    wrap-ansi "^6.2.0"
 
 "@oclif/linewrap@^1.0.0":
   version "1.0.0"
@@ -869,15 +896,15 @@
     lodash "^4.17.21"
 
 "@oclif/plugin-plugins@^1.10.1":
-  version "1.10.10"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-1.10.10.tgz#1948b4625cdb5ae5d9f47d43ac55f4a6741bcacf"
-  integrity sha512-axEwF2LkXykhHMQLCfcNETAVr6vLjehwLmsECpU83lYQ3PSO6AA9wpZKTtZZkT98CMklJblSkLnR+TpX9Nxnhg==
+  version "1.10.11"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-1.10.11.tgz#f2d11dc164a3dd96392298670b4aafc04e89a44a"
+  integrity sha512-C9eHF10UkxwoAqRYrPW51YDuDOpDXASX4BEA++kTVcqhMQTKBQalmEJKw+gVnLl1YNmapse1ZSAcU1TrXjqykg==
   dependencies:
     "@oclif/color" "^0.1.2"
-    "@oclif/command" "^1.8.9"
+    "@oclif/command" "^1.8.15"
     "@oclif/errors" "^1.3.5"
     chalk "^4.1.2"
-    cli-ux "^5.6.6"
+    cli-ux "^5.6.7"
     debug "^4.3.3"
     fs-extra "^9.0"
     http-call "^5.3.0"
@@ -2984,7 +3011,7 @@ cli-table@^0.3.1:
     colors "1.0.3"
     strip-ansi "^6.0.1"
 
-cli-ux@5.6.6, cli-ux@^5.2.1, cli-ux@^5.4.4, cli-ux@^5.4.5, cli-ux@^5.5.1, cli-ux@^5.6.3, cli-ux@^5.6.4, cli-ux@^5.6.6:
+cli-ux@5.6.6:
   version "5.6.6"
   resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.6.6.tgz#1424f5a9fbddcd796ad985b867a3de7f5a452090"
   integrity sha512-4wUB34zoFklcZV0z5YiOM5IqVMMt9c3TK3QYRK3dqyk3XoRC0ybiWDWHfsMDjkKrzsVTw95rXn9NrzSHbae4pg==
@@ -3104,6 +3131,38 @@ cli-ux@^4.9.1, cli-ux@^4.9.3:
     supports-hyperlinks "^1.0.1"
     treeify "^1.1.0"
     tslib "^1.9.3"
+
+cli-ux@^5.2.1, cli-ux@^5.4.4, cli-ux@^5.4.5, cli-ux@^5.5.1, cli-ux@^5.6.3, cli-ux@^5.6.4, cli-ux@^5.6.6, cli-ux@^5.6.7:
+  version "5.6.7"
+  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.6.7.tgz#32ef9e6cb2b457be834280cc799028a11c8235a8"
+  integrity sha512-dsKAurMNyFDnO6X1TiiRNiVbL90XReLKcvIq4H777NMqXGBxBws23ag8ubCJE97vVZEgWG2eSUhsyLf63Jv8+g==
+  dependencies:
+    "@oclif/command" "^1.8.15"
+    "@oclif/errors" "^1.3.5"
+    "@oclif/linewrap" "^1.0.0"
+    "@oclif/screen" "^1.0.4"
+    ansi-escapes "^4.3.0"
+    ansi-styles "^4.2.0"
+    cardinal "^2.1.1"
+    chalk "^4.1.0"
+    clean-stack "^3.0.0"
+    cli-progress "^3.4.0"
+    extract-stack "^2.0.0"
+    fs-extra "^8.1"
+    hyperlinker "^1.0.0"
+    indent-string "^4.0.0"
+    is-wsl "^2.2.0"
+    js-yaml "^3.13.1"
+    lodash "^4.17.21"
+    natural-orderby "^2.0.1"
+    object-treeify "^1.1.4"
+    password-prompt "^1.1.2"
+    semver "^7.3.2"
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    supports-color "^8.1.0"
+    supports-hyperlinks "^2.1.0"
+    tslib "^2.0.0"
 
 cli-width@^2.0.0:
   version "2.2.1"
