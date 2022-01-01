@@ -937,14 +937,14 @@
     semver "^7.3.2"
 
 "@oclif/plugin-which@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-which/-/plugin-which-1.0.3.tgz#46f20d7cff92c40b08bb3fc54aeb407a493af903"
-  integrity sha512-abYZ9hgtifrDDIXtDEO3eQu5zbrAwxjdXvtnD0kIgADvTNXui4XP8qZs1+bL8BsNW/G6WiSghz0CV7WH8vkmVg==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-which/-/plugin-which-1.0.4.tgz#4174a62c8b8dcf57d5018ec68f1510301830dfe1"
+  integrity sha512-xuJVhnUDiKIPIw5i6GiQnB3QZ55ie7ucrI6/P0TQWx+1BEt3xl6tEs/vFqnyFuDOh8fc0ZwYTBWFUWkQfYsv4w==
   dependencies:
-    "@oclif/command" "^1.5.4"
-    "@oclif/config" "^1.8.7"
-    cli-ux "^4.9.1"
-    tslib "^1.9.3"
+    "@oclif/command" "1.8.11"
+    "@oclif/config" "1.18.2"
+    cli-ux "5.6.6"
+    tslib "^2.0.0"
 
 "@oclif/screen@^1.0.3", "@oclif/screen@^1.0.4", "@oclif/screen@^1.0.4 ":
   version "1.0.4"
@@ -3078,7 +3078,7 @@ cli-ux@6.0.6:
     supports-hyperlinks "^2.1.0"
     tslib "^2.0.0"
 
-cli-ux@^4.9.1, cli-ux@^4.9.3:
+cli-ux@^4.9.3:
   version "4.9.3"
   resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-4.9.3.tgz#4c3e070c1ea23eef010bbdb041192e0661be84ce"
   integrity sha512-/1owvF0SZ5Gn54cgrikJ0QskgTzeg30HGjkmjFoaHDJzAqFpuX1DBpFR8aLvsE1J5s9MgeYRENQK4BFwOag5VA==
