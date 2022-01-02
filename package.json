@@ -139,7 +139,7 @@
     "@salesforce/plugin-limits": "1.3.0",
     "@salesforce/plugin-org": "1.11.0",
     "@salesforce/plugin-schema": "1.1.0",
-    "@salesforce/plugin-source": "1.6.2",
+    "@salesforce/plugin-source": "1.6.3",
     "@salesforce/plugin-telemetry": "1.4.0",
     "@salesforce/plugin-templates": "52.7.0",
     "@salesforce/plugin-trust": "^1.0.8",
