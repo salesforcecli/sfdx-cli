@@ -334,7 +334,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - sm/hooks-dev-release
       - release-management/release-package:
           tag: dev
           github-release: false
