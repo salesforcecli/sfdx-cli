@@ -9,6 +9,38 @@ parameters:
   run-auto-workflows:
     default: true
     type: boolean
+  run-promote-to-latest:
+    description: >
+      Boolean that controls when promote-to-latest will run
+
+      This parameter is used by an scheduled trigger to determine if the
+      promote-to-latest workflow will run.
+    type: boolean
+    default: false
+  run-build-latest-rc:
+    description: >
+      Boolean that controls when build-latest-rc will run
+
+      This parameter is used by an scheduled trigger to determine if the
+      build-latest-rc workflow will run.
+    type: boolean
+    default: false
+  run-dependabot-automerge:
+    description: >
+      Boolean that controls when dependabot-automerge will run
+
+      This parameter is used by an scheduled trigger to determine if the
+      dependabot-automerge workflow will run.
+    type: boolean
+    default: false
+  run-test-ts-update:
+    description: >
+      Boolean that controls when test-ts-update will run
+
+      This parameter is used by an scheduled trigger to determine if the
+      test-ts-update workflow will run.
+    type: boolean
+    default: false
   run-just-nuts:
     default: false
     type: boolean
@@ -391,14 +423,7 @@ workflows:
             - release-management/release-package
 
   promote-to-latest:
-    triggers:
-      - schedule:
-          # Thursday mornings at 10am mountain
-          cron: '00 16 * * 4'
-          filters:
-            branches:
-              only:
-                - main
+    when: << pipeline.parameters.run-promote-to-latest >>
     jobs:
       # start the change case
       - change-case-start:
@@ -426,14 +451,7 @@ workflows:
             - promote-channels
 
   build-latest-rc:
-    triggers:
-      - schedule:
-          # Thursday mornings at 10:30am mountain
-          cron: '30 16 * * 4'
-          filters:
-            branches:
-              only:
-                - main
+    when: << pipeline.parameters.run-build-latest-rc >>
     jobs:
       - build-latest-rc
 
@@ -456,12 +474,6 @@ workflows:
                 - main
 
   dependabot-automerge:
-    triggers:
-      - schedule:
-          cron: '0 2,5,8,11 * * *'
-          filters:
-            branches:
-              only:
-                - main
+    when: << pipeline.parameters.run-dependabot-automerge >>
     jobs:
       - release-management/dependabot-automerge
