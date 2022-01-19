@@ -474,6 +474,41 @@
     "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"]
   },
   {
+    "command": "force:mdapi:beta:retrieve",
+    "plugin": "@salesforce/plugin-source",
+    "flags": [
+      "apiversion",
+      "json",
+      "loglevel",
+      "packagenames",
+      "retrievetargetdir",
+      "singlepackage",
+      "sourcedir",
+      "targetusername",
+      "unpackaged",
+      "unzip",
+      "verbose",
+      "wait",
+      "zipfilename"
+    ]
+  },
+  {
+    "command": "force:mdapi:beta:retrieve:report",
+    "plugin": "@salesforce/plugin-source",
+    "flags": [
+      "apiversion",
+      "jobid",
+      "json",
+      "loglevel",
+      "retrievetargetdir",
+      "targetusername",
+      "unzip",
+      "verbose",
+      "wait",
+      "zipfilename"
+    ]
+  },
+  {
     "command": "force:mdapi:convert",
     "plugin": "salesforce-alm",
     "flags": ["json", "loglevel", "manifest", "metadata", "metadatapath", "outputdir", "rootdir"]
@@ -909,7 +944,7 @@
   {
     "command": "force:source:beta:status",
     "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "json", "local", "loglevel", "remote", "targetusername"]
+    "flags": ["apiversion", "concise", "json", "local", "loglevel", "remote", "targetusername"]
   },
   {
     "command": "force:source:beta:tracking:clear",
