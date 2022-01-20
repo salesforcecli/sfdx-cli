@@ -1014,7 +1014,7 @@
   },
   {
     "command": "force:source:ignored:list",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": ["json", "loglevel", "sourcepath"]
   },
   {
