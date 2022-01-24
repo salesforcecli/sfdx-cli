@@ -339,6 +339,7 @@ workflows:
               only:
                 - main
       - release-management/release-package:
+          context: AWS
           tag: latest-rc
           github-release: true
           requires:
