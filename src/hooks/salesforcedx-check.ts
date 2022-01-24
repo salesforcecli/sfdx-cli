@@ -12,7 +12,7 @@ import { cli } from 'cli-ux';
 import { compareVersions } from '../versions';
 
 const salesforcedxError = `The salesforcedx plugin is deprecated.  Using it results in very old versions of commands running.
-    Uninstall it with 'sfdx plugins:uninstall salesforcedx'.
+    Uninstall the plugin with this command: 'sfdx plugins:uninstall salesforcedx'.
     See https://github.com/forcedotcom/cli/blob/main/releasenotes/sfdx/README.md#71063-june-17-2021 for more information about this change.`;
 
 const MAX_VERSION = '7.107.0';
