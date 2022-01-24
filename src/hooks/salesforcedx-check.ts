@@ -11,8 +11,8 @@ import { AnyJson, get } from '@salesforce/ts-types';
 import { cli } from 'cli-ux';
 import { compareVersions } from '../versions';
 
-const salesforcedxError = `The salesforcedx plugin is deprecated.  Using it results in very old versions of commands running.
-    Uninstall it with 'sfdx plugins:uninstall salesforcedx'.
+const salesforcedxError = `You still have the deprecated salesforcedx plugin installed in Salesforce CLI. If you continue using this plugin, you'll be running old and out-of-date versions of sfdx commands.
+    Uninstall the plugin with this command: 'sfdx plugins:uninstall salesforcedx'.
     See https://github.com/forcedotcom/cli/blob/main/releasenotes/sfdx/README.md#71063-june-17-2021 for more information about this change.`;
 
 const MAX_VERSION = '7.107.0';
