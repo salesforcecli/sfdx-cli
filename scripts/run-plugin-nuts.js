@@ -93,8 +93,7 @@ const triggerNutsForProject = async (sfdxVersion, module, branch = 'main') => {
   const body = {
     branch: branch,
     parameters: {
-      'run-auto-workflows': false,
-      'run-just-nuts': true,
+      workflow: 'just-nuts',
       sfdx_version: sfdxVersion,
       npm_module_name: module.name,
       repo_tag: module.version,
@@ -117,8 +116,7 @@ const triggerNutsMonitor = async (jobData, branch = 'main') => {
   const body = {
     branch: branch,
     parameters: {
-      'run-auto-workflows': false,
-      'run-just-nuts': true,
+      workflow: 'monitor-all-nuts',
       nuts_job_data: `"${JSON.stringify(jobData).replace(/"/g, '\\"')}"`,
     },
   };
