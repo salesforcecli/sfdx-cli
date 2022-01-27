@@ -39,7 +39,8 @@
       "update": [
         "./dist/hooks/lazyRequire.js",
         "./dist/hooks/postupdate.js",
-        "./dist/hooks/displayReleaseNotes.js"
+        "./dist/hooks/displayReleaseNotes.js",
+        "./dist/hooks/salesforcedx-check.js"
       ]
     },
     "plugins": [
