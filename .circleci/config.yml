@@ -339,7 +339,6 @@ workflows:
               only:
                 - main
       - release-management/release-package:
-          context: AWS
           tag: latest-rc
           github-release: true
           requires:
@@ -349,6 +348,7 @@ workflows:
               only:
                 - main
       - pack-and-upload-tarballs:
+          context: AWS
           filters:
             branches:
               only:
@@ -356,6 +356,7 @@ workflows:
           requires:
             - release-management/release-package
       - pack-and-upload-macos-installer:
+          context: AWS
           filters:
             branches:
               only:
@@ -363,6 +364,7 @@ workflows:
           requires:
             - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
+          context: AWS
           filters:
             branches:
               only:
@@ -409,6 +411,7 @@ workflows:
           context: CLI_CTC
 
       - promote-channels:
+          context: AWS
           requires:
             - change-case-start
       - docker-promotions:
