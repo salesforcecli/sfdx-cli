@@ -198,6 +198,8 @@
     "typescript": "^4.1.3"
   },
   "resolutions": {
+    "@salesforce/command": "4.2.2",
+    "@salesforce/core": "2.35.0",
     "@salesforce/plugin-telemetry": "1.4.0",
     "@salesforce/source-deploy-retrieve": "5.9.4",
     "@salesforce/source-tracking": "1.0.2",
