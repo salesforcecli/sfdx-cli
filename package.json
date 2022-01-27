@@ -152,7 +152,6 @@
     "@salesforce/ts-types": "^1.5.17",
     "debug": "^4.3.1",
     "salesforce-alm": "53.7.5",
-    "salesforce-lightning-cli": "3.0.0",
     "shelljs": "^0.8.4",
     "tslib": "^2.1.0",
     "v8-compile-cache": "^2.2.0"
