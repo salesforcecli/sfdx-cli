@@ -452,11 +452,13 @@
     "flags": [
       "apiversion",
       "checkonly",
+      "concise",
       "deploydir",
       "ignoreerrors",
       "ignorewarnings",
       "json",
       "loglevel",
+      "purgeondelete",
       "runtests",
       "singlepackage",
       "soapdeploy",
@@ -471,7 +473,7 @@
   {
     "command": "force:mdapi:beta:deploy:report",
     "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"]
+    "flags": ["apiversion", "concise", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"]
   },
   {
     "command": "force:mdapi:beta:retrieve",
@@ -992,6 +994,7 @@
       "metadata",
       "postdestructivechanges",
       "predestructivechanges",
+      "purgeondelete",
       "runtests",
       "soapdeploy",
       "sourcepath",
