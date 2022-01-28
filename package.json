@@ -140,7 +140,7 @@
     "@salesforce/plugin-generator": "^1.1.7",
     "@salesforce/plugin-info": "1.2.0",
     "@salesforce/plugin-limits": "1.3.0",
-    "@salesforce/plugin-org": "1.11.0",
+    "@salesforce/plugin-org": "1.11.1",
     "@salesforce/plugin-schema": "1.1.0",
     "@salesforce/plugin-source": "1.8.6",
     "@salesforce/plugin-telemetry": "1.4.0",

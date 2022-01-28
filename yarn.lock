@@ -1122,7 +1122,7 @@
     chalk "^2.4.2"
     cli-ux "^4.9.3"
 
-"@salesforce/command@^4.2.1":
+"@salesforce/command@^4.2.1", "@salesforce/command@^4.2.2":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-4.2.2.tgz#2d1c301d771a6a6aac3cf25f14f18e829bf37b1d"
   integrity sha512-2QEtPIMaeRyUEnLmPHJ1PhfKDJBupfQS5T4nG8rXpK2yOznBu48aPWaWCYErrxyC0bPa5eoFACeyPWz1k9QMog==
@@ -1367,14 +1367,14 @@
     "@salesforce/core" "^2.31.0"
     tslib "^2"
 
-"@salesforce/plugin-org@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-1.11.0.tgz#ab92478c4a64a24e1c8e4cd1b1996c6cceae6315"
-  integrity sha512-gL50DyyeIYUvY2W8cU4FT9RAbI9BcA9SkjXXVXkdwhZjQ/Rus6xV/ObAQe7ZlrlIJxSLx/mQw4zQ/JolyukuHg==
+"@salesforce/plugin-org@1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-1.11.1.tgz#487bfc8009d5d4989a70e5c33a6d503b09539d50"
+  integrity sha512-V7qV7npDcsEV7MS/uUqGFUkBv7HhKlEdw2pYYbXPBZ6Eed3BoC4baszlYXCx5roV2/KJSpUoiIB4Q9nG/MOrlg==
   dependencies:
     "@oclif/config" "^1.18.1"
-    "@salesforce/command" "^4.2.0"
-    "@salesforce/core" "^2.31.0"
+    "@salesforce/command" "^4.2.2"
+    "@salesforce/core" "^2.35.0"
     "@salesforce/kit" "^1.5.17"
     open "8.4.0"
     tslib "^2"

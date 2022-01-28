@@ -575,6 +575,27 @@
     "flags": ["apiversion", "jobid", "json", "loglevel", "retrievetargetdir", "targetusername", "verbose", "wait"]
   },
   {
+    "command": "force:org:beta:create",
+    "plugin": "@salesforce/plugin-org",
+    "flags": [
+      "apiversion",
+      "clientid",
+      "definitionfile",
+      "durationdays",
+      "json",
+      "loglevel",
+      "noancestors",
+      "nonamespace",
+      "retry",
+      "setalias",
+      "setdefaultusername",
+      "targetdevhubusername",
+      "targetusername",
+      "type",
+      "wait"
+    ]
+  },
+  {
     "command": "force:org:clone",
     "plugin": "salesforce-alm",
     "flags": [
