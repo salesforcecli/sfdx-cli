@@ -407,11 +407,6 @@
     "flags": ["apiversion", "interfacename", "internal", "json", "loglevel", "outputdir", "template"]
   },
   {
-    "command": "force:lightning:lint",
-    "plugin": "sfdx-cli",
-    "flags": ["config", "exit", "files", "ignore", "json", "loglevel", "verbose"]
-  },
-  {
     "command": "force:lightning:lwc:test:create",
     "plugin": "@salesforce/sfdx-plugin-lwc-test",
     "flags": ["filepath", "json", "loglevel"]
@@ -452,11 +447,13 @@
     "flags": [
       "apiversion",
       "checkonly",
+      "concise",
       "deploydir",
       "ignoreerrors",
       "ignorewarnings",
       "json",
       "loglevel",
+      "purgeondelete",
       "runtests",
       "singlepackage",
       "soapdeploy",
@@ -471,7 +468,7 @@
   {
     "command": "force:mdapi:beta:deploy:report",
     "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"]
+    "flags": ["apiversion", "concise", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"]
   },
   {
     "command": "force:mdapi:beta:retrieve",
@@ -576,6 +573,27 @@
     "command": "force:mdapi:retrieve:report",
     "plugin": "salesforce-alm",
     "flags": ["apiversion", "jobid", "json", "loglevel", "retrievetargetdir", "targetusername", "verbose", "wait"]
+  },
+  {
+    "command": "force:org:beta:create",
+    "plugin": "@salesforce/plugin-org",
+    "flags": [
+      "apiversion",
+      "clientid",
+      "definitionfile",
+      "durationdays",
+      "json",
+      "loglevel",
+      "noancestors",
+      "nonamespace",
+      "retry",
+      "setalias",
+      "setdefaultusername",
+      "targetdevhubusername",
+      "targetusername",
+      "type",
+      "wait"
+    ]
   },
   {
     "command": "force:org:clone",
@@ -992,6 +1010,7 @@
       "metadata",
       "postdestructivechanges",
       "predestructivechanges",
+      "purgeondelete",
       "runtests",
       "soapdeploy",
       "sourcepath",
