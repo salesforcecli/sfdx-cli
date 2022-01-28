@@ -100,7 +100,6 @@
     }
   },
   "pinnedDependencies": [
-    "@salesforce/core",
     "@salesforce/plugin-alias",
     "@salesforce/plugin-apex",
     "@salesforce/plugin-auth",
@@ -130,7 +129,6 @@
     "@oclif/plugin-update": "1.5.0",
     "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "@oclif/plugin-which": "^1.0.3",
-    "@salesforce/core": "2.35.0",
     "@salesforce/kit": "^1.5.13",
     "@salesforce/lazy-require": "^0.4.0",
     "@salesforce/plugin-alias": "1.2.0",
