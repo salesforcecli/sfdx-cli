@@ -1420,19 +1420,19 @@
     "@salesforce/core" "^2.31.0"
     tslib "^2"
 
-"@salesforce/plugin-source@1.8.6":
-  version "1.8.6"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.8.6.tgz#a3fc65a625b41d0152c6b579f9ebdb006f86a03d"
-  integrity sha512-NldsVewt6JvDc9D4AEmzAlaYLr68y9JSiQzROl16kOwN+nc1gPPS5hn1elTCgVBQdLfrkgijGZGWLw+t9657eQ==
+"@salesforce/plugin-source@1.8.9":
+  version "1.8.9"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.8.9.tgz#46134598c39c1443a0ec6a2974e55c61d9687dd5"
+  integrity sha512-pPJcRewMh3bEx7yKgiQL4zLwWEjNl5aqI7gvHUkkHMTL+z3mudWKI+4CWfycRttleeRwhuaqDr5zzDmh/BLMbQ==
   dependencies:
-    "@oclif/config" "^1.18.1"
-    "@salesforce/command" "^4.2.0"
-    "@salesforce/core" "^2.31.0"
-    "@salesforce/source-deploy-retrieve" "^5.9.3"
-    "@salesforce/source-tracking" "^1.0.0"
+    "@oclif/config" "^1.18.2"
+    "@salesforce/command" "^4.2.2"
+    "@salesforce/core" "^2.35.0"
+    "@salesforce/source-deploy-retrieve" "^5.9.5"
+    "@salesforce/source-tracking" "^1.0.2"
     chalk "^4.1.2"
     cli-ux "^5.6.3"
-    open "^8.2.1"
+    open "^8.4.0"
     tslib "^2"
 
 "@salesforce/plugin-telemetry@1.4.0", "@salesforce/plugin-telemetry@^1.3.0":
@@ -1517,7 +1517,7 @@
     signal-exit "^3.0.2"
     tslib "^1.10.0"
 
-"@salesforce/source-deploy-retrieve@5.9.4", "@salesforce/source-deploy-retrieve@^5.9.3", "@salesforce/source-deploy-retrieve@^5.9.4":
+"@salesforce/source-deploy-retrieve@5.9.4", "@salesforce/source-deploy-retrieve@^5.9.4", "@salesforce/source-deploy-retrieve@^5.9.5":
   version "5.9.4"
   resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-5.9.4.tgz#37dfd035baaa510a068854d8f738580c1673273c"
   integrity sha512-YuRiusKMbs34onmCd4eV219wLEhNdEbpkjkdZ1CXSEDRAZAROydPK8Xh5r3RjJiJaVX+b+HIKANN2XH4HqwhjA==
@@ -1533,7 +1533,7 @@
     unzipper "0.10.11"
     xmldom-sfdx-encoding "^0.1.29"
 
-"@salesforce/source-tracking@1.0.2", "@salesforce/source-tracking@^1.0.0", "@salesforce/source-tracking@^1.0.2":
+"@salesforce/source-tracking@1.0.2", "@salesforce/source-tracking@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@salesforce/source-tracking/-/source-tracking-1.0.2.tgz#849b69519e5af617aff3a9a14dc878d826ec58e1"
   integrity sha512-056b2Ia9JAJGv+W2ByOHLrkCP0zEjzpvT43IqE6HUYbSDqm1T1InFeCtLWy8S4uzlMtiUx34mKshkDoj8lIQQA==
@@ -8285,7 +8285,7 @@ onetime@^5.1.0, onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
-open@8.4.0, open@^8.2.1:
+open@8.4.0, open@^8.2.1, open@^8.4.0:
   version "8.4.0"
   resolved "https://registry.yarnpkg.com/open/-/open-8.4.0.tgz#345321ae18f8138f82565a910fdc6b39e8c244f8"
   integrity sha512-XgFPPM+B28FtCCgSb9I+s9szOC1vZRSwgWsRUA5ylIxRTgKozqjOCrVOqGsYABPYK5qnfqClxZTFBa8PKt2v6Q==
