@@ -1271,10 +1271,10 @@
     chalk "^4.1.0"
     tslib "^1"
 
-"@salesforce/plugin-auth@1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.8.0.tgz#0064a48ce19c2793e04071b93e6eb609bb8ea40b"
-  integrity sha512-yevxN8nzAwYRY3jXVy8hyUHAM/F3bDRupY6GyulYosEooo6noZkIA4fj/xclRRDGOiSzHOGsLH8RLd01BuaypQ==
+"@salesforce/plugin-auth@1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-1.8.1.tgz#75ff62ee0a772d3428f8210a486fc38a07ae5686"
+  integrity sha512-lY6E9DGj0AjjAG1MSRzB1hgX6B4+vnNK7MwOO3Se35tl7+ncLA03WPKEULDpeiRvD6xlI5t6aTVgzCkIN0XrWg==
   dependencies:
     "@oclif/config" "^1.18.1"
     "@salesforce/command" "^4.2.0"
