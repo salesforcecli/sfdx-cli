@@ -850,6 +850,7 @@
       "postinstallurl",
       "preserve",
       "releasenotesurl",
+      "skipancestorcheck",
       "skipvalidation",
       "tag",
       "targetdevhubusername",
