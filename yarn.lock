@@ -1319,7 +1319,7 @@
     csv-parse "^4.16.3"
     tslib "^2"
 
-"@salesforce/plugin-generator@^1.2.2":
+"@salesforce/plugin-generator@1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-generator/-/plugin-generator-1.2.2.tgz#0ef9a399b2b200be63298421c5ed365019c1c21b"
   integrity sha512-ua6Brn/vzO4SqspF44dGOcmHP6ezgblL2BqV9Vul/Ze8ZOeaJvfgBA0BUrZSB3TVd9BrugwxoXa12T6F2qJRaw==
