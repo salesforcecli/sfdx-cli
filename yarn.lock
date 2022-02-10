@@ -1298,6 +1298,30 @@
     semver "^7.3.5"
     ts-retry-promise "^0.6.0"
 
+"@salesforce/core@^2.35.1":
+  version "2.35.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-2.35.1.tgz#093d9b192442f565a430c8ccef1920d43eebb235"
+  integrity sha512-FK+Lm/PN2UEmiQAv3XBQPvSD9L3DVFsgobe5H4kN+pl6aSPKYa7dbVOJvpLeZaSE8owTuuujayE8Syfl48tQUg==
+  dependencies:
+    "@salesforce/bunyan" "^2.0.0"
+    "@salesforce/kit" "^1.5.17"
+    "@salesforce/schemas" "^1.0.1"
+    "@salesforce/ts-types" "^1.5.20"
+    "@types/graceful-fs" "^4.1.5"
+    "@types/jsforce" "^1.9.38"
+    "@types/mkdirp" "^1.0.1"
+    archiver "^5.3.0"
+    debug "^3.1.0"
+    faye "^1.4.0"
+    graceful-fs "^4.2.4"
+    js2xmlparser "^4.0.1"
+    jsen "0.6.6"
+    jsforce "^1.11.0"
+    jsonwebtoken "8.5.0"
+    mkdirp "1.0.4"
+    semver "^7.3.5"
+    ts-retry-promise "^0.6.0"
+
 "@salesforce/dev-config@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@salesforce/dev-config/-/dev-config-3.0.0.tgz#a87e2cc310011a3364fc0a5d6c5550daa3192642"
@@ -1396,6 +1420,16 @@
     "@salesforce/kit" "^1.5.17"
     chalk "^4.1.2"
     open "^8.2.1"
+    tslib "^2"
+
+"@salesforce/plugin-community@1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-community/-/plugin-community-1.1.4.tgz#566d038f75473fe57226b434de58027df68be413"
+  integrity sha512-pmbnfOMe2G/vfZuoNWaoH3hZMQqcW2ge3CBYbmUe4wZRT+vjP8ZcTtJLZOMSYvLnFUycY5KRx3gnZlQLo3dsYQ==
+  dependencies:
+    "@oclif/config" "^1"
+    "@salesforce/command" "^4.2.2"
+    "@salesforce/core" "^2.35.1"
     tslib "^2"
 
 "@salesforce/plugin-config@1.3.19":
