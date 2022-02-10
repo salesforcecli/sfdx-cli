@@ -2,18 +2,168 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.137.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.136.2...v7.137.1) (2022-02-04)
+
+### [7.136.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.136.1...v7.136.2) (2022-02-01)
+
+### [7.136.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.136.0...v7.136.1) (2022-01-28)
+
+## [7.136.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.133.0...v7.136.0) (2022-01-28)
+
+### Features
+
+- warn people about salesforcedx during update ([#436](https://github.com/salesforcecli/sfdx-cli/issues/436)) ([3b076fd](https://github.com/salesforcecli/sfdx-cli/commit/3b076fdaac2901e112b5d5900715d647ba985dcc))
+
+### Bug Fixes
+
+- no process.exit(0) ([e6c2bb4](https://github.com/salesforcecli/sfdx-cli/commit/e6c2bb43ce12dc4e4b863526b20597502b6af0b2))
+- remove lightning lint command ([fad0a91](https://github.com/salesforcecli/sfdx-cli/commit/fad0a9199f45c2346f0b6bed32cea48cc723c4c2))
+
+## [7.133.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.132.0...v7.133.0) (2022-01-06)
+
+### Features
+
+- add plugin-info hooks ([3dd4018](https://github.com/salesforcecli/sfdx-cli/commit/3dd40180d4cd7e342e6e0ab1248aeeb333e76f8f))
+
+### Bug Fixes
+
+- script chmod ([ebca03d](https://github.com/salesforcecli/sfdx-cli/commit/ebca03dae2a2595fe8e79c61bb366bbc4542685b))
+
+## [7.132.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.131.0...v7.132.0) (2021-12-16)
+
+## [7.131.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.130.1...v7.131.0) (2021-12-09)
+
+### [7.130.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.130.0...v7.130.1) (2021-12-03)
+
+## [7.130.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.129.0...v7.130.0) (2021-12-03)
+
+### Features
+
+- add plugin-info ([a23ae84](https://github.com/salesforcecli/sfdx-cli/commit/a23ae846f9b151b7f4c7c659de73f0bc6cec8c1f))
+
+## [7.129.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.128.0...v7.129.0) (2021-11-19)
+
+## [7.128.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.127.0...v7.128.0) (2021-11-18)
+
+## [7.127.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.126.0...v7.127.0) (2021-11-11)
+
+## [7.126.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.125.0...v7.126.0) (2021-11-04)
+
+### Bug Fixes
+
+- dir paths ([47dc692](https://github.com/salesforcecli/sfdx-cli/commit/47dc692413400edc286983f842093260f79e8858))
+- don't change dataDir for bundled sf ([fbeaf1f](https://github.com/salesforcecli/sfdx-cli/commit/fbeaf1f1d4b5c6eb0add562bc13b90c57cd70547))
+- oclif manifest command ([1494ade](https://github.com/salesforcecli/sfdx-cli/commit/1494adec7b9f4c6a4f750743ab8d08d34ab1e741))
+- postupdate hook doesn't use npm anymore ([d1f4e21](https://github.com/salesforcecli/sfdx-cli/commit/d1f4e21dd6670f24650074670551ed92565cd2c9))
+- sf install path for tarballs ([a851ec3](https://github.com/salesforcecli/sfdx-cli/commit/a851ec32af698ce57fa55c397968dea2f130e0c5))
+- test new installer packaging ([83160bd](https://github.com/salesforcecli/sfdx-cli/commit/83160bd87b601548668a20951a832be597db96eb))
+- test new installers ([bf2620a](https://github.com/salesforcecli/sfdx-cli/commit/bf2620a3f3ea19a9ddfb821f84ca072e81c8abe8))
+- test new installers with sf included ([afcf758](https://github.com/salesforcecli/sfdx-cli/commit/afcf758bade1569b5d3161a01020566b26d9ebbc))
+- test new installers? ([403e7ff](https://github.com/salesforcecli/sfdx-cli/commit/403e7ff593a2a54d6d84c11cd78ccccf0d35286c))
+- update release management plugin ([1e68acc](https://github.com/salesforcecli/sfdx-cli/commit/1e68acc5262092070591aad194603bc69012d1c3))
+- whoops ([34c1f8f](https://github.com/salesforcecli/sfdx-cli/commit/34c1f8f7e58e29896086bf7aa9e175359b23f6e4))
+- whoops, actually change sf install path for tarballs ([cb32ed3](https://github.com/salesforcecli/sfdx-cli/commit/cb32ed311039ce2ee5c9e28e59321dc5bb8980a4))
+
+## [7.125.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.124.0...v7.125.0) (2021-10-28)
+
+### Bug Fixes
+
+- install sf separately ([52ba0c8](https://github.com/salesforcecli/sfdx-cli/commit/52ba0c8a5ec917166b072d6904196ccce40bda48))
+- postupdate hook ([1c74cd1](https://github.com/salesforcecli/sfdx-cli/commit/1c74cd17e00c9d78e11becfda354efd938bca462))
+
+## [7.124.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.123.1...v7.124.0) (2021-10-21)
+
+### [7.123.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.123.0...v7.123.1) (2021-10-21)
+
+### Bug Fixes
+
+- ignore scripts when running yarn install ([c301f72](https://github.com/salesforcecli/sfdx-cli/commit/c301f728110e454497bf36b953f7f575e47871ee))
+- quotes ([d46ec0a](https://github.com/salesforcecli/sfdx-cli/commit/d46ec0a692adcdd49660e5b0634949ce6cf399a6))
+
+## [7.123.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.122.1...v7.123.0) (2021-10-14)
+
+### Features
+
+- use npm postinstall script to install sf ([97791ad](https://github.com/salesforcecli/sfdx-cli/commit/97791ad51347c72c85227e01f058f4d47757f8c7))
+
+### Bug Fixes
+
+- add some more debugging output ([3923b1f](https://github.com/salesforcecli/sfdx-cli/commit/3923b1fec3f83506d7aeaf2ef4205f488f21781b))
+- call to shelljs.which ([f260a48](https://github.com/salesforcecli/sfdx-cli/commit/f260a4831ee7aa707c5cab03aaebcdf618bbd44e))
+- create path before moving sf to it ([7764405](https://github.com/salesforcecli/sfdx-cli/commit/7764405e31e506e6c2d81bb09d05e13f780ffd1a))
+- don't get sf root from pwd() ([85f6e18](https://github.com/salesforcecli/sfdx-cli/commit/85f6e18ef9aa0e31f7c22451d4a3a455a3640db3))
+- find npmGlobalBin with shelljs ([4255698](https://github.com/salesforcecli/sfdx-cli/commit/425569881bb974f976775fbf61d74ce5c4d20a27))
+- make sure sf gets copied to `sfdx` root ([a4b7443](https://github.com/salesforcecli/sfdx-cli/commit/a4b7443c8a65903dec77f7937db02601332bde74))
+- put sf back in bin folder ([e78ad00](https://github.com/salesforcecli/sfdx-cli/commit/e78ad0071624f9f9debc65a55cdfca3250677264))
+- remove newline from path ([a02d568](https://github.com/salesforcecli/sfdx-cli/commit/a02d568a1dac46225dbe641f40b4867221d3e453))
+- revert find npmGlobalBin with shelljs ([9a03311](https://github.com/salesforcecli/sfdx-cli/commit/9a0331112d420bb92304b35970ea9c695b06cf9f))
+- revert previous "fix" ([041ee7a](https://github.com/salesforcecli/sfdx-cli/commit/041ee7a84e28c06f1d5aecbe5c9f594f02e2f9a9))
+- shelljs.exec whoopsies ([b408631](https://github.com/salesforcecli/sfdx-cli/commit/b4086315f645ec4e9942095a07de2c01534d833d))
+
+### [7.122.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.8...v7.122.1) (2021-10-08)
+
+### [7.121.8](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.7...v7.121.8) (2021-10-08)
+
+### [7.121.7](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.6...v7.121.7) (2021-10-07)
+
+### [7.121.6](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.5...v7.121.6) (2021-10-07)
+
+### [7.121.5](https://github.com/salesforcecli/sfdx-cli/compare/v7.122.0...v7.121.5) (2021-10-07)
+
+## [7.122.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.4...v7.122.0) (2021-10-07)
+
+### [7.121.4](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.3...v7.121.4) (2021-10-07)
+
+### [7.121.3](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.2...v7.121.3) (2021-10-06)
+
+### [7.121.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.1...v7.121.2) (2021-10-01)
+
+### Bug Fixes
+
+- add resolution for templates ([#296](https://github.com/salesforcecli/sfdx-cli/issues/296)) ([c2dd61e](https://github.com/salesforcecli/sfdx-cli/commit/c2dd61e41842c191bca9af5deaccc5c658a6abee))
+
+### [7.121.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.121.0...v7.121.1) (2021-10-01)
+
+### Bug Fixes
+
+- update sf dep to 1.0.2 ([#295](https://github.com/salesforcecli/sfdx-cli/issues/295)) ([2e13de2](https://github.com/salesforcecli/sfdx-cli/commit/2e13de29201b37686d474c0c1aee261eb9e2639b))
+
+## [7.121.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.120.0...v7.121.0) (2021-09-30)
+
+## [7.120.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.119.3...v7.120.0) (2021-09-29)
+
+### Bug Fixes
+
+- update @salesforce/templates to latest ([78b79d1](https://github.com/salesforcecli/sfdx-cli/commit/78b79d1d789402b402a932ab044995d1bc448171))
+- use absolute path to sf ([#276](https://github.com/salesforcecli/sfdx-cli/issues/276)) ([fdd76c1](https://github.com/salesforcecli/sfdx-cli/commit/fdd76c166e384086e05041845a7641fc4d47d45d))
+
+### [7.119.3](https://github.com/salesforcecli/sfdx-cli/compare/v7.119.2...v7.119.3) (2021-09-24)
+
+### [7.119.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.119.1...v7.119.2) (2021-09-24)
+
+### Bug Fixes
+
+- do not allow installation of banned plugins ([fed6ef3](https://github.com/salesforcecli/sfdx-cli/commit/fed6ef395209f157b3eb27eb61ec8becee77d51c))
+
+### [7.119.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.119.0...v7.119.1) (2021-09-17)
+
+## [7.119.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.118.1...v7.119.0) (2021-09-17)
+
+### Bug Fixes
+
+- verify node installation in full image ([#266](https://github.com/salesforcecli/sfdx-cli/issues/266)) ([36578e2](https://github.com/salesforcecli/sfdx-cli/commit/36578e28f4bbfdc013f94ad2b69b62e7d02bf3fe))
+
 ### [7.118.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.118.0...v7.118.1) (2021-09-10)
 
 ## [7.118.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.117.0...v7.118.0) (2021-09-09)
 
-
 ### Bug Fixes
 
-* add missing env var for docker deps verification ([f26c97c](https://github.com/salesforcecli/sfdx-cli/commit/f26c97ca559d13607aa1d6620974a8035d003710))
-* add script to execute sf ([8e43bed](https://github.com/salesforcecli/sfdx-cli/commit/8e43bed2b6f70d38389eafd8a764bcc6ca6b26c9))
-* enable shell for spawned process ([634a924](https://github.com/salesforcecli/sfdx-cli/commit/634a924dd04806f60bc7daf53c0a14d571df1929))
-* handle non-existent npm executable ([2cca0ba](https://github.com/salesforcecli/sfdx-cli/commit/2cca0ba3169dda59fe9cdeed3f1b5f0af8d70ed2))
-* use absolute path to sf bin ([c799408](https://github.com/salesforcecli/sfdx-cli/commit/c799408d0d009a2fc8127f580e97736bb06132e2))
+- add missing env var for docker deps verification ([f26c97c](https://github.com/salesforcecli/sfdx-cli/commit/f26c97ca559d13607aa1d6620974a8035d003710))
+- add script to execute sf ([8e43bed](https://github.com/salesforcecli/sfdx-cli/commit/8e43bed2b6f70d38389eafd8a764bcc6ca6b26c9))
+- enable shell for spawned process ([634a924](https://github.com/salesforcecli/sfdx-cli/commit/634a924dd04806f60bc7daf53c0a14d571df1929))
+- handle non-existent npm executable ([2cca0ba](https://github.com/salesforcecli/sfdx-cli/commit/2cca0ba3169dda59fe9cdeed3f1b5f0af8d70ed2))
+- use absolute path to sf bin ([c799408](https://github.com/salesforcecli/sfdx-cli/commit/c799408d0d009a2fc8127f580e97736bb06132e2))
 
 ## [7.117.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.116.2...v7.117.0) (2021-09-02)
 

@@ -7,6 +7,11 @@ const { isArray } = require('@salesforce/ts-types');
 
 const circleciBaseUrl = 'https://circleci.com/api/v2/';
 
+const circleToken = process.env.CIRCLECI_API_TOKEN;
+if (!circleToken) {
+  throw new Error('CIRCLECI_API_TOKEN is required to be set to a valid CircleCI API Token.');
+}
+
 /**
  * Script to locate and launch NUTs across sfdx modules
  *
@@ -131,7 +136,7 @@ const triggerNutsMonitor = async (jobData, branch = 'main') => {
 const circle = async (url, options = {}) => {
   const defaultOptions = {
     method: 'GET',
-    headers: { 'Circle-Token': process.env.CIRCLECI_API_TOKEN, responseType: 'json', resolveBodyOnly: true },
+    headers: { 'Circle-Token': circleToken, responseType: 'json', resolveBodyOnly: true },
   };
   options = { ...defaultOptions, ...options };
   const response = await (async () => {
@@ -162,9 +167,10 @@ const qualifyPluginsWithNonUnitTests = (timeCreated, modules) => {
         module.version = npmDetails.version;
         const oclifPlugins = Reflect.get(npmDetails, 'oclif.plugins') ?? [];
         // we are only interested in oclif.plugins
-        const pluginsToQualify = (oclifPlugins.length
-          ? Object.entries(npmDetails.dependencies).filter(([name]) => oclifPlugins.includes(name))
-          : []
+        const pluginsToQualify = (
+          oclifPlugins.length
+            ? Object.entries(npmDetails.dependencies).filter(([name]) => oclifPlugins.includes(name))
+            : []
         )
           // convert array to object
           .map(([name, version]) => ({ name, version }))

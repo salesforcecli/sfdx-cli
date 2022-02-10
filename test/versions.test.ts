@@ -9,7 +9,7 @@
 
 import { assert, expect } from 'chai';
 import * as sinon from 'sinon';
-import { checkNodeVersion, compareVersions, isVersion } from './versions';
+import { checkNodeVersion, compareVersions, isVersion } from '../src/versions';
 
 describe('versions', () => {
   describe('isVersion', () => {

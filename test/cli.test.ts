@@ -19,8 +19,8 @@ import {
   UPDATE_DISABLED_DEMO,
   UPDATE_DISABLED_INSTALLER,
   UPDATE_DISABLED_NPM,
-} from './cli';
-import { Env } from './util/env';
+} from '../src/cli';
+import { Env } from '../src/util/env';
 
 describe('cli', () => {
   let sandbox: sinon.SinonSandbox;

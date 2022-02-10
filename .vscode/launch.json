@@ -11,6 +11,23 @@
       "port": 9229
     },
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/bin/run",
+      "cwd": "${env:HOME}/salesforce/tmp",
+      "args": ["plugins:install", "sdfx-cli@latest-rc"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "openOnSessionStart",
+      "env": {
+        "NODE_ENV": "development",
+        "SFDX_ENV": "development"
+      },
+      "runtimeArgs": ["--preserve-symlinks"],
+      "preLaunchTask": "Compile"
+    },
+    {
       "name": "mocha tests",
       "type": "node",
       "request": "launch",

@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   release-management: salesforce/npm-release-management@4
   jq: circleci/jq@2.2
+  slack: circleci/slack@3.4.2
 
 parameters:
   run-auto-workflows:
@@ -24,6 +25,7 @@ commands:
           command: |
             echo "export TAG=$(jq -r .version ./package.json)-slim" >> $BASH_ENV
       - run:
+          name: Verify slim dependencies
           command: |
             SFDX_CLI_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
             JAVA_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'java --version | head -n 1')"
@@ -48,8 +50,11 @@ commands:
           command: |
             echo "export TAG=$(jq -r .version ./package.json)-full" >> $BASH_ENV
       - run:
+          name: Verify full dependencies
           command: |
             NODE_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'node -v')"
+            SFDX_CLI_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
+            JQ_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'jq --version')"
             if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
             then
               echo "sfdx-cli installed -" $SFDX_CLI_VERSION
@@ -57,7 +62,13 @@ commands:
               echo "The sfdx-cli installation could not be verified"
               exit 1
             fi
-            JQ_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'jq --version')"
+            if [[ ((`echo $NODE_VERSION | grep -c "v"` > 0))]]
+            then
+              echo "node installed -" $NODE_VERSION
+            else
+              echo "The node installation could not be verified"
+              exit 1
+            fi
             if [[ ((`echo $JQ_VERSION | grep -c "jq"` > 0))]]
             then
               echo "jq installed -" $JQ_VERSION
@@ -66,10 +77,19 @@ commands:
               exit 1
             fi
 jobs:
+  build-latest-rc:
+    docker:
+      - image: node:lts
+    steps:
+      - checkout
+      - release-management/configure-github
+      - release-management/install-sf-release
+      - run: sf-release cli:latestrc:build
+
   # There are two pack jobs:
   # - test-pack-tarballs to run on every branch *other than main*
   # - pack-and-upload-tarballs to run only on main
-  # The persist_to_workspace feature would allow use to have a
+  # The persist_to_workspace feature would allow us to have a
   # pack-tarballs and an upload-tarballs job, but the perf gains
   # is minimal since the workspace is almost a GB to attach.
   test-pack-tarballs:
@@ -108,10 +128,13 @@ jobs:
       - run: yarn test-smoke-unix
       - run: yarn upload:tarballs
       - run: ./scripts/promote-stable-rc-tarballs
+      - slack/status:
+          channel: 'cli-team-alerts'
+          fail_only: true
 
   pack-and-upload-macos-installer:
     macos:
-      xcode: 12.5.1
+      xcode: 13.2.1
     steps:
       - checkout
       - run: git fetch origin && git pull
@@ -174,7 +197,7 @@ jobs:
       - image: cimg/node:lts
     steps:
       - checkout
-      - run: yarn install
+      - run: yarn install --ignore-scripts
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn promote-docker
@@ -188,6 +211,13 @@ jobs:
       - run: ./scripts/verify-promote
       - release-management/install-sf-release
       - run: sf-release cli:versions:inspect -c stable -l archive
+      - slack/notify:
+          channel: 'cli-team-notifications'
+          color: '#9bcd9b'
+          message: '`sfdx-cli` (version X.XXX.X) has been promoted to latest. :tada2: Release notes: https://github.com/forcedotcom/cli/blob/master/releasenotes/README.md'
+      - slack/status:
+          channel: 'cli-team-alerts'
+          fail_only: true
 
   docker-publish-slim:
     docker:
@@ -195,7 +225,7 @@ jobs:
     steps:
       - checkout
       # to get shelljs
-      - run: yarn install
+      - run: yarn install --ignore-scripts
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn pack:docker:slim
@@ -207,7 +237,7 @@ jobs:
     steps:
       - checkout
       # to get shelljs
-      - run: yarn install
+      - run: yarn install --ignore-scripts
       - setup_remote_docker
       - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run: yarn pack:docker:full
@@ -279,42 +309,37 @@ workflows:
           filters:
             branches:
               ignore: main
-      # - release-management/test-package:
-      #     name: node-latest
-      #     node_version: latest
       - release-management/test-package:
-          name: node-14
-          node_version: '14'
-      - release-management/test-package:
-          name: node-14-windows
-          node_version: '14'
-          os: windows
-      - release-management/test-package:
-          name: node-12
-          node_version: '12'
+          matrix:
+            parameters:
+              os:
+                - linux
+                - windows
+              node_version:
+                - latest
+                - lts
+                - maintenance
+            exclude:
+              - os: windows
+                node_version: latest
       - test-pack-tarballs:
           # no point to pack if the test fail, and we only care to test the pack with the node version
           # we ship (specified in package.json.oclif.node)
           requires:
-            - node-14
+            - release-management/test-package
           filters:
             branches:
               ignore: main # test the pack on PRs, but main will do pack-and-upload-tarballs
       - approval:
           type: approval
           requires:
-            # - node-latest
-            - node-14
-            - node-12
+            - release-management/test-package
           filters:
             branches:
               only:
                 - main
       - release-management/release-package:
           tag: latest-rc
-          pre-job-steps:
-            - release-management/pin-dependencies:
-                tag: latest-rc
           github-release: true
           requires:
             - approval
@@ -323,6 +348,7 @@ workflows:
               only:
                 - main
       - pack-and-upload-tarballs:
+          context: AWS
           filters:
             branches:
               only:
@@ -330,20 +356,20 @@ workflows:
           requires:
             - release-management/release-package
       - pack-and-upload-macos-installer:
+          context: AWS
           filters:
             branches:
               only:
                 - main
           requires:
-            - release-management/release-package
             - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
+          context: AWS
           filters:
             branches:
               only:
                 - main
           requires:
-            - release-management/release-package
             - pack-and-upload-tarballs
       - docker-publish-slim:
           filters:
@@ -374,7 +400,7 @@ workflows:
     triggers:
       - schedule:
           # Thursday mornings at 10am mountain
-          cron: '0 16 * * 4'
+          cron: '00 16 * * 4'
           filters:
             branches:
               only:
@@ -385,6 +411,7 @@ workflows:
           context: CLI_CTC
 
       - promote-channels:
+          context: AWS
           requires:
             - change-case-start
       - docker-promotions:
@@ -404,6 +431,18 @@ workflows:
           requires:
             - npm-promotions
             - promote-channels
+
+  build-latest-rc:
+    triggers:
+      - schedule:
+          # Thursday mornings at 10:30am mountain
+          cron: '30 16 * * 4'
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - build-latest-rc
 
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token

@@ -8,7 +8,7 @@
 /* eslint-disable no-unused-expressions*/
 /* eslint-disable @typescript-eslint/require-await*/
 import { expect } from 'chai';
-import { Env } from './util/env';
+import { Env } from '../src/util/env';
 
 describe('Env', () => {
   let env: Env;
