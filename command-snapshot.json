@@ -264,7 +264,7 @@
   },
   {
     "command": "force:community:create",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-community",
     "flags": [
       "apiversion",
       "description",
@@ -278,12 +278,12 @@
   },
   {
     "command": "force:community:publish",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-community",
     "flags": ["apiversion", "json", "loglevel", "name", "targetusername"]
   },
   {
     "command": "force:community:template:list",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-community",
     "flags": ["apiversion", "json", "loglevel", "targetusername"]
   },
   {
