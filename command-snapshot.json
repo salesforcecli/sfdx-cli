@@ -986,6 +986,7 @@
     "flags": [
       "apiversion",
       "checkonly",
+      "forceoverwrite",
       "json",
       "loglevel",
       "metadata",
@@ -993,6 +994,7 @@
       "sourcepath",
       "targetusername",
       "testlevel",
+      "tracksource",
       "verbose",
       "wait"
     ]
@@ -1003,6 +1005,7 @@
     "flags": [
       "apiversion",
       "checkonly",
+      "forceoverwrite",
       "ignoreerrors",
       "ignorewarnings",
       "json",
@@ -1017,6 +1020,7 @@
       "sourcepath",
       "targetusername",
       "testlevel",
+      "tracksource",
       "validateddeployrequestid",
       "verbose",
       "wait"
@@ -1071,6 +1075,7 @@
     "plugin": "@salesforce/plugin-source",
     "flags": [
       "apiversion",
+      "forceoverwrite",
       "json",
       "loglevel",
       "manifest",
@@ -1078,6 +1083,7 @@
       "packagenames",
       "sourcepath",
       "targetusername",
+      "tracksource",
       "verbose",
       "wait"
     ]
