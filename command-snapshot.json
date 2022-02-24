@@ -951,31 +951,6 @@
     "flags": ["apiversion", "json", "loglevel", "sobjecttypecategory", "targetusername"]
   },
   {
-    "command": "force:source:beta:pull",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "forceoverwrite", "json", "loglevel", "targetusername", "wait"]
-  },
-  {
-    "command": "force:source:beta:push",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "forceoverwrite", "ignorewarnings", "json", "loglevel", "quiet", "targetusername", "wait"]
-  },
-  {
-    "command": "force:source:beta:status",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "concise", "json", "local", "loglevel", "remote", "targetusername"]
-  },
-  {
-    "command": "force:source:beta:tracking:clear",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "json", "loglevel", "noprompt", "targetusername"]
-  },
-  {
-    "command": "force:source:beta:tracking:reset",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "json", "loglevel", "noprompt", "revision", "targetusername"]
-  },
-  {
     "command": "force:source:convert",
     "plugin": "@salesforce/plugin-source",
     "flags": ["json", "loglevel", "manifest", "metadata", "outputdir", "packagename", "rootdir", "sourcepath"]
@@ -1042,22 +1017,12 @@
     "flags": ["json", "loglevel", "sourcepath"]
   },
   {
-    "command": "force:source:manifest:create",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "json", "loglevel", "manifestname", "manifesttype", "metadata", "outputdir", "sourcepath"]
-  },
-  {
-    "command": "force:source:open",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "json", "loglevel", "sourcefile", "targetusername", "urlonly"]
-  },
-  {
-    "command": "force:source:pull",
+    "command": "force:source:legacy:pull",
     "plugin": "salesforce-alm",
     "flags": ["apiversion", "forceoverwrite", "json", "loglevel", "targetusername", "wait"]
   },
   {
-    "command": "force:source:push",
+    "command": "force:source:legacy:push",
     "plugin": "salesforce-alm",
     "flags": [
       "apiversion",
@@ -1069,6 +1034,52 @@
       "targetusername",
       "wait"
     ]
+  },
+  {
+    "command": "force:source:legacy:status",
+    "plugin": "salesforce-alm",
+    "flags": ["all", "apiversion", "json", "local", "loglevel", "remote", "targetusername"]
+  },
+  {
+    "command": "force:source:legacy:tracking:clear",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "noprompt", "targetusername"]
+  },
+  {
+    "command": "force:source:legacy:tracking:reset",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "json", "loglevel", "noprompt", "revision", "targetusername"]
+  },
+  {
+    "command": "force:source:manifest:create",
+    "plugin": "@salesforce/plugin-source",
+    "flags": [
+      "apiversion",
+      "fromorg",
+      "includepackages",
+      "json",
+      "loglevel",
+      "manifestname",
+      "manifesttype",
+      "metadata",
+      "outputdir",
+      "sourcepath"
+    ]
+  },
+  {
+    "command": "force:source:open",
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["apiversion", "json", "loglevel", "sourcefile", "targetusername", "urlonly"]
+  },
+  {
+    "command": "force:source:pull",
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["apiversion", "forceoverwrite", "json", "loglevel", "targetusername", "wait"]
+  },
+  {
+    "command": "force:source:push",
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["apiversion", "forceoverwrite", "ignorewarnings", "json", "loglevel", "quiet", "targetusername", "wait"]
   },
   {
     "command": "force:source:retrieve",
@@ -1090,17 +1101,17 @@
   },
   {
     "command": "force:source:status",
-    "plugin": "salesforce-alm",
-    "flags": ["all", "apiversion", "json", "local", "loglevel", "remote", "targetusername"]
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["apiversion", "concise", "json", "local", "loglevel", "remote", "targetusername"]
   },
   {
     "command": "force:source:tracking:clear",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": ["apiversion", "json", "loglevel", "noprompt", "targetusername"]
   },
   {
     "command": "force:source:tracking:reset",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-source",
     "flags": ["apiversion", "json", "loglevel", "noprompt", "revision", "targetusername"]
   },
   {
