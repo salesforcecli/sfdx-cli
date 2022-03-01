@@ -1561,10 +1561,10 @@
     "@salesforce/core" "^2.31.0"
     tslib "^2"
 
-"@salesforce/plugin-source@1.8.15":
-  version "1.8.15"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.8.15.tgz#bcac3bafa3edbcb45096bb863bd79378004a89f9"
-  integrity sha512-UH6MeQPNnHU+4l6tk6KuXuvTBhiV3KLf1DI3RQmdDP1417kdBg9/FsFsmBWkDWaVysXE8HSTVUihWXAuvZRclg==
+"@salesforce/plugin-source@1.8.16":
+  version "1.8.16"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.8.16.tgz#89dd1017177e3b862f4d0ca056b4184a2ee8dd07"
+  integrity sha512-eS1/3f/cncj1mTDLdikudOLfkdaZ79JXybH9dBo6vbUSXE7epG0ds5K5NKuAcmV/WB7W+LwFw0WBFd92XpANMQ==
   dependencies:
     "@oclif/config" "^1.18.2"
     "@salesforce/command" "^4.2.2"
