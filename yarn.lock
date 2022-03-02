@@ -8275,10 +8275,10 @@ object.values@^1.1.4, object.values@^1.1.5:
     define-properties "^1.1.3"
     es-abstract "^1.19.1"
 
-oclif@2.4.4, oclif@^2.4.4:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.4.4.tgz#eef87277c97e268f0588e7076feae69a9a5888a9"
-  integrity sha512-jswxDO7lgsTjLhegRHgBhPSp4/ohsnjZaRcdZ/mTirBFrcOx9T7Dxq9YastbpS4qbfWfaQbYXrX6UdFSkOmS+Q==
+oclif@2.5.0, oclif@^2.4.4:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.5.0.tgz#90be1ee7eb8f0aab246e31debb58466d7d7535bf"
+  integrity sha512-Y3FJ/u7J7TwDIFoyL05U1cOPiI/e3Bz1KXeTq9lwz0Ovda6q9H+5jaHlorGPWrvMb5Tq92OKRv7rVF1RQebcrg==
   dependencies:
     "@oclif/core" "^1.3.0"
     "@oclif/plugin-help" "^5.1.11"
