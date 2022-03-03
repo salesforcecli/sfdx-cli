@@ -149,7 +149,7 @@
   },
   {
     "command": "force",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-info",
     "flags": ["json", "loglevel"]
   },
   {
