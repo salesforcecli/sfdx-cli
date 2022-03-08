@@ -1540,16 +1540,16 @@
     "@salesforce/core" "^2.31.0"
     tslib "^2"
 
-"@salesforce/plugin-source@1.8.17":
-  version "1.8.17"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.8.17.tgz#e2d90050524af40a147fad861ba57d667703655d"
-  integrity sha512-2t4864yE84ecXSlAvoXmqkfdbJAa8db/lHL4T7p7QuvD7RR6jCKzSHiQ0H3hcFMtDRWdqvSKQefQAZLhYK23Qg==
+"@salesforce/plugin-source@1.8.18":
+  version "1.8.18"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.8.18.tgz#4b345fc5fbbbe68285159af8ca95f089b1574311"
+  integrity sha512-QiRI/tEfvsTwAwzdbIY748ilULKSABLdIWDbRDdCsjnwui2bXv9ms5dFPqRLeZ5HQXA7jX4kVNZq7GFxzwNarg==
   dependencies:
     "@oclif/config" "^1.18.2"
     "@salesforce/command" "^4.2.2"
     "@salesforce/core" "^2.35.0"
     "@salesforce/source-deploy-retrieve" "^5.12.2"
-    "@salesforce/source-tracking" "^1.1.1"
+    "@salesforce/source-tracking" "^1.1.3"
     chalk "^4.1.2"
     cli-ux "^5.6.3"
     open "^8.4.0"
@@ -1654,10 +1654,10 @@
     unzipper "0.10.11"
     xmldom-sfdx-encoding "^0.1.29"
 
-"@salesforce/source-tracking@1.1.2", "@salesforce/source-tracking@^1.1.1":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-tracking/-/source-tracking-1.1.2.tgz#88fd50e7952d2eae6109df92a89b1de32ad637fb"
-  integrity sha512-EyRv6BdquK+SunuswlQ3ikzfBtZU4l/5YResPA/+LhN7R6onQYr96nq1FTbn63ZRWtBYdqiR3Gw3RulKQ6Ixkw==
+"@salesforce/source-tracking@1.1.4", "@salesforce/source-tracking@^1.1.1", "@salesforce/source-tracking@^1.1.3":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-tracking/-/source-tracking-1.1.4.tgz#d5fc7fb3da30d09981ad91aae3c83346542b9527"
+  integrity sha512-IrkqZZs45KUw2/i2tNBibWG/0InI3BhavhZ2WJV6ghGiiZlGpZLDv2YFenzgQUaDmXPaKGruvtpZKXv7apM49Q==
   dependencies:
     "@salesforce/core" "^2.33.1"
     "@salesforce/kit" "^1.5.17"
@@ -9436,10 +9436,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@54.0.0:
-  version "54.0.0"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-54.0.0.tgz#aeb1295b4e6254c374eb9afc2dab32b27959f621"
-  integrity sha512-Fdvj1QHZ2cefCbAPtuHesNVzJ9BhRinQchvsNG0aNX7lkpw4VoU6ZpKLbA2AMH1qiGnPLdrwuae6fnUxeSWMSg==
+salesforce-alm@54.0.1:
+  version "54.0.1"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-54.0.1.tgz#dae04e11a778773a03b1bc5611d7116bb40dc991"
+  integrity sha512-D0y2USn1JbngK9aAvyDm25lM2LkBhOhH7SprBGCyjWHGgcGETZz/oo2YIhMHZCaPYQF5CwacSFt/vVId74h4wQ==
   dependencies:
     "@oclif/config" "^1.18.1"
     "@oclif/errors" "^1.3.5"
