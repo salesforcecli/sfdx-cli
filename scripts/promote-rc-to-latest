@@ -23,4 +23,4 @@ echo "will run command"
 echo "yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL --max-age 300 --macos --win --indexes"
 
 # promote it (runs oclif promote)
-yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL --max-age 300 --macos --win --indexes
+yarn promote --version $CLI_RC_VERSION --sha $SHA_SHORT --channel $CHANNEL --max-age 300 --macos --win --indexes --xz
