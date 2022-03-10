@@ -1566,17 +1566,17 @@
     "@salesforce/telemetry" "^3.1.0"
     tslib "^2"
 
-"@salesforce/plugin-templates@54.1.0":
-  version "54.1.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-54.1.0.tgz#4c75954a3ee95827c1d696ac0e5d6d18ce19e693"
-  integrity sha512-kP5STuMdNWhtpeKoRoxsIjih54Q4sZrK/DWy+b/OpDGyzXPLxFaLsocJDM+skuowCtfZPcwfMCVtaws9VGZ2Zg==
+"@salesforce/plugin-templates@54.2.0":
+  version "54.2.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-54.2.0.tgz#b86146cc0415769add3b81057321a00ec4cec51f"
+  integrity sha512-lEguFtQuhRRmpBMw1oVubN2c3c1becN16/EsJVhgS6sUIpmezs3Q3F5x1+fIampBNOvD6nwwa5MQp1Kpl5GEfg==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
     "@salesforce/command" "^4.2.1"
     "@salesforce/core" "^2.33.1"
-    "@salesforce/templates" "54.1.0"
+    "@salesforce/templates" "54.2.0"
     tslib "^1"
     yeoman-environment "2.4.0"
     yeoman-generator "^4.8.2"
@@ -1675,10 +1675,10 @@
     applicationinsights "^1.4.0"
     axios "^0.21.2"
 
-"@salesforce/templates@54.1.0":
-  version "54.1.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-54.1.0.tgz#ee68b496d02a0d6ed03205bdb9cf18eaa81fa035"
-  integrity sha512-IAVp3GHxu1HvGGMdTYtGQ1zEArflUoTUbNvvZyETwkoRgMC8kowS0nSbPZAP9Ym/VImUYepkQONSXTE9MMAw8w==
+"@salesforce/templates@54.2.0":
+  version "54.2.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-54.2.0.tgz#5d3483d2c050cfe26d4f10185c3cff634fad7d0d"
+  integrity sha512-/BKh7KWt9L+kxs9x7h7tlK7CTTSEavn+6HhXnEGFwOq6wXdH8NxOD+xSgs5nBoTljSskbbwxfAMeqsIe14JpYg==
   dependencies:
     "@salesforce/core" "^2.33.1"
     got "^11.8.2"
