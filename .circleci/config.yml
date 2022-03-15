@@ -115,7 +115,7 @@ jobs:
     resource_class: xlarge
     steps:
       - checkout
-      - run: git fetch origin && git pull
+      # - run: git fetch origin && git pull
       - run: |
           apt-get update
           apt-get install -y p7zip-full
@@ -137,7 +137,7 @@ jobs:
       xcode: 13.2.1
     steps:
       - checkout
-      - run: git fetch origin && git pull
+      # - run: git fetch origin && git pull
       - run: yarn install
       - run: yarn pack:macos
       - run: yarn upload:macos
@@ -147,7 +147,7 @@ jobs:
     <<: *pack-and-upload-tarballs
     steps:
       - checkout
-      - run: git fetch origin && git pull
+      # - run: git fetch origin && git pull
       - restore_cache:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
@@ -173,7 +173,7 @@ jobs:
           keys:
             - v3-npm-{{checksum "yarn.lock"}}
       - run: yarn install
-      - run: ./scripts/promote-rc-to-latest
+      # - run: ./scripts/promote-rc-to-latest
 
   change-case-start:
     docker:
@@ -337,22 +337,23 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - re/test-oclif-m1-pkgs
       - release-management/release-package:
-          tag: latest-rc
-          github-release: true
+          tag: dev
+          prerelease: true
+          github-release: false
           requires:
             - approval
           filters:
             branches:
               only:
-                - main
+                - re/test-oclif-m1-pkgs
       - pack-and-upload-tarballs:
           context: AWS
           filters:
             branches:
               only:
-                - main
+                - re/test-oclif-m1-pkgs
           requires:
             - release-management/release-package
       - pack-and-upload-macos-installer:
@@ -360,7 +361,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - re/test-oclif-m1-pkgs
           requires:
             - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
@@ -368,33 +369,33 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - re/test-oclif-m1-pkgs
           requires:
             - pack-and-upload-tarballs
-      - docker-publish-slim:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
-            - pack-and-upload-tarballs
-      - docker-publish-full:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
-            - pack-and-upload-tarballs
-      - run-all-nuts:
-          # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
+      # - docker-publish-slim:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+      #     requires:
+      #       - release-management/release-package
+      #       - pack-and-upload-tarballs
+      # - docker-publish-full:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+      #     requires:
+      #       - release-management/release-package
+      #       - pack-and-upload-tarballs
+      # - run-all-nuts:
+      #     # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+      #     requires:
+      #       - release-management/release-package
 
   promote-to-latest:
     triggers:
