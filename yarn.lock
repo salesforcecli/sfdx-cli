@@ -8233,7 +8233,31 @@ object.values@^1.1.5:
     define-properties "^1.1.3"
     es-abstract "^1.19.1"
 
-oclif@2.5.0, oclif@^2.4.4:
+oclif@2.6.1-dev.0:
+  version "2.6.1-dev.0"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.6.1-dev.0.tgz#d68d76faea790189ebf27facd011f65f682e8a40"
+  integrity sha512-SI6fmi4FttqyZTJMeLG8wT7S9SiPu7VsGo1xhuZIYoYCd65dt907AG8H6hVtDRTVIawnakOxRY2YZVabX66kCw==
+  dependencies:
+    "@oclif/core" "^1.3.0"
+    "@oclif/plugin-help" "^5.1.11"
+    "@oclif/plugin-not-found" "^2.3.1"
+    "@oclif/plugin-warn-if-update-available" "^2.0.4"
+    aws-sdk "^2.1069.0"
+    concurrently "^7.0.0"
+    debug "^4.3.3"
+    find-yarn-workspace-root "^2.0.0"
+    fs-extra "^8.1"
+    github-slugger "^1.4.0"
+    lodash "^4.17.21"
+    normalize-package-data "^3.0.3"
+    qqjs "^0.3.11"
+    semver "^7.3.5"
+    tslib "^2.3.1"
+    yeoman-environment "^3.9.1"
+    yeoman-generator "^5.6.1"
+    yosay "^2.0.2"
+
+oclif@^2.4.4:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.5.0.tgz#90be1ee7eb8f0aab246e31debb58466d7d7535bf"
   integrity sha512-Y3FJ/u7J7TwDIFoyL05U1cOPiI/e3Bz1KXeTq9lwz0Ovda6q9H+5jaHlorGPWrvMb5Tq92OKRv7rVF1RQebcrg==
