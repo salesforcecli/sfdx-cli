@@ -149,7 +149,7 @@
   },
   {
     "command": "force",
-    "plugin": "@salesforce/plugin-info",
+    "plugin": "@salesforce/plugin-source",
     "flags": ["json", "loglevel"]
   },
   {
