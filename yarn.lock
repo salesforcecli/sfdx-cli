@@ -771,7 +771,7 @@
     is-wsl "^2.1.1"
     tslib "^2.0.0"
 
-"@oclif/config@^1", "@oclif/config@^1.13.0", "@oclif/config@^1.15.1", "@oclif/config@^1.16.0", "@oclif/config@^1.17.0", "@oclif/config@^1.17.1", "@oclif/config@^1.18.1", "@oclif/config@^1.18.2", "@oclif/config@^1.8.7":
+"@oclif/config@^1", "@oclif/config@^1.13.0", "@oclif/config@^1.15.1", "@oclif/config@^1.16.0", "@oclif/config@^1.17.0", "@oclif/config@^1.17.1", "@oclif/config@^1.18.1", "@oclif/config@^1.18.2", "@oclif/config@^1.18.3", "@oclif/config@^1.8.7":
   version "1.18.3"
   resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.18.3.tgz#ddfc144fdab66b1658c2f1b3478fa7fbfd317e79"
   integrity sha512-sBpko86IrTscc39EvHUhL+c++81BVTsIZ3ETu/vG+cCdi0N6vb2DoahR67A9FI2CGnxRRHjnTfa3m6LulwNATA==
@@ -1540,17 +1540,17 @@
     "@salesforce/core" "^2.31.0"
     tslib "^2"
 
-"@salesforce/plugin-source@1.8.19":
-  version "1.8.19"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.8.19.tgz#5998c1c45857534de8c2cf2fec5384db32d77c47"
-  integrity sha512-ukJE0n+bH9J1cWbuloOxq+KfSEZ5hUCFZYROGKBorGVOAp7HKC/XcjMYyOnHbaNF6sbfugffvudiMU4ta97Ang==
+"@salesforce/plugin-source@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.9.0.tgz#2fa946b1799befaa8ad48f2e59df9d45f962d1f5"
+  integrity sha512-MdcU0NAcO8PED5XemicS7zw8/e2QGVtAsj26L7QqGp1OnyB2iYgIEBoO98TISfonhsOZxJ55FUG9nl0NcjCeaw==
   dependencies:
-    "@oclif/config" "^1.18.2"
+    "@oclif/config" "^1.18.3"
     "@oclif/plugin-help" "^3.3.1"
     "@salesforce/command" "^4.2.2"
     "@salesforce/core" "^2.35.0"
     "@salesforce/source-deploy-retrieve" "^5.12.2"
-    "@salesforce/source-tracking" "^1.1.3"
+    "@salesforce/source-tracking" "^1.2.0"
     chalk "^4.1.2"
     cli-ux "^5.6.3"
     got "^11.8.3"
@@ -1570,17 +1570,17 @@
     "@salesforce/telemetry" "^3.1.0"
     tslib "^2"
 
-"@salesforce/plugin-templates@54.2.0":
-  version "54.2.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-54.2.0.tgz#b86146cc0415769add3b81057321a00ec4cec51f"
-  integrity sha512-lEguFtQuhRRmpBMw1oVubN2c3c1becN16/EsJVhgS6sUIpmezs3Q3F5x1+fIampBNOvD6nwwa5MQp1Kpl5GEfg==
+"@salesforce/plugin-templates@54.3.0":
+  version "54.3.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-54.3.0.tgz#5149678a115dce91b08795aa578ca657f3726f81"
+  integrity sha512-gSsFsaO7peDcI+2gp1i2QvJ6RGbHCZKBIEHlpviwtMGJzPAV0eA3alvvBLTg7A/feZK+Kv41pZM2x5Qo1DUg4A==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/errors" "^1"
     "@salesforce/command" "^4.2.1"
     "@salesforce/core" "^2.33.1"
-    "@salesforce/templates" "54.2.0"
+    "@salesforce/templates" "54.3.0"
     tslib "^1"
     yeoman-environment "2.4.0"
     yeoman-generator "^4.8.2"
@@ -1657,15 +1657,15 @@
     unzipper "0.10.11"
     xmldom-sfdx-encoding "^0.1.29"
 
-"@salesforce/source-tracking@1.1.7", "@salesforce/source-tracking@^1.1.1", "@salesforce/source-tracking@^1.1.3":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-tracking/-/source-tracking-1.1.7.tgz#fc7136063d1369305d827a117adae5d8b2f26414"
-  integrity sha512-M8bz9YFZgvfEK6CPQgzxgFQsA+HmpjqMKNW67DfPdWYYgjaYnKioWojNIEtVRFUiz0J3tbztZF47iu1OM5Zktg==
+"@salesforce/source-tracking@1.2.0", "@salesforce/source-tracking@^1.1.1", "@salesforce/source-tracking@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-tracking/-/source-tracking-1.2.0.tgz#3a64ce059dffbfaae2871e4197260b34ca8bfe59"
+  integrity sha512-7kVD5dXg0ksIYmsZxDfo9qcpOjFiEjNEH3GY5liYDeAatQPKyjKuvRtjeY5NLbblpvZiu2yjLLSACpKq0B1vWw==
   dependencies:
     "@salesforce/core" "^2.33.1"
     "@salesforce/kit" "^1.5.17"
     "@salesforce/source-deploy-retrieve" "^5.9.4"
-    isomorphic-git "1.14.0"
+    isomorphic-git "1.16.0"
     ts-retry-promise "^0.6.0"
 
 "@salesforce/telemetry@^3.1.0":
@@ -1678,10 +1678,10 @@
     applicationinsights "^1.4.0"
     axios "^0.21.2"
 
-"@salesforce/templates@54.2.0":
-  version "54.2.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-54.2.0.tgz#5d3483d2c050cfe26d4f10185c3cff634fad7d0d"
-  integrity sha512-/BKh7KWt9L+kxs9x7h7tlK7CTTSEavn+6HhXnEGFwOq6wXdH8NxOD+xSgs5nBoTljSskbbwxfAMeqsIe14JpYg==
+"@salesforce/templates@54.3.0":
+  version "54.3.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/templates/-/templates-54.3.0.tgz#d1fc048fdb5e3d3f36fc8164d6e642219b440cff"
+  integrity sha512-MYWjTVj6wgEht6UWvPgl1v8FY47zAAqAyc/VjdZ4PCwrxGm1RYOyep15B4pF1dkBELD3eses2McN5qKjUPIruw==
   dependencies:
     "@salesforce/core" "^2.33.1"
     got "^11.8.2"
@@ -6336,10 +6336,10 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-isomorphic-git@1.14.0:
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/isomorphic-git/-/isomorphic-git-1.14.0.tgz#989bd4837eee243921085d6638f6fda6a6f4d4ee"
-  integrity sha512-YO9PPLnLLSZRQ/BMwnGZ78eAftaEzhoAAhCiI6zrgUq7NZF2V/lNYVtf2ypes7Bj8+SgOn/HCv1ssIaPw/PYsA==
+isomorphic-git@1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/isomorphic-git/-/isomorphic-git-1.16.0.tgz#f4de2fd0e1c78bbbe03230fbefa88a84463e736a"
+  integrity sha512-pyYcMRp0125hmxsagSaAN63WgHd4x+4sR3eJ71+xdIN0aOij0q5ASPIN7jiJissUHx9/FE4dY73pzDehk+Xomw==
   dependencies:
     async-lock "^1.1.0"
     clean-git-ref "^2.0.1"
