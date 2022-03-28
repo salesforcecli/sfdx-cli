@@ -1136,7 +1136,7 @@
     "command": "force:source:legacy:pull",
     "plugin": "salesforce-alm",
     "flags": ["apiversion", "forceoverwrite", "json", "loglevel", "targetusername", "wait"],
-    "alias": ["force:source:pull"]
+    "alias": []
   },
   {
     "command": "force:source:legacy:push",
@@ -1151,25 +1151,25 @@
       "targetusername",
       "wait"
     ],
-    "alias": ["force:source:push"]
+    "alias": []
   },
   {
     "command": "force:source:legacy:status",
     "plugin": "salesforce-alm",
     "flags": ["all", "apiversion", "json", "local", "loglevel", "remote", "targetusername"],
-    "alias": ["force:source:status"]
+    "alias": []
   },
   {
     "command": "force:source:legacy:tracking:clear",
     "plugin": "salesforce-alm",
     "flags": ["apiversion", "json", "loglevel", "noprompt", "targetusername"],
-    "alias": ["force:source:tracking:clear"]
+    "alias": []
   },
   {
     "command": "force:source:legacy:tracking:reset",
     "plugin": "salesforce-alm",
     "flags": ["apiversion", "json", "loglevel", "noprompt", "revision", "targetusername"],
-    "alias": ["force:source:tracking:reset"]
+    "alias": []
   },
   {
     "command": "force:source:manifest:create",
