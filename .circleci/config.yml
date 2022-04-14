@@ -396,53 +396,53 @@ workflows:
           requires:
             - release-management/release-package
 
-  # promote-to-latest:
-  #   triggers:
-  #     - schedule:
-  #         # Thursday mornings at 10am mountain
-  #         cron: '00 16 * * 4'
-  #         filters:
-  #           branches:
-  #             only:
-  #               - main
-  #   jobs:
-  #     # start the change case
-  #     - change-case-start:
-  #         context: CLI_CTC
+  promote-to-latest:
+    triggers:
+      - schedule:
+          # Thursday mornings at 10am mountain
+          cron: '00 19 * * 4'
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      # start the change case
+      - change-case-start:
+          context: CLI_CTC
 
-  #     - promote-channels:
-  #         context: AWS
-  #         requires:
-  #           - change-case-start
-  #     - docker-promotions:
-  #         requires:
-  #           - change-case-start
-  #     - npm-promotions:
-  #         requires:
-  #           - change-case-start
-  #     # close change case
-  #     - close-CTC:
-  #         context: CLI_CTC
-  #         requires:
-  #           - npm-promotions
-  #           - promote-channels
-  #     # verify the npm tags and installers are on the right version
-  #     - promote-verify:
-  #         requires:
-  #           - npm-promotions
-  #           - promote-channels
+      - promote-channels:
+          context: AWS
+          requires:
+            - change-case-start
+      - docker-promotions:
+          requires:
+            - change-case-start
+      - npm-promotions:
+          requires:
+            - change-case-start
+      # close change case
+      - close-CTC:
+          context: CLI_CTC
+          requires:
+            - npm-promotions
+            - promote-channels
+      # verify the npm tags and installers are on the right version
+      - promote-verify:
+          requires:
+            - npm-promotions
+            - promote-channels
 
-  # build-latest-rc:
-  #   triggers:
-  #     - schedule:
-  #         # Thursday mornings at 10:30am mountain
-  #         cron: '30 16 * * 4'
-  #         filters:
-  #           branches:
-  #             only:
-  #               - main
-  #   jobs:
-  #     - build-latest-rc
+  build-latest-rc:
+    triggers:
+      - schedule:
+          # Thursday mornings at 10:30am mountain
+          cron: '30 16 * * 4'
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - build-latest-rc
 
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
