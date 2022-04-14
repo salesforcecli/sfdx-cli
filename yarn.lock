@@ -798,7 +798,7 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@^1.0.8", "@oclif/core@^1.2.0", "@oclif/core@^1.2.1", "@oclif/core@^1.3.0", "@oclif/core@^1.3.1", "@oclif/core@^1.3.4", "@oclif/core@^1.5.1", "@oclif/core@^1.5.2", "@oclif/core@^1.5.3", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4":
+"@oclif/core@^1.0.8", "@oclif/core@^1.2.0", "@oclif/core@^1.2.1", "@oclif/core@^1.3.0", "@oclif/core@^1.3.1", "@oclif/core@^1.3.4", "@oclif/core@^1.5.1", "@oclif/core@^1.5.2", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4":
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.6.4.tgz#fd213265199a8ef93adb358e15a04d74927eb522"
   integrity sha512-eUnh03MWxs3PHQUdZbo43ceLqmeOgGegsfimeqd6xfhcKwSv8dqarRyAoMCjg7P6Qm5qCjaNFZ6eS4ao349xvQ==
@@ -1458,14 +1458,14 @@
     "@salesforce/core" "^2.35.1"
     tslib "^2"
 
-"@salesforce/plugin-config@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.4.0.tgz#b4bded61c758225a6a9909e5c68c0ce402ae40fb"
-  integrity sha512-GMJy8c0LKqRp4CPEEP8HJ9HufUm0asHS9i7dLg9K4UhD2Wi0NHrous4Te4eOzSP1bqAj6ho3KUNmlDNuxN8VGA==
+"@salesforce/plugin-config@1.3.30":
+  version "1.3.30"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-config/-/plugin-config-1.3.30.tgz#2268c776811d1ee847546ae62f2fb6f3810c46f8"
+  integrity sha512-eIp/T9Y8+u2EGwqJtmwZbcX8+vqcXSw4uLma1ym3pbGjH42WlL7GnRACc4av9BDHrsWC2ILC5juSYV3ldonrJA==
   dependencies:
-    "@oclif/core" "^1.5.3"
-    "@salesforce/command" "^5.0.4"
-    "@salesforce/core" "^3.12.1"
+    "@oclif/config" "^1.18.1"
+    "@salesforce/command" "^4.2.0"
+    "@salesforce/core" "^2.31.0"
     tslib "^2"
 
 "@salesforce/plugin-custom-metadata@1.0.12":
