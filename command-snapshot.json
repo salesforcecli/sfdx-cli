@@ -732,19 +732,19 @@
   },
   {
     "command": "force:org:shape:create",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-signups",
     "flags": ["apiversion", "json", "loglevel", "targetusername"],
     "alias": []
   },
   {
     "command": "force:org:shape:delete",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-signups",
     "flags": ["apiversion", "json", "loglevel", "noprompt", "targetusername"],
     "alias": []
   },
   {
     "command": "force:org:shape:list",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-signups",
     "flags": ["json", "loglevel", "verbose"],
     "alias": []
   },
