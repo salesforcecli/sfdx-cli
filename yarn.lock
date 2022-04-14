@@ -1286,10 +1286,10 @@
     chalk "^2.4.2"
     cli-ux "^4.9.3"
 
-"@salesforce/command@^5.0.0", "@salesforce/command@^5.0.4":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.0.4.tgz#4f9b5d764b603bcbc23dc65c06ac54512e92a32f"
-  integrity sha512-pdnvpoyW9iZBoobcmKV2vt0cRqTt1RsATf4E03L+vxX+8X39HnXoSDxAsZ8BthNj/RMuAXfftddmRAr1D99JYA==
+"@salesforce/command@^5.0.0", "@salesforce/command@^5.0.1", "@salesforce/command@^5.0.4":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.0.5.tgz#b6965b6cee4299166eeb9b089faff43a363b4a94"
+  integrity sha512-zutR54SbdBZNzb2UVKdfe7/3sPMi5v8gPaSWvTSRjaOmRI476EE5xosKc0X1Svm39QKobho04Rkqn8r+r78lgA==
   dependencies:
     "@oclif/core" "^1.5.2"
     "@oclif/plugin-help" "^5.1.11"
@@ -1599,6 +1599,17 @@
     "@oclif/core" "^1.6.3"
     "@salesforce/command" "^5.0.4"
     "@salesforce/core" "^3.12.1"
+    tslib "^2"
+
+"@salesforce/plugin-signups@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-signups/-/plugin-signups-1.0.0.tgz#ea3ca10efa4be6502fc574d5a378adc2cb856026"
+  integrity sha512-ODfFtaYpM03kXTsKjpT+gH+LfgLZoXYEytjcE0urxZgq+LecU+vWChfX9XwQl47Ge3Udv6voSNfDVzKle8oNBA==
+  dependencies:
+    "@oclif/core" "^1.6.3"
+    "@salesforce/command" "^5.0.1"
+    "@salesforce/core" "^3.10.1"
+    chalk "^4.1.2"
     tslib "^2"
 
 "@salesforce/plugin-source@1.9.3":
