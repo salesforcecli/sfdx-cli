@@ -44,7 +44,7 @@ describe('cli', () => {
       await create('test', 'test', exec, env).run();
       expect(config).to.exist;
       expect(config).to.have.property('options');
-      expect(config).to.have.nested.property('options.version').and.equal('test');
+      expect(config).to.have.nested.property('options.version').and.equal('foo');
       expect(config).to.have.nested.property('options.channel').and.equal('test');
     });
   });
