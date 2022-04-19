@@ -322,6 +322,7 @@ workflows:
             exclude:
               - os: windows
                 node_version: latest
+          context: na40
       - test-pack-tarballs:
           # no point to pack if the test fail, and we only care to test the pack with the node version
           # we ship (specified in package.json.oclif.node)
