@@ -397,14 +397,14 @@ workflows:
             - release-management/release-package
 
   promote-to-latest:
-    # triggers:
-    #   - schedule:
-    #       # Thursday mornings at 10am mountain
-    #       cron: '00 16 * * 4'
-    #       filters:
-    #         branches:
-    #           only:
-    #             - main
+    triggers:
+      - schedule:
+          # Thursday mornings at 10am mountain
+          cron: '00 16 * * 4'
+          filters:
+            branches:
+              only:
+                - main
     jobs:
       # start the change case
       - change-case-start:
