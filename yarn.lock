@@ -1323,10 +1323,10 @@
     semver "^7.3.5"
     ts-retry-promise "^0.6.0"
 
-"@salesforce/core@^3.10.1", "@salesforce/core@^3.12.1", "@salesforce/core@^3.7.8", "@salesforce/core@^3.7.9":
-  version "3.12.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.12.1.tgz#6ef20a58777a5368a5804817f11046737fa90baf"
-  integrity sha512-j7WvlPwhTLBMBdnF/6Og3oqcM72tGqK99UHK/UqJpGaX0HcadnxMyL3uOMi8aAautvg4BnpfGjesn0pinqKVXw==
+"@salesforce/core@^3.10.1", "@salesforce/core@^3.12.1", "@salesforce/core@^3.13.0", "@salesforce/core@^3.7.8", "@salesforce/core@^3.7.9":
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.13.0.tgz#7288858dc0734ef50332606e9f3d0633eef54f1f"
+  integrity sha512-ZhjcF3VN8etF/R6M+x6tnI2fDB7gkdUH/tQNjf1plmXyqRiyJ4gcTK4c6RRcemP/SMRme7qt9nqlGxJk6N4v5A==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.5.34"
@@ -1435,14 +1435,14 @@
     chalk "^4.1.0"
     tslib "^1"
 
-"@salesforce/plugin-auth@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-2.0.0.tgz#87b5d658be59156937652bc266fed2772cad8344"
-  integrity sha512-o5TU6EehSgAaNJ0ifvPHRaPMixo4YgHmuOFyC7GF+ZR9LcYcREBNjmmV5boG9dD6gDqLbzXU7mAy2QVu7XwS6g==
+"@salesforce/plugin-auth@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-2.0.1.tgz#37f68ab819731d3259ef82f3bba343643094fc1c"
+  integrity sha512-hWC9EWI0ocDRsI7tV8RHpW0UdUMkQkre0F9HbZ2tBkAnPvh0Lp+yr9Q0WI/oYFNbDmPVw/FCpuNoNRLJ+sNa1g==
   dependencies:
     "@oclif/core" "^1.5.2"
     "@salesforce/command" "^5.0.4"
-    "@salesforce/core" "^3.12.1"
+    "@salesforce/core" "^3.13.0"
     "@salesforce/kit" "^1.5.17"
     chalk "^4.1.2"
     fs-extra "^10.0.1"
