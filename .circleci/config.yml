@@ -450,7 +450,8 @@ workflows:
               only:
                 - main
     jobs:
-      - build-latest-rc
+      - build-latest-rc:
+          context: cli-release
 
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
@@ -469,6 +470,7 @@ workflows:
             branches:
               only:
                 - main
+          context: cli-release
 
   dependabot-automerge:
     triggers:
@@ -480,4 +482,4 @@ workflows:
                 - main
     jobs:
       - release-management/dependabot-automerge:
-          context: release
+          context: cli-release
