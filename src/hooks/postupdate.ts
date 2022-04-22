@@ -10,11 +10,12 @@ import * as path from 'path';
 
 import { cli } from 'cli-ux';
 import { readFileSync, readJsonSync, writeFileSync } from 'fs-extra';
-import { chmod, exec } from 'shelljs';
+import { chmod } from 'shelljs';
 
 import { TelemetryGlobal } from '@salesforce/plugin-telemetry/lib/telemetryGlobal';
 import { AppInsights } from '@salesforce/telemetry/lib/appInsights';
 import { JsonMap } from '@salesforce/ts-types';
+import { IConfig, Hook } from '@oclif/config';
 
 declare const global: TelemetryGlobal;
 
@@ -44,10 +45,8 @@ function suggestAlternatives(): void {
  * the sfdx executable and modify it for `sf`.
  */
 // eslint-disable-next-line @typescript-eslint/require-await
-const hook = async function (): Promise<void> {
+const hook: Hook.Update = async function (opts: { channel: string; config: IConfig }): Promise<void> {
   let success = false;
-
-  const sfdxVersion = exec('sfdx --version', { silent: true })?.stdout || 'unknown';
 
   cli.action.start('sfdx-cli: Updating sf');
 
@@ -81,7 +80,7 @@ const hook = async function (): Promise<void> {
       type: 'EVENT',
       message: err.message,
       stackTrace: err?.stack?.replace(new RegExp(os.homedir(), 'g'), AppInsights.GDPR_HIDDEN),
-      sfdxVersion,
+      sfdxVersion: opts.config.version,
     });
     return;
   } finally {

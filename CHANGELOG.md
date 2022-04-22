@@ -2,6 +2,68 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.148.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.147.1...v7.148.0) (2022-04-22)
+
+### [7.147.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.147.0...v7.147.1) (2022-04-21)
+
+## [7.147.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.146.1...v7.147.0) (2022-04-14)
+
+### [7.146.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.146.0...v7.146.1) (2022-04-14)
+
+### Bug Fixes
+
+- xz on the promotes to rc ([92a6f19](https://github.com/salesforcecli/sfdx-cli/commit/92a6f195fbb1d8291b1af7a4a3d4f20a5aac6d2d))
+
+## [7.146.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.145.0...v7.146.0) (2022-04-07)
+
+## [7.145.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.144.2...v7.145.0) (2022-03-31)
+
+### [7.144.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.144.1...v7.144.2) (2022-03-28)
+
+### [7.144.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.144.0...v7.144.1) (2022-03-25)
+
+## [7.144.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.143.0...v7.144.0) (2022-03-24)
+
+## [7.143.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.142.1...v7.143.0) (2022-03-17)
+
+### [7.142.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.142.0...v7.142.1) (2022-03-11)
+
+### Bug Fixes
+
+- add xz ([#513](https://github.com/salesforcecli/sfdx-cli/issues/513)) ([9682120](https://github.com/salesforcecli/sfdx-cli/commit/968212039971bd7abac50bf7c9e35fda45343545))
+
+## [7.142.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.141.1...v7.142.0) (2022-03-11)
+
+### Bug Fixes
+
+- promote xz ([241f5bc](https://github.com/salesforcecli/sfdx-cli/commit/241f5bcd5f3ecf6282d0358e3fb7efd4b7d11f7d))
+
+### [7.141.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.141.0...v7.141.1) (2022-03-08)
+
+## [7.141.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.140.0...v7.141.0) (2022-03-03)
+
+## [7.140.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.139.0...v7.140.0) (2022-02-24)
+
+## [7.139.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.138.1...v7.139.0) (2022-02-17)
+
+### Bug Fixes
+
+- remove call to sfdx ([82560cc](https://github.com/salesforcecli/sfdx-cli/commit/82560cc00da6379be1c90c2a218951a20159300d))
+
+### [7.138.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.138.0...v7.138.1) (2022-02-15)
+
+## [7.138.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.137.1...v7.138.0) (2022-02-10)
+
+### Features
+
+- Use community plugin ([#267](https://github.com/salesforcecli/sfdx-cli/issues/267)) ([0fe9799](https://github.com/salesforcecli/sfdx-cli/commit/0fe9799480b9d2b21cf44143bb779abec9be39b1))
+
+### [7.137.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.136.2...v7.137.1) (2022-02-04)
+
+### [7.136.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.136.1...v7.136.2) (2022-02-01)
+
+### [7.136.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.136.0...v7.136.1) (2022-01-28)
+
 ## [7.136.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.133.0...v7.136.0) (2022-01-28)
 
 ### Features

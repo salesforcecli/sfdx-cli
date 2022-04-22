@@ -350,7 +350,9 @@ workflows:
             branches:
               only:
                 - main
+          context: cli-release
       - pack-and-upload-tarballs:
+          context: AWS
           filters:
             branches:
               only:
@@ -358,6 +360,7 @@ workflows:
           requires:
             - release-management/release-package
       - pack-and-upload-macos-installer:
+          context: AWS
           filters:
             branches:
               only:
@@ -365,6 +368,7 @@ workflows:
           requires:
             - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
+          context: AWS
           filters:
             branches:
               only:
@@ -372,6 +376,7 @@ workflows:
           requires:
             - pack-and-upload-tarballs
       - docker-publish-slim:
+          context: cli-release
           filters:
             branches:
               only:
@@ -380,6 +385,7 @@ workflows:
             - release-management/release-package
             - pack-and-upload-tarballs
       - docker-publish-full:
+          context: cli-release
           filters:
             branches:
               only:
@@ -389,6 +395,7 @@ workflows:
             - pack-and-upload-tarballs
       - run-all-nuts:
           # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
+          context: cli-release
           filters:
             branches:
               only:
@@ -405,12 +412,17 @@ workflows:
           context: CLI_CTC
 
       - promote-channels:
+          context:
+            - AWS
+            - cli-release
           requires:
             - change-case-start
       - docker-promotions:
+          context: cli-release
           requires:
             - change-case-start
       - npm-promotions:
+          context: cli-release
           requires:
             - change-case-start
       # close change case
@@ -429,7 +441,8 @@ workflows:
     when:
       equal: ['build-latest-rc', << pipeline.parameters.workflow >>]
     jobs:
-      - build-latest-rc
+      - build-latest-rc:
+          context: cli-release
 
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
@@ -449,9 +462,11 @@ workflows:
             branches:
               only:
                 - main
+          context: cli-release
 
   dependabot-automerge:
     when:
       equal: ['dependabot-automerge', << pipeline.parameters.workflow >>]
     jobs:
-      - release-management/dependabot-automerge
+      - release-management/dependabot-automerge:
+          context: cli-release
