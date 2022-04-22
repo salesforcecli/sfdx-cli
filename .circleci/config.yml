@@ -352,7 +352,9 @@ workflows:
                 - main
           context: cli-release
       - pack-and-upload-tarballs:
-          context: AWS
+          context:
+            - AWS
+            - slack
           filters:
             branches:
               only:
@@ -436,6 +438,7 @@ workflows:
           requires:
             - npm-promotions
             - promote-channels
+          context: slack
 
   build-latest-rc:
     when:
