@@ -37,6 +37,8 @@ const manualRepoOverrides = {
   },
 };
 
+const modulesWithScheduledPipelines = ['@salesforce/plugin-signups'];
+
 const hasTestNuts = (module) => {
   const results = execSync(`npm show ${module.name}@${module.version} scripts`);
   return results.includes('test:nuts');
@@ -93,11 +95,21 @@ const triggerNutsForProject = async (sfdxVersion, module, branch = 'main') => {
   const body = {
     branch: branch,
     parameters: {
-      'run-auto-workflows': false,
-      'run-just-nuts': true,
-      sfdx_version: sfdxVersion,
-      npm_module_name: module.name,
-      repo_tag: module.version,
+      // common parameters
+      ...{
+        sfdx_version: sfdxVersion,
+        npm_module_name: module.name,
+        repo_tag: module.version,
+      },
+      // if the repo is migrated to scheduled pipelines, pass it the new `workflow` param instead
+      ...(modulesWithScheduledPipelines.includes(module.name)
+        ? {
+            workflow: 'just-nuts',
+          }
+        : {
+            'run-auto-workflows': false,
+            'run-just-nuts': true,
+          }),
     },
   };
   const pipelineUrl = `${circleciBaseUrl}project/${projectSlug(module.info.org, module.info.repo)}/pipeline`;
@@ -117,8 +129,7 @@ const triggerNutsMonitor = async (jobData, branch = 'main') => {
   const body = {
     branch: branch,
     parameters: {
-      'run-auto-workflows': false,
-      'run-just-nuts': true,
+      workflow: 'monitor-all-nuts',
       nuts_job_data: `"${JSON.stringify(jobData).replace(/"/g, '\\"')}"`,
     },
   };

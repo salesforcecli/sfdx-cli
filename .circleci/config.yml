@@ -6,16 +6,18 @@ orbs:
   slack: circleci/slack@3.4.2
 
 parameters:
-  run-auto-workflows:
-    default: true
-    type: boolean
-  run-just-nuts:
-    default: false
-    type: boolean
+  workflow:
+    description: >
+      String that controls which workflow would run.
+
+      This parameter is used by automation to determine if a workflow will run
+      within a pipeline.
+    type: string
+    default: 'test-and-release'
   nuts_job_data:
     description: Parameter to pass the set of NUTs started across all plugins
-    default: '[]'
     type: string
+    default: '[]'
 
 commands:
   verify-slim-dependencies:
@@ -303,7 +305,8 @@ jobs:
 workflows:
   version: 2
   test-and-release:
-    when: << pipeline.parameters.run-auto-workflows >>
+    when:
+      equal: ['test-and-release', << pipeline.parameters.workflow >>]
     jobs:
       - release-management/validate-pr:
           filters:
@@ -401,14 +404,8 @@ workflows:
             - release-management/release-package
 
   promote-to-latest:
-    triggers:
-      - schedule:
-          # Thursday mornings at 10am mountain
-          cron: '00 16 * * 4'
-          filters:
-            branches:
-              only:
-                - main
+    when:
+      equal: ['promote-to-latest', << pipeline.parameters.workflow >>]
     jobs:
       # start the change case
       - change-case-start:
@@ -441,14 +438,8 @@ workflows:
             - promote-channels
 
   build-latest-rc:
-    triggers:
-      - schedule:
-          # Thursday mornings at 10:30am mountain
-          cron: '30 16 * * 4'
-          filters:
-            branches:
-              only:
-                - main
+    when:
+      equal: ['build-latest-rc', << pipeline.parameters.workflow >>]
     jobs:
       - build-latest-rc:
           context: cli-release
@@ -461,7 +452,8 @@ workflows:
     # NUTS_WAIT_TIME (default 900 seconds) - total time to wait for pipeline completion expressed in seconds
     # NUTS_COMPLETION_RETRY_CNT (default 30) - number of times monitor will retry check for pipeline completion
     # Wait interval between status checks is calculated as floor(NUTS_WAIT_TIME/NUTS_COMPLETION_RETRY_CNT)
-    when: << pipeline.parameters.run-just-nuts >>
+    when:
+      equal: ['monitor-all-nuts', << pipeline.parameters.workflow >>]
     jobs:
       - monitor-all-nuts:
           name: monitor-just-nuts
@@ -473,13 +465,8 @@ workflows:
           context: cli-release
 
   dependabot-automerge:
-    triggers:
-      - schedule:
-          cron: '0 2,5,8,11 * * *'
-          filters:
-            branches:
-              only:
-                - main
+    when:
+      equal: ['dependabot-automerge', << pipeline.parameters.workflow >>]
     jobs:
       - release-management/dependabot-automerge:
           context: cli-release
