@@ -370,7 +370,10 @@ workflows:
           requires:
             - pack-and-upload-tarballs
       - pack-and-upload-windows-installer:
-          context: AWS
+          context:
+            - AWS
+            # required for windows signing
+            - cli-release
           filters:
             branches:
               only:
