@@ -774,7 +774,7 @@
   },
   {
     "command": "force:org:status",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-org",
     "flags": [
       "apiversion",
       "json",
