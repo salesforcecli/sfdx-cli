@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.149.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.148.3...v7.149.0) (2022-04-29)
+
+### Bug Fixes
+
+- add schemas to yarn resolutions ([cea2886](https://github.com/salesforcecli/sfdx-cli/commit/cea288610ececf9ad3cf9e24eb7f96607182eed6))
+
 ### [7.148.3](https://github.com/salesforcecli/sfdx-cli/compare/v7.148.2...v7.148.3) (2022-04-25)
 
 ### [7.148.2](https://github.com/salesforcecli/sfdx-cli/compare/v7.148.1...v7.148.2) (2022-04-22)
