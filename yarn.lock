@@ -1394,9 +1394,9 @@
     typescript "^4.1.3"
 
 "@salesforce/kit@^1.2.1", "@salesforce/kit@^1.2.2", "@salesforce/kit@^1.5.13", "@salesforce/kit@^1.5.17", "@salesforce/kit@^1.5.18", "@salesforce/kit@^1.5.22", "@salesforce/kit@^1.5.32", "@salesforce/kit@^1.5.34":
-  version "1.5.36"
-  resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.5.36.tgz#fa9950fb70520fc33352d5184cec5815463f6ff1"
-  integrity sha512-g1IgZID3q7Ehi4x9rIQNOROcsqHVatZgUr36SyXOhADUhqWhRmoUaQq0W0XlAMQr18rrOSct1nviJwHmlqy//A==
+  version "1.5.38"
+  resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.5.38.tgz#a7ff915d75e387475a370ad7087690fde1832821"
+  integrity sha512-tAz5oWTlHW4VkQqWilaHihuiFf/opzbhfL6JK1TPtY8CyKCwCMPchoWafe+pCKWOSFTu+WzT/er06zVYC4ITrw==
   dependencies:
     "@salesforce/ts-types" "^1.5.20"
     shx "^0.3.3"
@@ -1960,7 +1960,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/jsforce@^1.9.38", "@types/jsforce@^1.9.41":
+"@types/jsforce@^1.9.41":
   version "1.9.42"
   resolved "https://registry.yarnpkg.com/@types/jsforce/-/jsforce-1.9.42.tgz#3b860f0283b32809b9639456a78eba04aed51325"
   integrity sha512-Ht5gIROhqGn5L5g0GEC7ADOWXI04yFRmxYqJxAAcpQ2II424tlu/I1LSbce5ckc97tb9BtTYMd9I+kRrvThp0w==
