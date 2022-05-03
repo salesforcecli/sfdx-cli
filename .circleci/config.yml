@@ -414,7 +414,9 @@ workflows:
     jobs:
       # start the change case
       - change-case-start:
-          context: CLI_CTC
+          context:
+            - CLI_CTC
+            - cli-release
 
       - promote-channels:
           context:
@@ -432,7 +434,9 @@ workflows:
             - change-case-start
       # close change case
       - close-CTC:
-          context: CLI_CTC
+          context:
+            - CLI_CTC
+            - cli-release
           requires:
             - npm-promotions
             - promote-channels
