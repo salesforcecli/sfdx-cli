@@ -499,12 +499,6 @@
     "alias": ["force:mdapi:beta:convert"]
   },
   {
-    "command": "force:mdapi:convert",
-    "plugin": "salesforce-alm",
-    "flags": ["json", "loglevel", "manifest", "metadata", "metadatapath", "outputdir", "rootdir"],
-    "alias": []
-  },
-  {
     "command": "force:mdapi:deploy",
     "plugin": "@salesforce/plugin-source",
     "flags": [
@@ -530,7 +524,31 @@
     "alias": ["force:mdapi:beta:deploy"]
   },
   {
-    "command": "force:mdapi:deploy",
+    "command": "force:mdapi:deploy:cancel",
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "wait"],
+    "alias": []
+  },
+  {
+    "command": "force:mdapi:deploy:report",
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["apiversion", "concise", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"],
+    "alias": ["force:mdapi:beta:deploy:report"]
+  },
+  {
+    "command": "force:mdapi:describemetadata",
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["apiversion", "filterknown", "json", "loglevel", "resultfile", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "force:mdapi:legacy:convert",
+    "plugin": "salesforce-alm",
+    "flags": ["json", "loglevel", "manifest", "metadata", "metadatapath", "outputdir", "rootdir"],
+    "alias": []
+  },
+  {
+    "command": "force:mdapi:legacy:deploy",
     "plugin": "salesforce-alm",
     "flags": [
       "apiversion",
@@ -553,27 +571,33 @@
     "alias": []
   },
   {
-    "command": "force:mdapi:deploy:cancel",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "wait"],
-    "alias": []
-  },
-  {
-    "command": "force:mdapi:deploy:report",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "concise", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"],
-    "alias": ["force:mdapi:beta:deploy:report"]
-  },
-  {
-    "command": "force:mdapi:deploy:report",
+    "command": "force:mdapi:legacy:deploy:report",
     "plugin": "salesforce-alm",
     "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"],
     "alias": []
   },
   {
-    "command": "force:mdapi:describemetadata",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "filterknown", "json", "loglevel", "resultfile", "targetusername"],
+    "command": "force:mdapi:legacy:retrieve",
+    "plugin": "salesforce-alm",
+    "flags": [
+      "apiversion",
+      "json",
+      "loglevel",
+      "packagenames",
+      "retrievetargetdir",
+      "singlepackage",
+      "sourcedir",
+      "targetusername",
+      "unpackaged",
+      "verbose",
+      "wait"
+    ],
+    "alias": []
+  },
+  {
+    "command": "force:mdapi:legacy:retrieve:report",
+    "plugin": "salesforce-alm",
+    "flags": ["apiversion", "jobid", "json", "loglevel", "retrievetargetdir", "targetusername", "verbose", "wait"],
     "alias": []
   },
   {
@@ -603,24 +627,6 @@
     "alias": ["force:mdapi:beta:retrieve"]
   },
   {
-    "command": "force:mdapi:retrieve",
-    "plugin": "salesforce-alm",
-    "flags": [
-      "apiversion",
-      "json",
-      "loglevel",
-      "packagenames",
-      "retrievetargetdir",
-      "singlepackage",
-      "sourcedir",
-      "targetusername",
-      "unpackaged",
-      "verbose",
-      "wait"
-    ],
-    "alias": []
-  },
-  {
     "command": "force:mdapi:retrieve:report",
     "plugin": "@salesforce/plugin-source",
     "flags": [
@@ -636,12 +642,6 @@
       "zipfilename"
     ],
     "alias": ["force:mdapi:beta:retrieve:report"]
-  },
-  {
-    "command": "force:mdapi:retrieve:report",
-    "plugin": "salesforce-alm",
-    "flags": ["apiversion", "jobid", "json", "loglevel", "retrievetargetdir", "targetusername", "verbose", "wait"],
-    "alias": []
   },
   {
     "command": "force:org:beta:create",
