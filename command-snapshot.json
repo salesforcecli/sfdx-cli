@@ -493,13 +493,19 @@
     "alias": []
   },
   {
-    "command": "force:mdapi:beta:convert",
+    "command": "force:mdapi:convert",
     "plugin": "@salesforce/plugin-source",
+    "flags": ["json", "loglevel", "manifest", "metadata", "metadatapath", "outputdir", "rootdir"],
+    "alias": ["force:mdapi:beta:convert"]
+  },
+  {
+    "command": "force:mdapi:convert",
+    "plugin": "salesforce-alm",
     "flags": ["json", "loglevel", "manifest", "metadata", "metadatapath", "outputdir", "rootdir"],
     "alias": []
   },
   {
-    "command": "force:mdapi:beta:deploy",
+    "command": "force:mdapi:deploy",
     "plugin": "@salesforce/plugin-source",
     "flags": [
       "apiversion",
@@ -521,56 +527,7 @@
       "wait",
       "zipfile"
     ],
-    "alias": []
-  },
-  {
-    "command": "force:mdapi:beta:deploy:report",
-    "plugin": "@salesforce/plugin-source",
-    "flags": ["apiversion", "concise", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"],
-    "alias": []
-  },
-  {
-    "command": "force:mdapi:beta:retrieve",
-    "plugin": "@salesforce/plugin-source",
-    "flags": [
-      "apiversion",
-      "json",
-      "loglevel",
-      "packagenames",
-      "retrievetargetdir",
-      "singlepackage",
-      "sourcedir",
-      "targetusername",
-      "unpackaged",
-      "unzip",
-      "verbose",
-      "wait",
-      "zipfilename"
-    ],
-    "alias": []
-  },
-  {
-    "command": "force:mdapi:beta:retrieve:report",
-    "plugin": "@salesforce/plugin-source",
-    "flags": [
-      "apiversion",
-      "jobid",
-      "json",
-      "loglevel",
-      "retrievetargetdir",
-      "targetusername",
-      "unzip",
-      "verbose",
-      "wait",
-      "zipfilename"
-    ],
-    "alias": []
-  },
-  {
-    "command": "force:mdapi:convert",
-    "plugin": "salesforce-alm",
-    "flags": ["json", "loglevel", "manifest", "metadata", "metadatapath", "outputdir", "rootdir"],
-    "alias": []
+    "alias": ["force:mdapi:beta:deploy"]
   },
   {
     "command": "force:mdapi:deploy",
@@ -603,6 +560,12 @@
   },
   {
     "command": "force:mdapi:deploy:report",
+    "plugin": "@salesforce/plugin-source",
+    "flags": ["apiversion", "concise", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"],
+    "alias": ["force:mdapi:beta:deploy:report"]
+  },
+  {
+    "command": "force:mdapi:deploy:report",
     "plugin": "salesforce-alm",
     "flags": ["apiversion", "jobid", "json", "loglevel", "targetusername", "verbose", "wait"],
     "alias": []
@@ -621,6 +584,26 @@
   },
   {
     "command": "force:mdapi:retrieve",
+    "plugin": "@salesforce/plugin-source",
+    "flags": [
+      "apiversion",
+      "json",
+      "loglevel",
+      "packagenames",
+      "retrievetargetdir",
+      "singlepackage",
+      "sourcedir",
+      "targetusername",
+      "unpackaged",
+      "unzip",
+      "verbose",
+      "wait",
+      "zipfilename"
+    ],
+    "alias": ["force:mdapi:beta:retrieve"]
+  },
+  {
+    "command": "force:mdapi:retrieve",
     "plugin": "salesforce-alm",
     "flags": [
       "apiversion",
@@ -636,6 +619,23 @@
       "wait"
     ],
     "alias": []
+  },
+  {
+    "command": "force:mdapi:retrieve:report",
+    "plugin": "@salesforce/plugin-source",
+    "flags": [
+      "apiversion",
+      "jobid",
+      "json",
+      "loglevel",
+      "retrievetargetdir",
+      "targetusername",
+      "unzip",
+      "verbose",
+      "wait",
+      "zipfilename"
+    ],
+    "alias": ["force:mdapi:beta:retrieve:report"]
   },
   {
     "command": "force:mdapi:retrieve:report",
