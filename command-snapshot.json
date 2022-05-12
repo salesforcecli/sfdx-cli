@@ -667,11 +667,10 @@
   },
   {
     "command": "force:org:clone",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-org",
     "flags": [
       "apiversion",
       "definitionfile",
-      "definitionjson",
       "json",
       "loglevel",
       "setalias",
@@ -750,25 +749,25 @@
   },
   {
     "command": "force:org:snapshot:create",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-signups",
     "flags": ["apiversion", "description", "json", "loglevel", "snapshotname", "sourceorg", "targetdevhubusername"],
     "alias": []
   },
   {
     "command": "force:org:snapshot:delete",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-signups",
     "flags": ["apiversion", "json", "loglevel", "snapshot", "targetdevhubusername"],
     "alias": []
   },
   {
     "command": "force:org:snapshot:get",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-signups",
     "flags": ["apiversion", "json", "loglevel", "snapshot", "targetdevhubusername"],
     "alias": []
   },
   {
     "command": "force:org:snapshot:list",
-    "plugin": "salesforce-alm",
+    "plugin": "@salesforce/plugin-signups",
     "flags": ["apiversion", "json", "loglevel", "targetdevhubusername"],
     "alias": []
   },
