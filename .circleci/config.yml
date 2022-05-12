@@ -410,9 +410,9 @@ workflows:
           requires:
             - release-management/release-package
 
-  promote-to-latest:
+  promote-disabled-to-latest:
     when:
-      equal: ['promote-to-latest', << pipeline.parameters.workflow >>]
+      equal: ['promote-disabled-to-latest', << pipeline.parameters.workflow >>]
     jobs:
       # start the change case
       - change-case-start:
