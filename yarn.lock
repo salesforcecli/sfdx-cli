@@ -1593,10 +1593,10 @@
     change-case "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-source@1.9.7":
-  version "1.9.7"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.9.7.tgz#58115087a302b5e59b110f3c90e3292357db7d8a"
-  integrity sha512-BrIMcdDs63OdvEFgSQG3QgtdD2IB4CrH3SCo8w0N6dfE3eqiaE847siUg9KGsr0haNGUQO4qi9/Dd6Z4Ha9/rA==
+"@salesforce/plugin-source@1.9.8":
+  version "1.9.8"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.9.8.tgz#33a164e2de51e072efadba9556a19906ca686f28"
+  integrity sha512-hvlRSglsgFbdwX2TvbKDQ+EQkzqFA+jDrfG+CyWvmLgjBN2cGqTWzoRYzZ5EinZYd1YQzoeXrYLTxE0XkcIzLg==
   dependencies:
     "@oclif/config" "^1.18.3"
     "@oclif/plugin-help" "^3.3.1"
