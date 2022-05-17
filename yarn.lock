@@ -1581,10 +1581,10 @@
     "@salesforce/core" "^3.16.0"
     tslib "^2"
 
-"@salesforce/plugin-signups@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-signups/-/plugin-signups-1.1.1.tgz#f20ed594bcd76d12496cee576b1d0b6795922108"
-  integrity sha512-LZMhE3uTYR5vF/NGFzlY+SzJyypVe0S0VBkSD8uR3Az0v+urnmu3CsFqp+EuiyhjOqkp1ET0F5aCzJZFWCeZ1w==
+"@salesforce/plugin-signups@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-signups/-/plugin-signups-1.1.0.tgz#3216511945e148d55bdcb1cea3d18945969e6b46"
+  integrity sha512-y9/MdW+Czp1cekXIN+gc716TpgwvA49g1V51m0f8FZWckUCkLLA2rcicQ/NPlTwZe3KlXPYVCmqv/NYaunuwwA==
   dependencies:
     "@oclif/core" "^1.6.3"
     "@salesforce/command" "^5.0.1"
@@ -1694,10 +1694,10 @@
     signal-exit "^3.0.2"
     tslib "^1.10.0"
 
-"@salesforce/source-deploy-retrieve@5.15.0", "@salesforce/source-deploy-retrieve@^5.12.12":
-  version "5.15.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-5.15.0.tgz#6192fb68b014ca27112f96fd10af7593d1654953"
-  integrity sha512-94COkIIpyVjPIdNLR2R56o+WvAUet+Kt7JVn8ZhLxQCuK0KARElr3gpEKMrPxBuN5hgyCWjejpWB7XWrSpIV9Q==
+"@salesforce/source-deploy-retrieve@5.14.0", "@salesforce/source-deploy-retrieve@^5.12.12":
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-5.14.0.tgz#0621b880ae009653760d36024271eb1803b64060"
+  integrity sha512-o3JjsHoBzuNsq7ZVfycdU9yPqFj6bjIR6flC1huul27KiPwrUxs8mKs//iyKhDEuXsH9Sa6aD4Nf1nNinUxsoA==
   dependencies:
     "@salesforce/core" "^2.37.1"
     "@salesforce/kit" "^1.5.41"
