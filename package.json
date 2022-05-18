@@ -206,8 +206,6 @@
   },
   "resolutions": {
     "@salesforce/schemas": "1.1.0",
-    "@salesforce/source-deploy-retrieve": "5.14.0",
-    "@salesforce/source-tracking": "1.5.0",
     "@salesforce/templates": "54.7.0",
     "@salesforce/ts-types": "1.5.20"
   },
