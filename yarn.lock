@@ -1544,9 +1544,9 @@
     tslib "^2"
 
 "@salesforce/plugin-release-management@^2.8.1":
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-2.11.1.tgz#ca231a9eb34c4c1a74d5f53bcac4d5adb7e63631"
-  integrity sha512-Z0iORCACtTTqYAHFfkQH5pniiD5f5m3QiAx8JPQukQ99SMxGfIfQlrdIFASnzf1+Ihmvu8Nvegwgj7D5pEkjXA==
+  version "2.12.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-2.12.4.tgz#5ceb73f4f8a2c57a1c9bec74254aafcf3753d984"
+  integrity sha512-dWCyZqI07tRojw+No4udMbjxAXyrNW7nwetR1T3N7Eay4xFVbva2VyoddUHP/GQrHs/uNWJ+a9/mztDRpU1woA==
   dependencies:
     "@oclif/config" "^1"
     "@octokit/core" "^3.4.0"
