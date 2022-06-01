@@ -149,7 +149,7 @@
     "@salesforce/plugin-org": "1.13.2",
     "@salesforce/plugin-schema": "2.1.1",
     "@salesforce/plugin-signups": "1.1.2",
-    "@salesforce/plugin-source": "1.10.1",
+    "@salesforce/plugin-source": "1.10.2",
     "@salesforce/plugin-telemetry": "2.0.0",
     "@salesforce/plugin-templates": "54.8.0",
     "@salesforce/plugin-trust": "^1.0.8",
