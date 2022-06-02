@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.154.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.153.1...v7.154.0) (2022-06-02)
+
 ### [7.153.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.153.0...v7.153.1) (2022-06-02)
 
 ## [7.153.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.152.0...v7.153.0) (2022-05-27)
