@@ -786,9 +786,9 @@
     tslib "^2.3.1"
 
 "@oclif/core@^1.0.8", "@oclif/core@^1.2.0", "@oclif/core@^1.2.1", "@oclif/core@^1.3.1", "@oclif/core@^1.3.4", "@oclif/core@^1.5.1", "@oclif/core@^1.5.2", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.7.0", "@oclif/core@^1.8.0":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.8.1.tgz#1783b83b69c2505c070aabff475964cb75fee27b"
-  integrity sha512-6pNQnkL2Uk9SbRUb12BFminLPhrPab1euNzVl1eh+Q7+X8+JGMw8vgKUfQRlGZesmcd+8fByQMZBaoOAEozJsw==
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.9.0.tgz#bb2a7820a9176f28921f449c0f577d39c15e74d0"
+  integrity sha512-duvlaRQf4JM+mKuwwos1DNa/Q9x6tnF3khV5RU0fy5hhETF7THlTmxioKlIvKMyQDVpySqtZXZ0OKHeCi2EWuQ==
   dependencies:
     "@oclif/linewrap" "^1.0.0"
     "@oclif/screen" "^3.0.2"
@@ -807,7 +807,6 @@
     indent-string "^4.0.0"
     is-wsl "^2.2.0"
     js-yaml "^3.14.1"
-    lodash "^4.17.21"
     natural-orderby "^2.0.3"
     object-treeify "^1.1.33"
     password-prompt "^1.1.2"
@@ -1596,10 +1595,10 @@
     change-case "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-source@1.10.1":
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.10.1.tgz#3b489acdf9a6b60fe0531ecd8853b1181764d6b9"
-  integrity sha512-OswNyzdQ+x/4cMMoiQ1yAihXixFe7NLHLTjd/mhyNUmtfPy9e8AWL2zjKA6X0JM4+g/1f5WaVQmQCMuHds2lGQ==
+"@salesforce/plugin-source@1.10.2":
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-1.10.2.tgz#aa03993974573e75ed9f1e259526c42c4d31165e"
+  integrity sha512-AqzaEeMHzdzFu+wojCWcOTgSc+Sizkbph1rP+G4mD0tfnYUSCsci/77hNJmnO+l/fWD1RL24MpsHoKGtFA+Auw==
   dependencies:
     "@oclif/config" "^1.18.3"
     "@oclif/plugin-help" "^3.3.1"
