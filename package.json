@@ -152,7 +152,7 @@
     "@salesforce/plugin-source": "1.10.2",
     "@salesforce/plugin-telemetry": "2.0.0",
     "@salesforce/plugin-templates": "54.8.0",
-    "@salesforce/plugin-trust": "^1.0.8",
+    "@salesforce/plugin-trust": "^2.0.0",
     "@salesforce/plugin-user": "2.0.2",
     "@salesforce/require-analytics": "^0.9.16",
     "@salesforce/sfdx-plugin-lwc-test": "0.1.7",
