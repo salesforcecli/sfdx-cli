@@ -37,7 +37,7 @@ const manualRepoOverrides = {
   },
 };
 
-const modulesWithScheduledPipelines = ['@salesforce/plugin-signups'];
+const modulesWithScheduledPipelines = ['@salesforce/plugin-signups', '@salesforce/plugin-generate'];
 
 const hasTestNuts = (module) => {
   const results = execSync(`npm show ${module.name}@${module.version} scripts`);
