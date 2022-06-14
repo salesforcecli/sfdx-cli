@@ -9094,10 +9094,10 @@ safe-stable-stringify@^2.2.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-salesforce-alm@54.5.0:
-  version "54.5.0"
-  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-54.5.0.tgz#2940b31728196b294828b6554cdd1bfb17f89866"
-  integrity sha512-kaC8vKSG6PT0Wl3xEe+TuGKfFR7LwgLimw71yRq2d9o9zHSwiBlArbsqk7Lg1xsuzIufW4WifYH1R9YYD39xfA==
+salesforce-alm@54.5.1:
+  version "54.5.1"
+  resolved "https://registry.yarnpkg.com/salesforce-alm/-/salesforce-alm-54.5.1.tgz#c3abe9dc211d61bfba2ec3dcf998e121148e2b42"
+  integrity sha512-0R7kTdCIhJedD7TiHOCTO+VvmzPMKzR3rmDUp9Jqe8J63PNYlWcNTeRUdEa4o2Pq0MrT60XaTxLulSKt9x2adw==
   dependencies:
     "@oclif/core" "^1.8.0"
     "@salesforce/command" "^5.1.0"
