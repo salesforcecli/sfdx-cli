@@ -6,7 +6,7 @@
  */
 import * as path from 'path';
 import Plugins from '@oclif/plugin-plugins';
-import { Config } from '@oclif/config';
+import { Config } from '@oclif/core';
 import { AnyJson, get } from '@salesforce/ts-types';
 import { cli } from 'cli-ux';
 import { compareVersions } from '../versions';

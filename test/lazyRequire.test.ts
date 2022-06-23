@@ -9,7 +9,7 @@
 /* eslint-disable @typescript-eslint/require-await*/
 
 import { join, sep } from 'path';
-import { IConfig } from '@oclif/config';
+import { Config } from '@oclif/core';
 import LazyRequire from '@salesforce/lazy-require';
 import { StubbedCallableType, StubbedType, stubCallable, stubInterface } from '@salesforce/ts-sinon';
 import { expect } from 'chai';
@@ -18,14 +18,16 @@ import * as mod from '../src/lazyRequire';
 
 describe('lazyRequire', () => {
   let sandbox: sinon.SinonSandbox;
-  let config: IConfig;
+  let config: Config;
   let mock: StubbedType<LazyRequire>;
   let create: StubbedCallableType<typeof LazyRequire.create>;
 
   beforeEach(() => {
     sandbox = sinon.createSandbox();
 
-    config = stubInterface<IConfig>(sandbox, {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore - you cannot pass a StubInterface<Config> as a Config into methods below
+    config = stubInterface<Config>(sandbox, {
       cacheDir: '/test',
     });
 

@@ -7,7 +7,7 @@
 
 import { join } from 'path';
 import { spawn } from 'child_process';
-import { Hook } from '@oclif/config';
+import { Hook } from '@oclif/core';
 import { cli } from 'cli-ux';
 
 const logError = (msg: Error): void => {

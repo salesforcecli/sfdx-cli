@@ -7,8 +7,8 @@
 
 import * as os from 'os';
 import * as path from 'path';
-import { Main, run as oclifRun } from '@oclif/command';
-import { Config, IConfig } from '@oclif/config';
+import { run as oclifRun, Config } from '@oclif/core';
+import Main from '@oclif/core/lib/command';
 import { set } from '@salesforce/kit';
 import { AnyJson, get } from '@salesforce/ts-types';
 import * as Debug from 'debug';
@@ -28,7 +28,7 @@ export const UPDATE_DISABLED_DEMO =
   'Manual and automatic CLI updates have been disabled in DEMO mode. ' +
   'To check for a new version, unset the environment variable SFDX_ENV.';
 
-export function configureUpdateSites(config: IConfig, env = nodeEnv): void {
+export function configureUpdateSites(config: Config, env = nodeEnv): void {
   const s3Host = env.getS3HostOverride();
   if (s3Host) {
     // Override config value if set via envar
@@ -69,7 +69,7 @@ export function configureAutoUpdate(envars: Env): void {
   }
 }
 
-function debugCliInfo(version: string, channel: string, env: Env, config: IConfig): void {
+function debugCliInfo(version: string, channel: string, env: Env, config: Config): void {
   function debugSection(section: string, items: Array<[string, string]>): void {
     const pad = 25;
     debug('%s:', section.padStart(pad));
@@ -126,6 +126,8 @@ interface VersionDetail {
   osVersion?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 class SfdxMain extends Main {
   // Function which returns Version object which includes cli version, plugin versions, OS and its version.
   protected getVersionDetail(isVerbose: boolean): VersionDetail {
@@ -158,7 +160,7 @@ class SfdxMain extends Main {
     }
   }
 
-  protected _version(): never {
+  protected _version(): void {
     const options: Set<string> = new Set(this.argv);
 
     // Checking if options doesn't have --verbose and --json
@@ -194,7 +196,7 @@ export function create(
         lazyRequire.start(config);
       }
       // I think the run method is used in test.
-      return (run ? run(args, config) : await SfdxMain.run(args, config)) as unknown;
+      return (run ? await run(args, config) : await SfdxMain.run(args, config)) as unknown;
     },
   };
 }
