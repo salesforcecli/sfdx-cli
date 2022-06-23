@@ -126,9 +126,13 @@ interface VersionDetail {
   osVersion?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 class SfdxMain extends Main {
+  // eslint-disable-next-line @typescript-eslint/require-await
+  public async run(): Promise<void> {
+    // eslint-disable-next-line no-underscore-dangle
+    return this._version();
+  }
+
   // Function which returns Version object which includes cli version, plugin versions, OS and its version.
   protected getVersionDetail(isVerbose: boolean): VersionDetail {
     const versions = this.config.userAgent.split(' ');
