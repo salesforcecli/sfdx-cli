@@ -1785,7 +1785,7 @@
     signal-exit "^3.0.2"
     tslib "^1.10.0"
 
-"@salesforce/source-deploy-retrieve@^6.0.1", "@salesforce/source-deploy-retrieve@^6.0.2", "@salesforce/source-deploy-retrieve@^6.0.4", "@salesforce/source-deploy-retrieve@^6.1.0":
+"@salesforce/source-deploy-retrieve@^6.0.2", "@salesforce/source-deploy-retrieve@^6.0.4", "@salesforce/source-deploy-retrieve@^6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-6.1.0.tgz#4cea1206b9f179ff217cf283657d3d231610c673"
   integrity sha512-r6XRsznFshjbl9luRRHG8da2QtKSGM6dvW8IpFPReA4PzdyLVlkEVp89jLFK5UmnbqKGfA8QPd31Ajh38DlSWg==
@@ -2659,9 +2659,9 @@ at-least-node@^1.0.0:
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
 aws-sdk@^2.1043.0, aws-sdk@^2.1069.0, aws-sdk@^2.920.0:
-  version "2.1147.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1147.0.tgz#5d279abee153a0627ae502cdbb57d321388b534c"
-  integrity sha512-+CO8FnBgqHgxMJH0s8fv17Xqrh6V0lJ8zKOt3lHU+8QTiSoX5aLgr8zwmi0m7msHtyVeDWh50kiWAlvUs7U8Gw==
+  version "2.1160.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1160.0.tgz#4af9bcbf044b77e836341fad47627cc0d7c2b854"
+  integrity sha512-aUjpuuVctjoRDnbs/SnDJXS7QeXmBANbYFPNLwm5JXcszkokoGcYzD37PFRNJUHQ30XNBoH451mxdNWZQ606xg==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -6313,32 +6313,6 @@ jsesc@^2.5.1:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
-
-jsforce@2.0.0-beta.13:
-  version "2.0.0-beta.13"
-  resolved "https://registry.yarnpkg.com/jsforce/-/jsforce-2.0.0-beta.13.tgz#e0d03b3e173288ec3451b67299a9c85d126ccdd5"
-  integrity sha512-gs6Ac5OTOz81zN3KO4AFC1onzwrcDACZxjDPicLLzuf0XvTf2RLZmtFPuIXi386mXc7fzRD/KbnxTIRR8Nyy6A==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@babel/runtime-corejs3" "^7.12.5"
-    "@types/node" "^12.19.9"
-    abort-controller "^3.0.0"
-    base64url "^3.0.1"
-    commander "^4.0.1"
-    core-js "^3.6.4"
-    csv-parse "^4.8.2"
-    csv-stringify "^5.3.4"
-    faye "^1.4.0"
-    form-data "^4.0.0"
-    fs-extra "^8.1.0"
-    https-proxy-agent "^5.0.0"
-    inquirer "^7.0.0"
-    multistream "^3.1.0"
-    node-fetch "^2.6.1"
-    open "^7.0.0"
-    regenerator-runtime "^0.13.3"
-    strip-ansi "^6.0.0"
-    xml2js "^0.4.22"
 
 jsforce@2.0.0-beta.14:
   version "2.0.0-beta.14"
