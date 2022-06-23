@@ -1669,10 +1669,10 @@
     change-case "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-source@2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.0.2.tgz#e1549356609765a8f4957bdb961731a1a7cd6435"
-  integrity sha512-A+wA+mHG91soKI5VlCNvhJtBH2ekSsYL+RpC7TWm7JIJ4goo9y9m5QpBom0s5D/lrDXjGEPZw5fLebGTxDeRKw==
+"@salesforce/plugin-source@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.0.3.tgz#10386583781fb737da97c336b3d0ccb255c53c8c"
+  integrity sha512-vuHKyyuYxQ8gjwXBsWYSZSUH7qEJjyNqXfjp/SLBUqvz6iT3J+te5kJPA8O1dbkqs9JPlhO/2giL8HX0yMhcGA==
   dependencies:
     "@oclif/core" "^1.9.0"
     "@oclif/plugin-help" "^3.3.1"
@@ -1785,7 +1785,7 @@
     signal-exit "^3.0.2"
     tslib "^1.10.0"
 
-"@salesforce/source-deploy-retrieve@^6.0.1", "@salesforce/source-deploy-retrieve@^6.0.2", "@salesforce/source-deploy-retrieve@^6.0.4", "@salesforce/source-deploy-retrieve@^6.1.0":
+"@salesforce/source-deploy-retrieve@^6.0.2", "@salesforce/source-deploy-retrieve@^6.0.4", "@salesforce/source-deploy-retrieve@^6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-6.1.0.tgz#4cea1206b9f179ff217cf283657d3d231610c673"
   integrity sha512-r6XRsznFshjbl9luRRHG8da2QtKSGM6dvW8IpFPReA4PzdyLVlkEVp89jLFK5UmnbqKGfA8QPd31Ajh38DlSWg==
@@ -6313,32 +6313,6 @@ jsesc@^2.5.1:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
-
-jsforce@2.0.0-beta.13:
-  version "2.0.0-beta.13"
-  resolved "https://registry.yarnpkg.com/jsforce/-/jsforce-2.0.0-beta.13.tgz#e0d03b3e173288ec3451b67299a9c85d126ccdd5"
-  integrity sha512-gs6Ac5OTOz81zN3KO4AFC1onzwrcDACZxjDPicLLzuf0XvTf2RLZmtFPuIXi386mXc7fzRD/KbnxTIRR8Nyy6A==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@babel/runtime-corejs3" "^7.12.5"
-    "@types/node" "^12.19.9"
-    abort-controller "^3.0.0"
-    base64url "^3.0.1"
-    commander "^4.0.1"
-    core-js "^3.6.4"
-    csv-parse "^4.8.2"
-    csv-stringify "^5.3.4"
-    faye "^1.4.0"
-    form-data "^4.0.0"
-    fs-extra "^8.1.0"
-    https-proxy-agent "^5.0.0"
-    inquirer "^7.0.0"
-    multistream "^3.1.0"
-    node-fetch "^2.6.1"
-    open "^7.0.0"
-    regenerator-runtime "^0.13.3"
-    strip-ansi "^6.0.0"
-    xml2js "^0.4.22"
 
 jsforce@2.0.0-beta.14:
   version "2.0.0-beta.14"
