@@ -26,6 +26,12 @@
     "scope": "salesforce",
     "commands": "./dist/commands",
     "dirname": "sfdx",
+    "additionalVersionFlags": [
+      "-v"
+    ],
+    "additionalHelpFlags": [
+      "-h"
+    ],
     "hooks": {
       "plugins:preinstall": [
         "./dist/hooks/pluginsPreinstall.js"
