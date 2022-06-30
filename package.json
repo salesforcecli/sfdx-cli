@@ -19,7 +19,8 @@
     "dist/**/*.js",
     "scripts/include-sf.js",
     "scripts/post-install-release-notes.js",
-    "!dist/**/*.test.js"
+    "!dist/**/*.test.js",
+    "/npm-shrinkwrap.json"
   ],
   "oclif": {
     "bin": "sfdx",
@@ -228,10 +229,11 @@
     "pack:verify": "sf-release cli:tarballs:verify",
     "pack:win": "oclif pack:win --additional-cli sf",
     "postinstall": "node ./scripts/post-install-release-notes.js",
-    "postpack": "shx rm -f oclif.manifest.json",
+    "postpack": "shx rm -f oclif.manifest.json npm-shrinkwrap.json",
     "posttest": "yarn test:deprecation-policy ",
     "prepack": "yarn compile && yarn lint && yarn oclif-artifacts",
     "prepare": "sf-install && yarn compile && yarn lint",
+    "prepublishOnly": "npm shrinkwrap",
     "pretarball": "sf-release cli:tarballs:prepare && ./scripts/include-sf.js",
     "promote": "oclif promote",
     "promote-dist-tags": "./scripts/promote-dist-tags",
