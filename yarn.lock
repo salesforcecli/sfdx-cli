@@ -1465,10 +1465,10 @@
     semver "^7.3.5"
     ts-retry-promise "^0.6.0"
 
-"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.4", "@salesforce/core@^3.20.1", "@salesforce/core@^3.21.1", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.1", "@salesforce/core@^3.23.3", "@salesforce/core@^3.23.6":
-  version "3.23.6"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.23.6.tgz#b784158c63068f958c7bb02b46c211ff06b28594"
-  integrity sha512-bsDzpLta9vNnAncLPbcoGddwmOE4GoGutW/oZ8DW5h/AcnBT1xbP8ySaNE6efk5B5CcVR+D5cTv2xZRp83falQ==
+"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.4", "@salesforce/core@^3.20.1", "@salesforce/core@^3.21.1", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.1", "@salesforce/core@^3.23.3", "@salesforce/core@^3.23.8":
+  version "3.23.9"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.23.9.tgz#4f40e5ead480d698d538bfc82100ea6a9cf15d82"
+  integrity sha512-83NRSPQdowDwzzEXFNHzl26EMpUJgeQWLNZ0wZzDTuNEMYAYAYyv6Ieruj1CHQV75YFbELQ+nTlOXWdzsjY4VQ==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.5.41"
@@ -1485,7 +1485,7 @@
     form-data "^4.0.0"
     graceful-fs "^4.2.9"
     js2xmlparser "^4.0.1"
-    jsforce "2.0.0-beta.14"
+    jsforce beta
     jsonwebtoken "8.5.1"
     mkdirp "1.0.4"
     ts-retry-promise "^0.6.0"
@@ -1681,14 +1681,14 @@
     "@salesforce/core" "^3.10.1"
     tslib "^2"
 
-"@salesforce/plugin-org@2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-2.0.2.tgz#33023eb0ab2f5d03a7c855debcf9dd6c36a95204"
-  integrity sha512-exoWhuOAzgdTOG/biapnCaMno7mYWm0ts+h854vhywnaPWLNLMnY2PjIxAcI4roCFsHZgeKw3Pf0RPU5mKE8wA==
+"@salesforce/plugin-org@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-2.0.3.tgz#55734bf33c28dc574ba468919b50a0dec940dc98"
+  integrity sha512-zJR8dBzljTZ84oN9L9UexA8fvpPDobHGg1xF9FgQwmrViFU6NMOweELDEMsizzp4BdRqf4PBy9k0IeyGmi62wA==
   dependencies:
     "@oclif/core" "^1.7.0"
     "@salesforce/command" "^5.2.0"
-    "@salesforce/core" "^3.23.6"
+    "@salesforce/core" "^3.23.8"
     "@salesforce/kit" "^1.5.17"
     open "8.4.0"
     tslib "^2"
@@ -1861,10 +1861,10 @@
     signal-exit "^3.0.6"
     tslib "^2.3.1"
 
-"@salesforce/source-deploy-retrieve@6.2.1", "@salesforce/source-deploy-retrieve@^6.0.2", "@salesforce/source-deploy-retrieve@^6.1.0", "@salesforce/source-deploy-retrieve@^6.2.1":
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-6.2.1.tgz#f08df98332fee8c819722b7d16f08eb98c1cfe21"
-  integrity sha512-UrQSSl2JT37SMleBfcX8ML6qePe5b6SkbY6ibVj+YiI/tApC5KTmE3Tpdyn+ZLQQkafO4geXIyKw9+ebOdS/Rg==
+"@salesforce/source-deploy-retrieve@6.2.2", "@salesforce/source-deploy-retrieve@^6.0.2", "@salesforce/source-deploy-retrieve@^6.1.0", "@salesforce/source-deploy-retrieve@^6.2.1":
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-6.2.2.tgz#ad296088d5297dce0f7159e0b539e9ebdfe7cea5"
+  integrity sha512-UQ+5Br195ygRErrQ4eDQW6UajK3zLW5904iQ2+usxNSUOB7I8trNZtTBOx2YyV+7MWznWYoz2DR+P4hkMnVmUw==
   dependencies:
     "@salesforce/core" "^3.21.1"
     "@salesforce/kit" "^1.5.41"
@@ -6479,6 +6479,32 @@ jsforce@^1.11.0:
     readable-stream "^2.1.0"
     request "^2.72.0"
     xml2js "^0.4.16"
+
+jsforce@beta:
+  version "2.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/jsforce/-/jsforce-2.0.0-beta.15.tgz#05255f3b54a001421c973b1a7b4dbb4468ded2a3"
+  integrity sha512-AfwIxG+y+WOsqSGKlezyL3G+4ItmR/zfcvg38x4CDa3eizDD0wWZBAOnJbOQ8U76zAQqrMsyWs+s3ozJzSLtZA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@babel/runtime-corejs3" "^7.12.5"
+    "@types/node" "^12.19.9"
+    abort-controller "^3.0.0"
+    base64url "^3.0.1"
+    commander "^4.0.1"
+    core-js "^3.6.4"
+    csv-parse "^4.8.2"
+    csv-stringify "^5.3.4"
+    faye "^1.4.0"
+    form-data "^4.0.0"
+    fs-extra "^8.1.0"
+    https-proxy-agent "^5.0.0"
+    inquirer "^7.0.0"
+    multistream "^3.1.0"
+    node-fetch "^2.6.1"
+    open "^7.0.0"
+    regenerator-runtime "^0.13.3"
+    strip-ansi "^6.0.0"
+    xml2js "^0.4.22"
 
 json-buffer@3.0.0:
   version "3.0.0"
