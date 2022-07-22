@@ -12,8 +12,9 @@ import { Config, IConfig } from '@oclif/config';
 import { set } from '@salesforce/kit';
 import { AnyJson, get } from '@salesforce/ts-types';
 import * as Debug from 'debug';
-import { exec } from 'shelljs';
+import { exec, which } from 'shelljs';
 import * as lazyRequire from './lazyRequire';
+import { Doctor } from './doctor';
 import { default as nodeEnv, Env } from './util/env';
 
 const debug = Debug('sfdx');
@@ -118,29 +119,37 @@ function debugCliInfo(version: string, channel: string, env: Env, config: IConfi
   );
 }
 
-interface VersionDetail {
+export interface VersionDetail {
   cliVersion: string;
   architecture: string;
   nodeVersion: string;
   pluginVersions?: string[];
   osVersion?: string;
+  shell?: string;
+  binLocation?: string;
+}
+
+// Function which returns Version object which includes cli version, plugin versions, OS and its version.
+function getVersionDetail(isVerbose: boolean, config: IConfig): VersionDetail {
+  const versions = config.userAgent.split(' ');
+  const cliVersion: string = versions[0];
+  const architecture: string = versions[1];
+  const nodeVersion: string = versions[2];
+  if (!isVerbose) return { cliVersion, architecture, nodeVersion };
+  const pluginVersion: string = exec('sfdx plugins --core', {
+    silent: true,
+  }).toString();
+  const pluginVersions: string[] = pluginVersion.split('\n');
+  pluginVersions.pop();
+  const osVersion = `${os.type()} ${os.release()}`;
+  const shell = config.shell;
+  const binLocation = which(config.bin)?.toString() || 'unknown';
+  return { cliVersion, architecture, nodeVersion, pluginVersions, osVersion, shell, binLocation };
 }
 
 class SfdxMain extends Main {
-  // Function which returns Version object which includes cli version, plugin versions, OS and its version.
   protected getVersionDetail(isVerbose: boolean): VersionDetail {
-    const versions = this.config.userAgent.split(' ');
-    const cliVersion: string = versions[0];
-    const architecture: string = versions[1];
-    const nodeVersion: string = versions[2];
-    if (!isVerbose) return { cliVersion, architecture, nodeVersion };
-    const pluginVersion: string = exec('sfdx plugins --core', {
-      silent: true,
-    }).toString();
-    const pluginVersions: string[] = pluginVersion.split('\n');
-    pluginVersions.pop();
-    const osVersion = `${os.type()} ${os.release()}`;
-    return { cliVersion, architecture, nodeVersion, pluginVersions, osVersion };
+    return getVersionDetail(isVerbose, this.config);
   }
 
   protected printVersionDetails(versionDetails: VersionDetail, isJson: boolean): void {
@@ -155,6 +164,8 @@ class SfdxMain extends Main {
         this.log(`\t${plugin}`);
       });
       this.log(`\n OS and Version: \n\t${versionDetails.osVersion}`);
+      this.log(`\n Shell: \n\t${versionDetails.shell}`);
+      this.log(`\n CLI bin location: \n\t${versionDetails.binLocation}`);
     }
   }
 
@@ -192,6 +203,9 @@ export function create(
       debugCliInfo(version, channel, env, config);
       if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
         lazyRequire.start(config);
+      }
+      if (args[0] === 'doctor') {
+        Doctor.init(config, getVersionDetail(true, config));
       }
       // I think the run method is used in test.
       return (run ? run(args, config) : await SfdxMain.run(args, config)) as unknown;
