@@ -14,7 +14,7 @@ import { AnyJson, get } from '@salesforce/ts-types';
 import * as Debug from 'debug';
 import { exec, which } from 'shelljs';
 import * as lazyRequire from './lazyRequire';
-import { Doctor } from './doctor';
+import { Doctor } from '@salesforce/plugin-info';
 import { default as nodeEnv, Env } from './util/env';
 
 const debug = Debug('sfdx');
