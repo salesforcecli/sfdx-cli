@@ -7,14 +7,14 @@
 
 import * as os from 'os';
 import * as path from 'path';
+import * as Debug from 'debug';
+import { exec, which } from 'shelljs';
 import { Main, run as oclifRun } from '@oclif/command';
 import { Config, IConfig } from '@oclif/config';
 import { set } from '@salesforce/kit';
 import { AnyJson, get } from '@salesforce/ts-types';
-import * as Debug from 'debug';
-import { exec, which } from 'shelljs';
-import * as lazyRequire from './lazyRequire';
 import { Doctor } from '@salesforce/plugin-info';
+import * as lazyRequire from './lazyRequire';
 import { default as nodeEnv, Env } from './util/env';
 
 const debug = Debug('sfdx');
