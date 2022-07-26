@@ -13,7 +13,7 @@ import { Main, run as oclifRun } from '@oclif/command';
 import { Config, IConfig } from '@oclif/config';
 import { set } from '@salesforce/kit';
 import { AnyJson, get } from '@salesforce/ts-types';
-import { Doctor } from '@salesforce/plugin-info';
+// import { Doctor } from '@salesforce/plugin-info';
 import * as lazyRequire from './lazyRequire';
 import { default as nodeEnv, Env } from './util/env';
 
@@ -204,9 +204,10 @@ export function create(
       if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
         lazyRequire.start(config);
       }
-      if (args[0] === 'doctor') {
-        Doctor.init(config, getVersionDetail(true, config));
-      }
+      // @TODO: enable when the Doctor class is exported from a lib
+      // if (args[0] === 'doctor') {
+      //   Doctor.init(config, getVersionDetail(true, config));
+      // }
       // I think the run method is used in test.
       return (run ? run(args, config) : await SfdxMain.run(args, config)) as unknown;
     },
