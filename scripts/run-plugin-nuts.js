@@ -197,7 +197,7 @@ const qualifyPluginsWithNonUnitTests = (timeCreated, modules) => {
           ...qualifyPluginsWithNonUnitTests(timeCreated, pluginsToQualify),
         ];
       })
-      .filter((module) => module && module !== '')
+      .filter(Boolean)
       // flatten arrays
       .flat()
       // establish github org and repo name
