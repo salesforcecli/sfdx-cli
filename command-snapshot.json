@@ -408,7 +408,17 @@
   {
     "command": "force:data:soql:query",
     "plugin": "@salesforce/plugin-data",
-    "flags": ["apiversion", "json", "loglevel", "perflog", "query", "resultformat", "targetusername", "usetoolingapi"],
+    "flags": [
+      "apiversion",
+      "json",
+      "loglevel",
+      "perflog",
+      "query",
+      "resultformat",
+      "soqlqueryfile",
+      "targetusername",
+      "usetoolingapi"
+    ],
     "alias": []
   },
   {
