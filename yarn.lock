@@ -1465,10 +1465,10 @@
     semver "^7.3.5"
     ts-retry-promise "^0.6.0"
 
-"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.4", "@salesforce/core@^3.20.1", "@salesforce/core@^3.21.1", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.1", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.1", "@salesforce/core@^3.24.3":
-  version "3.24.4"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.24.4.tgz#9ab5606f9c0253e0ef30a3a27428972686b26d95"
-  integrity sha512-4butme+R24z9Dye9SJk6qNShVz0MpDjcXRDwj0JZrmqc6XBA8TFa7uruSK5WgCpSXrcz8mfqDwiZhwCJyNDRmQ==
+"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.4", "@salesforce/core@^3.20.1", "@salesforce/core@^3.21.1", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.1", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.1", "@salesforce/core@^3.24.5":
+  version "3.24.5"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.24.5.tgz#61cc90ad74cad90a34cee772ec7f07f07d8edaaf"
+  integrity sha512-DOglHVPCzIHSedG4uI7XaRCDmMvtaT3LZWTUJnHlpJrsc8SOOAwX959OaqkuNZp0U2FNdla7t9HsYzJ0VHIe7g==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.5.41"
@@ -1679,14 +1679,14 @@
     "@salesforce/core" "^3.10.1"
     tslib "^2"
 
-"@salesforce/plugin-org@2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-2.0.6.tgz#e5ef17739cc636861272a9fe333d86f2d4faedf2"
-  integrity sha512-AxwdyXnTsGyYR6fYIY1iROQjbO7oZJ2/vTjdFJHC2uq7n3dYbjKXty+keHv04PiUyXHO+91nRBDMI6F2vXEjMQ==
+"@salesforce/plugin-org@2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-2.0.7.tgz#1244b9d2ed5c896b516a0d3d53d1d3095122585f"
+  integrity sha512-i52QYxDSNijnxI+7r+sW3dZSDcEP/Y1nLdJ7DA/GTy3N0XCpwMYGKVMcNdjWNg3qOPcJJW71HUWljKnHoFt+fQ==
   dependencies:
     "@oclif/core" "^1.7.0"
     "@salesforce/command" "^5.2.0"
-    "@salesforce/core" "^3.24.3"
+    "@salesforce/core" "^3.24.5"
     "@salesforce/kit" "^1.5.17"
     open "8.4.0"
     tslib "^2"
