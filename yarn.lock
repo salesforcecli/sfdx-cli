@@ -8178,9 +8178,9 @@ npm@^7.21.0:
     write-file-atomic "^3.0.3"
 
 npm@^8.12.1, npm@^8.15.0:
-  version "8.15.0"
-  resolved "https://registry.yarnpkg.com/npm/-/npm-8.15.0.tgz#d4b53cd29b13ea164f0f5767bca274dbe7d8f78d"
-  integrity sha512-sFXrMiO07eDWUb/e5ni2yNvtz2hePKqSyukUxYcQv0QHjyXCe+zKP7af/bISjcvsgRBWGyivk5V3KCZ0vg8J3Q==
+  version "8.15.1"
+  resolved "https://registry.yarnpkg.com/npm/-/npm-8.15.1.tgz#0cda5f182e6ef057c15cde5b8e443b52907ba052"
+  integrity sha512-ZjVMjEn+PqdjpZg+VLMFz5lyzh7tW+SBt+KQzvoQC986U/clE897eg7YR0PLYw6RfjTsoPTuB95xQ8ubn9go6Q==
   dependencies:
     "@isaacs/string-locale-compare" "^1.1.0"
     "@npmcli/arborist" "^5.0.4"
