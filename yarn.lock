@@ -2110,10 +2110,10 @@
   resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.1.tgz#0ea7b61496902b95890dc4c3a116b60cb8dae812"
   integrity sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==
 
-"@types/jsforce@1.9.42", "@types/jsforce@^1.9.41":
-  version "1.9.42"
-  resolved "https://registry.yarnpkg.com/@types/jsforce/-/jsforce-1.9.42.tgz#3b860f0283b32809b9639456a78eba04aed51325"
-  integrity sha512-Ht5gIROhqGn5L5g0GEC7ADOWXI04yFRmxYqJxAAcpQ2II424tlu/I1LSbce5ckc97tb9BtTYMd9I+kRrvThp0w==
+"@types/jsforce@1.9.43", "@types/jsforce@^1.9.41":
+  version "1.9.43"
+  resolved "https://registry.yarnpkg.com/@types/jsforce/-/jsforce-1.9.43.tgz#407907aac838b1828133958ef326ce649d03138f"
+  integrity sha512-9xTZYPI/WiSEaQxiBZLBZndRqzme2/QYfLARrajTVQ6RMPR0IGgGy/SiKmIEMYoLk0UESHynJPWscNtDGfuKOw==
   dependencies:
     "@types/node" "*"
 
