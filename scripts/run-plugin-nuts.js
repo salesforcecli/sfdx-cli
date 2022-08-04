@@ -35,6 +35,10 @@ const manualRepoOverrides = {
     org: 'salesforcecli',
     repo: 'toolbelt',
   },
+  '@salesforce/sfdx-plugin-lwc-test': {
+    org: 'salesforce',
+    repo: 'sfdx-plugin-lwc-test',
+  },
 };
 
 const modulesWithScheduledPipelines = ['@salesforce/plugin-signups'];
@@ -193,7 +197,7 @@ const qualifyPluginsWithNonUnitTests = (timeCreated, modules) => {
           ...qualifyPluginsWithNonUnitTests(timeCreated, pluginsToQualify),
         ];
       })
-      .filter((module) => module)
+      .filter(Boolean)
       // flatten arrays
       .flat()
       // establish github org and repo name
