@@ -26,6 +26,12 @@
     "scope": "salesforce",
     "commands": "./dist/commands",
     "dirname": "sfdx",
+    "additionalVersionFlags": [
+      "-v"
+    ],
+    "additionalHelpFlags": [
+      "-h"
+    ],
     "hooks": {
       "plugins:preinstall": [
         "./dist/hooks/pluginsPreinstall.js"
@@ -47,6 +53,7 @@
       "@oclif/plugin-autocomplete",
       "@oclif/plugin-commands",
       "@oclif/plugin-help",
+      "@oclif/plugin-version",
       "@oclif/plugin-not-found",
       "@oclif/plugin-plugins",
       "@oclif/plugin-update",
@@ -123,17 +130,16 @@
     "salesforce-alm"
   ],
   "dependencies": {
-    "@oclif/command": "^1.8.0",
-    "@oclif/config": "^1.17.0",
-    "@oclif/errors": "^1.3.4",
-    "@oclif/plugin-autocomplete": "^0.3.0",
-    "@oclif/plugin-commands": "^1.3.0",
-    "@oclif/plugin-help": "^3.2.2",
-    "@oclif/plugin-not-found": "^1.2.4",
-    "@oclif/plugin-plugins": "^1.10.1",
-    "@oclif/plugin-update": "1.5.0",
-    "@oclif/plugin-warn-if-update-available": "^1.7.0",
-    "@oclif/plugin-which": "^1.0.3",
+    "@oclif/core": "^1.9.3",
+    "@oclif/plugin-autocomplete": "^1.3.0",
+    "@oclif/plugin-commands": "^2.2.0",
+    "@oclif/plugin-help": "^5.1.12",
+    "@oclif/plugin-version": "^1.1.1",
+    "@oclif/plugin-not-found": "^2.3.1",
+    "@oclif/plugin-plugins": "^2.1.0",
+    "@oclif/plugin-update": "3.0.0",
+    "@oclif/plugin-warn-if-update-available": "^2.0.4",
+    "@oclif/plugin-which": "^2.1.0",
     "@salesforce/kit": "^1.5.13",
     "@salesforce/lazy-require": "^0.4.0",
     "@salesforce/plugin-alias": "2.1.0",
@@ -172,7 +178,6 @@
     "@salesforce/ts-sinon": "^1.3.12",
     "@types/debug": "^4.1.5",
     "@types/fs-extra": "^9.0.6",
-    "@types/jsforce": "1.9.42",
     "@types/request": "^2.48.5",
     "@types/shelljs": "^0.8.8",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
