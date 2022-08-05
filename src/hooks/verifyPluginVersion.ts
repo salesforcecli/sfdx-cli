@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { Hook } from '@oclif/config';
+import { Hook } from '@oclif/core';
 import { compareVersions, isVersion } from '../versions';
 
 const FORCE_PLUGINS = ['salesforce-alm', 'force-language-services'];
@@ -22,7 +22,8 @@ const MIN_VERSION = '45.8.0';
  * A CLI plugin preinstall hook that checks that the plugin's version is v7-compatible,
  * if it is recognized as a force namespace plugin.
  */
-const hook: Hook.PluginsPreinstall = function (options) {
+// eslint-disable-next-line @typescript-eslint/require-await
+const hook: Hook.PluginsPreinstall = async function (options): Promise<void> {
   if (options.plugin && options.plugin.type === 'npm') {
     const plugin = options.plugin;
     if (Object.keys(BANNED_PLUGINS).includes(plugin.name)) {

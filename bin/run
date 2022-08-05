@@ -15,17 +15,16 @@ process.setMaxListeners = () => {};
 require('../dist/versions').checkNodeVersion();
 
 // Collect module loading analytics if enabled
-const modules = require('@salesforce/require-analytics')
-    .start(process.env.SFDX_REQUIRE_ANALYTICS === 'true');
+const modules = require('@salesforce/require-analytics').start(process.env.SFDX_REQUIRE_ANALYTICS === 'true');
 
 // Enable the v8 compile cache by default if not already overridden
 if (process.env.SFDX_COMPILE_CACHE !== 'false') {
-    require('v8-compile-cache');
+  require('v8-compile-cache');
 }
 
 // Enable lazy requires by default if not already overridden
 if (process.env.SFDX_LAZY_LOAD_MODULES !== 'false') {
-    process.env.SFDX_LAZY_LOAD_MODULES = 'true';
+  process.env.SFDX_LAZY_LOAD_MODULES = 'true';
 }
 
 // Pre-process/prune flags before creating or running the actual CLI
@@ -36,17 +35,20 @@ const pjson = require('../package.json');
 
 // OVERRIDES gets replaced with particular values for binary builds,
 // but simply use defaults for npm and local invocations
-const overrides = { /* @OVERRIDES@ */ };
+const overrides = {
+  /* @OVERRIDES@ */
+};
 const version = overrides.version || pjson.version;
 const channel = overrides.channel || 'stable';
 
-cli.create(version, channel)
-    .run()
-    .then(function(result) {
-        modules.dump();
-        require('@oclif/command/flush')(result);
-    })
-    .catch(function(err) {
-        modules.dump();
-        require('@oclif/errors/handle')(err);
-    });
+cli
+  .create(version, channel)
+  .run()
+  .then(function (result) {
+    modules.dump();
+    require('@oclif/core/flush')(result);
+  })
+  .catch(function (err) {
+    modules.dump();
+    require('@oclif/core/handle')(err);
+  });
