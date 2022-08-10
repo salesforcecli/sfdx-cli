@@ -6,12 +6,12 @@
  */
 
 import * as path from 'path';
-import { IConfig } from '@oclif/config';
+import { Config } from '@oclif/core';
 import LazyRequire from '@salesforce/lazy-require';
 
 export let lazyRequire: LazyRequire;
 
-function getOrCreate(config: IConfig, create: typeof LazyRequire.create): LazyRequire {
+function getOrCreate(config: Config, create: typeof LazyRequire.create): LazyRequire {
   if (lazyRequire) return lazyRequire;
   const typeCacheFile = path.join(config.cacheDir, 'module-types.json');
   return (lazyRequire = create(typeCacheFile));
@@ -21,7 +21,7 @@ function getOrCreate(config: IConfig, create: typeof LazyRequire.create): LazyRe
  * Start lazy requiring type-compatible modules.
  */
 // eslint-disable-next-line @typescript-eslint/unbound-method
-export function start(config: IConfig, create = LazyRequire.create): void {
+export function start(config: Config, create = LazyRequire.create): void {
   getOrCreate(config, create).start();
 }
 
@@ -29,6 +29,6 @@ export function start(config: IConfig, create = LazyRequire.create): void {
  * Return the lazy require type cache if it has been initialized.
  */
 // eslint-disable-next-line @typescript-eslint/unbound-method
-export function resetTypeCache(config: IConfig, create = LazyRequire.create): void {
+export function resetTypeCache(config: Config, create = LazyRequire.create): void {
   getOrCreate(config, create).resetTypeCache();
 }

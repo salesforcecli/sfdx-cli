@@ -7,11 +7,13 @@
 // the below, there's lots of un-awaited promises for testing
 /* eslint-disable no-unused-expressions*/
 /* eslint-disable @typescript-eslint/require-await*/
-import * as Config from '@oclif/config';
+
 import { stubInterface } from '@salesforce/ts-sinon';
 import { getString } from '@salesforce/ts-types';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+import { Config } from '@oclif/core';
+import { LoadOptions } from '@oclif/core/lib/interfaces';
 import {
   configureAutoUpdate,
   configureUpdateSites,
@@ -35,17 +37,17 @@ describe('cli', () => {
 
   describe('create', () => {
     it('should create a runnable CLI instance', async () => {
-      sandbox.stub(Config.Config.prototype, 'load').callsFake(() => Promise.resolve());
-      let config: Config.LoadOptions;
-      const exec = async (argv?: string[], opts?: Config.LoadOptions): Promise<void> => {
-        config = opts;
+      sandbox.stub(Config.prototype, 'load').callsFake(() => Promise.resolve());
+      let loadOptions: LoadOptions;
+      const exec = async (argv?: string[], opts?: LoadOptions): Promise<void> => {
+        loadOptions = opts;
       };
       const env = new Env({ [Env.LAZY_LOAD_MODULES]: 'false' });
       await create('test', 'test', exec, env).run();
-      expect(config).to.exist;
-      expect(config).to.have.property('options');
-      expect(config).to.have.nested.property('options.version').and.equal('test');
-      expect(config).to.have.nested.property('options.channel').and.equal('test');
+      expect(loadOptions).to.exist;
+      expect(loadOptions).to.have.property('options');
+      expect(loadOptions).to.have.nested.property('options.version').and.equal('test');
+      expect(loadOptions).to.have.nested.property('options.channel').and.equal('test');
     });
   });
 
@@ -59,9 +61,11 @@ describe('cli', () => {
     it('should set the s3 host in the oclif config if overridden in an envar', async () => {
       const s3Host = 'http://example.com:9000/s3';
       const npmRegistry = 'http://example.com:9000/npm';
-      const config = stubInterface<Config.IConfig>(sandbox);
+      const config = stubInterface<Config>(sandbox);
       env.setS3HostOverride(s3Host);
       env.setNpmRegistryOverride(npmRegistry);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore - you cannot pass a StubInterface<Config> as a Config into methods below
       configureUpdateSites(config, env);
       expect(getString(config, 'pjson.oclif.update.s3.host')).to.equal(s3Host);
       expect(getString(config, 'pjson.oclif.warn-if-update-available.registry')).to.equal(npmRegistry);

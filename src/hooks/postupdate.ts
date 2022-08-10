@@ -15,7 +15,7 @@ import { chmod } from 'shelljs';
 import { TelemetryGlobal } from '@salesforce/plugin-telemetry/lib/telemetryGlobal';
 import { AppInsights } from '@salesforce/telemetry/lib/appInsights';
 import { JsonMap } from '@salesforce/ts-types';
-import { IConfig, Hook } from '@oclif/config';
+import { Hook } from '@oclif/core';
 
 declare const global: TelemetryGlobal;
 
@@ -45,7 +45,7 @@ function suggestAlternatives(): void {
  * the sfdx executable and modify it for `sf`.
  */
 // eslint-disable-next-line @typescript-eslint/require-await
-const hook: Hook.Update = async function (opts: { channel: string; config: IConfig }): Promise<void> {
+const hook: Hook.Update = async function (opts): Promise<void> {
   let success = false;
 
   cli.action.start('sfdx-cli: Updating sf');
