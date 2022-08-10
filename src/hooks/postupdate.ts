@@ -8,7 +8,7 @@
 import * as os from 'os';
 import * as path from 'path';
 
-import { cli } from 'cli-ux';
+import { CliUx } from '@oclif/core';
 import { readFileSync, readJsonSync, writeFileSync } from 'fs-extra';
 import { chmod } from 'shelljs';
 
@@ -26,16 +26,18 @@ function sendEvent(data: JsonMap): void {
 }
 
 function suggestAlternatives(): void {
-  cli.log('Failed to update sf. Try uninstalling the CLI and re-installing it.');
-  cli.log(
+  CliUx.ux.log('Failed to update sf. Try uninstalling the CLI and re-installing it.');
+  CliUx.ux.log(
     'Uninstall instructions: https://developer.salesforce.com/docs/atlas.en-us.234.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_uninstall.htm'
   );
   if (process.platform === 'win32') {
-    cli.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.exe');
+    CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.exe');
   } else if (process.platform === 'darwin') {
-    cli.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf.pkg');
+    CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf.pkg');
   } else {
-    cli.log('- download: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.gz');
+    CliUx.ux.log(
+      '- download: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.gz'
+    );
   }
 }
 
@@ -48,7 +50,7 @@ function suggestAlternatives(): void {
 const hook: Hook.Update = async function (opts): Promise<void> {
   let success = false;
 
-  cli.action.start('sfdx-cli: Updating sf');
+  CliUx.ux.action.start('sfdx-cli: Updating sf');
 
   try {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -84,7 +86,7 @@ const hook: Hook.Update = async function (opts): Promise<void> {
     });
     return;
   } finally {
-    cli.action.stop(success ? 'done' : 'failed');
+    CliUx.ux.action.stop(success ? 'done' : 'failed');
     if (!success) suggestAlternatives();
   }
 };
