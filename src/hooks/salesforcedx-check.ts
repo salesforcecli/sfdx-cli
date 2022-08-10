@@ -6,9 +6,8 @@
  */
 import * as path from 'path';
 import Plugins from '@oclif/plugin-plugins';
-import { Config } from '@oclif/core';
+import { Config, CliUx } from '@oclif/core';
 import { AnyJson, get } from '@salesforce/ts-types';
-import { cli } from 'cli-ux';
 import { compareVersions } from '../versions';
 
 const salesforcedxError = `You still have the deprecated salesforcedx plugin installed in Salesforce CLI. If you continue using this plugin, you'll be running old and out-of-date versions of sfdx commands.
@@ -36,10 +35,10 @@ const hook = async (): Promise<void> => {
   const installedUserPlugins = (await plugins.list())
     .filter((plugin) => plugin.type === 'user')
     .map((plugin) => plugin.name);
-  cli.log(`user plugins are ${installedUserPlugins.join(', ')}`);
+  CliUx.ux.log(`user plugins are ${installedUserPlugins.join(', ')}`);
 
   if (installedUserPlugins.includes('salesforcedx')) {
-    cli.warn(salesforcedxError);
+    CliUx.ux.warn(salesforcedxError);
   }
 };
 

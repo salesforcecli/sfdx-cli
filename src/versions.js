@@ -22,7 +22,8 @@ export function isVersion(tag) {
     return false;
   }
   // From https://github.com/sindresorhus/semver-regex
-  const SEMVER_REGEX = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-]+(?:\.[\da-z-]+)*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?$/gi;
+  const SEMVER_REGEX =
+    /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-]+(?:\.[\da-z-]+)*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?$/gi;
   return SEMVER_REGEX.test(tag.toString());
 }
 
