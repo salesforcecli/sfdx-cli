@@ -346,6 +346,7 @@ workflows:
       - release-management/release-package:
           tag: latest-rc
           github-release: true
+          node_version: lts
           requires:
             - approval
           filters:
