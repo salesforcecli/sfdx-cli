@@ -1527,10 +1527,10 @@
     open "8.4.0"
     tslib "^2"
 
-"@salesforce/plugin-release-management@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.0.0.tgz#500b7c5fb3dc4d522e82c6e0d76366721b01d260"
-  integrity sha512-TxhoCKylFGDwtFRuki3I57ylKK8C2JOJxeFNisu1bW/a3JDfMbymw3B8R0jDpE5PtzJhrngbGngFabj4k7iBzQ==
+"@salesforce/plugin-release-management@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.0.1.tgz#e95d9e149ba0f3d70b44f45a63b223dc7384284d"
+  integrity sha512-mZwZTvz6RqBHtYRP+qYFV4Pb4zm8Pq7fzkotJwARONVDNtgRYGXkg6aIslUSqNaaSsTFL7jVFo/mQiOH2jexVw==
   dependencies:
     "@oclif/core" "^1.13.3"
     "@octokit/core" "^4.0.4"
