@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { Hook, IConfig } from '@oclif/config';
+import { Hook, Config } from '@oclif/core';
 import { StubbedType, stubInterface } from '@salesforce/ts-sinon';
 import { getString } from '@salesforce/ts-types';
 import { expect } from 'chai';
@@ -27,7 +27,7 @@ describe('verifyPluginVersion preinstall hook', () => {
 
   async function testHook(name: string, tag: string): Promise<void> {
     await hook.call(context, {
-      config: stubInterface<IConfig>(sandbox, { version: '6.0.0' }),
+      config: stubInterface<Config>(sandbox, { version: '6.0.0' }),
       plugin: { name, tag, type: 'npm' },
     });
   }

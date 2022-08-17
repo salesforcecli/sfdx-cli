@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { Hook } from '@oclif/config';
+import { Hook } from '@oclif/core';
 
 const hook: Hook.Preupdate = async function (options) {
   // Run individual hooks serially since oclif runs hooks in parallel, which causes UX problems in this case
