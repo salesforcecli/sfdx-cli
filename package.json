@@ -167,8 +167,7 @@
     "debug": "^4.3.1",
     "salesforce-alm": "54.8.1",
     "shelljs": "^0.8.4",
-    "tslib": "^2.1.0",
-    "v8-compile-cache": "^2.2.0"
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@oclif/plugin-command-snapshot": "^3.1.3",
