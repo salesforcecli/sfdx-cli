@@ -1275,12 +1275,13 @@
   dependencies:
     "@octokit/openapi-types" "^13.1.0"
 
-"@salesforce/apex-node@1.1.0", "@salesforce/apex-node@^1.0.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/apex-node/-/apex-node-1.1.0.tgz#c1a86d0877aa145b476150f956165df3f7259160"
-  integrity sha512-wDqAwOfWF8YkfLjnzL8pZ6ADAXk1fWfFjOgM9xxMimnhpHTR4z5mfWnkk9FKt904Ly4rw8tU2ny1kAuCmfCWzQ==
+"@salesforce/apex-node@1.2.0", "@salesforce/apex-node@^1.0.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/apex-node/-/apex-node-1.2.0.tgz#99161e3143d4e5aab4a5b4ccb26e5f38a06d8b2a"
+  integrity sha512-m+lvQm1aX1xn8lT8rRwpiarOn2+1Ft82ZIawp+2aMfHSlZ/thCcw9zTxACNnQDpIGgxx7I1i9eZEJ8XQzLcoPQ==
   dependencies:
     "@salesforce/core" "^3.23.3"
+    "@types/istanbul-reports" "^3.0.1"
     faye "1.4.0"
     glob "^8.0.3"
     istanbul-lib-coverage "^3.2.0"
@@ -1408,13 +1409,13 @@
     chalk "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-apex@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-apex/-/plugin-apex-1.1.0.tgz#323e79ec5637bf686b483cf762f3741fe71ef801"
-  integrity sha512-ZWDH9h4IyRJn7T1NxUBtTxgQOSW+/gaS/Zh00Pl+pjdLpfLU6UGrM3S9lZGZSkRWtrPUANAQ7DQVjXszN3zH4Q==
+"@salesforce/plugin-apex@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-apex/-/plugin-apex-1.2.0.tgz#e7d5503fa21ee21b7ef2dfcf9c99e5952a464b02"
+  integrity sha512-cAG1Z+lDpQqENwXU7fhWnVZlSLy5pVhnZ636A8lZtQC9fAB8dj1PNRXv1grDwvW5/aJiBlAUla6EXSlftwYKwg==
   dependencies:
     "@oclif/core" "^1.5.2"
-    "@salesforce/apex-node" "1.1.0"
+    "@salesforce/apex-node" "1.2.0"
     "@salesforce/command" "^5.1.0"
     "@salesforce/core" "^3.23.3"
     chalk "^4.1.0"
@@ -1940,6 +1941,25 @@
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.1.tgz#0ea7b61496902b95890dc4c3a116b60cb8dae812"
   integrity sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==
+
+"@types/istanbul-lib-coverage@*":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz#8467d4b3c087805d63580480890791277ce35c44"
+  integrity sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==
+
+"@types/istanbul-lib-report@*":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/istanbul-lib-report/-/istanbul-lib-report-3.0.0.tgz#c14c24f18ea8190c118ee7562b7ff99a36552686"
+  integrity sha512-plGgXAPfVKFoYfa9NpYDAkseG+g6Jr294RqeqcqDixSbU34MZVJRi/P+7Y8GDpzkEwLaGZZOpKIEmeVZNtKsrg==
+  dependencies:
+    "@types/istanbul-lib-coverage" "*"
+
+"@types/istanbul-reports@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/istanbul-reports/-/istanbul-reports-3.0.1.tgz#9153fe98bba2bd565a63add9436d6f0d7f8468ff"
+  integrity sha512-c3mAZEuK0lvBp8tmuL74XRKn1+y2dcwOUpH7x4WrF6gk1GIgiluDRgMYQtw2OFcBvAJWlt6ASU3tSqxp0Uu0Aw==
+  dependencies:
+    "@types/istanbul-lib-report" "*"
 
 "@types/json-buffer@~3.0.0":
   version "3.0.0"
