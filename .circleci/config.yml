@@ -79,15 +79,6 @@ commands:
               exit 1
             fi
 jobs:
-  build-latest-rc:
-    docker:
-      - image: node:lts
-    steps:
-      - checkout
-      - release-management/configure-github
-      - release-management/install-sf-release
-      - run: sf-release cli:latestrc:build
-
   pack-and-upload-tarballs: &pack-and-upload-tarballs
     docker:
       - image: node:lts
@@ -415,13 +406,6 @@ workflows:
             - promote-channels
           context: slack
 
-  build-latest-rc:
-    when:
-      equal: ['build-latest-rc', << pipeline.parameters.workflow >>]
-    jobs:
-      - build-latest-rc:
-          context: cli-release
-
   monitor-all-nuts:
     # This workflow requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
     #
@@ -440,11 +424,4 @@ workflows:
             branches:
               only:
                 - main
-          context: cli-release
-
-  dependabot-automerge:
-    when:
-      equal: ['dependabot-automerge', << pipeline.parameters.workflow >>]
-    jobs:
-      - release-management/dependabot-automerge:
           context: cli-release
