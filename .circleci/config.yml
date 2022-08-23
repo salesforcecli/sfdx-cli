@@ -88,29 +88,6 @@ jobs:
       - release-management/install-sf-release
       - run: sf-release cli:latestrc:build
 
-  # There are two pack jobs:
-  # - test-pack-tarballs to run on every branch *other than main*
-  # - pack-and-upload-tarballs to run only on main
-  # The persist_to_workspace feature would allow us to have a
-  # pack-tarballs and an upload-tarballs job, but the perf gains
-  # is minimal since the workspace is almost a GB to attach.
-  test-pack-tarballs:
-    docker:
-      - image: node:lts
-    resource_class: xlarge
-    steps:
-      - checkout
-      - run: |
-          apt-get update
-          apt-get install -y p7zip-full
-      - restore_cache:
-          keys:
-            - v3-npm-{{checksum "yarn.lock"}}
-      - run: yarn install
-      - run: yarn pack:tarballs
-      - run: yarn pack:verify
-      - run: yarn test-smoke-unix
-
   pack-and-upload-tarballs: &pack-and-upload-tarballs
     docker:
       - image: node:lts
@@ -308,10 +285,6 @@ workflows:
     when:
       equal: ['test-and-release', << pipeline.parameters.workflow >>]
     jobs:
-      - release-management/validate-pr:
-          filters:
-            branches:
-              ignore: main
       - release-management/test-package:
           matrix:
             parameters:
@@ -327,14 +300,6 @@ workflows:
                 node_version: latest
               - os: windows
                 node_version: maintenance
-      - test-pack-tarballs:
-          # no point to pack if the test fail, and we only care to test the pack with the node version
-          # we ship (specified in package.json.oclif.node)
-          requires:
-            - release-management/test-package
-          filters:
-            branches:
-              ignore: main # test the pack on PRs, but main will do pack-and-upload-tarballs
       - approval:
           type: approval
           requires:
