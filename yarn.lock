@@ -836,41 +836,7 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@^1.0.8", "@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.13.3", "@oclif/core@^1.14.1", "@oclif/core@^1.2.0", "@oclif/core@^1.2.1", "@oclif/core@^1.3.0", "@oclif/core@^1.3.4", "@oclif/core@^1.3.6", "@oclif/core@^1.5.2", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.7.0", "@oclif/core@^1.8.0", "@oclif/core@^1.9.0", "@oclif/core@^1.9.2", "@oclif/core@^1.9.3", "@oclif/core@^1.9.5":
-  version "1.14.2"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.14.2.tgz#c6e4873f3ffde81a771d06e86c8e5bdfb189dbf2"
-  integrity sha512-Q16f/1FUPrtEYDyGYtuzNDZ3Q3RxYCHOnm9YJRg2VwSVqPOOo2Geoxh6Clo8cgin5NlFgs1wZEH+m+ABPr+RqA==
-  dependencies:
-    "@oclif/linewrap" "^1.0.0"
-    "@oclif/screen" "^3.0.2"
-    ansi-escapes "^4.3.2"
-    ansi-styles "^4.3.0"
-    cardinal "^2.1.1"
-    chalk "^4.1.2"
-    clean-stack "^3.0.1"
-    cli-progress "^3.10.0"
-    debug "^4.3.4"
-    ejs "^3.1.6"
-    fs-extra "^9.1.0"
-    get-package-type "^0.1.0"
-    globby "^11.1.0"
-    hyperlinker "^1.0.0"
-    indent-string "^4.0.0"
-    is-wsl "^2.2.0"
-    js-yaml "^3.14.1"
-    natural-orderby "^2.0.3"
-    object-treeify "^1.1.33"
-    password-prompt "^1.1.2"
-    semver "^7.3.7"
-    string-width "^4.2.3"
-    strip-ansi "^6.0.1"
-    supports-color "^8.1.1"
-    supports-hyperlinks "^2.2.0"
-    tslib "^2.3.1"
-    widest-line "^3.1.0"
-    wrap-ansi "^7.0.0"
-
-"@oclif/core@^1.14.2":
+"@oclif/core@^1.0.8", "@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.13.3", "@oclif/core@^1.14.1", "@oclif/core@^1.14.2", "@oclif/core@^1.2.0", "@oclif/core@^1.2.1", "@oclif/core@^1.3.0", "@oclif/core@^1.3.4", "@oclif/core@^1.3.6", "@oclif/core@^1.5.2", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.7.0", "@oclif/core@^1.8.0", "@oclif/core@^1.9.0", "@oclif/core@^1.9.2", "@oclif/core@^1.9.3", "@oclif/core@^1.9.5":
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.16.0.tgz#4b53261eeb0c0244700bfc9eb41159d483436f21"
   integrity sha512-xtqhAbjQHBcz+xQpEHJ3eJEVfRQ4zl41Yw5gw/N+D1jgaIUrHTxCY/sfTvhw93LAQo7B++ozHzSb7DISFXsQFQ==
@@ -1334,20 +1300,7 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@salesforce/command@^5.0.0", "@salesforce/command@^5.0.1", "@salesforce/command@^5.0.4", "@salesforce/command@^5.1.0", "@salesforce/command@^5.1.2", "@salesforce/command@^5.1.3", "@salesforce/command@^5.2.0", "@salesforce/command@^5.2.1", "@salesforce/command@^5.2.3", "@salesforce/command@^5.2.4":
-  version "5.2.4"
-  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.2.4.tgz#bd792e1be780e0ba5f30fa9ae74a8401e69520b5"
-  integrity sha512-ccqGQWpVbi8XjC4xqx6grUmlbEFN5e3UPYBO+GTwyTvbYTEwryIEWsbhWwdDtosjJFxbAy1Xyi84ZUlYeJ6jpA==
-  dependencies:
-    "@oclif/core" "^1.7.0"
-    "@oclif/plugin-help" "^5.1.11"
-    "@oclif/test" "^2.1.0"
-    "@salesforce/core" "^3.20.1"
-    "@salesforce/kit" "^1.5.34"
-    "@salesforce/ts-types" "^1.5.20"
-    chalk "^2.4.2"
-
-"@salesforce/command@^5.2.5":
+"@salesforce/command@^5.0.0", "@salesforce/command@^5.0.1", "@salesforce/command@^5.0.4", "@salesforce/command@^5.1.0", "@salesforce/command@^5.1.2", "@salesforce/command@^5.1.3", "@salesforce/command@^5.2.0", "@salesforce/command@^5.2.1", "@salesforce/command@^5.2.3", "@salesforce/command@^5.2.4", "@salesforce/command@^5.2.6":
   version "5.2.6"
   resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.2.6.tgz#649e3c1ab2c4f5a71b1c908f95a644c1b398d7da"
   integrity sha512-Rsvk8k4ZKwZiMD6STSTHMNPigqkr+hycuRwjm1pk57vDDSllVVa3R8yv0em1OoJsiyIH7l/zhRQ6IcZ7ObM7Jg==
@@ -1360,7 +1313,7 @@
     "@salesforce/ts-types" "^1.5.20"
     chalk "^2.4.2"
 
-"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.4", "@salesforce/core@^3.20.1", "@salesforce/core@^3.21.1", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.24.1", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.1", "@salesforce/core@^3.26.2":
+"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.4", "@salesforce/core@^3.21.1", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.24.1", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.1", "@salesforce/core@^3.26.2":
   version "3.26.2"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.26.2.tgz#94b361bd62967feb3eedc624fc6cf444e7347f84"
   integrity sha512-GDrho8jbh1UDjcsYRRUzhNv4KUsMcBtux/yEqB2ycvHXhjVnrNkJcl99KESiU1eZMl2DGZEE1IO8yxnb2rSvgg==
@@ -1607,16 +1560,17 @@
     open "8.4.0"
     tslib "^2"
 
-"@salesforce/plugin-packaging@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-packaging/-/plugin-packaging-1.4.0.tgz#739e82450ec2c9ef69ea7abe51b1815187d1dd4c"
-  integrity sha512-Da7bq/ras24B9K5MiVaa8WGPtUL6JWeBYIuN8DMc5fkK8u2fXWY3yY9+1gz0QpVZEw4w98bq7wm+1HFJWGkVDQ==
+"@salesforce/plugin-packaging@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-packaging/-/plugin-packaging-1.5.0.tgz#60e9a2f138a910bf255e770a77982c261152e463"
+  integrity sha512-Qb4GE3X19P//CPt97tZOqfKEeecjB7QFtQo4vB9ZZCrTGy+UNDEI9AadLefumpve+LO91l3yAFq9GQcL2ZblVQ==
   dependencies:
     "@oclif/core" "^1.14.2"
-    "@salesforce/command" "^5.2.5"
+    "@salesforce/command" "^5.2.6"
     "@salesforce/core" "^3.26.2"
     "@salesforce/kit" "^1.6.0"
     "@salesforce/packaging" "^0.0.23"
+    chalk "^4.1.2"
     tslib "^2"
 
 "@salesforce/plugin-release-management@^3.0.1":
