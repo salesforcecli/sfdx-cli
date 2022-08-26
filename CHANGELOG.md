@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.166.1](https://github.com/salesforcecli/sfdx-cli/compare/v7.166.0...v7.166.1) (2022-08-26)
+
+### Bug Fixes
+
+- skip lwc NUTs because of API 403 ([d949ead](https://github.com/salesforcecli/sfdx-cli/commit/d949ead0050a198cafe1580541986dd505d13cc4))
+
 ## [7.166.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.165.0...v7.166.0) (2022-08-25)
 
 ## [7.165.0](https://github.com/salesforcecli/sfdx-cli/compare/v7.164.2...v7.165.0) (2022-08-18)
