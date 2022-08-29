@@ -1,6 +1,12 @@
 name: docker-full
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        description: version to build from tarball, ex 7.155.0 or latest-rc (you cannot build RC from its numerical version)
+        default: latest-rc
   workflow_call:
     input:
       version:
@@ -11,11 +17,6 @@ jobs:
   buildTestPush:
     runs-on: ubuntu-latest
     steps:
-      # Limitation: versions file will contain the last 20 releases
-      - id: versionCurl
-        name: Get url for version
-        run: echo "::set-output name=url curl 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq '.[\"${{ inputs.version }}\"]'"
-
       - name: Check out the repo
         uses: actions/checkout@v3
 
