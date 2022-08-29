@@ -26,7 +26,7 @@ jobs:
       - id: rcCurl
         if: inputs.version == 'latest-rc'
         name: Get url for latest-rc
-        run: echo "::set-output name=url::$(curl 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq '.xz')"
+        run: echo "::set-output name=url::$(curl 'https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64-buildmanifest' | jq '.xz')"
 
       - name: Check out the repo
         uses: actions/checkout@v3
