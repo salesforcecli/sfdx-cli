@@ -218,6 +218,7 @@
   },
   "scripts": {
     "build": "sf-build",
+    "channel:promote": "sf-release channel:promote",
     "clean": "shx rm -rf dist tmp",
     "clean-all": "sf-clean all",
     "compile": "sf-compile",

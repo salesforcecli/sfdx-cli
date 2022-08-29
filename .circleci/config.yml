@@ -19,33 +19,6 @@ parameters:
     type: string
     default: '[]'
 
-commands:
-  verify-slim-dependencies:
-    steps:
-      - run:
-          name: Set TAG to current sfdx version
-          command: |
-            echo "export TAG=$(jq -r .version ./package.json)-slim" >> $BASH_ENV
-      - run:
-          name: Verify slim dependencies
-          command: |
-            SFDX_CLI_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
-            JAVA_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'java --version | head -n 1')"
-            if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
-            then
-              echo "sfdx-cli installed -" $SFDX_CLI_VERSION
-            else
-              echo "The sfdx-cli installation could not be verified"
-              exit 1
-            fi
-            if [[ ((`echo $JAVA_VERSION | grep -c "openjdk"` > 0))]]
-            then
-              echo "Java installed -" $JAVA_VERSION
-            else
-              echo "The Java installation could not be verified"
-              exit 1
-            fi
-  verify-full-dependencies:
     steps:
       - run:
           name: Set TAG to current sfdx version
@@ -79,60 +52,6 @@ commands:
               exit 1
             fi
 jobs:
-  pack-and-upload-tarballs: &pack-and-upload-tarballs
-    docker:
-      - image: node:lts
-    resource_class: xlarge
-    steps:
-      - checkout
-      - run: git fetch origin && git pull
-      - run: |
-          apt-get update
-          apt-get install -y p7zip-full
-      - restore_cache:
-          keys:
-            - v3-npm-{{checksum "yarn.lock"}}
-      - run: yarn install
-      - run: yarn pack:tarballs
-      - run: yarn pack:verify
-      - run: yarn test-smoke-unix
-      - run: yarn upload:tarballs
-      - run: ./scripts/promote-stable-rc-tarballs
-      - slack/status:
-          channel: 'cli-team-alerts'
-          fail_only: true
-
-  pack-and-upload-macos-installer:
-    macos:
-      xcode: 13.2.1
-    steps:
-      - checkout
-      - run: git fetch origin && git pull
-      - run: yarn install
-      - run: yarn pack:macos
-      - run: yarn upload:macos
-      - run: ./scripts/promote-stable-rc-mac
-
-  pack-and-upload-windows-installer:
-    <<: *pack-and-upload-tarballs
-    steps:
-      - checkout
-      - run: git fetch origin && git pull
-      - restore_cache:
-          keys:
-            - v3-npm-{{checksum "yarn.lock"}}
-      - run: |
-          apt-get update
-          apt-get install -y p7zip-full \
-            osslsigncode \
-            nsis
-      - run: yarn install
-      - run: |
-          echo $WINDOWS_SIGNING_KEY | base64 --decode > /tmp/windows-signing.pfx
-      - run: yarn pack:win
-      - run: yarn upload:win
-      - run: ./scripts/promote-stable-rc-win
-
   promote-channels:
     docker:
       - image: node:lts
@@ -188,30 +107,6 @@ jobs:
       - slack/status:
           channel: 'cli-team-alerts'
           fail_only: true
-
-  docker-publish-slim:
-    docker:
-      - image: cimg/node:lts
-    steps:
-      - checkout
-      # to get shelljs
-      - run: yarn install --ignore-scripts
-      - setup_remote_docker
-      - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-      - run: yarn pack:docker:slim
-      - verify-slim-dependencies
-
-  docker-publish-full:
-    docker:
-      - image: cimg/node:lts
-    steps:
-      - checkout
-      # to get shelljs
-      - run: yarn install --ignore-scripts
-      - setup_remote_docker
-      - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-      - run: yarn pack:docker:full
-      - verify-full-dependencies
 
   close-CTC:
     docker:
@@ -276,87 +171,6 @@ workflows:
     when:
       equal: ['test-and-release', << pipeline.parameters.workflow >>]
     jobs:
-      - release-management/test-package:
-          matrix:
-            parameters:
-              os:
-                - linux
-                - windows
-              node_version:
-                - latest
-                - lts
-                - maintenance
-            exclude:
-              - os: windows
-                node_version: latest
-              - os: windows
-                node_version: maintenance
-      - approval:
-          type: approval
-          requires:
-            - release-management/test-package
-          filters:
-            branches:
-              only:
-                - main
-      - release-management/release-package:
-          tag: latest-rc
-          github-release: true
-          node_version: lts
-          requires:
-            - approval
-          filters:
-            branches:
-              only:
-                - main
-          context: cli-release
-      - pack-and-upload-tarballs:
-          context:
-            - AWS
-            - slack
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
-      - pack-and-upload-macos-installer:
-          context: AWS
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - pack-and-upload-tarballs
-      - pack-and-upload-windows-installer:
-          context:
-            - AWS
-            # required for windows signing
-            - cli-release
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - pack-and-upload-tarballs
-      - docker-publish-slim:
-          context: cli-release
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
-            - pack-and-upload-tarballs
-      - docker-publish-full:
-          context: cli-release
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - release-management/release-package
-            - pack-and-upload-tarballs
       - run-all-nuts:
           # This job requires env var CIRCLECI_API_TOKEN is set to a valid CircleCi API Token
           context: cli-release
