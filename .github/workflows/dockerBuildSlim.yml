@@ -42,7 +42,7 @@ jobs:
           context: .
           load: true
           tags: salesforce/salesforcedx:${{ inputs.version }}-slim
-          file: .dockerfiles/Dockerfile_slim
+          file: dockerfiles/Dockerfile_slim
           build-args: |
             DOWNLOAD_URL=${{ steps.versionCurl.outputs.url }}
 
@@ -72,7 +72,7 @@ jobs:
           context: .
           push: true
           labels: ${{ steps.meta.outputs.labels }}
-          file: .dockerfiles/Dockerfile_slim
+          file: dockerfiles/Dockerfile_slim
           build-args: |
             DOWNLOAD_URL=${{ steps.versionCurl.outputs.url }}
           tags: salesforce/salesforcedx:latest-rc-slim, salesforce/salesforcedx:${{ inputs.version }}-slim

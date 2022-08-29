@@ -45,7 +45,7 @@ jobs:
           build-args: |
             SALESFORCE_CLI_VERSION=${{ inputs.version}}
             SF_CLI_VERSION=latest-rc
-          file: .dockerfiles/Dockerfile_full
+          file: dockerfiles/Dockerfile_full
       - name: Verify full dependencies
         run: |
           TAG=echo "salesforce/salesforcedx:${{ inputs.version }}-full"
@@ -79,7 +79,7 @@ jobs:
           context: .
           push: true
           labels: ${{ steps.meta.outputs.labels }}
-          file: .dockerfiles/Dockerfile_full
+          file: dockerfiles/Dockerfile_full
           build-args: |
             SALESFORCE_CLI_VERSION=${{ inputs.version}}
             SF_CLI_VERSION=latest-rc
