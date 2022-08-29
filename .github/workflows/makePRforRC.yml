@@ -1,0 +1,29 @@
+on:
+  workflow_dispatch:
+    inputs:
+      patch:
+        type: boolean
+        required: false
+        default: false
+        description: increment the patch instead of the minor version
+  schedule:
+    # Thursdays 6am UTC
+    - cron: '0 6 * * 4'
+
+jobs:
+  rcPR:
+    env:
+      GITHUB_TOKEN: ${{ secrets.SF_CLI_BOT_GITHUB_TOKEN }}
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+      - run: npm install -g sfdx-cli --omit=dev
+      - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
+      - run: sfdx plugins:install @salesforce/plugin-release-management
+      - run: sf-release cli:latestrc:build
+        if: ${{ !inputs.patch }}
+      - run: sf-release cli:latestrc:build --patch
+        if: ${{ inputs.patch }}
