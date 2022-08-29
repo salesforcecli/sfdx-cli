@@ -1,12 +1,13 @@
 name: docker-slim
 on:
   workflow_dispatch:
-    input:
+    inputs:
       version:
         type: string
         required: true
+        description: version to build from tarball, ex 7.155.0
   workflow_call:
-    input:
+    inputs:
       version:
         type: string
         required: true
@@ -40,14 +41,14 @@ jobs:
         with:
           context: .
           load: true
-          tags: salesforce/salesforcedx:${{ input.version }}-slim
+          tags: salesforce/salesforcedx:${{ inputs.version }}-slim
           file: .dockerfiles/Dockerfile_slim
           build-args: |
             DOWNLOAD_URL=${{ steps.versionCurl.outputs.url }}
 
       - name: Verify slim dependencies
         run: |
-          TAG=echo "salesforce/salesforcedx:${{ input.version }}-slim"
+          TAG=echo "salesforce/salesforcedx:${{ inputs.version }}-slim"
           SFDX_CLI_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
           JAVA_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'java --version | head -n 1')"
           if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
@@ -74,4 +75,4 @@ jobs:
           file: .dockerfiles/Dockerfile_slim
           build-args: |
             DOWNLOAD_URL=${{ steps.versionCurl.outputs.url }}
-          tags: salesforce/salesforcedx:latest-rc-slim, salesforce/salesforcedx:${{ input.version }}-slim
+          tags: salesforce/salesforcedx:latest-rc-slim, salesforce/salesforcedx:${{ inputs.version }}-slim

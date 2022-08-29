@@ -1,12 +1,13 @@
 name: docker-full
 on:
   workflow_dispatch:
-    input:
+    inputs:
       version:
+        description: version to build from tarball, ex 7.155.0
         type: string
         required: true
   workflow_call:
-    input:
+    inputs:
       version:
         type: string
         required: true
@@ -40,14 +41,14 @@ jobs:
         with:
           context: .
           load: true
-          tags: salesforce/salesforcedx:${{ input.version }}-full
+          tags: salesforce/salesforcedx:${{ inputs.version }}-full
           build-args: |
-            SALESFORCE_CLI_VERSION=${{ input.version}}
+            SALESFORCE_CLI_VERSION=${{ inputs.version}}
             SF_CLI_VERSION=latest-rc
           file: .dockerfiles/Dockerfile_full
       - name: Verify full dependencies
         run: |
-          TAG=echo "salesforce/salesforcedx:${{ input.version }}-full"
+          TAG=echo "salesforce/salesforcedx:${{ inputs.version }}-full"
           NODE_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'node -v')"
           SFDX_CLI_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
           JQ_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'jq --version')"
@@ -80,6 +81,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           file: .dockerfiles/Dockerfile_full
           build-args: |
-            SALESFORCE_CLI_VERSION=${{ input.version}}
+            SALESFORCE_CLI_VERSION=${{ inputs.version}}
             SF_CLI_VERSION=latest-rc
-          tags: salesforce/salesforcedx:latest-rc-full, salesforce/salesforcedx:${{ input.version }}-full
+          tags: salesforce/salesforcedx:latest-rc-full, salesforce/salesforcedx:${{ inputs.version }}-full
