@@ -84,5 +84,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           file: dockerfiles/Dockerfile_slim
           build-args: |
-            DOWNLOAD_URL=${{ steps.versionCurl.outputs.url }}
+            DOWNLOAD_URL=${{ steps.versionCurl.outputs.url || steps.rcCurl.outputs.url }}
           tags: salesforce/salesforcedx:latest-rc-slim, salesforce/salesforcedx:${{ inputs.version }}-slim
