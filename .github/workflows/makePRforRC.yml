@@ -1,3 +1,4 @@
+name: pr for rc
 on:
   workflow_dispatch:
     inputs:
@@ -20,9 +21,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
-      - run: npm install -g sfdx-cli --omit=dev
+      - run: npm install -g sfdx-cli @salesforce/plugin-release-management --omit=dev
       - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
-      - run: sfdx plugins:install @salesforce/plugin-release-management
       - run: sf-release cli:latestrc:build
         if: ${{ !inputs.patch }}
       - run: sf-release cli:latestrc:build --patch
