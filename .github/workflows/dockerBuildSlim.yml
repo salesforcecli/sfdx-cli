@@ -21,12 +21,12 @@ jobs:
       - id: versionCurl
         if: inputs.version != 'latest-rc'
         name: Get url for version
-        run: ::set-output name=url::curl 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq '.["${{ inputs.version }}"]'
+        run: echo "::set-output name=url::$(curl 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq '.[\"${{ inputs.version }}\"]')"
 
       - id: rcCurl
         if: inputs.version == 'latest-rc'
         name: Get url for latest-rc
-        run: ::set-output name=url::curl 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq '.xz'
+        run: echo "::set-output name=url::$(curl 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq '.xz')"
 
       - name: Check out the repo
         uses: actions/checkout@v3
