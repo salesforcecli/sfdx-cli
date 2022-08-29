@@ -1,6 +1,10 @@
 name: docker-slim
 on:
   workflow_dispatch:
+    input:
+      version:
+        type: string
+        required: true
   workflow_call:
     input:
       version:
