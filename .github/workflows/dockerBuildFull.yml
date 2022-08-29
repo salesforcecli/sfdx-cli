@@ -8,7 +8,7 @@ on:
         description: version to build from tarball, ex 7.155.0 or latest-rc (you cannot build RC from its numerical version)
         default: latest-rc
   workflow_call:
-    input:
+    inputs:
       version:
         type: string
         required: true
