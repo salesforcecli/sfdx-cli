@@ -30,7 +30,6 @@ jobs:
       - run: yarn install
       - name: NUTs with custom executable
         run: ${{ inputs.command }}
-        if: inputs.sfdxExecutablePath
         env:
           TESTKIT_EXECUTABLE_PATH: sfdx
           TESTKIT_AUTH_URL: ${{ secrets.TESTKIT_AUTH_URL}}
