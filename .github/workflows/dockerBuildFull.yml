@@ -45,9 +45,9 @@ jobs:
       - name: Verify full dependencies
         run: |
           TAG=salesforce/salesforcedx:${{ inputs.version }}-full
-          NODE_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'node -v')"
-          SFDX_CLI_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
-          JQ_VERSION="$(docker run -it --rm salesforce/salesforcedx:$TAG bash -c 'jq --version')"
+          NODE_VERSION="$(docker run --rm salesforce/salesforcedx:$TAG bash -c 'node -v')"
+          SFDX_CLI_VERSION="$(docker run --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
+          JQ_VERSION="$(docker run --rm salesforce/salesforcedx:$TAG bash -c 'jq --version')"
           if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
           then
             echo "sfdx-cli installed -" $SFDX_CLI_VERSION
