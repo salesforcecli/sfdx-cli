@@ -1,11 +1,11 @@
-name: docker-full-qa
+name: docker-full
 on:
   workflow_dispatch:
     inputs:
       version:
         type: string
         required: true
-        description: version to build from tarball, ex 7.155.0 or latest-rc
+        description: version to build from tarball, ex 7.155.0 or latest-rc.  It'll release it as the QA!
         default: latest-rc
   workflow_call:
     inputs:
@@ -42,14 +42,16 @@ jobs:
           build-args: |
             SALESFORCE_CLI_VERSION=${{ inputs.version}}
             SF_CLI_VERSION=latest-rc
-          tags: salesforce/salesforcedx:latest-rc-full-qa, salesforce/salesforcedx:${{ inputs.version }}-full-qa
+          tags: salesforce/salesforcedx:latest-rc-full, salesforce/salesforcedx:${{ inputs.version }}-full
+
   verify:
     needs: buildPush
     runs-on: ubuntu-latest
     container:
-      image: salesforce/salesforcedx:${{ inputs.version }}-full-qa
+      image: salesforce/salesforcedx:${{ inputs.version }}-full
     steps:
       - name: verify check node version
+        # without bash this will fail.  Not sure what the default shell is but it doesn't like the [[(())]] bashism
         shell: bash
         run: |
           set -e
