@@ -87,11 +87,5 @@ jobs:
     steps:
       - name: verify check node version
         run: |
-          NODE_VERSION=$(node -v)
-          if [[ ((`echo $NODE_VERSION | grep -c "v"` > 0))]]
-          then
-            echo "node installed -" $NODE_VERSION
-          else
-            echo "The node installation could not be verified"
-            exit 1
-          fi
+          node -v
+          sfdx version --verbose
