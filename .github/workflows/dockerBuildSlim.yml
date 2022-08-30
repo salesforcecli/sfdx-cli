@@ -1,4 +1,4 @@
-name: docker-slim
+name: docker-slim-qa
 on:
   workflow_dispatch:
     inputs:
@@ -14,54 +14,61 @@ on:
         required: true
 
 jobs:
-  # buildTestPush:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     # Limitation: versions file will contain the last 20 releases and NOT rc until it's promoted
-  #     - id: versionCurl
-  #       if: inputs.version != 'latest-rc'
-  #       name: Get url for version
-  #       run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq '.[\"${{ inputs.version }}\"]')"
+  buildPush:
+    runs-on: ubuntu-latest
+    steps:
+      # Limitation: versions file will contain the last 20 releases and NOT rc until it's promoted
+      - id: versionCurl
+        if: inputs.version != 'latest-rc'
+        name: Get url for version
+        run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq '.[\"${{ inputs.version }}\"]')"
 
-  #     - id: rcCurl
-  #       if: inputs.version == 'latest-rc'
-  #       name: Get url for latest-rc
-  #       run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64-buildmanifest' | jq '.xz')"
+      - id: rcCurl
+        if: inputs.version == 'latest-rc'
+        name: Get url for latest-rc
+        run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64-buildmanifest' | jq '.xz')"
 
-  #     - name: Check out the repo
-  #       uses: actions/checkout@v3
+      - id: versionFromUrl
+        uses: actions-ecosystem/action-regex-match@9e6c4fb3d5e898f505be7a1fb6e7b0a278f6665b
+        with:
+          text: ${{ steps.versionCurl.outputs.url || steps.rcCurl.outputs.url }}
+          regex: '\d+\.\d+\.\d+'
+          flags: gm
 
-  #     - name: Set up Docker Buildx
-  #       uses: docker/setup-buildx-action@v2
+      - name: Check out the repo
+        uses: actions/checkout@v3
 
-  #     - name: Log in to Docker Hub
-  #       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-  #       with:
-  #         username: ${{ secrets.DOCKER_USERNAME }}
-  #         password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-  #     - name: Extract metadata (tags, labels) for Docker
-  #       id: meta
-  #       uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-  #       with:
-  #         images: salesforce/salesforcedx
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-  #     - name: Build and push Docker image
-  #       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-  #       with:
-  #         context: .
-  #         push: true
-  #         labels: ${{ steps.meta.outputs.labels }}
-  #         file: dockerfiles/Dockerfile_slim
-  #         build-args: |
-  #           DOWNLOAD_URL=${{ steps.versionCurl.outputs.url || steps.rcCurl.outputs.url }}
-  #         tags: salesforce/salesforcedx:latest-rc-slim, salesforce/salesforcedx:${{ inputs.version }}-slim
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: salesforce/salesforcedx
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          labels: ${{ steps.meta.outputs.labels }}
+          file: dockerfiles/Dockerfile_slim
+          build-args: |
+            DOWNLOAD_URL=${{ steps.versionCurl.outputs.url || steps.rcCurl.outputs.url }}
+          tags: salesforce/salesforcedx:latest-rc-slim-qa, salesforce/salesforcedx:${{ steps.versionFromUrl.outputs.group1 }}-slim-qa
 
   verify:
-    # needs: buildPush
+    needs: buildPush
     runs-on: ubuntu-latest
     container:
-      image: salesforce/salesforcedx:${{ inputs.version }}-slim
+      image: salesforce/salesforcedx:${{ inputs.version }}-slim-qa
     steps:
       - name: verify sfdx, java
         # without bash this will fail.  Not sure what the default shell is but it doesn't like the [[(())]] bashism
