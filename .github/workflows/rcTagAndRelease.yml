@@ -24,6 +24,7 @@ jobs:
           skip-on-empty: false
           # pjson version was already updated in the RC branch, so don't base behavior on these commits
           skip-version-file: true
+          # avoids the default `v` so all the later actions don't have to remove it
           tag-prefix: ''
       - uses: notiz-dev/github-action-json-property@2192e246737701f108a4571462b76c75e7376216
         id: packageVersion

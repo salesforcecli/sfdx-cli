@@ -1,4 +1,4 @@
-name: docker-slim-qa
+name: docker-slim
 on:
   workflow_dispatch:
     inputs:
@@ -17,7 +17,7 @@ jobs:
   buildPush:
     runs-on: ubuntu-latest
     steps:
-      # Limitation: versions file will contain the last 20 releases and NOT rc until it's promoted
+      # Limitation: versions file will contain the last 20 releases and NOT rc until it's promoted to latest
       - id: versionCurl
         if: inputs.version != 'latest-rc'
         name: Get url for version
@@ -64,13 +64,13 @@ jobs:
           file: dockerfiles/Dockerfile_slim
           build-args: |
             DOWNLOAD_URL=${{ steps.versionCurl.outputs.url || steps.rcCurl.outputs.url }}
-          tags: salesforce/salesforcedx:latest-rc-slim-qa, salesforce/salesforcedx:${{ steps.regex.outputs.group1 }}-slim-qa
+          tags: salesforce/salesforcedx:latest-rc-slim, salesforce/salesforcedx:${{ steps.regex.outputs.group1 }}-slim
 
   verify:
     needs: buildPush
     runs-on: ubuntu-latest
     container:
-      image: salesforce/salesforcedx:${{ inputs.version }}-slim-qa
+      image: salesforce/salesforcedx:${{ inputs.version }}-slim
     steps:
       - name: verify sfdx, java
         # without bash this will fail.  Not sure what the default shell is but it doesn't like the [[(())]] bashism

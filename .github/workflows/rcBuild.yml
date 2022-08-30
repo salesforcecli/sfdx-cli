@@ -14,7 +14,7 @@ jobs:
     with:
       upload: true
       cli: sfdx
-      version: ${{ format(github.event.release.tag_name, 'v', '') }}
+      version: ${{ github.event.release.tag_name }}
       channel: stable-rc
     secrets: inherit
 
@@ -23,7 +23,7 @@ jobs:
     uses: salesforcecli/github-workflows/.github/workflows/packUploadMac.yml@main
     with:
       cli: sfdx
-      version: ${{ format(github.event.release.tag_name, 'v', '') }}
+      version: ${{ github.event.release.tag_name }}
       channel: stable-rc
     secrets: inherit
 
@@ -32,7 +32,7 @@ jobs:
     uses: salesforcecli/github-workflows/.github/workflows/packUploadWindows.yml@main
     with:
       cli: sfdx
-      version: ${{ format(github.event.release.tag_name, 'v', '') }}
+      version: ${{ github.event.release.tag_name }}
       channel: stable-rc
     secrets: inherit
 
@@ -40,14 +40,14 @@ jobs:
     needs: [test-pack-upload-tarballs]
     uses: ./.github/workflows/dockerBuildSlim.yml
     with:
-      version: ${{ format(github.event.release.tag_name, 'v', '') }}
+      version: ${{ github.event.release.tag_name }}
     secrets: inherit
 
   docker-full:
     needs: [npm-release]
     uses: ./.github/workflows/dockerBuildFull.yml
     with:
-      version: ${{ format(github.event.release.tag_name, 'v', '') }}
+      version: ${{ github.event.release.tag_name }}
     secrets: inherit
 
   Post-RC-to-Slack:
@@ -66,7 +66,7 @@ jobs:
             {
               "cli": "sfdx",
               "npm-package": "sfdx-cli",
-              "version": "${{ format(github.event.release.tag_name, 'v', '') }}"
+              "version": "${{ github.event.release.tag_name }}"
             }
 
   failure-notify:

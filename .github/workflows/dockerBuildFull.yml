@@ -5,7 +5,7 @@ on:
       version:
         type: string
         required: true
-        description: numerical version to build from tarball, ex 7.155.0.  It'll release it as the QA!
+        description: numerical version to build from tarball, ex 7.155.0.  It'll publish it as the latest-rc!
   workflow_call:
     inputs:
       version:
