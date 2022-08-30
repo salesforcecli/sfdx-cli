@@ -5,8 +5,16 @@ on:
     branches: [sm/gha]
 
 jobs:
-  qa:
+  basic-nuts:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        url:
+          - https://github.com/salesforcecli/plugin-user
+          - https://github.com/salesforcecli/plugin-limits
     uses: ./.github/workflows/justNut.yml
     with:
-      externalProjectGitUrl: https://github.com/salesforcecli/plugin-user
+      externalProjectGitUrl: ${{matrix.url}}
+      os: ${{matrix.os}}
     secrets: inherit
