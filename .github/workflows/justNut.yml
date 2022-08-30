@@ -16,11 +16,12 @@ on:
         description: 'runs-on property, ex: ubuntu-latest, windows-latest'
         type: string
         default: 'ubuntu-latest'
-    secrets: TESTKIT_AUTH_URL
-      TESTKIT_HUB_USERNAME
-      TESTKIT_HUB_INSTANCE
-      TESTKIT_JWT_CLIENT_ID
-      TESTKIT_JWT_KEY
+    secrets:
+      TESTKIT_AUTH_URL:
+      TESTKIT_HUB_USERNAME:
+      TESTKIT_HUB_INSTANCE:
+      TESTKIT_JWT_CLIENT_ID:
+      TESTKIT_JWT_KEY:
 
 jobs:
   just-nut:
