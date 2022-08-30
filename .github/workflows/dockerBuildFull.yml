@@ -86,6 +86,7 @@ jobs:
       image: salesforce/salesforcedx:${{ inputs.version }}-full
     steps:
       - name: verify check node version
+        shell: bash
         run: |
           set -e
           node -v
