@@ -69,7 +69,7 @@ jobs:
         run: |
           set -e
           sfdx version --verbose
-          SFDX_CLI_VERSION=$(sfdx version --verbose --json | jq '.cliVersion')
+          SFDX_CLI_VERSION=$(sfdx version)
           JAVA_VERSION=$('java --version | head -n 1')
           if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
           then
