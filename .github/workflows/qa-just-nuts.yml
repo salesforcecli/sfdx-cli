@@ -9,3 +9,4 @@ jobs:
     uses: ./.github/workflows/justNut.yml
     with:
       externalProjectGitUrl: https://github.com/salesforcecli/plugin-user
+    secrets: inherit
