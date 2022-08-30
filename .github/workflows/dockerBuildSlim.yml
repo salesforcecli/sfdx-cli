@@ -21,12 +21,12 @@ jobs:
       - id: versionCurl
         if: inputs.version != 'latest-rc'
         name: Get url for version
-        run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq '.[\"${{ inputs.version }}\"]')"
+        run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq -r '.[\"${{ inputs.version }}\"]')"
 
       - id: rcCurl
         if: inputs.version == 'latest-rc'
         name: Get url for latest-rc
-        run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64-buildmanifest' | jq '.xz')"
+        run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64-buildmanifest' | jq -r '.xz')"
 
       - id: regex
         uses: actions-ecosystem/action-regex-match@9e6c4fb3d5e898f505be7a1fb6e7b0a278f6665b
