@@ -1,0 +1,11 @@
+name: qa-just-nuts
+
+on:
+  push:
+    branches: [sm/gha]
+
+jobs:
+  qa:
+    uses: ./.github//workflows/justNut.yml
+    with:
+      externalProjectGitUrl: https://github.com/salesforcecli/plugin-user

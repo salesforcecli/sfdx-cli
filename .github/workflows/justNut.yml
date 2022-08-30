@@ -1,0 +1,52 @@
+name: just-nut
+on:
+  workflow_dispatch:
+    inputs:
+      externalProjectGitUrl:
+        description: 'The url that will be cloned.  This contains the NUTs you want to run.  Ex: https://github.com/salesforcecli/plugin-user'
+        type: string
+        required: true
+      command:
+        required: false
+        type: string
+        default: yarn test:nuts
+        description: 'command to execute (ex: yarn test:nuts)'
+      os:
+        required: false
+        description: 'runs-on property, ex: ubuntu-latest, windows-latest'
+        type: string
+        default: 'ubuntu-latest'
+  workflow_call:
+    inputs:
+      externalProjectGitUrl:
+        description: 'The url that will be cloned.  This contains the NUTs you want to run.  Ex: https://github.com/salesforcecli/plugin-user'
+        type: string
+        required: true
+      command:
+        required: false
+        type: string
+        default: yarn test:nuts
+        description: 'command to execute (ex: yarn test:nuts)'
+      os:
+        required: false
+        description: 'runs-on property, ex: ubuntu-latest, windows-latest'
+        type: string
+        default: 'ubuntu-latest'
+
+jobs:
+  just-nut:
+    name: ${{inputs.externalProjectGitUrl}}
+    runs-on: ${{inputs.os}}
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+      - run: npm install -g sfdx-cli --omit=dev
+      - run: git clone ${{ inputs.externalProjectGitUrl}} $(pwd)
+      - run: yarn install
+      - name: NUTs with custom executable
+        run: ${{ inputs.command }}
+        if: inputs.sfdxExecutablePath
+        env:
+          TESTKIT_EXECUTABLE_PATH: sfdx
+          TESTKIT_AUTH_URL: ${{ secrets.TESTKIT_AUTH_URL}}
