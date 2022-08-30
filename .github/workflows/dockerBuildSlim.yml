@@ -28,7 +28,7 @@ jobs:
         name: Get url for latest-rc
         run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64-buildmanifest' | jq '.xz')"
 
-      - id: versionFromUrl
+      - id: regex
         uses: actions-ecosystem/action-regex-match@9e6c4fb3d5e898f505be7a1fb6e7b0a278f6665b
         with:
           text: ${{ steps.versionCurl.outputs.url || steps.rcCurl.outputs.url }}
@@ -62,7 +62,7 @@ jobs:
           file: dockerfiles/Dockerfile_slim
           build-args: |
             DOWNLOAD_URL=${{ steps.versionCurl.outputs.url || steps.rcCurl.outputs.url }}
-          tags: salesforce/salesforcedx:latest-rc-slim-qa, salesforce/salesforcedx:${{ steps.versionFromUrl.outputs.group1 }}-slim-qa
+          tags: salesforce/salesforcedx:latest-rc-slim-qa, salesforce/salesforcedx:${{ steps.regex.outputs.group1 }}-slim-qa
 
   verify:
     needs: buildPush
