@@ -14,47 +14,80 @@ on:
         required: true
 
 jobs:
-  buildTestPush:
+  # buildPush:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out the repo
+  #       uses: actions/checkout@v3
+
+  #     - name: Log in to Docker Hub
+  #       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+  #       with:
+  #         username: ${{ secrets.DOCKER_USERNAME }}
+  #         password: ${{ secrets.DOCKER_PASSWORD }}
+
+  #     - name: Extract metadata (tags, labels) for Docker
+  #       id: meta
+  #       uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+  #       with:
+  #         images: salesforce/salesforcedx
+
+  #     - name: Build for verification
+  #       uses: docker/build-push-action@v3
+  #       with:
+  #         context: .
+  #         load: true
+  #         tags: salesforce/salesforcedx:${{ inputs.version }}-full
+  #         build-args: |
+  #           SALESFORCE_CLI_VERSION=${{ inputs.version}}
+  #           SF_CLI_VERSION=latest-rc
+  #         file: dockerfiles/Dockerfile_full
+  #     - name: Verify full dependencies
+  #       run: |
+  #         TAG=salesforce/salesforcedx:${{ inputs.version }}-full
+  #         NODE_VERSION="$(docker run --rm salesforce/salesforcedx:$TAG bash -c 'node -v')"
+  #         SFDX_CLI_VERSION="$(docker run --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
+  #         JQ_VERSION="$(docker run --rm salesforce/salesforcedx:$TAG bash -c 'jq --version')"
+  #         if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
+  #         then
+  #           echo "sfdx-cli installed -" $SFDX_CLI_VERSION
+  #         else
+  #           echo "The sfdx-cli installation could not be verified"
+  #           exit 1
+  #         fi
+  #         if [[ ((`echo $NODE_VERSION | grep -c "v"` > 0))]]
+  #         then
+  #           echo "node installed -" $NODE_VERSION
+  #         else
+  #           echo "The node installation could not be verified"
+  #           exit 1
+  #         fi
+  #         if [[ ((`echo $JQ_VERSION | grep -c "jq"` > 0))]]
+  #         then
+  #           echo "jq installed -" $JQ_VERSION
+  #         else
+  #           echo "The jq installation could not be verified"
+  #           exit 1
+  #         fi
+  #     - name: Build and push Docker image
+  #       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+  #       with:
+  #         context: .
+  #         push: true
+  #         labels: ${{ steps.meta.outputs.labels }}
+  #         file: dockerfiles/Dockerfile_full
+  #         build-args: |
+  #           SALESFORCE_CLI_VERSION=${{ inputs.version}}
+  #           SF_CLI_VERSION=latest-rc
+  #         tags: salesforce/salesforcedx:latest-rc-full, salesforce/salesforcedx:${{ inputs.version }}-full
+  verify:
     runs-on: ubuntu-latest
+    container:
+      image: salesforce/salesforcedx:${{ inputs.version }}-full
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v3
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-        with:
-          images: salesforce/salesforcedx
-
-      - name: Build for verification
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          load: true
-          tags: salesforce/salesforcedx:${{ inputs.version }}-full
-          build-args: |
-            SALESFORCE_CLI_VERSION=${{ inputs.version}}
-            SF_CLI_VERSION=latest-rc
-          file: dockerfiles/Dockerfile_full
-      - name: Verify full dependencies
+      - name: verify check node version
         run: |
-          TAG=salesforce/salesforcedx:${{ inputs.version }}-full
-          NODE_VERSION="$(docker run --rm salesforce/salesforcedx:$TAG bash -c 'node -v')"
-          SFDX_CLI_VERSION="$(docker run --rm salesforce/salesforcedx:$TAG bash -c 'sfdx --version')"
-          JQ_VERSION="$(docker run --rm salesforce/salesforcedx:$TAG bash -c 'jq --version')"
-          if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
-          then
-            echo "sfdx-cli installed -" $SFDX_CLI_VERSION
-          else
-            echo "The sfdx-cli installation could not be verified"
-            exit 1
-          fi
+          NODE_VERSION=$(node -v)
           if [[ ((`echo $NODE_VERSION | grep -c "v"` > 0))]]
           then
             echo "node installed -" $NODE_VERSION
@@ -62,21 +95,3 @@ jobs:
             echo "The node installation could not be verified"
             exit 1
           fi
-          if [[ ((`echo $JQ_VERSION | grep -c "jq"` > 0))]]
-          then
-            echo "jq installed -" $JQ_VERSION
-          else
-            echo "The jq installation could not be verified"
-            exit 1
-          fi
-      - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        with:
-          context: .
-          push: true
-          labels: ${{ steps.meta.outputs.labels }}
-          file: dockerfiles/Dockerfile_full
-          build-args: |
-            SALESFORCE_CLI_VERSION=${{ inputs.version}}
-            SF_CLI_VERSION=latest-rc
-          tags: salesforce/salesforcedx:latest-rc-full, salesforce/salesforcedx:${{ inputs.version }}-full
