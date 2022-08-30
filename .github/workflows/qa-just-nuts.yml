@@ -6,6 +6,6 @@ on:
 
 jobs:
   qa:
-    uses: ./.github//workflows/justNut.yml
+    uses: ./.github/workflows/justNut.yml
     with:
       externalProjectGitUrl: https://github.com/salesforcecli/plugin-user
