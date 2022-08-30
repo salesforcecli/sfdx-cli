@@ -87,5 +87,24 @@ jobs:
     steps:
       - name: verify check node version
         run: |
+          set -e
           node -v
           sfdx version --verbose
+          jq --help
+          TAG=salesforce/salesforcedx:${{ inputs.version }}-full
+          NODE_VERSION=$(sfdx version --verbose --json | jq '.nodeVersion')
+          SFDX_CLI_VERSION=$(sfdx version --verbose --json | jq '.cliVersion')
+          if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
+          then
+            echo "sfdx-cli installed -" $SFDX_CLI_VERSION
+          else
+            echo "The sfdx-cli installation could not be verified"
+            exit 1
+          fi
+          if [[ ((`echo $NODE_VERSION | grep -c "v"` > 0))]]
+          then
+            echo "node installed -" $NODE_VERSION
+          else
+            echo "The node installation could not be verified"
+            exit 1
+          fi
