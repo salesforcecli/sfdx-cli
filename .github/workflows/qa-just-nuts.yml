@@ -24,4 +24,6 @@ jobs:
     with:
       externalProjectGitUrl: ${{matrix.url}}
       os: ${{matrix.os}}
-    secrets: inherit
+    secrets:
+      TESTKIT_HUB_USERNAME: ${{ secrets.TESTKIT_HUB_USERNAME}}
+      TESTKIT_AUTH_URL: ${{ secrets.TESTKIT_AUTH_URL}}
