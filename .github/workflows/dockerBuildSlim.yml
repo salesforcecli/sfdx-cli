@@ -63,14 +63,14 @@ jobs:
     container:
       image: salesforce/salesforcedx:${{ inputs.version }}-slim
     steps:
-      - name: verify check node version
+      - name: verify sfdx, java
         # without bash this will fail.  Not sure what the default shell is but it doesn't like the [[(())]] bashism
         shell: bash
         run: |
           set -e
-          sfdx version --verbose
+          sfdx version
           SFDX_CLI_VERSION=$(sfdx version)
-          JAVA_VERSION=$('java --version | head -n 1')
+          JAVA_VERSION=$(java --version | head -n 1)
           if [[ ((`echo $SFDX_CLI_VERSION | grep -c "sfdx-cli/"` > 0))]]
           then
             echo "sfdx-cli installed -" $SFDX_CLI_VERSION
