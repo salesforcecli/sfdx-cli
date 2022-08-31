@@ -16,13 +16,10 @@ on:
         description: 'runs-on property, ex: ubuntu-latest, windows-latest'
         type: string
         default: 'ubuntu-latest'
-    secrets:
-      TESTKIT_AUTH_URL:
-      TESTKIT_HUB_USERNAME:
-      TESTKIT_HUB_INSTANCE:
-      TESTKIT_JWT_CLIENT_ID:
-      TESTKIT_JWT_KEY:
-      GITHUB_TOKEN:
+      github-token:
+        required: true
+        type: string
+        description: 'for private repos, use a token for a user who has access to that repo'
 jobs:
   just-nut:
     name: ${{inputs.externalProjectGitUrl}}
@@ -43,4 +40,4 @@ jobs:
           TESTKIT_JWT_CLIENT_ID: ${{ secrets.TESTKIT_JWT_CLIENT_ID}}
           TESTKIT_JWT_KEY: ${{ secrets.TESTKIT_JWT_KEY}}
           TESTKIT_HUB_INSTANCE: ${{ secrets.TESTKIT_HUB_INSTANCE}}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.SF_CLI_BOT_GITHUB_TOKEN }}

@@ -13,61 +13,22 @@ jobs:
         # os: [ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
         url:
-          - https://github.com/salesforcecli/plugin-alias
-          - https://github.com/salesforcecli/plugin-community
+          # - https://github.com/salesforcecli/plugin-alias
+          - https://github.com/salesforcecli/plugin-auth
+          # - https://github.com/salesforcecli/plugin-community
           # omitted while nuts are too flaky on bulk commands
           # - https://github.com/salesforcecli/plugin-data
-          - https://github.com/salesforcecli/plugin-limits
+          # - https://github.com/salesforcecli/plugin-limits
           # - https://github.com/salesforcecli/plugin-org
           # - https://github.com/salesforcecli/plugin-schema
           # - https://github.com/salesforcecli/plugin-signups
           # - https://github.com/salesforcecli/plugin-user
-    uses: ./.github/workflows/justNut.yml
-    with:
-      externalProjectGitUrl: ${{matrix.url}}
-      os: ${{matrix.os}}
-    secrets:
-      TESTKIT_HUB_USERNAME: ${{ secrets.TESTKIT_HUB_USERNAME}}
-      TESTKIT_AUTH_URL: ${{ secrets.TESTKIT_AUTH_URL}}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
-  jwt-nuts:
-    strategy:
-      fail-fast: false
-      max-parallel: 6
-      matrix:
-        # os: [ubuntu-latest, windows-latest]
-        os: [ubuntu-latest]
-        url:
-          - https://github.com/salesforcecli/plugin-auth
-    uses: ./.github/workflows/justNut.yml
-    with:
-      externalProjectGitUrl: ${{matrix.url}}
-      os: ${{matrix.os}}
-    secrets:
-      TESTKIT_AUTH_URL: ${{ secrets.TESTKIT_AUTH_URL}}
-      TESTKIT_HUB_USERNAME: ${{ secrets.TESTKIT_HUB_USERNAME}}
-      TESTKIT_JWT_CLIENT_ID: ${{ secrets.TESTKIT_JWT_CLIENT_ID}}
-      TESTKIT_JWT_KEY: ${{ secrets.TESTKIT_JWT_KEY}}
-      TESTKIT_HUB_INSTANCE: ${{ secrets.TESTKIT_HUB_INSTANCE}}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
-  private:
-    strategy:
-      fail-fast: false
-      max-parallel: 6
-      matrix:
-        # os: [ubuntu-latest, windows-latest]
-        os: [ubuntu-latest]
-        url:
+
+          # private repos
           - https://github.com/salesforcecli/toolbelt
           - https://github.com/salesforcecli/plugin-custom-metadata
     uses: ./.github/workflows/justNut.yml
     with:
       externalProjectGitUrl: ${{matrix.url}}
       os: ${{matrix.os}}
-    secrets:
-      TESTKIT_AUTH_URL: ${{ secrets.TESTKIT_AUTH_URL}}
-      TESTKIT_HUB_USERNAME: ${{ secrets.TESTKIT_HUB_USERNAME}}
-      TESTKIT_JWT_CLIENT_ID: ${{ secrets.TESTKIT_JWT_CLIENT_ID}}
-      TESTKIT_JWT_KEY: ${{ secrets.TESTKIT_JWT_KEY}}
-      TESTKIT_HUB_INSTANCE: ${{ secrets.TESTKIT_HUB_INSTANCE}}
-      GITHUB_TOKEN: ${{ secrets.SF_CLI_BOT_GITHUB_TOKEN}}
+    secrets: inherit
