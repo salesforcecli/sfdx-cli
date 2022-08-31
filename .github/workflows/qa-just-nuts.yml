@@ -5,7 +5,7 @@ on:
     branches: [sm/gha]
 
 jobs:
-  basic-nuts:
+  basic:
     strategy:
       fail-fast: false
       max-parallel: 6

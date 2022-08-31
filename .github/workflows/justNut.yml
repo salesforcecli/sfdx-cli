@@ -26,6 +26,7 @@ jobs:
         with:
           node-version: latest
       - run: npm install -g sfdx-cli --omit=dev
+      - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
       - run: git clone ${{ inputs.externalProjectGitUrl}} $(pwd)
       - run: yarn install
       - name: NUTs with custom executable
