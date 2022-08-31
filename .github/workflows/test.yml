@@ -2,7 +2,7 @@ name: tarballs
 
 on:
   push:
-    branches-ignore: [main, sm/gha]
+    branches-ignore: [main]
 
 jobs:
   ut:
