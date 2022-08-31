@@ -16,10 +16,7 @@ on:
         description: 'runs-on property, ex: ubuntu-latest, windows-latest'
         type: string
         default: 'ubuntu-latest'
-      github-token:
-        required: true
-        type: string
-        description: 'for private repos, use a token for a user who has access to that repo'
+
 jobs:
   just-nut:
     name: ${{inputs.externalProjectGitUrl}}
