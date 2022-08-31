@@ -26,8 +26,9 @@ jobs:
         with:
           node-version: latest
       - run: npm install -g sfdx-cli --omit=dev
-      - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
       - run: git clone ${{ inputs.externalProjectGitUrl}} $(pwd)
+        env:
+          GITHUB_TOKEN: ${{ secrets.SF_CLI_BOT_GITHUB_TOKEN }}
       - run: yarn install
       - name: NUTs with custom executable
         run: ${{ inputs.command }}
@@ -38,4 +39,3 @@ jobs:
           TESTKIT_JWT_CLIENT_ID: ${{ secrets.TESTKIT_JWT_CLIENT_ID}}
           TESTKIT_JWT_KEY: ${{ secrets.TESTKIT_JWT_KEY}}
           TESTKIT_HUB_INSTANCE: ${{ secrets.TESTKIT_HUB_INSTANCE}}
-          GITHUB_TOKEN: ${{ secrets.SF_CLI_BOT_GITHUB_TOKEN }}
