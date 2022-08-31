@@ -29,6 +29,7 @@ jobs:
     secrets:
       TESTKIT_HUB_USERNAME: ${{ secrets.TESTKIT_HUB_USERNAME}}
       TESTKIT_AUTH_URL: ${{ secrets.TESTKIT_AUTH_URL}}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
   jwt-nuts:
     strategy:
       fail-fast: false
@@ -48,6 +49,7 @@ jobs:
       TESTKIT_JWT_CLIENT_ID: ${{ secrets.TESTKIT_JWT_CLIENT_ID}}
       TESTKIT_JWT_KEY: ${{ secrets.TESTKIT_JWT_KEY}}
       TESTKIT_HUB_INSTANCE: ${{ secrets.TESTKIT_HUB_INSTANCE}}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
   private:
     strategy:
       fail-fast: false

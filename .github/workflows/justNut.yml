@@ -22,7 +22,7 @@ on:
       TESTKIT_HUB_INSTANCE:
       TESTKIT_JWT_CLIENT_ID:
       TESTKIT_JWT_KEY:
-
+      GITHUB_TOKEN:
 jobs:
   just-nut:
     name: ${{inputs.externalProjectGitUrl}}
@@ -43,3 +43,4 @@ jobs:
           TESTKIT_JWT_CLIENT_ID: ${{ secrets.TESTKIT_JWT_CLIENT_ID}}
           TESTKIT_JWT_KEY: ${{ secrets.TESTKIT_JWT_KEY}}
           TESTKIT_HUB_INSTANCE: ${{ secrets.TESTKIT_HUB_INSTANCE}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
