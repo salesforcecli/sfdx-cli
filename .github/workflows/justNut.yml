@@ -30,6 +30,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: latest
+          cache: yarn
       - run: npm install -g sfdx-cli --omit=dev
       - run: yarn install
       - name: NUTs with custom executable
