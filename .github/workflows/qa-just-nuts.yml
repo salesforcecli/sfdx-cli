@@ -5,30 +5,40 @@ on:
     branches: [sm/gha]
 
 jobs:
-  basic:
+  # basic:
+  #   strategy:
+  #     fail-fast: false
+  #     max-parallel: 6
+  #     matrix:
+  #       # os: [ubuntu-latest, windows-latest]
+  #       os: [ubuntu-latest]
+  #       repository:
+  #         - salesforcecli/plugin-alias
+  #         - salesforcecli/plugin-auth
+  #         - salesforcecli/plugin-community
+  #         # omitted while nuts are too flaky on bulk commands
+  #         - salesforcecli/plugin-data
+  #         - salesforcecli/plugin-limits
+  #         - salesforcecli/plugin-org
+  #         - salesforcecli/plugin-schema
+  #         - salesforcecli/plugin-signups
+  #         - salesforcecli/plugin-user
+
+  #         # private repos
+  #         - salesforcecli/toolbelt
+  #         - salesforcecli/plugin-custom-metadata
+  #   uses: ./.github/workflows/justNut.yml
+  #   with:
+  #     repository: ${{matrix.repository}}
+  #     os: ${{matrix.os}}
+  #   secrets: inherit
+  source:
     strategy:
       fail-fast: false
-      max-parallel: 6
       matrix:
-        # os: [ubuntu-latest, windows-latest]
-        os: [ubuntu-latest]
-        repository:
-          - salesforcecli/plugin-alias
-          - salesforcecli/plugin-auth
-          - salesforcecli/plugin-community
-          # omitted while nuts are too flaky on bulk commands
-          - salesforcecli/plugin-data
-          - salesforcecli/plugin-limits
-          - salesforcecli/plugin-org
-          - salesforcecli/plugin-schema
-          - salesforcecli/plugin-signups
-          - salesforcecli/plugin-user
-
-          # private repos
-          - salesforcecli/toolbelt
-          - salesforcecli/plugin-custom-metadata
+        os: [ubuntu-20-8core]
     uses: ./.github/workflows/justNut.yml
     with:
-      repository: ${{matrix.repository}}
+      repository: salesforcecli/plugin-source
       os: ${{matrix.os}}
     secrets: inherit
