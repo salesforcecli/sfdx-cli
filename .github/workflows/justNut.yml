@@ -22,13 +22,15 @@ jobs:
     name: ${{inputs.externalProjectGitUrl}}
     runs-on: ${{inputs.os}}
     steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{inputs.externalProjectGitUrl}}
+          token: ${{ secrets.SF_CLI_BOT_GITHUB_TOKEN }}
+          path: .
       - uses: actions/setup-node@v3
         with:
           node-version: latest
       - run: npm install -g sfdx-cli --omit=dev
-      - run: git clone ${{ inputs.externalProjectGitUrl}} $(pwd)
-        env:
-          GITHUB_TOKEN: ${{ secrets.SF_CLI_BOT_GITHUB_TOKEN }}
       - run: yarn install
       - name: NUTs with custom executable
         run: ${{ inputs.command }}
