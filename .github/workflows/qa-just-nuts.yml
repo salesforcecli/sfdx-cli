@@ -13,20 +13,20 @@ jobs:
         # os: [ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
         repository:
-          # - salesforcecli/plugin-alias
+          - salesforcecli/plugin-alias
           - salesforcecli/plugin-auth
-          # - salesforcecli/plugin-community
+          - salesforcecli/plugin-community
           # omitted while nuts are too flaky on bulk commands
-          # - salesforcecli/plugin-data
-          # - salesforcecli/plugin-limits
-          # - salesforcecli/plugin-org
-          # - salesforcecli/plugin-schema
-          # - salesforcecli/plugin-signups
-          # - salesforcecli/plugin-user
+          - salesforcecli/plugin-data
+          - salesforcecli/plugin-limits
+          - salesforcecli/plugin-org
+          - salesforcecli/plugin-schema
+          - salesforcecli/plugin-signups
+          - salesforcecli/plugin-user
 
           # private repos
-          # - salesforcecli/toolbelt
-          # - salesforcecli/plugin-custom-metadata
+          - salesforcecli/toolbelt
+          - salesforcecli/plugin-custom-metadata
     uses: ./.github/workflows/justNut.yml
     with:
       repository: ${{matrix.repository}}
