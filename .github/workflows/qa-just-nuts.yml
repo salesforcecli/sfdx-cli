@@ -25,8 +25,8 @@ jobs:
           # - salesforcecli/plugin-user
 
           # private repos
-          - salesforcecli/toolbelt
-          - salesforcecli/plugin-custom-metadata
+          # - salesforcecli/toolbelt
+          # - salesforcecli/plugin-custom-metadata
     uses: ./.github/workflows/justNut.yml
     with:
       repository: ${{matrix.repository}}
