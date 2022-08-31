@@ -19,7 +19,7 @@ on:
 
 jobs:
   just-nut:
-    name: ${{inputs.externalProjectGitUrl}}
+    name: ${{inputs.repository}}
     runs-on: ${{inputs.os}}
     steps:
       - uses: actions/checkout@v3

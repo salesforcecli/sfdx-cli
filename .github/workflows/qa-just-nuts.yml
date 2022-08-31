@@ -12,7 +12,7 @@ jobs:
       matrix:
         # os: [ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
-        url:
+        repository:
           # - salesforcecli/plugin-alias
           - salesforcecli/plugin-auth
           # - salesforcecli/plugin-community
@@ -29,6 +29,6 @@ jobs:
           - salesforcecli/plugin-custom-metadata
     uses: ./.github/workflows/justNut.yml
     with:
-      externalProjectGitUrl: ${{matrix.url}}
+      repository: ${{matrix.repository}}
       os: ${{matrix.os}}
     secrets: inherit
