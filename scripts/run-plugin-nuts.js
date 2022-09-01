@@ -41,6 +41,10 @@ const manualRepoOverrides = {
   },
 };
 
+// Temporarily skipping sfdx-plugin-lwc-test until migration to github actions is complete.
+// Context: After key rotation work, we have been unable to call the circleci api to trigger the just-nuts workflow.
+const reposToIgnore = ['@salesforce/sfdx-plugin-lwc-test'];
+
 const modulesWithScheduledPipelines = ['@salesforce/plugin-signups'];
 
 const hasTestNuts = (module) => {
@@ -190,7 +194,9 @@ const qualifyPluginsWithNonUnitTests = (timeCreated, modules) => {
           // convert array to object
           .map(([name, version]) => ({ name, version }))
           // and only interested in salesforce modules
-          .filter((module) => /^@*salesforce/.test(module.name));
+          .filter((module) => /^@*salesforce/.test(module.name))
+          // remove modules in the ignore list
+          .filter((module) => !reposToIgnore.includes(module.name));
         // determine if current module should be include (has a nut test) and qualify all of current modules dependencies
         return [
           ...(hasTestNuts(module) ? [module] : []),
