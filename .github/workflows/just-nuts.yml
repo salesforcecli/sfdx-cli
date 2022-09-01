@@ -16,7 +16,7 @@ jobs:
           - salesforcecli/plugin-auth
           - salesforcecli/plugin-community
           # omitted while nuts are too flaky on bulk commands
-          - salesforcecli/plugin-data
+          # - salesforcecli/plugin-data
           - salesforcecli/plugin-limits
           - salesforcecli/plugin-org
           - salesforcecli/plugin-schema
