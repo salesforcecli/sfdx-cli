@@ -93,3 +93,8 @@ jobs:
                 }
               ]
             }
+
+  just-nuts:
+    needs: [Post-RC-to-Slack]
+    uses: ./.github/workflows/just-nuts.yml
+    secrets: inherit
