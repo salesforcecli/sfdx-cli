@@ -1,4 +1,5 @@
 name: pr for rc
+
 on:
   workflow_dispatch:
     inputs:
@@ -7,9 +8,13 @@ on:
         required: false
         default: false
         description: increment the patch instead of the minor version
+      only:
+        type: string
+        required: false
+        description: comma-separated list, no spaces, of dependencies that you want to bump.
   schedule:
-    # Thursdays 6am UTC
-    - cron: '0 6 * * 4'
+    # Thursdays 10am central
+    - cron: '0 15 * * 4'
 
 jobs:
   rcPR:
@@ -24,6 +29,10 @@ jobs:
       - run: npm install -g sfdx-cli @salesforce/plugin-release-management --omit=dev
       - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
       - run: sf-release cli:latestrc:build
-        if: ${{ !inputs.patch }}
+        if: ${{ !inputs.patch && !inputs.only }}
       - run: sf-release cli:latestrc:build --patch
-        if: ${{ inputs.patch }}
+        if: ${{ inputs.patch && !inputs.only }}
+      - run: sf-release cli:latestrc:build --only ${{inputs.only}}
+        if: ${{ !inputs.patch && inputs.only }}
+      - run: sf-release cli:latestrc:build --patch --only ${{inputs.only}}
+        if: ${{ inputs.patch && inputs.only }}

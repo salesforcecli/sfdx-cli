@@ -1,0 +1,72 @@
+name: just-nuts
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  basic:
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        repository:
+          - salesforcecli/plugin-alias
+          - salesforcecli/plugin-auth
+          - salesforcecli/plugin-community
+          # omitted while nuts are too flaky on bulk commands
+          # - salesforcecli/plugin-data
+          - salesforcecli/plugin-limits
+          - salesforcecli/plugin-org
+          - salesforcecli/plugin-schema
+          - salesforcecli/plugin-signups
+          - salesforcecli/plugin-user
+
+          # private repos
+          - salesforcecli/toolbelt
+          - salesforcecli/plugin-custom-metadata
+    uses: ./.github/workflows/justNut.yml
+    with:
+      repository: ${{matrix.repository}}
+      os: ${{matrix.os}}
+    secrets: inherit
+  source-regular:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        command:
+          - yarn test:nuts:convert
+          - yarn test:nuts:mdapi
+          - yarn test:nuts:deploy:metadata
+    uses: ./.github/workflows/justNut.yml
+    with:
+      repository: salesforcecli/plugin-source
+      os: ${{matrix.os}}
+      command: ${{matrix.command}}
+    secrets: inherit
+
+  source-big:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20-8core]
+        command:
+          - yarn test:nuts:delete
+          - yarn test:nuts:deploy:async
+          - yarn test:nuts:deploy:destructive
+          - yarn test:nuts:deploy:manifest
+          - yarn test:nuts:deploy:quick
+          - yarn test:nuts:deploy:rest
+          - yarn test:nuts:deploy:sourcepath
+          - yarn test:nuts:deploy:testlevel
+          - yarn test:nuts:retrieve
+          - yarn test:nuts:specialTypes
+          - yarn test:nuts:tracking
+    uses: ./.github/workflows/justNut.yml
+    with:
+      repository: salesforcecli/plugin-source
+      os: ${{matrix.os}}
+      command: ${{matrix.command}}
+    secrets: inherit

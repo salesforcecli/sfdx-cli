@@ -1,0 +1,11 @@
+name: ut and tarballs
+
+on:
+  push:
+    branches-ignore: [main]
+
+jobs:
+  ut:
+    uses: salesforcecli/github-workflows/.github/workflows/unitTest.yml@main
+  tarballs:
+    uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@main

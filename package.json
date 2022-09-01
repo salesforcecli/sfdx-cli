@@ -221,6 +221,7 @@
   },
   "scripts": {
     "build": "sf-build",
+    "channel:promote": "sf-release channel:promote",
     "clean": "shx rm -rf dist tmp",
     "clean-all": "sf-clean all",
     "compile": "sf-compile",
@@ -249,6 +250,7 @@
     "snapshot-generate": "HOME=./ ./bin/run snapshot:generate",
     "test": "nyc mocha --recursive \"test/**/*.test.ts\" --report lcov --report cobertura -t 240000 --require source-map-support/register",
     "test-smoke-unix": "sf-release cli:tarballs:smoke --cli sfdx",
+    "test:smoke-unix": "sf-release cli:tarballs:smoke --cli sfdx",
     "test:deprecation-policy": "set HOME=./ ./bin/run snapshot:compare",
     "trogdor": "yarn clean-all && yarn && yarn compile && yarn uts",
     "upload:deb": "oclif upload:deb",
