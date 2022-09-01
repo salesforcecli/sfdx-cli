@@ -1,10 +1,10 @@
 name: ut and tarballs
 
-# HI
-
 on:
   push:
     branches-ignore: [main]
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 jobs:
   ut:
