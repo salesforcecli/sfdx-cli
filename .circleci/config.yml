@@ -313,6 +313,7 @@ workflows:
             branches:
               ignore: main
       - release-management/test-package:
+          context: cli-release
           matrix:
             parameters:
               os:
