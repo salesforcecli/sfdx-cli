@@ -1,11 +1,5 @@
 name: docker-full
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        type: string
-        required: true
-        description: numerical version to build from tarball, ex 7.155.0.  It'll publish it as the latest-rc!
   workflow_call:
     inputs:
       version:
