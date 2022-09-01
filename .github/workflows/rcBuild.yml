@@ -43,7 +43,7 @@ jobs:
     needs: [pack-verify-upload-tarballs]
     uses: ./.github/workflows/dockerBuildSlim.yml
     with:
-      version: ${{ github.event.release.tag_name }}
+      version: latest-rc
     secrets: inherit
 
   docker-full:
@@ -72,6 +72,7 @@ jobs:
             }
 
   failure-notify:
+    needs: [pack-verify-upload-tarballs, npm-release, docker-slim, docker-full, pack-upload-win, pack-upload-mac]
     if: always() && failure()
     runs-on: ubuntu-latest
     steps:
