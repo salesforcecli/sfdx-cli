@@ -10,7 +10,6 @@ import * as path from 'path';
 
 import { CliUx } from '@oclif/core';
 import { readFileSync, readJsonSync, writeFileSync } from 'fs-extra';
-import { chmod } from 'shelljs';
 
 import { TelemetryGlobal } from '@salesforce/plugin-telemetry/lib/telemetryGlobal';
 import { AppInsights } from '@salesforce/telemetry/lib/appInsights';
@@ -70,8 +69,8 @@ const hook: Hook.Update = async function (opts): Promise<void> {
       sfExec = path.join(dataDirBin, 'sf');
     }
 
-    writeFileSync(sfExec, readFileSync(sfdxExec, { encoding: 'utf-8' }).replace(/sfdx/g, 'sf').replace(/SFDX/g, 'SF'));
-    chmod('+x', dataDirBin, sfExec);
+    const sfExecContents = readFileSync(sfdxExec, { encoding: 'utf-8' }).replace(/sfdx/g, 'sf').replace(/SFDX/g, 'SF');
+    writeFileSync(sfExec, sfExecContents, { mode: 0o755 });
 
     success = true;
   } catch (error) {

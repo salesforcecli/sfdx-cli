@@ -169,7 +169,6 @@
     "@salesforce/ts-types": "^1.5.17",
     "debug": "^4.3.1",
     "salesforce-alm": "54.8.1",
-    "shelljs": "^0.8.4",
     "tslib": "^2.1.0"
   },
   "devDependencies": {
@@ -207,6 +206,7 @@
     "oclif": "^2.7.0",
     "prettier": "^2.3.0",
     "pretty-quick": "^3.1.0",
+    "shelljs": "^0.8.5",
     "shx": "^0.3.3",
     "sinon": "10.0.0",
     "ts-node": "^10.0.0",
