@@ -13,8 +13,8 @@ on:
         required: false
         description: comma-separated list, no spaces, of dependencies that you want to bump.
   schedule:
-    # Thursdays 6am UTC
-    - cron: '0 6 * * 4'
+    # Thursdays 10am central
+    - cron: '0 15 * * 4'
 
 jobs:
   rcPR:
