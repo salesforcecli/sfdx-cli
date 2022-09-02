@@ -1313,7 +1313,7 @@
     "@salesforce/ts-types" "^1.5.20"
     chalk "^2.4.2"
 
-"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.4", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.24.1", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.1", "@salesforce/core@^3.26.2":
+"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.4", "@salesforce/core@^3.19.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.24.1", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.1", "@salesforce/core@^3.26.2":
   version "3.26.2"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.26.2.tgz#94b361bd62967feb3eedc624fc6cf444e7347f84"
   integrity sha512-GDrho8jbh1UDjcsYRRUzhNv4KUsMcBtux/yEqB2ycvHXhjVnrNkJcl99KESiU1eZMl2DGZEE1IO8yxnb2rSvgg==
@@ -1455,6 +1455,18 @@
     open "^8.2.1"
     tslib "^2"
 
+"@salesforce/plugin-command-reference@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-command-reference/-/plugin-command-reference-1.4.0.tgz#560f1d352895f5c4d30259ee1d55ccb2978cc85e"
+  integrity sha512-7m8J9o375lFqFYUkzgmsnIYNiIIjpOn56nYtmNv17JNKH3TktPmu0pu1QzCuXjFE6VA1w4Zo79IkyGelhove5w==
+  dependencies:
+    "@salesforce/command" "^5.1.3"
+    "@salesforce/core" "^3.19.5"
+    chalk "^3.0.0"
+    handlebars "4.7.7"
+    shelljs "^0.8.5"
+    tslib "^1"
+
 "@salesforce/plugin-community@2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-community/-/plugin-community-2.0.1.tgz#103af212414d40506ed83b357a1a0972d25b15db"
@@ -1574,15 +1586,16 @@
     tslib "^2"
 
 "@salesforce/plugin-release-management@^3.0.1":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.0.2.tgz#36026c2ef488d1eb7a607378feea9f63fdf2b5b3"
-  integrity sha512-UtStKeYz3UwTSprzMx48+3xv3hW97q0EnRFeUGw7/xAYVoOQhwP2Ls/oDCVmudv7gElAz8EW8EOlEU4H9Cmjzw==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.1.0.tgz#fdb3dfd59b205d22468ac24c435d537ec5ced3b3"
+  integrity sha512-MRY+/3oHlbmRWHZRj6jfzpToOXrQmYMH7t8ucBX09ihxska3igC0ktoJPnUVlxcOOf0VSjAwnXjANZm2pviWiQ==
   dependencies:
     "@oclif/core" "^1.13.3"
     "@octokit/core" "^4.0.4"
     "@salesforce/command" "^5.2.3"
     "@salesforce/core" "^3.26.0"
     "@salesforce/kit" "^1.6.0"
+    "@salesforce/plugin-command-reference" "^1.4.0"
     "@salesforce/plugin-trust" "^2.0.3"
     "@salesforce/ts-types" "^1.5.20"
     agent-base "^6.0.2"
@@ -5075,7 +5088,7 @@ growl@1.10.5:
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.10.5.tgz#f2735dc2283674fa67478b10181059355c369e5e"
   integrity sha512-qBr4OuELkhPenW6goKVXiv47US3clb3/IbuWF9KNKEijAy9oeHxU9IgzjvJhHkUzhaj7rOUD7+YGWqUjLp5oSA==
 
-handlebars@^4.7.7:
+handlebars@4.7.7, handlebars@^4.7.7:
   version "4.7.7"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"
   integrity sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==
