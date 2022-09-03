@@ -1477,10 +1477,10 @@
     "@salesforce/core" "^3.19.0"
     tslib "^2"
 
-"@salesforce/plugin-config@1.4.17":
-  version "1.4.17"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.4.17.tgz#b000bf09a0bea531c6ab165ec2d79d5a90b498fb"
-  integrity sha512-jTKZEiBUW2kZRgLynLcZCnsumzzoyzwX8XX2zxe+GDbtDFI8N1WitBSUOIi1FUThITtkx4ep3acrP4XCYQZx/w==
+"@salesforce/plugin-config@1.4.19":
+  version "1.4.19"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.4.19.tgz#9fd368fdaf8f13df423b6e86b80625148693b80a"
+  integrity sha512-/Vx482m0lQi6fPTWeQ+ruOio8JiMVLx/vQ2hRqST+BvfTNTZ8hfkQuibJH+P9QpzRGI/MA4A4kH9l6QxloTPBQ==
   dependencies:
     "@oclif/core" "^1.7.0"
     "@oclif/test" "^2.1.0"
@@ -2653,19 +2653,7 @@ big-integer@^1.6.17:
   resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.51.tgz#0df92a5d9880560d3ff2d5fd20245c889d130686"
   integrity sha512-GPEid2Y9QU1Exl1rpO9B2IPJGHPSupF5GnVIP0blYvNOMer2bTvSWs1jGOUg04hTmu67nmLsQ9TBo1puaotBHg==
 
-bin-links@^3.0.0:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/bin-links/-/bin-links-3.0.2.tgz#5c40f14b0742faa2ae952caa76b4a29090befcbb"
-  integrity sha512-+oSWBdbCUK6X4LOCSrU36fWRzZNaK7/evX7GozR9xwl2dyiVi3UOUwTyyOVYI1FstgugfsM9QESRrWo7gjCYbg==
-  dependencies:
-    cmd-shim "^5.0.0"
-    mkdirp-infer-owner "^2.0.0"
-    npm-normalize-package-bin "^1.0.0"
-    read-cmd-shim "^3.0.0"
-    rimraf "^3.0.0"
-    write-file-atomic "^4.0.0"
-
-bin-links@^3.0.3:
+bin-links@^3.0.0, bin-links@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/bin-links/-/bin-links-3.0.3.tgz#3842711ef3db2cd9f16a5f404a996a12db355a6e"
   integrity sha512-zKdnMPWEdh4F5INR07/eBrodC7QrF5JKvqskjz/ZZRXg5YSAZIbn8zGhbhUrElzHBZ2fvEQdOU59RHcTG3GiwA==
@@ -7267,7 +7255,6 @@ npm@^8.12.1, npm@^8.15.0:
     "@npmcli/fs" "^2.1.0"
     "@npmcli/map-workspaces" "^2.0.3"
     "@npmcli/package-json" "^2.0.0"
-    "@npmcli/promise-spawn" "^3.0.0"
     "@npmcli/run-script" "^4.2.1"
     abbrev "~1.1.1"
     archy "~1.0.0"
@@ -7278,7 +7265,6 @@ npm@^8.12.1, npm@^8.15.0:
     cli-table3 "^0.6.2"
     columnify "^1.6.0"
     fastest-levenshtein "^1.0.12"
-    fs-minipass "^2.1.0"
     glob "^8.0.1"
     graceful-fs "^4.2.10"
     hosted-git-info "^5.1.0"
@@ -7298,7 +7284,6 @@ npm@^8.12.1, npm@^8.15.0:
     libnpmteam "^4.0.4"
     libnpmversion "^3.0.7"
     make-fetch-happen "^10.2.0"
-    minimatch "^5.1.0"
     minipass "^3.1.6"
     minipass-pipeline "^1.2.4"
     mkdirp "^1.0.4"
