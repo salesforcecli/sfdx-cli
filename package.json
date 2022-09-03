@@ -234,6 +234,7 @@
     "pack:docker:slim": "./scripts/docker-publish-slim.js",
     "pack:macos": "oclif pack:macos --additional-cli sf",
     "pack:tarballs": "oclif pack:tarballs --xz --parallel",
+    "pack:tarballs:sequential": "oclif pack:tarballs --xz",
     "pack:verify": "sf-release cli:tarballs:verify",
     "pack:win": "oclif pack:win --additional-cli sf",
     "postinstall": "node ./scripts/post-install-release-notes.js",
