@@ -1,0 +1,25 @@
+name: promote-rc-to-latest
+
+on:
+  schedule:
+    # Thursdays 9a central
+    - cron: '0 14 * * 4'
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      # what is the RC version, numerically?
+      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
+        id: version-info
+        with:
+          version: latest-rc
+
+      # actual promotion, including notification
+      - uses: ./.github/workflows/promote.yml
+        with:
+          version: ${{steps.version-info.outputs.version}}
+          dockerTag: latest
+          npmTag: latest
+          channel: stable-rc
+          useCTC: true

@@ -10,25 +10,10 @@ jobs:
   buildPush:
     runs-on: ubuntu-latest
     steps:
-      # Limitation: versions file will contain the last 20 releases and NOT rc until it's promoted to latest
-      - id: versionCurl
-        if: inputs.version != 'latest-rc'
-        name: Get url for version
-        run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json' | jq -r '.[\"${{ inputs.version }}\"]')"
-
-      - id: rcCurl
-        if: inputs.version == 'latest-rc'
-        name: Get url for latest-rc
-        run: echo "::set-output name=url::$(curl -s 'https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64-buildmanifest' | jq -r '.xz')"
-
-      - id: regex
-        uses: actions-ecosystem/action-regex-match@9e6c4fb3d5e898f505be7a1fb6e7b0a278f6665b
+      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
+        id: version-info
         with:
-          text: ${{ steps.versionCurl.outputs.url || steps.rcCurl.outputs.url }}
-          regex: '(\d+\.\d+\.\d+)'
-          flags: g
-
-      - run: echo "regex found version ${{steps.regex.outputs.group1}}"
+          version: 7.166.1
 
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -56,8 +41,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           file: dockerfiles/Dockerfile_slim
           build-args: |
-            DOWNLOAD_URL=${{ steps.versionCurl.outputs.url || steps.rcCurl.outputs.url }}
-          tags: salesforce/salesforcedx:latest-rc-slim, salesforce/salesforcedx:${{ steps.regex.outputs.group1 }}-slim
+            DOWNLOAD_URL=${{ steps.version-info.outputs.url }}
+          tags: salesforce/salesforcedx:latest-rc-slim, salesforce/salesforcedx:${{ steps.version-info.outputs.version }}-slim
 
   verify:
     needs: buildPush

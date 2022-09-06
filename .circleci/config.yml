@@ -15,46 +15,6 @@ parameters:
     type: string
     default: 'test-and-release'
 
-jobs:
-  promote-channels:
-    docker:
-      - image: node:lts
-    steps:
-      - checkout
-      - jq/install
-      - restore_cache:
-          keys:
-            - v3-npm-{{checksum "yarn.lock"}}
-      - run: yarn install
-      - run: ./scripts/promote-rc-to-latest
-
-  change-case-start:
-    docker:
-      - image: node:latest
-    steps:
-      - release-management/install-change-case-mgmt
-      - release-management/change-case-create
-
-  npm-promotions:
-    docker:
-      - image: node:latest
-    steps:
-      - checkout
-      - jq/install
-      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-        # if you try to use yarn here, it will attempt to use the wrong registry and throw 401s
-      - run: npm run promote-dist-tags
-
-  docker-promotions:
-    docker:
-      - image: cimg/node:lts
-    steps:
-      - checkout
-      - run: yarn install --ignore-scripts
-      - setup_remote_docker
-      - run: echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-      - run: yarn promote-docker
-
   promote-verify:
     docker:
       - image: node:lts

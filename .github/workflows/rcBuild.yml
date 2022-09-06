@@ -43,7 +43,7 @@ jobs:
     needs: [pack-verify-upload-tarballs]
     uses: ./.github/workflows/dockerBuildSlim.yml
     with:
-      version: latest-rc
+      version: ${{ github.event.release.tag_name }}
     secrets: inherit
 
   docker-full:

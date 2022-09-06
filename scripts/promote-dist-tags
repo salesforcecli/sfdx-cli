@@ -1,2 +1,0 @@
-CLI_RC_VERSION=$(npm show sfdx-cli@latest-rc version)
-npm dist-tag add sfdx-cli@${CLI_RC_VERSION} latest

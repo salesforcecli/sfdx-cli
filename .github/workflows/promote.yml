@@ -1,0 +1,152 @@
+name: promote
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        description: full npm version number, like 7.150.2
+        required: true
+      dockerTag:
+        type: string
+        required: false
+        description: for all docker images (full, slim, etc) which suffix is used, like latest or latest-rc
+      npmTag:
+        type: string
+        required: true
+        default: latest
+        description: npm tag to apply to the version (example latest, latest-rc )
+      channel:
+        type: string
+        required: true
+        default: stable
+        description: channel to promote the matching tarball to (example stable, stable-rc )
+      useCTC:
+        type: boolean
+        required: false
+        description: this promotion should only run if no release moratorium is in place
+
+jobs:
+  version-info:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+  ctc-open:
+    if: inputs.useCTC
+    uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@main
+    secrets: inherit
+
+  docker-promote:
+    needs: [version-info, ctcOpen]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - run: |
+          docker pull salesforce/salesforcedx:${{ inputs.version }}-slim
+          docker tag salesforce/salesforcedx:${{ inputs.version }}-slim salesforce/salesforcedx:${{ inputs.dockerTag }}-slim
+          docker push salesforce/salesforcedx:${{ inputs.dockerTag }}-slim
+
+          docker pull salesforce/salesforcedx:${{ inputs.version }}-full
+          docker tag salesforce/salesforcedx:${{ inputs.version }}-full salesforce/salesforcedx:${{ inputs.dockerTag }}-full
+          docker push salesforce/salesforcedx:${{ inputs.dockerTag }}-full
+
+  ctc-close:
+    if: inputs.useCTC
+    needs: [ctc-open, docker-promote]
+    uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@main
+    secrets: inherit
+
+  npm-promote:
+    needs: [ctc-open]
+    runs-on:
+      ubuntu-latest
+      # if you try to use yarn here, it will attempt to use the wrong registry and throw 401s
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+      - run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+          npm dist-tag add sfdx-cli@${{ inputs.version }} ${{inputs.npmTag }}
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  channel-promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: yarn
+      - run: yarn install
+      # to get the SHA
+      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
+        id: version-info
+        with:
+          version: ${{ inputs.version }}
+      - run: yarn promote --version ${{ steps.version-info.outputs.version }} --sha ${{ steps.version-info.outputs.sha }} --channel ${{ inputs.channel }} --max-age 300 --macos --win --indexes --xz
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+  ctcCloseSuccess:
+    needs: [ctc-open, npm-promote, docker-promote, channel-promote]
+    if: needs.ctc-open.status == 'success' && needs.npm-promote.status == 'success' && needs.docker-promote.status == 'success' && needs.channel-promote.status == 'success'
+    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@main
+    secrets: inherit
+    with:
+      changeCaseId: ${{needs.ctc-open.outputs.changeCaseId}}
+
+  ctcCloseFail:
+    needs: [ctc-open, npm-promote, docker-promote, channel-promote]
+    if: always() && (needs.ctc-open.status != 'success' || needs.npm-promote.status != 'success' || needs.docker-promote.status != 'success' || needs.channel-promote.status != 'success')
+    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@main
+    secrets: inherit
+    with:
+      changeCaseId: ${{ needs.ctc-open.outputs.changeCaseId }}
+      status: Not Implemented
+
+  promote-verify:
+    runs-on: ubuntu-latest
+    needs: [npm-promote, docker-promote, channel-promote]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: yarn
+      - run: ./scripts/verify-promote
+      - run: npm install -g sfdx-cli @salesforce/plugin-release-management --omit=dev
+      - run: sf-release cli:versions:inspect -c stable -l archive
+      - name: Announce promotion
+        id: slack
+        uses: slackapi/slack-github-action@v1.21.0
+        env:
+          # TODO: post these to the normal platform-cli channel
+          SLACK_WEBHOOK_URL: ${{ secrets.CLI_ALERTS_SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        with:
+          # This data can be any valid JSON from a previous step in the GitHub Action
+          payload: |
+            {
+               "blocks": [{
+                 "type": "section",
+                 "text": {
+                   "type": "mrkdwn",
+                   "text": "sfdx-cli version ${{ inputs.version }} has been promoted to ${{ inputs.npmTag }} :tada2:\nRun `sfdx whatsnew -v latest` to see what's new"
+                 }
+               }]
+             }
