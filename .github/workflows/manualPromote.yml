@@ -1,3 +1,4 @@
+name: manual promote
 on:
   workflow_dispatch:
     inputs:
@@ -27,6 +28,6 @@ jobs:
     with:
       version: ${{inputs.version}}
       dockerTag: ${{inputs.dockerTag}}
-      npmTag: ${{intpus.npmTag}}
+      npmTag: ${{inputs.npmTag}}
       channel: ${{inputs.channel}}
       useCTC: ${{inputs.useCTC}}
