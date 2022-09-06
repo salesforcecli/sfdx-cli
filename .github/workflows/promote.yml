@@ -38,7 +38,7 @@ jobs:
     secrets: inherit
 
   docker-promote:
-    needs: [version-info, ctcOpen]
+    needs: [version-info, ctc-open]
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
