@@ -57,12 +57,6 @@ jobs:
           docker tag salesforce/salesforcedx:${{ inputs.version }}-full salesforce/salesforcedx:${{ inputs.dockerTag }}-full
           docker push salesforce/salesforcedx:${{ inputs.dockerTag }}-full
 
-  ctc-close:
-    if: inputs.useCTC
-    needs: [ctc-open, docker-promote]
-    uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@main
-    secrets: inherit
-
   npm-promote:
     needs: [ctc-open]
     runs-on:
