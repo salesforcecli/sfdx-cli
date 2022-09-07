@@ -1,10 +1,9 @@
 name: ut and tarballs
 
 on:
-  push:
-    branches-ignore: [main]
   pull_request:
     types: [opened, reopened, synchronize]
+
 concurrency:
   group: ut-tarballs
   cancel-in-progress: true
