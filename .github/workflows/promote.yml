@@ -27,18 +27,13 @@ on:
         description: this promotion should only run if no release moratorium is in place
 
 jobs:
-  version-info:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
   ctc-open:
     if: inputs.useCTC
     uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@main
     secrets: inherit
 
   docker-promote:
-    needs: [version-info, ctc-open]
+    needs: [ctc-open]
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -84,6 +79,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   channel-promote:
+    needs: [ctc-open]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
