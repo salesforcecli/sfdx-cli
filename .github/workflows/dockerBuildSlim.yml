@@ -10,13 +10,19 @@ jobs:
   buildPush:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: yarn
+
+      # for whatever version got passed in, we need the download url for the linux xz tarball
       - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
         id: version-info
         with:
-          version: 7.166.1
-
-      - name: Check out the repo
-        uses: actions/checkout@v3
+          version: ${{ inputs.version }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
