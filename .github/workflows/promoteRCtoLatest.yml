@@ -7,6 +7,8 @@ on:
 
 jobs:
   promote:
+    outputs:
+      version: ${{ steps.version-info.outputs.version }}
     runs-on: ubuntu-latest
     steps:
       # what is the RC version, numerically?
@@ -15,7 +17,7 @@ jobs:
         with:
           version: latest-rc
 
-      # actual promotion, including notification
+      # actual promotion
       - uses: ./.github/workflows/promote.yml
         with:
           version: ${{steps.version-info.outputs.version}}
@@ -23,3 +25,35 @@ jobs:
           npmTag: latest
           channel: stable-rc
           useCTC: true
+
+  promote-verify:
+    runs-on: ubuntu-latest
+    needs: [promote]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: yarn
+      - run: ./scripts/verify-promote
+      - run: npm install -g sfdx-cli @salesforce/plugin-release-management --omit=dev
+      - run: sf-release cli:versions:inspect -c stable -l archive
+      - name: Announce promotion
+        id: slack
+        uses: slackapi/slack-github-action@v1.21.0
+        env:
+          # TODO: post these to the normal platform-cli channel after testing
+          SLACK_WEBHOOK_URL: ${{ secrets.CLI_ALERTS_SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        with:
+          # This data can be any valid JSON from a previous step in the GitHub Action
+          payload: |
+            {
+               "blocks": [{
+                 "type": "section",
+                 "text": {
+                   "type": "mrkdwn",
+                   "text": "sfdx-cli version ${{ needs.promote.outputs.version }} has been promoted to latest :tada2:\nRun `sfdx whatsnew -v latest` to see what's new"
+                 }
+               }]
+             }
