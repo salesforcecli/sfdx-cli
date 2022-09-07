@@ -7,15 +7,11 @@ on:
         type: string
         description: full npm version number, like 7.150.2
         required: true
-      dockerTag:
+      tag:
         type: string
         required: false
-        description: for all docker images (full, slim, etc) which suffix is used, like latest or latest-rc
-      npmTag:
-        type: string
-        required: true
+        description: tag to use for docker/npm, like latest or latest-rc
         default: latest
-        description: npm tag to apply to the version (example latest, latest-rc )
       channel:
         type: string
         required: true
@@ -50,12 +46,12 @@ jobs:
 
       - run: |
           docker pull salesforce/salesforcedx:${{ inputs.version }}-slim
-          docker tag salesforce/salesforcedx:${{ inputs.version }}-slim salesforce/salesforcedx:${{ inputs.dockerTag }}-slim
-          docker push salesforce/salesforcedx:${{ inputs.dockerTag }}-slim
+          docker tag salesforce/salesforcedx:${{ inputs.version }}-slim salesforce/salesforcedx:${{ inputs.tag }}-slim
+          docker push salesforce/salesforcedx:${{ inputs.tag }}-slim
 
           docker pull salesforce/salesforcedx:${{ inputs.version }}-full
-          docker tag salesforce/salesforcedx:${{ inputs.version }}-full salesforce/salesforcedx:${{ inputs.dockerTag }}-full
-          docker push salesforce/salesforcedx:${{ inputs.dockerTag }}-full
+          docker tag salesforce/salesforcedx:${{ inputs.version }}-full salesforce/salesforcedx:${{ inputs.tag }}-full
+          docker push salesforce/salesforcedx:${{ inputs.tag }}-full
 
   npm-promote:
     needs: [ctc-open]
@@ -68,7 +64,7 @@ jobs:
           node-version: latest
       - run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          npm dist-tag add sfdx-cli@${{ inputs.version }} ${{ inputs.npmTag }}
+          npm dist-tag add sfdx-cli@${{ inputs.version }} ${{ inputs.tag }}
 
   channel-promote:
     needs: [ctc-open]

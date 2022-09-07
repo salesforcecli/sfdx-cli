@@ -26,9 +26,8 @@ jobs:
     secrets: inherit
     with:
       version: ${{needs.getVersion.outputs.version}}
-      dockerTag: latest
-      npmTag: latest
-      channel: stable-rc
+      tag: latest
+      channel: stable
       useCTC: true
 
   promote-verify:
