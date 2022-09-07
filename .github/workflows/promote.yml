@@ -67,10 +67,8 @@ jobs:
         with:
           node-version: latest
       - run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
           npm dist-tag add sfdx-cli@${{ inputs.version }} ${{ inputs.npmTag }}
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   channel-promote:
     needs: [ctc-open]
@@ -87,7 +85,7 @@ jobs:
         id: version-info
         with:
           version: ${{ inputs.version }}
-          npmTag: sfdx-cli
+          npmPackage: sfdx-cli
       - run: yarn promote --version ${{ steps.version-info.outputs.version }} --sha ${{ steps.version-info.outputs.sha }} --channel ${{ inputs.channel }} --max-age 300 --macos --win --indexes --xz
         env:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
