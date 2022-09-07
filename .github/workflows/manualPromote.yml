@@ -16,6 +16,11 @@ on:
         required: true
         description: for all docker images (full, slim, etc) which suffix is used, like latest or latest-rc
         default: latest
+      npmTag:
+        type: string
+        required: true
+        description: npm tag to apply to the version (example latest, latest-rc )
+        default: latest
       useCTC:
         type: boolean
         required: false

@@ -68,7 +68,7 @@ jobs:
           node-version: latest
       - run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-          npm dist-tag add sfdx-cli@${{ inputs.version }} ${{inputs.npmTag }}
+          npm dist-tag add sfdx-cli@${{ inputs.version }} ${{ inputs.npmTag }}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
