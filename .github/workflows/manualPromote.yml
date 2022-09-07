@@ -1,3 +1,4 @@
+name: manual promote
 on:
   workflow_dispatch:
     inputs:
@@ -10,10 +11,10 @@ on:
         required: true
         default: stable
         description: channel to promote the matching tarball to (example stable, stable-rc )
-      dockerTag:
+      tag:
         type: string
-        required: true
-        description: for all docker images (full, slim, etc) which suffix is used, like latest or latest-rc
+        required: false
+        description: tag to use for docker/npm, like latest or latest-rc
         default: latest
       useCTC:
         type: boolean
@@ -24,9 +25,9 @@ on:
 jobs:
   manual-promote:
     uses: ./.github/workflows/promote.yml
+    secrets: inherit
     with:
       version: ${{inputs.version}}
-      dockerTag: ${{inputs.dockerTag}}
-      npmTag: ${{intpus.npmTag}}
+      tag: ${{inputs.tag}}
       channel: ${{inputs.channel}}
       useCTC: ${{inputs.useCTC}}

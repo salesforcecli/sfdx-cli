@@ -21,6 +21,18 @@ jobs:
       channel: stable-rc
     secrets: inherit
 
+  archives-verify:
+    runs-on: ubuntu-latest
+    needs: [pack-verify-upload-tarballs]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: npm
+      - run: npm install -g @salesforce/plugin-release-management --omit=dev
+      - run: sf-release cli:versions:inspect -c stable-rc -l archive
+
   pack-upload-mac:
     needs: [pack-verify-upload-tarballs]
     uses: salesforcecli/github-workflows/.github/workflows/packUploadMac.yml@main
@@ -43,7 +55,7 @@ jobs:
     needs: [pack-verify-upload-tarballs]
     uses: ./.github/workflows/dockerBuildSlim.yml
     with:
-      version: latest-rc
+      version: ${{ github.event.release.tag_name }}
     secrets: inherit
 
   docker-full:
