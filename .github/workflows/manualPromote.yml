@@ -1,0 +1,32 @@
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        description: numerical npm version to promote, like 7.166.2 (no tags!)
+      channel:
+        type: string
+        required: true
+        default: stable
+        description: channel to promote the matching tarball to (example stable, stable-rc )
+      dockerTag:
+        type: string
+        required: true
+        description: for all docker images (full, slim, etc) which suffix is used, like latest or latest-rc
+        default: latest
+      useCTC:
+        type: boolean
+        required: false
+        default: false
+        description: this promotion should only run if no release moratorium is in place
+
+jobs:
+  manual-promote:
+    uses: ./.github/workflows/promote.yml
+    with:
+      version: ${{inputs.version}}
+      dockerTag: ${{inputs.dockerTag}}
+      npmTag: ${{intpus.npmTag}}
+      channel: ${{inputs.channel}}
+      useCTC: ${{inputs.useCTC}}
