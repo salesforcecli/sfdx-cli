@@ -25,6 +25,7 @@ on:
 jobs:
   manual-promote:
     uses: ./.github/workflows/promote.yml
+    secrets: inherit
     with:
       version: ${{inputs.version}}
       dockerTag: ${{inputs.dockerTag}}
