@@ -13,7 +13,7 @@ on:
         required: false
         description: comma-separated list, no spaces, of dependencies that you want to bump.
   workflow_run:
-    workflows: [promote]
+    workflows: [promote-rc-to-latest]
     types:
       - completed
 
