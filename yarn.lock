@@ -1740,12 +1740,12 @@
     signal-exit "^3.0.6"
     tslib "^2.3.1"
 
-"@salesforce/source-deploy-retrieve@6.5.0", "@salesforce/source-deploy-retrieve@^6.0.2", "@salesforce/source-deploy-retrieve@^6.2.0", "@salesforce/source-deploy-retrieve@^6.2.6", "@salesforce/source-deploy-retrieve@^6.2.7":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-6.5.0.tgz#31a6dfaf72e50dc4d04221aac4828f75092ff684"
-  integrity sha512-VhIOMwIzZhZ8AqKPMwulBF/TuqcPXRH2DIhf2LTpNGvZgNZhp3N963KMdKDFfPrcJeqoS+9yx6UiWVrlhrrkkw==
+"@salesforce/source-deploy-retrieve@6.7.0", "@salesforce/source-deploy-retrieve@^6.0.2", "@salesforce/source-deploy-retrieve@^6.2.0", "@salesforce/source-deploy-retrieve@^6.2.6", "@salesforce/source-deploy-retrieve@^6.2.7":
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-6.7.0.tgz#46f524e5bae8841deeff5553f8f303bc9933f285"
+  integrity sha512-51feOkMW4Evdh4K89ljd1Y0XOR3iZU9wCVuRIaxFqSCPXRdGLBe/5DDmc3erMnmZ3XBe6P72Z53RG/aCpq68CQ==
   dependencies:
-    "@salesforce/core" "^3.26.1"
+    "@salesforce/core" "^3.26.2"
     "@salesforce/kit" "^1.6.0"
     "@salesforce/ts-types" "^1.5.20"
     "@xmldom/xmldom" "^0.8.2"
@@ -7122,7 +7122,7 @@ npm-install-checks@^5.0.0:
   dependencies:
     semver "^7.1.1"
 
-npm-normalize-package-bin@^1.0.0, npm-normalize-package-bin@^1.0.1:
+npm-normalize-package-bin@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/npm-normalize-package-bin/-/npm-normalize-package-bin-1.0.1.tgz#6e79a41f23fd235c0623218228da7d9c23b8f6e2"
   integrity sha512-EPfafl6JL5/rU+ot6P3gRSCpPDW5VmIzX959Ob1+ySFUuuYHWHekXpwdUZcKP5C+DS4GEtdJluwBjnsNDl+fSA==

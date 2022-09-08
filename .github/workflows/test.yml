@@ -11,5 +11,8 @@ concurrency:
 jobs:
   ut:
     uses: salesforcecli/github-workflows/.github/workflows/unitTest.yml@main
+    secrets: inherit
+
   tarballs:
     uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@main
+    secrets: inherit
