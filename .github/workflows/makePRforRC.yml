@@ -12,12 +12,14 @@ on:
         type: string
         required: false
         description: comma-separated list, no spaces, of dependencies that you want to bump.
-  schedule:
-    # Thursdays 10am central
-    - cron: '0 15 * * 4'
+  workflow_run:
+    workflows: [promote-rc-to-latest]
+    types:
+      - completed
 
 jobs:
   rcPR:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     env:
       GITHUB_TOKEN: ${{ secrets.SF_CLI_BOT_GITHUB_TOKEN }}
     runs-on: 'ubuntu-latest'
