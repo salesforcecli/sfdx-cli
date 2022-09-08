@@ -2,10 +2,14 @@ name: just-nuts
 
 on:
   workflow_dispatch:
-  workflow_call:
+  workflow_run:
+    workflows: [RC]
+    types:
+      - completed
 
 jobs:
   basic:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     strategy:
       fail-fast: false
       max-parallel: 6
@@ -32,6 +36,7 @@ jobs:
       os: ${{matrix.os}}
     secrets: inherit
   source-regular:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     strategy:
       fail-fast: false
       matrix:
@@ -48,6 +53,7 @@ jobs:
     secrets: inherit
 
   source-big:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     strategy:
       fail-fast: false
       matrix:
