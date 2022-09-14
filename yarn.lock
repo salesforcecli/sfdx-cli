@@ -1699,6 +1699,22 @@
     shelljs "^0.8.4"
     tslib "^2"
 
+"@salesforce/plugin-trust@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-trust/-/plugin-trust-2.0.4.tgz#8952b15af48be1e6f16c73e290a12673a94c4c60"
+  integrity sha512-hX9cE2V2MkZNJ1EexBBaeKz2b15T8dRbtPW+1BZroRL0wdNFb3ju2su5pCtkK54sfmCdt9ivp5OIvwKv3jrggg==
+  dependencies:
+    "@oclif/core" "^1.6.3"
+    "@salesforce/command" "^5.0.4"
+    "@salesforce/core" "^3.10.1"
+    got "^11"
+    npm "^8.12.1"
+    npm-run-path "^4.0.1"
+    proxy-agent "^5.0.0"
+    proxy-from-env "^1.1.0"
+    shelljs "^0.8.4"
+    tslib "^2"
+
 "@salesforce/plugin-user@2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-user/-/plugin-user-2.1.0.tgz#90616ffb85d771acd45a8977f1dccd483ae92d02"
