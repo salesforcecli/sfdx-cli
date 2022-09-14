@@ -19,7 +19,7 @@ on:
 
 jobs:
   rcPR:
-    if: ${{ github.event.workflow_dispatch || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ inputs || github.event.workflow_run.conclusion == 'success' }}
     env:
       GITHUB_TOKEN: ${{ secrets.SF_CLI_BOT_GITHUB_TOKEN }}
     runs-on: 'ubuntu-latest'
