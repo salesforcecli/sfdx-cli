@@ -8,8 +8,10 @@
 import * as os from 'os';
 import * as path from 'path';
 import { run as oclifRun, Config } from '@oclif/core';
+import { VersionCommand } from '@oclif/plugin-version';
 import { set } from '@salesforce/kit';
 import { AnyJson, get } from '@salesforce/ts-types';
+import { Doctor } from '@salesforce/plugin-info';
 import * as Debug from 'debug';
 import * as lazyRequire from './lazyRequire';
 import { default as nodeEnv, Env } from './util/env';
@@ -136,6 +138,12 @@ export function create(
       debugCliInfo(version, channel, env, config);
       if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
         lazyRequire.start(config);
+      }
+      if (args[0] === 'doctor') {
+        // The doctor command requires CLI version details obtained from the CLI's oclif config.
+        const versionCmd = new VersionCommand(['--verbose', '--json'], config);
+        const versionDetail = await versionCmd.run();
+        Doctor.init(config, versionDetail);
       }
       // I think the run method is used in test.
       return run(args, config);
