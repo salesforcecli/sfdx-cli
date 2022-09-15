@@ -1313,10 +1313,10 @@
     "@salesforce/ts-types" "^1.5.20"
     chalk "^2.4.2"
 
-"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.1", "@salesforce/core@^3.26.2", "@salesforce/core@^3.26.3", "@salesforce/core@^3.30.0":
-  version "3.30.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.30.0.tgz#51c986aba5bb4b599fbff1d8c3f9e37508f9206f"
-  integrity sha512-qU48fYMBcqZOVAUXaRYUleuelqfR8CERc1LUTJwmufRocieCHSx9PVXVRDgWl9KW09xcDyv8hu8RL5IaAVfWKA==
+"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.1", "@salesforce/core@^3.26.2", "@salesforce/core@^3.26.3", "@salesforce/core@^3.30.0", "@salesforce/core@^3.30.1":
+  version "3.30.1"
+  resolved "https://registry.npmjs.org/@salesforce/core/-/core-3.30.1.tgz#1e683e3721952a189b7558c49189c869a159909f"
+  integrity sha512-Qs42gCc8HudtAHI9POcPYxS7OAKQy27lSVDG1Tlt4wjEoWsnSRre8RpKJ8gsig+yWKd4CVTZCY5bjpRtHY4zdw==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.5.41"
@@ -1564,14 +1564,14 @@
     "@salesforce/core" "^3.10.1"
     tslib "^2"
 
-"@salesforce/plugin-org@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-2.2.1.tgz#1d83c111cc46d1103f0e4d262bb9780c942119e6"
-  integrity sha512-SmCch7ICoOBAlXR8QZaedoHNqktDelPi8hN/JeCGHGWsvSO3/JhDu6T4kV1lyJ53u0I2A63yqJIjHaeCEfnXSQ==
+"@salesforce/plugin-org@2.2.3":
+  version "2.2.3"
+  resolved "https://registry.npmjs.org/@salesforce/plugin-org/-/plugin-org-2.2.3.tgz#53ca44f75b06f83dab0a5187f20d4961f6d0f4b4"
+  integrity sha512-ofzndErulXvZt4n1Qo3bj8yoLomKKSwPjU+yQ+zFlhwVSYSP3yadngM2pJ8cA2zM27R3KZecMtTSlIyUVwl8mw==
   dependencies:
     "@oclif/core" "^1.16.1"
     "@salesforce/command" "^5.2.6"
-    "@salesforce/core" "^3.30.0"
+    "@salesforce/core" "^3.30.1"
     "@salesforce/kit" "^1.6.0"
     open "8.4.0"
     tslib "^2"
