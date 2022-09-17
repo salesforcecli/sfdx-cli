@@ -15,7 +15,6 @@ export class Env extends KitEnv {
   public static readonly UPDATE_INSTRUCTIONS = 'SFDX_UPDATE_INSTRUCTIONS';
   public static readonly S3_HOST = 'SFDX_S3_HOST';
   public static readonly NPM_REGISTRY = 'SFDX_NPM_REGISTRY';
-  public static readonly LAZY_LOAD_MODULES = 'SFDX_LAZY_LOAD_MODULES';
 
   public constructor(env = process.env) {
     super(env);
@@ -72,10 +71,6 @@ export class Env extends KitEnv {
 
   public setNpmRegistryOverride(value: string): void {
     return this.setString(Env.NPM_REGISTRY, value);
-  }
-
-  public isLazyRequireEnabled(): boolean {
-    return this.getBoolean(Env.LAZY_LOAD_MODULES);
   }
 }
 

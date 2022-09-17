@@ -113,15 +113,4 @@ describe('Env', () => {
       expect(env.getString('SFDX_S3_HOST')).to.equal('http://example.com');
     });
   });
-
-  describe('isLazyRequireEnabled', () => {
-    it('should return false if lazy requires are not enabled', () => {
-      expect(env.isLazyRequireEnabled()).to.be.false;
-    });
-
-    it('should return true if lazy requires are enabled', () => {
-      env.setBoolean('SFDX_LAZY_LOAD_MODULES', true);
-      expect(env.isLazyRequireEnabled()).to.be.true;
-    });
-  });
 });
