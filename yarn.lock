@@ -1313,33 +1313,10 @@
     "@salesforce/ts-types" "^1.5.20"
     chalk "^2.4.2"
 
-"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.1", "@salesforce/core@^3.26.2", "@salesforce/core@^3.3.0", "@salesforce/core@^3.30.0", "@salesforce/core@^3.30.1":
+"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.3", "@salesforce/core@^3.19.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.1", "@salesforce/core@^3.26.2", "@salesforce/core@^3.26.3", "@salesforce/core@^3.3.0", "@salesforce/core@^3.30.0", "@salesforce/core@^3.30.1":
   version "3.30.1"
   resolved "https://registry.npmjs.org/@salesforce/core/-/core-3.30.1.tgz#1e683e3721952a189b7558c49189c869a159909f"
   integrity sha512-Qs42gCc8HudtAHI9POcPYxS7OAKQy27lSVDG1Tlt4wjEoWsnSRre8RpKJ8gsig+yWKd4CVTZCY5bjpRtHY4zdw==
-  dependencies:
-    "@salesforce/bunyan" "^2.0.0"
-    "@salesforce/kit" "^1.5.41"
-    "@salesforce/schemas" "^1.1.0"
-    "@salesforce/ts-types" "^1.5.20"
-    "@types/graceful-fs" "^4.1.5"
-    "@types/semver" "^7.3.9"
-    ajv "^8.11.0"
-    archiver "^5.3.0"
-    change-case "^4.1.2"
-    debug "^3.2.7"
-    faye "^1.4.0"
-    form-data "^4.0.0"
-    graceful-fs "^4.2.9"
-    js2xmlparser "^4.0.1"
-    jsforce beta
-    jsonwebtoken "8.5.1"
-    ts-retry-promise "^0.6.0"
-
-"@salesforce/core@^3.26.3":
-  version "3.30.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.30.0.tgz#51c986aba5bb4b599fbff1d8c3f9e37508f9206f"
-  integrity sha512-qU48fYMBcqZOVAUXaRYUleuelqfR8CERc1LUTJwmufRocieCHSx9PVXVRDgWl9KW09xcDyv8hu8RL5IaAVfWKA==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.5.41"
@@ -1767,12 +1744,12 @@
     signal-exit "^3.0.6"
     tslib "^2.3.1"
 
-"@salesforce/source-deploy-retrieve@6.8.0", "@salesforce/source-deploy-retrieve@^6.0.2", "@salesforce/source-deploy-retrieve@^6.2.0", "@salesforce/source-deploy-retrieve@^6.2.6", "@salesforce/source-deploy-retrieve@^6.8.0":
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-6.8.0.tgz#b64db40d15deee90a40daf159112a71fefa17119"
-  integrity sha512-NRVhiRjdnfFPv9VXDX2H8kpCCRBAFVP4PbQAtu3k/YX2RVdqfqSZ352FWji6jgbVxKeSO5BiCQK5NZ48K/bdKA==
+"@salesforce/source-deploy-retrieve@6.8.1", "@salesforce/source-deploy-retrieve@^6.0.2", "@salesforce/source-deploy-retrieve@^6.2.0", "@salesforce/source-deploy-retrieve@^6.2.6", "@salesforce/source-deploy-retrieve@^6.8.0":
+  version "6.8.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-6.8.1.tgz#ba0084af91275a17199df688e28899d801f2c7c2"
+  integrity sha512-lonMQj91Ojp7wMXxZ2xG7R2mNHO7vFnak9ypjxSqNx98usq+yWuiG83lp1eHdmuVRfPHAyEc3mGuOkYm7/O0Ug==
   dependencies:
-    "@salesforce/core" "^3.26.2"
+    "@salesforce/core" "^3.26.3"
     "@salesforce/kit" "^1.6.0"
     "@salesforce/ts-types" "^1.5.20"
     "@xmldom/xmldom" "^0.8.2"
