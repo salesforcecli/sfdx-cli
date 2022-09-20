@@ -124,6 +124,28 @@
     "alias": []
   },
   {
+    "command": "automig:dump",
+    "plugin": "@mshanemc/sfdx-migration-automatic",
+    "flags": ["apiversion", "config", "excludebom", "json", "loglevel", "objects", "outputdir", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "automig:load",
+    "plugin": "@mshanemc/sfdx-migration-automatic",
+    "flags": [
+      "apiversion",
+      "concise",
+      "deletebeforeload",
+      "inputdir",
+      "json",
+      "loglevel",
+      "mappingobjects",
+      "targetusername",
+      "verbose"
+    ],
+    "alias": []
+  },
+  {
     "command": "commands",
     "plugin": "@oclif/plugin-commands",
     "flags": [
@@ -164,6 +186,25 @@
     "command": "config:unset",
     "plugin": "@salesforce/plugin-config",
     "flags": ["global", "json", "loglevel"],
+    "alias": []
+  },
+  {
+    "command": "data:sosl:query",
+    "plugin": "@mshanemc/sfdx-sosl",
+    "flags": ["apiversion", "json", "loglevel", "query", "targetusername"],
+    "alias": [
+      "shane:data:sosl:query",
+      "force:data:sosl:query",
+      "shane:data:search",
+      "force:data:search",
+      "force:data:sosl",
+      "shane:data:sosl"
+    ]
+  },
+  {
+    "command": "doctor",
+    "plugin": "@salesforce/plugin-info",
+    "flags": ["command", "json", "loglevel", "outputdir", "plugin"],
     "alias": []
   },
   {
@@ -525,6 +566,19 @@
     "alias": []
   },
   {
+    "command": "force:data:search",
+    "plugin": "@mshanemc/sfdx-sosl",
+    "flags": ["apiversion", "json", "loglevel", "query", "targetusername"],
+    "alias": [
+      "shane:data:sosl:query",
+      "force:data:sosl:query",
+      "shane:data:search",
+      "force:data:search",
+      "force:data:sosl",
+      "shane:data:sosl"
+    ]
+  },
+  {
     "command": "force:data:soql:bulk:report",
     "plugin": "@salesforce/plugin-data",
     "flags": ["apiversion", "bulkqueryid", "json", "loglevel", "resultformat", "targetusername"],
@@ -547,6 +601,32 @@
       "wait"
     ],
     "alias": []
+  },
+  {
+    "command": "force:data:sosl",
+    "plugin": "@mshanemc/sfdx-sosl",
+    "flags": ["apiversion", "json", "loglevel", "query", "targetusername"],
+    "alias": [
+      "shane:data:sosl:query",
+      "force:data:sosl:query",
+      "shane:data:search",
+      "force:data:search",
+      "force:data:sosl",
+      "shane:data:sosl"
+    ]
+  },
+  {
+    "command": "force:data:sosl:query",
+    "plugin": "@mshanemc/sfdx-sosl",
+    "flags": ["apiversion", "json", "loglevel", "query", "targetusername"],
+    "alias": [
+      "shane:data:sosl:query",
+      "force:data:sosl:query",
+      "shane:data:search",
+      "force:data:search",
+      "force:data:sosl",
+      "shane:data:sosl"
+    ]
   },
   {
     "command": "force:data:tree:export",
@@ -1943,6 +2023,1018 @@
     "plugin": "@oclif/plugin-plugins",
     "flags": ["help", "verbose"],
     "alias": []
+  },
+  {
+    "command": "shane:ai:auth",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["certfile", "email", "json", "level", "loglevel", "tokentime"],
+    "alias": []
+  },
+  {
+    "command": "shane:ai:dataset:delete",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["dataset", "email", "json", "loglevel"],
+    "alias": []
+  },
+  {
+    "command": "shane:ai:dataset:get",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["dataset", "email", "json", "language", "loglevel", "poll"],
+    "alias": []
+  },
+  {
+    "command": "shane:ai:dataset:upload",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["email", "file", "json", "loglevel", "name", "path", "train", "type", "verbose", "wait"],
+    "alias": []
+  },
+  {
+    "command": "shane:ai:playground:setup",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "email", "file", "json", "key", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:ai:playground:setupHeroku",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "app", "create", "json", "keepauth", "loglevel", "targetusername", "verbose"],
+    "alias": []
+  },
+  {
+    "command": "shane:analytics:app:share",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "allcsp",
+      "allprm",
+      "apiversion",
+      "community",
+      "json",
+      "loglevel",
+      "name",
+      "org",
+      "targetusername",
+      "type"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:analytics:community:enable",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "showbrowser", "targetusername"],
+    "alias": ["shane:communities:analytics:enable"]
+  },
+  {
+    "command": "shane:analytics:dataflow:start",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "id", "json", "loglevel", "name", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:analytics:dataset:download",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "batchsize",
+      "id",
+      "json",
+      "loglevel",
+      "name",
+      "offset",
+      "rows",
+      "target",
+      "targetusername",
+      "versionid"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:analytics:dataset:list",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:analytics:dataset:upload",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "app",
+      "async",
+      "csvfile",
+      "json",
+      "loglevel",
+      "metajson",
+      "name",
+      "operation",
+      "serial",
+      "targetusername",
+      "uploadinterval"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:cdc:create",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "batchsize", "dir", "json", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:cdc:prep",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "dir", "json", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:cdc:stream",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "dir", "json", "loglevel", "object", "replay", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:cert:unhardcode",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "label", "loglevel", "samlfile", "targetusername", "verbose"],
+    "alias": []
+  },
+  {
+    "command": "shane:communities:activate",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "name", "showbrowser", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:communities:analytics:enable",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "showbrowser", "targetusername"],
+    "alias": ["shane:communities:analytics:enable"]
+  },
+  {
+    "command": "shane:communities:describe",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "store", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:communities:json:modify",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "file",
+      "id",
+      "json",
+      "loglevel",
+      "property",
+      "query",
+      "queryfield",
+      "subproperty",
+      "targetusername",
+      "tooling",
+      "truncate",
+      "value",
+      "variable",
+      "verbose",
+      "wavename",
+      "wavetype",
+      "write"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:communities:publish",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "name", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:communities:selfreg",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["account", "apiversion", "community", "json", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:communities:url",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "prefix", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:concierge:chat:enable",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "targetusername", "verbose"],
+    "alias": []
+  },
+  {
+    "command": "shane:connectedapp:attributes",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "attributes", "json", "loglevel", "name", "showbrowser", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:connectedapp:uniquify",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["app", "json", "loglevel", "prefix"],
+    "alias": []
+  },
+  {
+    "command": "shane:contentasset:create",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["file", "json", "language", "loglevel", "name", "target"],
+    "alias": []
+  },
+  {
+    "command": "shane:data:dates:update",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["datafolder", "json", "loglevel", "outputfolder", "relative"],
+    "alias": []
+  },
+  {
+    "command": "shane:data:favorite",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "name", "object", "start", "targetusername", "where"],
+    "alias": ["shane:data:favourite"]
+  },
+  {
+    "command": "shane:data:favourite",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "name", "object", "start", "targetusername", "where"],
+    "alias": ["shane:data:favourite"]
+  },
+  {
+    "command": "shane:data:file:download",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "directory", "filename", "id", "json", "loglevel", "name", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:data:file:upload",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "chatter", "file", "json", "loglevel", "name", "parentid", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:data:id:query",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "object", "targetusername", "where"],
+    "alias": []
+  },
+  {
+    "command": "shane:data:search",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "query", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:data:sosl",
+    "plugin": "@mshanemc/sfdx-sosl",
+    "flags": ["apiversion", "json", "loglevel", "query", "targetusername"],
+    "alias": [
+      "shane:data:sosl:query",
+      "force:data:sosl:query",
+      "shane:data:search",
+      "force:data:search",
+      "force:data:sosl",
+      "shane:data:sosl"
+    ]
+  },
+  {
+    "command": "shane:data:sosl:query",
+    "plugin": "@mshanemc/sfdx-sosl",
+    "flags": ["apiversion", "json", "loglevel", "query", "targetusername"],
+    "alias": [
+      "shane:data:sosl:query",
+      "force:data:sosl:query",
+      "shane:data:search",
+      "force:data:search",
+      "force:data:sosl",
+      "shane:data:sosl"
+    ]
+  },
+  {
+    "command": "shane:data:tree:import",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "filesfolder", "json", "loglevel", "plan", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:events:stream",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "dir", "event", "json", "loglevel", "replay", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:github:action",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["json", "loglevel", "skipprerel", "skipprod"],
+    "alias": []
+  },
+  {
+    "command": "shane:github:deploybutton",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["button", "deployer", "json", "loglevel"],
+    "alias": []
+  },
+  {
+    "command": "shane:github:package:install",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "githubuser", "json", "loglevel", "repo", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:github:src:install",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "convert",
+      "githubuser",
+      "json",
+      "keeplocally",
+      "loglevel",
+      "path",
+      "repo",
+      "targetusername"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:group:photo",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "banner", "file", "group", "json", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:heroku:connect",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "app",
+      "configfile",
+      "environment",
+      "instance",
+      "json",
+      "loglevel",
+      "password",
+      "showbrowser",
+      "targetusername",
+      "verbose"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:heroku:externalobjects",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "app",
+      "createdir",
+      "json",
+      "label",
+      "loglevel",
+      "showbrowser",
+      "tables",
+      "targetusername",
+      "updatefile",
+      "verbose"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:heroku:repo:deploy",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "branch",
+      "days",
+      "envpassword",
+      "envuser",
+      "githubuser",
+      "json",
+      "loglevel",
+      "name",
+      "overrides",
+      "repo",
+      "targetusername",
+      "team"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:iot:activation",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "deactivate", "json", "loglevel", "name", "reset", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:label:add",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "bundle",
+      "categories",
+      "description",
+      "json",
+      "language",
+      "loglevel",
+      "name",
+      "protected",
+      "target",
+      "text"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:listview:favorite",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "name", "object", "start", "target", "targetusername"],
+    "alias": ["shane:listview:favourite"]
+  },
+  {
+    "command": "shane:listview:favourite",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "name", "object", "start", "target", "targetusername"],
+    "alias": ["shane:listview:favourite"]
+  },
+  {
+    "command": "shane:listview:secure",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["directory", "json", "loglevel", "noprompt", "object", "verbose"],
+    "alias": []
+  },
+  {
+    "command": "shane:lwc:create",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["directory", "json", "loglevel", "name"],
+    "alias": []
+  },
+  {
+    "command": "shane:lwc:css:merge",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["component", "file", "json", "localcss", "loglevel"],
+    "alias": []
+  },
+  {
+    "command": "shane:mdapi:describe",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:mdapi:list",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "targetusername", "type"],
+    "alias": []
+  },
+  {
+    "command": "shane:mdapi:package:get",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "packagename", "target", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:mdapi:package:xml",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "target", "targetusername", "xmlpath"],
+    "alias": []
+  },
+  {
+    "command": "shane:mdapi:pull",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "all",
+      "apiversion",
+      "code",
+      "json",
+      "loglevel",
+      "object",
+      "perms",
+      "reporting",
+      "schema",
+      "targetusername",
+      "type",
+      "ui",
+      "wave"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:mdapi:push",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "convertedfolder",
+      "deploymenttimelimit",
+      "json",
+      "keepconverted",
+      "loglevel",
+      "source",
+      "targetusername"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:msgchannel:create",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["description", "exposed", "fields", "json", "loglevel", "name", "target"],
+    "alias": []
+  },
+  {
+    "command": "shane:object:create",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "activities",
+      "api",
+      "autonumberformat",
+      "description",
+      "directory",
+      "enterprise",
+      "feeds",
+      "highvolume",
+      "history",
+      "interactive",
+      "json",
+      "label",
+      "loglevel",
+      "namefieldlabel",
+      "nametype",
+      "plural",
+      "reports",
+      "search",
+      "sharingmodel",
+      "type",
+      "visibility"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:object:fat",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["archiveaftermonths", "archiveretentionyears", "description", "directory", "json", "loglevel", "object"],
+    "alias": []
+  },
+  {
+    "command": "shane:object:field",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "api",
+      "default",
+      "deleteconstraint",
+      "description",
+      "directory",
+      "externalid",
+      "helptext",
+      "indexappend",
+      "indexdirection",
+      "indexposition",
+      "interactive",
+      "json",
+      "length",
+      "loglevel",
+      "lookupobject",
+      "name",
+      "noindex",
+      "object",
+      "picklistdefaultfirst",
+      "picklistvalues",
+      "precision",
+      "rellabel",
+      "relname",
+      "reparentable",
+      "required",
+      "scale",
+      "trackhistory",
+      "type",
+      "unique",
+      "writerequiresmasterread"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:object:fields:describe",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "object", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:object:perms:align",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["directory", "json", "loglevel"],
+    "alias": []
+  },
+  {
+    "command": "shane:object:powerofone",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["api", "description", "json", "label", "loglevel", "object", "target"],
+    "alias": []
+  },
+  {
+    "command": "shane:object:recordtype",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["description", "json", "label", "loglevel", "name", "object", "target"],
+    "alias": []
+  },
+  {
+    "command": "shane:object:tab",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["icon", "json", "loglevel", "object", "target"],
+    "alias": []
+  },
+  {
+    "command": "shane:object:unperm",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["directory", "json", "loglevel", "object", "specific"],
+    "alias": []
+  },
+  {
+    "command": "shane:org:componentlibrary",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:org:create",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "clientid",
+      "definitionfile",
+      "durationdays",
+      "json",
+      "loglevel",
+      "noancestors",
+      "nonamespace",
+      "setalias",
+      "setdefaultusername",
+      "userdomain",
+      "userprefix",
+      "verbose",
+      "wait"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:org:delete",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"],
+    "alias": ["shane:org:destroy"]
+  },
+  {
+    "command": "shane:org:destroy",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"],
+    "alias": ["shane:org:destroy"]
+  },
+  {
+    "command": "shane:org:domain:cors",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["all", "apiversion", "json", "liveagent", "loglevel", "target", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:org:domain:csp",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["all", "apiversion", "json", "liveagent", "loglevel", "target", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:org:domain:verify",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:org:metadatacoverage",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:org:reauth",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "requirecustomdomain", "targetdevhubusername", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:org:refreshtoken",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:package2:version:bump",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "create",
+      "json",
+      "loglevel",
+      "major",
+      "minor",
+      "patch",
+      "release",
+      "target",
+      "targetdevhubusername"
+    ],
+    "alias": ["shane:package:version:bump"]
+  },
+  {
+    "command": "shane:package:version:bump",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "create",
+      "json",
+      "loglevel",
+      "major",
+      "minor",
+      "patch",
+      "release",
+      "target",
+      "targetdevhubusername"
+    ],
+    "alias": ["shane:package:version:bump"]
+  },
+  {
+    "command": "shane:permset:check",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "field",
+      "fieldlevel",
+      "json",
+      "loglevel",
+      "object",
+      "objectlevel",
+      "permsets",
+      "profiles",
+      "targetusername",
+      "users"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:permset:create",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "application",
+      "checkpermissionable",
+      "directory",
+      "field",
+      "json",
+      "loglevel",
+      "name",
+      "object",
+      "recordtype",
+      "tab",
+      "targetusername",
+      "verbose"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:profile:allowip",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["directory", "json", "loglevel", "name"],
+    "alias": ["shane:profile:whitelist"]
+  },
+  {
+    "command": "shane:profile:convert",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["directory", "editprofile", "json", "loglevel", "name", "profile", "skinnyclone"],
+    "alias": []
+  },
+  {
+    "command": "shane:profile:whitelist",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["directory", "json", "loglevel", "name"],
+    "alias": ["shane:profile:whitelist"]
+  },
+  {
+    "command": "shane:project:create",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "gitremote", "json", "loglevel", "name", "targetdevhubusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:remotesite:create",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["description", "json", "loglevel", "name", "target", "url"],
+    "alias": []
+  },
+  {
+    "command": "shane:source:replace",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["file", "json", "loglevel", "new", "old"],
+    "alias": []
+  },
+  {
+    "command": "shane:static:create",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["description", "json", "loglevel", "name", "public", "target", "type"],
+    "alias": []
+  },
+  {
+    "command": "shane:streaming:list",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": ["apiversion", "json", "loglevel", "targetusername", "types"],
+    "alias": ["shane:streaming:list"]
+  },
+  {
+    "command": "shane:streaming:pushtopic:create",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": [
+      "apiversion",
+      "description",
+      "json",
+      "loglevel",
+      "name",
+      "notifyforfields",
+      "operations",
+      "query",
+      "targetusername"
+    ],
+    "alias": ["shane:streaming:pushtopic:create"]
+  },
+  {
+    "command": "shane:streaming:pushtopic:deactivate",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": ["apiversion", "json", "loglevel", "name", "targetusername"],
+    "alias": ["shane:streaming:pushtopic:deactivate"]
+  },
+  {
+    "command": "shane:streaming:pushtopic:delete",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": ["apiversion", "json", "loglevel", "name", "targetusername"],
+    "alias": ["shane:streaming:pushtopic:delete"]
+  },
+  {
+    "command": "shane:streaming:pushtopic:update",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": [
+      "apiversion",
+      "description",
+      "json",
+      "loglevel",
+      "name",
+      "notifyforfields",
+      "operations",
+      "query",
+      "targetusername"
+    ],
+    "alias": ["shane:streaming:pushtopic:update"]
+  },
+  {
+    "command": "shane:streaming:subscribe",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": ["apiversion", "json", "loglevel", "name", "replay", "targetusername", "type"],
+    "alias": ["shane:streaming:subscribe"]
+  },
+  {
+    "command": "shane:tab:favorite",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "name", "start", "target", "targetusername"],
+    "alias": ["shane:tab:favourite"]
+  },
+  {
+    "command": "shane:tab:favourite",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "name", "start", "target", "targetusername"],
+    "alias": ["shane:tab:favourite"]
+  },
+  {
+    "command": "shane:theme:activate",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "name", "showbrowser", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:tsp:username:update",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "directory", "json", "loglevel", "newusername", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:uiapi:objectinfo",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "object", "outputfile", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:uiapi:record",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "fields", "json", "loglevel", "optionalfields", "outputfile", "recordid", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:uiapi:recordui",
+    "plugin": "shane-sfdx-plugins",
+    "flags": [
+      "apiversion",
+      "json",
+      "layouttypes",
+      "loglevel",
+      "modes",
+      "outputfile",
+      "recordid",
+      "recordids",
+      "targetusername"
+    ],
+    "alias": []
+  },
+  {
+    "command": "shane:user:allPhotos",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "folder", "json", "loglevel", "repo", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:user:lightning:debug",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "firstname", "json", "lastname", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:user:loginurl",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "json", "loglevel", "starturl", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:user:password:set",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "firstname", "json", "lastname", "loglevel", "password", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:user:permset:assign",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "firstname", "json", "lastname", "loglevel", "name", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:user:photo",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "banner", "file", "firstname", "json", "lastname", "loglevel", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "shane:user:psl",
+    "plugin": "shane-sfdx-plugins",
+    "flags": ["apiversion", "firstname", "json", "lastname", "loglevel", "name", "targetusername"],
+    "alias": []
+  },
+  {
+    "command": "streaming:list",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": ["apiversion", "json", "loglevel", "targetusername", "types"],
+    "alias": ["shane:streaming:list"]
+  },
+  {
+    "command": "streaming:pushtopic:create",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": [
+      "apiversion",
+      "description",
+      "json",
+      "loglevel",
+      "name",
+      "notifyforfields",
+      "operations",
+      "query",
+      "targetusername"
+    ],
+    "alias": ["shane:streaming:pushtopic:create"]
+  },
+  {
+    "command": "streaming:pushtopic:deactivate",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": ["apiversion", "json", "loglevel", "name", "targetusername"],
+    "alias": ["shane:streaming:pushtopic:deactivate"]
+  },
+  {
+    "command": "streaming:pushtopic:delete",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": ["apiversion", "json", "loglevel", "name", "targetusername"],
+    "alias": ["shane:streaming:pushtopic:delete"]
+  },
+  {
+    "command": "streaming:pushtopic:update",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": [
+      "apiversion",
+      "description",
+      "json",
+      "loglevel",
+      "name",
+      "notifyforfields",
+      "operations",
+      "query",
+      "targetusername"
+    ],
+    "alias": ["shane:streaming:pushtopic:update"]
+  },
+  {
+    "command": "streaming:subscribe",
+    "plugin": "@mshanemc/plugin-streaming",
+    "flags": ["apiversion", "json", "loglevel", "name", "replay", "targetusername", "type"],
+    "alias": ["shane:streaming:subscribe"]
   },
   {
     "command": "telemetry",
