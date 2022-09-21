@@ -9,7 +9,7 @@ on:
 
 jobs:
   basic:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ !github.event.workflow_run || github.event.workflow_run.conclusion == 'success' }}
     strategy:
       fail-fast: false
       max-parallel: 6
