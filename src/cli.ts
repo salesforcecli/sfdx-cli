@@ -13,7 +13,6 @@ import { set } from '@salesforce/kit';
 import { AnyJson, get } from '@salesforce/ts-types';
 import { Doctor } from '@salesforce/plugin-info';
 import * as Debug from 'debug';
-import * as lazyRequire from './lazyRequire';
 import { default as nodeEnv, Env } from './util/env';
 
 const debug = Debug('sfdx');
@@ -104,7 +103,6 @@ function debugCliInfo(version: string, channel: string, env: Env, config: Config
       Env.DISABLE_AUTOUPDATE_OCLIF,
       Env.CLI_MODE,
       Env.CLI_INSTALLER,
-      Env.LAZY_LOAD_MODULES,
       Env.NPM_REGISTRY,
       'SFDX_REDIRECTED',
       Env.S3_HOST,
@@ -136,9 +134,6 @@ export function create(
       configureUpdateSites(config, env);
       configureAutoUpdate(env);
       debugCliInfo(version, channel, env, config);
-      if (args[1] !== 'update' && env.isLazyRequireEnabled()) {
-        lazyRequire.start(config);
-      }
       if (args[0] === 'doctor') {
         // The doctor command requires CLI version details obtained from the CLI's oclif config.
         const versionCmd = new VersionCommand(['--verbose', '--json'], config);

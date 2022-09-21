@@ -14,14 +14,6 @@ process.setMaxListeners = () => {};
 // Check node version before requiring additional packages
 require('../dist/versions').checkNodeVersion();
 
-// Collect module loading analytics if enabled
-const modules = require('@salesforce/require-analytics').start(process.env.SFDX_REQUIRE_ANALYTICS === 'true');
-
-// Enable lazy requires by default if not already overridden
-if (process.env.SFDX_LAZY_LOAD_MODULES !== 'false') {
-  process.env.SFDX_LAZY_LOAD_MODULES = 'true';
-}
-
 // Pre-process/prune flags before creating or running the actual CLI
 require('../dist/flags').preprocessCliFlags(process);
 
@@ -40,10 +32,8 @@ cli
   .create(version, channel)
   .run()
   .then(function (result) {
-    modules.dump();
     require('@oclif/core/flush')(result);
   })
   .catch(function (err) {
-    modules.dump();
     require('@oclif/core/handle')(err);
   });
