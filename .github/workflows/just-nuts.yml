@@ -28,7 +28,6 @@ jobs:
           - salesforcecli/plugin-user
 
           # private repos
-          - salesforcecli/toolbelt
           - salesforcecli/plugin-custom-metadata
         exclude:
           # toolbelt itself doesn't run windows nuts
