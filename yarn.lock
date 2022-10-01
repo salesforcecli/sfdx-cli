@@ -1300,15 +1300,15 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@salesforce/command@^5.0.4", "@salesforce/command@^5.1.0", "@salesforce/command@^5.1.2", "@salesforce/command@^5.1.3", "@salesforce/command@^5.2.1", "@salesforce/command@^5.2.10", "@salesforce/command@^5.2.4", "@salesforce/command@^5.2.6", "@salesforce/command@^5.2.8":
-  version "5.2.10"
-  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.2.10.tgz#e879444218fc2381cd386a6408019f1de990c6ae"
-  integrity sha512-Vtyih+a4vWPISJFQgXASqHSMFpYbeXSg1kA7VAq2FCgLnhepJVyA6Vx3leWq/h/fQDW4+QpfI4mg2siQO03ugw==
+"@salesforce/command@^5.0.4", "@salesforce/command@^5.1.0", "@salesforce/command@^5.1.2", "@salesforce/command@^5.1.3", "@salesforce/command@^5.2.1", "@salesforce/command@^5.2.10", "@salesforce/command@^5.2.11", "@salesforce/command@^5.2.4", "@salesforce/command@^5.2.6", "@salesforce/command@^5.2.8":
+  version "5.2.11"
+  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.2.11.tgz#43fdb687c8cd6a5f76dafd548ea176663c8a6620"
+  integrity sha512-6KhXbxlV+noVFL8FNhVBPDiD5Z4fEcezh1rClcjdturt2Zg/cp9KPIFqZoFn34zt30u+DlhhU3GDlfE18IoNHw==
   dependencies:
     "@oclif/core" "^1.14.1"
     "@oclif/plugin-help" "^5.1.11"
     "@oclif/test" "^2.1.0"
-    "@salesforce/core" "^3.30.8"
+    "@salesforce/core" "^3.30.9"
     "@salesforce/kit" "^1.6.1"
     "@salesforce/ts-types" "^1.5.21"
     chalk "^2.4.2"
@@ -1414,14 +1414,14 @@
     ts-retry-promise "^0.7.0"
     xml2js "^0.4.23"
 
-"@salesforce/plugin-alias@2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-alias/-/plugin-alias-2.1.3.tgz#a3435a3b67b28f765093dae1e3e7e020a7c5703c"
-  integrity sha512-vH+7rjohLet+UXWqCQw4fuH+a3dqN7iTVcsXdw6BVmX6C8sT9H0MFRWJ1tNeagClEZjuHX9v893vWqI8erMKQg==
+"@salesforce/plugin-alias@2.1.5":
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-alias/-/plugin-alias-2.1.5.tgz#ad4432d0a3a124361ea18f5d3c477f81b1d9d9f6"
+  integrity sha512-IdcvnHV2c8Qvh6rpraWMV3fVte2gxYSJVrWxJqF05pELL2k+pZ35lLKPcxH6NpEvH3ChYxm37poaHwDQd+r3jQ==
   dependencies:
     "@oclif/core" "^1.16.4"
-    "@salesforce/command" "^5.2.8"
-    "@salesforce/core" "^3.30.8"
+    "@salesforce/command" "^5.2.11"
+    "@salesforce/core" "^3.30.9"
     chalk "^4.1.2"
     tslib "^2"
 
