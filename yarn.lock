@@ -1313,7 +1313,7 @@
     "@salesforce/ts-types" "^1.5.21"
     chalk "^2.4.2"
 
-"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.2", "@salesforce/core@^3.30.0", "@salesforce/core@^3.30.1", "@salesforce/core@^3.30.2", "@salesforce/core@^3.30.3", "@salesforce/core@^3.30.8":
+"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.2", "@salesforce/core@^3.30.0", "@salesforce/core@^3.30.1", "@salesforce/core@^3.30.3", "@salesforce/core@^3.30.8", "@salesforce/core@^3.30.9":
   version "3.30.9"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.30.9.tgz#a2a577db60f1276d08b81e185d49161a75b54d76"
   integrity sha512-dZFr2QS0joxl/FgdR+ZYhIVTEsJ7t+u02eaZCXLOqug/rzBq9xFoGPQaBboXx4CSf7k71Ox/Ty0sMSZNzkXb0A==
@@ -1437,14 +1437,14 @@
     chalk "^4.1.0"
     tslib "^1"
 
-"@salesforce/plugin-auth@2.2.10":
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-2.2.10.tgz#a67b264c7b5daf86a9ce30132f81766c3f36f864"
-  integrity sha512-oGnXFsuBq1avTx28ZfU0QE6l0BylsOYHDGURggxcYhYNDzeUvBqN9RL5Jvn9R4YgS1ku9Xo9oUXX8jBXEJHRRA==
+"@salesforce/plugin-auth@2.2.12":
+  version "2.2.12"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-2.2.12.tgz#bd629f9788472862f18b7074ea521664ced502ab"
+  integrity sha512-ts2BMZeZqZc9y5W4vN3QOvi7oQhXhUhguZECmfeoX3d0nFC3kYEJO5bBAgMRD55KIQ39KFV3n3XtDmkGCRy3tg==
   dependencies:
     "@oclif/core" "^1.16.3"
-    "@salesforce/command" "^5.2.8"
-    "@salesforce/core" "^3.30.2"
+    "@salesforce/command" "^5.2.10"
+    "@salesforce/core" "^3.30.9"
     "@salesforce/kit" "^1.6.1"
     chalk "^4.1.2"
     fs-extra "^10.0.1"
