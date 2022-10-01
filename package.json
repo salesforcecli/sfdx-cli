@@ -153,7 +153,7 @@
     "@salesforce/plugin-data": "2.1.4",
     "@salesforce/plugin-generator": "2.0.2",
     "@salesforce/plugin-info": "2.1.6",
-    "@salesforce/plugin-limits": "2.0.3",
+    "@salesforce/plugin-limits": "2.0.4",
     "@salesforce/plugin-org": "2.2.7",
     "@salesforce/plugin-packaging": "1.9.2",
     "@salesforce/plugin-schema": "2.1.8",

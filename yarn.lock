@@ -1546,14 +1546,14 @@
     semver "^7.3.5"
     tslib "^2"
 
-"@salesforce/plugin-limits@2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-limits/-/plugin-limits-2.0.3.tgz#c5dc54766f40c05ac0dc01005ba1d31acf92357b"
-  integrity sha512-e3YQjwlgJxTIxcak83+mqF1TNxNcfEZvYmb2tV24+opofH1ES71sEddp4q1j4R3r0VZNEdcC9AfSmBfdmK7pcA==
+"@salesforce/plugin-limits@2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-limits/-/plugin-limits-2.0.4.tgz#025632d7ca9001328b18b47c3870687664d3f955"
+  integrity sha512-xVukDatO4pfdD/KLQVpf50fEyEZOhbfkw9qXGVA5s72zdFIBdAVH7U0iMNMx9RO9c8AlMH6QjAajLX/ASXk3Kw==
   dependencies:
     "@oclif/core" "^1.16.4"
     "@salesforce/command" "^5.2.10"
-    "@salesforce/core" "^3.10.1"
+    "@salesforce/core" "^3.30.9"
     tslib "^2"
 
 "@salesforce/plugin-org@2.2.7":
