@@ -1612,14 +1612,14 @@
     tslib "^2"
     yarn-deduplicate "^3.1.0"
 
-"@salesforce/plugin-schema@2.1.8":
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-schema/-/plugin-schema-2.1.8.tgz#88ed6677b4ad15f81fceff20b770e5dfe40f07b0"
-  integrity sha512-8ATsyv2kqweecYdTDcp/3tsVSDuDCF5ZrFF1jqdTw4wJvTOUxb8pFNb95ohOIpPFiikosD4s8rb50URVM2O2LQ==
+"@salesforce/plugin-schema@2.1.9":
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-schema/-/plugin-schema-2.1.9.tgz#ec50dc8599c4b16a948e5534c8e586056e30c7c2"
+  integrity sha512-xgIf2yIdTHnky39YomvHfi9iFJd3QQYbxyh1ntcjceC0S0tAm1EfIP82WNNAVVQLsWeB8rORQ82fVobGtpjiPw==
   dependencies:
     "@oclif/core" "^1.16.4"
     "@salesforce/command" "^5.2.8"
-    "@salesforce/core" "^3.30.8"
+    "@salesforce/core" "^3.30.9"
     tslib "^2"
 
 "@salesforce/plugin-signups@1.2.6":
