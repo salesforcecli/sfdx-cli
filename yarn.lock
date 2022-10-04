@@ -1414,14 +1414,14 @@
     ts-retry-promise "^0.7.0"
     xml2js "^0.4.23"
 
-"@salesforce/plugin-alias@2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-alias/-/plugin-alias-2.1.3.tgz#a3435a3b67b28f765093dae1e3e7e020a7c5703c"
-  integrity sha512-vH+7rjohLet+UXWqCQw4fuH+a3dqN7iTVcsXdw6BVmX6C8sT9H0MFRWJ1tNeagClEZjuHX9v893vWqI8erMKQg==
+"@salesforce/plugin-alias@2.1.5":
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-alias/-/plugin-alias-2.1.5.tgz#ad4432d0a3a124361ea18f5d3c477f81b1d9d9f6"
+  integrity sha512-IdcvnHV2c8Qvh6rpraWMV3fVte2gxYSJVrWxJqF05pELL2k+pZ35lLKPcxH6NpEvH3ChYxm37poaHwDQd+r3jQ==
   dependencies:
     "@oclif/core" "^1.16.4"
-    "@salesforce/command" "^5.2.8"
-    "@salesforce/core" "^3.30.8"
+    "@salesforce/command" "^5.2.11"
+    "@salesforce/core" "^3.30.9"
     chalk "^4.1.2"
     tslib "^2"
 
