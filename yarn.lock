@@ -1390,10 +1390,10 @@
     shx "^0.3.3"
     tslib "^2.2.0"
 
-"@salesforce/packaging@0.0.42":
-  version "0.0.42"
-  resolved "https://registry.yarnpkg.com/@salesforce/packaging/-/packaging-0.0.42.tgz#8c41f796867f36af119cfaa2f33647ad0b1ee95c"
-  integrity sha512-wQ9Ay+la5m403GUTmWbr4j6mq5wTsYVBo+qZgybvVusRNi1iuOt8dMIEiPFQvFxwlJFL3JPNNdx80Z2cDjkITQ==
+"@salesforce/packaging@0.0.44":
+  version "0.0.44"
+  resolved "https://registry.yarnpkg.com/@salesforce/packaging/-/packaging-0.0.44.tgz#0f98766addd898b05eb8f89cbb3424bdcfffd708"
+  integrity sha512-TJ3JYgC49PLleO42+YwHE61wLO7C/n82XG3fZNS4ylEtgnA8mQmVsdGmpdsoDv4UmPQm0R/G7ZSiRKF0cVm3/Q==
   dependencies:
     "@oclif/core" "^1.16.4"
     "@salesforce/core" "^3.30.0"
@@ -1568,16 +1568,16 @@
     open "8.4.0"
     tslib "^2"
 
-"@salesforce/plugin-packaging@1.9.2":
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-packaging/-/plugin-packaging-1.9.2.tgz#2cf095957bb62d282d6f2e810f4543f3a8037eff"
-  integrity sha512-74sX2c+yWPrLvLdFykWcA5TBwjdBrrnwCJtxTl9Ce6wFPyvA2XCVcgurpZZUjJvSfulHnYvjYMtgxjid01/NUQ==
+"@salesforce/plugin-packaging@1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-packaging/-/plugin-packaging-1.9.3.tgz#7bdf6a6849297afbe2dc217d0f9de770f7979419"
+  integrity sha512-quUtU8BQr8WZU+J9fXnBxRRYnTDAd3G6euisCneMSr4hppqrR7a3kJJdvlf46lTMIfhflxCKaNi8Zm0FQklRUg==
   dependencies:
     "@oclif/core" "^1.16.4"
     "@salesforce/command" "^5.2.10"
     "@salesforce/core" "^3.30.8"
     "@salesforce/kit" "^1.6.1"
-    "@salesforce/packaging" "0.0.42"
+    "@salesforce/packaging" "0.0.44"
     chalk "^4.1.2"
     tslib "^2"
 
