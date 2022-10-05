@@ -162,7 +162,7 @@
     "@salesforce/plugin-telemetry": "2.0.2",
     "@salesforce/plugin-templates": "55.1.0",
     "@salesforce/plugin-trust": "^2.0.4",
-    "@salesforce/plugin-user": "2.1.7",
+    "@salesforce/plugin-user": "2.1.9",
     "@salesforce/sfdx-plugin-lwc-test": "1.0.1",
     "@salesforce/ts-types": "^1.5.20",
     "debug": "^4.3.1",
