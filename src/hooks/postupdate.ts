@@ -19,7 +19,7 @@ import { Hook } from '@oclif/core';
 declare const global: TelemetryGlobal;
 
 function sendEvent(data: JsonMap): void {
-  if (global.cliTelemetry && global.cliTelemetry.record) {
+  if (global.cliTelemetry?.record) {
     global.cliTelemetry.record(data);
   }
 }
