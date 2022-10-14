@@ -20,8 +20,8 @@ const logError = (msg: Error): void => {
  * https://github.com/salesforcecli/sfdx-cli/pull/407
  */
 
-const hook: Hook.Update = async (): Promise<void> => {
-  return new Promise((resolve) => {
+const hook: Hook.Update = async (): Promise<void> =>
+  new Promise((resolve) => {
     if (process.env.SFDX_HIDE_RELEASE_NOTES === 'true') {
       resolve();
     }
@@ -53,6 +53,5 @@ const hook: Hook.Update = async (): Promise<void> => {
       resolve();
     });
   });
-};
 
 export default hook;
