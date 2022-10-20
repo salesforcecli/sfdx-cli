@@ -1,4 +1,4 @@
-FROM heroku/heroku:18
+FROM heroku/heroku:20
 
 ENV DEBIAN_FRONTEND=noninteractive
 ARG DOWNLOAD_URL=https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64.tar.xz
