@@ -1138,7 +1138,7 @@
   resolved "https://registry.yarnpkg.com/@oclif/screen/-/screen-3.0.2.tgz#969054308fe98d130c02844a45cc792199b75670"
   integrity sha512-S/SF/XYJeevwIgHFmVDAFRUvM3m+OjhvCAYMk78ZJQCYCQ5wS7j+LTt1ZEv2jpEEGg2tx/F6TYYWxddNAYHrFQ==
 
-"@oclif/test@^2.1.0", "@oclif/test@^2.2.0", "@oclif/test@^2.2.4":
+"@oclif/test@^2.1.0", "@oclif/test@^2.2.4":
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/@oclif/test/-/test-2.2.6.tgz#2c98bb1ecab3ddf6b01b51f8a3489c9105353d67"
   integrity sha512-rf67rTBkEeulpomdeBYm0D+Q0e1uMqTPUNPhY2/G6guAJhmu3M+78HvSKpLdG7WqpbfQJ68D5Dh5HnauO+MY2g==
@@ -1355,7 +1355,7 @@
     "@salesforce/ts-types" "^1.5.21"
     chalk "^2.4.2"
 
-"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.2", "@salesforce/core@^3.30.12", "@salesforce/core@^3.30.8", "@salesforce/core@^3.30.9", "@salesforce/core@^3.31.10", "@salesforce/core@^3.31.11", "@salesforce/core@^3.31.16", "@salesforce/core@^3.31.17", "@salesforce/core@^3.31.9":
+"@salesforce/core@^3.10.1", "@salesforce/core@^3.15.5", "@salesforce/core@^3.16.0", "@salesforce/core@^3.19.0", "@salesforce/core@^3.19.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.0", "@salesforce/core@^3.26.2", "@salesforce/core@^3.30.12", "@salesforce/core@^3.30.8", "@salesforce/core@^3.30.9", "@salesforce/core@^3.31.10", "@salesforce/core@^3.31.15", "@salesforce/core@^3.31.16", "@salesforce/core@^3.31.17", "@salesforce/core@^3.31.9":
   version "3.31.17"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.31.17.tgz#83ab3c9c4730223943ceef4798aaa901fec7981e"
   integrity sha512-rn3AYyePp3m1+IH+KVi+DWwMPcAPDYFiUxyJLh+Jr2hNj9i79eQBcUix6wunK3HaVz0N6Tm5FGIpjqfEVsU0cA==
@@ -1431,13 +1431,13 @@
     shx "^0.3.3"
     tslib "^2.2.0"
 
-"@salesforce/packaging@0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@salesforce/packaging/-/packaging-0.1.9.tgz#3851172b2c66d1a2cf26c316c261689411a7bf9e"
-  integrity sha512-8/bhIhP6wZE00ALukweadB62rQuCWCgfIhChfW9dXlPtnUXddlye1I4EHL9Lqjqwqsv0HDGlQghcTnma1zuCQA==
+"@salesforce/packaging@^0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@salesforce/packaging/-/packaging-0.1.13.tgz#1ab532f9b9f6849b90ab3e468030363ada7555eb"
+  integrity sha512-ANaTlLIwkmPuVwIE+yTm+3iTxioQyqUb2VFQnTMXZpY37kKSwOnUpDM+PYyVpvyEjpDSdaaffKUBg5SXZspdsA==
   dependencies:
-    "@oclif/core" "^1.18.0"
-    "@salesforce/core" "^3.31.11"
+    "@oclif/core" "^1.19.1"
+    "@salesforce/core" "^3.31.16"
     "@salesforce/kit" "^1.7.0"
     "@salesforce/schemas" "^1.1.3"
     "@salesforce/source-deploy-retrieve" "^7.0.1"
@@ -1610,16 +1610,16 @@
     open "8.4.0"
     tslib "^2"
 
-"@salesforce/plugin-packaging@1.9.5":
-  version "1.9.5"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-packaging/-/plugin-packaging-1.9.5.tgz#b61f39c687ab5f764f453b659f2a2ba61cf85020"
-  integrity sha512-q/nCBycU+B6st5qiFCH4bpUrmLNpfa0bm+y0HkU9Xd9iGVPnsqCBAUNUDJ1DIOFcnwyGaXmr7OwvXcWF6gJZYg==
+"@salesforce/plugin-packaging@1.9.6":
+  version "1.9.6"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-packaging/-/plugin-packaging-1.9.6.tgz#f5e1a795f10fbabac3a2bd795a7c90a2e0c10eb0"
+  integrity sha512-UGY/pyHsUjpI8/uxN9mvGItLGNiDzOGjWAN6XIrF2Pzi9NcTHda0iLlV0tHn6zSg6YqAOihGuL/Fn2AzRh3h0Q==
   dependencies:
     "@oclif/core" "^1.18.0"
     "@salesforce/command" "^5.2.13"
-    "@salesforce/core" "^3.31.11"
+    "@salesforce/core" "^3.31.15"
     "@salesforce/kit" "^1.7.0"
-    "@salesforce/packaging" "0.1.9"
+    "@salesforce/packaging" "^0.1.13"
     chalk "^4.1.2"
     tslib "^2"
 
@@ -4534,7 +4534,7 @@ extract-stack@^2.0.0:
   resolved "https://registry.yarnpkg.com/extract-stack/-/extract-stack-2.0.0.tgz#11367bc865bfcd9bc0db3123e5edb57786f11f9b"
   integrity sha512-AEo4zm+TenK7zQorGK1f9mJ8L14hnTDi2ZQPR+Mub1NX8zimka1mXpV5LpH8x9HoUmFSHZCfLHqWvp0Y4FxxzQ==
 
-fancy-test@^2.0.4, fancy-test@^2.0.5:
+fancy-test@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/fancy-test/-/fancy-test-2.0.5.tgz#eb39e10b77e476147aa4ed5a81e14e809b46aaae"
   integrity sha512-ASPLNVkHSSIdRI/uLlK+XGhf1ul/MpRN9VE84ehXL+FOprQjXrDXX3wW1wqKvtcTTC+AW0E0RxdpJ5IEopjhQA==
