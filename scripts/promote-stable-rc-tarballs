@@ -2,7 +2,7 @@
 
 set -ex
 
-channel="stable-rc"
+channel="dev-rc"
 version=$(node -p -e "require('./package.json').version")
 sha=$(git rev-parse --short HEAD)
 echo "Promoting $version-$sha to channel $channel"

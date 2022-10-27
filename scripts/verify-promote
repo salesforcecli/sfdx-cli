@@ -13,7 +13,7 @@ fi
 
 # artifacts and npm should agree on latest
 # buildmanifest version for latest matches npm for latest
-MANIFEST_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-darwin-x64-buildmanifest"
+MANIFEST_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/dev-rc/sfdx-darwin-x64-buildmanifest"
 MANIFEST_VERSION=$(curl -s $MANIFEST_URL | jq -cr '.version')
 if [ $LATEST != $MANIFEST_VERSION ]; then
   echo "latest in S3 and latest on npm do not match"

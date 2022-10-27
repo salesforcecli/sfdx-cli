@@ -1,7 +1,7 @@
 FROM heroku/heroku:20
 
 ENV DEBIAN_FRONTEND=noninteractive
-ARG DOWNLOAD_URL=https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-linux-x64.tar.xz
+ARG DOWNLOAD_URL=https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/dev-rc/sfdx-linux-x64.tar.xz
 RUN apt-get update
 # install cli from linux tarball with bundled node
 RUN curl -s $DOWNLOAD_URL --output sfdx-linux-x64.tar.xz \

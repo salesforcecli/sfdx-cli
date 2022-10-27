@@ -26,7 +26,7 @@ const overrides = {
   /* @OVERRIDES@ */
 };
 const version = overrides.version || pjson.version;
-const channel = overrides.channel || 'stable';
+const channel = overrides.channel || 'dev';
 
 cli
   .create(version, channel)

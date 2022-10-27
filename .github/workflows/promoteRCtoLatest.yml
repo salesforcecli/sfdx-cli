@@ -30,7 +30,7 @@ jobs:
     with:
       version: ${{needs.getVersion.outputs.version}}
       tag: latest
-      channel: stable
+      channel: dev
       useCTC: true
 
   promote-verify:
@@ -44,7 +44,7 @@ jobs:
           cache: yarn
       - run: ./scripts/verify-promote
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      - run: sf-release cli:versions:inspect -c stable -l archive
+      - run: sf-release cli:versions:inspect -c dev -l archive
 
   announce:
     runs-on: ubuntu-latest

@@ -18,7 +18,7 @@ jobs:
       upload: true
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      channel: stable-rc
+      channel: dev-rc
     secrets: inherit
 
   archives-verify:
@@ -31,7 +31,7 @@ jobs:
           node-version: lts/*
           cache: npm
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      - run: sf-release cli:versions:inspect -c stable-rc -l archive
+      - run: sf-release cli:versions:inspect -c dev-rc -l archive
 
   pack-upload-mac:
     needs: [pack-verify-upload-tarballs]
@@ -39,7 +39,7 @@ jobs:
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      channel: stable-rc
+      channel: dev-rc
     secrets: inherit
 
   pack-upload-win:
@@ -48,7 +48,7 @@ jobs:
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      channel: stable-rc
+      channel: dev-rc
     secrets: inherit
 
   docker-slim:
