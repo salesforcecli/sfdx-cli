@@ -1,8 +1,8 @@
 FROM heroku/heroku:20
 
 ENV DEBIAN_FRONTEND=noninteractive
-ARG SALESFORCE_CLI_VERSION=latest-rc
-ARG SF_CLI_VERSION=latest-rc
+ARG SALESFORCE_CLI_VERSION=dev-rc
+ARG SF_CLI_VERSION=dev-rc
 
 RUN echo 'da5658693243b3ecf6a4cba6751a71df1eb9e9703ca93b42a9404aed85f58ad0  ./nodejs.tar.gz' > node-file-lock.sha \
   && curl -s -o nodejs.tar.gz https://nodejs.org/dist/v16.17.1/node-v16.17.1-linux-x64.tar.gz \

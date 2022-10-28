@@ -21,7 +21,7 @@ jobs:
       - uses: salesforcecli/github-workflows/.github/actions/versionInfo@re/rename-mac-pkg
         id: version-info
         with:
-          version: latest-rc
+          version: dev-rc
 
   promote:
     uses: ./.github/workflows/promote.yml
@@ -29,7 +29,7 @@ jobs:
     secrets: inherit
     with:
       version: ${{needs.getVersion.outputs.version}}
-      tag: latest
+      tag: dev
       channel: dev
       useCTC: true
 
@@ -46,25 +46,25 @@ jobs:
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
       - run: sf-release cli:versions:inspect -c dev -l archive
 
-  announce:
-    runs-on: ubuntu-latest
-    needs: [getVersion, promote-verify]
+  # announce:
+  #   runs-on: ubuntu-latest
+  #   needs: [getVersion, promote-verify]
 
-    steps:
-      - name: Announce promotion
-        id: slack
-        uses: slackapi/slack-github-action@v1.21.0
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.PLATFORM_CLI_CHANNEL_SLACK_INCOMING_WEBHOOK }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-        with:
-          payload: |
-            {
-              "blocks": [{
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": ":rocket: `sfdx-cli` version `${{ needs.getVersion.outputs.version }}` has been promoted to latest :rocket:\nRun `sfdx whatsnew -v latest` to see what's new"
-                }
-              }]
-            }
+  #   steps:
+  #     - name: Announce promotion
+  #       id: slack
+  #       uses: slackapi/slack-github-action@v1.21.0
+  #       env:
+  #         SLACK_WEBHOOK_URL: ${{ secrets.PLATFORM_CLI_CHANNEL_SLACK_INCOMING_WEBHOOK }}
+  #         SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+  #       with:
+  #         payload: |
+  #           {
+  #             "blocks": [{
+  #               "type": "section",
+  #               "text": {
+  #                 "type": "mrkdwn",
+  #                 "text": ":rocket: `sfdx-cli` version `${{ needs.getVersion.outputs.version }}` has been promoted to latest :rocket:\nRun `sfdx whatsnew -v latest` to see what's new"
+  #               }
+  #             }]
+  #           }

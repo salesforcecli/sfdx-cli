@@ -14,8 +14,8 @@ on:
       tag:
         type: string
         required: false
-        description: tag to use for docker/npm, like latest or latest-rc
-        default: latest
+        description: tag to use for docker/npm, like dev or dev-rc
+        default: dev
       useCTC:
         type: boolean
         required: false

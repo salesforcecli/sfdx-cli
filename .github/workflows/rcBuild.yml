@@ -8,7 +8,7 @@ jobs:
     uses: salesforcecli/github-workflows/.github/workflows/npmPublish.yml@re/rename-mac-pkg
     secrets: inherit
     with:
-      tag: latest-rc
+      tag: dev-rc
       githubTag: ${{ github.event.release.tag_name }}
 
   pack-verify-upload-tarballs:

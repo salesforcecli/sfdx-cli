@@ -2,12 +2,12 @@
 
 # latest and rc should match after promote before RC build
 TAGS=$(npm view sfdx-cli --json | jq -cr '."dist-tags"')
-LATEST=$(echo $TAGS | jq -cr '.latest')
-echo $LATEST
-LATEST_RC=$(echo $TAGS | jq -cr '."latest-rc"')
-echo $LATEST_RC
-if [ $LATEST != $LATEST_RC ]; then
-  echo "latest and latest-rc do not match"
+DEV=$(echo $TAGS | jq -cr '.dev')
+echo $DEV
+DEV_RC=$(echo $TAGS | jq -cr '."dev-rc"')
+echo $DEV_RC
+if [ $DEV != $DEV_RC ]; then
+  echo "dev and dev-rc do not match"
   exit 1
 fi
 
@@ -15,8 +15,8 @@ fi
 # buildmanifest version for latest matches npm for latest
 MANIFEST_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/dev-rc/sfdx-darwin-x64-buildmanifest"
 MANIFEST_VERSION=$(curl -s $MANIFEST_URL | jq -cr '.version')
-if [ $LATEST != $MANIFEST_VERSION ]; then
-  echo "latest in S3 and latest on npm do not match"
+if [ $DEV != $MANIFEST_VERSION ]; then
+  echo "dev in S3 and dev on npm do not match"
   exit 1
 fi
 
@@ -26,8 +26,8 @@ sfdx version
 sfdx help
 sfdx plugins --core
 NPM_CLI_VERSION=$(sfdx version --json | jq -cr '.cliVersion' | sed 's/sfdx-cli\///')
-if [ $LATEST != $NPM_CLI_VERSION ]; then
-  echo "npm did not install latest.  latest: $LATEST.  Npm install $NPM_CLI_VERSION"
+if [ $DEV != $NPM_CLI_VERSION ]; then
+  echo "npm did not install dev.  dev: $DEV.  Npm install $NPM_CLI_VERSION"
   exit 1
 fi
 npm uninstall -g sfdx-cli
@@ -35,9 +35,9 @@ npm uninstall -g sfdx-cli
 # versions file has latest at the top
 VERSIONS_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json"
 VERSION_CONTENT=$(curl -s $VERSIONS_URL | jq -cr)
-LATEST_VERSION=$(echo $VERSION_CONTENT | jq -r 'keys_unsorted[0]')
-if [ $LATEST_VERSION != $LATEST ]; then
-  echo "versions file does not have latest version at the top.  First entry is $LATEST_VERSION"
+DEV_VERSION=$(echo $VERSION_CONTENT | jq -r 'keys_unsorted[0]')
+if [ $DEV_VERSION != $DEV ]; then
+  echo "versions file does not have dev version at the top.  First entry is $DEV_VERSION"
   exit 1
 fi
 
