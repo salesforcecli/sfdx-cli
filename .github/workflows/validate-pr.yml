@@ -9,4 +9,4 @@ on:
 
 jobs:
   pr-validation:
-    uses: salesforcecli/github-workflows/.github/workflows/validatePR.yml@main
+    uses: salesforcecli/github-workflows/.github/workflows/validatePR.yml@re/rename-mac-pkg

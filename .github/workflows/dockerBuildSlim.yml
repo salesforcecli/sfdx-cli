@@ -19,7 +19,7 @@ jobs:
           cache: yarn
 
       # for whatever version got passed in, we need the download url for the linux xz tarball
-      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
+      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@re/rename-mac-pkg
         id: version-info
         with:
           version: ${{ inputs.version }}

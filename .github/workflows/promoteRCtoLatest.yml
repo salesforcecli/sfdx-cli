@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: lts/*
           cache: yarn
-      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
+      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@re/rename-mac-pkg
         id: version-info
         with:
           version: latest-rc

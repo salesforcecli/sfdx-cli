@@ -10,9 +10,9 @@ concurrency:
 
 jobs:
   ut:
-    uses: salesforcecli/github-workflows/.github/workflows/unitTest.yml@main
+    uses: salesforcecli/github-workflows/.github/workflows/unitTest.yml@re/rename-mac-pkg
     secrets: inherit
 
   tarballs:
-    uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@main
+    uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@re/rename-mac-pkg
     secrets: inherit
