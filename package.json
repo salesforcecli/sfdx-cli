@@ -151,7 +151,7 @@
     "@salesforce/plugin-config": "1.4.21",
     "@salesforce/plugin-custom-metadata": "2.0.2",
     "@salesforce/plugin-data": "2.1.5",
-    "@salesforce/plugin-generator": "2.0.8",
+    "@salesforce/plugin-generator": "2.0.9",
     "@salesforce/plugin-info": "2.2.1",
     "@salesforce/plugin-limits": "2.0.8",
     "@salesforce/plugin-org": "2.2.9",

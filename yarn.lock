@@ -879,7 +879,7 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.14.1", "@oclif/core@^1.16.0", "@oclif/core@^1.16.1", "@oclif/core@^1.16.4", "@oclif/core@^1.18.0", "@oclif/core@^1.19.1", "@oclif/core@^1.2.0", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.8.0":
+"@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.14.1", "@oclif/core@^1.16.0", "@oclif/core@^1.16.1", "@oclif/core@^1.16.4", "@oclif/core@^1.18.0", "@oclif/core@^1.19.1", "@oclif/core@^1.2.0", "@oclif/core@^1.20.0", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.8.0":
   version "1.20.2"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.20.2.tgz#724713086355d693e578960f72c7e2d14fd3e7c3"
   integrity sha512-c6CpDbDPS9UuKwGoajzsjrjfnwQywWEV3WI5FDvb87h0/WW2tGf1QwHUWgdKOojafEcMAa9DnP5j+mXdUTtpCg==
@@ -1554,12 +1554,12 @@
     jsforce "^2.0.0-beta.19"
     tslib "^2"
 
-"@salesforce/plugin-generator@2.0.8":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-generator/-/plugin-generator-2.0.8.tgz#8c21b1df6beda7ab946c6a3ff72869063b318097"
-  integrity sha512-Qi9Rh1hPodofMzStLSUFmscNVp/mowzGeEX5URuUxZX0g6SO+2V/g9oWf/uEoAembvG1D8MibypuMyhEb+Zd9A==
+"@salesforce/plugin-generator@2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-generator/-/plugin-generator-2.0.9.tgz#15109caef3786b54b5dc9053426940b28207516e"
+  integrity sha512-tHgV+Hbid/OiOCsR0Xk2Z2TDT5hdSsd7LyynpTfYMCLi99O+Zl5kq9JZbVw45JiRa8fvWodZUVsFpCwMbudOUQ==
   dependencies:
-    "@oclif/core" "^1.18.0"
+    "@oclif/core" "^1.20.0"
     "@salesforce/ts-types" "^1.7.0"
     debug "^4.3.1"
     lodash "^4.17.21"
