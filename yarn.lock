@@ -879,7 +879,7 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.14.1", "@oclif/core@^1.16.0", "@oclif/core@^1.16.1", "@oclif/core@^1.16.4", "@oclif/core@^1.18.0", "@oclif/core@^1.19.1", "@oclif/core@^1.2.0", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.8.0":
+"@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.14.1", "@oclif/core@^1.16.0", "@oclif/core@^1.16.1", "@oclif/core@^1.16.4", "@oclif/core@^1.18.0", "@oclif/core@^1.19.1", "@oclif/core@^1.2.0", "@oclif/core@^1.20.0", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.8.0":
   version "1.20.2"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.20.2.tgz#724713086355d693e578960f72c7e2d14fd3e7c3"
   integrity sha512-c6CpDbDPS9UuKwGoajzsjrjfnwQywWEV3WI5FDvb87h0/WW2tGf1QwHUWgdKOojafEcMAa9DnP5j+mXdUTtpCg==
@@ -1654,12 +1654,12 @@
     tslib "^2"
     yarn-deduplicate "^3.1.0"
 
-"@salesforce/plugin-schema@2.1.11":
-  version "2.1.11"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-schema/-/plugin-schema-2.1.11.tgz#de00a75bb625d9adeab688c91f238abddba34345"
-  integrity sha512-NXxWZB2BYMuqrPVV2GkvQalyQwt920fN2nghLSREQbXaaGCYqZGoZ8w34aaBXMKgKZ5Duv4Ak87EI8zNU/r9+Q==
+"@salesforce/plugin-schema@2.1.12":
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-schema/-/plugin-schema-2.1.12.tgz#4874b572b420cfee682e715943f8c9b2e67d5249"
+  integrity sha512-RmeRpXjcHDY7KO62T6EPJyINiWdFWQhQqfZ8XHVQYkYOT94fkGLaLGJomhYuOIq1oaZ9SmWA8k0UplqjjN4kIQ==
   dependencies:
-    "@oclif/core" "^1.19.1"
+    "@oclif/core" "^1.20.0"
     "@salesforce/command" "^5.2.11"
     "@salesforce/core" "^3.30.9"
     tslib "^2"

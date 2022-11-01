@@ -156,7 +156,7 @@
     "@salesforce/plugin-limits": "2.0.8",
     "@salesforce/plugin-org": "2.2.9",
     "@salesforce/plugin-packaging": "1.9.6",
-    "@salesforce/plugin-schema": "2.1.11",
+    "@salesforce/plugin-schema": "2.1.12",
     "@salesforce/plugin-signups": "1.2.8",
     "@salesforce/plugin-source": "2.0.26",
     "@salesforce/plugin-telemetry": "2.0.2",
