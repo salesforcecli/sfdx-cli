@@ -879,7 +879,7 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.14.1", "@oclif/core@^1.16.0", "@oclif/core@^1.16.1", "@oclif/core@^1.16.4", "@oclif/core@^1.18.0", "@oclif/core@^1.19.1", "@oclif/core@^1.2.0", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.8.0":
+"@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.14.1", "@oclif/core@^1.16.0", "@oclif/core@^1.16.1", "@oclif/core@^1.16.4", "@oclif/core@^1.18.0", "@oclif/core@^1.19.1", "@oclif/core@^1.2.0", "@oclif/core@^1.20.0", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.8.0":
   version "1.20.2"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.20.2.tgz#724713086355d693e578960f72c7e2d14fd3e7c3"
   integrity sha512-c6CpDbDPS9UuKwGoajzsjrjfnwQywWEV3WI5FDvb87h0/WW2tGf1QwHUWgdKOojafEcMAa9DnP5j+mXdUTtpCg==
@@ -1049,11 +1049,11 @@
     wrap-ansi "^6.2.0"
 
 "@oclif/plugin-help@^5.1.11", "@oclif/plugin-help@^5.1.12":
-  version "5.1.14"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-5.1.14.tgz#641e6f2c7effb4a21573d50c649af662a919bcf9"
-  integrity sha512-jhpD0a2bEp3YW93sQcUM3b15DH+svQqC9pMXNp1m1VyAPoskdaELgt5P/5SjmNuFwqws8scxpbYKlr2/lvvkGQ==
+  version "5.1.17"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-5.1.17.tgz#7ecef29b947efe57aefc5a044ec79d8dbe9e024a"
+  integrity sha512-yc35xn4lSkHTnS6ajolYAi9dVMWXsRRPPPNEfYF0Nq1bkKNnh3DEC1MS/iTWNEYC5JCVd4YAQ2/Ky2wqA2Ujiw==
   dependencies:
-    "@oclif/core" "^1.16.4"
+    "@oclif/core" "^1.20.0"
 
 "@oclif/plugin-not-found@^2.3.1":
   version "2.3.3"
