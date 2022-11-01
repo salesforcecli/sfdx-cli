@@ -1343,7 +1343,7 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@salesforce/command@^5.0.4", "@salesforce/command@^5.1.0", "@salesforce/command@^5.1.2", "@salesforce/command@^5.1.3", "@salesforce/command@^5.2.1", "@salesforce/command@^5.2.11", "@salesforce/command@^5.2.12", "@salesforce/command@^5.2.13", "@salesforce/command@^5.2.16", "@salesforce/command@^5.2.17", "@salesforce/command@^5.2.6":
+"@salesforce/command@^5.0.4", "@salesforce/command@^5.1.0", "@salesforce/command@^5.1.2", "@salesforce/command@^5.1.3", "@salesforce/command@^5.2.1", "@salesforce/command@^5.2.11", "@salesforce/command@^5.2.12", "@salesforce/command@^5.2.13", "@salesforce/command@^5.2.16", "@salesforce/command@^5.2.17", "@salesforce/command@^5.2.18", "@salesforce/command@^5.2.6":
   version "5.2.18"
   resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.2.18.tgz#e85edd27c8f9fb7b98bc34bc93931e1e4702247b"
   integrity sha512-kG6lZHZ6fzihTDCZnsEG65Tv9aXcCqypUBaKKpOHo1vD54tCH1w905YAoncJVp76jZFMh6CbOmPhssk1psVY+A==
@@ -1570,13 +1570,13 @@
     yeoman-generator "^5.7.0"
     yosay "^2.0.2"
 
-"@salesforce/plugin-info@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-info/-/plugin-info-2.2.1.tgz#641f6d22292896fe8ece34e89c2ae38089044573"
-  integrity sha512-om4kwhCerrPPNJaNoxKv6geOeDe/J9xvj5bi87NviPogF3EbXZQLrLR7U9Bx26uIp7rF94tWD1jTp2Sp1hDMxg==
+"@salesforce/plugin-info@2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-info/-/plugin-info-2.2.4.tgz#dd2bf34155957436d5d08b8bc5ec2e49e67cf96a"
+  integrity sha512-AtdiIQl3wD0SWvcVLzpemAgduF+/7eaPuNrtYAlVhCFyUWMuk8eozar9SbfSVrpT0MJAKcEGbDyVPpeWgGY1CA==
   dependencies:
-    "@oclif/core" "^1.18.0"
-    "@salesforce/command" "^5.2.16"
+    "@oclif/core" "^1.20.0"
+    "@salesforce/command" "^5.2.18"
     "@salesforce/core" "^3.30.12"
     "@salesforce/kit" "^1.6.1"
     got "^11.8.2"
