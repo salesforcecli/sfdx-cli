@@ -1422,12 +1422,12 @@
     typedoc-plugin-missing-exports "0.23.0"
     typescript "^4.1.3"
 
-"@salesforce/kit@^1.6.0", "@salesforce/kit@^1.6.1", "@salesforce/kit@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.7.0.tgz#f14ef71662742edf0fb74ffb23c530fad5ccb4c9"
-  integrity sha512-AxJi7W9skYEVQrZMGyWtG3xOOLzdRu7638Hlea3gtPdMpMRc0aB1Nvpg7Ru+VLtULNhXnnQ3nXesDl0d2TA04w==
+"@salesforce/kit@^1.6.0", "@salesforce/kit@^1.6.1", "@salesforce/kit@^1.7.0", "@salesforce/kit@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.7.1.tgz#2337ae354409726f1822f1b03a3d7073e84cd249"
+  integrity sha512-XbLtEgMNBGZqtY/OldEru+LzASS3o37MZ6eNlSG19eAroGqFdlr4pzZUD/UaWSt6E0s0arj4IwAP5/hQLbrBZw==
   dependencies:
-    "@salesforce/ts-types" "^1.5.21"
+    "@salesforce/ts-types" "^1.7.0"
     shx "^0.3.3"
     tslib "^2.2.0"
 
@@ -1676,18 +1676,18 @@
     change-case "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-source@2.0.26":
-  version "2.0.26"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.0.26.tgz#6849c7ab278b8d92bdcf95724a517055d2739ed9"
-  integrity sha512-JzTzLPP5PPjQ1Y7oXQrjAa6ZqY9+yDxMvCQdBRHqHCFQEXlJjqQlqBkBLo9klyFhHXyzPAVEw79lQO3f+KCdAg==
+"@salesforce/plugin-source@2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.1.3.tgz#6f4d46f2a296a8701605db4d34785d7ed2840dc1"
+  integrity sha512-hQOPGY8uaHpyr1Sfe7PbQeLx62Q5ylWjFJ5ffkujRc8iFErU0RQk2Y+uE7W9OsqTQb+5KsWszOxyqxtPUgU95g==
   dependencies:
     "@oclif/core" "^1.18.0"
     "@oclif/plugin-help" "^3.3.1"
     "@salesforce/apex-node" "^1.3.0"
     "@salesforce/command" "^5.2.13"
     "@salesforce/core" "^3.26.2"
-    "@salesforce/kit" "^1.6.0"
-    "@salesforce/source-deploy-retrieve" "^7.0.1"
+    "@salesforce/kit" "^1.7.1"
+    "@salesforce/source-deploy-retrieve" "^7.4.0"
     "@salesforce/source-tracking" "^2.2.10"
     chalk "^4.1.2"
     got "^11.8.3"
@@ -1771,7 +1771,7 @@
     signal-exit "^3.0.6"
     tslib "^2.3.1"
 
-"@salesforce/source-deploy-retrieve@7.3.1", "@salesforce/source-deploy-retrieve@^7.0.1":
+"@salesforce/source-deploy-retrieve@7.3.1", "@salesforce/source-deploy-retrieve@^7.0.1", "@salesforce/source-deploy-retrieve@^7.4.0":
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-7.3.1.tgz#35c894d571701de8900e2fc544cebe89bc7a7581"
   integrity sha512-6RRAf42yM/kp5zbA3cIhqH3okW11hYuGN4WA04xXtja3NQ1FbYDWbPp3ksk79fP72xS7Lx3Pkmg31FwUqJryAg==
