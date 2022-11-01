@@ -1082,22 +1082,22 @@
     tslib "^2.0.0"
     yarn "^1.22.18"
 
-"@oclif/plugin-update@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-update/-/plugin-update-3.0.2.tgz#5d767ec26f0bed6b0e455fcfdaf8cd9f07817793"
-  integrity sha512-QFRTyVr2eu5j6XmOMcmtZpSmcPeH0KZbuQ68ZpIDqEW08UmWJ8H8E8BA+JpRWpOOfeQ8CyXk7eLVBIKhu1oSTg==
+"@oclif/plugin-update@3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-update/-/plugin-update-3.0.6.tgz#40b2dba592cb94d64e039e7d2a5524bd6195e0ca"
+  integrity sha512-6+c8crGC5QcrOo4nehF52jRi3uqYAEtVaqlW98uxLVo1Cu5fwnCutLevPUMuOsYvmcJJPIrn+5E5kHbSBr737A==
   dependencies:
     "@oclif/color" "^1.0.0"
-    "@oclif/core" "^1.16.4"
+    "@oclif/core" "^1.18.0"
     cross-spawn "^7.0.3"
     debug "^4.3.1"
     filesize "^6.1.0"
     fs-extra "^9.0.1"
     http-call "^5.3.0"
-    inquirer "^8.2.0"
+    inquirer "^8.2.5"
     lodash.throttle "^4.1.1"
     log-chopper "^1.0.2"
-    semver "^7.3.5"
+    semver "^7.3.8"
     tar-fs "^2.1.1"
 
 "@oclif/plugin-version@^1.1.2":
@@ -5569,10 +5569,10 @@ inquirer@^7.0.0:
     strip-ansi "^6.0.0"
     through "^2.3.6"
 
-inquirer@^8.0.0, inquirer@^8.2.0:
-  version "8.2.4"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.2.4.tgz#ddbfe86ca2f67649a67daa6f1051c128f684f0b4"
-  integrity sha512-nn4F01dxU8VeKfq192IjLsxu0/OmMZ4Lg3xKAns148rCaXP6ntAoEkVYZThWjwON8AlzdZZi6oqnhNbxUG9hVg==
+inquirer@^8.0.0, inquirer@^8.2.5:
+  version "8.2.5"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.2.5.tgz#d8654a7542c35a9b9e069d27e2df4858784d54f8"
+  integrity sha512-QAgPDQMEgrDssk1XiwwHoOGYF9BAbUcc1+j+FhEvaOt8/cKRqyLn0U5qA6F74fGhTMGxf92pOvPBeh29jQJDTQ==
   dependencies:
     ansi-escapes "^4.2.1"
     chalk "^4.1.1"
