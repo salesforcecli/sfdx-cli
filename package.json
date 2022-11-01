@@ -154,7 +154,7 @@
     "@salesforce/plugin-generator": "2.0.8",
     "@salesforce/plugin-info": "2.2.1",
     "@salesforce/plugin-limits": "2.0.8",
-    "@salesforce/plugin-org": "2.2.9",
+    "@salesforce/plugin-org": "2.2.11",
     "@salesforce/plugin-packaging": "1.9.6",
     "@salesforce/plugin-schema": "2.1.11",
     "@salesforce/plugin-signups": "1.2.8",
