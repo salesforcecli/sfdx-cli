@@ -1478,13 +1478,13 @@
     chalk "^4.1.0"
     tslib "^1"
 
-"@salesforce/plugin-auth@2.2.16":
-  version "2.2.16"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-2.2.16.tgz#4560484adefbbda76656a381507ee26e839a1a6a"
-  integrity sha512-0XLjzUo1zE3HDax+sFYZrQAZPuUsZelRa7cmUoKpzxsuWREOZKkt33nV/+Kw6ObEdcIIZNl/E4YoGvW8Yj8Gag==
+"@salesforce/plugin-auth@2.2.19":
+  version "2.2.19"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-2.2.19.tgz#5560ea6089a44e6d6e90391078a43656b7969263"
+  integrity sha512-TxKxDOmakZYYXq9stgjDbtbpVr4T4MmWjJD5J5FLv2vtOduoepSdE/gzKhET/JQgZiUzpiwEIcQrXIqXARkfNg==
   dependencies:
-    "@oclif/core" "^1.19.1"
-    "@salesforce/command" "^5.2.13"
+    "@oclif/core" "^1.20.0"
+    "@salesforce/command" "^5.2.17"
     "@salesforce/core" "^3.31.10"
     "@salesforce/kit" "^1.7.0"
     chalk "^4.1.2"
