@@ -1504,14 +1504,14 @@
     shelljs "^0.8.5"
     tslib "^1"
 
-"@salesforce/plugin-community@2.0.13":
-  version "2.0.13"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-community/-/plugin-community-2.0.13.tgz#8bc9c2cb5694e16226626b946190c2196448a0d6"
-  integrity sha512-D5p48CVtm4bvIrajC9c1bFoDbk+A5hLZr82R2hvw0Xnv9cDgfLvbOTmkhmRLhyBRtIbeLi7BmWl3dSNe6zvFng==
+"@salesforce/plugin-community@2.0.14":
+  version "2.0.14"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-community/-/plugin-community-2.0.14.tgz#729ac20bf6ef12595e390328af2af75d99517a57"
+  integrity sha512-JxwBC+KuoO2dIftde54ycRoaVsqlCrDvCMeXnjrxqBaXOFqespTIVoOPXfBK0+C8niZH00AxlYWwVNgVi/eoCQ==
   dependencies:
     "@oclif/core" "^1.19.1"
     "@salesforce/command" "^5.2.13"
-    "@salesforce/core" "^3.31.16"
+    "@salesforce/core" "^3.31.17"
     tslib "^2"
 
 "@salesforce/plugin-config@1.4.21":
