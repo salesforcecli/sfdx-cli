@@ -880,9 +880,9 @@
     tslib "^2.3.1"
 
 "@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.14.1", "@oclif/core@^1.16.0", "@oclif/core@^1.16.1", "@oclif/core@^1.16.4", "@oclif/core@^1.18.0", "@oclif/core@^1.19.1", "@oclif/core@^1.2.0", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.8.0":
-  version "1.19.2"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.19.2.tgz#847b1c502ff8a91b834b8c893f0942a5d95e3b64"
-  integrity sha512-n5ni/NNR6+I0IQXVGoLKdrdw6IS3WH/R/hw6WX8ERfLMZACrNSuJFD9EmBZkztyRkmiQ2L06ULazW5bJn5Shog==
+  version "1.20.2"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.20.2.tgz#724713086355d693e578960f72c7e2d14fd3e7c3"
+  integrity sha512-c6CpDbDPS9UuKwGoajzsjrjfnwQywWEV3WI5FDvb87h0/WW2tGf1QwHUWgdKOojafEcMAa9DnP5j+mXdUTtpCg==
   dependencies:
     "@oclif/linewrap" "^1.0.0"
     "@oclif/screen" "^3.0.2"
