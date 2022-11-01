@@ -879,7 +879,7 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.14.1", "@oclif/core@^1.16.0", "@oclif/core@^1.16.1", "@oclif/core@^1.16.4", "@oclif/core@^1.18.0", "@oclif/core@^1.19.1", "@oclif/core@^1.2.0", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.8.0":
+"@oclif/core@^1.12.0", "@oclif/core@^1.13.10", "@oclif/core@^1.14.1", "@oclif/core@^1.16.0", "@oclif/core@^1.16.1", "@oclif/core@^1.16.4", "@oclif/core@^1.18.0", "@oclif/core@^1.19.1", "@oclif/core@^1.2.0", "@oclif/core@^1.20.0", "@oclif/core@^1.6.3", "@oclif/core@^1.6.4", "@oclif/core@^1.8.0":
   version "1.20.2"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.20.2.tgz#724713086355d693e578960f72c7e2d14fd3e7c3"
   integrity sha512-c6CpDbDPS9UuKwGoajzsjrjfnwQywWEV3WI5FDvb87h0/WW2tGf1QwHUWgdKOojafEcMAa9DnP5j+mXdUTtpCg==
@@ -1343,14 +1343,14 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@salesforce/command@^5.0.4", "@salesforce/command@^5.1.0", "@salesforce/command@^5.1.2", "@salesforce/command@^5.1.3", "@salesforce/command@^5.2.1", "@salesforce/command@^5.2.11", "@salesforce/command@^5.2.12", "@salesforce/command@^5.2.13", "@salesforce/command@^5.2.16", "@salesforce/command@^5.2.6":
-  version "5.2.16"
-  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.2.16.tgz#e9fd778403dfe29ff992d225f0105389e20152cd"
-  integrity sha512-rYC/URrIae8LjeuMlg+/PrxyWBEYgOTy2aHfTryiL4dEr9F28b2/xgSLh+5RGEblhPo52GXR33bFQU81pkq/BQ==
+"@salesforce/command@^5.0.4", "@salesforce/command@^5.1.0", "@salesforce/command@^5.1.2", "@salesforce/command@^5.1.3", "@salesforce/command@^5.2.1", "@salesforce/command@^5.2.11", "@salesforce/command@^5.2.12", "@salesforce/command@^5.2.13", "@salesforce/command@^5.2.16", "@salesforce/command@^5.2.17", "@salesforce/command@^5.2.6":
+  version "5.2.18"
+  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.2.18.tgz#e85edd27c8f9fb7b98bc34bc93931e1e4702247b"
+  integrity sha512-kG6lZHZ6fzihTDCZnsEG65Tv9aXcCqypUBaKKpOHo1vD54tCH1w905YAoncJVp76jZFMh6CbOmPhssk1psVY+A==
   dependencies:
-    "@oclif/core" "^1.19.1"
+    "@oclif/core" "^1.20.0"
     "@oclif/test" "^2.2.4"
-    "@salesforce/core" "^3.31.16"
+    "@salesforce/core" "^3.31.17"
     "@salesforce/kit" "^1.6.1"
     "@salesforce/ts-types" "^1.5.21"
     chalk "^2.4.2"
@@ -1588,13 +1588,13 @@
     semver "^7.3.5"
     tslib "^2"
 
-"@salesforce/plugin-limits@2.0.8":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-limits/-/plugin-limits-2.0.8.tgz#f634eb4e9eb136449ed0f8c1f2b793bcb43134fb"
-  integrity sha512-gMvBc5AyfnqmUNCodZzXDcYNLZgSzVaUekntOwdk5PMg4G/omb/gIznqzIcuKTvfLY7Q0eKZZy/VpF3XKYeFVQ==
+"@salesforce/plugin-limits@2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-limits/-/plugin-limits-2.0.10.tgz#8517e52b6526348d7df415e60bc6b1a42208c106"
+  integrity sha512-5KPnLTIkZbkLmf8gtUUhUpTRTbKElrIrbBzeJu9dTlZOtyJeUabuRho0oirabhZZ0ydW5bABPuhRQsUDfTPCgA==
   dependencies:
-    "@oclif/core" "^1.19.1"
-    "@salesforce/command" "^5.2.16"
+    "@oclif/core" "^1.20.0"
+    "@salesforce/command" "^5.2.17"
     "@salesforce/core" "^3.31.16"
     tslib "^2"
 
