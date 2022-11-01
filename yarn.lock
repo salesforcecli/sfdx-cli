@@ -1138,7 +1138,7 @@
   resolved "https://registry.yarnpkg.com/@oclif/screen/-/screen-3.0.2.tgz#969054308fe98d130c02844a45cc792199b75670"
   integrity sha512-S/SF/XYJeevwIgHFmVDAFRUvM3m+OjhvCAYMk78ZJQCYCQ5wS7j+LTt1ZEv2jpEEGg2tx/F6TYYWxddNAYHrFQ==
 
-"@oclif/test@^2.1.0", "@oclif/test@^2.2.4":
+"@oclif/test@^2.2.4":
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/@oclif/test/-/test-2.2.6.tgz#2c98bb1ecab3ddf6b01b51f8a3489c9105353d67"
   integrity sha512-rf67rTBkEeulpomdeBYm0D+Q0e1uMqTPUNPhY2/G6guAJhmu3M+78HvSKpLdG7WqpbfQJ68D5Dh5HnauO+MY2g==
@@ -1514,13 +1514,12 @@
     "@salesforce/core" "^3.31.16"
     tslib "^2"
 
-"@salesforce/plugin-config@1.4.21":
-  version "1.4.21"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.4.21.tgz#d1141fc410202038a5d82acfd2a2c648f3eeec26"
-  integrity sha512-ZFRh1Bsfm/E1vgvoL+OsMMXaC3y4oQqUBggrTMGxIg9HASvrXoitTyHXjKwZ6Kf2/dYlNcYBfGDL60dVBzfYYg==
+"@salesforce/plugin-config@1.4.22":
+  version "1.4.22"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-config/-/plugin-config-1.4.22.tgz#bfab04bbffedb178210495afe22e7b60ee26f292"
+  integrity sha512-ajqBnPxuE318ngVYRJpCMqrl812vSHsSPkBpINy6HU5GY5PqziO2UDIupmAHUiwtgqJKfjzQ+5LUhnNb6EK7tA==
   dependencies:
-    "@oclif/core" "^1.16.4"
-    "@oclif/test" "^2.1.0"
+    "@oclif/core" "^1.20.0"
     "@salesforce/command" "^5.1.0"
     "@salesforce/core" "^3.15.5"
     tslib "^2"
