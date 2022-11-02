@@ -994,16 +994,16 @@
     fs-extra "^9.0.1"
 
 "@oclif/plugin-command-snapshot@^3.1.3":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-command-snapshot/-/plugin-command-snapshot-3.2.0.tgz#42937db2181edcdf2937b1227d940d4524c721fd"
-  integrity sha512-NPDk5I33SKOTaPMstc37qGtlFK+WDi44gJRK9HsNYASeKihzXAW5H8IUxtvbWmHVkRE2tuDLUdV9kqGOJ/gS6w==
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-command-snapshot/-/plugin-command-snapshot-3.2.7.tgz#68779cbac74e3b6d65ad04c72cbc171570e76a08"
+  integrity sha512-zKh9z/JdnpIz9uw+8DKRY8zH2lIH9IYu9T+FLteW1xjErXSOo924BiUehr7iJNY79XDeU2w0eAP9u+CfwH4KCA==
   dependencies:
-    "@oclif/core" "^1.16.4"
+    "@oclif/core" "^1.20.0"
     chalk "^4.1.2"
     just-diff "^5.1.1"
     lodash "^4.17.21"
-    semver "^7.3.7"
-    ts-json-schema-generator "^1.1.0"
+    semver "^7.3.8"
+    ts-json-schema-generator "^1.1.2"
     tslib "^2.4.0"
 
 "@oclif/plugin-commands@^2.2.0":
@@ -9449,7 +9449,7 @@ trim-newlines@^3.0.0:
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-3.0.1.tgz#260a5d962d8b752425b32f3a7db0dcacd176c144"
   integrity sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==
 
-ts-json-schema-generator@^1.1.0:
+ts-json-schema-generator@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/ts-json-schema-generator/-/ts-json-schema-generator-1.1.2.tgz#29a0c878733b6a1bb0346fce02b1ebb8b96effa3"
   integrity sha512-XMnxvndJFJEYv3NBmW7Po5bGajKdK2qH8Q078eDy60srK9+nEvbT9nLCRKd2IV/RQ7a+oc5FNylvZWveqh7jeQ==
