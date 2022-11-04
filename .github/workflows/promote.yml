@@ -10,13 +10,13 @@ on:
       tag:
         type: string
         required: false
-        description: tag to use for docker/npm, like latest or latest-rc
-        default: latest
+        description: tag to use for docker/npm, like dev or dev-rc
+        default: dev
       channel:
         type: string
         required: true
-        default: stable
-        description: channel to promote the matching tarball to (example stable, stable-rc )
+        default: dev
+        description: channel to promote the matching tarball to (example dev, dev-rc )
       useCTC:
         type: boolean
         required: false
@@ -25,7 +25,7 @@ on:
 jobs:
   ctc-open:
     if: inputs.useCTC
-    uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@main
+    uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@re/rename-mac-pkg
     secrets: inherit
 
   docker-promote:
@@ -77,7 +77,7 @@ jobs:
           cache: yarn
       - run: yarn install
       # to get the SHA
-      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
+      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@re/rename-mac-pkg
         id: version-info
         with:
           version: ${{ inputs.version }}
@@ -87,18 +87,30 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
 
+  rename-mac-pkg:
+    runs-on: ubuntu-latest
+    container:
+      image: amazon/aws-cli:2.8.6
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    needs: [channel-promote]
+    steps:
+      - run: aws s3 cp s3://dfc-data-production/media/salesforce-cli/sfdx/channels/${{ inputs.channel }}/sfdx-x64.pkg ./sfdx.pkg
+      - run: aws s3 cp ./sfdx.pkg s3://dfc-data-production/media/salesforce-cli/sfdx/channels/${{ inputs.channel }}/
+
   ctcCloseSuccess:
-    needs: [ctc-open, npm-promote, docker-promote, channel-promote]
-    if: needs.ctc-open.result == 'success' && needs.ctc-open.outputs.changeCaseId && needs.npm-promote.result == 'success' && needs.docker-promote.result == 'success' && needs.channel-promote.result == 'success'
-    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@main
+    needs: [ctc-open, npm-promote, docker-promote, channel-promote, rename-mac-pkg]
+    if: needs.ctc-open.result == 'success' && needs.ctc-open.outputs.changeCaseId && needs.npm-promote.result == 'success' && needs.docker-promote.result == 'success' && needs.channel-promote.result == 'success' && needs.rename-mac-pkg.result == 'success'
+    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@re/rename-mac-pkg
     secrets: inherit
     with:
       changeCaseId: ${{needs.ctc-open.outputs.changeCaseId}}
 
   ctcCloseFail:
-    needs: [ctc-open, npm-promote, docker-promote, channel-promote]
-    if: always() && needs.ctc-open.outputs.changeCaseId && (needs.ctc-open.result != 'success' || needs.npm-promote.result != 'success' || needs.docker-promote.result != 'success' || needs.channel-promote.result != 'success')
-    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@main
+    needs: [ctc-open, npm-promote, docker-promote, channel-promote, rename-mac-pkg]
+    if: always() && needs.ctc-open.outputs.changeCaseId && (needs.ctc-open.result != 'success' || needs.npm-promote.result != 'success' || needs.docker-promote.result != 'success' || needs.channel-promote.result != 'success' || needs.rename-mac-pkg.result != 'success')
+    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@re/rename-mac-pkg
     secrets: inherit
     with:
       changeCaseId: ${{ needs.ctc-open.outputs.changeCaseId }}

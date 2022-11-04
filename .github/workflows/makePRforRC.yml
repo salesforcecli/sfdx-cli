@@ -29,8 +29,8 @@ jobs:
         with:
           node-version: lts/*
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
-      - run: sf-release cli:latestrc:build
+      - uses: salesforcecli/github-workflows/.github/actions/gitConfig@re/rename-mac-pkg
+      - run: sf-release cli:latestrc:build # --rctag dev-rc
         if: ${{ !inputs.patch && !inputs.only }}
       - run: sf-release cli:latestrc:build --patch
         if: ${{ inputs.patch && !inputs.only }}
