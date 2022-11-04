@@ -43,8 +43,9 @@ jobs:
           node-version: lts/*
           cache: yarn
       - run: ./scripts/verify-promote
-      - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      - run: sf-release cli:versions:inspect -c dev -l archive
+      # TODO: Comment these back in before merging into main
+      # - run: npm install -g @salesforce/plugin-release-management --omit=dev
+      # - run: sf-release cli:versions:inspect -c dev -l archive
 
   announce-promotion-to-slack:
     # Only runs on main branch
