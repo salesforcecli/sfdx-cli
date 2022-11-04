@@ -36,7 +36,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "repo: ${{ github.event.workflow_run.repository.html_url }}\nworkflow name:${{ github.event.workflow_run.name }}\njob url: ${{ github.event.workflow_run.html_url }}"
+                    "text": "repo: ${{ github.event.workflow_run.repository.html_url }}\nworkflow name: ${{ github.event.workflow_run.name }}\njob url: ${{ github.event.workflow_run.html_url }}"
                   }
                 }
               ]
