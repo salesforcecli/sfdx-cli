@@ -4,8 +4,8 @@ name: pr-validation
 on:
   pull_request:
     types: [opened, reopened, edited]
-    # only applies to PRs that want to merge to main
-    branches: [main]
+    # only applies to PRs that want to merge to re/update-oclif-v3
+    branches: [re/update-oclif-v3]
 
 jobs:
   pr-validation:
