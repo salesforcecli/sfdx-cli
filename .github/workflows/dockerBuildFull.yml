@@ -1,15 +1,16 @@
-# name: docker-full
-# on:
-#   workflow_call:
-#     inputs:
-#       version:
-#         type: string
-#         required: true
+name: docker-full
+on:
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        required: true
 
-# jobs:
-#   buildPush:
-#     runs-on: ubuntu-latest
-#     steps:
+jobs:
+  buildPush:
+    runs-on: ubuntu-latest
+    steps:
+        - run: echo "Not building docker images, this is a test."
 #       - name: Check out the repo
 #         uses: actions/checkout@v3
 
