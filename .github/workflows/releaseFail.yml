@@ -8,6 +8,8 @@ on:
       - rc tag/release
     types:
       - completed
+    branches:
+      - main
 
 jobs:
   failure-notify:
