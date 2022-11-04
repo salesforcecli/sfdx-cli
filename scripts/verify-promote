@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # latest and rc should match after promote before RC build
+echo "Verifying promote of npm dist tags: dev-rc -> dev"
 TAGS=$(npm view sfdx-cli --json | jq -cr '."dist-tags"')
 DEV=$(echo $TAGS | jq -cr '.dev')
 echo $DEV
