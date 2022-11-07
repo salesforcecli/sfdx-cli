@@ -10,13 +10,13 @@ on:
       tag:
         type: string
         required: false
-        description: tag to use for docker/npm, like dev or dev-rc
-        default: dev
+        description: tag to use for docker/npm, like latest or latest-rc
+        default: latest
       channel:
         type: string
         required: true
-        default: dev
-        description: channel to promote the matching tarball to (example dev, dev-rc )
+        default: stable
+        description: channel to promote the matching tarball to (example stable, stable-rc )
       useCTC:
         type: boolean
         required: false
@@ -25,7 +25,7 @@ on:
 jobs:
   ctc-open:
     if: inputs.useCTC
-    uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@re/rename-mac-pkg
+    uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@main
     secrets: inherit
 
   docker-promote:
@@ -77,7 +77,7 @@ jobs:
           cache: yarn
       - run: yarn install
       # to get the SHA
-      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@re/rename-mac-pkg
+      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
         id: version-info
         with:
           version: ${{ inputs.version }}
@@ -101,7 +101,7 @@ jobs:
   ctcCloseSuccess:
     needs: [ctc-open, npm-promote, docker-promote, channel-promote, rename-mac-pkg]
     if: needs.ctc-open.result == 'success' && needs.ctc-open.outputs.changeCaseId && needs.npm-promote.result == 'success' && needs.docker-promote.result == 'success' && needs.channel-promote.result == 'success' && needs.rename-mac-pkg.result == 'success'
-    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@re/rename-mac-pkg
+    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@main
     secrets: inherit
     with:
       changeCaseId: ${{needs.ctc-open.outputs.changeCaseId}}
@@ -109,7 +109,7 @@ jobs:
   ctcCloseFail:
     needs: [ctc-open, npm-promote, docker-promote, channel-promote, rename-mac-pkg]
     if: always() && needs.ctc-open.outputs.changeCaseId && (needs.ctc-open.result != 'success' || needs.npm-promote.result != 'success' || needs.docker-promote.result != 'success' || needs.channel-promote.result != 'success' || needs.rename-mac-pkg.result != 'success')
-    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@re/rename-mac-pkg
+    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@main
     secrets: inherit
     with:
       changeCaseId: ${{ needs.ctc-open.outputs.changeCaseId }}

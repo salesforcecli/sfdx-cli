@@ -18,10 +18,10 @@ jobs:
         with:
           node-version: lts/*
           cache: yarn
-      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@re/rename-mac-pkg
+      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
         id: version-info
         with:
-          version: dev-rc
+          version: latest-rc
 
   promote:
     uses: ./.github/workflows/promote.yml
@@ -29,8 +29,8 @@ jobs:
     secrets: inherit
     with:
       version: ${{needs.getVersion.outputs.version}}
-      tag: dev
-      channel: dev
+      tag: latest
+      channel: stable
       useCTC: true
 
   promote-verify:
@@ -43,9 +43,8 @@ jobs:
           node-version: lts/*
           cache: yarn
       - run: ./scripts/verify-promote
-      # TODO: Comment these back in before merging into main
-      # - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      # - run: sf-release cli:versions:inspect -c dev -l archive
+      - run: npm install -g @salesforce/plugin-release-management --omit=dev
+      - run: sf-release cli:versions:inspect -c stable -l archive
 
   announce-promotion-to-slack:
     # Only runs on main branch
