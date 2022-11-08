@@ -5,20 +5,20 @@ on:
 
 jobs:
   npm-release:
-    uses: salesforcecli/github-workflows/.github/workflows/npmPublish.yml@main
+    uses: salesforcecli/github-workflows/.github/workflows/npmPublish.yml@re/rename-mac-pkg
     secrets: inherit
     with:
-      tag: latest-rc
+      tag: dev-rc
       githubTag: ${{ github.event.release.tag_name }}
 
   pack-verify-upload-tarballs:
     needs: [npm-release]
-    uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@main
+    uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@re/rename-mac-pkg
     with:
       upload: true
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      channel: stable-rc
+      channel: dev-rc
     secrets: inherit
 
   archives-verify:
@@ -31,45 +31,46 @@ jobs:
           node-version: lts/*
           cache: npm
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      - run: sf-release cli:versions:inspect -c stable-rc -l archive
+      - run: sf-release cli:versions:inspect -c dev-rc -l archive
 
   pack-upload-mac:
     needs: [pack-verify-upload-tarballs]
-    uses: salesforcecli/github-workflows/.github/workflows/packUploadMac.yml@main
+    uses: salesforcecli/github-workflows/.github/workflows/packUploadMac.yml@re/rename-mac-pkg
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      channel: stable-rc
+      channel: dev-rc
     secrets: inherit
 
   pack-upload-win:
     needs: [pack-verify-upload-tarballs]
-    uses: salesforcecli/github-workflows/.github/workflows/packUploadWindows.yml@main
+    uses: salesforcecli/github-workflows/.github/workflows/packUploadWindows.yml@re/rename-mac-pkg
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      channel: stable-rc
+      channel: dev-rc
     secrets: inherit
 
-  docker-slim:
-    needs: [pack-verify-upload-tarballs]
-    uses: ./.github/workflows/dockerBuildSlim.yml
-    with:
-      version: ${{ github.event.release.tag_name }}
-    secrets: inherit
+  # Commented out for testing
+  # docker-slim:
+  #   needs: [pack-verify-upload-tarballs]
+  #   uses: ./.github/workflows/dockerBuildSlim.yml
+  #   with:
+  #     version: ${{ github.event.release.tag_name }}
+  #   secrets: inherit
 
-  docker-full:
-    needs: [npm-release]
-    uses: ./.github/workflows/dockerBuildFull.yml
-    with:
-      version: ${{ github.event.release.tag_name }}
-    secrets: inherit
+  # docker-full:
+  #   needs: [npm-release]
+  #   uses: ./.github/workflows/dockerBuildFull.yml
+  #   with:
+  #     version: ${{ github.event.release.tag_name }}
+  #   secrets: inherit
 
   announce-rc-release-to-slack:
     # Only runs on main branch
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: [pack-verify-upload-tarballs, npm-release, docker-slim, docker-full, pack-upload-win, pack-upload-mac]
+    needs: [pack-verify-upload-tarballs, npm-release, pack-upload-win, pack-upload-mac] # docker-slim, docker-full, 
     steps:
       - name: Announce RC Workflow
         id: slack
