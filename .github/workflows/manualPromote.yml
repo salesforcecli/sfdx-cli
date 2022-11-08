@@ -9,13 +9,13 @@ on:
       channel:
         type: string
         required: true
-        default: dev
-        description: channel to promote the matching tarball to (example dev, dev-rc )
+        default: stable
+        description: channel to promote the matching tarball to (example stable, stable-rc )
       tag:
         type: string
         required: false
-        description: tag to use for docker/npm, like dev or dev-rc
-        default: dev
+        description: tag to use for docker/npm, like latest or latest-rc
+        default: latest
       useCTC:
         type: boolean
         required: false

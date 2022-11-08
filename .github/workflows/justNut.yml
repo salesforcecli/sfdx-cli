@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: lts/*
           cache: yarn
-      - run: npm install -g sfdx-cli@dev-rc --omit=dev
+      - run: npm install -g sfdx-cli@latest-rc --omit=dev
       - run: yarn install
       - name: NUTs with custom executable
         run: ${{ inputs.command }}
