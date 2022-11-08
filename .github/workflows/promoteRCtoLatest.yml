@@ -18,10 +18,10 @@ jobs:
         with:
           node-version: lts/*
           cache: yarn
-      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
+      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@re/rename-mac-okg
         id: version-info
         with:
-          version: latest-rc
+          version: dev-rc
 
   promote:
     uses: ./.github/workflows/promote.yml
@@ -29,8 +29,8 @@ jobs:
     secrets: inherit
     with:
       version: ${{needs.getVersion.outputs.version}}
-      tag: latest
-      channel: stable
+      tag: dev
+      channel: dev
       useCTC: true
 
   promote-verify:
@@ -44,7 +44,7 @@ jobs:
           cache: yarn
       - run: ./scripts/verify-promote
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      - run: sf-release cli:versions:inspect -c stable -l archive
+      - run: sf-release cli:versions:inspect -c dev -l archive
 
   announce-promotion-to-slack:
     # Only runs on main branch
@@ -65,7 +65,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ":rocket: `sfdx-cli` version `${{ needs.getVersion.outputs.version }}` has been promoted to latest :rocket:\nRun `sfdx whatsnew -v latest` to see what's new"
+                  "text": ":rocket: `sfdx-cli` version `${{ needs.getVersion.outputs.version }}` has been promoted to dev :rocket:\nRun `sfdx whatsnew -v dev` to see what's new"
                 }
               }]
             }

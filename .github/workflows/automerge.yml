@@ -6,7 +6,7 @@ on:
 
 jobs:
   automerge:
-    uses: salesforcecli/github-workflows/.github/workflows/automerge.yml@main
+    uses: salesforcecli/github-workflows/.github/workflows/automerge.yml@re/rename-mac-okg
     with:
       mergeMethod: squash
     secrets: inherit
