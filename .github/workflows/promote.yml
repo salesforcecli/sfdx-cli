@@ -25,7 +25,7 @@ on:
 jobs:
   ctc-open:
     if: inputs.useCTC
-    uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@re/rename-mac-okg
+    uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@re/rename-mac-pkg
     secrets: inherit
 
   # docker-promote:
@@ -77,7 +77,7 @@ jobs:
           cache: yarn
       - run: yarn install
       # to get the SHA
-      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@re/rename-mac-okg
+      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@re/rename-mac-pkg
         id: version-info
         with:
           version: ${{ inputs.version }}
@@ -98,7 +98,7 @@ jobs:
       AWS_EC2_METADATA_DISABLED: true
     needs: [channel-promote]
     steps:
-      - uses: salesforcecli/github-workflows/.github/actions/renameMacPkg@re/rename-mac-okg
+      - uses: salesforcecli/github-workflows/.github/actions/renameMacPkg@re/rename-mac-pkg
         with:
           cli: sfdx
           channel: ${{ inputs.channel }}
@@ -106,7 +106,7 @@ jobs:
   ctcCloseSuccess:
     needs: [ctc-open, npm-promote, channel-promote, rename-mac-pkg] # docker-promote, 
     if: needs.ctc-open.result == 'success' && needs.ctc-open.outputs.changeCaseId && needs.npm-promote.result == 'success' && needs.docker-promote.result == 'success' && needs.channel-promote.result == 'success' && needs.rename-mac-pkg.result == 'success'
-    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@re/rename-mac-okg
+    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@re/rename-mac-pkg
     secrets: inherit
     with:
       changeCaseId: ${{needs.ctc-open.outputs.changeCaseId}}
@@ -114,7 +114,7 @@ jobs:
   ctcCloseFail:
     needs: [ctc-open, npm-promote, channel-promote, rename-mac-pkg] # docker-promote, 
     if: always() && needs.ctc-open.outputs.changeCaseId && (needs.ctc-open.result != 'success' || needs.npm-promote.result != 'success' || needs.docker-promote.result != 'success' || needs.channel-promote.result != 'success' || needs.rename-mac-pkg.result != 'success')
-    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@re/rename-mac-okg
+    uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@re/rename-mac-pkg
     secrets: inherit
     with:
       changeCaseId: ${{ needs.ctc-open.outputs.changeCaseId }}

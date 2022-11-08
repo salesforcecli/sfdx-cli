@@ -5,7 +5,7 @@ on:
 
 jobs:
   npm-release:
-    uses: salesforcecli/github-workflows/.github/workflows/npmPublish.yml@re/rename-mac-okg
+    uses: salesforcecli/github-workflows/.github/workflows/npmPublish.yml@re/rename-mac-pkg
     secrets: inherit
     with:
       tag: dev-rc
@@ -13,7 +13,7 @@ jobs:
 
   pack-verify-upload-tarballs:
     needs: [npm-release]
-    uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@re/rename-mac-okg
+    uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@re/rename-mac-pkg
     with:
       upload: true
       cli: sfdx
@@ -35,7 +35,7 @@ jobs:
 
   pack-upload-mac:
     needs: [pack-verify-upload-tarballs]
-    uses: salesforcecli/github-workflows/.github/workflows/packUploadMac.yml@re/rename-mac-okg
+    uses: salesforcecli/github-workflows/.github/workflows/packUploadMac.yml@re/rename-mac-pkg
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
@@ -44,7 +44,7 @@ jobs:
 
   pack-upload-win:
     needs: [pack-verify-upload-tarballs]
-    uses: salesforcecli/github-workflows/.github/workflows/packUploadWindows.yml@re/rename-mac-okg
+    uses: salesforcecli/github-workflows/.github/workflows/packUploadWindows.yml@re/rename-mac-pkg
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}

@@ -10,12 +10,12 @@ concurrency:
 
 jobs:
   yarn-lockfile-check:
-    uses: salesforcecli/github-workflows/.github/workflows/lockFileCheck.yml@re/rename-mac-okg
+    uses: salesforcecli/github-workflows/.github/workflows/lockFileCheck.yml@re/rename-mac-pkg
     
   ut:
-    uses: salesforcecli/github-workflows/.github/workflows/unitTest.yml@re/rename-mac-okg
+    uses: salesforcecli/github-workflows/.github/workflows/unitTest.yml@re/rename-mac-pkg
     secrets: inherit
 
   tarballs:
-    uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@re/rename-mac-okg
+    uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@re/rename-mac-pkg
     secrets: inherit
