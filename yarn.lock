@@ -1718,7 +1718,7 @@
     chalk "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-release-management@^3.5.15":
+"@salesforce/plugin-release-management@^3.5.17":
   version "3.5.17"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.5.17.tgz#fd9cfdb0efbc32e88e98defe8c30850c974b7469"
   integrity sha512-Jdi53zuvJanDmuCcuXsrrttd7+o9edjBwpvJIV01DT/5RN7k4Myx3ZHpzKInlNkLIP2fh6ksNGAkM5yuCfeAKQ==
