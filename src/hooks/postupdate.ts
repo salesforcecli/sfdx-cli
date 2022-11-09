@@ -30,16 +30,16 @@ function suggestAlternatives(): void {
     'Uninstall instructions: https://developer.salesforce.com/docs/atlas.en-us.234.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_uninstall.htm'
   );
   if (process.platform === 'win32') {
-    CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/dev/sf-x64.exe');
+    CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.exe');
   } else if (process.platform === 'darwin') {
     if (process.arch === 'arm64') {
-      CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/dev/sf-arm64.pkg');
+      CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-arm64.pkg');
     } else {
-      CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/dev/sf-x64.pkg');
+      CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.pkg');
     }
   } else {
     CliUx.ux.log(
-      '- download: https://developer.salesforce.com/media/salesforce-cli/sf/channels/dev/sf-linux-x64.tar.gz'
+      '- download: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.gz'
     );
   }
 }
