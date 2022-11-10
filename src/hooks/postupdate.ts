@@ -32,7 +32,11 @@ function suggestAlternatives(): void {
   if (process.platform === 'win32') {
     CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.exe');
   } else if (process.platform === 'darwin') {
-    CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf.pkg');
+    if (process.arch === 'arm64') {
+      CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-arm64.pkg');
+    } else {
+      CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.pkg');
+    }
   } else {
     CliUx.ux.log(
       '- download: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.gz'

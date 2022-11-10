@@ -46,10 +46,11 @@ jobs:
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
       - run: sf-release cli:versions:inspect -c stable -l archive
 
-  announce:
+  announce-promotion-to-slack:
+    # Only runs on main branch
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: [getVersion, promote-verify]
-
     steps:
       - name: Announce promotion
         id: slack

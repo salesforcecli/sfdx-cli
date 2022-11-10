@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # latest and rc should match after promote before RC build
+echo "Verifying promote of npm dist tags: latest-rc -> latest"
 TAGS=$(npm view sfdx-cli --json | jq -cr '."dist-tags"')
 LATEST=$(echo $TAGS | jq -cr '.latest')
 echo $LATEST
@@ -13,10 +14,11 @@ fi
 
 # artifacts and npm should agree on latest
 # buildmanifest version for latest matches npm for latest
+echo "Verifying promote of aws s3 bucket channels: latest-rc -> latest"
 MANIFEST_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-darwin-x64-buildmanifest"
 MANIFEST_VERSION=$(curl -s $MANIFEST_URL | jq -cr '.version')
 if [ $LATEST != $MANIFEST_VERSION ]; then
-  echo "latest in S3 and latest on npm do not match"
+  echo "stable-rc in S3 and latest on npm do not match"
   exit 1
 fi
 
