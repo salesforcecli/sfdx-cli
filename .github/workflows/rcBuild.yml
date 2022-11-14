@@ -82,7 +82,7 @@ jobs:
 
   announce-rc-release-to-slack:
     # Only runs on main branch
-    if: github.ref == 'refs/heads/main'
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     needs: [pack-verify-upload-tarballs, npm-release, docker-slim, docker-full, pack-upload-win, pack-upload-mac, rename-mac-pkg]
     steps:
