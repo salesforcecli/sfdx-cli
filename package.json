@@ -127,6 +127,7 @@
     "@salesforce/plugin-schema",
     "@salesforce/plugin-telemetry",
     "@salesforce/plugin-templates",
+    "@salesforce/plugin-trust",
     "@salesforce/plugin-user",
     "@salesforce/plugin-signups",
     "@salesforce/sfdx-plugin-lwc-test",
