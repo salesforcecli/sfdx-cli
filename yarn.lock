@@ -1122,12 +1122,12 @@
     semver "^7.3.8"
 
 "@oclif/plugin-which@^2.1.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-which/-/plugin-which-2.2.0.tgz#703bcd676d7344a05b4f4e801b857b05fd979f88"
-  integrity sha512-F24+6RGBoehv6wpVLh4aGEKb2AMyErYC8MUmLd/6Xy8czS+OguYjhSz8dx3vZnJrb/h1rjTJklbS3U4X8k34Gg==
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-which/-/plugin-which-2.2.2.tgz#c672dec4aa741a16ff4f3ea862ee21ae3bfebbe1"
+  integrity sha512-aFCeRd4XEa26kQjYsegDKKOMWDXQK4ciX3+ZYiUA2z6khhxTNoIOH/4Y+v/QG/YLgOvduMWdEevkY/fek5BMgA==
   dependencies:
-    "@oclif/core" "^1.18.0"
-    tslib "^2.4.0"
+    "@oclif/core" "^1.20.4"
+    tslib "^2.4.1"
 
 "@oclif/screen@^1.0.4":
   version "1.0.4"
@@ -1139,7 +1139,7 @@
   resolved "https://registry.yarnpkg.com/@oclif/screen/-/screen-3.0.3.tgz#e679ad10535e31d333f809f7a71335cc9aef1e55"
   integrity sha512-KX8gMYA9ujBPOd1HFsV9e0iEx7Uoj8AG/3YsW4TtWQTg4lJvr82qNm7o/cFQfYRIt+jw7Ew/4oL4A22zOT+IRA==
 
-"@oclif/test@^2.2.10", "@oclif/test@^2.2.4":
+"@oclif/test@^2.2.10":
   version "2.2.10"
   resolved "https://registry.yarnpkg.com/@oclif/test/-/test-2.2.10.tgz#51b873df300bb7a4d2f24a30e3395cea7db95507"
   integrity sha512-tz6tH79F0Kw1kWv/8BgTov+WtIeFDdq1PNUkW43U0Rh4HOA1SafPbXCpzhM9A6O7YXS+tq8ayuZdkyOXXJY6Ww==
@@ -4604,7 +4604,7 @@ extract-stack@^2.0.0:
   resolved "https://registry.yarnpkg.com/extract-stack/-/extract-stack-2.0.0.tgz#11367bc865bfcd9bc0db3123e5edb57786f11f9b"
   integrity sha512-AEo4zm+TenK7zQorGK1f9mJ8L14hnTDi2ZQPR+Mub1NX8zimka1mXpV5LpH8x9HoUmFSHZCfLHqWvp0Y4FxxzQ==
 
-fancy-test@^2.0.5, fancy-test@^2.0.6:
+fancy-test@^2.0.6:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/fancy-test/-/fancy-test-2.0.7.tgz#a5e8e23113384c5550914da4f429d10822622521"
   integrity sha512-E9qiHMi/Wf3y0PLwoRbgr8SRTcvQY+6gx9d/qaVNT6N5AQ79iZr08ftY2Ki5KRC5LS02GoVD/CYT4t/KwwC/Pw==
