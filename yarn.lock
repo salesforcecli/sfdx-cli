@@ -995,17 +995,17 @@
     fs-extra "^9.0.1"
 
 "@oclif/plugin-command-snapshot@^3.1.3":
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-command-snapshot/-/plugin-command-snapshot-3.2.7.tgz#68779cbac74e3b6d65ad04c72cbc171570e76a08"
-  integrity sha512-zKh9z/JdnpIz9uw+8DKRY8zH2lIH9IYu9T+FLteW1xjErXSOo924BiUehr7iJNY79XDeU2w0eAP9u+CfwH4KCA==
+  version "3.2.10"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-command-snapshot/-/plugin-command-snapshot-3.2.10.tgz#8b8bf6c59fe90319e3ec5400731322eae6c1f40e"
+  integrity sha512-peYrD0Vpahs8Q3n5hlFPj7TPEVnpoODwbrOl8JcGHe7SYI7ri7W4ywN4CSZ5YGQKKRMiYBOtUGyqEf7VAZKSoQ==
   dependencies:
-    "@oclif/core" "^1.20.0"
+    "@oclif/core" "^1.20.4"
     chalk "^4.1.2"
     just-diff "^5.1.1"
     lodash "^4.17.21"
     semver "^7.3.8"
     ts-json-schema-generator "^1.1.2"
-    tslib "^2.4.0"
+    tslib "^2.4.1"
 
 "@oclif/plugin-commands@^2.2.0":
   version "2.2.1"
@@ -1139,7 +1139,7 @@
   resolved "https://registry.yarnpkg.com/@oclif/screen/-/screen-3.0.3.tgz#e679ad10535e31d333f809f7a71335cc9aef1e55"
   integrity sha512-KX8gMYA9ujBPOd1HFsV9e0iEx7Uoj8AG/3YsW4TtWQTg4lJvr82qNm7o/cFQfYRIt+jw7Ew/4oL4A22zOT+IRA==
 
-"@oclif/test@^2.2.10", "@oclif/test@^2.2.4":
+"@oclif/test@^2.2.10":
   version "2.2.10"
   resolved "https://registry.yarnpkg.com/@oclif/test/-/test-2.2.10.tgz#51b873df300bb7a4d2f24a30e3395cea7db95507"
   integrity sha512-tz6tH79F0Kw1kWv/8BgTov+WtIeFDdq1PNUkW43U0Rh4HOA1SafPbXCpzhM9A6O7YXS+tq8ayuZdkyOXXJY6Ww==
@@ -4604,7 +4604,7 @@ extract-stack@^2.0.0:
   resolved "https://registry.yarnpkg.com/extract-stack/-/extract-stack-2.0.0.tgz#11367bc865bfcd9bc0db3123e5edb57786f11f9b"
   integrity sha512-AEo4zm+TenK7zQorGK1f9mJ8L14hnTDi2ZQPR+Mub1NX8zimka1mXpV5LpH8x9HoUmFSHZCfLHqWvp0Y4FxxzQ==
 
-fancy-test@^2.0.5, fancy-test@^2.0.6:
+fancy-test@^2.0.6:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/fancy-test/-/fancy-test-2.0.7.tgz#a5e8e23113384c5550914da4f429d10822622521"
   integrity sha512-E9qiHMi/Wf3y0PLwoRbgr8SRTcvQY+6gx9d/qaVNT6N5AQ79iZr08ftY2Ki5KRC5LS02GoVD/CYT4t/KwwC/Pw==
