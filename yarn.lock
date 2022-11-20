@@ -1108,7 +1108,7 @@
   dependencies:
     "@oclif/core" "^1.14.1"
 
-"@oclif/plugin-warn-if-update-available@^2.0.4", "@oclif/plugin-warn-if-update-available@^2.0.6":
+"@oclif/plugin-warn-if-update-available@^2.0.13", "@oclif/plugin-warn-if-update-available@^2.0.4":
   version "2.0.14"
   resolved "https://registry.yarnpkg.com/@oclif/plugin-warn-if-update-available/-/plugin-warn-if-update-available-2.0.14.tgz#f9142095f13c5e8300705533165ae039daa0c5f8"
   integrity sha512-gEgFZuNtFx3yPfSuxhAm9F8nLZ4+UnBJhbjTywY0Cvrqvd+OvKvo6PfwRm0lWmH4EgWwQEq39pfaks1fg+y1gw==
@@ -7664,14 +7664,14 @@ obliterator@^2.0.1, obliterator@^2.0.2:
   integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
 
 oclif@^3.2.22:
-  version "3.2.25"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.2.25.tgz#a51a1a20daf45f37a3c9a0cb12693b5f7a40cd0c"
-  integrity sha512-1nwdWHOBW5DkMBBu3HNrwM+WIAL7kDLBeoM8BNJLbnE4hlxBmeubwQTF0oGzmv+0vUomWMiNSbQF7AfzFbwUwA==
+  version "3.2.27"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.2.27.tgz#3028bc2bcd87aa8762779feec71ba74d5dd94f19"
+  integrity sha512-tMKEitC/fVki5mYx8D41qDuOymf24V/UGdkT04dTwtSkoMa/alGxERS2Oa/G/7Q0pfCGl9I5vi5WFuV2rY1ehQ==
   dependencies:
-    "@oclif/core" "^1.20.0"
+    "@oclif/core" "^1.20.4"
     "@oclif/plugin-help" "^5.1.16"
     "@oclif/plugin-not-found" "^2.3.7"
-    "@oclif/plugin-warn-if-update-available" "^2.0.6"
+    "@oclif/plugin-warn-if-update-available" "^2.0.13"
     aws-sdk "^2.1231.0"
     concurrently "^7.5.0"
     debug "^4.3.3"
