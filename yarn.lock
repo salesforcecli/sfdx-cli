@@ -1122,12 +1122,12 @@
     semver "^7.3.8"
 
 "@oclif/plugin-which@^2.1.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-which/-/plugin-which-2.2.0.tgz#703bcd676d7344a05b4f4e801b857b05fd979f88"
-  integrity sha512-F24+6RGBoehv6wpVLh4aGEKb2AMyErYC8MUmLd/6Xy8czS+OguYjhSz8dx3vZnJrb/h1rjTJklbS3U4X8k34Gg==
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-which/-/plugin-which-2.2.2.tgz#c672dec4aa741a16ff4f3ea862ee21ae3bfebbe1"
+  integrity sha512-aFCeRd4XEa26kQjYsegDKKOMWDXQK4ciX3+ZYiUA2z6khhxTNoIOH/4Y+v/QG/YLgOvduMWdEevkY/fek5BMgA==
   dependencies:
-    "@oclif/core" "^1.18.0"
-    tslib "^2.4.0"
+    "@oclif/core" "^1.20.4"
+    tslib "^2.4.1"
 
 "@oclif/screen@^1.0.4":
   version "1.0.4"
