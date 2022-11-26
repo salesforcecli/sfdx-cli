@@ -1050,11 +1050,11 @@
     wrap-ansi "^6.2.0"
 
 "@oclif/plugin-help@^5.1.12", "@oclif/plugin-help@^5.1.16":
-  version "5.1.18"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-5.1.18.tgz#8f1d864f76ee151e840e3d20de5a05f00ed91a54"
-  integrity sha512-EICYITNwc155RHBiRnhUmvuc5oEuRE+9B+8rErw4OKKpPfZ5edvth38e4QOONfDRjb3MHfNu0sds1aB3i/BikA==
+  version "5.1.19"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-5.1.19.tgz#43051772fefafe9bfe8823e2298103feb351b9c7"
+  integrity sha512-eQVRCFJOwRj8Tbqz8Lzd9GN38egwLCg+ohJ0xfg12CoXml03WqkfcFiAWkVwSWmLVrZUlUVrxfXKKkmpUaXZHg==
   dependencies:
-    "@oclif/core" "^1.20.2"
+    "@oclif/core" "^1.20.4"
 
 "@oclif/plugin-not-found@^2.3.1", "@oclif/plugin-not-found@^2.3.7":
   version "2.3.8"
