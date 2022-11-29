@@ -116,11 +116,8 @@
   },
   "pinnedDependencies": [
     "@salesforce/plugin-alias",
-    "@salesforce/plugin-apex",
     "@salesforce/plugin-auth",
     "@salesforce/plugin-config",
-    "@salesforce/plugin-community",
-    "@salesforce/plugin-custom-metadata",
     "@salesforce/plugin-data",
     "@salesforce/plugin-generator",
     "@salesforce/plugin-info",
@@ -130,11 +127,8 @@
     "@salesforce/plugin-source",
     "@salesforce/plugin-schema",
     "@salesforce/plugin-telemetry",
-    "@salesforce/plugin-templates",
     "@salesforce/plugin-trust",
     "@salesforce/plugin-user",
-    "@salesforce/plugin-signups",
-    "@salesforce/sfdx-plugin-lwc-test",
     "salesforce-alm"
   ],
   "dependencies": {
@@ -252,6 +246,7 @@
     "test": "nyc mocha --recursive \"test/**/*.test.ts\" --report lcov --report cobertura -t 240000 --require source-map-support/register",
     "test-smoke-unix": "sf-release cli:tarballs:smoke --cli sfdx",
     "test:deprecation-policy": "set HOME=./ ./bin/run snapshot:compare",
+    "test:json-schema": "sf-release cli:schemas:compare",
     "test:smoke-unix": "sf-release cli:tarballs:smoke --cli sfdx",
     "trogdor": "yarn clean-all && yarn && yarn compile && yarn uts",
     "upload:deb": "oclif upload:deb",
