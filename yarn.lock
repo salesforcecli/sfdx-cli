@@ -1049,7 +1049,7 @@
     widest-line "^3.1.0"
     wrap-ansi "^6.2.0"
 
-"@oclif/plugin-help@^5.1.12", "@oclif/plugin-help@^5.1.16":
+"@oclif/plugin-help@^5.1.12", "@oclif/plugin-help@^5.1.19":
   version "5.1.19"
   resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-5.1.19.tgz#43051772fefafe9bfe8823e2298103feb351b9c7"
   integrity sha512-eQVRCFJOwRj8Tbqz8Lzd9GN38egwLCg+ohJ0xfg12CoXml03WqkfcFiAWkVwSWmLVrZUlUVrxfXKKkmpUaXZHg==
@@ -1119,7 +1119,7 @@
   dependencies:
     "@oclif/core" "^1.14.1"
 
-"@oclif/plugin-warn-if-update-available@^2.0.13", "@oclif/plugin-warn-if-update-available@^2.0.4":
+"@oclif/plugin-warn-if-update-available@^2.0.14", "@oclif/plugin-warn-if-update-available@^2.0.4":
   version "2.0.14"
   resolved "https://registry.yarnpkg.com/@oclif/plugin-warn-if-update-available/-/plugin-warn-if-update-available-2.0.14.tgz#f9142095f13c5e8300705533165ae039daa0c5f8"
   integrity sha512-gEgFZuNtFx3yPfSuxhAm9F8nLZ4+UnBJhbjTywY0Cvrqvd+OvKvo6PfwRm0lWmH4EgWwQEq39pfaks1fg+y1gw==
@@ -5142,10 +5142,15 @@ gitconfiglocal@^1.0.0:
   dependencies:
     ini "^1.3.2"
 
-github-slugger@^1.2.1, github-slugger@^1.4.0:
+github-slugger@^1.2.1:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-1.4.0.tgz#206eb96cdb22ee56fdc53a28d5a302338463444e"
   integrity sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==
+
+github-slugger@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-1.5.0.tgz#17891bbc73232051474d68bd867a34625c955f7d"
+  integrity sha512-wIh+gKBI9Nshz2o46B0B3f5k/W+WI9ZAv6y5Dn5WJ5SK1t0TnDimB4WE5rmTD05ZAIn8HALCZVmCsvj0w0v0lw==
 
 github-username@^6.0.0:
   version "6.0.0"
@@ -7694,24 +7699,24 @@ obliterator@^2.0.1, obliterator@^2.0.2:
   resolved "https://registry.yarnpkg.com/obliterator/-/obliterator-2.0.4.tgz#fa650e019b2d075d745e44f1effeb13a2adbe816"
   integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
 
-oclif@^3.2.22:
-  version "3.2.27"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.2.27.tgz#3028bc2bcd87aa8762779feec71ba74d5dd94f19"
-  integrity sha512-tMKEitC/fVki5mYx8D41qDuOymf24V/UGdkT04dTwtSkoMa/alGxERS2Oa/G/7Q0pfCGl9I5vi5WFuV2rY1ehQ==
+oclif@^3.3.0-beta.1:
+  version "3.3.0-beta.1"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.3.0-beta.1.tgz#86f1d8135125482523d9dc71d34553da00a38164"
+  integrity sha512-LPriZcVESXDoFX+Jg55su9Ho5bwRQ9MutG7IsSEoAGmuYuyGv/L7bjaY/GnOCSEFysoh71oykhhqcMyZS3bJFg==
   dependencies:
     "@oclif/core" "^1.20.4"
-    "@oclif/plugin-help" "^5.1.16"
+    "@oclif/plugin-help" "^5.1.19"
     "@oclif/plugin-not-found" "^2.3.7"
-    "@oclif/plugin-warn-if-update-available" "^2.0.13"
+    "@oclif/plugin-warn-if-update-available" "^2.0.14"
     aws-sdk "^2.1231.0"
     concurrently "^7.5.0"
     debug "^4.3.3"
     find-yarn-workspace-root "^2.0.0"
     fs-extra "^8.1"
-    github-slugger "^1.4.0"
+    github-slugger "^1.5.0"
+    got "^11"
     lodash "^4.17.21"
     normalize-package-data "^3.0.3"
-    qqjs "^0.3.11"
     semver "^7.3.8"
     tslib "^2.3.1"
     yeoman-environment "^3.11.1"
@@ -8316,7 +8321,7 @@ q@^1.5.1:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==
 
-qqjs@^0.3.10, qqjs@^0.3.11:
+qqjs@^0.3.10:
   version "0.3.11"
   resolved "https://registry.yarnpkg.com/qqjs/-/qqjs-0.3.11.tgz#795b9f7d00807d75c391b1241b5be3077143d9ea"
   integrity sha512-pB2X5AduTl78J+xRSxQiEmga1jQV0j43jOPs/MTgTLApGFEOn6NgdE2dEjp7nvDtjkIOZbvFIojAiYUx6ep3zg==
