@@ -1,102 +1,13 @@
-name: RC
+name: DEBUG windows pack and sign
 on:
-  release:
-    types: [published]
+  push:
+    branches: [sm/oclif-win-signing-debug]
 
 jobs:
-  npm-release:
-    uses: salesforcecli/github-workflows/.github/workflows/npmPublish.yml@main
-    secrets: inherit
-    with:
-      tag: latest-rc
-      githubTag: ${{ github.event.release.tag_name }}
-
-  pack-verify-upload-tarballs:
-    needs: [npm-release]
-    uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@main
-    with:
-      upload: true
-      cli: sfdx
-      version: ${{ github.event.release.tag_name }}
-      channel: stable-rc
-    secrets: inherit
-
-  archives-verify:
-    runs-on: ubuntu-latest
-    needs: [pack-verify-upload-tarballs]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-          cache: npm
-      - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      - run: sf-release cli:versions:inspect -c stable-rc -l archive
-
-  pack-upload-mac:
-    needs: [pack-verify-upload-tarballs]
-    uses: salesforcecli/github-workflows/.github/workflows/packUploadMac.yml@main
-    with:
-      cli: sfdx
-      version: ${{ github.event.release.tag_name }}
-      channel: stable-rc
-    secrets: inherit
-    
-  # The rename-mac-pkg job is only needed as long as the developer site is linking to the old sfdx.pkg file and the mac signing job is only signing the old file as well.
-  # It can be removed once those are updated to use the new name, sfdx-x64.pkg.
-  rename-mac-pkg:
-    runs-on: ubuntu-latest
-    env: 
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_EC2_METADATA_DISABLED: true
-    needs: [pack-upload-mac]
-    steps:
-      - uses: salesforcecli/github-workflows/.github/actions/renameMacPkg@main
-        with:
-          cli: sfdx
-          channel: stable-rc
-
   pack-upload-win:
-    needs: [pack-verify-upload-tarballs]
     uses: salesforcecli/github-workflows/.github/workflows/packUploadWindows.yml@main
     with:
       cli: sfdx
-      version: ${{ github.event.release.tag_name }}
+      version: 7.180.0
       channel: stable-rc
     secrets: inherit
-
-  docker-slim:
-    needs: [pack-verify-upload-tarballs]
-    uses: ./.github/workflows/dockerBuildSlim.yml
-    with:
-      version: ${{ github.event.release.tag_name }}
-    secrets: inherit
-
-  docker-full:
-    needs: [npm-release]
-    uses: ./.github/workflows/dockerBuildFull.yml
-    with:
-      version: ${{ github.event.release.tag_name }}
-    secrets: inherit
-
-  announce-rc-release-to-slack:
-    # TODO: only run this on a real release, not a prerelease or when testing
-    # Will need to add a condition to the job but github.ref doesn't work by itself because this triggers on a release event, not on a branch
-    # if: ${{ github.ref == 'refs/tags/<tag_name>' }}
-    runs-on: ubuntu-latest
-    needs: [pack-verify-upload-tarballs, npm-release, docker-slim, docker-full, pack-upload-win, pack-upload-mac, rename-mac-pkg]
-    steps:
-      - name: Announce RC Workflow
-        id: slack
-        uses: slackapi/slack-github-action@v1.21.0
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_RC_ANNOUNCEMENT_WORKFLOW_WEBHOOK }}
-        with:
-          # This data can be any valid JSON from a previous step in the GitHub Action
-          payload: |
-            {
-              "cli": "sfdx",
-              "npm-package": "sfdx-cli",
-              "version": "${{ github.event.release.tag_name }}"
-            }

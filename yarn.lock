@@ -7729,10 +7729,10 @@ obliterator@^2.0.1, obliterator@^2.0.2:
   resolved "https://registry.yarnpkg.com/obliterator/-/obliterator-2.0.4.tgz#fa650e019b2d075d745e44f1effeb13a2adbe816"
   integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
 
-oclif@^3.3.0-beta.8:
-  version "3.3.0-beta.8"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.3.0-beta.8.tgz#f59529cfd296682a295875363bf51a119d2e9370"
-  integrity sha512-J5pbOSU6I21ejyxTM6QjiEbMREdhlw16N5xi6VQJBn0tWxeBKkGjVatLhDZTSe7Q+EKOTgkrPHmNcLqb1LQv5g==
+oclif@^3.3.0-beta.9:
+  version "3.3.0-beta.9"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.3.0-beta.9.tgz#e23f1fb6e6440a940b6d842495359817378192a4"
+  integrity sha512-4pK0VVTMOVxI4xguErldT9iiPl8M997zmSRka85uj//If/KFGOqsyGf+FfJNRexiZ7zvLQu3HbN8PYspMbP8ow==
   dependencies:
     "@oclif/core" "^1.20.4"
     "@oclif/plugin-help" "^5.1.19"
