@@ -7730,9 +7730,9 @@ obliterator@^2.0.1, obliterator@^2.0.2:
   integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
 
 oclif@^3.3.0-beta.8:
-  version "3.3.0-beta.8"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.3.0-beta.8.tgz#f59529cfd296682a295875363bf51a119d2e9370"
-  integrity sha512-J5pbOSU6I21ejyxTM6QjiEbMREdhlw16N5xi6VQJBn0tWxeBKkGjVatLhDZTSe7Q+EKOTgkrPHmNcLqb1LQv5g==
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.3.0.tgz#9f19a8a8de51c723eb3b593d48403fe6c052b734"
+  integrity sha512-4zmF0FiwQqm8rqM0/Ic6naKbWti1KkZ7wbghstEE5kHq2J/AKpqb0dq7Xx7QpDAiS+rmnizaQraGIlfaoGLKvA==
   dependencies:
     "@oclif/core" "^1.20.4"
     "@oclif/plugin-help" "^5.1.19"
@@ -7744,9 +7744,9 @@ oclif@^3.3.0-beta.8:
     find-yarn-workspace-root "^2.0.0"
     fs-extra "^8.1"
     github-slugger "^1.5.0"
-    got "^11"
     lodash "^4.17.21"
     normalize-package-data "^3.0.3"
+    qqjs "^0.3.11"
     semver "^7.3.8"
     tslib "^2.3.1"
     yeoman-environment "^3.11.1"
@@ -8351,7 +8351,7 @@ q@^1.5.1:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==
 
-qqjs@^0.3.10:
+qqjs@^0.3.10, qqjs@^0.3.11:
   version "0.3.11"
   resolved "https://registry.yarnpkg.com/qqjs/-/qqjs-0.3.11.tgz#795b9f7d00807d75c391b1241b5be3077143d9ea"
   integrity sha512-pB2X5AduTl78J+xRSxQiEmga1jQV0j43jOPs/MTgTLApGFEOn6NgdE2dEjp7nvDtjkIOZbvFIojAiYUx6ep3zg==
