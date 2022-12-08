@@ -5,7 +5,7 @@ on:
       - re/test-enterprise-runners
 
 jobs:
-  windows-unit-tests:
+  unit-tests:
     strategy:
       matrix:
         node_version: [lts/*]
