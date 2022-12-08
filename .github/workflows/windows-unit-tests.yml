@@ -1,16 +1,17 @@
-name: Test salesforcecli-windows runner
+name: Test enterprise runners
 on:
   push:
     branches:
-      - re/salesforce-windows-runner
+      - re/test-enterprise-runners
 
 jobs:
   windows-unit-tests:
     strategy:
       matrix:
         node_version: [lts/*]
+        os: [salesforcecli-windows, salesforcecli-ubuntu]
       fail-fast: true
-    runs-on: salesforcecli-windows
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
       - uses: salesforcecli/github-workflows/.github/actions/windowsCachePerf@main
