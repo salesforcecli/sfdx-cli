@@ -1,5 +1,6 @@
 name: Test enterprise runners
 on:
+  workflow_dispatch:
   push:
     branches:
       - re/test-enterprise-runners
