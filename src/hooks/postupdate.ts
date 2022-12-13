@@ -33,7 +33,9 @@ function suggestAlternatives(): void {
     CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.exe');
   } else if (process.platform === 'darwin') {
     if (process.arch === 'arm64') {
-      CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-arm64.pkg');
+      CliUx.ux.log(
+        '- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-arm64.pkg'
+      );
     } else {
       CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.pkg');
     }
@@ -56,8 +58,6 @@ const hook: Hook.Update = async function (opts): Promise<void> {
   CliUx.ux.action.start('sfdx-cli: Updating sf');
 
   try {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     const pjson = readJsonSync(path.join(__dirname, '../../package.json')) as { oclif: { dirname: string } };
 
     let dataDirBin;
