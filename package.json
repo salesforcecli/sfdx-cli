@@ -37,6 +37,9 @@
       "-h"
     ],
     "hooks": {
+      "command_incomplete": [
+        "./dist/hooks/incomplete"
+      ],
       "plugins:preinstall": [
         "./dist/hooks/pluginsPreinstall.js"
       ],
