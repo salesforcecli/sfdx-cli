@@ -54,21 +54,18 @@ describe('verifyPluginVersion preinstall hook', () => {
 
   it('should not allow the salesforce-alm plugin with tag "41.1.0" to be installed', async () => {
     await testHook('salesforce-alm', '41.1.0');
-    // eslint-disable-next-line no-unused-expressions
     expect(context.error.getCalls().some((call) => getString(call, 'args[0]')?.includes('can only be installed'))).to.be
       .true;
   });
 
   it('should not allow the salesforce-alm plugin with tag "41.1.0" to be installed', async () => {
     await testHook('salesforce-alm', '41.1.0');
-    // eslint-disable-next-line no-unused-expressions
     expect(context.error.getCalls().some((call) => getString(call, 'args[0]')?.includes('can only be installed'))).to.be
       .true;
   });
 
   it('should not allow installation of sfdx-cli as a plugin regardless of the tag', async () => {
     await testHook('sfdx-cli', '');
-    // eslint-disable-next-line no-unused-expressions
     expect(context.error.getCalls().some((call) => getString(call, 'args[0]')?.includes(BANNED_PLUGINS['sfdx-cli']))).to
       .be.true;
   });

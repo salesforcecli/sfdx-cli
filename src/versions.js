@@ -8,7 +8,6 @@
 // Note: Leave this file as ES5 js for compatibility with earlier Node.js versions
 'use strict';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const pjson = require('../package.json');
 
 /**

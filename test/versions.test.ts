@@ -5,7 +5,6 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 // the below, there's lots of un-awaited promises for testing
-/* eslint-disable no-unused-expressions*/
 
 import { assert, expect } from 'chai';
 import * as sinon from 'sinon';
