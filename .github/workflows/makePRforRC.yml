@@ -30,11 +30,13 @@ jobs:
           node-version: lts/*
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
       - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
-      - run: sf-release cli:release:build --start-from-npm-dist-tag latest-rc
+      # latest-rcs will be build from main
+      - run: sf-release cli:release:build --start-from-github-ref main
         if: ${{ !inputs.patch && !inputs.only }}
-      - run: sf-release cli:release:build  --start-from-npm-dist-tag latest-rc --patch
-        if: ${{ inputs.patch && !inputs.only }}
-      - run: sf-release cli:release:build --start-from-npm-dist-tag latest-rc --only ${{inputs.only}}
+      - run: sf-release cli:release:build --start-from-github-ref main --only ${{inputs.only}}
         if: ${{ !inputs.patch && inputs.only }}
-      - run: sf-release cli:release:build  --start-from-npm-dist-tag latest-rc --patch --only ${{inputs.only}}
+        # patches to latest-rc will be built from the version looked up from npm for latest-rc
+      - run: sf-release cli:release:build --start-from-npm-dist-tag latest-rc --patch
+        if: ${{ inputs.patch && !inputs.only }}
+      - run: sf-release cli:release:build --start-from-npm-dist-tag latest-rc --patch --only ${{inputs.only}}
         if: ${{ inputs.patch && inputs.only }}
