@@ -1089,12 +1089,12 @@
     tslib "^2.4.1"
     yarn "^1.22.18"
 
-"@oclif/plugin-search@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-search/-/plugin-search-0.0.4.tgz#2f7c03938f9738b2bfb46fd7b85732c4c4e4942d"
-  integrity sha512-NbbXAd0dX8MVik/2UQMjS3OOwDaPDN10uWd0v0Xf3N6qCxqaaCR6761v9Ka9y+IvBKuKYP5jy9MhlVJhrcV48g==
+"@oclif/plugin-search@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-search/-/plugin-search-0.0.5.tgz#fd62bc13aed89383523e7e3daa67b1c972c1dc82"
+  integrity sha512-IB56LJN0NzvBnQ5BJWd3/H3cHnhfHfq5QbZj8rWtyw9GiziIC+5uROTIQA7FziiBCxKbzqsw1tVFOmeUB2r4+w==
   dependencies:
-    "@oclif/core" "^1.20.3"
+    "@oclif/core" "^1.22.0"
     chalk "^4"
     fuse.js "^6.6.2"
     inquirer "^8.2.5"
