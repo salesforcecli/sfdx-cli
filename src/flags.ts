@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2020, salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -17,24 +17,30 @@ export interface ProcessLike {
 }
 
 export function preprocessCliFlags(process: ProcessLike): void {
-  process.argv = process.argv.filter((arg) => {
-    switch (arg) {
-      case '--dev-debug': {
-        // convert --dev-debug into a set of environment variables
-        process.env.DEBUG = '*';
-        process.env.SFDX_DEBUG = '1';
-        process.env.SFDX_ENV = 'development';
-        process.env.NODE_ENV = 'development';
-        return false;
+  process.argv.map((arg) => {
+    if (arg === '--dev-debug') {
+      let debug = '*';
+      const filterIndex = process.argv.indexOf('--debug-filter');
+      if (filterIndex > 0) {
+        debug = process.argv[filterIndex + 1];
+
+        process.argv.splice(filterIndex, 2);
       }
-      case '--dev-suspend': {
-        // simply ignore --dev-suspend if provided... filtering args in batch scripts is hard
-        return false;
-      }
-      default: {
-        // retain all other cli args
-        return true;
-      }
+      // convert --dev-debug into a set of environment variables
+      process.env.DEBUG = debug;
+      process.env.SFDX_DEBUG = '1';
+      process.env.SFDX_ENV = 'development';
+      process.env.NODE_ENV = 'development';
+
+      // need to calculate indexOf --dev-debug here because it might've changed based on --debug-filter
+      process.argv.splice(process.argv.indexOf('--dev-debug'), 1);
+    }
+
+    if (arg === '--dev-suspend') {
+      process.argv.splice(process.argv.indexOf('--dev-suspend'), 1);
     }
   });
 }
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+module.exports.preprocessCliFlags = preprocessCliFlags;
