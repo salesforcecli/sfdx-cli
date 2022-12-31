@@ -1014,9 +1014,9 @@
     tslib "^2.4.1"
 
 "@oclif/plugin-commands@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-commands/-/plugin-commands-2.2.1.tgz#cf985f20ba67b1aa0dac8e08db3c993c19680469"
-  integrity sha512-mCv5Dlxkxg5sNaatFgbol9rKS9nBqPydRfxW0vusfzwuYZhxpdrvpgqkjcCO3LnQHSqX4qW5UCF6ZU0bBgnMBQ==
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-commands/-/plugin-commands-2.2.2.tgz#dd88d9177f2a114c79be1688b94006faf903fb5e"
+  integrity sha512-j3LIx4fm3yn95E+PdW8HrRX47Ya5do34zYOY+Jx5DoLM5LaHCICXdpVXbd4MTWLQ1aiGNPqeMO6GEzZ8ImVGhw==
   dependencies:
     "@oclif/core" "^1.2.0"
     lodash "^4.17.11"
