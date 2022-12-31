@@ -1089,16 +1089,16 @@
     tslib "^2.4.1"
     yarn "^1.22.18"
 
-"@oclif/plugin-search@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-search/-/plugin-search-0.0.5.tgz#fd62bc13aed89383523e7e3daa67b1c972c1dc82"
-  integrity sha512-IB56LJN0NzvBnQ5BJWd3/H3cHnhfHfq5QbZj8rWtyw9GiziIC+5uROTIQA7FziiBCxKbzqsw1tVFOmeUB2r4+w==
+"@oclif/plugin-search@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-search/-/plugin-search-0.0.6.tgz#a7acbcee60f4d5104b09e3bc55267f21c97973a0"
+  integrity sha512-r4PZqCXDQFfXPGe+liDNzgGD3CgunmQm+f7mVwDLAU7U+wLVrfWuPlIDyCOD0+yYW2rkryvsdPYu3XfW631BXQ==
   dependencies:
     "@oclif/core" "^1.22.0"
     chalk "^4"
     fuse.js "^6.6.2"
     inquirer "^8.2.5"
-    rxjs "^7.5.6"
+    rxjs "^7.8.0"
 
 "@oclif/plugin-update@3.0.9":
   version "3.0.9"
@@ -8722,10 +8722,10 @@ rxjs@^6.6.0:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^7.0.0, rxjs@^7.2.0, rxjs@^7.5.5, rxjs@^7.5.6:
-  version "7.5.7"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.7.tgz#2ec0d57fdc89ece220d2e702730ae8f1e49def39"
-  integrity sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==
+rxjs@^7.0.0, rxjs@^7.2.0, rxjs@^7.5.5, rxjs@^7.8.0:
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.0.tgz#90a938862a82888ff4c7359811a595e14e1e09a4"
+  integrity sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==
   dependencies:
     tslib "^2.1.0"
 
