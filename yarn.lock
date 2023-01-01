@@ -991,11 +991,11 @@
     tslib "^2.3.1"
 
 "@oclif/plugin-autocomplete@^1.3.6":
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-autocomplete/-/plugin-autocomplete-1.3.6.tgz#9320c0b9b286c97915a9cc591a3f5e2673fc799b"
-  integrity sha512-XmSuuVohfGPAi2ouoCbWbVUjaaxprK+4KsNOkUafK2rqCMmmoK/VuAQvv539yMpM9IhSvARwS7NnGvFY9HmZVw==
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-autocomplete/-/plugin-autocomplete-1.3.8.tgz#094df7eaf52c4dfd5f682c211c079db0af619d49"
+  integrity sha512-jDJAoyCoyFwlxtGasRM/3HwdjUTIL4AnIuqG4/AJhw4XjfyPayE0JILqqnpggOJQ1oc/XcDV94wVJvwlWeUXzQ==
   dependencies:
-    "@oclif/core" "^1.20.4"
+    "@oclif/core" "^1.22.0"
     chalk "^4.1.0"
     debug "^4.3.4"
     fs-extra "^9.0.1"
