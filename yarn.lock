@@ -1063,12 +1063,12 @@
     "@oclif/core" "^1.21.0"
 
 "@oclif/plugin-not-found@^2.3.7", "@oclif/plugin-not-found@^2.3.9":
-  version "2.3.11"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-not-found/-/plugin-not-found-2.3.11.tgz#d63e7c4b99f277e74bdca8943203f90a4876ef10"
-  integrity sha512-/vLJju4mvrpBJlb1RVFc7ZEx8Kl1IikvJtQSq3ThbE/rzXvXOrwBqZAms0K3Butt7kfniBNVW2P0hdoEe/nY8w==
+  version "2.3.13"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-not-found/-/plugin-not-found-2.3.13.tgz#7b2a3d1a6757785727a79d85654116b85700981f"
+  integrity sha512-xadWMsIL9bHdzwdnj8c4q9xE6KZcVETwmFuoVuZkhbAJGA9E7tB67ULhxWMQbm/pYmzzC6h296mjf+fiHq0hqg==
   dependencies:
     "@oclif/color" "^1.0.2"
-    "@oclif/core" "^1.22.0"
+    "@oclif/core" "^1.23.1"
     fast-levenshtein "^3.0.0"
     lodash "^4.17.21"
 
