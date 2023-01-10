@@ -1674,10 +1674,10 @@
     chalk "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-release-management@^3.8.1":
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.8.1.tgz#18923d720e40c9cb59dbbb4727b719a3589ae5e3"
-  integrity sha512-CVJ5tVtXJXmxYBWWeTYhFFfuky2aByjOVlwOTCQDrLYeqmBg9OPKTH4Ua7eYJu0Xh/aw88i9dtxTz3M+zcwocw==
+"@salesforce/plugin-release-management@^3.8.2":
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.8.2.tgz#0cce9cb15848edd781659b56a9c3790318765d73"
+  integrity sha512-FWo+5fCn+hOmnLx94h3nAMZnJbMPKryp7wsarvEJXyG7DKVTOSx1mvKFSXCcdjmsOE1FhqsJKyRncJCmT8/5wg==
   dependencies:
     "@oclif/core" "^1.23.1"
     "@octokit/core" "^4.1.0"
