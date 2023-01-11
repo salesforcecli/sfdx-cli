@@ -40,7 +40,7 @@ jobs:
         uses: booxmedialtd/ws-action-parse-semver@e4a833cf5d612066a210bd9b62d1c3b20be3b325
         id: latest-rc-semver-info
         with:
-          input_string: ${{ steps.latest-rc-version.outputs.prop }}
+          input_string: ${{ steps.latest-rc-version.outputs.version }}
 
       - name: Look up sfdx-cli package.json version
         uses: notiz-dev/github-action-json-property@2192e246737701f108a4571462b76c75e7376216
