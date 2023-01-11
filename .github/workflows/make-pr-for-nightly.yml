@@ -1,16 +1,6 @@
 name: make-pr-for-nightly
 
 on:
-  pull_request:
-    branches: [ew/nightly-cron-workflow]
-  schedule:
-    # Daily at:
-    # 6pm MST
-    # 7pm MST
-    # 8pm CST
-    # 9pm EST
-    # 11pm ARG
-    - cron: '0 2 * * *'
   workflow_dispatch:
     only:
       type: string
