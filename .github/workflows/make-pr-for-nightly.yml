@@ -1,0 +1,17 @@
+name: make-pr-for-nightly
+
+on:
+  workflow_dispatch:
+    only:
+      type: string
+      required: false
+      description: comma-separated list, no spaces, of dependencies that you want to bump.
+
+jobs:
+  make-pr-for-nightly:
+    env:
+      GITHUB_TOKEN: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Init
+        run: echo "init!"
