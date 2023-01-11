@@ -22,6 +22,7 @@ jobs:
     if: ${{ !github.event.workflow_run || github.event.workflow_run.conclusion == 'success' }}
     env:
       GITHUB_TOKEN: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
+      SFDX_HIDE_RELEASE_NOTES: true
     runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v3
