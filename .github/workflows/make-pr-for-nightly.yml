@@ -10,10 +10,11 @@ on:
     # 11pm ARG
     - cron: '0 2 * * *'
   workflow_dispatch:
-    only:
-      type: string
-      required: false
-      description: comma-separated list, no spaces, of dependencies that you want to bump.
+    inputs:
+      only:
+        type: string
+        required: false
+        description: comma-separated list, no spaces, of dependencies that you want to bump.
 
 jobs:
   make-pr-for-nightly:
