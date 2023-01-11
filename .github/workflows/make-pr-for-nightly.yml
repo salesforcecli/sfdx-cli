@@ -69,6 +69,9 @@ jobs:
       - name: Set git config defaults
         uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
 
+      - name: Fetch all branches (testing)
+        run: git fetch
+
       # --only input using a "ternary-ish": https://github.com/actions/runner/issues/409#issuecomment-752775072
       # ${{ x && 'ifTrue' || 'ifFalse'  }}
 
