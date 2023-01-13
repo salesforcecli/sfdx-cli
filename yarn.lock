@@ -1846,10 +1846,10 @@
     signal-exit "^3.0.6"
     tslib "^2.3.1"
 
-"@salesforce/source-deploy-retrieve@7.6.0", "@salesforce/source-deploy-retrieve@^7.0.1", "@salesforce/source-deploy-retrieve@^7.5.19", "@salesforce/source-deploy-retrieve@^7.5.22":
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-7.6.0.tgz#228c4168e1565937b749ec2b0f7c494938a6417a"
-  integrity sha512-r4KRnsufZfzqrq1tRsNEC099F8b3wc8lOkdFOFbGRNhRKd245X8Q8RLieX5HKKQKJPbtXNISv1C8AGKSzxvO2g==
+"@salesforce/source-deploy-retrieve@7.7.0", "@salesforce/source-deploy-retrieve@^7.0.1", "@salesforce/source-deploy-retrieve@^7.5.19", "@salesforce/source-deploy-retrieve@^7.5.22":
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-7.7.0.tgz#30b81028f27a196e37a68b591c761db4ee53ddd3"
+  integrity sha512-Lw6+e1oxFUZgw8cArcE3wXGIJyPWC18eMIkF+oGD8ZhEEcQavAEzxLAKsYMrzZyIDXP/6dqZ5/McdJ1FAfe5BQ==
   dependencies:
     "@salesforce/core" "^3.32.12"
     "@salesforce/kit" "^1.8.0"
