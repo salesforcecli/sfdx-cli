@@ -50,7 +50,7 @@ jobs:
           DELAY=120 # two minutes
 
           # Retry several times because the S3 cache can cause failures
-          # Command: sf-release cli:versions:inspect -c stable
+          # Command: sf-release cli:versions:inspect -c stable -l archive
 
           while true; do
               sf-release cli:versions:inspect -c stable -l archive && break || {
