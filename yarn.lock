@@ -1359,20 +1359,7 @@
   dependencies:
     "@octokit/openapi-types" "^14.0.0"
 
-"@salesforce/apex-node@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/apex-node/-/apex-node-1.3.0.tgz#4b00600d726f9d5cd278baec459a2b97b4aa2e2b"
-  integrity sha512-NDu63KtL0JXgaIlHg52Z5F5rra0EFSN0XP8iszpomATVPCunORySCH0zi20ZzRBGyy/vdlFsOGFr/xIYWAcW6A==
-  dependencies:
-    "@salesforce/core" "^3.23.3"
-    "@types/istanbul-reports" "^3.0.1"
-    faye "1.4.0"
-    glob "^8.0.3"
-    istanbul-lib-coverage "^3.2.0"
-    istanbul-lib-report "^3.0.0"
-    istanbul-reports "^3.1.4"
-
-"@salesforce/apex-node@^1.6.0":
+"@salesforce/apex-node@1.6.0", "@salesforce/apex-node@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@salesforce/apex-node/-/apex-node-1.6.0.tgz#cb474347fca7448f75bb9348ffb52b559ed4d8bb"
   integrity sha512-ujdPy32U3pMpfko6egXpm4NO3cNg+eEHeAUIh1ZLGuli2mBT1skyCjxZ1WHkIHJlIpXOaWwWaka+rblFgGxY+Q==
@@ -1411,7 +1398,7 @@
     "@salesforce/ts-types" "^1.7.1"
     chalk "^2.4.2"
 
-"@salesforce/core@^3.15.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.23.3", "@salesforce/core@^3.24.0", "@salesforce/core@^3.25.1", "@salesforce/core@^3.26.2", "@salesforce/core@^3.31.17", "@salesforce/core@^3.32.11", "@salesforce/core@^3.32.12", "@salesforce/core@^3.32.13", "@salesforce/core@^3.32.14", "@salesforce/core@^3.32.2", "@salesforce/core@^3.32.6", "@salesforce/core@^3.32.8", "@salesforce/core@^3.32.9", "@salesforce/core@^3.8.0":
+"@salesforce/core@^3.15.5", "@salesforce/core@^3.21.5", "@salesforce/core@^3.24.0", "@salesforce/core@^3.26.2", "@salesforce/core@^3.31.17", "@salesforce/core@^3.32.11", "@salesforce/core@^3.32.12", "@salesforce/core@^3.32.13", "@salesforce/core@^3.32.14", "@salesforce/core@^3.32.2", "@salesforce/core@^3.32.6", "@salesforce/core@^3.32.8", "@salesforce/core@^3.32.9", "@salesforce/core@^3.8.0":
   version "3.33.0"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.33.0.tgz#481cbd58955a7384a1f9200e02effc4dfe8e59da"
   integrity sha512-nz7qKwm1GpNr8swksthm5jKORj4wn647iCm6Ij1X5oRts1uynLdnqyNDtWD6OJCOaMXunjRmnhRB82JXq/TnFg==
@@ -1522,17 +1509,17 @@
     chalk "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-apex@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-apex/-/plugin-apex-1.3.0.tgz#fd86b9cdf72aaf6a19f3ee03e13adbea1a1fef97"
-  integrity sha512-fHYPleMcKTJGfSiEFkNH0uCsgAZjFa1Aj/rOesE7U4AH5dkZSUTpWMAPClZWlZ7WK2wn+U7kdfyKj5yq+vr0Tg==
+"@salesforce/plugin-apex@1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-apex/-/plugin-apex-1.4.2.tgz#dbfed5299d8df74228c682d6168a45f49f978036"
+  integrity sha512-Fxl3nXfW8V4MxxsTqDy3H2XL5l5nSRsyHTKNnhMPt3mEZzuGHcZLryk7EwrxDPB9MN7EZ+ylabR/MNaQgjQo6g==
   dependencies:
     "@oclif/core" "^1.16.4"
-    "@salesforce/apex-node" "1.3.0"
+    "@salesforce/apex-node" "1.6.0"
     "@salesforce/command" "^5.1.0"
-    "@salesforce/core" "^3.23.3"
+    "@salesforce/core" "^3.32.13"
     chalk "^4.1.0"
-    tslib "^1"
+    tslib "^2"
 
 "@salesforce/plugin-auth@2.3.12":
   version "2.3.12"
@@ -1771,16 +1758,16 @@
     debug "^4.3.4"
     tslib "^2"
 
-"@salesforce/plugin-templates@55.1.0":
-  version "55.1.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-55.1.0.tgz#b30db3ce1234bbfa81c637d12711427dd2f3f554"
-  integrity sha512-YiQbdc5SaalGxGCAhxeV/WHwUJT2hUrwss6NgaudzrC+EEbypwAYsnpTdPMPKj2rdg0Hs+rCLZTIkF/7yk87Rg==
+"@salesforce/plugin-templates@55.2.1":
+  version "55.2.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-templates/-/plugin-templates-55.2.1.tgz#45f9646cb498ff402ca5fa114cbff12af5084aff"
+  integrity sha512-RNfXOf4dIKT6eSOwbfNAnl3y6M4HlkVkrVKHDLBr5ezah2aFm7VCZhpazshAriwwZfajZjyMheQE2U5WILkNig==
   dependencies:
     "@oclif/core" "^1.12.0"
     "@salesforce/command" "^5.2.1"
-    "@salesforce/core" "^3.25.1"
+    "@salesforce/core" "^3.32.14"
     "@salesforce/templates" "55.1.0"
-    tslib "^1"
+    tslib "^2"
     yeoman-environment "^3.9.1"
     yeoman-generator "^5.6.1"
 
