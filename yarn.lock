@@ -1892,11 +1892,11 @@
     yeoman-generator "^5.6.1"
 
 "@salesforce/ts-sinon@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/ts-sinon/-/ts-sinon-1.4.2.tgz#7b76f80c104c891334b84ad664ab048fd1fbb1ff"
-  integrity sha512-yoNaHdw+5IYUs8Jg/c30AuPG5jhWGR/zdy0G2XmLSzVhf/8duNTbnSl3AWYplCvU/Cz3CFIs1XnjePG0Resxmw==
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/ts-sinon/-/ts-sinon-1.4.4.tgz#ee7039f7eb6c488d58b0a3365e7196e9b1b1ebb4"
+  integrity sha512-27kF+8flAEGGikIrLrGkDiFUCgukhRf2cRhYBbD0ihG8RedsYoFTsEW9gG9VApVgWACyhkEmGICisJl8LRD7Rg==
   dependencies:
-    "@salesforce/ts-types" "^1.7.1"
+    "@salesforce/ts-types" "^1.7.2"
     sinon "^5.1.1"
     tslib "^2.2.0"
 
