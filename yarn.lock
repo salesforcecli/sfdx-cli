@@ -920,6 +920,40 @@
     widest-line "^3.1.0"
     wrap-ansi "^7.0.0"
 
+"@oclif/core@^2.0.2-beta.6":
+  version "2.0.2-beta.10"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-2.0.2-beta.10.tgz#5b459a91d653b8d5aa234e4324a4cc483747abd2"
+  integrity sha512-FgJ5XHE6MjE7DOyQAcOZPD5Xs5cNOzP91zAQBkut8xhOkZA1NRQjv+7BczJqOTerXccohhTlu09pd7OAyDuitw==
+  dependencies:
+    "@types/cli-progress" "^3.11.0"
+    ansi-escapes "^4.3.2"
+    ansi-styles "^4.3.0"
+    cardinal "^2.1.1"
+    chalk "^4.1.2"
+    clean-stack "^3.0.1"
+    cli-progress "^3.10.0"
+    debug "^4.3.4"
+    ejs "^3.1.6"
+    fs-extra "^9.1.0"
+    get-package-type "^0.1.0"
+    globby "^11.1.0"
+    hyperlinker "^1.0.0"
+    indent-string "^4.0.0"
+    is-wsl "^2.2.0"
+    js-yaml "^3.14.1"
+    natural-orderby "^2.0.3"
+    object-treeify "^1.1.33"
+    password-prompt "^1.1.2"
+    semver "^7.3.7"
+    string-width "^4.2.3"
+    strip-ansi "^6.0.1"
+    supports-color "^8.1.1"
+    supports-hyperlinks "^2.2.0"
+    tslib "^2.4.1"
+    widest-line "^3.1.0"
+    wordwrap "^1.0.0"
+    wrap-ansi "^7.0.0"
+
 "@oclif/dev-cli@^1":
   version "1.26.10"
   resolved "https://registry.yarnpkg.com/@oclif/dev-cli/-/dev-cli-1.26.10.tgz#d8df3a79009b68552f5e7f249d1d19ca52278382"
@@ -1130,11 +1164,11 @@
     tar-fs "^2.1.1"
 
 "@oclif/plugin-version@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-version/-/plugin-version-1.1.4.tgz#4bfa2e86f322a0ff390d8490292f83db32f989e0"
-  integrity sha512-IRPXK7hTTLDvY6Jh0PFdjgvxtFmG7ICaDNuBOKEBh7GGFklgyJkcpMxL6dRqgkcesXSrkBasYT/6rLy7JOBKkw==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-version/-/plugin-version-1.2.0.tgz#c8655fa78da17321d2f60eef93ef3fcc5ae9433b"
+  integrity sha512-jw+NFqp+ug/dd4es67HIlfwgW2BZR6XinWwx8Mmqa861ZENUouaM+xArefHl5qtG4Eg34d/yXYdkixNrLMztxA==
   dependencies:
-    "@oclif/core" "^1.23.0"
+    "@oclif/core" "^2.0.2-beta.6"
 
 "@oclif/plugin-warn-if-update-available@^2.0.14":
   version "2.0.19"
@@ -2020,6 +2054,13 @@
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.3.3.tgz#3c90752792660c4b562ad73b3fbd68bf3bc7ae07"
   integrity sha512-hC7OMnszpxhZPduX+m+nrx+uFoLkWOMiR4oa/AZF3MuSETYTZmFfJAHqZEM8MVlvfG7BEUcgvtwoCTxBp6hm3g==
+
+"@types/cli-progress@^3.11.0":
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/@types/cli-progress/-/cli-progress-3.11.0.tgz#ec79df99b26757c3d1c7170af8422e0fc95eef7e"
+  integrity sha512-XhXhBv1R/q2ahF3BM7qT5HLzJNlIL0wbcGyZVjqOTqAybAnsLisd7gy1UCyIqpL+5Iv6XhlSyzjLCnI2sIdbCg==
+  dependencies:
+    "@types/node" "*"
 
 "@types/debug@^4.1.7":
   version "4.1.7"
