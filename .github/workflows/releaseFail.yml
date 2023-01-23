@@ -3,6 +3,7 @@ on:
     workflows:
       - RC
       - promote-rc-to-latest
+      - make-pr-for-nightly
       - manual promote
       - pr for rc
       - rc tag/release
