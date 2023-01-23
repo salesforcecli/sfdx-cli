@@ -22,8 +22,10 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
     runs-on: 'ubuntu-latest'
     steps:
-      - name: Check out repository
+      - name: Check out repository as our bot user
         uses: actions/checkout@v3
+        with: 
+          token: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
 
       - name: Set up NodeJS
         uses: actions/setup-node@v3
