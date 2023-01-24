@@ -26,7 +26,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v3
-        with: 
+        with:
           token: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         with:
@@ -34,12 +34,8 @@ jobs:
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
       - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
       # latest-rcs will be built from main
-      - run: sf-release cli:release:build --start-from-github-ref main
-        if: ${{ !inputs.patch && !inputs.only }}
-      - run: sf-release cli:release:build --start-from-github-ref main --only ${{inputs.only}}
-        if: ${{ !inputs.patch && inputs.only }}
-        # patches to latest-rc will be built from the version looked up from npm for latest-rc
-      - run: sf-release cli:release:build --start-from-npm-dist-tag latest-rc --patch
-        if: ${{ inputs.patch && !inputs.only }}
-      - run: sf-release cli:release:build --start-from-npm-dist-tag latest-rc --patch --only ${{inputs.only}}
-        if: ${{ inputs.patch && inputs.only }}
+      - run: sf-release cli:release:build --start-from-github-ref main ${{ inputs.only && format('--only {0}', inputs.only) || '' }}
+        if: ${{ !inputs.patch }}
+      # patches to latest-rc (this will eventually be changed to start from 'latest-rc' tag)
+      - run: sf-release cli:release:build --start-from-github-ref main --patch ${{ inputs.only && format('--only {0}', inputs.only) || '' }}
+        if: ${{ inputs.patch }}
