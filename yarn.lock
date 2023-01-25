@@ -1420,7 +1420,7 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@salesforce/command@^5.1.0", "@salesforce/command@^5.2.1", "@salesforce/command@^5.2.16", "@salesforce/command@^5.2.30", "@salesforce/command@^5.2.33", "@salesforce/command@^5.2.35", "@salesforce/command@^5.2.39", "@salesforce/command@^5.2.6":
+"@salesforce/command@^5.1.0", "@salesforce/command@^5.2.1", "@salesforce/command@^5.2.16", "@salesforce/command@^5.2.30", "@salesforce/command@^5.2.35", "@salesforce/command@^5.2.39", "@salesforce/command@^5.2.6":
   version "5.2.40"
   resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.2.40.tgz#2b5e98abe693698d4945178835053eabe0f6e99e"
   integrity sha512-HCGtzPTbZwjAOHlRM0cd6gWcMicGZTfemfj+1qCVNWArFuTtYZu2JEjXCZRm5UgV9F+d4aFLMQtMQDiZYENq8g==
@@ -1696,16 +1696,16 @@
     open "8.4.0"
     tslib "^2"
 
-"@salesforce/plugin-packaging@1.12.3":
-  version "1.12.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-packaging/-/plugin-packaging-1.12.3.tgz#be849c4fa3e32d25d7d45ca40fd1c346acf8dcaa"
-  integrity sha512-kQfYisDbK/r7ltjNuPn8S32weoplnRAbB5TA4YiE6SeRo9dlOcPDSiGQXBCfl8atQhjth9jJh1dhZLem3Bsckg==
+"@salesforce/plugin-packaging@1.12.4":
+  version "1.12.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-packaging/-/plugin-packaging-1.12.4.tgz#9b09da8786de8e60ee88ae8bb2ca4f1d2bd379f8"
+  integrity sha512-XTOrpuvFXt0oGMv4FTj8TzRVmhcDGc13j4JLoG9u/v4nNmvg+AfK5Bs8k0RPL5ox4Bl7OvNxKamTjD+LEZeWpQ==
   dependencies:
-    "@oclif/core" "^1.22.0"
-    "@salesforce/command" "^5.2.33"
-    "@salesforce/core" "^3.32.11"
-    "@salesforce/kit" "^1.8.2"
+    "@oclif/core" "^1.25.0"
+    "@salesforce/core" "^3.33.0"
+    "@salesforce/kit" "^1.8.3"
     "@salesforce/packaging" "^1.1.11"
+    "@salesforce/sf-plugins-core" "^1.22.1"
     chalk "^4.1.2"
     tslib "^2"
 
