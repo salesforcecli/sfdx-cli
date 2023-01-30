@@ -91,7 +91,6 @@ jobs:
         ${{ github.event.release.tag_name }}
         # TODO: Change this to 'nightly'
       channel: latest-rc
-      # TODO: We need to add channel here...
     secrets: inherit
 
   announce-rc-release-to-slack:
