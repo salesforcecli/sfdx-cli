@@ -7,30 +7,12 @@ on:
     - cron: '0 14 * * 4'
 
 jobs:
-  # what is the RC version, numerically?
-  getVersion:
-    outputs:
-      version: ${{ steps.version-info.outputs.version }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-          cache: yarn
-      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
-        id: version-info
-        with:
-          version: latest-rc
-
   promote:
     uses: ./.github/workflows/promote.yml
-    needs: getVersion
     secrets: inherit
     with:
-      version: ${{needs.getVersion.outputs.version}}
-      tag: latest
-      channel: stable
+      old-channel: latest-rc
+      new-channel: latest
       useCTC: true
 
   promote-verify:
@@ -42,7 +24,7 @@ jobs:
         with:
           node-version: lts/*
           cache: yarn
-      - run: ./scripts/verify-promote
+      - run: ./scripts/verify-promote latest-rc latest
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
       - run: |
           ATTEMPT=1

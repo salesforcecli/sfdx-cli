@@ -2,6 +2,13 @@ name: just-nuts
 
 on:
   workflow_dispatch:
+    # TODO: Add this input below.
+    inputs:
+      channel-or-version:
+        required: true
+        description: Version or channel of the CLI to test against (nightly, latest-rc, 7.112.1)
+        type: string
+        default: 'latest-rc' # TODO: Update this to 'nightly'
   workflow_run:
     workflows: [RC]
     types:
@@ -36,6 +43,7 @@ jobs:
     uses: ./.github/workflows/justNut.yml
     with:
       repository: ${{matrix.repository}}
+      channel-or-version: ${{ inputs.channel-or-version }}
       os: ${{matrix.os}}
     secrets: inherit
   source-regular:
@@ -51,6 +59,7 @@ jobs:
     uses: ./.github/workflows/justNut.yml
     with:
       repository: salesforcecli/plugin-source
+      channel-or-version: ${{ inputs.channel-or-version }}
       os: ${{matrix.os}}
       command: ${{matrix.command}}
     secrets: inherit
@@ -76,6 +85,7 @@ jobs:
     uses: ./.github/workflows/justNut.yml
     with:
       repository: salesforcecli/plugin-source
+      channel-or-version: ${{ inputs.channel-or-version }}
       os: ${{matrix.os}}
       command: ${{matrix.command}}
     secrets: inherit
