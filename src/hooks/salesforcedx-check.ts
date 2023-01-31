@@ -30,7 +30,6 @@ const hook = async (): Promise<void> => {
   }
 
   // PART 2: is the salesforcedx plugin installed?
-  // @ts-expect-error - Type errors because of the oclif/core v1/v2 migration. This can be removed once sfdx-cli is using oclif/core@2.x
   const plugins = new Plugins(config);
 
   const installedUserPlugins = (await plugins.list())
