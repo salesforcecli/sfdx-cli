@@ -7,12 +7,12 @@
 
 import { join } from 'path';
 import { spawn } from 'child_process';
-import { Hook, CliUx } from '@oclif/core';
+import { Hook, ux } from '@oclif/core';
 
 const logError = (msg: Error): void => {
-  CliUx.ux.log('NOTE: This error can be ignored in CI and may be silenced in the future');
-  CliUx.ux.log('- Set the SFDX_HIDE_RELEASE_NOTES env var to "true" to skip this script\n');
-  CliUx.ux.log(msg.toString());
+  ux.log('NOTE: This error can be ignored in CI and may be silenced in the future');
+  ux.log('- Set the SFDX_HIDE_RELEASE_NOTES env var to "true" to skip this script\n');
+  ux.log(msg.toString());
 };
 
 /*

@@ -8,7 +8,7 @@
 import * as os from 'os';
 import * as path from 'path';
 
-import { CliUx } from '@oclif/core';
+import { ux } from '@oclif/core';
 import { readFileSync, readJsonSync, writeFileSync } from 'fs-extra';
 
 import { TelemetryGlobal } from '@salesforce/plugin-telemetry/lib/telemetryGlobal';
@@ -25,24 +25,20 @@ function sendEvent(data: JsonMap): void {
 }
 
 function suggestAlternatives(): void {
-  CliUx.ux.log('Failed to update sf. Try uninstalling the CLI and re-installing it.');
-  CliUx.ux.log(
+  ux.log('Failed to update sf. Try uninstalling the CLI and re-installing it.');
+  ux.log(
     'Uninstall instructions: https://developer.salesforce.com/docs/atlas.en-us.234.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_uninstall.htm'
   );
   if (process.platform === 'win32') {
-    CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.exe');
+    ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.exe');
   } else if (process.platform === 'darwin') {
     if (process.arch === 'arm64') {
-      CliUx.ux.log(
-        '- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-arm64.pkg'
-      );
+      ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-arm64.pkg');
     } else {
-      CliUx.ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.pkg');
+      ux.log('- installer: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-x64.pkg');
     }
   } else {
-    CliUx.ux.log(
-      '- download: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.gz'
-    );
+    ux.log('- download: https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.gz');
   }
 }
 
@@ -55,7 +51,7 @@ function suggestAlternatives(): void {
 const hook: Hook.Update = async function (opts): Promise<void> {
   let success = false;
 
-  CliUx.ux.action.start('sfdx-cli: Updating sf');
+  ux.action.start('sfdx-cli: Updating sf');
 
   try {
     const pjson = readJsonSync(path.join(__dirname, '../../package.json')) as { oclif: { dirname: string } };
@@ -89,7 +85,7 @@ const hook: Hook.Update = async function (opts): Promise<void> {
     });
     return;
   } finally {
-    CliUx.ux.action.stop(success ? 'done' : 'failed');
+    ux.action.stop(success ? 'done' : 'failed');
     if (!success) suggestAlternatives();
   }
 };
