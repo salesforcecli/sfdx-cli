@@ -6,7 +6,7 @@
  */
 import * as path from 'path';
 import Plugins from '@oclif/plugin-plugins';
-import { Config, CliUx } from '@oclif/core';
+import { Config, ux } from '@oclif/core';
 import { AnyJson, get } from '@salesforce/ts-types';
 import { compareVersions } from '../versions';
 
@@ -35,10 +35,10 @@ const hook = async (): Promise<void> => {
   const installedUserPlugins = (await plugins.list())
     .filter((plugin) => plugin.type === 'user')
     .map((plugin) => plugin.name);
-  CliUx.ux.log(`user plugins are ${installedUserPlugins.join(', ')}`);
+  ux.log(`user plugins are ${installedUserPlugins.join(', ')}`);
 
   if (installedUserPlugins.includes('salesforcedx')) {
-    CliUx.ux.warn(salesforcedxError);
+    ux.warn(salesforcedxError);
   }
 };
 

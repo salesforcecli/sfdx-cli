@@ -4,7 +4,7 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { CommandHelp, HelpSection, HelpSectionRenderer, Interfaces } from '@oclif/core';
+import { CommandHelp, HelpSection, HelpSectionRenderer, Interfaces, Command } from '@oclif/core';
 import { SfCommandInterface } from '@salesforce/sf-plugins-core';
 
 type SectionType = { header: string; generate: HelpSectionRenderer };
@@ -12,7 +12,7 @@ type SectionType = { header: string; generate: HelpSectionRenderer };
 export class SfdxCommandHelp extends CommandHelp {
   private shortHelp = false;
   public constructor(
-    public command: Interfaces.Command,
+    public command: Command.Cached,
     public config: Interfaces.Config,
     public opts: Interfaces.HelpOptions
   ) {
