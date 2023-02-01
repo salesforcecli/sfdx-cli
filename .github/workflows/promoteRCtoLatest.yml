@@ -51,7 +51,7 @@ jobs:
     # Only runs on main branch
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
-    needs: [getVersion, promote-verify]
+    needs: [promote-verify]
     steps:
       - name: Announce promotion
         id: slack
@@ -60,6 +60,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.PLATFORM_CLI_CHANNEL_SLACK_INCOMING_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
         with:
+          # TODO: WE NEED THE VERSION
           payload: |
             {
               "blocks": [{

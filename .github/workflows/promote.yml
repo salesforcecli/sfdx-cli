@@ -154,7 +154,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_EC2_METADATA_DISABLED: true
-    needs: [channel-promote]
+    needs: [channel-promote, build-s3-channel]
     steps:
       - uses: salesforcecli/github-workflows/.github/actions/renameMacPkg@main
         with:
