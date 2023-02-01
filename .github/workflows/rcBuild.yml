@@ -87,9 +87,8 @@ jobs:
     needs: [npm-release]
     uses: ./.github/workflows/dockerBuildFull.yml
     with:
-      version:
-        ${{ github.event.release.tag_name }}
-        # TODO: Change this to 'nightly'
+      version: ${{ github.event.release.tag_name }}
+      # TODO: Change this to 'nightly'
       channel: latest-rc
     secrets: inherit
 

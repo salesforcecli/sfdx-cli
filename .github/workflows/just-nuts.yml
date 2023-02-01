@@ -2,7 +2,6 @@ name: just-nuts
 
 on:
   workflow_dispatch:
-    # TODO: Add this input below.
     inputs:
       channel-or-version:
         required: true
