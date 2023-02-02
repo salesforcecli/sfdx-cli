@@ -886,7 +886,7 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@^1.16.0", "@oclif/core@^1.22.0", "@oclif/core@^1.23.0", "@oclif/core@^1.23.1", "@oclif/core@^1.25.0", "@oclif/core@^1.26.1", "@oclif/core@^1.6.3", "@oclif/core@^1.8.0":
+"@oclif/core@^1.16.0", "@oclif/core@^1.22.0", "@oclif/core@^1.23.1", "@oclif/core@^1.25.0", "@oclif/core@^1.6.3", "@oclif/core@^1.8.0":
   version "1.26.1"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.26.1.tgz#26e46c96143d3e2b1dd9bd558ae1653fe9a4f3fa"
   integrity sha512-g+OWJcM7JOVI53caTEtq0BB1nPotWctRLUyFODPgvDqXhVR7QED+Qz3LwFAMD8dt7/Ar2ZNq15U3bnpnOv453A==
@@ -1089,23 +1089,6 @@
   integrity sha512-ok8gS2phqA4MiGkjCrZPFvhNIHIp35WsvNNVUn4GL8WZYQ5mk1cZuu+IIqTZxBFZ4QDUZLVkumrhsqx3oNId9A==
   dependencies:
     "@oclif/core" "^2.0.7"
-
-"@oclif/plugin-help@^3.3.1":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-3.3.1.tgz#36adb4e0173f741df409bb4b69036d24a53bfb24"
-  integrity sha512-QuSiseNRJygaqAdABYFWn/H1CwIZCp9zp/PLid6yXvy6VcQV7OenEFF5XuYaCvSARe2Tg9r8Jqls5+fw1A9CbQ==
-  dependencies:
-    "@oclif/command" "^1.8.15"
-    "@oclif/config" "1.18.2"
-    "@oclif/errors" "1.3.5"
-    "@oclif/help" "^1.0.1"
-    chalk "^4.1.2"
-    indent-string "^4.0.0"
-    lodash "^4.17.21"
-    string-width "^4.2.0"
-    strip-ansi "^6.0.0"
-    widest-line "^3.1.0"
-    wrap-ansi "^6.2.0"
 
 "@oclif/plugin-not-found@2.3.17", "@oclif/plugin-not-found@^2.3.7":
   version "2.3.17"
@@ -1683,15 +1666,15 @@
     "@salesforce/ts-types" "^1.7.2"
     tslib "^2"
 
-"@salesforce/plugin-org@2.2.25":
-  version "2.2.25"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-2.2.25.tgz#f3c6ec8d84a63564970e77621a8883c4bf28a540"
-  integrity sha512-BwuzBzDbtzIVkfrHBvSyHVjl5Pu3+sY5eQVWY6h/YZfJZkaW8PW9hYvuzp55/3soPoQZ3n2bxPkJLO0YWB+IRw==
+"@salesforce/plugin-org@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-2.3.0.tgz#ef92c5a83ab30da223f777815603d04fc4022d70"
+  integrity sha512-r1sFBg4Yy/7Zy8hXyiTN0BLHAWHRTmpwY5rmwfPQgXNzZnX9ZNC6nbN3f5ZWoXZSzmWpehRh6fBNShXbjbKM/A==
   dependencies:
-    "@oclif/core" "^1.26.1"
+    "@oclif/core" "^2.0.7"
     "@salesforce/core" "^3.33.1"
     "@salesforce/kit" "^1.8.3"
-    "@salesforce/sf-plugins-core" "^1.22.1"
+    "@salesforce/sf-plugins-core" "^2.0.1"
     open "8.4.0"
     tslib "^2"
 
@@ -1759,13 +1742,12 @@
     change-case "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-source@2.3.16":
-  version "2.3.16"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.3.16.tgz#03226b211a940a36e08c419da32415a52d5c941a"
-  integrity sha512-HwrCM68TBIX/BBDLQSG6jv+VLn7F8FgShwp3Bp+GlybG/H7NGdBSQMvwFOYFAfcIAcEGzHW0fg6FuqqGaO5fvg==
+"@salesforce/plugin-source@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.4.0.tgz#cffbd86f919257e9bbf1ca6903fd66bf76f307eb"
+  integrity sha512-LAH+QnnJxY3MwNTiUwk1ihh/rRfOTUOnW+bjiKn3LWQBGn62hJMyExB3GhLzxq5zkrxIFgxcV2Dim3FKI5AGHQ==
   dependencies:
-    "@oclif/core" "^1.23.0"
-    "@oclif/plugin-help" "^3.3.1"
+    "@oclif/core" "^2.0.7"
     "@salesforce/apex-node" "^1.6.0"
     "@salesforce/command" "^5.2.35"
     "@salesforce/core" "^3.32.14"
@@ -1881,10 +1863,10 @@
     signal-exit "^3.0.6"
     tslib "^2.3.1"
 
-"@salesforce/source-deploy-retrieve@7.7.6", "@salesforce/source-deploy-retrieve@^7.0.1", "@salesforce/source-deploy-retrieve@^7.7.5":
-  version "7.7.6"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-7.7.6.tgz#57fc93ca4f14bf27e7db5fd3759cc290bc0d4eed"
-  integrity sha512-AIMMxGXnzFmuoUnnM0Kum6Av9vMtX9Yq7qkBMVaFFubjAj29vU4pv+JJ1CIsITVrqNNd9Hi09TVQtw3rQvsqyQ==
+"@salesforce/source-deploy-retrieve@7.7.7", "@salesforce/source-deploy-retrieve@^7.0.1", "@salesforce/source-deploy-retrieve@^7.7.5":
+  version "7.7.7"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-7.7.7.tgz#81e04f54f0a1b0f2aa216b5230f419292a488327"
+  integrity sha512-KZEhg6+XQM+0cP9NAMHkhAdQY0ljaWSng4NEwkes5MDPLdQyt3S3uLpEF8pszfcNzfGhTTSgquIGrXt87pbjow==
   dependencies:
     "@salesforce/core" "^3.32.13"
     "@salesforce/kit" "^1.8.3"
