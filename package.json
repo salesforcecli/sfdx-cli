@@ -93,9 +93,6 @@
       "@oclif/plugin-command-snapshot",
       "@salesforce/plugin-release-management"
     ],
-    "jitPlugins": {
-      "@salesforce/plugin-sobject": "0.1.0"
-    },
     "update": {
       "s3": {
         "bucket": "dfc-data-production",
