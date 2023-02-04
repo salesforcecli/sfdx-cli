@@ -920,10 +920,10 @@
     widest-line "^3.1.0"
     wrap-ansi "^7.0.0"
 
-"@oclif/core@^2.0.3", "@oclif/core@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-2.0.7.tgz#a17a85dfa105dda120fbc5647432010feaa97a9e"
-  integrity sha512-pj7hIH8SBeH3qha47fmyqdaBdNVEqesRgnKFh8Ytdb4S41/4BYOiQuyQGuvnKgvicH6DMxp4FbM9EQEW46V9xw==
+"@oclif/core@^2.0.3", "@oclif/core@^2.0.7", "@oclif/core@^2.0.8":
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-2.0.8.tgz#81c79f051ffb326b7c9999463ae9547a7e799316"
+  integrity sha512-jt06vEZfpazkR0C8vYuVMKmsxjky52y1B1oFGPnCa6/17qH+PByd5knQP6/QbRoE5OT9RAf4zzpxx2wcihVslw==
   dependencies:
     "@types/cli-progress" "^3.11.0"
     ansi-escapes "^4.3.2"
@@ -1742,12 +1742,12 @@
     change-case "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-source@2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.4.1.tgz#3038f2c91aac3fe81743acf10c49408df7d65d71"
-  integrity sha512-mvLHuMjY6ZCGOD1sxPL++BVMAxciutBFzvdxfxUEnUYvaJTmK4CER7iF/U6Ef/T0VaVhU+0zqbwYktAlkWrXZA==
+"@salesforce/plugin-source@2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.4.3.tgz#9384c16209e1a5beb85b2474212a436918cffe72"
+  integrity sha512-EMKP3melCVGXLX+vT893Lv1R0PqEUMl0g9rTsq3q9GZ50opYfpTnAb2OUjq1o1AeZ7mloi78K3PhM07d+xx84A==
   dependencies:
-    "@oclif/core" "^2.0.7"
+    "@oclif/core" "^2.0.8"
     "@salesforce/apex-node" "^1.6.0"
     "@salesforce/command" "^5.2.35"
     "@salesforce/core" "^3.32.14"
