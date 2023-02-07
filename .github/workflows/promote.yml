@@ -32,7 +32,7 @@ on:
       use-ctc:
         type: boolean
         required: false
-        description: Open a change case for this promotion. Only really needed for promotions to latest.
+        description: Open a change case for this promotion. Only needed for promotions to latest.
 
 jobs:
   validate-inputs:
