@@ -7774,9 +7774,9 @@ obliterator@^2.0.1, obliterator@^2.0.2:
   integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
 
 oclif@^3.4.2:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.6.1.tgz#157ac35f1e634af745879a55c3fa39bf724a5e69"
-  integrity sha512-zedbQqxAzC8WlH/T2D/CbGCTWIXHMV7wGs2av+M3KPG4SfB9/lwn1zXGjft/3NNy3X6KCEoGCYWqYYMZOf2Fgg==
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.6.3.tgz#c8d1b2b32edcb3b913d68e68b2abfdc19229becb"
+  integrity sha512-S4pSWrPB9fm6IIiXBWtmNkeSWvGfw8Vb51hS6TTyv0fa2xU4sdcDU0YYKM3oFqpfapyf3aH0YjQTofJKU5joSw==
   dependencies:
     "@oclif/core" "^2.0.3"
     "@oclif/plugin-help" "^5.1.19"
