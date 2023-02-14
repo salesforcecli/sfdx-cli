@@ -86,8 +86,7 @@
       "@salesforce/plugin-templates",
       "@salesforce/plugin-trust",
       "@salesforce/plugin-user",
-      "@salesforce/sfdx-plugin-lwc-test",
-      "salesforce-alm"
+      "@salesforce/sfdx-plugin-lwc-test"
     ],
     "devPlugins": [
       "@oclif/plugin-command-snapshot",
@@ -146,8 +145,7 @@
     "@salesforce/plugin-telemetry",
     "@salesforce/plugin-templates",
     "@salesforce/plugin-trust",
-    "@salesforce/plugin-user",
-    "salesforce-alm"
+    "@salesforce/plugin-user"
   ],
   "dependencies": {
     "@oclif/core": "^2.0.7",
@@ -186,7 +184,6 @@
     "@salesforce/sfdx-plugin-lwc-test": "1.0.1",
     "@salesforce/ts-types": "^1.7.1",
     "debug": "^4.3.4",
-    "salesforce-alm": "54.8.5",
     "tslib": "^2.4.1"
   },
   "devDependencies": {
