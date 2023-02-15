@@ -4,7 +4,7 @@ on:
       - RC
       - promote-rc-to-latest
       - make-pr-for-nightly
-      - manual promote
+      - promote
       - pr for rc
       - rc tag/release
     types:

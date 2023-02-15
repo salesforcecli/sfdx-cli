@@ -7,30 +7,12 @@ on:
     - cron: '0 14 * * 4'
 
 jobs:
-  # what is the RC version, numerically?
-  getVersion:
-    outputs:
-      version: ${{ steps.version-info.outputs.version }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-          cache: yarn
-      - uses: salesforcecli/github-workflows/.github/actions/versionInfo@main
-        id: version-info
-        with:
-          version: latest-rc
-
   promote:
     uses: ./.github/workflows/promote.yml
-    needs: getVersion
     secrets: inherit
     with:
-      version: ${{needs.getVersion.outputs.version}}
-      tag: latest
-      channel: stable
+      old-channel: latest-rc
+      new-channel: latest
       useCTC: true
 
   promote-verify:
@@ -42,7 +24,7 @@ jobs:
         with:
           node-version: lts/*
           cache: yarn
-      - run: ./scripts/verify-promote
+      - run: ./scripts/verify-promote latest-rc latest
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
       - run: |
           ATTEMPT=1
@@ -66,11 +48,15 @@ jobs:
           done
 
   announce-promotion-to-slack:
-    # Only runs on main branch
-    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
-    needs: [getVersion, promote-verify]
+    needs: [promote-verify]
     steps:
+      - name: Get latest-rc version
+        id: latest-rc-version
+        run: |
+          VERSION=$(npm view sfdx-cli@latest-rc --json | jq -r '.version')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
       - name: Announce promotion
         id: slack
         uses: slackapi/slack-github-action@v1.21.0
@@ -84,7 +70,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ":rocket: `sfdx-cli` version `${{ needs.getVersion.outputs.version }}` has been promoted to latest :rocket:\nRun `sfdx whatsnew -v latest` to see what's new"
+                  "text": ":rocket: `sfdx-cli` version `${{ steps.latest-rc-version.outputs.version }}` has been promoted from `latest-rc` to `latest` :rocket:\nRun `sfdx whatsnew -v latest` to see what's new"
                 }
               }]
             }
