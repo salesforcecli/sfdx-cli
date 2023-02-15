@@ -5,7 +5,7 @@ on:
     inputs:
       version:
         type: string
-        description: 'Semver version to promote. Example: Promote **7.123.1** as dev'
+        description: 'Semver version to promote. Example: 7.123.1'
       old-channel:
         type: string
         description: 'Existing channel to promote. Example: Promote **latest-rc** to latest'
@@ -21,7 +21,7 @@ on:
     inputs:
       version:
         type: string
-        description: 'Semver version to promote. Example: Promote **7.123.1** as dev'
+        description: 'Semver version to promote. Example: 7.123.1'
       old-channel:
         type: string
         description: 'Existing channel to promote. Example: Promote **latest-rc** to latest'
@@ -61,6 +61,7 @@ jobs:
 
   # Even if inputs.version is passed, we still need the SHA for a later step
   get-package-info:
+    needs: [validate-inputs]
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version-info.outputs.version }}
@@ -86,15 +87,34 @@ jobs:
       - id: replace-channel
         run: |
           S3_NEW_CHANNEL=$(${{ inputs.new-channel }}/latest/stable)
-          echo "s3-new-channel=$S3_NEW_CHANNEL" >> $GITHUB_OUTPUT
+          echo "s3-new-channel=$S3_NEW_CHANNEL" >> "$GITHUB_OUTPUT"
 
+  # CTC is only needed for promotions to 'latest'
   ctc-open:
+    needs: [build-s3-channel]
     if: inputs.use-ctc
     uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@main
     secrets: inherit
 
+  # This job reduces yaml clutter for jobs that depend (needs) on an optional step
+  # See a working example here: https://github.com/iowillhoit/gha-sandbox/blob/main/.github/workflows/needing-an-optional-job-alternate.yml
+  ctc-proceed:
+    runs-on: ubuntu-latest
+    needs: [ctc-open]
+    if: always()
+    steps:
+      - run: |
+          RESULT=${{ needs.ctc-open.result }}
+          if [[ "$RESULT" != 'success' && "$RESULT" != 'skipped' ]]; then
+            echo "Job 'ctc-open' failed! Exiting."
+            exit 1
+          else
+            echo "Job 'ctc-open' was successful or was skipped, proceeding."
+          fi
+
   docker-promote:
-    needs: [ctc-open, get-package-info]
+    needs: [ctc-proceed, get-package-info]
+    if: success()
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -119,7 +139,8 @@ jobs:
           docker push salesforce/salesforcedx:${{ inputs.new-channel }}-full
 
   npm-promote:
-    needs: [ctc-open, get-package-info]
+    needs: [ctc-proceed, get-package-info]
+    if: success()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v3
@@ -130,8 +151,9 @@ jobs:
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
           npm dist-tag add sfdx-cli@${{ needs.get-package-info.outputs.version }} ${{ inputs.new-channel }}
 
-  channel-promote:
-    needs: [ctc-open, get-package-info, build-s3-channel]
+  oclif-promote:
+    needs: [ctc-proceed, get-package-info, build-s3-channel]
+    if: success()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -142,19 +164,20 @@ jobs:
       - run: yarn install
       - run: yarn promote --version ${{ needs.get-package-info.outputs.version }} --sha ${{ needs.get-package-info.outputs.sha }} --channel ${{ needs.build-s3-channel.outputs.s3-new-channel }} --max-age 300 --macos --win --indexes --xz
         env:
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
   # This job is renames the sfdx-x64.pkg that oclif v3 produces to sfdx.pkg which matches what oclif v2 produces.
   # Doing so avoids breaking changes for customers relying on the old URLs to download the CLI.
   # It can be removed once the developer site is linking to the new sfdx-x64.pkg file and the mac signing job is signing the new -x64.pkg file.
   rename-mac-pkg:
+    needs: [ctc-proceed, oclif-promote, build-s3-channel]
+    if: success()
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_EC2_METADATA_DISABLED: true
-    needs: [channel-promote, build-s3-channel]
     steps:
       - uses: salesforcecli/github-workflows/.github/actions/renameMacPkg@main
         with:
@@ -162,16 +185,16 @@ jobs:
           channel: ${{ needs.build-s3-channel.outputs.s3-new-channel }}
 
   ctcCloseSuccess:
-    needs: [ctc-open, npm-promote, docker-promote, channel-promote, rename-mac-pkg]
-    if: needs.ctc-open.result == 'success' && needs.ctc-open.outputs.changeCaseId && needs.npm-promote.result == 'success' && needs.docker-promote.result == 'success' && needs.channel-promote.result == 'success' && needs.rename-mac-pkg.result == 'success'
+    needs: [ctc-open, npm-promote, docker-promote, oclif-promote, rename-mac-pkg]
+    if: needs.ctc-open.result == 'success' && needs.ctc-open.outputs.changeCaseId && needs.npm-promote.result == 'success' && needs.docker-promote.result == 'success' && needs.oclif-promote.result == 'success' && needs.rename-mac-pkg.result == 'success'
     uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@main
     secrets: inherit
     with:
       changeCaseId: ${{needs.ctc-open.outputs.changeCaseId}}
 
   ctcCloseFail:
-    needs: [ctc-open, npm-promote, docker-promote, channel-promote, rename-mac-pkg]
-    if: always() && needs.ctc-open.outputs.changeCaseId && (needs.ctc-open.result != 'success' || needs.npm-promote.result != 'success' || needs.docker-promote.result != 'success' || needs.channel-promote.result != 'success' || needs.rename-mac-pkg.result != 'success')
+    needs: [ctc-open, npm-promote, docker-promote, oclif-promote, rename-mac-pkg]
+    if: always() && needs.ctc-open.outputs.changeCaseId && (needs.ctc-open.result != 'success' || needs.npm-promote.result != 'success' || needs.docker-promote.result != 'success' || needs.oclif-promote.result != 'success' || needs.rename-mac-pkg.result != 'success')
     uses: salesforcecli/github-workflows/.github/workflows/ctcClose.yml@main
     secrets: inherit
     with:
