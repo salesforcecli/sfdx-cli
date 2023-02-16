@@ -108,6 +108,7 @@ banner "Verify tarball install and that 'sfdx update $NEW_CHANNEL' version match
 
 # download and untar
 OLDER_VERSION_URL=$(echo "$VERSION_CONTENT" | jq 'to_entries[5]' | jq -r '.value')
+echo "Downloading old cli version from: $OLDER_VERSION_URL"
 curl -s "$OLDER_VERSION_URL" --output sfdx-linux-x64.tar.xz && mkdir ~/sfdx  && tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1 && rm sfdx-linux-x64.tar.xz
 export PATH="$HOME/sfdx/bin:$PATH"
 
