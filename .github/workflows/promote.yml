@@ -53,7 +53,7 @@ jobs:
           echo "-> Use 'old-channel' if you are promoting an existing channel to another channel. Example: I want to promote channel 'latest-rc' to channel 'latest'.
           exit 1
       - name: Ensure channels do not include "stable"
-        if: ${{ contains(inputs.old-channel, 'stable') || ${{ contains(inputs.new-channel, 'stable') }}
+        if: ${{ contains(inputs.old-channel, 'stable') || contains(inputs.new-channel, 'stable') }}
         run: |
           echo "ERROR: Do not use 'stable' in channel names. Use 'latest' instead.
           echo "-> S3 resources (stable, stable-rc) will be translated for you and will eventually be deprecated in favor of 'latest' and 'latest-rc'
