@@ -86,7 +86,8 @@ jobs:
     steps:
       - id: replace-channel
         run: |
-          S3_NEW_CHANNEL=$(${{ inputs.new-channel }}/latest/stable)
+          NEW_CHANNEL=${{ inputs.new-channel }}
+          S3_NEW_CHANNEL=${NEW_CHANNEL/latest/stable}
           echo "s3-new-channel=$S3_NEW_CHANNEL" >> "$GITHUB_OUTPUT"
 
   # CTC is only needed for promotions to 'latest'
@@ -100,8 +101,8 @@ jobs:
   # See a working example here: https://github.com/iowillhoit/gha-sandbox/blob/main/.github/workflows/needing-an-optional-job-alternate.yml
   ctc-proceed:
     runs-on: ubuntu-latest
-    needs: [ctc-open]
-    if: always()
+    needs: [ctc-open, validate-inputs, get-package-info, build-s3-channel]
+    if: always() && (needs.validate-inputs.result == 'success' && needs.get-package-info.result == 'success' && needs.build-s3-channel.result == 'success')
     steps:
       - run: |
           RESULT=${{ needs.ctc-open.result }}
