@@ -1,69 +1,138 @@
 #!/usr/bin/env bash
 
-# latest and rc should match after promote before RC build
-echo "Verifying promote of npm dist tags: latest-rc -> latest"
+# This script runs right after a promote when the versions of the two channels should match
+
+if (( $# != 2 )); then
+    echo "The 'verify-promote' script requires two args, the 'old channel' and 'new channel'. Example: latest-rc latest" && exit 1;
+fi
+
+OLD_CHANNEL=$1
+NEW_CHANNEL=$2
+
+function banner() {
+  LENGTH=$(echo -n "$1" | wc -c | sed s/\ //g)
+  CHAR=$(for (( i = 0; i < "$LENGTH"; ++i )); do echo -n "="; done)
+
+  printf "\n%s\n%s\n%s\n" "$CHAR" "$1" "$CHAR"
+}
+
+# latest-rc to OLD_CHANNEL
+# latest to NEW_CHANNEL
+# $LATEST to $NEW_VERSION
+
+# Versions for the old and new channels should match after promotion
+banner "Verifying promote of npm dist tags: $OLD_CHANNEL -> $NEW_CHANNEL"
 TAGS=$(npm view sfdx-cli --json | jq -cr '."dist-tags"')
-LATEST=$(echo $TAGS | jq -cr '.latest')
-echo $LATEST
-LATEST_RC=$(echo $TAGS | jq -cr '."latest-rc"')
-echo $LATEST_RC
-if [ $LATEST != $LATEST_RC ]; then
-  echo "latest and latest-rc do not match"
+
+OLD_VERSION=$(echo "$TAGS" | jq -cr ".\"$OLD_CHANNEL\"")
+echo "-> Npm dist-tag version for '$OLD_CHANNEL' is: $OLD_VERSION" # was $LATEST_RC
+
+NEW_VERSION=$(echo "$TAGS" | jq -cr ".\"$NEW_CHANNEL\"")
+echo "-> Npm dist-tag version for '$NEW_CHANNEL' is: $NEW_VERSION" # was $LATEST
+
+if [ "$NEW_VERSION" != "$OLD_VERSION" ]; then
+  echo "!! Versions for '$OLD_CHANNEL' and '$NEW_CHANNEL' do not match, exiting."
   exit 1
 fi
 
-# artifacts and npm should agree on latest
-# buildmanifest version for latest matches npm for latest
-echo "Verifying promote of aws s3 bucket channels: latest-rc -> latest"
-MANIFEST_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable-rc/sfdx-darwin-x64-buildmanifest"
-MANIFEST_VERSION=$(curl -s $MANIFEST_URL | jq -cr '.version')
-if [ $LATEST != $MANIFEST_VERSION ]; then
-  echo "stable-rc in S3 and latest on npm do not match"
+
+# S3 artifacts and npm should agree on the new version
+# buildmanifest version matches npm dist-tag for the new channel
+banner "Verifying promote of aws s3 bucket channels: $OLD_CHANNEL -> $NEW_CHANNEL"
+
+# Translate 'latest -> stable' and 'latest-rc -> stable-rc' for finding resources in S3
+# Otherwise no replacement will be made and we will used what is passed. For example: nightly
+S3_OLD_CHANNEL=${OLD_CHANNEL/latest/stable}
+echo "-> INFO: Using '$S3_OLD_CHANNEL' channel in S3 url"
+
+MANIFEST_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/$S3_OLD_CHANNEL/sfdx-darwin-x64-buildmanifest"
+OLD_MANIFEST_VERSION=$(curl -s "$MANIFEST_URL" | jq -cr '.version')
+echo "-> S3 manifest version for '$S3_OLD_CHANNEL' is: $OLD_VERSION"
+
+# Version from NPM
+echo "-> Npm dist-tag version for '$NEW_CHANNEL' is: $NEW_VERSION"
+
+if [ "$NEW_VERSION" != "$OLD_MANIFEST_VERSION" ]; then
+  echo "!! Versions for '$S3_OLD_CHANNEL' in S3 and '$NEW_CHANNEL' on npm do not match, exiting."
   exit 1
 fi
 
-# do an npm install, smoke, verify version, and uninstall
-npm install -g sfdx-cli --no-cache
+
+VERSIONS_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json"
+VERSION_CONTENT=$(curl -s "$VERSIONS_URL" | jq -cr)
+
+# This check is only needed if the NEW_CHANNEL is "latest"
+if [[ "$NEW_CHANNEL" == "latest" ]]; then
+  banner "Verify that the versions file has the 'latest' version at the top"
+
+  TOP_VERSION=$(echo "$VERSION_CONTENT" | jq -r 'keys_unsorted[0]')
+
+  echo "-> Top version from json is: $TOP_VERSION"
+
+  echo "-> Npm dist-tag version for '$NEW_CHANNEL' is: $NEW_VERSION"
+
+  if [ "$TOP_VERSION" != "$NEW_VERSION" ]; then
+    echo "!! Versions file does not have latest version at the top, exiting."
+    exit 1
+  fi
+fi
+
+# In the next few checks, we verify that the new channel's version matches the coresponding channel's npm dist-tag
+
+banner "Verify npm cli install, smoke, version, and uninstall"
+
+npm install -g "sfdx-cli@$NEW_CHANNEL" --no-cache
+# smoke tests
 sfdx version
 sfdx help
 sfdx plugins --core
+
 NPM_CLI_VERSION=$(sfdx version --json | jq -cr '.cliVersion' | sed 's/sfdx-cli\///')
-if [ $LATEST != $NPM_CLI_VERSION ]; then
-  echo "npm did not install latest.  latest: $LATEST.  Npm install $NPM_CLI_VERSION"
+echo "-> Npm installed version for '$NEW_CHANNEL' is: $NPM_CLI_VERSION"
+
+echo "-> Npm dist-tag version for '$NEW_CHANNEL' is: $NEW_VERSION"
+
+if [ "$NEW_VERSION" != "$NPM_CLI_VERSION" ]; then
+  echo "!! Npm installed version does not match dist-tag version for '$NEW_CHANNEL', exiting."
   exit 1
 fi
+# cleanup
 npm uninstall -g sfdx-cli
 
-# versions file has latest at the top
-VERSIONS_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json"
-VERSION_CONTENT=$(curl -s $VERSIONS_URL | jq -cr)
-LATEST_VERSION=$(echo $VERSION_CONTENT | jq -r 'keys_unsorted[0]')
-if [ $LATEST_VERSION != $LATEST ]; then
-  echo "versions file does not have latest version at the top.  First entry is $LATEST_VERSION"
-  exit 1
-fi
 
+# install an older version from installer and then upgrade it to the NEW_CHANNEL version
+banner "Verify tarball install and that 'sfdx update $NEW_CHANNEL' version matches '$NEW_VERSION'"
 
+# NOTE: If you are testing this locally, you'll need to use a tarball built for your OS
+#       URLs can be found here: https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli_olderversions
 
-# install an older version from installer and then upgrade it to correct version of latest
-OLDER_VERSION_URL=$(echo $VERSION_CONTENT | jq 'to_entries[3]' | jq -r '.value')
-echo $OLDER_VERSION_URL
+# download and untar
+OLDER_VERSION_URL=$(echo "$VERSION_CONTENT" | jq 'to_entries[5]' | jq -r '.value')
+echo "Downloading old cli version from: $OLDER_VERSION_URL"
+curl -s "$OLDER_VERSION_URL" --output sfdx-linux-x64.tar.xz && mkdir ~/sfdx  && tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1 && rm sfdx-linux-x64.tar.xz
+export PATH="$HOME/sfdx/bin:$PATH"
 
-# download, untar
-curl -s $OLDER_VERSION_URL --output sfdx-linux-x64.tar.xz && mkdir ~/sfdx  && tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1  && rm sfdx-linux-x64.tar.xz
-export PATH="~/sfdx/bin:$PATH"
+# Translate 'latest -> stable' and 'latest-rc -> stable-rc' for finding resources in S3
+# Otherwise no replacement will be made and we will used what is passed. For example: nightly
+S3_NEW_CHANNEL=${NEW_CHANNEL/latest/stable}
+echo "-> INFO: Using '$S3_NEW_CHANNEL' for sfdx update channel"
 
-# smoke
+# smoke and update
 sfdx version
-sfdx update
+sfdx update "$S3_NEW_CHANNEL"
 sfdx help
 sfdx plugins --core
 sfdx version
 
-# verify version (will not run until the version it updates from has the --json (v108) option)
-# INSTALLED_VERSION=$(sfdx version --json | jq -cr '.cliVersion' | sed 's/sfdx-cli\///')
-# if [ $LATEST != $INSTALLED_VERSION ]; then
-#   echo "installer did not install latest.  latest: $LATEST.  Installer provided $INSTALLED_VERSION"
-#   exit 1
-# fi
+UPDATED_VERSION=$(sfdx version --json | jq -cr '.cliVersion' | sed 's/sfdx-cli\///')
 
+echo "-> Version after 'sfdx update $S3_NEW_CHANNEL' is: $UPDATED_VERSION"
+
+echo "-> Npm dist-tag version for '$NEW_CHANNEL' is: $NEW_VERSION"
+
+if [ "$NEW_VERSION" != "$UPDATED_VERSION" ]; then
+  echo "!! CLI version after update does not match '$NEW_VERSION', exiting."
+  exit 1
+fi
+
+# TODO: How could we verify Docker images :thinking-face:

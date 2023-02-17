@@ -4,7 +4,13 @@ on:
     inputs:
       version:
         type: string
+        description: The release semver version
         required: true
+      channel:
+        type: string
+        description: The release channel (latest-rc, dev, etc)
+        required: true
+        default: latest-rc # TODO: Make default nightly
 
 jobs:
   buildPush:
@@ -48,7 +54,9 @@ jobs:
           file: dockerfiles/Dockerfile_slim
           build-args: |
             DOWNLOAD_URL=${{ steps.version-info.outputs.url }}
-          tags: salesforce/salesforcedx:latest-rc-slim, salesforce/salesforcedx:${{ steps.version-info.outputs.version }}-slim
+          # TODO: Do we want _all_ docker images to release with the version in their name?
+          #       Should we skip this on prereleases?
+          tags: salesforce/salesforcedx:${{ inputs.channel }}-slim, salesforce/salesforcedx:${{ steps.version-info.outputs.version }}-slim
 
   verify:
     needs: buildPush

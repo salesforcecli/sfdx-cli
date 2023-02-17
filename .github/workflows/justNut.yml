@@ -2,6 +2,10 @@ name: just-nut
 on:
   workflow_dispatch:
     inputs:
+      channel-or-version:
+        description: Version or channel of the CLI to test against (nightly, latest-rc, 7.112.1)
+        type: string
+        default: 'latest-rc' # TODO: Update this to 'nightly'
       repository:
         description: 'The repo that will be cloned (format: owner/repo).  This contains the NUTs you want to run.  Ex: salesforcecli/plugin-user'
         type: string
@@ -18,6 +22,10 @@ on:
         default: 'ubuntu-latest'
   workflow_call:
     inputs:
+      channel-or-version:
+        description: Version or channel of the CLI to test against (nightly, latest-rc, 7.112.1)
+        default: 'latest-rc' # TODO: Update this to 'nightly'
+        type: string
       repository:
         description: 'The repo that will be cloned (format: owner/repo).  This contains the NUTs you want to run.  Ex: salesforcecli/plugin-user'
         type: string
@@ -56,7 +64,8 @@ jobs:
         with:
           node-version: lts/*
           cache: yarn
-      - run: npm install -g sfdx-cli@latest-rc @salesforce/cli@latest-rc --omit=dev
+        # NOTE: We are just using latest-rc of `sf` since we cannot guaranteed channels (and definitely versions) will be the same
+      - run: npm install -g sfdx-cli@${{ inputs.channel-or-version }} @salesforce/cli@latest-rc --omit=dev
       - run: yarn install
       - name: NUTs attempt 1
         continue-on-error: true
