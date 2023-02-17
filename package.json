@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.189.1",
+  "version": "7.189.2",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -147,7 +147,7 @@
     "@salesforce/plugin-user"
   ],
   "dependencies": {
-    "@oclif/core": "^2.0.7",
+    "@oclif/core": "2.1.6",
     "@oclif/plugin-autocomplete": "2.1.0",
     "@oclif/plugin-commands": "2.2.9",
     "@oclif/plugin-help": "5.2.4",
