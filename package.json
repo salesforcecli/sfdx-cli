@@ -73,7 +73,6 @@
       "@salesforce/plugin-community",
       "@salesforce/plugin-custom-metadata",
       "@salesforce/plugin-data",
-      "@salesforce/plugin-generator",
       "@salesforce/plugin-info",
       "@salesforce/plugin-limits",
       "@salesforce/plugin-org",
@@ -87,6 +86,9 @@
       "@salesforce/plugin-user",
       "@salesforce/sfdx-plugin-lwc-test"
     ],
+    "jitPlugins": {
+      "@salesforce/plugin-sobject": "0.1.4"
+    },
     "devPlugins": [
       "@oclif/plugin-command-snapshot",
       "@salesforce/plugin-release-management"
@@ -133,7 +135,6 @@
     "@salesforce/plugin-community",
     "@salesforce/plugin-custom-metadata",
     "@salesforce/plugin-data",
-    "@salesforce/plugin-generator",
     "@salesforce/plugin-info",
     "@salesforce/plugin-limits",
     "@salesforce/plugin-org",
@@ -167,7 +168,6 @@
     "@salesforce/plugin-config": "1.5.1",
     "@salesforce/plugin-custom-metadata": "2.1.2",
     "@salesforce/plugin-data": "2.2.1",
-    "@salesforce/plugin-generator": "2.0.17",
     "@salesforce/plugin-info": "2.4.2",
     "@salesforce/plugin-limits": "2.3.3",
     "@salesforce/plugin-org": "2.4.0",
