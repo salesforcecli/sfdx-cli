@@ -149,7 +149,7 @@
   "dependencies": {
     "@oclif/core": "2.1.6",
     "@oclif/plugin-autocomplete": "2.1.0",
-    "@oclif/plugin-commands": "2.2.9",
+    "@oclif/plugin-commands": "2.2.10",
     "@oclif/plugin-help": "5.2.4",
     "@oclif/plugin-not-found": "2.3.20",
     "@oclif/plugin-plugins": "2.3.2",
