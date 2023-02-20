@@ -32,13 +32,10 @@ jobs:
           - salesforcecli/plugin-schema
           - salesforcecli/plugin-signups
           - salesforcecli/plugin-user
+          - salesforcecli/plugin-packaging
 
           # private repos
           - salesforcecli/plugin-custom-metadata
-        exclude:
-          # toolbelt itself doesn't run windows nuts
-          - os: windows-latest
-            repository: salesforcecli/toolbelt
     uses: ./.github/workflows/justNut.yml
     with:
       repository: ${{matrix.repository}}
