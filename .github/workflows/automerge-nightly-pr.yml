@@ -2,56 +2,27 @@ name: automerge-nightly-pr
 
 on:
   pull_request:
-    types: [opened, labeled]
-  check_suite:
-    types: [completed]
+    types: [labeled]
+
+# This job relies on defining required checks in your branch protection settings
+# Settings > Branches > 'main' > Require status checks to pass before merging
 
 jobs:
   automerge:
     runs-on: ubuntu-latest
     if: startsWith(github.event.pull_request.title, 'Release PR for')
-    # TODO: Add the automerge label to PR build (nightly-automerge)
     steps:
       - name: automerge
+        # https://github.com/pascalgn/automerge-action
         uses: 'pascalgn/automerge-action@eb68b061739cb9d81564f8e812d0b3c45f0fb09a'
         env:
           GITHUB_TOKEN: '${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}'
-          MERGE_LABELS: automerge # TODO: change
-          MERGE_COMMIT_MESSAGE: pull-request-title
-          MERGE_FILTER_AUTHOR: svc-cli-bot
+          MERGE_LABELS: nightly-automerge
+          MERGE_COMMIT_MESSAGE: pull-request-title # Use the PR title as the commit message
+          MERGE_FILTER_AUTHOR: svc-cli-bot # Only automerge PRs from this author
           MERGE_REQUIRED_APPROVALS: 0
           MERGE_DELETE_BRANCH: true
           MERGE_FORKS: false
-          MERGE_ERROR_FAIL: true # exit 1 for this action if merge fails
-          UPDATE_RETRIES: 10
+          MERGE_ERROR_FAIL: true # Exit 1 for this action if merge fails
+          UPDATE_RETRIES: 10 # Wait for checks to complete
           UPDATE_RETRY_SLEEP: 120000 # 2 minutes
-
-# name: automerge-pr
-
-# on:
-#   # TODO: ADD A PR CHECK TOMORROW
-#   # pull_request:
-#   #   types: [opened]
-#   check_suite:
-#     types: [completed]
-
-# jobs:
-#   automerge:
-#     runs-on: ubuntu-latest
-#     # TODO: Will will need to modify this
-#     # TODO: Lets add a label, but call it nightly automerge. Then update our cle:release:build script to add that label
-#     if: startsWith(github.event.pull_request.title, 'Automerge PR')
-#     steps:
-#       - name: automerge
-#         uses: "pascalgn/automerge-action@eb68b061739cb9d81564f8e812d0b3c45f0fb09a"
-#         env:
-#           GITHUB_TOKEN: "${{ secrets.TESTINGAUTOMERGETOKEN }}"
-#           MERGE_LABELS: "" # This disables requiring a label. Will trigger from PR subject `if` above
-#           MERGE_COMMIT_MESSAGE: pull-request-title # Use the PR title as the commit message
-#           MERGE_FILTER_AUTHOR: iowillhoit # Only automerge PRs from this author
-#           MERGE_REQUIRED_APPROVALS: 0
-#           MERGE_DELETE_BRANCH: true
-#           MERGE_FORKS: false
-#           MERGE_ERROR_FAIL: true # exit 1 for this action if merge fails
-#           UPDATE_RETRIES: 10
-#           UPDATE_RETRY_SLEEP: 120000 # 2 minutes
