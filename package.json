@@ -118,6 +118,7 @@
     }
   },
   "pinnedDependencies": [
+    "@oclif/core",
     "@oclif/plugin-autocomplete",
     "@oclif/plugin-commands",
     "@oclif/plugin-help",
