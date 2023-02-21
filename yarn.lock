@@ -1538,10 +1538,10 @@
     chalk "^4.1.0"
     tslib "^2"
 
-"@salesforce/plugin-auth@2.5.2":
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-2.5.2.tgz#2ec6b411e25200322b22da91f41d9d1bdbb09f53"
-  integrity sha512-Q3MUid4zUKzYLS8EKSHw8TepR4Qwxk0AN1sQiusatJkg0JqOPk+1xxW8GOWMATyvBCOY7mOvYJSalQG4f1iuQA==
+"@salesforce/plugin-auth@2.6.1":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-2.6.1.tgz#00171c2c4793e697d3e2d7fb6744edf37fedd76e"
+  integrity sha512-EuufuuQC2cXNg+ZmFfaZkEofx9zgpDr/bMtRbk2SNHF2vhisPv8U58CfhuCtyfW5e7ifDd34ADS7eq+cplwg1w==
   dependencies:
     "@oclif/core" "^2.1.6"
     "@salesforce/core" "^3.33.1"
