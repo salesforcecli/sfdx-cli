@@ -10,8 +10,7 @@ jobs:
     uses: salesforcecli/github-workflows/.github/workflows/npmPublish.yml@main
     secrets: inherit
     with:
-      # TODO: Change this to 'nightly'
-      tag: latest-rc
+      tag: nightly
       githubTag: ${{ github.event.release.tag_name }}
 
   pack-verify-upload-tarballs:
@@ -21,8 +20,7 @@ jobs:
       upload: true
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      # TODO: Change this to 'nightly'
-      channel: stable-rc
+      channel: nightly
     secrets: inherit
 
   archives-verify:
@@ -35,8 +33,7 @@ jobs:
           node-version: lts/*
           cache: npm
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      # TODO: Change this to 'nightly'
-      - run: sf-release cli:versions:inspect -c stable-rc -l archive
+      - run: sf-release cli:versions:inspect -c nightly -l archive
 
   pack-upload-mac:
     needs: [pack-verify-upload-tarballs]
@@ -44,8 +41,7 @@ jobs:
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      # TODO: Change this to 'nightly'
-      channel: stable-rc
+      channel: nightly
     secrets: inherit
 
   # The rename-mac-pkg job is only needed as long as the developer site is linking to the old sfdx.pkg file and the mac signing job is only signing the old file as well.
@@ -61,8 +57,7 @@ jobs:
       - uses: salesforcecli/github-workflows/.github/actions/renameMacPkg@main
         with:
           cli: sfdx
-          # TODO: Change this to 'nightly'
-          channel: stable-rc
+          channel: nightly
 
   pack-upload-win:
     needs: [pack-verify-upload-tarballs]
@@ -70,8 +65,7 @@ jobs:
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      # TODO: Change this to 'nightly'
-      channel: stable-rc
+      channel: nightly
     secrets: inherit
 
   docker-slim:
@@ -79,8 +73,7 @@ jobs:
     uses: ./.github/workflows/dockerBuildSlim.yml
     with:
       version: ${{ github.event.release.tag_name }}
-      # TODO: Change this to 'nightly'
-      channel: latest-rc
+      channel: nightly
     secrets: inherit
 
   docker-full:
@@ -88,8 +81,7 @@ jobs:
     uses: ./.github/workflows/dockerBuildFull.yml
     with:
       version: ${{ github.event.release.tag_name }}
-      # TODO: Change this to 'nightly'
-      channel: latest-rc
+      channel: nightly
     secrets: inherit
 
   announce-rc-release-to-slack:
@@ -131,6 +123,5 @@ jobs:
       - rename-mac-pkg
     uses: ./.github/workflows/just-nuts.yml
     with:
-      # TODO: Change this to 'nightly'
-      channel-or-version: latest-rc
+      channel-or-version: nightly
     secrets: inherit

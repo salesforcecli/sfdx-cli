@@ -12,10 +12,10 @@ on:
         type: string
         required: false
         description: comma-separated list, no spaces, of dependencies that you want to bump.
-  workflow_run:
-    workflows: [promote-rc-to-latest]
-    types:
-      - completed
+  # workflow_run:
+  #   workflows: [promote-rc-to-latest]
+  #   types:
+  #     - completed
 
 jobs:
   rcPR:
