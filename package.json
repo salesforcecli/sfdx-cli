@@ -87,7 +87,8 @@
       "@salesforce/sfdx-plugin-lwc-test"
     ],
     "jitPlugins": {
-      "@salesforce/plugin-sobject": "0.1.4"
+      "@salesforce/plugin-sobject": "0.1.4",
+      "@salesforce/plugin-dev": "0.7.0"
     },
     "devPlugins": [
       "@oclif/plugin-command-snapshot",
