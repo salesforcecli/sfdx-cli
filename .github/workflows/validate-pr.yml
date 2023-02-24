@@ -4,8 +4,10 @@ name: pr-validation
 on:
   pull_request:
     types: [opened, reopened, edited]
-    # only applies to PRs that want to merge to main
-    branches: [main]
+    # only applies to PRs that intent to be released to the public
+    branches:
+      - main
+      - patch/*
 
 jobs:
   pr-validation:
