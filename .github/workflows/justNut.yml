@@ -65,7 +65,8 @@ jobs:
           node-version: lts/*
           cache: yarn
         # NOTE: We are just using latest-rc of `sf` since we cannot guaranteed channels (and definitely versions) will be the same
-      - run: npm install -g sfdx-cli@{{ inputs.channel-or-version }} @salesforce/cli@latest-rc --omit=dev
+
+      - run: npm install -g sfdx-cli@${{ inputs.channel-or-version }} @salesforce/cli@latest-rc --omit=dev
       - run: yarn install
       - name: NUTs attempt 1
         continue-on-error: true

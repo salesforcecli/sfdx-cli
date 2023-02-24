@@ -13,7 +13,7 @@ jobs:
     with:
       old-channel: latest-rc
       new-channel: latest
-      useCTC: true
+      use-ctc: true
 
   promote-verify:
     runs-on: ubuntu-latest
