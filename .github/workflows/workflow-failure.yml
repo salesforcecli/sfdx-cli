@@ -7,6 +7,7 @@ on:
       - promote
       - pr for rc
       - rc tag/release
+      - update-docker-node-version
     types:
       - completed
     branches:
