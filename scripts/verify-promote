@@ -105,10 +105,10 @@ banner "Verify tarball install and that 'sfdx update $NEW_CHANNEL' version match
 
 # NOTE: If you are testing this locally, you'll need to use a tarball built for your OS
 #       URLs can be found here: https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli_olderversions
-OLDER_VERSION_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/7.182.0/e2a32b0/sfdx-v7.182.0-e2a32b0-darwin-x64.tar.gz"
 
 # download and untar
-# OLDER_VERSION_URL=$(echo "$VERSION_CONTENT" | jq 'to_entries[5]' | jq -r '.value')
+OLDER_VERSION_URL=$(echo "$VERSION_CONTENT" | jq 'to_entries[5]' | jq -r '.value')
+echo "Downloading old cli version from: $OLDER_VERSION_URL"
 curl -s "$OLDER_VERSION_URL" --output sfdx-linux-x64.tar.xz && mkdir ~/sfdx  && tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1 && rm sfdx-linux-x64.tar.xz
 export PATH="$HOME/sfdx/bin:$PATH"
 

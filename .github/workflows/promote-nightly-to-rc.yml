@@ -18,6 +18,7 @@ jobs:
       new-channel: latest-rc
 
   announce-promotion-to-slack:
+    needs: promote
     runs-on: ubuntu-latest
     steps:
       - name: Get nightly version

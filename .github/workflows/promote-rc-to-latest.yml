@@ -13,7 +13,7 @@ jobs:
     with:
       old-channel: latest-rc
       new-channel: latest
-      useCTC: true
+      use-ctc: true
 
   promote-verify:
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
         id: latest-rc-version
         run: |
           VERSION=$(npm view sfdx-cli@latest-rc --json | jq -r '.version')
-          echo "version=$VERSION" >> GITHUB_OUTPUT
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Announce promotion
         id: slack
