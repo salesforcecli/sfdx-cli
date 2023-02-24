@@ -1832,10 +1832,10 @@
   resolved "https://registry.yarnpkg.com/@salesforce/schemas/-/schemas-1.5.0.tgz#8bfe2cb5d7cb29d3394b3b9cfb71bb527009c82c"
   integrity sha512-EKFBURBuON7cj8XZCW+ybeSRRw7wUP1XUXZVHzFgx8KiYmSeGiRHBYbDjQOsQMho2uOLsTozMPEt2ehYnji0YA==
 
-"@salesforce/sf-plugins-core@2.2.2", "@salesforce/sf-plugins-core@^2", "@salesforce/sf-plugins-core@^2.0.1", "@salesforce/sf-plugins-core@^2.0.2", "@salesforce/sf-plugins-core@^2.1.1", "@salesforce/sf-plugins-core@^2.1.2", "@salesforce/sf-plugins-core@^2.1.3", "@salesforce/sf-plugins-core@^2.2.1":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/sf-plugins-core/-/sf-plugins-core-2.2.2.tgz#ddecd6abc3a76a9bc201703f6f2971c8cf79b308"
-  integrity sha512-MQtfbpBJQbHpIxK1o5rpfPzPto4tWxBywJUvc1baTblafGyX7IZUt9Sl2Ld4XKgWga/7lxJNFfAnrbJLuIVe9Q==
+"@salesforce/sf-plugins-core@2.2.3", "@salesforce/sf-plugins-core@^2", "@salesforce/sf-plugins-core@^2.0.1", "@salesforce/sf-plugins-core@^2.0.2", "@salesforce/sf-plugins-core@^2.1.1", "@salesforce/sf-plugins-core@^2.1.2", "@salesforce/sf-plugins-core@^2.1.3", "@salesforce/sf-plugins-core@^2.2.1":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@salesforce/sf-plugins-core/-/sf-plugins-core-2.2.3.tgz#f491156fbd83b18d01d943a43396a57009d10b42"
+  integrity sha512-B+ITa19o2ChAQXWNjmqxtXy7Bn0+dOcFwxqUhVR4YJ7wBzgvvGQ/pvG/WOah+v/uza91Jqfokq59D14fNAQfPw==
   dependencies:
     "@oclif/core" "^2.2.1"
     "@salesforce/core" "^3.33.1"
@@ -7722,12 +7722,12 @@ obliterator@^2.0.1, obliterator@^2.0.2:
   resolved "https://registry.yarnpkg.com/obliterator/-/obliterator-2.0.4.tgz#fa650e019b2d075d745e44f1effeb13a2adbe816"
   integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
 
-oclif@^3.4.2:
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.6.3.tgz#c8d1b2b32edcb3b913d68e68b2abfdc19229becb"
-  integrity sha512-S4pSWrPB9fm6IIiXBWtmNkeSWvGfw8Vb51hS6TTyv0fa2xU4sdcDU0YYKM3oFqpfapyf3aH0YjQTofJKU5joSw==
+oclif@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-3.7.0.tgz#6507033312dbcae25e99050010c33d67a31e93a3"
+  integrity sha512-LtLc7/3lOQ0d6/JKGj8QriIK/MiIcjZXVX3WoynbXUswG/X8oIsSr1+F6Q69VVbXnjbYlbfiP+uYASr36Mrjzg==
   dependencies:
-    "@oclif/core" "^2.0.3"
+    "@oclif/core" "^2.3.0"
     "@oclif/plugin-help" "^5.1.19"
     "@oclif/plugin-not-found" "^2.3.7"
     "@oclif/plugin-warn-if-update-available" "^2.0.14"
