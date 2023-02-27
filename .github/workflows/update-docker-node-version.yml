@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: lts/*
           cache: yarn
+      - run: yarn install
       - run: node ./dockerfiles/update-docker-node-version.js
       - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
       # Push changes if 'git status' is not empty
