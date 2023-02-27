@@ -21,12 +21,6 @@ on:
         required: false
         default: false
         description: Increment the patch instead of the minor version
-      # TODO: REMOVE prerlease
-      prerelease:
-        type: boolean
-        required: false
-        default: false
-        description: Create a prerelease, required if "release-channel" is not "latest", "latest-rc", or "nightly"
       only:
         type: string
         required: false
@@ -53,5 +47,4 @@ jobs:
             ${{ inputs.start-from-github-ref && format('--start-from-github-ref {0}', inputs.start-from-github-ref) || '' }} \
             ${{ inputs.start-from-npm-dist-tag && format('--start-from-npm-dist-tag {0}', inputs.start-from-npm-dist-tag) || '' }} \
             ${{ inputs.patch && '--patch' || '' }} \
-            ${{ inputs.prerelease && '--prerelease' || '' }} \
             ${{ inputs.only && format('--only {0}', inputs.only) || '' }}
