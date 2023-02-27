@@ -4,8 +4,8 @@ on:
       - RC
       - promote-rc-to-latest
       - make-pr-for-nightly
+      - make-pr-for-release
       - promote
-      - pr for rc
       - rc tag/release
     types:
       - completed

@@ -100,6 +100,7 @@ jobs:
   # This job reduces yaml clutter for jobs that depend (needs) on an optional step
   # See a working example here: https://github.com/iowillhoit/gha-sandbox/blob/main/.github/workflows/needing-an-optional-job-alternate.yml
   ctc-proceed:
+    # TODO: Check this logic
     runs-on: ubuntu-latest
     needs: [ctc-open, validate-inputs, get-package-info, build-s3-channel]
     if: always() && (needs.validate-inputs.result == 'success' && needs.get-package-info.result == 'success' && needs.build-s3-channel.result == 'success')

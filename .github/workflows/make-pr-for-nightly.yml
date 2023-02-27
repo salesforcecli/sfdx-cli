@@ -10,6 +10,7 @@ on:
     # 11pm ARG
     - cron: '0 2 * * *'
   workflow_dispatch:
+    # TODO: We might want to add a automerge input here
     inputs:
       only:
         type: string
@@ -25,7 +26,7 @@ jobs:
     steps:
       - name: Check out repository as our bot user
         uses: actions/checkout@v3
-        with: 
+        with:
           token: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
 
       - name: Set up NodeJS

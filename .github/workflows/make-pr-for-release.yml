@@ -1,0 +1,57 @@
+name: make-pr-for-release
+
+on:
+  workflow_dispatch:
+    inputs:
+      start-from-github-ref:
+        type: string
+        required: false
+        default: 'main'
+        description: 'A github ref to start the release from, examples: main, 7.144.0, f476e8e'
+      start-from-npm-dist-tag:
+        type: string
+        required: false
+        description: 'An npm dist-tag to start the release from, examples: nightly, latest-rc'
+      release-channel:
+        type: string
+        required: true
+        description: 'The promote channel for this release, examples: nightly, latest-rc, latest, dev, beta, etc...'
+      patch:
+        type: boolean
+        required: false
+        default: false
+        description: Increment the patch instead of the minor version
+      # TODO: REMOVE prerlease
+      prerelease:
+        type: boolean
+        required: false
+        default: false
+        description: Create a prerelease, required if "release-channel" is not "latest", "latest-rc", or "nightly"
+      only:
+        type: string
+        required: false
+        description: Comma-separated list, no spaces, of dependencies that you want to bump.
+
+jobs:
+  make-pr:
+    env:
+      GITHUB_TOKEN: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
+      SFDX_HIDE_RELEASE_NOTES: true
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+      - run: npm install -g @salesforce/plugin-release-management --omit=dev
+      - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
+      - run: |
+          sf-release cli:release:build \
+            --release-channel ${{ inputs.release-channel }} \
+            ${{ inputs.start-from-github-ref && format('--start-from-github-ref {0}', inputs.start-from-github-ref) || '' }} \
+            ${{ inputs.start-from-npm-dist-tag && format('--start-from-npm-dist-tag {0}', inputs.start-from-npm-dist-tag) || '' }} \
+            ${{ inputs.patch && '--patch' || '' }} \
+            ${{ inputs.prerelease && '--prerelease' || '' }} \
+            ${{ inputs.only && format('--only {0}', inputs.only) || '' }}
