@@ -1,4 +1,4 @@
-name: docker-full
+name: build-docker-full
 on:
   workflow_call:
     inputs:
@@ -37,7 +37,7 @@ jobs:
           push: true
           labels: ${{ steps.meta.outputs.labels }}
           file: dockerfiles/Dockerfile_full
-          # TODO: Do we want to use latest-rc or nightly for SF_CLI_VERSION version?
+          # We are using latest-rc SF_CLI_VERSION version. Soon both CLIs will not be bundled together
           build-args: |
             SALESFORCE_CLI_VERSION=${{ inputs.version }}
             SF_CLI_VERSION=latest-rc

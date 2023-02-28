@@ -1,6 +1,4 @@
-name: rc tag/release
-
-# TODO: Rename and update failures
+name: create-github-release
 
 on:
   pull_request:
@@ -95,7 +93,7 @@ jobs:
           output-file: false
           # always do the release, even if there are no semantic commits
           skip-on-empty: false
-          # pjson version was already updated in the RC branch, so don't base behavior on these commits
+          # pjson version was already updated by the "cli:release:build" script, so don't base behavior on these commits
           skip-version-file: true
           # avoids the default `v` so all the later actions don't have to remove it
           tag-prefix: ''

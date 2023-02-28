@@ -1,4 +1,4 @@
-name: RC #TODO: RENAME and update failures
+name: build-release
 on:
   release:
     # This should work for both releases and prereleases https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
@@ -94,17 +94,17 @@ jobs:
       channel: needs.get-channel.outputs.s3-channel
     secrets: inherit
 
-  docker-slim:
+  build-docker-slim:
     needs: [get-channel, pack-verify-upload-tarballs]
-    uses: ./.github/workflows/dockerBuildSlim.yml
+    uses: ./.github/workflows/build-docker-slim.yml
     with:
       version: ${{ github.event.release.tag_name }}
       channel: needs.get-channel.outputs.channel
     secrets: inherit
 
-  docker-full:
+  build-docker-full:
     needs: [get-channel, npm-release]
-    uses: ./.github/workflows/dockerBuildFull.yml
+    uses: ./.github/workflows/build-docker-full.yml
     with:
       version: ${{ github.event.release.tag_name }}
       channel: needs.get-channel.outputs.channel
@@ -119,8 +119,8 @@ jobs:
       - get-channel
       - pack-verify-upload-tarballs
       - npm-release
-      - docker-slim
-      - docker-full
+      - build-docker-slim
+      - build-docker-full
       - pack-upload-win
       - pack-upload-mac
       - rename-mac-pkg
@@ -144,8 +144,8 @@ jobs:
       - get-channel
       - pack-verify-upload-tarballs
       - npm-release
-      - docker-slim
-      - docker-full
+      - build-docker-slim
+      - build-docker-full
       - pack-upload-win
       - pack-upload-mac
       - rename-mac-pkg

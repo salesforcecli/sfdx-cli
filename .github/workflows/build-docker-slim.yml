@@ -1,4 +1,4 @@
-name: docker-slim
+name: build-docker-slim
 on:
   workflow_call:
     inputs:

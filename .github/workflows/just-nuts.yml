@@ -37,7 +37,7 @@ jobs:
 
           # private repos
           - salesforcecli/plugin-custom-metadata
-    uses: ./.github/workflows/justNut.yml
+    uses: ./.github/workflows/just-nut.yml
     with:
       repository: ${{matrix.repository}}
       channel-or-version: ${{ inputs.channel-or-version }}
@@ -53,7 +53,7 @@ jobs:
           - yarn test:nuts:convert
           - yarn test:nuts:mdapi
           - yarn test:nuts:deploy:metadata
-    uses: ./.github/workflows/justNut.yml
+    uses: ./.github/workflows/just-nut.yml
     with:
       repository: salesforcecli/plugin-source
       channel-or-version: ${{ inputs.channel-or-version }}
@@ -79,7 +79,7 @@ jobs:
           - yarn test:nuts:retrieve
           - yarn test:nuts:specialTypes
           - yarn test:nuts:tracking
-    uses: ./.github/workflows/justNut.yml
+    uses: ./.github/workflows/just-nut.yml
     with:
       repository: salesforcecli/plugin-source
       channel-or-version: ${{ inputs.channel-or-version }}

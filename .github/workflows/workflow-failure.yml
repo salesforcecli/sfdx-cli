@@ -1,12 +1,12 @@
 on:
   workflow_run:
     workflows:
-      - RC
+      - build-release
       - promote-rc-to-latest
       - make-pr-for-nightly
       - make-pr-for-release
       - promote
-      - rc tag/release
+      - create-github-release
       - update-docker-node-version
     types:
       - completed
