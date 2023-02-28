@@ -1,6 +1,8 @@
 ## How Do I Create a New Hash for CI Validation?
 
-### Steps:
+> NOTE: This process is now automated in the 'update-docker-node-version.yml' Github Action
+
+### Manual steps:
 
 With NodeJs as an example.
 
