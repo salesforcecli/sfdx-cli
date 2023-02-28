@@ -28,6 +28,8 @@ jobs:
           text: ${{ github.event.pull_request.title }}
           # https://regex101.com/r/66VrAs/1
           regex: 'as ([a-z-]+)$'
+          # TODO: Can we have this throw?
+          # What happens if this odes not return a match
 
       # Must be merged
       # Must be merged into 'main'

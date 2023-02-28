@@ -1,8 +1,8 @@
 name: RC #TODO: RENAME and update failures
 on:
   release:
+    # This should work for both releases and prereleases https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
     types: [published]
-    # TODO: We might need `prereleased` here
 
 jobs:
   get-channel:
@@ -15,9 +15,10 @@ jobs:
         id: release-channel
         uses: actions-ecosystem/action-regex-match@9e6c4fb3d5e898f505be7a1fb6e7b0a278f6665b
         with:
-          text: ${{ github.event.release.body }} # TODO: Confirm this
+          text: ${{ github.event.release.body }}
           # https://regex101.com/r/tYAJ8L/1
           regex: '!! Release as ([a-z-]+) !!$'
+          # TODO: Make sure that this errors out if it is not matched.
       - id: s3-release-channel
         run: |
           CHANNEL=${{ steps.release-channel.outputs.group1 }}
