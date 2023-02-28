@@ -10,7 +10,6 @@ on:
     # 11pm ARG
     - cron: '0 2 * * *'
   workflow_dispatch:
-    # TODO: We might want to add a automerge input here
     inputs:
       only:
         type: string

@@ -7,14 +7,12 @@ on:
         required: true
         description: Version or channel of the CLI to test against (nightly, latest-rc, 7.112.1)
         type: string
-        default: 'latest-rc' # TODO: Update this to 'nightly'
   workflow_call:
     inputs:
       channel-or-version:
         required: true
         description: Version or channel of the CLI to test against (nightly, latest-rc, 7.112.1)
         type: string
-        default: 'latest-rc' # TODO: Update this to 'nightly'
 
 jobs:
   basic:
