@@ -18,8 +18,14 @@ jobs:
           text: ${{ github.event.release.body }}
           # https://regex101.com/r/tYAJ8L/1
           regex: '!! Release as ([a-z-]+) !!$'
-          # TODO: Make sure that this errors out if it is not matched.
-      - id: s3-release-channel
+      - name: Confirm regex channel match
+        if: ${{ !steps.release-channel.outputs.group1 }}
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Release channel was not found in release body. Exiting')
+      - name: Get release channel for s3
+        id: s3-release-channel
         run: |
           CHANNEL=${{ steps.release-channel.outputs.group1 }}
           S3_CHANNEL=${CHANNEL/latest/stable}

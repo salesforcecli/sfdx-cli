@@ -28,8 +28,14 @@ jobs:
           text: ${{ github.event.pull_request.title }}
           # https://regex101.com/r/66VrAs/1
           regex: 'as ([a-z-]+)$'
-          # TODO: Can we have this throw?
-          # What happens if this odes not return a match
+
+      # Exit the build if no channel is match
+      - name: Confirm regex channel match
+        if: ${{ !steps.release-channel.outputs.group1 }}
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Release channel was not found in PR title. Exiting')
 
       # Must be merged
       # Must be merged into 'main'
