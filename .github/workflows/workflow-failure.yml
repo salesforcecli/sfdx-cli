@@ -1,12 +1,13 @@
 on:
   workflow_run:
     workflows:
+      - automerge-nightly-pr
       - build-release
-      - promote-rc-to-latest
+      - create-github-release
       - make-pr-for-nightly
       - make-pr-for-release
       - promote
-      - create-github-release
+      - promote-rc-to-latest
       - update-docker-node-version
     types:
       - completed
