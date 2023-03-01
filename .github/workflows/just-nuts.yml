@@ -45,7 +45,7 @@ jobs:
       channel-or-version: ${{ inputs.channel-or-version }}
       os: ${{matrix.os}}
     secrets: inherit
-  source-regular:
+  source:
     if: ${{ !github.event.workflow_run || github.event.workflow_run.conclusion == 'success' }}
     strategy:
       fail-fast: false
@@ -55,21 +55,6 @@ jobs:
           - yarn test:nuts:convert
           - yarn test:nuts:mdapi
           - yarn test:nuts:deploy:metadata
-    uses: ./.github/workflows/justNut.yml
-    with:
-      repository: salesforcecli/plugin-source
-      channel-or-version: ${{ inputs.channel-or-version }}
-      os: ${{matrix.os}}
-      command: ${{matrix.command}}
-    secrets: inherit
-
-  source-big:
-    if: ${{ !github.event.workflow_run || github.event.workflow_run.conclusion == 'success' }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-20-8core]
-        command:
           - yarn test:nuts:delete
           - yarn test:nuts:deploy:async
           - yarn test:nuts:deploy:destructive
