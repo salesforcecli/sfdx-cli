@@ -1,5 +1,5 @@
 # test push
-name: pr-validation
+name: validate-pr
 
 on:
   pull_request:
@@ -10,5 +10,5 @@ on:
       - patch/*
 
 jobs:
-  pr-validation:
+  validate-pr:
     uses: salesforcecli/github-workflows/.github/workflows/validatePR.yml@main

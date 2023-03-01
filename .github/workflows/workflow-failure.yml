@@ -7,6 +7,7 @@ on:
       - make-pr-for-nightly
       - make-pr-for-release
       - promote
+      - promote-nightly-to-rc
       - promote-rc-to-latest
       - update-docker-node-version
     types:
