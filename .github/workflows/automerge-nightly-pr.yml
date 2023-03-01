@@ -10,7 +10,7 @@ on:
 jobs:
   automerge:
     runs-on: ubuntu-latest
-    if: startsWith(github.event.pull_request.title, 'Release PR for')
+    if: startsWith(github.event.pull_request.title, 'Release PR for') && endsWith(github.event.pull_request.title, 'nightly')
     steps:
       - name: automerge
         # https://github.com/pascalgn/automerge-action
