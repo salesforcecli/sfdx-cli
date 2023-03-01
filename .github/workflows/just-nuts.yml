@@ -18,7 +18,6 @@ on:
 
 jobs:
   basic:
-    if: ${{ !github.event.workflow_run || github.event.workflow_run.conclusion == 'success' }}
     strategy:
       fail-fast: false
       max-parallel: 6
@@ -28,16 +27,13 @@ jobs:
           - salesforcecli/plugin-alias
           - salesforcecli/plugin-auth
           - salesforcecli/plugin-community
-          # omitted while nuts are too flaky on bulk commands
-          # - salesforcecli/plugin-data
+          - salesforcecli/plugin-data
           - salesforcecli/plugin-limits
           - salesforcecli/plugin-org
           - salesforcecli/plugin-schema
           - salesforcecli/plugin-signups
           - salesforcecli/plugin-user
           - salesforcecli/plugin-packaging
-
-          # private repos
           - salesforcecli/plugin-custom-metadata
     uses: ./.github/workflows/justNut.yml
     with:
@@ -46,7 +42,6 @@ jobs:
       os: ${{matrix.os}}
     secrets: inherit
   source:
-    if: ${{ !github.event.workflow_run || github.event.workflow_run.conclusion == 'success' }}
     strategy:
       fail-fast: false
       matrix:
