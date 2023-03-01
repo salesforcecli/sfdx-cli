@@ -2,7 +2,7 @@ on:
   workflow_run:
     workflows:
       - automerge-nightly-pr
-      - build-release
+      - create-cli-release
       - create-github-release
       - make-pr-for-nightly
       - make-pr-for-release

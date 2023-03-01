@@ -1,4 +1,4 @@
-name: build-release
+name: create-cli-release
 on:
   release:
     # This should work for both releases and prereleases https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
