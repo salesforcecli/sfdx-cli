@@ -24,7 +24,7 @@ jobs:
         id: nightly-version
         run: |
           VERSION=$(npm view sfdx-cli@nightly --json | jq -r '.version')
-          echo "version=$VERSION" >> GITHUB_OUTPUT
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Announce promotion
         id: slack
