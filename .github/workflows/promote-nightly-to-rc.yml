@@ -2,12 +2,11 @@ name: promote-nightly-to-rc
 
 on:
   workflow_dispatch:
-  # TODO: Uncomment this when we are ready
-  # workflow_run:
-  #   workflows:
-  #     - promote-rc-to-latest
-  #   types:
-  #     - completed
+  workflow_run:
+    workflows:
+      - promote-rc-to-latest
+    types:
+      - completed
 
 jobs:
   promote:
