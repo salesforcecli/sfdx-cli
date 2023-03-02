@@ -886,7 +886,7 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@2.4.0", "@oclif/core@^2.0.3", "@oclif/core@^2.0.7", "@oclif/core@^2.0.8", "@oclif/core@^2.0.9", "@oclif/core@^2.1.1", "@oclif/core@^2.1.4", "@oclif/core@^2.1.6", "@oclif/core@^2.1.7", "@oclif/core@^2.3.0", "@oclif/core@^2.3.1", "@oclif/core@^2.4.0":
+"@oclif/core@2.4.0", "@oclif/core@^2.0.3", "@oclif/core@^2.0.7", "@oclif/core@^2.0.8", "@oclif/core@^2.1.1", "@oclif/core@^2.1.4", "@oclif/core@^2.1.6", "@oclif/core@^2.1.7", "@oclif/core@^2.3.0", "@oclif/core@^2.3.1", "@oclif/core@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-2.4.0.tgz#8e5983dd0d50a3c0c170a844fe8925cb639f0a9f"
   integrity sha512-wWUnOOfQQty0k1Cstm/iWW6pbG0mHzU7rcUtab2Sni9kjBPCcy6ENTgpsWbb/WdITopqtXmvpYII2fgcjKdzUA==
@@ -1209,16 +1209,16 @@
     before-after-hook "^2.2.0"
     universal-user-agent "^6.0.0"
 
-"@octokit/core@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-4.1.0.tgz#b6b03a478f1716de92b3f4ec4fd64d05ba5a9251"
-  integrity sha512-Czz/59VefU+kKDy+ZfDwtOIYIkFjExOKf+HA92aiTZJ6EfWpFzYQWw0l54ji8bVmyhc+mGaLUbSUmXazG7z5OQ==
+"@octokit/core@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-4.2.0.tgz#8c253ba9605aca605bc46187c34fcccae6a96648"
+  integrity sha512-AgvDRUg3COpR82P7PBdGZF/NNqGmtMq2NiPqeSsDIeCfYFOZ9gddqWNQHnFdEUf+YwOj4aZYmJnlPp7OXmDIDg==
   dependencies:
     "@octokit/auth-token" "^3.0.0"
     "@octokit/graphql" "^5.0.0"
     "@octokit/request" "^6.0.0"
     "@octokit/request-error" "^3.0.0"
-    "@octokit/types" "^8.0.0"
+    "@octokit/types" "^9.0.0"
     before-after-hook "^2.2.0"
     universal-user-agent "^6.0.0"
 
@@ -1267,11 +1267,6 @@
   version "13.2.0"
   resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-13.2.0.tgz#4c2e5c2a0da0a7190f96ee131ee0d27b39c37e1f"
   integrity sha512-1BhjsVrCe2cyE36Rorpeq331bcYzdb9ksCpkFdAN6RVtW67YdO3Pl4YXDC5dF2D1ia76MssJdn5RV+Gj9Fu7dQ==
-
-"@octokit/openapi-types@^14.0.0":
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-14.0.0.tgz#949c5019028c93f189abbc2fb42f333290f7134a"
-  integrity sha512-HNWisMYlR8VCnNurDU6os2ikx0s0VyEjDYHNS/h4cgb8DeOxQ0n72HyinUtdDVxJhFy3FWLGl0DJhfEWk3P5Iw==
 
 "@octokit/openapi-types@^16.0.0":
   version "16.0.0"
@@ -1378,13 +1373,6 @@
   integrity sha512-+ClA0jRc9zGFj5mfQeQNfgTlelzhpAexbAueQG1t2Xn8yhgnsjkF8bgLcUUpwrpqkv296uXyiGwkqXRSU7KYzQ==
   dependencies:
     "@octokit/openapi-types" "^13.1.0"
-
-"@octokit/types@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-8.0.0.tgz#93f0b865786c4153f0f6924da067fe0bb7426a9f"
-  integrity sha512-65/TPpOJP1i3K4lBJMnWqPUJ6zuOtzhtagDvydAWbEXpbFYA0oMKKyLb95NFZZP0lSh/4b6K+DQlzvYQJQQePg==
-  dependencies:
-    "@octokit/openapi-types" "^14.0.0"
 
 "@octokit/types@^9.0.0":
   version "9.0.0"
@@ -1693,20 +1681,20 @@
     chalk "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-release-management@^3.14.1":
-  version "3.14.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.14.1.tgz#49e682e63728c926f1d058dbb88459e4bc594729"
-  integrity sha512-b0dxIdGlQg9la8kPtrBVbIezrK5pngRxPo6GYAuNMJgKwynqcIiq+g+oPwqglPAiZVNwrc5qrzyZAwPJynGikw==
+"@salesforce/plugin-release-management@^3.15.2":
+  version "3.15.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.15.2.tgz#aa23d5a80b228bdb6ff6b3f338e7e2e900d5f8d3"
+  integrity sha512-1Rzx6j+z83tvBAy+iY+Xx5OTVXG4a7peiy0aNCMNE74G1WUJa1hOzo2QkmQuDu9t5NeZjJyzEqvEHb4apyNTaw==
   dependencies:
-    "@oclif/core" "^2.0.9"
-    "@octokit/core" "^4.1.0"
+    "@oclif/core" "^2.3.1"
+    "@octokit/core" "^4.2.0"
     "@octokit/plugin-paginate-rest" "^6.0.0"
     "@octokit/plugin-throttling" "^5.0.1"
-    "@salesforce/core" "^3.32.12"
-    "@salesforce/kit" "^1.8.2"
+    "@salesforce/core" "^3.33.5"
+    "@salesforce/kit" "^1.9.0"
     "@salesforce/plugin-command-reference" "^2.3.1"
-    "@salesforce/plugin-trust" "^2.4.1"
-    "@salesforce/sf-plugins-core" "^2.0.1"
+    "@salesforce/plugin-trust" "^2.4.2"
+    "@salesforce/sf-plugins-core" "^2.2.3"
     "@salesforce/ts-types" "^1.7.3"
     agent-base "^6.0.2"
     aws-sdk "^2.1313.0"
@@ -1792,7 +1780,7 @@
     yeoman-environment "^3.15.1"
     yeoman-generator "^5.8.0"
 
-"@salesforce/plugin-trust@2.4.4", "@salesforce/plugin-trust@^2.4.1":
+"@salesforce/plugin-trust@2.4.4", "@salesforce/plugin-trust@^2.4.2":
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@salesforce/plugin-trust/-/plugin-trust-2.4.4.tgz#196204eb29fb763a010b608feff9ffb3cf785e9a"
   integrity sha512-wxK4hfVTfVvtw+MXiVXP5qPY1B9XCMI5MBDjBmLvjmbpxb8MO4p4pHUE03EE9NAOUZujRh2SQo0mG0Bh+iVJLA==
