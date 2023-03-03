@@ -17,7 +17,7 @@ jobs:
         with:
           text: ${{ github.event.release.body }}
           # https://regex101.com/r/tYAJ8L/1
-          regex: '!! Release as ([a-z-]+) !!$'
+          regex: '!! Release as ([a-z-]+) !!'
       - name: Confirm regex channel match
         if: ${{ !steps.release-channel.outputs.group1 }}
         uses: actions/github-script@v3
