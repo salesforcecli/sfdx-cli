@@ -8,8 +8,8 @@ jobs:
   get-channel:
     runs-on: ubuntu-latest
     outputs:
-      channel: steps.release-channel.outputs.group1
-      s3-channel: steps.s3-release-channel.outputs.s3-channel
+      channel: ${{ steps.release-channel.outputs.group1 }}
+      s3-channel: ${{ steps.s3-release-channel.outputs.s3-channel }}
     steps:
       - name: Get release channel Github release
         id: release-channel
