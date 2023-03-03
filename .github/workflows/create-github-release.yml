@@ -49,7 +49,7 @@ jobs:
       # PR title channel must be 'latest-rc'
       - name: Check for latest-rc patch
         id: check-latest-rc
-        if: contains('refs/heads/patch', github.ref) && github.event.label.name == "release-it" && steps.release-channel.outputs.group1 == 'latest-rc'
+        if: contains('refs/heads/patch', github.ref) && github.event.label.name == 'release-it' && steps.release-channel.outputs.group1 == 'latest-rc'
         run: echo "channel=latest-rc" >> "$GITHUB_OUTPUT"
 
       # Branch must be prefixed with 'patch'
@@ -58,7 +58,7 @@ jobs:
       # PR title channel must be 'latest'
       - name: Check for latest patch
         id: check-latest
-        if: contains('refs/heads/patch', github.ref) && github.event.label.name == "release-it" && steps.release-channel.outputs.group1 == 'latest'
+        if: contains('refs/heads/patch', github.ref) && github.event.label.name == 'release-it' && steps.release-channel.outputs.group1 == 'latest'
         run: echo "channel=latest" >> "$GITHUB_OUTPUT"
 
       # Branch must be prefixed with 'prerelease'
@@ -68,10 +68,10 @@ jobs:
       # Package.json "alpha" tag must match PR title channel
       - name: Check for prerelease
         id: check-prerelease
-        if: contains('refs/heads/prerelease', github.ref) && github.event.label.name == "release-it"
+        if: contains('refs/heads/prerelease', github.ref) && github.event.label.name == 'release-it'
         uses: salesforcecli/github-workflows/.github/actions/getPreReleaseTag@main
       - name: Validate prerelease tag
-        if: contains('refs/heads/prerelease', github.ref) && github.event.label.name == "release-it" && (!steps.check-prerelease.outputs.tag || steps.check-prerelease.outputs.tag != steps.release-channel.outputs.group1)
+        if: contains('refs/heads/prerelease', github.ref) && github.event.label.name == 'release-it' && (!steps.check-prerelease.outputs.tag || steps.check-prerelease.outputs.tag != steps.release-channel.outputs.group1)
         uses: actions/github-script@v3
         with:
           script: |
