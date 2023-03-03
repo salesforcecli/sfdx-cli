@@ -109,9 +109,10 @@ jobs:
         with:
           tag_name: ${{ steps.packageVersion.outputs.prop }}
           release_name: ${{ steps.packageVersion.outputs.prop }}
-          prerelease: contains('refs/heads/prerelease', github.ref)
+          prerelease: ${{ contains('refs/heads/prerelease', github.ref) }}
           # This channel value is read from the Github Release body to determine the channel. Be cautious editing
           body: |
-            !! Release as #{{ needs.validate-channel.outputs.channel }} !!
-            ---
-            ${{ steps.changelog.outputs.clean_changelog }}"
+            !! Release as ${{ needs.validate-channel.outputs.channel }} !!
+            
+            Change log:
+            ${{ steps.changelog.outputs.clean_changelog }}
