@@ -59,9 +59,9 @@ jobs:
       - run: |
           sf-release cli:release:build \
             --release-channel ${{ inputs.release-channel }} \
-            --pinned-deps ${{ inputs.pinned-deps }} \
-            --resolutions ${{ inputs.resolutions }} \
-            --jit ${{ inputs.jit }} \
+            ${{ inputs.pinned-deps && '--pinned-deps' || '--no-pinned-deps' }} \
+            ${{ inputs.resolutions && '--resolutions' || '--no-resolutions' }} \
+            ${{ inputs.jit && '--jit' || '--no-jit' }} \
             ${{ inputs.start-from-github-ref && format('--start-from-github-ref {0}', inputs.start-from-github-ref) || '' }} \
             ${{ inputs.start-from-npm-dist-tag && format('--start-from-npm-dist-tag {0}', inputs.start-from-npm-dist-tag) || '' }} \
             ${{ inputs.patch && '--patch' || '' }} \
