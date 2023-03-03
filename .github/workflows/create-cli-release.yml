@@ -36,7 +36,7 @@ jobs:
     needs: [get-channel]
     secrets: inherit
     with:
-      tag: needs.get-channel.outputs.channel
+      tag: ${{ needs.get-channel.outputs.channel }}
       githubTag: ${{ github.event.release.tag_name }}
 
   pack-verify-upload-tarballs:
@@ -46,7 +46,7 @@ jobs:
       upload: true
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      channel: needs.get-channel.outputs.s3-channel
+      channel: ${{ needs.get-channel.outputs.s3-channel }}
     secrets: inherit
 
   archives-verify:
@@ -86,7 +86,7 @@ jobs:
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      channel: needs.get-channel.outputs.s3-channel
+      channel: ${{ needs.get-channel.outputs.s3-channel }}
     secrets: inherit
 
   # The rename-mac-pkg job is only needed as long as the developer site is linking to the old sfdx.pkg file and the mac signing job is only signing the old file as well.
@@ -102,7 +102,7 @@ jobs:
       - uses: salesforcecli/github-workflows/.github/actions/renameMacPkg@main
         with:
           cli: sfdx
-          channel: needs.get-channel.outputs.s3-channel
+          channel: ${{ needs.get-channel.outputs.s3-channel }}
 
   pack-upload-win:
     needs: [get-channel, pack-verify-upload-tarballs]
@@ -110,7 +110,7 @@ jobs:
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      channel: needs.get-channel.outputs.s3-channel
+      channel: ${{ needs.get-channel.outputs.s3-channel }}
     secrets: inherit
 
   build-docker-slim:
@@ -118,7 +118,7 @@ jobs:
     uses: ./.github/workflows/build-docker-slim.yml
     with:
       version: ${{ github.event.release.tag_name }}
-      channel: needs.get-channel.outputs.channel
+      channel: ${{ needs.get-channel.outputs.channel }}
     secrets: inherit
 
   build-docker-full:
@@ -126,13 +126,13 @@ jobs:
     uses: ./.github/workflows/build-docker-full.yml
     with:
       version: ${{ github.event.release.tag_name }}
-      channel: needs.get-channel.outputs.channel
+      channel: ${{ needs.get-channel.outputs.channel }}
     secrets: inherit
 
   announce-rc-release-to-slack:
     # Do not announce prereleases or nightlies
     # https://docs.github.com/en/actions/learn-github-actions/expressions#contains
-    if: contains(fromJSON('["latest", "latest-rc"]'), needs.get-channel.outputs.channel )
+    if: ${{ contains(fromJSON('["latest", "latest-rc"]'), needs.get-channel.outputs.channel ) }}
     runs-on: ubuntu-latest
     needs:
       - get-channel
@@ -170,5 +170,5 @@ jobs:
       - rename-mac-pkg
     uses: ./.github/workflows/just-nuts.yml
     with:
-      channel-or-version: needs.get-channel.outputs.channel
+      channel-or-version: ${{ needs.get-channel.outputs.channel }}
     secrets: inherit
