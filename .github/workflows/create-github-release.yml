@@ -17,7 +17,7 @@ jobs:
     if: startsWith(github.event.pull_request.title, 'Release PR for')
     runs-on: ubuntu-latest
     outputs:
-      channel: ${{ steps.check-nightly.outputs.channel }} || ${{ steps.check-latest-rc.outputs.channel }} || ${{ steps.check-latest.outputs.channel }} || ${{ steps.check-prerelease.outputs.tag }}
+      channel: ${{ steps.check-nightly.outputs.channel || steps.check-latest-rc.outputs.channel || steps.check-latest.outputs.channel || steps.check-prerelease.outputs.tag }}
     steps:
       - name: Get release channel from PR title
         id: release-channel
@@ -35,6 +35,11 @@ jobs:
           script: |
             core.setFailed('Release channel was not found in PR title. Exiting')
 
+      # Echo the matched channel
+      - name: Echo found channel
+        run: |
+          echo "Found channel: ${{ steps.release-channel.outputs.group1 }}"
+
       # Must be merged
       # Must be merged into 'main'
       # PR title channel must be 'nightly'
@@ -49,7 +54,7 @@ jobs:
       # PR title channel must be 'latest-rc'
       - name: Check for latest-rc patch
         id: check-latest-rc
-        if: contains('refs/heads/patch', github.ref) && github.event.action == "labeled" && github.event.label.name == "release-it" && steps.release-channel.outputs.group1 == 'latest-rc'
+        if: startsWith(github.head_ref, 'patch') && github.event.label.name == 'release-it' && steps.release-channel.outputs.group1 == 'latest-rc'
         run: echo "channel=latest-rc" >> "$GITHUB_OUTPUT"
 
       # Branch must be prefixed with 'patch'
@@ -58,7 +63,7 @@ jobs:
       # PR title channel must be 'latest'
       - name: Check for latest patch
         id: check-latest
-        if: contains('refs/heads/patch', github.ref) && github.event.action == "labeled" && github.event.label.name == "release-it" && steps.release-channel.outputs.group1 == 'latest'
+        if: startsWith(github.head_ref, 'patch') && github.event.label.name == 'release-it' && steps.release-channel.outputs.group1 == 'latest'
         run: echo "channel=latest" >> "$GITHUB_OUTPUT"
 
       # Branch must be prefixed with 'prerelease'
@@ -68,10 +73,11 @@ jobs:
       # Package.json "alpha" tag must match PR title channel
       - name: Check for prerelease
         id: check-prerelease
-        if: contains('refs/heads/prerelease', github.ref) && github.event.action == "labeled" && github.event.label.name == "release-it"
+        if: startsWith(github.head_ref, 'prerelease') && github.event.label.name == 'release-it'
         uses: salesforcecli/github-workflows/.github/actions/getPreReleaseTag@main
+
       - name: Validate prerelease tag
-        if: contains('refs/heads/prerelease', github.ref) && github.event.action == "labeled" && github.event.label.name == "release-it" && (!steps.check-prerelease.outputs.tag || steps.check-prerelease.outputs.tag != steps.release-channel.outputs.group1)
+        if: startsWith(github.head_ref, 'prerelease') && github.event.label.name == 'release-it' && (!steps.check-prerelease.outputs.tag || steps.check-prerelease.outputs.tag != steps.release-channel.outputs.group1)
         uses: actions/github-script@v3
         with:
           script: |
@@ -109,9 +115,10 @@ jobs:
         with:
           tag_name: ${{ steps.packageVersion.outputs.prop }}
           release_name: ${{ steps.packageVersion.outputs.prop }}
-          prerelease: contains('refs/heads/prerelease', github.ref)
+          prerelease: ${{ startsWith(github.head_ref, 'prerelease') }}
           # This channel value is read from the Github Release body to determine the channel. Be cautious editing
           body: |
-            !! Release as #{{ needs.validate-channel.outputs.channel }} !!
-            ---
-            ${{ steps.changelog.outputs.clean_changelog }}"
+            !! Release as ${{ needs.validate-channel.outputs.channel }} !!
+
+            Change log:
+            ${{ steps.changelog.outputs.clean_changelog }}
