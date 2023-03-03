@@ -1,33 +1,57 @@
-name: RC
+name: create-cli-release
 on:
   release:
+    # This should work for both releases and prereleases https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
     types: [published]
 
-# TODO: This will need channel changes for patches/prereleases!
-
 jobs:
+  get-channel:
+    runs-on: ubuntu-latest
+    outputs:
+      channel: steps.release-channel.outputs.group1
+      s3-channel: steps.s3-release-channel.outputs.s3-channel
+    steps:
+      - name: Get release channel Github release
+        id: release-channel
+        uses: actions-ecosystem/action-regex-match@9e6c4fb3d5e898f505be7a1fb6e7b0a278f6665b
+        with:
+          text: ${{ github.event.release.body }}
+          # https://regex101.com/r/tYAJ8L/1
+          regex: '!! Release as ([a-z-]+) !!$'
+      - name: Confirm regex channel match
+        if: ${{ !steps.release-channel.outputs.group1 }}
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Release channel was not found in release body. Exiting')
+      - name: Get release channel for s3
+        id: s3-release-channel
+        run: |
+          CHANNEL=${{ steps.release-channel.outputs.group1 }}
+          S3_CHANNEL=${CHANNEL/latest/stable}
+          echo "s3-channel=$S3_CHANNEL" >> "$GITHUB_OUTPUT"
+
   npm-release:
     uses: salesforcecli/github-workflows/.github/workflows/npmPublish.yml@main
+    needs: [get-channel]
     secrets: inherit
     with:
-      # TODO: Change this to 'nightly'
-      tag: latest-rc
+      tag: needs.get-channel.outputs.channel
       githubTag: ${{ github.event.release.tag_name }}
 
   pack-verify-upload-tarballs:
-    needs: [npm-release]
+    needs: [get-channel, npm-release]
     uses: salesforcecli/github-workflows/.github/workflows/tarballs.yml@main
     with:
       upload: true
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      # TODO: Change this to 'nightly'
-      channel: stable-rc
+      channel: needs.get-channel.outputs.s3-channel
     secrets: inherit
 
   archives-verify:
     runs-on: ubuntu-latest
-    needs: [pack-verify-upload-tarballs]
+    needs: [get-channel, pack-verify-upload-tarballs]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -35,23 +59,21 @@ jobs:
           node-version: lts/*
           cache: npm
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      # TODO: Change this to 'nightly'
-      - run: sf-release cli:versions:inspect -c stable-rc -l archive
+      - run: sf-release cli:versions:inspect -c ${{ needs.get-channel.outputs.s3-channel }} -l archive
 
   pack-upload-mac:
-    needs: [pack-verify-upload-tarballs]
+    needs: [get-channel, pack-verify-upload-tarballs]
     uses: salesforcecli/github-workflows/.github/workflows/packUploadMac.yml@main
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      # TODO: Change this to 'nightly'
-      channel: stable-rc
+      channel: needs.get-channel.outputs.s3-channel
     secrets: inherit
 
   # The rename-mac-pkg job is only needed as long as the developer site is linking to the old sfdx.pkg file and the mac signing job is only signing the old file as well.
   # It can be removed once those are updated to use the new name, sfdx-x64.pkg.
   rename-mac-pkg:
-    needs: [pack-upload-mac]
+    needs: [get-channel, pack-upload-mac]
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -61,47 +83,44 @@ jobs:
       - uses: salesforcecli/github-workflows/.github/actions/renameMacPkg@main
         with:
           cli: sfdx
-          # TODO: Change this to 'nightly'
-          channel: stable-rc
+          channel: needs.get-channel.outputs.s3-channel
 
   pack-upload-win:
-    needs: [pack-verify-upload-tarballs]
+    needs: [get-channel, pack-verify-upload-tarballs]
     uses: salesforcecli/github-workflows/.github/workflows/packUploadWindows.yml@main
     with:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
-      # TODO: Change this to 'nightly'
-      channel: stable-rc
+      channel: needs.get-channel.outputs.s3-channel
     secrets: inherit
 
-  docker-slim:
-    needs: [pack-verify-upload-tarballs]
-    uses: ./.github/workflows/dockerBuildSlim.yml
+  build-docker-slim:
+    needs: [get-channel, pack-verify-upload-tarballs]
+    uses: ./.github/workflows/build-docker-slim.yml
     with:
       version: ${{ github.event.release.tag_name }}
-      # TODO: Change this to 'nightly'
-      channel: latest-rc
+      channel: needs.get-channel.outputs.channel
     secrets: inherit
 
-  docker-full:
-    needs: [npm-release]
-    uses: ./.github/workflows/dockerBuildFull.yml
+  build-docker-full:
+    needs: [get-channel, npm-release]
+    uses: ./.github/workflows/build-docker-full.yml
     with:
       version: ${{ github.event.release.tag_name }}
-      # TODO: Change this to 'nightly'
-      channel: latest-rc
+      channel: needs.get-channel.outputs.channel
     secrets: inherit
 
   announce-rc-release-to-slack:
-    # TODO: only run this on a real release, not a prerelease or when testing
-    # Will need to add a condition to the job but github.ref doesn't work by itself because this triggers on a release event, not on a branch
-    # if: ${{ github.ref == 'refs/tags/<tag_name>' }}
+    # Do not announce prereleases or nightlies
+    # https://docs.github.com/en/actions/learn-github-actions/expressions#contains
+    if: contains( ['latest', 'latest-rc'], needs.get-channel.outputs.channel )
     runs-on: ubuntu-latest
     needs:
+      - get-channel
       - pack-verify-upload-tarballs
       - npm-release
-      - docker-slim
-      - docker-full
+      - build-docker-slim
+      - build-docker-full
       - pack-upload-win
       - pack-upload-mac
       - rename-mac-pkg
@@ -122,15 +141,15 @@ jobs:
 
   run-just-nuts:
     needs:
+      - get-channel
       - pack-verify-upload-tarballs
       - npm-release
-      - docker-slim
-      - docker-full
+      - build-docker-slim
+      - build-docker-full
       - pack-upload-win
       - pack-upload-mac
       - rename-mac-pkg
     uses: ./.github/workflows/just-nuts.yml
     with:
-      # TODO: Change this to 'nightly'
-      channel-or-version: latest-rc
+      channel-or-version: needs.get-channel.outputs.channel
     secrets: inherit

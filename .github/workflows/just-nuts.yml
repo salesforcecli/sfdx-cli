@@ -7,14 +7,12 @@ on:
         required: true
         description: Version or channel of the CLI to test against (nightly, latest-rc, 7.112.1)
         type: string
-        default: 'latest-rc' # TODO: Update this to 'nightly'
   workflow_call:
     inputs:
       channel-or-version:
         required: true
         description: Version or channel of the CLI to test against (nightly, latest-rc, 7.112.1)
         type: string
-        default: 'latest-rc' # TODO: Update this to 'nightly'
 
 jobs:
   basic:
@@ -35,7 +33,7 @@ jobs:
           - salesforcecli/plugin-user
           - salesforcecli/plugin-packaging
           - salesforcecli/plugin-custom-metadata
-    uses: ./.github/workflows/justNut.yml
+    uses: ./.github/workflows/just-nut.yml
     with:
       repository: ${{matrix.repository}}
       channel-or-version: ${{ inputs.channel-or-version }}
@@ -61,7 +59,7 @@ jobs:
           - yarn test:nuts:retrieve
           - yarn test:nuts:specialTypes
           - yarn test:nuts:tracking
-    uses: ./.github/workflows/justNut.yml
+    uses: ./.github/workflows/just-nut.yml
     with:
       repository: salesforcecli/plugin-source
       channel-or-version: ${{ inputs.channel-or-version }}

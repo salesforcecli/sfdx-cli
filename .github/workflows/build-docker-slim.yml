@@ -1,4 +1,4 @@
-name: docker-slim
+name: build-docker-slim
 on:
   workflow_call:
     inputs:
@@ -8,9 +8,8 @@ on:
         required: true
       channel:
         type: string
-        description: The release channel (latest-rc, dev, etc)
+        description: The release channel (latest-rc, nightly, dev, etc)
         required: true
-        default: latest-rc # TODO: Make default nightly
 
 jobs:
   buildPush:
