@@ -1,3 +1,5 @@
+name: workflow-failure
+
 on:
   workflow_run:
     workflows:
