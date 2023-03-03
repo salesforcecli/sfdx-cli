@@ -55,7 +55,7 @@ jobs:
 
   archives-verify:
     # Skip archive-verify on prereleases
-    if: ${{ !contains(fromJSON('["latest", "latest-rc", "nightly"]'), needs.get-channel.outputs.channel) }}
+    if: ${{ contains(fromJSON('["latest", "latest-rc", "nightly"]'), needs.get-channel.outputs.channel) }}
     runs-on: ubuntu-latest
     needs: [get-channel, pack-verify-upload-tarballs]
     steps:
