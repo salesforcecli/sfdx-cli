@@ -17,6 +17,7 @@ jobs:
     if: startsWith(github.event.pull_request.title, 'Release PR for')
     runs-on: ubuntu-latest
     outputs:
+      # Note: If you modify this, update the "Channel Notice" below
       channel: ${{ steps.check-nightly.outputs.channel || steps.check-latest-rc.outputs.channel || steps.check-latest.outputs.channel || steps.check-prerelease.outputs.tag }}
     steps:
       # Needed to validate prerelease version in package.json
@@ -86,6 +87,10 @@ jobs:
         with:
           script: |
             core.setFailed('Prerelease requires a dist tag name in your package.json like beta in 1.1.1-beta.0')
+
+      - name: Channel Notice
+        run: |
+          echo "::notice title=Channel::Channel found in PR title: ${{ steps.check-nightly.outputs.channel || steps.check-latest-rc.outputs.channel || steps.check-latest.outputs.channel || steps.check-prerelease.outputs.tag }}"
 
   create-tag-and-release-in-github:
     needs: [validate-channel]

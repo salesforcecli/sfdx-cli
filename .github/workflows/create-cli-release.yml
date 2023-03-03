@@ -30,6 +30,10 @@ jobs:
           CHANNEL=${{ steps.release-channel.outputs.group1 }}
           S3_CHANNEL=${CHANNEL/latest/stable}
           echo "s3-channel=$S3_CHANNEL" >> "$GITHUB_OUTPUT"
+      - name: Channel Notice
+        run: |
+          echo "::notice title=Channel::Channel found in Github Release: ${{ steps.release-channel.outputs.group1 }}"
+          echo "::notice title=S3 Channel::Channel that will be used in S3: ${{ steps.s3-release-channel.outputs.s3-channel }}"
 
   npm-release:
     uses: salesforcecli/github-workflows/.github/workflows/npmPublish.yml@main
