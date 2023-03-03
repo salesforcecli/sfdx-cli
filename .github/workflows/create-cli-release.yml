@@ -132,7 +132,7 @@ jobs:
   announce-rc-release-to-slack:
     # Do not announce prereleases or nightlies
     # https://docs.github.com/en/actions/learn-github-actions/expressions#contains
-    if: contains( ['latest', 'latest-rc'], needs.get-channel.outputs.channel )
+    if: contains(fromJSON('["latest", "latest-rc"]'), needs.get-channel.outputs.channel )
     runs-on: ubuntu-latest
     needs:
       - get-channel
