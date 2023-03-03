@@ -6,7 +6,6 @@ on:
       start-from-github-ref:
         type: string
         required: false
-        default: 'main'
         description: 'A github ref to start the release from, examples: main, 7.144.0, f476e8e'
       start-from-npm-dist-tag:
         type: string
