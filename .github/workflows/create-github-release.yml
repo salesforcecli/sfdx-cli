@@ -19,6 +19,10 @@ jobs:
     outputs:
       channel: ${{ steps.check-nightly.outputs.channel || steps.check-latest-rc.outputs.channel || steps.check-latest.outputs.channel || steps.check-prerelease.outputs.tag }}
     steps:
+      # Needed to validate prerelease version in package.json
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
       - name: Get release channel from PR title
         id: release-channel
         uses: actions-ecosystem/action-regex-match@9e6c4fb3d5e898f505be7a1fb6e7b0a278f6665b
