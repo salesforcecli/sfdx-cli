@@ -102,7 +102,7 @@ jobs:
       - name: Open CTC
         id: open-ctc
         if: inputs.use-ctc
-        uses: salesforcecli/github-workflows/.github/workflows/ctcOpen.yml@main
+        uses: salesforcecli/github-workflows/.github/actions/ctcOpen@main
         secrets: inherit
       - name: Check open-ctc status
         if: always()
