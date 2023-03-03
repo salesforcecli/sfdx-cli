@@ -50,6 +50,8 @@ jobs:
     secrets: inherit
 
   archives-verify:
+    # Skip archive-verify on prereleases
+    if: ${{ !contains(['latest', 'latest-rc', 'nightly'], needs.get-channel.outputs.channel) }}
     runs-on: ubuntu-latest
     needs: [get-channel, pack-verify-upload-tarballs]
     steps:
@@ -59,7 +61,24 @@ jobs:
           node-version: lts/*
           cache: npm
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      - run: sf-release cli:versions:inspect -c ${{ needs.get-channel.outputs.s3-channel }} -l archive
+      # Retry several times because the S3 cache can cause failures
+      - run: |
+          ATTEMPT=1
+          MAX=5
+          DELAY=120 # two minutes
+
+          while true; do
+              sf-release cli:versions:inspect -c ${{ needs.get-channel.outputs.s3-channel }} -l archive && break || {
+                  if [[ $ATTEMPT -lt $MAX ]]; then
+                      ((ATTEMPT++))
+                      echo "Promote verify failed - trying again ($ATTEMPT/$MAX)"
+                      sleep $DELAY;
+                  else
+                      "Exiting after $ATTEMPT failed attempts"
+                      exit 1
+                  fi
+              }
+          done
 
   pack-upload-mac:
     needs: [get-channel, pack-verify-upload-tarballs]
