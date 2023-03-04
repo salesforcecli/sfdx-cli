@@ -1036,11 +1036,11 @@
     fs-extra "^9.0.1"
 
 "@oclif/plugin-command-snapshot@^3.2.11":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-command-snapshot/-/plugin-command-snapshot-3.3.4.tgz#be6b995ec5e578917ebebb21e74c5cface7b64b7"
-  integrity sha512-mfAfInRRaSXSHTXkmIMFzW0I4EWwdjtS3iaTxWz/anP26++sQOAFeRSEKtMQc58XzvqYbLutbywEw3dzr6trSQ==
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-command-snapshot/-/plugin-command-snapshot-3.3.7.tgz#387d8ed3c184afa0185e93f5c75c54bce8edf790"
+  integrity sha512-nX1dy29118ndQ3eBWR9KIxYTcYyBjh41nX1LC2ZJzYdiG1JJpSNBDYYIbkKVVYOAMqjfJ5AG8qRIlQknzlObVQ==
   dependencies:
-    "@oclif/core" "^2.0.8"
+    "@oclif/core" "^2.3.1"
     chalk "^4.1.2"
     just-diff "^5.2.0"
     lodash "^4.17.21"
