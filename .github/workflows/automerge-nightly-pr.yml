@@ -17,12 +17,12 @@ jobs:
         uses: 'pascalgn/automerge-action@eb68b061739cb9d81564f8e812d0b3c45f0fb09a'
         env:
           GITHUB_TOKEN: '${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}'
-          MERGE_LABELS: nightly-automerge
-          MERGE_COMMIT_MESSAGE: pull-request-title # Use the PR title as the commit message
-          MERGE_FILTER_AUTHOR: svc-cli-bot # Only automerge PRs from this author
-          MERGE_REQUIRED_APPROVALS: 0
-          MERGE_DELETE_BRANCH: true
-          MERGE_FORKS: false
-          MERGE_ERROR_FAIL: true # Exit 1 for this action if merge fails
-          UPDATE_RETRIES: 10 # Wait for checks to complete
-          UPDATE_RETRY_SLEEP: 120000 # 2 minutes
+          MERGE_LABELS: 'nightly-automerge'
+          MERGE_COMMIT_MESSAGE: 'pull-request-title' # Use the PR title as the commit message
+          MERGE_FILTER_AUTHOR: 'svc-cli-bot' # Only automerge PRs from this author
+          MERGE_REQUIRED_APPROVALS: '0'
+          MERGE_DELETE_BRANCH: 'true'
+          MERGE_FORKS: 'false'
+          MERGE_ERROR_FAIL: 'true' # Exit 1 for this action if merge fails
+          MERGE_RETRIES: '10' # Wait for checks to complete
+          MERGE_RETRY_SLEEP: '180000' # 3 minutes (30 minutes total)
