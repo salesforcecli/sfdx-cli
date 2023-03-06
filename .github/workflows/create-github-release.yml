@@ -14,7 +14,8 @@ jobs:
   # This job determines the channel that will be released.
   validate-channel:
     # All release PRs must start with this string or they will be ignored.
-    if: startsWith(github.event.pull_request.title, 'Release PR for')
+    # Must also either be merged=true or labeled with 'release-it'
+    if: startsWith(github.event.pull_request.title, 'Release PR for') && (github.event.pull_request.merged == true || github.event.label.name == 'release-it')
     runs-on: ubuntu-latest
     outputs:
       # Note: If you modify this, update the "Channel Notice" below
