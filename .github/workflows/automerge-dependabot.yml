@@ -1,4 +1,4 @@
-name: automerge
+name: automerge-dependabot
 on:
   workflow_dispatch:
   schedule:
