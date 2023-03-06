@@ -5,40 +5,33 @@ on:
     inputs:
       start-from-github-ref:
         type: string
-        required: false
-        description: 'A github ref to start the release from, examples: main, 7.144.0, f476e8e'
+        description: '[--start-from-github-ref] A github ref to start the release from, examples: main, 7.144.0, f476e8e'
       start-from-npm-dist-tag:
         type: string
-        required: false
-        description: 'An npm dist-tag to start the release from, examples: nightly, latest-rc'
+        description: '[--start-from-npm-dist-tag] An npm dist-tag to start the release from, examples: nightly, latest-rc'
       release-channel:
         type: string
         required: true
-        description: 'The promote channel for this release, examples: nightly, latest-rc, latest, dev, beta, etc...'
+        description: '[--release-channel] The promote channel for this release, examples: nightly, latest-rc, latest, dev, beta, etc...'
       patch:
         type: boolean
-        required: false
         default: false
-        description: Increment the patch instead of the minor version
+        description: '[--patch] Increment the patch instead of the minor version'
       pinned-deps:
         type: boolean
-        required: false
         default: true
-        description: Bump the versions of the packages listed in the 'pinnedDependencies' section
+        description: '[--[no-]pinned-deps] Bump the versions of the packages listed in the "pinnedDependencies" section'
       resolutions:
         type: boolean
-        required: false
         default: true
-        description: Bump the versions of packages listed in the 'resolutions' section
+        description: '[--[no-]resolutions] Bump the versions of packages listed in the "resolutions" section'
       jit:
         type: boolean
-        required: false
         default: true
-        description: Bump the versions of the packages listed in the 'jitPlugins' (just-in-time) section
+        description: '[--[no-]jit] Bump the versions of the packages listed in the "jitPlugins" (just-in-time) section'
       only:
         type: string
-        required: false
-        description: Comma-separated list, no spaces, of dependencies that you want to bump.
+        description: '[--only] Comma-separated list, no spaces, of dependencies that you want to bump'
 
 jobs:
   make-pr:
