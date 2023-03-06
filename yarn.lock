@@ -1605,10 +1605,10 @@
     jsforce "2.0.0-beta.20"
     tslib "^2"
 
-"@salesforce/plugin-info@2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-info/-/plugin-info-2.5.0.tgz#e3864a96b54321fa79db68b498bedd5db0c1acae"
-  integrity sha512-Xfu5RqQuU7J+mZnGPjrWcQ0FEWEyXs5r8daSa0+39T5DzRxs2hunepSSUX3D1Me313p134WpppENrchhnhvKww==
+"@salesforce/plugin-info@2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-info/-/plugin-info-2.5.1.tgz#4de5108f5510dad4609d99c2610212273760483a"
+  integrity sha512-6wKJ2eF0peB8PqR3Ebf7RJ/+Ds7cNYVIyzJThhEPHPWaG4JfJKd6Sw75BR3ATrBvJKEKC2oQ/fKXeOPVGs/hXw==
   dependencies:
     "@oclif/core" "^2.1.7"
     "@salesforce/core" "^3.33.4"
