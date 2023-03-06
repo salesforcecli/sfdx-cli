@@ -51,7 +51,7 @@ jobs:
       # PR title channel must be 'nightly'
       - name: Check for nightly release
         id: check-nightly
-        if: github.event.pull_request.merged == true && github.event.pull_request.base == 'main' && steps.release-channel.outputs.group1 == 'nightly'
+        if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' && steps.release-channel.outputs.group1 == 'nightly'
         run: echo "channel=nightly" >> "$GITHUB_OUTPUT"
 
       # Branch must be prefixed with 'patch'
