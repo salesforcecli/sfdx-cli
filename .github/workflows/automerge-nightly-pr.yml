@@ -26,3 +26,5 @@ jobs:
           MERGE_ERROR_FAIL: 'true' # Exit 1 for this action if merge fails
           MERGE_RETRIES: '10' # Wait for checks to complete
           MERGE_RETRY_SLEEP: '180000' # 3 minutes (30 minutes total)
+          UPDATE_RETRIES: '30'
+          UPDATE_RETRY_SLEEP: '60000' # 1 minute
