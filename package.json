@@ -155,7 +155,7 @@
     "@salesforce/ts-types"
   ],
   "dependencies": {
-    "@oclif/core": "2.3.0",
+    "@oclif/core": "2.5.0",
     "@oclif/plugin-autocomplete": "2.1.2",
     "@oclif/plugin-commands": "2.2.10",
     "@oclif/plugin-help": "5.2.5",
@@ -182,7 +182,7 @@
     "@salesforce/plugin-schema": "2.3.1",
     "@salesforce/plugin-signups": "1.4.3",
     "@salesforce/plugin-source": "2.5.4",
-    "@salesforce/plugin-telemetry": "2.1.1",
+    "@salesforce/plugin-telemetry": "2.1.2",
     "@salesforce/plugin-templates": "55.4.1",
     "@salesforce/plugin-trust": "2.4.2",
     "@salesforce/plugin-user": "2.3.2",
