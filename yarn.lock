@@ -1702,14 +1702,14 @@
     "@salesforce/sf-plugins-core" "^2.0.1"
     tslib "^2"
 
-"@salesforce/plugin-settings@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-settings/-/plugin-settings-1.4.0.tgz#4dcd698805790e3e96de2e8c96035a5909c987b6"
-  integrity sha512-oUPDjtAphSBKnEh/dLoxrIDQtkULSu0tjZB3y+R82lPOce9vmjlZ6NXSFpZHURultiYMKKsg8sJy9LJz0AHknA==
+"@salesforce/plugin-settings@1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-settings/-/plugin-settings-1.4.2.tgz#e99be8b141c27431b379ee3f1f878453cc9cad19"
+  integrity sha512-uEgxHlblJOz68ETpnK+aQv9KwNpCN8D3YYOeCtyNC4R1zPa2spz7mz/565F8tuUmZgHePLD1e/vz6vS/9OeI+w==
   dependencies:
     "@oclif/core" "^2.3.0"
     "@salesforce/core" "^3.33.4"
-    "@salesforce/sf-plugins-core" "^2.2.1"
+    "@salesforce/sf-plugins-core" "^2.2.4"
     fast-levenshtein "^3.0.0"
     tslib "^2"
 
@@ -1810,7 +1810,7 @@
   resolved "https://registry.yarnpkg.com/@salesforce/schemas/-/schemas-1.5.0.tgz#8bfe2cb5d7cb29d3394b3b9cfb71bb527009c82c"
   integrity sha512-EKFBURBuON7cj8XZCW+ybeSRRw7wUP1XUXZVHzFgx8KiYmSeGiRHBYbDjQOsQMho2uOLsTozMPEt2ehYnji0YA==
 
-"@salesforce/sf-plugins-core@2.2.4", "@salesforce/sf-plugins-core@^2", "@salesforce/sf-plugins-core@^2.0.1", "@salesforce/sf-plugins-core@^2.0.2", "@salesforce/sf-plugins-core@^2.1.1", "@salesforce/sf-plugins-core@^2.1.2", "@salesforce/sf-plugins-core@^2.2.1", "@salesforce/sf-plugins-core@^2.2.3":
+"@salesforce/sf-plugins-core@2.2.4", "@salesforce/sf-plugins-core@^2", "@salesforce/sf-plugins-core@^2.0.1", "@salesforce/sf-plugins-core@^2.0.2", "@salesforce/sf-plugins-core@^2.1.1", "@salesforce/sf-plugins-core@^2.1.2", "@salesforce/sf-plugins-core@^2.2.3", "@salesforce/sf-plugins-core@^2.2.4":
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/@salesforce/sf-plugins-core/-/sf-plugins-core-2.2.4.tgz#c94f83cab62ff0009b88069e72b4cdcfc9748b82"
   integrity sha512-lKi0W4y3SJfZCT1cuWZsc6vbJLS+QwO4TMbu/dob0LIba7r3+nrd7st8t2xvm/Z3hRKr8xsJADq/XFYPU7jfmQ==
