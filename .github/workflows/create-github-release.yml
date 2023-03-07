@@ -4,27 +4,21 @@ on:
   pull_request:
     branches:
       - main
-      - patch/*
-      - prerelease/*
+      - release-base/*
     types:
       - closed
-      - labeled
 
 jobs:
   # This job determines the channel that will be released.
   validate-channel:
-    # All release PRs must start with this string or they will be ignored.
-    # Must also either be merged=true or labeled with 'release-it'
-    if: startsWith(github.event.pull_request.title, 'Release PR for') && (github.event.pull_request.merged == true || github.event.label.name == 'release-it')
+    # All release PRs must have the 'release' branch prefix
+    # They must start with the string 'Release PR for'.
+    # Must also be merged=true (this ignores PRs that are closed without merging)
+    if: startsWith(github.head_ref, 'release') && startsWith(github.event.pull_request.title, 'Release PR for') && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
-      # Note: If you modify this, update the "Channel Notice" below
-      channel: ${{ steps.check-nightly.outputs.channel || steps.check-latest-rc.outputs.channel || steps.check-latest.outputs.channel || steps.check-prerelease.outputs.tag }}
+      channel: ${{ steps.found-channel.outputs.channel }}
     steps:
-      # Needed to validate prerelease version in package.json
-      - name: Check out the repo
-        uses: actions/checkout@v3
-
       - name: Get release channel from PR title
         id: release-channel
         uses: actions-ecosystem/action-regex-match@9e6c4fb3d5e898f505be7a1fb6e7b0a278f6665b
@@ -41,57 +35,32 @@ jobs:
           script: |
             core.setFailed('Release channel was not found in PR title. Exiting')
 
-      # Echo the matched channel
-      - name: Echo found channel
-        run: |
-          echo "Found channel: ${{ steps.release-channel.outputs.group1 }}"
+      # Checkout needed to validate prerelease version in package.json
+      - name: Check out the repo
+        if: ${{ !contains(fromJSON('["latest", "latest-rc", "nightly"]'), steps.release-channel.outputs.group1) }}
+        uses: actions/checkout@v3
 
-      # Must be merged
-      # Must be merged into 'main'
-      # PR title channel must be 'nightly'
-      - name: Check for nightly release
-        id: check-nightly
-        if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' && steps.release-channel.outputs.group1 == 'nightly'
-        run: echo "channel=nightly" >> "$GITHUB_OUTPUT"
-
-      # Branch must be prefixed with 'patch'
-      # Event must be 'labeled'
-      # Label name must be 'release-it'
-      # PR title channel must be 'latest-rc'
-      - name: Check for latest-rc patch
-        id: check-latest-rc
-        if: startsWith(github.head_ref, 'patch') && github.event.label.name == 'release-it' && steps.release-channel.outputs.group1 == 'latest-rc'
-        run: echo "channel=latest-rc" >> "$GITHUB_OUTPUT"
-
-      # Branch must be prefixed with 'patch'
-      # Event must be 'labeled'
-      # Label name must be 'release-it'
-      # PR title channel must be 'latest'
-      - name: Check for latest patch
-        id: check-latest
-        if: startsWith(github.head_ref, 'patch') && github.event.label.name == 'release-it' && steps.release-channel.outputs.group1 == 'latest'
-        run: echo "channel=latest" >> "$GITHUB_OUTPUT"
-
-      # Branch must be prefixed with 'prerelease'
-      # Event must be 'labeled'
-      # Label name must be 'release-it'
-      # Package.json version must contain "alpha" tag: example 1.2.3-beta.0 (beta)
-      # Package.json "alpha" tag must match PR title channel
-      - name: Check for prerelease
+      - name: Get prerelease from package.json
         id: check-prerelease
-        if: startsWith(github.head_ref, 'prerelease') && github.event.label.name == 'release-it'
+        if: ${{ !contains(fromJSON('["latest", "latest-rc", "nightly"]'), steps.release-channel.outputs.group1) }}
         uses: salesforcecli/github-workflows/.github/actions/getPreReleaseTag@main
 
+      # Package.json version must contain "alpha" tag: example 1.2.3-beta.0 (beta)
+      # Package.json "alpha" tag must match PR title channel
       - name: Validate prerelease tag
-        if: startsWith(github.head_ref, 'prerelease') && github.event.label.name == 'release-it' && (!steps.check-prerelease.outputs.tag || steps.check-prerelease.outputs.tag != steps.release-channel.outputs.group1)
+        if: ${{ !contains(fromJSON('["latest", "latest-rc", "nightly"]'), steps.release-channel.outputs.group1) && (!steps.check-prerelease.outputs.tag || steps.check-prerelease.outputs.tag != steps.release-channel.outputs.group1) }}
         uses: actions/github-script@v3
         with:
           script: |
             core.setFailed('Prerelease requires a dist tag name in your package.json like beta in 1.1.1-beta.0')
 
-      - name: Channel Notice
+      # Echo and set the matched channel
+      - name: Set channel output
+        id: found-channel
         run: |
-          echo "::notice title=Channel::Channel found in PR title: ${{ steps.check-nightly.outputs.channel || steps.check-latest-rc.outputs.channel || steps.check-latest.outputs.channel || steps.check-prerelease.outputs.tag }}"
+          echo "Found channel: ${{ steps.release-channel.outputs.group1 }}"
+          echo "::notice title=Channel::Channel found in PR title: ${{ steps.release-channel.outputs.group1 }}"
+          echo "channel=${{ steps.release-channel.outputs.group1" >> "$GITHUB_OUTPUT"
 
   create-tag-and-release-in-github:
     needs: [validate-channel]
