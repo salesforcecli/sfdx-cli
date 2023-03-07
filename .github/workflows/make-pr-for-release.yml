@@ -48,6 +48,8 @@ jobs:
           node-version: lts/*
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
       - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
+      - name: Fetch all branches
+        run: git fetch
       - run: |
           sf-release cli:release:build \
             --release-channel ${{ inputs.release-channel }} \

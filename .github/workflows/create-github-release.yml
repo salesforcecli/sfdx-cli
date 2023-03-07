@@ -97,7 +97,16 @@ jobs:
     needs: [validate-channel]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout from main if merged
+        uses: actions/checkout@v3
+        if: github.event.pull_request.merged == true
+
+      - name: Checkout from PR if not merged
+        uses: actions/checkout@v3
+        if: github.event.pull_request.merged == false
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@d360fad3a42feca6462f72c97c165d60a02d4bf2
