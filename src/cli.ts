@@ -8,10 +8,8 @@
 import * as os from 'os';
 import * as path from 'path';
 import { run as oclifRun, Config, settings } from '@oclif/core';
-import { VersionCommand } from '@oclif/plugin-version';
 import { set } from '@salesforce/kit';
 import { AnyJson, get } from '@salesforce/ts-types';
-import { Doctor } from '@salesforce/plugin-info';
 import * as Debug from 'debug';
 import { default as nodeEnv, Env } from './util/env';
 
@@ -135,11 +133,6 @@ export function create(
       configureUpdateSites(config, env);
       configureAutoUpdate(env);
       debugCliInfo(version, channel, env, config);
-      if (args[0] === 'doctor') {
-        // The doctor command requires CLI version details obtained from the CLI's oclif config.
-        const versionDetail = await VersionCommand.run(['--verbose', '--json']);
-        Doctor.init(config, versionDetail);
-      }
       // I think the run method is used in test.
       return run(args, config);
     },
