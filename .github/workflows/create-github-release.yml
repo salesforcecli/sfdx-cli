@@ -60,7 +60,7 @@ jobs:
         run: |
           echo "Found channel: ${{ steps.release-channel.outputs.group1 }}"
           echo "::notice title=Channel::Channel found in PR title: ${{ steps.release-channel.outputs.group1 }}"
-          echo "channel=${{ steps.release-channel.outputs.group1" >> "$GITHUB_OUTPUT"
+          echo "channel=${{ steps.release-channel.outputs.group1 }}" >> "$GITHUB_OUTPUT"
 
   create-tag-and-release-in-github:
     needs: [validate-channel]
