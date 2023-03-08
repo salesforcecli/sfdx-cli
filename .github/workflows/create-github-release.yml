@@ -103,7 +103,7 @@ jobs:
         with:
           tag_name: ${{ steps.packageVersion.outputs.prop }}
           release_name: ${{ steps.packageVersion.outputs.prop }}
-          prerelease: ${{ startsWith(github.head_ref, 'prerelease') }}
+          prerelease: ${{ !contains(fromJSON('["latest", "latest-rc", "nightly"]'), needs.validate-channel.outputs.channel) }}
           # This channel value is read from the Github Release body to determine the channel. Be cautious editing
           body: |
             !! Release as ${{ needs.validate-channel.outputs.channel }} !!
