@@ -903,10 +903,10 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@2.6.2", "@oclif/core@^2.0.3", "@oclif/core@^2.0.7", "@oclif/core@^2.0.8", "@oclif/core@^2.1.6", "@oclif/core@^2.1.7", "@oclif/core@^2.3.0", "@oclif/core@^2.3.1", "@oclif/core@^2.4.0", "@oclif/core@^2.5.0", "@oclif/core@^2.5.1", "@oclif/core@^2.6.2":
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-2.6.2.tgz#6ec15faf0c1e0e01e3c13c1c33827c12baaf0c88"
-  integrity sha512-roxcBLr4BuoOEDEkMQk4Yy0Tolr39n6i+A63qPLa19vrgxjZZJygh2HpThsn69/UPuEzMq051FnvJ9tNln3Y5g==
+"@oclif/core@2.6.3", "@oclif/core@^2.0.3", "@oclif/core@^2.0.7", "@oclif/core@^2.0.8", "@oclif/core@^2.1.6", "@oclif/core@^2.1.7", "@oclif/core@^2.3.0", "@oclif/core@^2.3.1", "@oclif/core@^2.4.0", "@oclif/core@^2.5.0", "@oclif/core@^2.5.1", "@oclif/core@^2.6.2", "@oclif/core@^2.6.3":
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-2.6.3.tgz#2f02e4510eb76d694d00c488b3ea957436289f51"
+  integrity sha512-kLwg+lmeZt4vfUlYN1XI8bPkcNBozfPOqciFOJMzHkPnq18lmoMu3+Xnm4wL1A9dXEyzoa5jidFhdyP/kZMBCw==
   dependencies:
     "@types/cli-progress" "^3.11.0"
     ansi-escapes "^4.3.2"
@@ -1438,18 +1438,41 @@
     "@salesforce/ts-types" "^1.7.1"
     chalk "^2.4.2"
 
-"@salesforce/core@3.33.6", "@salesforce/core@^3.24.0", "@salesforce/core@^3.26.2", "@salesforce/core@^3.32.11", "@salesforce/core@^3.32.12", "@salesforce/core@^3.32.13", "@salesforce/core@^3.32.2", "@salesforce/core@^3.33.1", "@salesforce/core@^3.33.4", "@salesforce/core@^3.33.5", "@salesforce/core@^3.33.6":
-  version "3.33.6"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.33.6.tgz#48a3e8c708f4a0ed153e5e2d43c343fd5bf2c923"
-  integrity sha512-HxA0OIt6NSMdZwu2X7wIru8OJN8x8XxNiazXpLNW5MUi9rBupBAWYNROjDMPilxBgnoiBcJ5I84xdl+jWD3vqA==
+"@salesforce/core@3.33.9":
+  version "3.33.9"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.33.9.tgz#52b668dde75f1e75bc4231104e51db56986283cb"
+  integrity sha512-KuzReDTyQ60JNlQIuWQ3Ud8dt4EVCtKOHT+Y7SdWx2J8/TtFsEExaUO8Ne/654i0gZlXdLFjV5p+AMbCc9JN5w==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
-    "@salesforce/kit" "^1.9.0"
+    "@salesforce/kit" "^1.9.2"
     "@salesforce/schemas" "^1.5.0"
     "@salesforce/ts-types" "^1.7.2"
     "@types/graceful-fs" "^4.1.6"
     "@types/semver" "^7.3.13"
-    ajv "^8.11.2"
+    ajv "^8.12.0"
+    archiver "^5.3.0"
+    change-case "^4.1.2"
+    debug "^3.2.7"
+    faye "^1.4.0"
+    form-data "^4.0.0"
+    graceful-fs "^4.2.9"
+    js2xmlparser "^4.0.1"
+    jsforce "^2.0.0-beta.19"
+    jsonwebtoken "9.0.0"
+    ts-retry-promise "^0.7.0"
+
+"@salesforce/core@^3.24.0", "@salesforce/core@^3.26.2", "@salesforce/core@^3.32.11", "@salesforce/core@^3.32.12", "@salesforce/core@^3.32.13", "@salesforce/core@^3.32.2", "@salesforce/core@^3.33.1", "@salesforce/core@^3.33.4", "@salesforce/core@^3.33.5", "@salesforce/core@^3.33.6", "@salesforce/core@^3.33.9":
+  version "3.34.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.34.0.tgz#431eeb31e10ab228296379b25dab0d7549898e63"
+  integrity sha512-e8DeS8ePIVjBu385EnjwhqsXcICZVZajXSy9nA05UTvn7x1JPLqEjX/N/PyxjDlGPECfBoAxkHMSC+mEJSV+ZA==
+  dependencies:
+    "@salesforce/bunyan" "^2.0.0"
+    "@salesforce/kit" "^1.9.2"
+    "@salesforce/schemas" "^1.5.0"
+    "@salesforce/ts-types" "^1.7.2"
+    "@types/graceful-fs" "^4.1.6"
+    "@types/semver" "^7.3.13"
+    ajv "^8.12.0"
     archiver "^5.3.0"
     change-case "^4.1.2"
     debug "^3.2.7"
@@ -1505,7 +1528,7 @@
     typedoc-plugin-missing-exports "0.23.0"
     typescript "^4.1.3"
 
-"@salesforce/kit@1.9.2", "@salesforce/kit@^1.6.0", "@salesforce/kit@^1.7.1", "@salesforce/kit@^1.8.0", "@salesforce/kit@^1.8.2", "@salesforce/kit@^1.8.5", "@salesforce/kit@^1.9.0", "@salesforce/kit@^1.9.2":
+"@salesforce/kit@1.9.2", "@salesforce/kit@^1.6.0", "@salesforce/kit@^1.7.1", "@salesforce/kit@^1.8.2", "@salesforce/kit@^1.8.5", "@salesforce/kit@^1.9.0", "@salesforce/kit@^1.9.2":
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.9.2.tgz#d232f135428363cdfe2649cb99a94bc2eb0a12fd"
   integrity sha512-kjZvjFNP6njhAiEa/ErdLXSDWZKafHYJyKCKz1wnSFmDM8TOpKHCCVw5cQo87ZQr8OqxqwUDIAlSBLyMzKi4Lg==
@@ -1623,15 +1646,15 @@
     jsforce "2.0.0-beta.20"
     tslib "^2"
 
-"@salesforce/plugin-info@2.5.1":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-info/-/plugin-info-2.5.1.tgz#4de5108f5510dad4609d99c2610212273760483a"
-  integrity sha512-6wKJ2eF0peB8PqR3Ebf7RJ/+Ds7cNYVIyzJThhEPHPWaG4JfJKd6Sw75BR3ATrBvJKEKC2oQ/fKXeOPVGs/hXw==
+"@salesforce/plugin-info@2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-info/-/plugin-info-2.6.0.tgz#0848d0a01bd729878bf8f2c6ae01fc3da6fa40e1"
+  integrity sha512-4cHrmlc9J0udR/ehZmQzsylD0+s7309AreI5bxNOBhqJWte6+KDfpDmIEv99jUnlbfMv4BrV6qU/bx24HylWJw==
   dependencies:
-    "@oclif/core" "^2.1.7"
-    "@salesforce/core" "^3.33.4"
-    "@salesforce/kit" "^1.8.0"
-    "@salesforce/sf-plugins-core" "^2.2.3"
+    "@oclif/core" "^2.6.3"
+    "@salesforce/core" "^3.33.9"
+    "@salesforce/kit" "^1.9.2"
+    "@salesforce/sf-plugins-core" "^2.2.4"
     got "^11.8.6"
     marked "^4.2.12"
     marked-terminal "^4.2.0"
@@ -2470,10 +2493,10 @@ ajv@^6.10.0, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^8.0.1, ajv@^8.11.0, ajv@^8.11.2:
-  version "8.11.2"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.11.2.tgz#aecb20b50607acf2569b6382167b65a96008bb78"
-  integrity sha512-E4bfmKAhGiSTvMfL1Myyycaub+cUEU2/IvpylXkUu7CHBkBj1f/ikdzbD7YQ6FKUbixDxeYvB/xY4fvyroDlQg==
+ajv@^8.0.1, ajv@^8.11.0, ajv@^8.12.0:
+  version "8.12.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.12.0.tgz#d1a0527323e22f53562c567c00991577dfbe19d1"
+  integrity sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
