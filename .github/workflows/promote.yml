@@ -103,6 +103,11 @@ jobs:
         id: open-ctc
         if: inputs.use-ctc
         uses: salesforcecli/github-workflows/.github/actions/ctcOpen@main
+        with:
+          SF_CHANGE_CASE_SFDX_AUTH_URL: ${{ secrets.SF_CHANGE_CASE_SFDX_AUTH_URL}}
+          SF_CHANGE_CASE_TEMPLATE_ID: ${{ secrets.SF_CHANGE_CASE_TEMPLATE_ID}}
+          SF_CHANGE_CASE_CONFIGURATION_ITEM: ${{ secrets.SF_CHANGE_CASE_CONFIGURATION_ITEM}}
+          SVC_CLI_BOT_GITHUB_TOKEN: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN}}
       - name: Check open-ctc status
         if: always()
         run: |

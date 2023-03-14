@@ -20,15 +20,15 @@ on:
       pinned-deps:
         type: boolean
         default: true
-        description: '[--[no-]pinned-deps] Bump the versions of the packages listed in the "pinnedDependencies" section'
+        description: '[--pinned-deps] Bump the versions of the packages listed in the "pinnedDependencies" section'
       resolutions:
         type: boolean
         default: true
-        description: '[--[no-]resolutions] Bump the versions of packages listed in the "resolutions" section'
+        description: '[--resolutions] Bump the versions of packages listed in the "resolutions" section'
       jit:
         type: boolean
         default: true
-        description: '[--[no-]jit] Bump the versions of the packages listed in the "jitPlugins" (just-in-time) section'
+        description: '[--jit] Bump the versions of the packages listed in the "jitPlugins" (just-in-time) section'
       only:
         type: string
         description: '[--only] Comma-separated list, no spaces, of dependencies that you want to bump'
@@ -48,8 +48,7 @@ jobs:
           node-version: lts/*
       - run: npm install -g @salesforce/plugin-release-management --omit=dev
       - uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
-      - name: Fetch all branches
-        run: git fetch
+      - run: git fetch --tag
       - run: |
           sf-release cli:release:build \
             --release-channel ${{ inputs.release-channel }} \
