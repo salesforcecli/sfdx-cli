@@ -61,20 +61,16 @@ fi
 VERSIONS_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json"
 VERSION_CONTENT=$(curl -s "$VERSIONS_URL" | jq -cr)
 
-# This check is only needed if the NEW_CHANNEL is "latest"
-if [[ "$NEW_CHANNEL" == "latest" ]]; then
-  banner "Verify that the versions file has the 'latest' version at the top"
 
-  TOP_VERSION=$(echo "$VERSION_CONTENT" | jq -r 'keys_unsorted[0]')
+banner "Verify that the versions file contains: $NEW_VERSION"
 
-  echo "-> Top version from json is: $TOP_VERSION"
+GREP_RESULTS=$(echo "$VERSION_CONTENT" | grep "$NEW_VERSION")
 
-  echo "-> Npm dist-tag version for '$NEW_CHANNEL' is: $NEW_VERSION"
+echo "-> Match in verion file: $GREP_RESULTS"
 
-  if [ "$TOP_VERSION" != "$NEW_VERSION" ]; then
-    echo "!! Versions file does not have latest version at the top, exiting."
-    exit 1
-  fi
+if [ -z "$GREP_RESULTS"  ]; then
+  echo "!! Versions file does not contain '$NEW_VERSION', exiting."
+  exit 1
 fi
 
 # In the next few checks, we verify that the new channel's version matches the coresponding channel's npm dist-tag
