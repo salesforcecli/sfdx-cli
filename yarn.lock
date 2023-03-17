@@ -1653,10 +1653,10 @@
     "@salesforce/ts-types" "^1.7.3"
     tslib "^2"
 
-"@salesforce/plugin-org@2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-2.5.0.tgz#af54aa36a39f1d0734f9b311f039043f9614ae15"
-  integrity sha512-40q42sCCGIJA6yKeLMuwZEKZGm37yJ+pHZf5sl/jlM+uOU50go+AAZExpmlAmAUobKakp2BXQT5nVNWFv62M9g==
+"@salesforce/plugin-org@2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-org/-/plugin-org-2.6.0.tgz#238ade5c3c9e10d58aac9171e3cb0ce429af210b"
+  integrity sha512-upmDDVyVg9hx7N6KT6kDjqzbc5/rdadZDIu0nbKNlzu9UYuKluDkBxnnFakwlyKc+Hk6mlDnqeRl6IeKs9lw5g==
   dependencies:
     "@oclif/core" "^2.6.3"
     "@salesforce/core" "^3.33.5"
