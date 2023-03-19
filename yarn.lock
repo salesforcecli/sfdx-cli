@@ -903,7 +903,7 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@2.6.4", "@oclif/core@^2.0.7", "@oclif/core@^2.0.8", "@oclif/core@^2.1.6", "@oclif/core@^2.1.7", "@oclif/core@^2.3.0", "@oclif/core@^2.3.1", "@oclif/core@^2.4.0", "@oclif/core@^2.5.0", "@oclif/core@^2.5.1", "@oclif/core@^2.6.2", "@oclif/core@^2.6.3", "@oclif/core@^2.6.4":
+"@oclif/core@2.6.4", "@oclif/core@^2.0.7", "@oclif/core@^2.0.8", "@oclif/core@^2.1.7", "@oclif/core@^2.3.0", "@oclif/core@^2.3.1", "@oclif/core@^2.4.0", "@oclif/core@^2.5.0", "@oclif/core@^2.5.1", "@oclif/core@^2.6.2", "@oclif/core@^2.6.3", "@oclif/core@^2.6.4":
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-2.6.4.tgz#40a35355fece01cdedecaf8d8d523d92d47a408b"
   integrity sha512-QkmPEdMsC8z/9d02bQvYZuviJhvK92YD/GJ5LlUk7cc8hEZ1JOLSwFg3i2EjlLNXn8OtOQHoe+EeOEaRWROuVA==
@@ -1066,12 +1066,12 @@
     ts-json-schema-generator "^1.2.0"
     tslib "^2.5.0"
 
-"@oclif/plugin-commands@2.2.10":
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-commands/-/plugin-commands-2.2.10.tgz#e0209fd1fbf27ef418774d4a9d6d72954a8dcacc"
-  integrity sha512-fUOegX6RrJLC+euU/gPbBH6VX6aqh5vRpsg4r1NUlKvCSIJjCI78TSHUKECU+GQmvNA+3ql6tlD7hZ4rBTjKbg==
+"@oclif/plugin-commands@2.2.11":
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-commands/-/plugin-commands-2.2.11.tgz#ad5e27d758a9c4d29bd6d95fe8d9252e8cae1caa"
+  integrity sha512-PvNHFJWIHwWICJYD3FNJ9CgJ9N0C/7ThWwtTxCmuTetIJwpBQsl8UK1gYNeKe8H/NVf4MFNmEr8lrPvQaEqFsw==
   dependencies:
-    "@oclif/core" "^2.1.6"
+    "@oclif/core" "^2.6.4"
     lodash "^4.17.11"
 
 "@oclif/plugin-help@3.2.18":
