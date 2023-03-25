@@ -154,7 +154,7 @@
     "@salesforce/ts-types"
   ],
   "dependencies": {
-    "@oclif/core": "2.6.4",
+    "@oclif/core": "2.7.1",
     "@oclif/plugin-autocomplete": "2.1.5",
     "@oclif/plugin-commands": "2.2.11",
     "@oclif/plugin-help": "5.2.8",
