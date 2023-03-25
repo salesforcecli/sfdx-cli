@@ -1136,13 +1136,13 @@
     inquirer "^8.2.5"
     rxjs "^7.8.0"
 
-"@oclif/plugin-update@3.1.7":
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-update/-/plugin-update-3.1.7.tgz#9b2586e739e8d0278e1b36c8fa828e7088a90e9c"
-  integrity sha512-LRt4Nj2pRO198kFYtxiETquDOfXuFQOLWFUloMTDssVVqxL4uW+HRsjNwjvF0jmSJyyY0jfUEbUgleRIetyYlA==
+"@oclif/plugin-update@3.1.8":
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-update/-/plugin-update-3.1.8.tgz#20843c29264ba56455136dc66f15d480779ad925"
+  integrity sha512-GSWGKwzhQgv3HBI+4l7H0hcsjjt3KR2fNc5FaLzscQebwQyuztoi+G5runGcG34LIdhxSPU9pVSrrvJ1cVyW8g==
   dependencies:
     "@oclif/color" "^1.0.4"
-    "@oclif/core" "^2.6.2"
+    "@oclif/core" "^2.6.4"
     cross-spawn "^7.0.3"
     debug "^4.3.1"
     filesize "^6.1.0"
