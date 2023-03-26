@@ -184,7 +184,7 @@
     "@salesforce/plugin-templates": "55.4.4",
     "@salesforce/plugin-trust": "2.4.4",
     "@salesforce/plugin-user": "2.3.5",
-    "@salesforce/sf-plugins-core": "2.2.4",
+    "@salesforce/sf-plugins-core": "2.2.5",
     "@salesforce/sfdx-plugin-lwc-test": "1.0.1",
     "@salesforce/ts-types": "1.7.3",
     "debug": "^4.3.4",
