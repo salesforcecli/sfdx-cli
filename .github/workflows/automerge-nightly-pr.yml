@@ -27,3 +27,5 @@ jobs:
           command: sf-release cli:release:automerge --owner salesforcecli --repo sfdx-cli --pull-number ${{ github.event.pull_request.number }} --verbose
           retry_on: error
           timeout_minutes: 60
+        env:
+          GITHUB_TOKEN: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
