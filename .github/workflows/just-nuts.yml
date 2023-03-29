@@ -66,3 +66,30 @@ jobs:
       os: ${{matrix.os}}
       command: ${{matrix.command}}
     secrets: inherit
+  deploy-retrieve:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        command:
+          - yarn test:nuts:convert
+          - yarn test:nuts:deb
+          - yarn test:nuts:delete
+          - yarn test:nuts:deploy:metadata:manifest
+          - yarn test:nuts:deploy:metadata:metadata
+          - yarn test:nuts:deploy:metadata:metadata-dir
+          - yarn test:nuts:deploy:metadata:source-dir
+          - yarn test:nuts:deploy:metadata:test-level
+          - yarn test:nuts:destructive
+          - yarn test:nuts:manifest
+          - yarn test:nuts:retrieve
+          - yarn test:nuts:specialTypes
+          - yarn test:nuts:static
+          - yarn test:nuts:tracking
+    uses: ./.github/workflows/just-nut.yml
+    with:
+      repository: salesforcecli/plugin-deploy-retrieve
+      channel-or-version: ${{ inputs.channel-or-version }}
+      os: ${{matrix.os}}
+      command: ${{matrix.command}}
+    secrets: inherit
