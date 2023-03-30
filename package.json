@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.195.1",
+  "version": "7.195.2",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -89,7 +89,7 @@
     "jitPlugins": {
       "@salesforce/plugin-sobject": "0.1.11",
       "@salesforce/plugin-dev": "0.7.0",
-      "@salesforce/sfdx-scanner": "3.10.0"
+      "@salesforce/sfdx-scanner": "3.11.0"
     },
     "devPlugins": [
       "@oclif/plugin-command-snapshot",
@@ -236,7 +236,7 @@
   },
   "resolutions": {
     "@salesforce/schemas": "1.5.1",
-    "@salesforce/source-deploy-retrieve": "7.14.1",
+    "@salesforce/source-deploy-retrieve": "7.14.2",
     "@salesforce/source-tracking": "2.2.26",
     "@salesforce/templates": "57.1.1",
     "@salesforce/ts-types": "1.7.3"
