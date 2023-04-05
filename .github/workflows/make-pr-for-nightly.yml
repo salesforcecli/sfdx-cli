@@ -14,7 +14,7 @@ on:
       only:
         type: string
         required: false
-        description: "[--only] comma-separated list, no spaces, of dependencies that you want to bump."
+        description: '[--only] comma-separated list, no spaces, of dependencies that you want to bump.'
 
 jobs:
   make-pr-for-nightly:
@@ -73,7 +73,7 @@ jobs:
       - name: Set git config defaults
         uses: salesforcecli/github-workflows/.github/actions/gitConfig@main
 
-      - name: Fetch all branches (testing)
+      - name: Fetch all branches
         run: git fetch
 
       # --only input using a "ternary-ish": https://github.com/actions/runner/issues/409#issuecomment-752775072
