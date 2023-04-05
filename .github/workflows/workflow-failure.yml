@@ -14,8 +14,6 @@ on:
       - update-docker-node-version
     types:
       - completed
-    branches:
-      - main
 
 # There seems to be an issue where the workflow_run is sometimes missing from the event
 # For context: "github.event.workflow_run.conclusion"
