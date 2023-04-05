@@ -57,7 +57,8 @@ if [ "$NEW_VERSION" != "$OLD_MANIFEST_VERSION" ]; then
   exit 1
 fi
 
-
+# Uncomment for testing on a M1 Mac
+# VERSIONS_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-darwin-arm64-tar-xz.json"
 VERSIONS_URL="https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/sfdx-linux-x64-tar-xz.json"
 VERSION_CONTENT=$(curl -s "$VERSIONS_URL" | jq -cr)
 
@@ -99,13 +100,22 @@ npm uninstall -g sfdx-cli
 # install an older version from installer and then upgrade it to the NEW_CHANNEL version
 banner "Verify tarball install and that 'sfdx update $NEW_CHANNEL' version matches '$NEW_VERSION'"
 
-# NOTE: If you are testing this locally, you'll need to use a tarball built for your OS
-#       URLs can be found here: https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli_olderversions
-
 # download and untar
-OLDER_VERSION_URL=$(echo "$VERSION_CONTENT" | jq 'to_entries[5]' | jq -r '.value')
+
+# -----------------
+# !!! IMPORTANT !!!
+# -----------------
+# If you are testing this locally, you'll need to use a tarball built for your OS
+#   There is a VERSIONS_URL for M1 macs above that you can uncomment
+#   Other URLs can be found here: https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli_olderversions
+OLDER_VERSION_URL=$(echo "$VERSION_CONTENT" | jq 'to_entries[7]' | jq -r '.value')
 echo "Downloading old cli version from: $OLDER_VERSION_URL"
-curl -s "$OLDER_VERSION_URL" --output sfdx-linux-x64.tar.xz && mkdir ~/sfdx  && tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1 && rm sfdx-linux-x64.tar.xz
+
+if [[ -d "$HOME/sfdx" ]]; then
+  echo "!! $HOME/sfdx directory already exists. Delete it and try again." && exit 1
+fi
+
+curl -s "$OLDER_VERSION_URL" --output sfdx-tarball.tar.xz && mkdir "$HOME/sfdx" && tar xJf sfdx-tarball.tar.xz -C "$HOME/sfdx" --strip-components 1 && rm sfdx-tarball.tar.xz
 export PATH="$HOME/sfdx/bin:$PATH"
 
 # Translate 'latest -> stable' and 'latest-rc -> stable-rc' for finding resources in S3

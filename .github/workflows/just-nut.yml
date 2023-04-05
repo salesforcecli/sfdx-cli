@@ -69,19 +69,11 @@ jobs:
 
       - run: npm install -g sfdx-cli@${{ inputs.channel-or-version }} @salesforce/cli@latest-rc --omit=dev
       - run: yarn install
-      - name: NUTs attempt 1
-        continue-on-error: true
-        id: nut1
-        run: ${{ inputs.command }}
-      - name: NUTs attempt 2
-        continue-on-error: true
-        id: nut2
-        if: steps.nut1.outcome == 'failure'
-        run: |
-          echo "::notice title=NUT Retry::NUT '${{inputs.command}}' failed and was retried."
-          ${{ inputs.command }}
-      - name: NUTs attempt 3
-        if: steps.nut2.outcome == 'failure'
-        run: |
-          echo "::warning title=NUT Retry 2::NUT '${{inputs.command}}' failed twice and was retried."
-          ${{ inputs.command }}
+      - name: Run NUT (with retries)
+        uses: nick-fields/retry@943e742917ac94714d2f408a0e8320f2d1fcafcd
+        with:
+          max_attempts: 3
+          retry_wait_seconds: 1
+          command: ${{ inputs.command }}
+          retry_on: error
+          timeout_minutes: 60
