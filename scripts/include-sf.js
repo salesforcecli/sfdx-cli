@@ -8,7 +8,12 @@ const npmShow = JSON.parse(shelljs.exec('npm show @salesforce/cli dist-tags --js
 // make sure latest-rc tag exists, if not fallback to latest
 const tag = npmShow['latest-rc'] ? 'latest-rc' : 'latest';
 console.log(`---- Installing  @salesforce/cli@${tag} ----`);
-shelljs.exec(`npm install @salesforce/cli@${tag} -g`);
+// if latest/rc has moved to v2 already, we don't want to bundle that.  We'll use the highest v1 version available
+if (npmShow[tag].startsWith('1')) {
+  shelljs.exec(`npm install @salesforce/cli@${tag} -g`);
+} else {
+  shelljs.exec(`npm install @salesforce/cli@^1 -g`);
+}
 
 const npmGlobalInstallPath = shelljs.exec('npm list -g --depth 0 | head -1').stdout.trim();
 const sfGlobalPath = path.join(npmGlobalInstallPath, 'node_modules', '@salesforce', 'cli');
