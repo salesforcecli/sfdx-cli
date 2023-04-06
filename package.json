@@ -197,7 +197,7 @@
     "@oclif/plugin-command-snapshot": "^3.2.11",
     "@salesforce/dev-config": "^3.1.0",
     "@salesforce/dev-scripts": "^3.1.0",
-    "@salesforce/plugin-release-management": "^3.15.2",
+    "@salesforce/plugin-release-management": "^3.16.3",
     "@salesforce/prettier-config": "^0.0.2",
     "@salesforce/ts-sinon": "^1.4.2",
     "@types/debug": "^4.1.7",
