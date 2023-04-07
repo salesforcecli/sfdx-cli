@@ -1550,10 +1550,10 @@
     chalk "^4.1.0"
     tslib "^2"
 
-"@salesforce/plugin-auth@2.7.11":
-  version "2.7.11"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-2.7.11.tgz#a46b4801612272e1840a51cc03d45f1b12950096"
-  integrity sha512-oRPkAjWZ0mkkXXHlx7aMojgCvZiFovo+/q1V1o2N08MfM/s7DCM/lR26hV2r47xAzkfiQQAaQT7l13vgjzCcmw==
+"@salesforce/plugin-auth@2.7.12":
+  version "2.7.12"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-auth/-/plugin-auth-2.7.12.tgz#5c10ebaeb19a18773e4cc3eda18ea34bf599858c"
+  integrity sha512-33jdf2gfAQYhffTXv/2EOuIiZY/X64DpbJxLHo4tLJ/C/ZOioyL50Fc9qbNpH9OK+82OuN7u/rqDt+WYTnhUbQ==
   dependencies:
     "@oclif/core" "^2.6.4"
     "@salesforce/core" "^3.34.1"
@@ -1696,10 +1696,10 @@
     chalk "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-release-management@^3.16.3":
-  version "3.16.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.16.3.tgz#880590f8f49e34e088413462b4e7b1e27667e8dc"
-  integrity sha512-yPs3xasVetVih7T2ngih9dZTn1b2WB+xey7PyX+/n876piqpu6+jVIKzKVjb6FIC8XmWsOd7/TrOaOdFkxReFg==
+"@salesforce/plugin-release-management@^3.16.4":
+  version "3.16.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-release-management/-/plugin-release-management-3.16.4.tgz#3155d799ec3a1a666dd0d5bc8ea9b86d4a474c49"
+  integrity sha512-yDNuy1EeRfgCIkzSVw8DQR0PbY26IAkSno2egVyRm3FKs4Q1PS/HcXtR8Fy0s4Wv2ibx7EdcD+JWpzQGOu/7Tw==
   dependencies:
     "@oclif/core" "^2.8.0"
     "@octokit/core" "^4.2.0"
@@ -1762,21 +1762,20 @@
     change-case "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-source@2.9.1":
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.9.1.tgz#5792af07f80f566ce3694c41f1821d2f393a2348"
-  integrity sha512-8AVPLx94D2J63vn/XKWxiZwfPKZIZuf7qoI6d9dMag51/ABpZxPk+l1v3qTYJKM6su67wR93qr9Tsp+gA4XMaA==
+"@salesforce/plugin-source@2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.9.2.tgz#ef0b57673b7f626b064cecd59629a3e6c457c3f4"
+  integrity sha512-wkwgHiFfliinCvHWO/PvRlzq8mo+8b7TaKy31WQjP4L3mQdTxlcsxXbPXn9Ol/+TPat4s7dc0GdyJ6QLZSWTEQ==
   dependencies:
     "@oclif/core" "^2.6.3"
     "@salesforce/apex-node" "^1.6.0"
     "@salesforce/core" "^3.33.6"
     "@salesforce/kit" "^1.9.0"
     "@salesforce/sf-plugins-core" "^2.2.4"
-    "@salesforce/source-deploy-retrieve" "^7.14.2"
+    "@salesforce/source-deploy-retrieve" "^7.14.5"
     "@salesforce/source-tracking" "^2.2.24"
     chalk "^4.1.2"
     got "^11.8.6"
-    jsforce "^2.0.0-beta.20"
     proxy-agent "^5.0.0"
     proxy-from-env "^1.1.0"
     tslib "^2"
@@ -1870,7 +1869,7 @@
     signal-exit "^3.0.6"
     tslib "^2.3.1"
 
-"@salesforce/source-deploy-retrieve@7.15.0", "@salesforce/source-deploy-retrieve@^7.12.0", "@salesforce/source-deploy-retrieve@^7.14.2", "@salesforce/source-deploy-retrieve@^7.7.5":
+"@salesforce/source-deploy-retrieve@7.15.0", "@salesforce/source-deploy-retrieve@^7.12.0", "@salesforce/source-deploy-retrieve@^7.14.2", "@salesforce/source-deploy-retrieve@^7.14.5", "@salesforce/source-deploy-retrieve@^7.7.5":
   version "7.15.0"
   resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-7.15.0.tgz#a513bd14a18c6989add4bae62169e38142800cf2"
   integrity sha512-dy9gKkV2wY9skdCJQnO/0pTpAwVD6qrJZpgVfTN/z/h58Iquy4xxCdZB4LxYpOuDW6vvrKVYaJK8iN0vDp4C6g==
