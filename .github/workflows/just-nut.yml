@@ -65,9 +65,8 @@ jobs:
         with:
           node-version: lts/*
           cache: yarn
-        # NOTE: We are just using latest-rc of `sf` since we cannot guaranteed channels (and definitely versions) will be the same
-
-      - run: npm install -g sfdx-cli@${{ inputs.channel-or-version }} @salesforce/cli@latest-rc --omit=dev
+        # NOTE: This will install the highest v1 of sf.  This will typically be the nightly.
+      - run: npm install -g sfdx-cli@${{ inputs.channel-or-version }} @salesforce/cli@^1 --omit=dev
       - run: yarn install
       - name: Run NUT (with retries)
         uses: nick-fields/retry@943e742917ac94714d2f408a0e8320f2d1fcafcd
