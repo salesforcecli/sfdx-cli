@@ -124,7 +124,7 @@ jobs:
       channel: ${{ needs.get-channel.outputs.channel }}
     secrets: inherit
 
-  announce-rc-release-to-slack:
+  announce-cli-patch-in-slack:
     # Do not announce prereleases or nightlies
     # https://docs.github.com/en/actions/learn-github-actions/expressions#contains
     if: ${{ contains(fromJSON('["latest", "latest-rc"]'), needs.get-channel.outputs.channel ) }}
@@ -139,18 +139,21 @@ jobs:
       - pack-upload-mac
       - rename-mac-pkg
     steps:
-      - name: Announce RC Workflow
-        id: slack
+      - name: Announce patch in Slack
         uses: slackapi/slack-github-action@v1.21.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_RC_ANNOUNCEMENT_WORKFLOW_WEBHOOK }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
         with:
-          # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
             {
-              "cli": "sfdx",
-              "npm-package": "sfdx-cli",
-              "version": "${{ github.event.release.tag_name }}"
+              "blocks": [{
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": ":bandaid-4506: `sfdx-cli@${{ needs.get-channel.outputs.channel }}` has been patched in version `${{ github.event.release.tag_name }}` :bandaid-4506:\nPlease ensure you are running the newest version of `sfdx`"
+                }
+              }]
             }
 
   run-just-nuts:
