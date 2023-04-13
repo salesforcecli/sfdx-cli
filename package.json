@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.196.6",
+  "version": "7.196.7",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -177,7 +177,7 @@
     "@salesforce/plugin-deploy-retrieve": "1.8.10",
     "@salesforce/plugin-info": "2.6.4",
     "@salesforce/plugin-limits": "2.3.12",
-    "@salesforce/plugin-org": "2.6.10",
+    "@salesforce/plugin-org": "2.6.12",
     "@salesforce/plugin-packaging": "1.16.3",
     "@salesforce/plugin-schema": "2.3.6",
     "@salesforce/plugin-settings": "1.4.3",
