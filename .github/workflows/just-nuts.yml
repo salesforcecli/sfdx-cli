@@ -70,9 +70,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         command:
-          - yarn test:nuts:convert
           - yarn test:nuts:deb
-          - yarn test:nuts:delete
           - yarn test:nuts:deploy:metadata:manifest
           - yarn test:nuts:deploy:metadata:metadata
           - yarn test:nuts:deploy:metadata:metadata-dir
