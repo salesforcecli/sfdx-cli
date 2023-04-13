@@ -3,8 +3,8 @@ name: promote-rc-to-latest
 on:
   workflow_dispatch:
   schedule:
-    # Thursdays 9a central
-    - cron: '0 14 * * 4'
+    # Thursdays 11a central
+    - cron: '0 16 * * 4'
 
 jobs:
   promote:
