@@ -1623,10 +1623,10 @@
     jsforce "2.0.0-beta.20"
     tslib "^2"
 
-"@salesforce/plugin-deploy-retrieve@1.8.11":
-  version "1.8.11"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-deploy-retrieve/-/plugin-deploy-retrieve-1.8.11.tgz#fb26bac1e0ce665dee37d5f491e1b140d9a1b696"
-  integrity sha512-GnWsoKi1LF/WrrtGSJWmj0/lHpYCeSsMuvliR6hw2BX85uMKUTfl46FNa7mIc0yps+hX1BHTfBTkxiKA8NcYhA==
+"@salesforce/plugin-deploy-retrieve@1.8.12":
+  version "1.8.12"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-deploy-retrieve/-/plugin-deploy-retrieve-1.8.12.tgz#8d701fe752438f728b40b32a0e025b7a8d556fc2"
+  integrity sha512-gcWGn3Qs5dGKwH3yYAIFFea9d5PlKE+8aRgK4Zhxe6sA63nyWwoBoCv44Pyjdbz8DZAlLQii0qEGtiteoDmCYg==
   dependencies:
     "@oclif/core" "^2.8.0"
     "@salesforce/apex-node" "^1.6.0"
