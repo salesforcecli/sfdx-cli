@@ -88,7 +88,7 @@
     "jitPlugins": {
       "@salesforce/plugin-sobject": "0.1.16",
       "@salesforce/plugin-dev": "0.7.0",
-      "@salesforce/sfdx-plugin-lwc-test": "1.0.1",
+      "@salesforce/sfdx-plugin-lwc-test": "1.0.2",
       "@salesforce/sfdx-scanner": "3.11.0"
     },
     "devPlugins": [
