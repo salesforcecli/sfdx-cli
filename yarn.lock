@@ -1857,10 +1857,10 @@
     chalk "^4"
     inquirer "^8.2.5"
 
-"@salesforce/sfdx-plugin-lwc-test@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/sfdx-plugin-lwc-test/-/sfdx-plugin-lwc-test-1.0.1.tgz#1b98b1edc280f259ff8ae8b4ff762a54c8b1b631"
-  integrity sha512-Dw6RphPRixg/ddFJKEd0pYu/XCFsgkXAiEjB6aF7noxQObJ1vSZTgAxXJfjrq/I4qp16oyOL6BxaruWoWy/chg==
+"@salesforce/sfdx-plugin-lwc-test@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/sfdx-plugin-lwc-test/-/sfdx-plugin-lwc-test-1.0.2.tgz#30b24bfce7e758e0cfb56383a9bcdd49360a38c3"
+  integrity sha512-VOgi7gF/FGpUTs3zNRcKvCv5urMWqn45m8L2seSA5vWUpQ3NCGICsW8/DDulxIBx0R0FHaY9sRNZl8GYdkqEWQ==
   dependencies:
     "@oclif/core" "^1.16.0"
     "@salesforce/command" "^5.2.6"
