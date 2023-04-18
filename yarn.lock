@@ -1762,10 +1762,10 @@
     change-case "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-source@2.10.1":
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.10.1.tgz#ce0b2c8b82c40fe5c4fb2e0724c7a67eb5027da4"
-  integrity sha512-cs6SKbm3QwLdn6mbdMC2IQjVZbhDS904VHAxooRyGgdovGFSDhM1jB208BIg2zjExXg/bDtr2qvXBVUOC9Kyhw==
+"@salesforce/plugin-source@2.10.2":
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.10.2.tgz#7c3eb14879aae8240519b017a2a5f74674ee7407"
+  integrity sha512-vQEvqAH51Dr6OjWDr5rGyX7RUCdwHnk9wpLWJcd7uizFUG1Yz/7FRVK88IfxiUdiYHv+P6rPWwAel4Q0eX19vQ==
   dependencies:
     "@oclif/core" "^2.6.3"
     "@salesforce/apex-node" "^1.6.0"
