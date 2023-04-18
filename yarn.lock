@@ -1762,10 +1762,10 @@
     change-case "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-source@2.9.5":
-  version "2.9.5"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.9.5.tgz#74f6656591f6cfaee9aa075df66eb4a68c0fece8"
-  integrity sha512-wWaPewYFtJHMgaXCxrbxXmKEy/ixD2G90bUwVycEqlumI5Ki/5914IOoXNNYxtKbJFhAJPMVaUT9juIfkxhmDA==
+"@salesforce/plugin-source@2.10.1":
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.10.1.tgz#ce0b2c8b82c40fe5c4fb2e0724c7a67eb5027da4"
+  integrity sha512-cs6SKbm3QwLdn6mbdMC2IQjVZbhDS904VHAxooRyGgdovGFSDhM1jB208BIg2zjExXg/bDtr2qvXBVUOC9Kyhw==
   dependencies:
     "@oclif/core" "^2.6.3"
     "@salesforce/apex-node" "^1.6.0"
@@ -1773,7 +1773,7 @@
     "@salesforce/kit" "^1.9.0"
     "@salesforce/sf-plugins-core" "^2.2.7"
     "@salesforce/source-deploy-retrieve" "^8.0.1"
-    "@salesforce/source-tracking" "^2.2.27"
+    "@salesforce/source-tracking" "^3.1.0"
     chalk "^4.1.2"
     got "^11.8.6"
     proxy-agent "^5.0.0"
@@ -1888,7 +1888,7 @@
     proxy-from-env "^1.1.0"
     unzipper "0.10.11"
 
-"@salesforce/source-tracking@2.2.27", "@salesforce/source-tracking@^2.2.27":
+"@salesforce/source-tracking@2.2.27", "@salesforce/source-tracking@^2.2.27", "@salesforce/source-tracking@^3.1.0":
   version "2.2.27"
   resolved "https://registry.yarnpkg.com/@salesforce/source-tracking/-/source-tracking-2.2.27.tgz#c6d14d37153cee63c1e1d18593f1b44753562ef8"
   integrity sha512-3Krl4dngtVKjp10gj8x6eXS/blKK+pVHu7RbIW8BWBUFehANt3/ddKnAcqMIRiHgE3gODbE54Whz6EFl4AEWBg==
