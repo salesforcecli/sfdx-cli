@@ -83,12 +83,12 @@
       "@salesforce/plugin-telemetry",
       "@salesforce/plugin-templates",
       "@salesforce/plugin-trust",
-      "@salesforce/plugin-user",
-      "@salesforce/sfdx-plugin-lwc-test"
+      "@salesforce/plugin-user"
     ],
     "jitPlugins": {
       "@salesforce/plugin-sobject": "0.1.17",
       "@salesforce/plugin-dev": "0.7.0",
+      "@salesforce/sfdx-plugin-lwc-test": "1.0.2",
       "@salesforce/sfdx-scanner": "3.11.0"
     },
     "devPlugins": [
@@ -152,7 +152,6 @@
     "@salesforce/plugin-trust",
     "@salesforce/plugin-user",
     "@salesforce/sf-plugins-core",
-    "@salesforce/sfdx-plugin-lwc-test",
     "@salesforce/ts-types"
   ],
   "dependencies": {
@@ -188,7 +187,6 @@
     "@salesforce/plugin-trust": "2.4.9",
     "@salesforce/plugin-user": "2.3.8",
     "@salesforce/sf-plugins-core": "2.2.8",
-    "@salesforce/sfdx-plugin-lwc-test": "1.0.2",
     "@salesforce/ts-types": "1.7.3",
     "debug": "^4.3.4",
     "tslib": "^2.4.1"
