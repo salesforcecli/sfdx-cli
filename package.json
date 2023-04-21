@@ -176,7 +176,7 @@
     "@salesforce/plugin-deploy-retrieve": "1.8.15",
     "@salesforce/plugin-info": "2.6.7",
     "@salesforce/plugin-limits": "2.3.13",
-    "@salesforce/plugin-org": "2.7.1",
+    "@salesforce/plugin-org": "2.7.0",
     "@salesforce/plugin-packaging": "1.16.6",
     "@salesforce/plugin-schema": "2.3.8",
     "@salesforce/plugin-settings": "1.4.4",
