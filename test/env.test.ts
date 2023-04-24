@@ -36,12 +36,12 @@ describe('Env', () => {
     });
 
     it('should report autoupdate disabled with legacy envar', () => {
-      env.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
+      env.setBoolean('SF_AUTOUPDATE_DISABLE', true);
       expect(env.isAutoupdateDisabled()).to.be.true;
     });
 
     it('should report autoupdate disabled with oclif envar', () => {
-      env.setBoolean('SFDX_DISABLE_AUTOUPDATE', true);
+      env.setBoolean('SF_DISABLE_AUTOUPDATE', true);
       expect(env.isAutoupdateDisabled()).to.be.true;
     });
   });
@@ -52,12 +52,12 @@ describe('Env', () => {
     });
 
     it('should report set with legacy envar', () => {
-      env.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
+      env.setBoolean('SF_AUTOUPDATE_DISABLE', true);
       expect(env.isAutoupdateDisabledSet()).to.be.true;
     });
 
     it('should report set with oclif envar', () => {
-      env.setBoolean('SFDX_DISABLE_AUTOUPDATE', true);
+      env.setBoolean('SF_DISABLE_AUTOUPDATE', true);
       expect(env.isAutoupdateDisabledSet()).to.be.true;
     });
   });
@@ -65,8 +65,8 @@ describe('Env', () => {
   describe('isAutoupdateDisabledSet', () => {
     it('should set both autoupdate envars', () => {
       env.setAutoupdateDisabled(true);
-      expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
-      expect(env.getBoolean('SFDX_DISABLE_AUTOUPDATE')).to.be.true;
+      expect(env.getBoolean('SF_AUTOUPDATE_DISABLE')).to.be.true;
+      expect(env.getBoolean('SF_DISABLE_AUTOUPDATE')).to.be.true;
     });
   });
 
@@ -96,20 +96,6 @@ describe('Env', () => {
     it('should report if the cli is running from an installer', () => {
       env.setBoolean('SFDX_INSTALLER', true);
       expect(env.isInstaller()).to.be.true;
-    });
-  });
-
-  describe('getS3HostOverride', () => {
-    it('should return an S3 host override if set', () => {
-      env.setString('SFDX_S3_HOST', 'http://example.com');
-      expect(env.getS3HostOverride()).to.equal('http://example.com');
-    });
-  });
-
-  describe('setS3HostOverride', () => {
-    it('should set an S3 host override', () => {
-      env.setS3HostOverride('http://example.com');
-      expect(env.getString('SFDX_S3_HOST')).to.equal('http://example.com');
     });
   });
 });

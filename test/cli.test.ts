@@ -57,30 +57,27 @@ describe('cli', () => {
     });
 
     it('should set the s3 host in the oclif config if overridden in an envar', async () => {
-      const s3Host = 'http://example.com:9000/s3';
       const npmRegistry = 'http://example.com:9000/npm';
       const config = stubInterface<Config>(sandbox);
-      env.setS3HostOverride(s3Host);
       env.setNpmRegistryOverride(npmRegistry);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore - you cannot pass a StubInterface<Config> as a Config into methods below
       configureUpdateSites(config, env);
-      expect(getString(config, 'pjson.oclif.update.s3.host')).to.equal(s3Host);
       expect(getString(config, 'pjson.oclif.warn-if-update-available.registry')).to.equal(npmRegistry);
     });
 
     it('should default to autoupdate disabled for local dev or npm installs', () => {
       configureAutoUpdate(env);
 
-      expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
+      expect(env.getBoolean('SF_AUTOUPDATE_DISABLE')).to.be.true;
       expect(env.getString(Env.UPDATE_INSTRUCTIONS)).to.equal(UPDATE_DISABLED_NPM);
     });
 
     it('should allow autoupdate to be explicitly enabled for local dev (for testing autoupdates)', () => {
-      env.setBoolean('SFDX_AUTOUPDATE_DISABLE', false);
+      env.setBoolean('SF_AUTOUPDATE_DISABLE', false);
       configureAutoUpdate(env);
 
-      expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.false;
+      expect(env.getBoolean('SF_AUTOUPDATE_DISABLE')).to.be.false;
       expect(env.getString(Env.UPDATE_INSTRUCTIONS)).to.be.undefined;
     });
 
@@ -88,16 +85,16 @@ describe('cli', () => {
       env.setBoolean('SFDX_INSTALLER', true);
       configureAutoUpdate(env);
 
-      expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.false;
+      expect(env.getBoolean('SF_AUTOUPDATE_DISABLE')).to.be.false;
       expect(env.getString(Env.UPDATE_INSTRUCTIONS)).to.be.undefined;
     });
 
-    it('should have autoupdate disabled for binary installs when SFDX_AUTOUPDATE_DISABLE is set to true', () => {
+    it('should have autoupdate disabled for binary installs when SF_AUTOUPDATE_DISABLE is set to true', () => {
       env.setBoolean('SFDX_INSTALLER', true);
-      env.setBoolean('SFDX_AUTOUPDATE_DISABLE', true);
+      env.setBoolean('SF_AUTOUPDATE_DISABLE', true);
       configureAutoUpdate(env);
 
-      expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
+      expect(env.getBoolean('SF_AUTOUPDATE_DISABLE')).to.be.true;
       expect(env.getString(Env.UPDATE_INSTRUCTIONS)).to.equal(UPDATE_DISABLED_INSTALLER);
     });
 
@@ -105,7 +102,7 @@ describe('cli', () => {
       env.setString('SFDX_ENV', 'DEMO');
       configureAutoUpdate(env);
 
-      expect(env.getBoolean('SFDX_AUTOUPDATE_DISABLE')).to.be.true;
+      expect(env.getBoolean('SF_AUTOUPDATE_DISABLE')).to.be.true;
       expect(env.getString(Env.UPDATE_INSTRUCTIONS)).to.equal(UPDATE_DISABLED_DEMO);
     });
   });
