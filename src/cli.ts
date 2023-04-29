@@ -16,7 +16,7 @@ import { default as nodeEnv, Env } from './util/env';
 const debug = Debug('sfdx');
 
 export const UPDATE_DISABLED_INSTALLER =
-  'Manual and automatic CLI updates have been disabled by setting "SFDX_AUTOUPDATE_DISABLE=true". ' +
+  'Manual and automatic CLI updates have been disabled by setting "SF_AUTOUPDATE_DISABLE=true". ' +
   'To check for a new version, unset that environment variable.';
 
 export const UPDATE_DISABLED_NPM = 'Use "npm update --global sfdx-cli" to update npm-based installations.';
@@ -26,12 +26,6 @@ export const UPDATE_DISABLED_DEMO =
   'To check for a new version, unset the environment variable SFDX_ENV.';
 
 export function configureUpdateSites(config: Config, env = nodeEnv): void {
-  const s3Host = env.getS3HostOverride();
-  if (s3Host) {
-    // Override config value if set via envar
-    set(config, 'pjson.oclif.update.s3.host', s3Host);
-  }
-
   const npmRegistry = env.getNpmRegistryOverride();
   if (npmRegistry) {
     // Override config value if set via envar
@@ -103,7 +97,6 @@ function debugCliInfo(version: string, channel: string, env: Env, config: Config
       Env.CLI_INSTALLER,
       Env.NPM_REGISTRY,
       'SFDX_REDIRECTED',
-      Env.S3_HOST,
       Env.UPDATE_INSTRUCTIONS,
     ].map((key): [string, string] => [key, env.getString(key, '<not set>')])
   );
