@@ -66,8 +66,14 @@ jobs:
           node-version: lts/*
           cache: yarn
         # NOTE: This will install the highest v1 of sf.  This will typically be the nightly.
-      - run: npm install -g sfdx-cli@${{ inputs.channel-or-version }} @salesforce/cli@^1 --omit=dev
-      - run: yarn install
+      - name: Install CLIs
+        uses: nick-fields/retry@943e742917ac94714d2f408a0e8320f2d1fcafcd
+        with:
+          max_attempts: 3
+          retry_wait_seconds: 60
+          command: npm install -g sfdx-cli@${{ inputs.channel-or-version }} @salesforce/cli@^1 --omit=dev
+          timeout_minutes: 60
+      - uses: salesforcecli/github-workflows/.github/actions/yarnInstallWithRetries@main
       - name: Run NUT (with retries)
         uses: nick-fields/retry@943e742917ac94714d2f408a0e8320f2d1fcafcd
         with:
