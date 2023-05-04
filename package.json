@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.200.5",
+  "version": "7.200.6",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -155,7 +155,7 @@
     "@salesforce/ts-types"
   ],
   "dependencies": {
-    "@oclif/core": "2.8.4",
+    "@oclif/core": "2.8.5",
     "@oclif/plugin-autocomplete": "2.1.9",
     "@oclif/plugin-commands": "2.2.14",
     "@oclif/plugin-help": "5.2.9",
@@ -167,7 +167,7 @@
     "@oclif/plugin-warn-if-update-available": "2.0.36",
     "@oclif/plugin-which": "2.2.19",
     "@salesforce/core": "3.36.0",
-    "@salesforce/kit": "1.9.2",
+    "@salesforce/kit": "3.0.0",
     "@salesforce/plugin-apex": "2.2.15",
     "@salesforce/plugin-auth": "2.7.14",
     "@salesforce/plugin-community": "2.2.11",
@@ -176,7 +176,7 @@
     "@salesforce/plugin-deploy-retrieve": "1.8.18",
     "@salesforce/plugin-info": "2.6.10",
     "@salesforce/plugin-limits": "2.3.13",
-    "@salesforce/plugin-org": "2.7.3",
+    "@salesforce/plugin-org": "2.8.1",
     "@salesforce/plugin-packaging": "1.16.11",
     "@salesforce/plugin-schema": "2.3.10",
     "@salesforce/plugin-settings": "1.4.6",
@@ -187,7 +187,7 @@
     "@salesforce/plugin-trust": "2.4.14",
     "@salesforce/plugin-user": "2.3.10",
     "@salesforce/sf-plugins-core": "2.4.0",
-    "@salesforce/ts-types": "1.7.3",
+    "@salesforce/ts-types": "2.0.1",
     "debug": "^4.3.4",
     "tslib": "^2.4.1"
   },
@@ -237,7 +237,7 @@
     "@salesforce/source-deploy-retrieve": "8.0.5",
     "@salesforce/source-tracking": "3.1.1",
     "@salesforce/templates": "57.1.1",
-    "@salesforce/ts-types": "1.7.3"
+    "@salesforce/ts-types": "2.0.1"
   },
   "scripts": {
     "build": "sf-build",
