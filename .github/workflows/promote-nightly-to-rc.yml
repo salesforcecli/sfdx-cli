@@ -27,28 +27,30 @@ jobs:
         with:
           node-version: lts/*
           cache: yarn
-      - run: ./scripts/verify-promote nightly latest-rc
-      - run: npm install -g @salesforce/plugin-release-management --omit=dev
-      - run: |
-          ATTEMPT=1
-          MAX=5
-          DELAY=120 # two minutes
-
-          # Retry several times because the S3 cache can cause failures
-          # Command: sf-release cli:versions:inspect -c stable-rc -l archive
-
-          while true; do
-              sf-release cli:versions:inspect -c stable-rc -l archive && break || {
-                  if [[ $ATTEMPT -lt $MAX ]]; then
-                      ((ATTEMPT++))
-                      echo "Promote verify failed - trying again ($ATTEMPT/$MAX)"
-                      sleep $DELAY;
-                  else
-                      "Exiting after $ATTEMPT failed attempts"
-                      exit 1
-                  fi
-              }
-          done
+      - uses: nick-fields/retry@943e742917ac94714d2f408a0e8320f2d1fcafcd
+        name: verify promote scripts
+        with:
+          max_attempts: 5
+          retry_wait_seconds: 120
+          command: ./scripts/verify-promote nightly latest-rc
+          retry_on: error
+          timeout_minutes: 60
+      - name: Install plugin-release-management
+        uses: nick-fields/retry@943e742917ac94714d2f408a0e8320f2d1fcafcd
+        with:
+          max_attempts: 5
+          retry_wait_seconds: 120
+          command: npm install -g @salesforce/plugin-release-management --omit=dev
+          retry_on: error
+          timeout_minutes: 60
+      - name: Verify promoted versions
+        uses: nick-fields/retry@943e742917ac94714d2f408a0e8320f2d1fcafcd
+        with:
+          max_attempts: 5
+          retry_wait_seconds: 120
+          command: sf-release cli:versions:inspect -c stable-rc -l archive
+          retry_on: error
+          timeout_minutes: 60
 
   announce-promotion-to-slack:
     needs: [promote-verify]
