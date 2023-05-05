@@ -20,12 +20,14 @@
     "scripts/include-sf.js",
     "scripts/post-install-release-notes.js",
     "!dist/**/*.test.js",
+    "/scripts/preinstall.js",
     "/npm-shrinkwrap.json"
   ],
   "oclif": {
     "bin": "sfdx",
     "scope": "salesforce",
     "commands": "./dist/commands",
+    "nsisCustomization": "scripts/nsis.nsi",
     "topicSeparator": " ",
     "flexibleTaxonomy": true,
     "helpClass": "./dist/help/sfdxHelp.js",
@@ -260,6 +262,7 @@
     "posttest": "yarn test:deprecation-policy ",
     "prepack": "yarn compile && yarn lint && yarn oclif-artifacts",
     "prepare": "sf-install && yarn compile && yarn lint",
+    "preinstall": "node ./scripts/preinstall.js",
     "prepublishOnly": "npm shrinkwrap",
     "pretarball": "sf-release cli:tarballs:prepare && ./scripts/include-sf.js",
     "promote": "oclif promote",
