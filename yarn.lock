@@ -1830,16 +1830,16 @@
     "@salesforce/sf-plugins-core" "^2.2.9"
     tslib "^2"
 
-"@salesforce/plugin-custom-metadata@2.1.19":
-  version "2.1.19"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-custom-metadata/-/plugin-custom-metadata-2.1.19.tgz#b7d4cbf7fed2c7c5a030c8d9753c877bf0c0a79b"
-  integrity sha512-LtI+RJk2fj6fuP5MTMZLFUUAGzY/MATT2iQyLkW+14y8LJeuA0/F96u3YiH6lKLswyk4CB8BJGOIQLQwgQl95g==
+"@salesforce/plugin-custom-metadata@2.1.20":
+  version "2.1.20"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-custom-metadata/-/plugin-custom-metadata-2.1.20.tgz#95c4df0085394d2fe99cbac9924b6611fa48c328"
+  integrity sha512-LCO4KlihseZpnA7BnRtB9KK3hADlSbopn8RzI+AurEN3fs1tZjLCrf9Niz+Kj9Obl4c9IuGGW3cHgpaHjh5f+A==
   dependencies:
     "@oclif/core" "^2.8.2"
     "@salesforce/core" "^3.36.0"
-    "@salesforce/sf-plugins-core" "^2.2.7"
+    "@salesforce/sf-plugins-core" "^2.4.2"
     "@salesforce/ts-types" "^1.7.3"
-    csv-parse "^5.3.8"
+    csv-parse "^5.3.10"
     fast-xml-parser "^4.2.2"
     tslib "^2"
 
@@ -1859,16 +1859,16 @@
     jsforce "2.0.0-beta.21"
     tslib "^2"
 
-"@salesforce/plugin-deploy-retrieve@1.8.18":
-  version "1.8.18"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-deploy-retrieve/-/plugin-deploy-retrieve-1.8.18.tgz#5ecc480333550a374a75ecbe1c6c3a836e1e0e95"
-  integrity sha512-odpE25084dWb3QmwPhJuR+BnMQpF4wLNRLc862na7H751XUarUfboKbhAvhDOS4aZfv4y/EmZ4D5D5H0IBEjfg==
+"@salesforce/plugin-deploy-retrieve@1.8.19":
+  version "1.8.19"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-deploy-retrieve/-/plugin-deploy-retrieve-1.8.19.tgz#6d33b4d2ee838d43c2614216675d96b024440dbc"
+  integrity sha512-P1bUY+UXaLJHDbfCNvyTJMQ3psqmMJsJf1mFNmWyiDfXqs2bvsjB4BGyJRUN0MraF8vBJfxuf5RBQjz818pTPg==
   dependencies:
     "@oclif/core" "^2.8.2"
     "@salesforce/apex-node" "^1.6.0"
     "@salesforce/core" "^3.34.6"
     "@salesforce/kit" "^1.9.2"
-    "@salesforce/sf-plugins-core" "^2.2.7"
+    "@salesforce/sf-plugins-core" "^2.4.2"
     "@salesforce/source-deploy-retrieve" "^8.0.2"
     "@salesforce/source-tracking" "^3.1.0"
     chalk "^4.1.2"
@@ -2041,12 +2041,12 @@
     yeoman-environment "^3.15.1"
     yeoman-generator "^5.8.0"
 
-"@salesforce/plugin-trust@2.4.14", "@salesforce/plugin-trust@^2.4.2":
-  version "2.4.14"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-trust/-/plugin-trust-2.4.14.tgz#03bfad14c18891dd01e69cf405f38d09ff5f700d"
-  integrity sha512-QjPPpMma8H30fNDMZLpnb34lSQ3j4czvl5oMUA+fY3toZ/xE/Y2NWKCobkjOOpwt34k0aZ02KUGG18aZgu4OSA==
+"@salesforce/plugin-trust@2.4.15", "@salesforce/plugin-trust@^2.4.2":
+  version "2.4.15"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-trust/-/plugin-trust-2.4.15.tgz#25cfb2f032d7cb87506afeadc9a1301c882481c1"
+  integrity sha512-LUI/k/ax36Jwcxv7BmVQyBS9Id5PLh+NFa1dX/TSQ/jlTIT8taSj4/8Rhr3TO9kE2Fwlzy0OkrJm9yuB9Hac8g==
   dependencies:
-    "@oclif/core" "^2.8.2"
+    "@oclif/core" "^2.8.5"
     "@salesforce/core" "^3.33.4"
     "@salesforce/plugin-telemetry" "^2.1.5"
     "@salesforce/sf-plugins-core" "^2"
@@ -2081,7 +2081,7 @@
   resolved "https://registry.yarnpkg.com/@salesforce/schemas/-/schemas-1.5.1.tgz#2d1bfdcf593caaa04cd4b3e6fe621097ff7f28fe"
   integrity sha512-MRqU+tn8w5IFvZ0Lm9YKLgxYxr2MQMI+fXXsTrwfUnijsps+ybF9IOTu6MOMxxl2vCUkO8XDjA435wXlWSLI6g==
 
-"@salesforce/sf-plugins-core@2.4.2", "@salesforce/sf-plugins-core@^2", "@salesforce/sf-plugins-core@^2.0.1", "@salesforce/sf-plugins-core@^2.2.10", "@salesforce/sf-plugins-core@^2.2.11", "@salesforce/sf-plugins-core@^2.2.4", "@salesforce/sf-plugins-core@^2.2.5", "@salesforce/sf-plugins-core@^2.2.7", "@salesforce/sf-plugins-core@^2.2.9", "@salesforce/sf-plugins-core@^2.3.0", "@salesforce/sf-plugins-core@^2.4.0":
+"@salesforce/sf-plugins-core@2.4.2", "@salesforce/sf-plugins-core@^2", "@salesforce/sf-plugins-core@^2.0.1", "@salesforce/sf-plugins-core@^2.2.10", "@salesforce/sf-plugins-core@^2.2.11", "@salesforce/sf-plugins-core@^2.2.4", "@salesforce/sf-plugins-core@^2.2.5", "@salesforce/sf-plugins-core@^2.2.9", "@salesforce/sf-plugins-core@^2.3.0", "@salesforce/sf-plugins-core@^2.4.0", "@salesforce/sf-plugins-core@^2.4.2":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@salesforce/sf-plugins-core/-/sf-plugins-core-2.4.2.tgz#86329d8df9a8704a58db8989a31414376fdcf79e"
   integrity sha512-X2KuYhC0vQN53j+10dDch3MbDAQMsldgyW8m8UrKcya12puJcyVv41PHw5XhrPk532/dFu8iCDjQ4tl2Pq4/RA==
@@ -4162,10 +4162,10 @@ csv-parse@^4.16.3, csv-parse@^4.8.2:
   resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-4.16.3.tgz#7ca624d517212ebc520a36873c3478fa66efbaf7"
   integrity sha512-cO1I/zmz4w2dcKHVvpCr7JVRu8/FymG5OEpmvsZYlccYolPBLoVGKUHgNoc4ZGkFeFlWGEDmMyBM+TTqRdW/wg==
 
-csv-parse@^5.3.8:
-  version "5.3.9"
-  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-5.3.9.tgz#7af0daa161b0213080bb2cdffacd9b699cf48963"
-  integrity sha512-Nuh09OE1+wG6x5Lu2T+woxlupPAnWJ6Wj9XVYK74gP646e5gDrUsrCws1zz5NbckpQ+jygnxb8xDLj3gfBxi3w==
+csv-parse@^5.3.10:
+  version "5.3.10"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-5.3.10.tgz#23a83cf1abe09a73210f2d35961f870005a03e87"
+  integrity sha512-cTXY6iy0gN5Ha/cGILeDgQE+nKiKDU2m0DjSRdJhr86BN3cM7oefBsTk2aH0LQeaYtL7Z7HvW+jYoadmdhzeDA==
 
 csv-stringify@^5.3.4:
   version "5.6.5"
