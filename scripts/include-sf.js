@@ -4,7 +4,7 @@ const path = require('path');
 const shelljs = require('shelljs');
 const fs = require('fs');
 
-shelljs.exec(`npm install @salesforce/cli@1.77.6 -g`);
+shelljs.exec(`npm install @salesforce/cli@1.78.0 -g`);
 
 const npmGlobalInstallPath = shelljs.exec('npm list -g --depth 0 | head -1').stdout.trim();
 const sfGlobalPath = path.join(npmGlobalInstallPath, 'node_modules', '@salesforce', 'cli');
