@@ -4,11 +4,7 @@ const path = require('path');
 const shelljs = require('shelljs');
 const fs = require('fs');
 
-// Get the latest version that starts with 1 (we do not want to ever bundle version 2 of @salesforce/cli)
-// We cannot use @salesforce/cli@^1 because that will not get versions higher than what is tagged as "latest"
-const versions = JSON.parse(shelljs.exec('npm view @salesforce/cli versions --json').stdout.trim());
-const latestVersion = versions.reverse().find((v) => v.startsWith('1.') && !v.includes('-'));
-shelljs.exec(`npm install @salesforce/cli@${latestVersion} -g`);
+shelljs.exec(`npm install @salesforce/cli@1.78.0 -g`);
 
 const npmGlobalInstallPath = shelljs.exec('npm list -g --depth 0 | head -1').stdout.trim();
 const sfGlobalPath = path.join(npmGlobalInstallPath, 'node_modules', '@salesforce', 'cli');
