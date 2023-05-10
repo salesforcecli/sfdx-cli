@@ -40,7 +40,7 @@ jobs:
           # We are using latest-rc SF_CLI_VERSION version. Soon both CLIs will not be bundled together
           build-args: |
             SALESFORCE_CLI_VERSION=${{ inputs.version }}
-            SF_CLI_VERSION=^1
+            SF_CLI_VERSION=7.180.0
           # TODO: Do we want _all_ docker images to release with the version in their name?
           #       Should we skip this on prereleases?
           tags: salesforce/salesforcedx:${{ inputs.channel }}-full, salesforce/salesforcedx:${{ inputs.version }}-full
