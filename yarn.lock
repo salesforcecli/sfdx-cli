@@ -1974,14 +1974,14 @@
     "@salesforce/sf-plugins-core" "^2.2.9"
     tslib "^2"
 
-"@salesforce/plugin-settings@1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-settings/-/plugin-settings-1.4.6.tgz#f66820cbd22040312b4ae84859a8f44863eccca1"
-  integrity sha512-3gwFWimkT4HwVEt3PhwgsrrI8vqxY5kdMxm2bkAGkuoIqu9V077e5LuqahQSfqGy4TH5Vj4hVXQIksQgyrG26w==
+"@salesforce/plugin-settings@1.4.7":
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-settings/-/plugin-settings-1.4.7.tgz#d2f221238d061348003b7cfaf43402d9e63aeee2"
+  integrity sha512-fi602KGpTSbLQ3HCm9daJqzZICmvRP7dl1HtTY46QojGd1BtxBJ7/rVQeQBQEJQ4oXvKRPSB7KdL+sTpebGLAg==
   dependencies:
     "@oclif/core" "^2.8.2"
-    "@salesforce/core" "^3.35.0"
-    "@salesforce/sf-plugins-core" "^2.3.0"
+    "@salesforce/core" "^3.36.1"
+    "@salesforce/sf-plugins-core" "^2.4.0"
     fast-levenshtein "^3.0.0"
     tslib "^2"
 
@@ -1998,10 +1998,10 @@
     change-case "^4.1.2"
     tslib "^2"
 
-"@salesforce/plugin-source@2.10.7":
-  version "2.10.7"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.10.7.tgz#734cd4638f0b286541f2beb6baf6e3bb2d629955"
-  integrity sha512-pizjglkzJk6VqpNwU1bILNHaYXS23KvQ8Jl/cT4euwMgkALBU869jlryG1nKoOZG3KLRReB3+Tw7TJ+KqvVLGQ==
+"@salesforce/plugin-source@2.10.8":
+  version "2.10.8"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-source/-/plugin-source-2.10.8.tgz#49f832a4f98a53f64a6341b73b3a06f27658ffc0"
+  integrity sha512-wNyx9JqUQtAGidLWg6djGvud1fjHA+aQt+3VpUhgZDl/dxUAgzaG9SVUcWmcq0eCdtafuYXNFIWWktnrfmKduQ==
   dependencies:
     "@oclif/core" "^2.8.2"
     "@salesforce/apex-node" "^1.6.0"
@@ -2009,7 +2009,7 @@
     "@salesforce/kit" "^1.9.2"
     "@salesforce/sf-plugins-core" "^2.4.0"
     "@salesforce/source-deploy-retrieve" "^8.0.1"
-    "@salesforce/source-tracking" "^3.1.0"
+    "@salesforce/source-tracking" "^3.1.2"
     chalk "^4.1.2"
     got "^11.8.6"
     proxy-agent "^5.0.0"
@@ -2113,7 +2113,7 @@
     proxy-from-env "^1.1.0"
     unzipper "0.10.11"
 
-"@salesforce/source-tracking@3.1.2", "@salesforce/source-tracking@^3.1.0":
+"@salesforce/source-tracking@3.1.2", "@salesforce/source-tracking@^3.1.0", "@salesforce/source-tracking@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@salesforce/source-tracking/-/source-tracking-3.1.2.tgz#a922820eb6e144b60feb30e669000e41ee6ea6ea"
   integrity sha512-8TV1El0gzhMbyoqd1beFhJtyBeOspI4J2tHP0lFMs5DfAO2W8PiQtm4uCwo/Ldi2u1s3JGfCN8FFaW5GyI93FQ==
