@@ -11,9 +11,7 @@ const getVersion = () => {
   const distTag = Object.entries(distTags).find(([, version]) => version === sfdxVersion)[0];
 
   // Now get the version of @salesforce/cli for the same dist-tag
-  let sfVersion = JSON.parse(
-    shelljs.exec(`npm view @salesforce/cli@${distTag} version --json`, { silent: true }).stdout.trim()
-  );
+  let sfVersion = shelljs.exec(`npm view @salesforce/cli@${distTag} version`, { silent: true }).stdout.trim();
 
   // Make sure that the version of @salesforce/cli does not start with 2
   if (sfVersion.startsWith('2')) {
