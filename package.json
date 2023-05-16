@@ -18,6 +18,7 @@
     "oclif.manifest.json",
     "dist/**/*.js",
     "scripts/include-sf.js",
+    "scripts/determine-sf-version.js",
     "scripts/post-install-release-notes.js",
     "!dist/**/*.test.js",
     "/npm-shrinkwrap.json"
