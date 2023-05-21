@@ -1260,15 +1260,15 @@
     fs-extra "^9.0.1"
 
 "@oclif/plugin-command-snapshot@^3.2.11":
-  version "3.3.13"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-command-snapshot/-/plugin-command-snapshot-3.3.13.tgz#1b200d565c0d7f223d633c27e580232977c23332"
-  integrity sha512-oFOXYGJ/DNp6VKwVlyynL7DG09CflXxTFRt2xVatupQKx4+2/otsGHENYwZv0RUpQalWCXWTu+8iEGZOXTgN2A==
+  version "3.3.15"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-command-snapshot/-/plugin-command-snapshot-3.3.15.tgz#2b1f35b75d9bdd15d06386382bb5a53577bdf45a"
+  integrity sha512-DJ+R8Ega5tq3RTbI6TZ0gI29lEldcSf909VUfsP2zY1tPqkn8IKhs/bFLcS2OkjQgLl/1FpeejFoc4rY44YbRg==
   dependencies:
-    "@oclif/core" "^2.8.2"
+    "@oclif/core" "^2.8.5"
     chalk "^4.1.2"
     just-diff "^5.2.0"
     lodash "^4.17.21"
-    semver "^7.5.0"
+    semver "^7.5.1"
     ts-json-schema-generator "^1.2.0"
     tslib "^2.5.0"
 
