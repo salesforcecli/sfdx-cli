@@ -194,7 +194,7 @@
   },
   "devDependencies": {
     "@oclif/plugin-command-snapshot": "^3.2.11",
-    "@salesforce/dev-config": "^3.1.0",
+    "@salesforce/dev-config": "^4.0.1",
     "@salesforce/dev-scripts": "^3.1.0",
     "@salesforce/plugin-release-management": "^3.16.4",
     "@salesforce/prettier-config": "^0.0.3",
