@@ -18,6 +18,9 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
 
+      - name: Yarn install
+        uses: salesforcecli/github-workflows/.github/actions/yarnInstallWithRetries@main
+
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -30,6 +33,12 @@ jobs:
         with:
           images: salesforce/salesforcedx
 
+      - name: Get sf version to bundle
+        id: sf-version
+        run: |
+          VERSION=$(node -e 'require("./scripts/determine-sf-version").getVersion()')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
@@ -40,7 +49,7 @@ jobs:
           # We are using latest-rc SF_CLI_VERSION version. Soon both CLIs will not be bundled together
           build-args: |
             SALESFORCE_CLI_VERSION=${{ inputs.version }}
-            SF_CLI_VERSION=^1
+            SF_CLI_VERSION=${{ steps.sf-version.outputs.version }}
           # TODO: Do we want _all_ docker images to release with the version in their name?
           #       Should we skip this on prereleases?
           tags: salesforce/salesforcedx:${{ inputs.channel }}-full, salesforce/salesforcedx:${{ inputs.version }}-full

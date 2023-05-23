@@ -51,6 +51,7 @@ jobs:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
       channel: ${{ needs.get-channel.outputs.s3-channel }}
+      nodeVersion: ${{ vars.TARBALL_NODE_VERSION }}
     secrets: inherit
 
   archives-verify:
@@ -82,6 +83,7 @@ jobs:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
       channel: ${{ needs.get-channel.outputs.s3-channel }}
+      nodeVersion: ${{ vars.TARBALL_NODE_VERSION }}
     secrets: inherit
 
   # The rename-mac-pkg job is only needed as long as the developer site is linking to the old sfdx.pkg file and the mac signing job is only signing the old file as well.
@@ -106,6 +108,7 @@ jobs:
       cli: sfdx
       version: ${{ github.event.release.tag_name }}
       channel: ${{ needs.get-channel.outputs.s3-channel }}
+      nodeVersion: ${{ vars.TARBALL_NODE_VERSION }}
     secrets: inherit
 
   build-docker-slim:
