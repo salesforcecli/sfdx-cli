@@ -1316,13 +1316,13 @@
     "@oclif/core" "^2.8.0"
     fast-levenshtein "^3.0.0"
 
-"@oclif/plugin-plugins@3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-3.1.1.tgz#9bdea3090b5b5515ef13a7b4aae608014fbc1e81"
-  integrity sha512-KFWOBXNF40zx8/YGL0aH61q4RJ6werVpK1YEvBac1ZxBcNXAkEoTqhRy/PBQgAyfJlF19HXyLNKBBMbZL2gNLA==
+"@oclif/plugin-plugins@3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-3.1.2.tgz#524ac2d28f2a2df4895f71ea2c6c1b06c8e3e51e"
+  integrity sha512-gBfnPBnGR3bMqCgwwuDW+tUCxWhmDtpdiNTLCXfZz/h1Rmgk96XoEM0Tx/w1AfjgWrL8dzsS477qyLbr0M+htg==
   dependencies:
     "@oclif/color" "^1.0.4"
-    "@oclif/core" "^2.8.2"
+    "@oclif/core" "^2.8.5"
     chalk "^4.1.2"
     debug "^4.3.4"
     fs-extra "^9.0"
