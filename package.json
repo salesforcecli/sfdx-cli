@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.205.0",
+  "version": "7.205.1",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -88,7 +88,7 @@
     ],
     "jitPlugins": {
       "@salesforce/plugin-sobject": "0.1.22",
-      "@salesforce/plugin-dev": "0.7.7",
+      "@salesforce/plugin-dev": "0.7.8",
       "@salesforce/sfdx-plugin-lwc-test": "1.0.2",
       "@salesforce/sfdx-scanner": "3.12.0"
     },
@@ -170,7 +170,7 @@
     "@salesforce/core": "4.1.0",
     "@salesforce/kit": "3.0.2",
     "@salesforce/plugin-apex": "2.3.0",
-    "@salesforce/plugin-auth": "2.7.17",
+    "@salesforce/plugin-auth": "2.8.0",
     "@salesforce/plugin-community": "2.3.0",
     "@salesforce/plugin-custom-metadata": "2.1.24",
     "@salesforce/plugin-data": "2.3.20",
