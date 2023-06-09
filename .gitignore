@@ -36,6 +36,9 @@ package.json.bak.
 Library
 
 # -- CLEAN ALL
+*.tsbuildinfo
+.eslintcache
+.wireit
 node_modules
 
 # --
