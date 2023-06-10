@@ -1501,7 +1501,7 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@salesforce/core@4.2.1", "@salesforce/core@^4.0.1", "@salesforce/core@^4.1.0", "@salesforce/core@^4.1.2", "@salesforce/core@^4.2.0":
+"@salesforce/core@4.2.1", "@salesforce/core@^4.0.1", "@salesforce/core@^4.1.0", "@salesforce/core@^4.1.2", "@salesforce/core@^4.2.0", "@salesforce/core@^4.2.1":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-4.2.1.tgz#7fdbac22816d698b01b4007ba41028c230c7962e"
   integrity sha512-1bi3era5/0lFqYNU786b1As+8JTDay1o8EUMbrhNR/GhVAH1hlJlGNgfseASrKDR9vuITykKI/5jWUa7kzFU6w==
@@ -1605,10 +1605,10 @@
     shx "^0.3.3"
     tslib "^2.5.0"
 
-"@salesforce/packaging@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/packaging/-/packaging-2.0.2.tgz#5f922d777ae463d6dc254290936212e728c277db"
-  integrity sha512-2g2bFX1na+Pi0Zyqx1+fucShJabNSjOdnlzuximeIo9w4G4Iro/zHdzHm9/AG3H9jSg7Wq1QSGx4h3BPSozbsA==
+"@salesforce/packaging@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/packaging/-/packaging-2.1.2.tgz#3b8b7d7ebe357572beb83b4a7da5881f17d64d7a"
+  integrity sha512-H/XskHCH6qz5jmI7GUe5uridDNtpIlZ1ayGM0dKTuvX6D1KulFydXfJUV3ed+aKg43JRNmf3PUtgCKP4zTSIbw==
   dependencies:
     "@oclif/core" "^2.8.5"
     "@salesforce/core" "^4.0.1"
@@ -1616,7 +1616,7 @@
     "@salesforce/schemas" "^1.5.1"
     "@salesforce/source-deploy-retrieve" "^8.6.0"
     "@salesforce/ts-types" "^2.0.2"
-    "@xmldom/xmldom" "^0.8.7"
+    "@xmldom/xmldom" "^0.8.8"
     debug "^4.3.4"
     globby "^11"
     graphology "^0.25.1"
@@ -1772,16 +1772,16 @@
     open "^8.4.2"
     tslib "^2"
 
-"@salesforce/plugin-packaging@1.19.0":
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-packaging/-/plugin-packaging-1.19.0.tgz#412fe57fe55faacf66266c7dc687876ef28325c4"
-  integrity sha512-4XIlhdlqsSwGbc7l3G3R+ZIJcgnazz+LvrpSM/TXfH+EkdRFk4puZfNgzZif+AXerB9ACDXEagiCctbW8lZ9zg==
+"@salesforce/plugin-packaging@1.20.0":
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-packaging/-/plugin-packaging-1.20.0.tgz#f64b1731af4f9c1d66d2adc80ad31b2fb3ee2800"
+  integrity sha512-uf7Xy5zK1M35DLk2rfibNRdh3EjpZ/uzlxjwa9fU5UoHX1YSZWbe0uIsPLDbb9aGqjXMoK8fhLgSFzZJvDEJzA==
   dependencies:
     "@oclif/core" "^2.8.2"
-    "@salesforce/core" "^4.0.1"
+    "@salesforce/core" "^4.2.1"
     "@salesforce/kit" "^3.0.2"
-    "@salesforce/packaging" "^2.0.2"
-    "@salesforce/sf-plugins-core" "^3.0.2"
+    "@salesforce/packaging" "^2.1.2"
+    "@salesforce/sf-plugins-core" "^3.0.4"
     chalk "^4.1.2"
     tslib "^2"
 
@@ -1934,7 +1934,7 @@
   resolved "https://registry.yarnpkg.com/@salesforce/schemas/-/schemas-1.5.1.tgz#2d1bfdcf593caaa04cd4b3e6fe621097ff7f28fe"
   integrity sha512-MRqU+tn8w5IFvZ0Lm9YKLgxYxr2MQMI+fXXsTrwfUnijsps+ybF9IOTu6MOMxxl2vCUkO8XDjA435wXlWSLI6g==
 
-"@salesforce/sf-plugins-core@3.0.4", "@salesforce/sf-plugins-core@^3.0.2":
+"@salesforce/sf-plugins-core@3.0.4", "@salesforce/sf-plugins-core@^3.0.2", "@salesforce/sf-plugins-core@^3.0.4":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@salesforce/sf-plugins-core/-/sf-plugins-core-3.0.4.tgz#e62633de4f15e869b0200dfce2c633f8640d142c"
   integrity sha512-Ap1maS6fYwD8Ipa1rJLD6EuUMMnErc7IRpEzFNJj9XH0MF4+AmkE8TpL3rcXXyVPADkrTWZXR9XhlUwIe+xU/w==
@@ -2482,10 +2482,10 @@
   resolved "https://registry.yarnpkg.com/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz#aa58042711d6e3275dd37dc597e5d31e8c290a44"
   integrity sha512-sL/cEvJWAnClXw0wHk85/2L0G6Sj8UB0Ctc1TEMbKSsmpRosqhwj9gWgFRZSrBr2f9tiXISwNhCPmlfqUqyb9Q==
 
-"@xmldom/xmldom@^0.8.7":
-  version "0.8.7"
-  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.7.tgz#8b1e39c547013941974d83ad5e9cf5042071a9a0"
-  integrity sha512-sI1Ly2cODlWStkINzqGrZ8K6n+MTSbAeQnAipGyL+KZCXuHaRlj2gyyy8B/9MvsFFqN7XHryQnB2QwhzvJXovg==
+"@xmldom/xmldom@^0.8.8":
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.8.tgz#d0d11511cbc1de77e53342ad1546a4d487d6ea72"
+  integrity sha512-0LNz4EY8B/8xXY86wMrQ4tz6zEHZv9ehFMJPm8u2gq5lQ71cfRKdaKyxfJAx5aUoyzx0qzgURblTisPGgz3d+Q==
 
 "@yarnpkg/lockfile@^1.1.0":
   version "1.1.0"
