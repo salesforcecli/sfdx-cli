@@ -1070,7 +1070,7 @@
     supports-color "^8.1.1"
     tslib "^2"
 
-"@oclif/core@2.8.7", "@oclif/core@^2.0.7", "@oclif/core@^2.8.0", "@oclif/core@^2.8.2", "@oclif/core@^2.8.4", "@oclif/core@^2.8.5", "@oclif/core@^2.8.6":
+"@oclif/core@2.8.7", "@oclif/core@^2.0.7", "@oclif/core@^2.8.0", "@oclif/core@^2.8.2", "@oclif/core@^2.8.4", "@oclif/core@^2.8.5", "@oclif/core@^2.8.6", "@oclif/core@^2.8.7":
   version "2.8.7"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-2.8.7.tgz#e3fb73477cfb9e72c89bc68701d04953c084c0e8"
   integrity sha512-WTZUFgANYGyHQOmGc2YsczEdqdlG2/ZEfqksHnuYbz3egozpka/R9LrFwNfWPZETi9ydzcjDWwJKUGQmJG3ixA==
@@ -1128,12 +1128,12 @@
     ts-json-schema-generator "^1.2.0"
     tslib "^2.5.2"
 
-"@oclif/plugin-commands@2.2.15":
-  version "2.2.15"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-commands/-/plugin-commands-2.2.15.tgz#a157959eac68c244be0b1991d9f0e646f259286b"
-  integrity sha512-QaTIZhG5SW7sr42p4crJyE7jindr1hdHdazWTjiiPjsFEP3zUxVsNmwEMWPsBBVsjzw/gtztgpAexkZWJD8rXA==
+"@oclif/plugin-commands@2.2.16":
+  version "2.2.16"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-commands/-/plugin-commands-2.2.16.tgz#d39cd9b21fb0a70da93310841baa6037425b10fb"
+  integrity sha512-ZUfLw0rIBt0adMOgfyd3OU5psRCYBLt8QHmKit3WP5qZMbEMpW2ichOTxBNUFLJQ0AwW+qGxmdO2eGFh3yb5sw==
   dependencies:
-    "@oclif/core" "^2.8.5"
+    "@oclif/core" "^2.8.7"
     lodash "^4.17.11"
 
 "@oclif/plugin-help@5.2.9", "@oclif/plugin-help@^5.1.19":
