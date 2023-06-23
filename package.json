@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.207.6",
+  "version": "7.208.0",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -88,7 +88,7 @@
     ],
     "jitPlugins": {
       "@salesforce/plugin-sobject": "0.1.26",
-      "@salesforce/plugin-dev": "0.7.11",
+      "@salesforce/plugin-dev": "0.7.12",
       "@salesforce/sfdx-plugin-lwc-test": "1.0.2",
       "@salesforce/sfdx-scanner": "3.13.0"
     },
