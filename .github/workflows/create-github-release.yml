@@ -71,7 +71,7 @@ jobs:
 
       - name: Conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@d360fad3a42feca6462f72c97c165d60a02d4bf2
+        uses: TriPSs/conventional-changelog-action@ed98b658f3015c5afb96a13caf9bb81f69df49e6
         # overriding some of the basic behaviors to just get the changelog
         with:
           git-user-name: svc-cli-bot
