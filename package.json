@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.208.7",
+  "version": "7.208.8",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -235,8 +235,8 @@
     "wireit": "^0.9.5"
   },
   "resolutions": {
-    "@salesforce/schemas": "1.5.1",
-    "@salesforce/source-deploy-retrieve": "9.2.8",
+    "@salesforce/schemas": "1.6.0",
+    "@salesforce/source-deploy-retrieve": "9.3.0",
     "@salesforce/source-tracking": "4.2.2",
     "@salesforce/templates": "58.0.1"
   },
