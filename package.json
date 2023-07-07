@@ -1,7 +1,7 @@
 {
   "name": "sfdx-cli",
   "description": "Salesforce CLI",
-  "version": "7.203.4",
+  "version": "7.209.5",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "bugs": "https://github.com/forcedotcom/cli/issues",
@@ -11,7 +11,7 @@
     "sfdx": "bin/run"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "files": [
     "bin",
@@ -89,10 +89,10 @@
       "@salesforce/plugin-user"
     ],
     "jitPlugins": {
-      "@salesforce/plugin-sobject": "0.1.22",
-      "@salesforce/plugin-dev": "0.7.7",
+      "@salesforce/plugin-sobject": "0.1.32",
+      "@salesforce/plugin-dev": "0.7.13",
       "@salesforce/sfdx-plugin-lwc-test": "1.0.2",
-      "@salesforce/sfdx-scanner": "3.12.0"
+      "@salesforce/sfdx-scanner": "3.13.0"
     },
     "devPlugins": [
       "@oclif/plugin-command-snapshot",
@@ -134,7 +134,6 @@
     "@oclif/plugin-version",
     "@oclif/plugin-warn-if-update-available",
     "@oclif/plugin-which",
-    "@salesforce/core",
     "@salesforce/kit",
     "@salesforce/plugin-apex",
     "@salesforce/plugin-auth",
@@ -158,46 +157,46 @@
     "@salesforce/ts-types"
   ],
   "dependencies": {
-    "@oclif/core": "2.8.5",
-    "@oclif/plugin-autocomplete": "2.2.0",
-    "@oclif/plugin-commands": "2.2.15",
-    "@oclif/plugin-help": "5.2.9",
-    "@oclif/plugin-not-found": "2.3.23",
-    "@oclif/plugin-plugins": "3.0.1",
-    "@oclif/plugin-search": "0.0.17",
-    "@oclif/plugin-update": "3.1.15",
-    "@oclif/plugin-version": "1.3.4",
-    "@oclif/plugin-warn-if-update-available": "2.0.37",
-    "@oclif/plugin-which": "2.2.21",
-    "@salesforce/core": "3.36.2",
-    "@salesforce/kit": "3.0.1",
-    "@salesforce/plugin-apex": "2.2.21",
-    "@salesforce/plugin-auth": "2.7.16",
-    "@salesforce/plugin-community": "2.2.12",
-    "@salesforce/plugin-custom-metadata": "2.1.22",
-    "@salesforce/plugin-data": "2.3.19",
-    "@salesforce/plugin-deploy-retrieve": "1.9.6",
-    "@salesforce/plugin-info": "2.6.14",
-    "@salesforce/plugin-limits": "2.3.17",
-    "@salesforce/plugin-org": "2.9.1",
-    "@salesforce/plugin-packaging": "1.17.1",
-    "@salesforce/plugin-schema": "2.3.10",
-    "@salesforce/plugin-settings": "1.4.9",
-    "@salesforce/plugin-signups": "1.4.19",
-    "@salesforce/plugin-source": "2.10.10",
-    "@salesforce/plugin-telemetry": "2.2.0",
-    "@salesforce/plugin-templates": "55.4.17",
-    "@salesforce/plugin-trust": "2.4.19",
-    "@salesforce/plugin-user": "2.3.14",
-    "@salesforce/sf-plugins-core": "3.0.1",
-    "@salesforce/ts-types": "2.0.2",
+    "@oclif/core": "2.8.11",
+    "@oclif/plugin-autocomplete": "2.3.1",
+    "@oclif/plugin-commands": "2.2.17",
+    "@oclif/plugin-help": "5.2.11",
+    "@oclif/plugin-not-found": "2.3.26",
+    "@oclif/plugin-plugins": "3.1.6",
+    "@oclif/plugin-search": "0.0.18",
+    "@oclif/plugin-update": "3.1.22",
+    "@oclif/plugin-version": "1.3.6",
+    "@oclif/plugin-warn-if-update-available": "2.0.41",
+    "@oclif/plugin-which": "2.2.22",
+    "@salesforce/core": "^4.3.5",
+    "@salesforce/kit": "3.0.3",
+    "@salesforce/plugin-apex": "2.3.4",
+    "@salesforce/plugin-auth": "2.8.4",
+    "@salesforce/plugin-community": "2.3.5",
+    "@salesforce/plugin-custom-metadata": "2.1.30",
+    "@salesforce/plugin-data": "2.4.5",
+    "@salesforce/plugin-deploy-retrieve": "1.13.5",
+    "@salesforce/plugin-info": "2.6.25",
+    "@salesforce/plugin-limits": "2.3.23",
+    "@salesforce/plugin-org": "2.9.19",
+    "@salesforce/plugin-packaging": "1.20.1",
+    "@salesforce/plugin-schema": "2.3.17",
+    "@salesforce/plugin-settings": "1.4.17",
+    "@salesforce/plugin-signups": "1.4.22",
+    "@salesforce/plugin-source": "2.10.22",
+    "@salesforce/plugin-telemetry": "2.2.1",
+    "@salesforce/plugin-templates": "55.5.2",
+    "@salesforce/plugin-trust": "2.4.27",
+    "@salesforce/plugin-user": "2.3.20",
+    "@salesforce/sf-plugins-core": "3.1.4",
+    "@salesforce/ts-types": "2.0.4",
     "debug": "^4.3.4",
     "tslib": "^2.4.1"
   },
   "devDependencies": {
-    "@oclif/plugin-command-snapshot": "^3.2.11",
-    "@salesforce/dev-config": "^3.1.0",
-    "@salesforce/dev-scripts": "^3.1.0",
+    "@oclif/plugin-command-snapshot": "^4.0.2",
+    "@salesforce/dev-config": "^4.0.1",
+    "@salesforce/dev-scripts": "^5",
     "@salesforce/plugin-release-management": "^3.16.4",
     "@salesforce/prettier-config": "^0.0.3",
     "@salesforce/ts-sinon": "^1.4.2",
@@ -211,46 +210,46 @@
     "aws-sdk": "^2.1265.0",
     "chai": "^4.3.7",
     "check-yarn-lock": "^0.2.1",
-    "eslint": "^8.28.0",
+    "eslint": "^8.41.0",
     "eslint-config-airbnb-base": "~5.0.3",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-salesforce": "^1.1.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-salesforce": "^2.0.1",
     "eslint-config-salesforce-license": "^0.2.0",
     "eslint-config-salesforce-typescript": "^1.1.1",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-import": "2.27.5",
-    "eslint-plugin-jsdoc": "^39.6.4",
+    "eslint-plugin-jsdoc": "^43.0.5",
     "globby": "^11.1.0",
     "got": "^11.8.5",
     "husky": "^7.0.4",
     "mocha": "^9.2.2",
     "npm": "^8.19.3",
     "nyc": "^15.1.0",
-    "oclif": "^3.7.0",
+    "oclif": "^3.9.0",
     "prettier": "^2.8.4",
     "pretty-quick": "^3.1.3",
     "shelljs": "^0.8.5",
     "shx": "^0.3.4",
     "sinon": "10.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.5",
+    "wireit": "^0.9.5"
   },
   "resolutions": {
-    "@salesforce/schemas": "1.5.1",
-    "@salesforce/source-deploy-retrieve": "8.5.3",
-    "@salesforce/source-tracking": "3.1.5",
-    "@salesforce/templates": "57.1.2",
-    "@salesforce/ts-types": "2.0.2"
+    "@salesforce/schemas": "1.6.0",
+    "@salesforce/source-deploy-retrieve": "9.3.0",
+    "@salesforce/source-tracking": "4.2.4",
+    "@salesforce/templates": "58.0.1"
   },
   "scripts": {
-    "build": "sf-build",
+    "build": "wireit",
     "channel:promote": "sf-release channel:promote",
     "clean": "shx rm -rf dist tmp",
     "clean-all": "sf-clean all",
-    "compile": "sf-compile",
+    "compile": "wireit",
     "docs": "sf-docs",
-    "format": "sf-format",
-    "lint": "sf-lint",
+    "format": "wireit",
+    "lint": "wireit",
     "oclif-artifacts": "oclif manifest .",
     "pack:deb": "oclif pack:deb",
     "pack:macos": "oclif pack:macos --additional-cli sf",
@@ -260,7 +259,6 @@
     "pack:win": "oclif pack:win --additional-cli sf",
     "postinstall": "node ./scripts/post-install-release-notes.js",
     "postpack": "shx rm -f oclif.manifest.json npm-shrinkwrap.json",
-    "posttest": "yarn test:deprecation-policy ",
     "prepack": "yarn compile && yarn lint && yarn oclif-artifacts",
     "prepare": "sf-install && yarn compile && yarn lint",
     "preinstall": "node ./scripts/preinstall.js",
@@ -271,8 +269,7 @@
     "snapshot-generate": "HOME=./ ./bin/run snapshot:generate",
     "test": "nyc mocha --recursive \"test/**/*.test.ts\" --report lcov --report cobertura -t 240000 --require source-map-support/register",
     "test-smoke-unix": "sf-release cli:tarballs:smoke --cli sfdx",
-    "test:deprecation-policy": "set HOME=./ ./bin/run snapshot:compare",
-    "test:json-schema": "sf-release cli:schemas:compare",
+    "test:only": "wireit",
     "test:smoke-unix": "sf-release cli:tarballs:smoke --cli sfdx",
     "trogdor": "yarn clean-all && yarn && yarn compile && yarn uts",
     "upload:deb": "oclif upload:deb",
@@ -281,5 +278,110 @@
     "upload:win": "oclif upload:win",
     "uts": "nyc mocha --require source-map-support/register --recursive \"test/**/*.test.ts\"",
     "watch": "tsc -w -p tsconfig.json"
+  },
+  "wireit": {
+    "build": {
+      "dependencies": [
+        "compile",
+        "lint"
+      ]
+    },
+    "compile": {
+      "command": "tsc -p . --pretty --incremental",
+      "files": [
+        "src/**/*.ts",
+        "**/tsconfig.json",
+        "messages/**"
+      ],
+      "output": [
+        "lib/**",
+        "*.tsbuildinfo"
+      ],
+      "clean": "if-file-deleted"
+    },
+    "format": {
+      "command": "prettier --write \"+(src|test|schemas)/**/*.+(ts|js|json)|command-snapshot.json\"",
+      "files": [
+        "src/**/*.ts",
+        "test/**/*.ts",
+        "schemas/**/*.json",
+        "command-snapshot.json",
+        ".prettier*"
+      ],
+      "output": []
+    },
+    "lint": {
+      "command": "eslint src test --color --cache --cache-location .eslintcache",
+      "files": [
+        "src/**/*.ts",
+        "test/**/*.ts",
+        "messages/**",
+        "**/.eslint*",
+        "**/tsconfig.json"
+      ],
+      "output": []
+    },
+    "test:compile": {
+      "command": "tsc -p \"./test\" --pretty",
+      "files": [
+        "test/**/*.ts",
+        "**/tsconfig.json"
+      ],
+      "output": []
+    },
+    "test": {
+      "dependencies": [
+        "test:compile",
+        "test:only",
+        "test:command-reference",
+        "test:deprecation-policy",
+        "lint",
+        "test:json-schema"
+      ]
+    },
+    "test:only": {
+      "command": "nyc mocha \"test/**/*.test.ts\"",
+      "env": {
+        "FORCE_COLOR": "2"
+      },
+      "files": [
+        "test/**/*.ts",
+        "src/**/*.ts",
+        "**/tsconfig.json",
+        ".mocha*",
+        "!*.nut.ts",
+        ".nycrc"
+      ],
+      "output": []
+    },
+    "test:command-reference": {
+      "command": "\"./bin/dev\" commandreference:generate --erroronwarnings",
+      "files": [
+        "src/**/*.ts",
+        "messages/**",
+        "package.json"
+      ],
+      "output": [
+        "tmp/root"
+      ]
+    },
+    "test:deprecation-policy": {
+      "command": "\"./bin/dev\" snapshot:compare",
+      "files": [
+        "src/**/*.ts"
+      ],
+      "output": [],
+      "dependencies": [
+        "compile"
+      ]
+    },
+    "test:json-schema": {
+      "command": "\"./bin/dev\" schema:compare",
+      "files": [
+        "src/**/*.ts",
+        "schemas"
+      ],
+      "output": []
+    }
   }
 }
