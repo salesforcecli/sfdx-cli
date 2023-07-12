@@ -169,7 +169,7 @@
     "@oclif/plugin-warn-if-update-available": "2.0.41",
     "@oclif/plugin-which": "2.2.22",
     "@salesforce/core": "^4.3.5",
-    "@salesforce/kit": "3.0.3",
+    "@salesforce/kit": "3.0.4",
     "@salesforce/plugin-apex": "2.3.4",
     "@salesforce/plugin-auth": "2.8.4",
     "@salesforce/plugin-community": "2.3.5",
