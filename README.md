@@ -1,6 +1,14 @@
 # Salesforce CLI
 
-This is the latest `sfdx` CLI application, based on the
+> **Warning**  
+> The `sfdx` CLI entered maintenance mode on July 12th, 2023. Use `sf` instead at [salesforce/cli](https://github.com/salesforcecli/cli/).
+>
+> Check out [this blog post](https://developer.salesforce.com/blogs/2023/07/salesforce-cli-sf-v2-is-here) for information and context about this change.  
+> See the [Move from sfdx (v7) to sf (v2)](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm) section of the Salesforce CLI Setup Guide for details on how to make the switch.
+
+---
+
+This ~~is~~ was the latest `sfdx` CLI application, based on the
 [oclif](https://oclif.io) CLI engine. By default it comes installed with various plugins.
 
 ## Releases
