@@ -1113,10 +1113,10 @@
     wordwrap "^1.0.0"
     wrap-ansi "^7.0.0"
 
-"@oclif/plugin-autocomplete@2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-autocomplete/-/plugin-autocomplete-2.3.1.tgz#9b54aa70543581448fdf08bc6ad04d260693d0d6"
-  integrity sha512-UGkw6UObfkDdM/cwr16iEJW8OKLb4X8ZLG5Lc596Dl6WgW0GnzZjVQIu126koNt1T3jp9Oo9rrT26LbxtdryoQ==
+"@oclif/plugin-autocomplete@2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-autocomplete/-/plugin-autocomplete-2.3.2.tgz#c230206eea8e06f9df0cf5f321b82409e74554d1"
+  integrity sha512-NoGdP7Mw5j2NdRGhJNGpm6CHSupaxR9Rk/wOccQeiar2b1kjDEXBqRg0rSqrX3fwluKGw8UWohGL2oUSv9EMTw==
   dependencies:
     "@oclif/core" "^2.8.2"
     chalk "^4.1.0"
