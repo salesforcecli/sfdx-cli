@@ -1229,13 +1229,13 @@
     lodash "^4.17.21"
     semver "^7.5.3"
 
-"@oclif/plugin-which@2.2.22":
-  version "2.2.22"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-which/-/plugin-which-2.2.22.tgz#588b7cb8013856fea7d02824ee7e838d643038f4"
-  integrity sha512-/zMO1ZhkwSJaTzP2nRr9q1TPigCRziqFHgmJzSF3PloYYdfbdEKqAliZ0qami2ZhfcQcmUF1U9D6B2iEJpWpEA==
+"@oclif/plugin-which@2.2.24":
+  version "2.2.24"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-which/-/plugin-which-2.2.24.tgz#268c686b376f63ac92b24748546265de4ca84ebd"
+  integrity sha512-VP7G1dGXDmVuvZksDVLUZP/bdgOAYd9ojPYK3iGn6QU5+vMSbeiFeuhl71J6BZ6RpJkfgd2uCOFvXVzbvnkdMw==
   dependencies:
     "@oclif/core" "^2.8.5"
-    tslib "^2.5.3"
+    tslib "^2.6.0"
 
 "@octokit/auth-token@^2.4.4":
   version "2.5.0"
