@@ -16,6 +16,8 @@ RUN apt-get autoremove --assume-yes \
   && apt-get clean --assume-yes \
   && rm -rf /var/lib/apt/lists/*
 
+RUN sf plugins install @salesforce/sfdx-scanner
+
 ENV PATH="/usr/local/sfdx/bin:$PATH"
 ENV SFDX_CONTAINER_MODE true
 ENV DEBIAN_FRONTEND=dialog
